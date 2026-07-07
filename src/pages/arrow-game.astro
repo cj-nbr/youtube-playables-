@@ -1,0 +1,322 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const domain = "youtubeplayablescaloriecalculatorfree.com";
+---
+
+<Layout title="Arrow Game — YOUTUBE PLAYABLES">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Nav -->
+  <header
+    class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md"
+  >
+    <nav
+      class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6"
+    >
+      <a href="/" class="flex items-center gap-2">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <rect width="24" height="24" rx="5" fill="#171717"></rect>
+          <path d="M10 8.5v7l5.5-3.5L10 8.5z" fill="#fff"></path>
+        </svg>
+        <span class="text-sm font-semibold tracking-tight text-ink"
+          >YOUTUBE PLAYABLES</span
+        >
+      </a>
+
+      <div class="hidden items-center gap-1 md:flex">
+        <a href="/playables" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Playables</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a
+          href="/login"
+          class="hidden h-7 items-center rounded-sm border border-hairline px-3 text-sm font-medium text-ink hover:bg-canvas-soft sm:inline-flex"
+          >Log In</a
+        >
+        <a
+          href="/signup"
+          class="inline-flex h-7 items-center rounded-sm bg-ink px-3 text-sm font-medium text-white"
+          >Sign Up</a
+        >
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="relative overflow-hidden border-b border-hairline">
+      <div class="mesh-soft pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-[1400px] px-6 py-20">
+        <a href="/playables" class="font-mono text-xs text-link underline-offset-4 hover:underline"
+          >← All playables</a
+        >
+        <div class="mt-4 flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span
+              class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]"
+              >Playables</span
+            >
+            <h1
+              class="max-w-2xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]"
+            >
+              Arrow Game.
+            </h1>
+            <p class="mt-4 max-w-xl text-lg leading-7 text-body">
+              Slide every arrow off the board. Each arrow moves in the
+              direction it points and stops at walls or other arrows — clear
+              them all to win.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-6">
+            <div class="text-center">
+              <p class="font-mono text-xs uppercase tracking-wide text-mute">Moves</p>
+              <p id="moves" class="text-2xl font-semibold text-ink">0</p>
+            </div>
+            <div class="text-center">
+              <p class="font-mono text-xs uppercase tracking-wide text-mute">Left</p>
+              <p id="remaining" class="text-2xl font-semibold text-ink">0</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Board -->
+        <div class="mt-10 flex flex-col items-center">
+          <div
+            id="board"
+            class="grid w-full max-w-[440px] gap-2 rounded-xl border border-hairline bg-canvas p-3 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]"
+            role="grid"
+            aria-label="Arrow puzzle board"
+          >
+          </div>
+
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <button
+              id="resetBtn"
+              type="button"
+              class="inline-flex h-10 items-center rounded-pill border border-hairline bg-canvas px-5 text-sm font-medium text-ink hover:bg-canvas-soft"
+              >Reset</button
+            >
+            <button
+              id="nextBtn"
+              type="button"
+              class="hidden inline-flex h-10 items-center rounded-pill bg-ink px-5 text-sm font-medium text-white hover:opacity-90"
+              >Next level</button
+            >
+          </div>
+
+          <!-- Win banner -->
+          <div
+            id="win"
+            class="mt-6 hidden w-full max-w-[440px] rounded-xl border border-hairline bg-canvas-soft p-6 text-center"
+          >
+            <p class="text-xl font-semibold tracking-tight text-ink">
+              Level cleared.
+            </p>
+            <p id="allDone" class="mt-1 hidden text-base text-body">
+              You beat every level. Nicely done, jhunu.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-hairline bg-canvas px-6 py-16">
+    <div
+      class="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-2 border-t border-hairline pt-6 text-sm text-mute sm:flex-row sm:items-center"
+    >
+      <span>© {new Date().getFullYear()} YOUTUBE PLAYABLES. All rights reserved.</span>
+      <a href={`https://${domain}`} class="font-mono text-xs text-link underline-offset-4 hover:underline"
+        >{domain}</a
+      >
+    </div>
+  </footer>
+</Layout>
+
+<style is:global>
+  .cell {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: default;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+  }
+  .cell.empty {
+    background: var(--color-canvas-soft-2);
+  }
+  .cell.wall {
+    background: var(--color-ink);
+  }
+  .cell.arrow {
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #0000000a;
+  }
+  .cell.arrow:hover {
+    transform: scale(1.06);
+  }
+  .cell.arrow:active {
+    transform: scale(0.96);
+  }
+  .cell .glyph {
+    display: block;
+  }
+</style>
+
+<script>
+  const LEVELS = [
+    [
+      "......",
+      ".>....",
+      "......",
+      "......",
+      "......",
+      "......",
+    ],
+    [
+      ".>..<.",
+      "......",
+      "......",
+      "......",
+      "......",
+      "......",
+    ],
+    [
+      ".>....",
+      "......",
+      "......",
+      "......",
+      "....v.",
+      "^.....",
+    ],
+    [
+      ".>...v",
+      "......",
+      "......",
+      "......",
+      "......",
+      "^....<",
+    ],
+  ];
+
+  const DIR = { "^": [-1, 0], v: [1, 0], "<": [0, -1], ">": [0, 1] };
+  const GLYPH = { "^": "▲", v: "▼", "<": "◀", ">": "▶" };
+  const NAME = { "^": "up", v: "down", "<": "left", ">": "right" };
+  const COLOR = {
+    "^": "var(--color-cyan)",
+    v: "var(--color-pink)",
+    "<": "var(--color-violet)",
+    ">": "var(--color-develop-start)",
+  };
+  const isArrow = (ch) => "^v<>".includes(ch);
+
+  let levelIndex = 0;
+  let grid = [];
+  let moves = 0;
+
+  function clone(def) {
+    return def.map((row) => row.split(""));
+  }
+  function countArrows(g) {
+    let n = 0;
+    for (const row of g) for (const c of row) if (isArrow(c)) n++;
+    return n;
+  }
+
+  function render() {
+    const board = document.getElementById("board");
+    board.style.gridTemplateColumns = `repeat(${grid[0].length}, minmax(0, 1fr))`;
+    board.innerHTML = "";
+    for (let r = 0; r < grid.length; r++) {
+      for (let c = 0; c < grid[r].length; c++) {
+        const ch = grid[r][c];
+        const cell = document.createElement("button");
+        cell.type = "button";
+        cell.className = "cell";
+        if (ch === "#") {
+          cell.classList.add("wall");
+          cell.disabled = true;
+        } else if (isArrow(ch)) {
+          cell.classList.add("arrow");
+          cell.style.background = COLOR[ch];
+          cell.innerHTML = `<span class="glyph">${GLYPH[ch]}</span>`;
+          cell.setAttribute("aria-label", `Arrow pointing ${NAME[ch]}`);
+          cell.addEventListener("click", () => move(r, c));
+        } else {
+          cell.classList.add("empty");
+          cell.disabled = true;
+        }
+        board.appendChild(cell);
+      }
+    }
+    document.getElementById("moves").textContent = String(moves);
+    document.getElementById("remaining").textContent = String(countArrows(grid));
+  }
+
+  function move(r, c) {
+    const ch = grid[r][c];
+    if (!isArrow(ch)) return;
+    const [dr, dc] = DIR[ch];
+    let nr = r;
+    let nc = c;
+    while (true) {
+      const tr = nr + dr;
+      const tc = nc + dc;
+      if (tr < 0 || tr >= grid.length || tc < 0 || tc >= grid[0].length) {
+        grid[r][c] = ".";
+        moves++;
+        render();
+        checkWin();
+        return;
+      }
+      if (grid[tr][tc] !== ".") break;
+      nr = tr;
+      nc = tc;
+    }
+    if (nr !== r || nc !== c) {
+      grid[r][c] = ".";
+      grid[nr][nc] = ch;
+      moves++;
+    }
+    render();
+    checkWin();
+  }
+
+  function checkWin() {
+    if (countArrows(grid) !== 0) return;
+    const win = document.getElementById("win");
+    win.classList.remove("hidden");
+    const next = document.getElementById("nextBtn");
+    const allDone = document.getElementById("allDone");
+    if (levelIndex < LEVELS.length - 1) {
+      next.classList.remove("hidden");
+      next.onclick = () => loadLevel(levelIndex + 1);
+    } else {
+      next.classList.add("hidden");
+      allDone.classList.remove("hidden");
+    }
+  }
+
+  function loadLevel(i) {
+    levelIndex = i;
+    grid = clone(LEVELS[i]);
+    moves = 0;
+    document.getElementById("win").classList.add("hidden");
+    document.getElementById("nextBtn").classList.add("hidden");
+    document.getElementById("allDone").classList.add("hidden");
+    render();
+  }
+
+  document.getElementById("resetBtn").addEventListener("click", () =>
+    loadLevel(levelIndex)
+  );
+
+  loadLevel(0);
+</script>
