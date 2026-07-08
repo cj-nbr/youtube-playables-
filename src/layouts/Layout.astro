@@ -8,10 +8,8 @@ interface Props {
 
 const {
   title = "YOUTUBE PLAYABLES",
-  description = "YOUTUBE PLAYABLES — free YouTube playables and a calorie calculator. hello jhunu.",
+  description = "YOUTUBE PLAYABLES — free YouTube playables. hello jhunu.",
 } = Astro.props;
-
-const domain = "https://youtubeplayablescaloriecalculatorfree.com";
 ---
 
 <!doctype html>
@@ -21,8 +19,6 @@ const domain = "https://youtubeplayablescaloriecalculatorfree.com";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={domain} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />

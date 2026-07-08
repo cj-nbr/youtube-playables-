@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const domain = "youtubeplayablescaloriecalculatorfree.com";
 ---
 
 <Layout>
@@ -17,7 +15,7 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
         class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute"
         >NEW</span
       >
-      <span>Introducing YOUTUBE PLAYABLES — free playables &amp; a calorie calculator.</span
+      <span>Introducing YOUTUBE PLAYABLES — free YouTube playables.</span
       >
     </a>
   </div>
@@ -65,8 +63,8 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
       <div class="relative mx-auto max-w-[1400px] px-6 py-32 text-center md:py-48">
         <span
           class="mb-6 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]"
-          >youtubeplayablescaloriecalculatorfree.com</span
-        >
+          >youtubeplayables</span
+          >
         <h1
           class="mx-auto max-w-3xl text-[40px] font-semibold leading-[1.05] tracking-[-2.4px] text-ink sm:text-[56px] md:text-[72px]"
         >
@@ -85,9 +83,9 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
             >Get started</a
           >
           <a
-            href="#calculator"
+            href="/playables"
             class="inline-flex h-12 items-center rounded-pill border border-hairline bg-canvas px-6 text-base font-medium text-ink hover:bg-canvas-soft"
-            >Try the calculator</a
+            >Browse playables</a
           >
         </div>
       </div>
@@ -124,14 +122,14 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
           >
             <div
               class="mb-5 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink"
-              >∑</div
+              >★</div
             >
             <h3 class="text-xl font-semibold tracking-tight text-ink">
-              Calorie calculator
+              Daily challenges
             </h3>
             <p class="mt-2 text-base leading-6 text-body">
-              Estimate calories per playable session in seconds with a fast,
-              focused calculator.
+              Fresh playable challenges every day to keep your streak alive and
+              your reflexes sharp.
             </p>
           </article>
 
@@ -154,36 +152,6 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
       </div>
     </section>
 
-    <!-- Dark polarity-flipped band -->
-    <section id="calculator" class="scroll-mt-20 bg-ink px-6 py-24 text-white">
-      <div class="mx-auto max-w-[1400px]">
-        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-white/60">
-          Calculator
-        </p>
-        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px]">
-          A calorie calculator for all workloads.
-        </h2>
-        <p class="mt-4 max-w-xl text-lg leading-7 text-white/70">
-          Plug in your session length and intensity. Get an instant estimate —
-          free, forever.
-        </p>
-        <div class="mt-10 grid gap-4 sm:grid-cols-3">
-          <div class="rounded-md bg-white/5 p-6">
-            <p class="font-mono text-xs uppercase tracking-wide text-white/50">Input</p>
-            <p class="mt-2 text-base text-white/80">Session minutes &amp; intensity</p>
-          </div>
-          <div class="rounded-md bg-white/5 p-6">
-            <p class="font-mono text-xs uppercase tracking-wide text-white/50">Compute</p>
-            <p class="mt-2 text-base text-white/80">Real-time estimate</p>
-          </div>
-          <div class="rounded-md bg-white/5 p-6">
-            <p class="font-mono text-xs uppercase tracking-wide text-white/50">Output</p>
-            <p class="mt-2 text-base text-white/80">Calories burned</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Soft CTA band -->
     <section id="pricing" class="mesh-soft scroll-mt-20 bg-canvas-soft px-6 py-24">
       <div class="mx-auto max-w-[1400px] text-center">
@@ -191,7 +159,7 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
           Deploy your first playable in seconds.
         </h2>
         <p class="mx-auto mt-4 max-w-xl text-lg leading-7 text-body">
-          Start free on {domain}. No credit card, no friction.
+          Start free. No credit card, no friction.
         </p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a
@@ -218,7 +186,7 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
           >
         </div>
         <p class="mt-4 text-sm text-body">
-          Free YouTube playables &amp; calorie calculator.
+          Free YouTube playables.
         </p>
       </div>
 
@@ -226,7 +194,6 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
         <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Product</p>
         <ul class="space-y-2 text-sm text-body">
           <li><a href="#playables" class="hover:text-ink">Playables</a></li>
-          <li><a href="#calculator" class="hover:text-ink">Calculator</a></li>
           <li><a href="#pricing" class="hover:text-ink">Pricing</a></li>
         </ul>
       </div>
@@ -241,12 +208,8 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
       </div>
 
       <div>
-        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Domain</p>
-        <a
-          href={`https://${domain}`}
-          class="text-sm text-link underline-offset-4 hover:underline"
-          >{domain}</a
-        >
+        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Brand</p>
+        <span class="text-sm text-body">youtubeplayables</span>
       </div>
     </div>
 
