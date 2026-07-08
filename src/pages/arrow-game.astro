@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 const domain = "youtubeplayablescaloriecalculatorfree.com";
 ---
 
-<Layout title="Arrow Game — YOUTUBE PLAYABLES">
+<Layout title="Thief Run — YOUTUBE PLAYABLES">
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Nav -->
@@ -46,76 +46,152 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
   <main id="main">
     <section class="relative overflow-hidden border-b border-hairline">
       <div class="mesh-soft pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-[1400px] px-6 py-20">
+      <div class="relative mx-auto max-w-[1400px] px-6 py-16">
         <a href="/playables" class="font-mono text-xs text-link underline-offset-4 hover:underline"
           >← All playables</a
         >
-        <div class="mt-4 flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <span
-              class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]"
-              >Playables</span
-            >
-            <h1
-              class="max-w-2xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]"
-            >
-              Arrow Game.
-            </h1>
-            <p class="mt-4 max-w-xl text-lg leading-7 text-body">
-              Slide every arrow off the board. Each arrow moves in the
-              direction it points and stops at walls or other arrows — clear
-              them all to win.
-            </p>
-          </div>
-
-          <div class="flex items-center gap-6">
-            <div class="text-center">
-              <p class="font-mono text-xs uppercase tracking-wide text-mute">Moves</p>
-              <p id="moves" class="text-2xl font-semibold text-ink">0</p>
-            </div>
-            <div class="text-center">
-              <p class="font-mono text-xs uppercase tracking-wide text-mute">Left</p>
-              <p id="remaining" class="text-2xl font-semibold text-ink">0</p>
-            </div>
-          </div>
+        <div class="mt-4">
+          <span
+            class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]"
+            >Playables</span
+          >
+          <h1
+            class="max-w-2xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]"
+          >
+            Thief Run.
+          </h1>
+          <p class="mt-4 max-w-xl text-lg leading-7 text-body">
+            A thief is on the run and the police are right behind. Switch lanes,
+            jump, and slide through 10 levels to escape.
+          </p>
         </div>
 
-        <!-- Board -->
+        <!-- Game -->
         <div class="mt-10 flex flex-col items-center">
           <div
-            id="board"
-            class="grid w-full max-w-[440px] gap-2 rounded-xl border border-hairline bg-canvas p-3 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]"
-            role="grid"
-            aria-label="Arrow puzzle board"
+            id="game-wrap"
+            class="relative w-full max-w-[440px] overflow-hidden rounded-xl border border-hairline bg-ink shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]"
           >
+            <canvas id="game" width="440" height="640" class="block w-full"></canvas>
+
+            <!-- HUD -->
+            <div
+              class="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between px-4 py-3 font-mono text-xs text-white"
+            >
+              <div class="flex gap-4">
+                <div>
+                  <p class="text-white/50">LEVEL</p>
+                  <p id="hud-level" class="text-base font-semibold">1/10</p>
+                </div>
+                <div>
+                  <p class="text-white/50">DIST</p>
+                  <p id="hud-dist" class="text-base font-semibold">0m</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-white/50">COINS</p>
+                <p id="hud-coins" class="text-base font-semibold text-[#f9cb28]">0</p>
+              </div>
+            </div>
+
+            <!-- Police proximity -->
+            <div class="pointer-events-none absolute inset-x-0 top-16 px-4">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-[10px] uppercase text-white/60">Police</span>
+                <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-white/15">
+                  <div
+                    id="police-bar"
+                    class="h-full rounded-full bg-[#ff4d4d] transition-[width] duration-150"
+                    style="width:100%"
+                  >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Start overlay -->
+            <div
+              id="overlay-ready"
+              class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-ink/85 px-6 text-center text-white"
+            >
+              <p class="font-mono text-xs uppercase tracking-wide text-white/60">Thief Run</p>
+              <h2 class="text-3xl font-semibold tracking-tight">Outrun the police.</h2>
+              <p class="max-w-xs text-sm text-white/70">
+                ← / → switch lanes · ↑ jump · ↓ slide. Dodge barriers, grab
+                coins, clear all 10 levels.
+              </p>
+              <button
+                id="btn-start"
+                type="button"
+                class="inline-flex h-12 items-center rounded-pill bg-white px-8 text-base font-semibold text-ink hover:opacity-90"
+                >Start run</button
+              >
+            </div>
+
+            <!-- Level clear overlay -->
+            <div
+              id="overlay-clear"
+              class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-ink/85 px-6 text-center text-white"
+            >
+              <p class="font-mono text-xs uppercase tracking-wide text-white/60">Level cleared</p>
+              <h2 id="clear-title" class="text-3xl font-semibold tracking-tight">
+                Level 1 complete
+              </h2>
+              <button
+                id="btn-next"
+                type="button"
+                class="inline-flex h-12 items-center rounded-pill bg-white px-8 text-base font-semibold text-ink hover:opacity-90"
+                >Next level</button
+              >
+            </div>
+
+            <!-- Game over overlay -->
+            <div
+              id="overlay-over"
+              class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-ink/90 px-6 text-center text-white"
+            >
+              <p class="font-mono text-xs uppercase tracking-wide text-[#ff4d4d]">Caught</p>
+              <h2 class="text-3xl font-semibold tracking-tight">The police got you.</h2>
+              <p id="over-score" class="text-sm text-white/70">Score 0</p>
+              <div class="flex gap-3">
+                <button
+                  id="btn-retry"
+                  type="button"
+                  class="inline-flex h-11 items-center rounded-pill bg-white px-6 text-sm font-semibold text-ink hover:opacity-90"
+                  >Retry level</button
+                >
+                <button
+                  id="btn-restart"
+                  type="button"
+                  class="inline-flex h-11 items-center rounded-pill border border-white/30 px-6 text-sm font-semibold text-white hover:bg-white/10"
+                  >Restart</button
+                >
+              </div>
+            </div>
+
+            <!-- Win overlay -->
+            <div
+              id="overlay-win"
+              class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-ink/90 px-6 text-center text-white"
+            >
+              <p class="font-mono text-xs uppercase tracking-wide text-[#00dfd8]">Escaped</p>
+              <h2 class="text-3xl font-semibold tracking-tight">All 10 levels cleared.</h2>
+              <p id="win-score" class="text-sm text-white/70">Score 0</p>
+              <button
+                id="btn-win-restart"
+                type="button"
+                class="inline-flex h-12 items-center rounded-pill bg-white px-8 text-base font-semibold text-ink hover:opacity-90"
+                >Play again</button
+              >
+            </div>
           </div>
 
-          <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <button
-              id="resetBtn"
-              type="button"
-              class="inline-flex h-10 items-center rounded-pill border border-hairline bg-canvas px-5 text-sm font-medium text-ink hover:bg-canvas-soft"
-              >Reset</button
-            >
-            <button
-              id="nextBtn"
-              type="button"
-              class="hidden inline-flex h-10 items-center rounded-pill bg-ink px-5 text-sm font-medium text-white hover:opacity-90"
-              >Next level</button
-            >
-          </div>
-
-          <!-- Win banner -->
-          <div
-            id="win"
-            class="mt-6 hidden w-full max-w-[440px] rounded-xl border border-hairline bg-canvas-soft p-6 text-center"
-          >
-            <p class="text-xl font-semibold tracking-tight text-ink">
-              Level cleared.
-            </p>
-            <p id="allDone" class="mt-1 hidden text-base text-body">
-              You beat every level. Nicely done, jhunu.
-            </p>
+          <!-- Touch controls -->
+          <div class="mt-4 grid w-full max-w-[440px] grid-cols-4 gap-2">
+            <button data-act="left" type="button" class="touch-btn" aria-label="Move left">←</button>
+            <button data-act="jump" type="button" class="touch-btn" aria-label="Jump">↑</button>
+            <button data-act="slide" type="button" class="touch-btn" aria-label="Slide">↓</button>
+            <button data-act="right" type="button" class="touch-btn" aria-label="Move right">→</button>
           </div>
         </div>
       </div>
@@ -136,187 +212,426 @@ const domain = "youtubeplayablescaloriecalculatorfree.com";
 </Layout>
 
 <style is:global>
-  .cell {
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    font-size: 1.4rem;
+  .touch-btn {
+    height: 56px;
+    border-radius: 12px;
+    border: 1px solid var(--color-hairline);
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-size: 1.25rem;
+    font-weight: 600;
     line-height: 1;
-    cursor: default;
-    transition: transform 0.12s ease, opacity 0.12s ease;
   }
-  .cell.empty {
+  .touch-btn:active {
     background: var(--color-canvas-soft-2);
   }
-  .cell.wall {
-    background: var(--color-ink);
-  }
-  .cell.arrow {
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 1px 1px #0000000a;
-  }
-  .cell.arrow:hover {
-    transform: scale(1.06);
-  }
-  .cell.arrow:active {
-    transform: scale(0.96);
-  }
-  .cell .glyph {
-    display: block;
+  @media (hover: hover) and (pointer: fine) {
+    .touch-btn {
+      display: none;
+    }
   }
 </style>
 
 <script>
-  const LEVELS = [
-    [
-      "......",
-      ".>....",
-      "......",
-      "......",
-      "......",
-      "......",
-    ],
-    [
-      ".>..<.",
-      "......",
-      "......",
-      "......",
-      "......",
-      "......",
-    ],
-    [
-      ".>....",
-      "......",
-      "......",
-      "......",
-      "....v.",
-      "^.....",
-    ],
-    [
-      ".>...v",
-      "......",
-      "......",
-      "......",
-      "......",
-      "^....<",
-    ],
-  ];
+  const canvas = document.getElementById("game");
+  const ctx = canvas.getContext("2d");
+  const W = canvas.width;
+  const H = canvas.height;
 
-  const DIR = { "^": [-1, 0], v: [1, 0], "<": [0, -1], ">": [0, 1] };
-  const GLYPH = { "^": "▲", v: "▼", "<": "◀", ">": "▶" };
-  const NAME = { "^": "up", v: "down", "<": "left", ">": "right" };
-  const COLOR = {
-    "^": "var(--color-cyan)",
-    v: "var(--color-pink)",
-    "<": "var(--color-violet)",
-    ">": "var(--color-develop-start)",
-  };
-  const isArrow = (ch) => "^v<>".includes(ch);
+  const LANES = [-1, 0, 1];
+  const TOTAL_LEVELS = 10;
 
-  let levelIndex = 0;
-  let grid = [];
-  let moves = 0;
-
-  function clone(def) {
-    return def.map((row) => row.split(""));
+  // Projection (pseudo-3D): t = 0 near (bottom), t = 1 far (vanishing)
+  function project(worldX, t) {
+    const horizonY = H * 0.34;
+    const groundY = H * 0.94;
+    const nearW = W * 0.46;
+    const farW = W * 0.045;
+    const sy = groundY + (horizonY - groundY) * t;
+    const halfW = nearW + (farW - nearW) * t;
+    const sx = W / 2 + worldX * halfW;
+    return { x: sx, y: sy, halfW, horizonY };
   }
-  function countArrows(g) {
-    let n = 0;
-    for (const row of g) for (const c of row) if (isArrow(c)) n++;
-    return n;
+
+  const state = {
+    mode: "ready", // ready | playing | clear | over | win
+    level: 1,
+    speed: 6,
+    target: 300,
+    spawnEvery: 1.1,
+    dist: 0,
+    coins: 0,
+    score: 0,
+    lane: 1,
+    laneF: 1,
+    jumping: false,
+    jumpT: 0,
+    sliding: false,
+    slideT: 0,
+    policeGap: 100,
+    objects: [],
+    spawnTimer: 0,
+    shake: 0,
+    flash: 0,
+  };
+
+  const JUMP_DUR = 0.62;
+  const SLIDE_DUR = 0.6;
+
+  function levelConfig(n) {
+    return {
+      target: 240 + n * 110,
+      speed: 5.6 + n * 0.85,
+      spawnEvery: Math.max(0.5, 1.25 - n * 0.08),
+      obstacleChance: Math.min(0.82, 0.6 + n * 0.025),
+    };
+  }
+
+  function startLevel(n) {
+    const cfg = levelConfig(n);
+    state.mode = "playing";
+    state.level = n;
+    state.speed = cfg.speed;
+    state.target = cfg.target;
+    state.spawnEvery = cfg.spawnEvery;
+    state.dist = 0;
+    state.coins = 0;
+    state.lane = 1;
+    state.laneF = 1;
+    state.jumping = false;
+    state.sliding = false;
+    state.policeGap = 100;
+    state.objects = [];
+    state.spawnTimer = 0.6;
+    state.shake = 0;
+    state.flash = 0;
+    hideOverlays();
+    updateHud();
+  }
+
+  function restartGame() {
+    startLevel(1);
+  }
+
+  function hideOverlays() {
+    document.getElementById("overlay-ready").classList.add("hidden");
+    document.getElementById("overlay-clear").classList.add("hidden");
+    document.getElementById("overlay-over").classList.add("hidden");
+    document.getElementById("overlay-win").classList.add("hidden");
+  }
+
+  function showOverlay(id) {
+    document.getElementById(id).classList.remove("hidden");
+  }
+
+  function updateHud() {
+    document.getElementById("hud-level").textContent = `${state.level}/${TOTAL_LEVELS}`;
+    document.getElementById("hud-dist").textContent = `${Math.floor(state.dist)}m`;
+    document.getElementById("hud-coins").textContent = String(state.coins);
+    document.getElementById("police-bar").style.width = `${Math.max(0, state.policeGap)}%`;
+  }
+
+  // --- Input ---
+  function moveLane(dir) {
+    if (state.mode !== "playing") return;
+    state.lane = Math.max(0, Math.min(2, state.lane + dir));
+  }
+  function doJump() {
+    if (state.mode !== "playing") return;
+    if (!state.jumping && !state.sliding) {
+      state.jumping = true;
+      state.jumpT = 0;
+    }
+  }
+  function doSlide() {
+    if (state.mode !== "playing") return;
+    if (!state.sliding && !state.jumping) {
+      state.sliding = true;
+      state.slideT = 0;
+    }
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(e.key))
+      e.preventDefault();
+    if (e.key === "ArrowLeft" || e.key === "a") moveLane(-1);
+    else if (e.key === "ArrowRight" || e.key === "d") moveLane(1);
+    else if (e.key === "ArrowUp" || e.key === "w" || e.key === " ") doJump();
+    else if (e.key === "ArrowDown" || e.key === "s") doSlide();
+  });
+
+  document.querySelectorAll(".touch-btn").forEach((btn) => {
+    const act = btn.dataset.act;
+    const fn = () => {
+      if (act === "left") moveLane(-1);
+      else if (act === "right") moveLane(1);
+      else if (act === "jump") doJump();
+      else if (act === "slide") doSlide();
+    };
+    btn.addEventListener("touchstart", (e) => { e.preventDefault(); fn(); }, { passive: false });
+    btn.addEventListener("mousedown", fn);
+  });
+
+  document.getElementById("btn-start").addEventListener("click", () => restartGame());
+  document.getElementById("btn-retry").addEventListener("click", () => startLevel(state.level));
+  document.getElementById("btn-restart").addEventListener("click", () => restartGame());
+  document.getElementById("btn-win-restart").addEventListener("click", () => restartGame());
+  document.getElementById("btn-next").addEventListener("click", () => {
+    if (state.level < TOTAL_LEVELS) startLevel(state.level + 1);
+    else restartGame();
+  });
+
+  // --- Spawning ---
+  function spawn() {
+    const r = Math.random();
+    const cfg = levelConfig(state.level);
+    if (r < cfg.obstacleChance) {
+      const lane = Math.floor(Math.random() * 3);
+      const type = ["block", "low", "hurdle"][Math.floor(Math.random() * 3)];
+      state.objects.push({ kind: "obs", type, lane, z: 1, resolved: false });
+    } else {
+      const lane = Math.floor(Math.random() * 3);
+      state.objects.push({ kind: "coin", lane, z: 1, resolved: false });
+    }
+  }
+
+  // --- Update ---
+  function update(dt) {
+    if (state.mode !== "playing") return;
+
+    state.dist += state.speed * dt * 9;
+    state.score = Math.floor(state.dist) + state.coins * 10;
+
+    // lane animation
+    const target = LANES[state.lane];
+    state.laneF += (target - state.laneF) * Math.min(1, dt * 12);
+
+    // jump / slide timers
+    if (state.jumping) {
+      state.jumpT += dt;
+      if (state.jumpT >= JUMP_DUR) { state.jumping = false; state.jumpT = 0; }
+    }
+    if (state.sliding) {
+      state.slideT += dt;
+      if (state.slideT >= SLIDE_DUR) { state.sliding = false; state.slideT = 0; }
+    }
+
+    // gentle police recovery for clean running
+    state.policeGap = Math.min(100, state.policeGap + dt * 1.5);
+
+    // move objects
+    for (const o of state.objects) o.z -= state.speed * dt * 0.42;
+
+    // resolve collisions at player plane (z <= 0)
+    for (const o of state.objects) {
+      if (!o.resolved && o.z <= 0) {
+        o.resolved = true;
+        if (o.kind === "coin") {
+          if (o.lane === state.lane) { state.coins += 1; state.score += 10; }
+        } else {
+          const sameLane = o.lane === state.lane;
+          let hit = false;
+          if (!sameLane) hit = false;
+          else if (o.type === "block") hit = true;
+          else if (o.type === "low") hit = !state.sliding;
+          else if (o.type === "hurdle") hit = !state.jumping;
+          if (hit) {
+            state.policeGap -= 32;
+            state.flash = 0.25;
+            state.shake = 0.3;
+            if (state.policeGap <= 0) {
+              state.policeGap = 0;
+              gameOver();
+            }
+          }
+        }
+      }
+    }
+
+    // cull passed objects
+    state.objects = state.objects.filter((o) => o.z > -0.15);
+
+    // spawn
+    state.spawnTimer -= dt;
+    if (state.spawnTimer <= 0) {
+      state.spawnTimer = state.spawnEvery * (0.8 + Math.random() * 0.4);
+      spawn();
+    }
+
+    // level clear
+    if (state.dist >= state.target) levelClear();
+
+    if (state.flash > 0) state.flash = Math.max(0, state.flash - dt);
+    if (state.shake > 0) state.shake = Math.max(0, state.shake - dt);
+
+    updateHud();
+  }
+
+  function levelClear() {
+    state.mode = "clear";
+    if (state.level >= TOTAL_LEVELS) {
+      state.mode = "win";
+      document.getElementById("win-score").textContent = `Score ${state.score}`;
+      showOverlay("overlay-win");
+    } else {
+      document.getElementById("clear-title").textContent = `Level ${state.level} complete`;
+      showOverlay("overlay-clear");
+    }
+  }
+
+  function gameOver() {
+    state.mode = "over";
+    document.getElementById("over-score").textContent = `Score ${state.score}`;
+    showOverlay("overlay-over");
+  }
+
+  // --- Render ---
+  function drawEmoji(em, x, y, size) {
+    ctx.font = `${size}px serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(em, x, y);
+  }
+
+  function drawRoad() {
+    // sky
+    const sky = ctx.createLinearGradient(0, 0, 0, H);
+    sky.addColorStop(0, "#0c0c0f");
+    sky.addColorStop(0.34, "#16161a");
+    sky.addColorStop(1, "#0a0a0c");
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, W, H);
+
+    // ground / road polygon
+    const bl = project(-1.6, 0);
+    const br = project(1.6, 0);
+    const tl = project(-1.6, 1);
+    const tr = project(1.6, 1);
+    ctx.beginPath();
+    ctx.moveTo(bl.x, bl.y);
+    ctx.lineTo(br.x, br.y);
+    ctx.lineTo(tr.x, tr.y);
+    ctx.lineTo(tl.x, tl.y);
+    ctx.closePath();
+    const road = ctx.createLinearGradient(0, tl.y, 0, bl.y);
+    road.addColorStop(0, "#1c1c20");
+    road.addColorStop(1, "#2a2a30");
+    ctx.fillStyle = road;
+    ctx.fill();
+
+    // edge rails (brand gradient colors)
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "#007cf0";
+    ctx.beginPath(); ctx.moveTo(bl.x, bl.y); ctx.lineTo(tl.x, tl.y); ctx.stroke();
+    ctx.strokeStyle = "#ff0080";
+    ctx.beginPath(); ctx.moveTo(br.x, br.y); ctx.lineTo(tr.x, tr.y); ctx.stroke();
+
+    // lane dividers (dashed)
+    ctx.strokeStyle = "rgba(255,255,255,0.25)";
+    ctx.lineWidth = 2;
+    for (const wx of [-0.5, 0.5]) {
+      const a = project(wx, 0);
+      const b = project(wx, 1);
+      ctx.setLineDash([10, 12]);
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    }
+    ctx.setLineDash([]);
+  }
+
+  function drawObject(o) {
+    const t = Math.max(0, Math.min(1, o.z));
+    const wx = LANES[o.lane];
+    const p = project(wx, t);
+    const size = (1 - t * 0.82) * 52;
+    if (o.kind === "coin") {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y - size * 0.4, size * 0.32, 0, Math.PI * 2);
+      ctx.fillStyle = "#f9cb28";
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "#ffe28a";
+      ctx.stroke();
+    } else {
+      const yTop = p.y - size * 0.95;
+      if (o.type === "block") {
+        roundRect(p.x - size * 0.34, yTop + size * 0.2, size * 0.68, size * 0.9, 6, "#ff4d4d");
+      } else if (o.type === "low") {
+        // overhead beam: draw near the top of the lane box
+        roundRect(p.x - size * 0.4, yTop, size * 0.8, size * 0.28, 5, "#f5a623");
+      } else if (o.type === "hurdle") {
+        roundRect(p.x - size * 0.36, p.y - size * 0.5, size * 0.72, size * 0.34, 5, "#007cf0");
+      }
+    }
+  }
+
+  function roundRect(x, y, w, h, r, color) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  function drawPlayer() {
+    const p = project(state.laneF, 0);
+    let yOff = 0;
+    if (state.jumping) yOff = Math.sin((state.jumpT / JUMP_DUR) * Math.PI) * 46;
+    const size = state.sliding ? 34 : 46;
+    const y = p.y - yOff - (state.sliding ? 14 : 26);
+    // shadow
+    ctx.beginPath();
+    ctx.ellipse(p.x, p.y - 6, 18, 6, 0, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(0,0,0,0.35)";
+    ctx.fill();
+    drawEmoji(state.sliding ? "🛝" : "🏃", p.x, y, size);
+  }
+
+  function drawPolice() {
+    // closer (lower gap) = bigger and lower on screen
+    const closeness = 1 - state.policeGap / 100; // 0 far, 1 imminent
+    const size = 40 + closeness * 60;
+    const y = H * 0.99 - closeness * 6;
+    const x = W / 2;
+    ctx.save();
+    ctx.globalAlpha = 0.55 + closeness * 0.4;
+    drawEmoji("👮", x, y, size);
+    ctx.restore();
   }
 
   function render() {
-    const board = document.getElementById("board");
-    board.style.gridTemplateColumns = `repeat(${grid[0].length}, minmax(0, 1fr))`;
-    board.innerHTML = "";
-    for (let r = 0; r < grid.length; r++) {
-      for (let c = 0; c < grid[r].length; c++) {
-        const ch = grid[r][c];
-        const cell = document.createElement("button");
-        cell.type = "button";
-        cell.className = "cell";
-        if (ch === "#") {
-          cell.classList.add("wall");
-          cell.disabled = true;
-        } else if (isArrow(ch)) {
-          cell.classList.add("arrow");
-          cell.style.background = COLOR[ch];
-          cell.innerHTML = `<span class="glyph">${GLYPH[ch]}</span>`;
-          cell.setAttribute("aria-label", `Arrow pointing ${NAME[ch]}`);
-          cell.addEventListener("click", () => move(r, c));
-        } else {
-          cell.classList.add("empty");
-          cell.disabled = true;
-        }
-        board.appendChild(cell);
-      }
+    ctx.save();
+    if (state.shake > 0) {
+      const s = state.shake * 10;
+      ctx.translate((Math.random() - 0.5) * s, (Math.random() - 0.5) * s);
     }
-    document.getElementById("moves").textContent = String(moves);
-    document.getElementById("remaining").textContent = String(countArrows(grid));
+    drawRoad();
+    // far -> near
+    const sorted = [...state.objects].sort((a, b) => b.z - a.z);
+    for (const o of sorted) drawObject(o);
+    drawPlayer();
+    drawPolice();
+    ctx.restore();
+
+    if (state.flash > 0) {
+      ctx.fillStyle = `rgba(255,77,77,${state.flash * 0.8})`;
+      ctx.fillRect(0, 0, W, H);
+    }
   }
 
-  function move(r, c) {
-    const ch = grid[r][c];
-    if (!isArrow(ch)) return;
-    const [dr, dc] = DIR[ch];
-    let nr = r;
-    let nc = c;
-    while (true) {
-      const tr = nr + dr;
-      const tc = nc + dc;
-      if (tr < 0 || tr >= grid.length || tc < 0 || tc >= grid[0].length) {
-        grid[r][c] = ".";
-        moves++;
-        render();
-        checkWin();
-        return;
-      }
-      if (grid[tr][tc] !== ".") break;
-      nr = tr;
-      nc = tc;
-    }
-    if (nr !== r || nc !== c) {
-      grid[r][c] = ".";
-      grid[nr][nc] = ch;
-      moves++;
-    }
+  let last = performance.now();
+  function loop(now) {
+    let dt = (now - last) / 1000;
+    last = now;
+    if (dt > 0.05) dt = 0.05;
+    update(dt);
     render();
-    checkWin();
+    requestAnimationFrame(loop);
   }
 
-  function checkWin() {
-    if (countArrows(grid) !== 0) return;
-    const win = document.getElementById("win");
-    win.classList.remove("hidden");
-    const next = document.getElementById("nextBtn");
-    const allDone = document.getElementById("allDone");
-    if (levelIndex < LEVELS.length - 1) {
-      next.classList.remove("hidden");
-      next.onclick = () => loadLevel(levelIndex + 1);
-    } else {
-      next.classList.add("hidden");
-      allDone.classList.remove("hidden");
-    }
-  }
-
-  function loadLevel(i) {
-    levelIndex = i;
-    grid = clone(LEVELS[i]);
-    moves = 0;
-    document.getElementById("win").classList.add("hidden");
-    document.getElementById("nextBtn").classList.add("hidden");
-    document.getElementById("allDone").classList.add("hidden");
-    render();
-  }
-
-  document.getElementById("resetBtn").addEventListener("click", () =>
-    loadLevel(levelIndex)
-  );
-
-  loadLevel(0);
+  updateHud();
+  requestAnimationFrame(loop);
 </script>
