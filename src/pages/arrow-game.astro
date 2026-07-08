@@ -5,38 +5,22 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Thief Run — YOUTUBE PLAYABLES">
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- Nav -->
-  <header
-    class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md"
-  >
-    <nav
-      class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6"
-    >
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md">
+    <nav class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6">
       <a href="/" class="flex items-center gap-2">
         <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
           <rect width="24" height="24" rx="5" fill="#171717"></rect>
           <path d="M10 8.5v7l5.5-3.5L10 8.5z" fill="#fff"></path>
         </svg>
-        <span class="text-sm font-semibold tracking-tight text-ink"
-          >YOUTUBE PLAYABLES</span
-        >
+        <span class="text-sm font-semibold tracking-tight text-ink">YOUTUBE PLAYABLES</span>
       </a>
-
       <div class="hidden items-center gap-1 md:flex">
         <a href="/playables" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Playables</a>
       </div>
-
       <div class="flex items-center gap-2">
-        <a
-          href="/login"
-          class="hidden h-7 items-center rounded-sm border border-hairline px-3 text-sm font-medium text-ink hover:bg-canvas-soft sm:inline-flex"
-          >Log In</a
-        >
-        <a
-          href="/signup"
-          class="inline-flex h-7 items-center rounded-sm bg-ink px-3 text-sm font-medium text-white"
-          >Sign Up</a
-        >
+        <a href="/login" class="hidden h-7 items-center rounded-sm border border-hairline px-3 text-sm font-medium text-ink hover:bg-canvas-soft sm:inline-flex">Log In</a>
+        <a href="/signup" class="inline-flex h-7 items-center rounded-sm bg-ink px-3 text-sm font-medium text-white">Sign Up</a>
       </div>
     </nav>
   </header>
@@ -45,147 +29,107 @@ import Layout from "../layouts/Layout.astro";
     <section class="relative overflow-hidden border-b border-hairline">
       <div class="mesh-soft pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-[1400px] px-6 py-16">
-        <a href="/playables" class="font-mono text-xs text-link underline-offset-4 hover:underline"
-          >← All playables</a
-        >
+        <a href="/playables" class="font-mono text-xs text-link underline-offset-4 hover:underline">← All playables</a>
         <div class="mt-4">
-          <span
-            class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]"
-            >Playables</span
-          >
-          <h1
-            class="max-w-2xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]"
-          >
-            Thief Run.
-          </h1>
+          <span class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">Playables</span>
+          <h1 class="max-w-2xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]">Thief Run.</h1>
           <p class="mt-4 max-w-xl text-lg leading-7 text-body">
-            A thief is on the run and the police are right behind. Switch lanes,
-            jump, and slide through 10 levels to escape.
+            A thief sprints through 10 worlds while the police close in. Switch lanes, jump, and slide across 100 chapters of procedurally generated runs.
           </p>
         </div>
 
-        <!-- Game -->
         <div class="mt-10 flex flex-col items-center">
-          <div
-            id="game-wrap"
-            class="relative w-full max-w-[440px] overflow-hidden rounded-xl border border-hairline bg-ink shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]"
-          >
-            <canvas id="game" width="440" height="640" class="block w-full"></canvas>
+          <div id="game-wrap" class="relative w-full max-w-[480px] overflow-hidden rounded-xl border border-hairline bg-ink shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
+            <canvas id="game" class="block h-[640px] w-full"></canvas>
 
             <!-- HUD -->
-            <div
-              class="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between px-4 py-3 font-mono text-xs text-white"
-            >
-              <div class="flex gap-4">
-                <div>
-                  <p class="text-white/50">LEVEL</p>
-                  <p id="hud-level" class="text-base font-semibold">1/10</p>
-                </div>
-                <div>
-                  <p class="text-white/50">DIST</p>
-                  <p id="hud-dist" class="text-base font-semibold">0m</p>
-                </div>
+            <div class="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between px-4 py-3 text-white">
+              <div class="font-mono text-xs">
+                <p class="text-white/50">CHAPTER</p>
+                <p id="hud-chapter" class="text-base font-semibold">1</p>
+                <p id="hud-world" class="mt-1 text-[11px] text-white/70">Ancient Forest</p>
               </div>
-              <div class="text-right">
+              <div class="text-right font-mono text-xs">
+                <p class="text-white/50">DIST</p>
+                <p id="hud-dist" class="text-base font-semibold">0m</p>
+                <p id="hud-mission" class="mt-1 max-w-[140px] text-[11px] text-white/70">—</p>
+              </div>
+              <div class="text-right font-mono text-xs">
                 <p class="text-white/50">COINS</p>
                 <p id="hud-coins" class="text-base font-semibold text-[#f9cb28]">0</p>
+                <p id="hud-gems" class="mt-1 text-[11px] text-[#7a5cff]">◆ 0</p>
               </div>
             </div>
 
-            <!-- Police proximity -->
-            <div class="pointer-events-none absolute inset-x-0 top-16 px-4">
+            <!-- Power-up strip -->
+            <div id="power-strip" class="pointer-events-none absolute inset-x-0 top-[68px] flex flex-wrap justify-center gap-2 px-4"></div>
+
+            <!-- Danger bar -->
+            <div class="pointer-events-none absolute inset-x-0 top-[44px] px-4">
               <div class="flex items-center gap-2">
                 <span class="font-mono text-[10px] uppercase text-white/60">Police</span>
                 <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-white/15">
-                  <div
-                    id="police-bar"
-                    class="h-full rounded-full bg-[#ff4d4d] transition-[width] duration-150"
-                    style="width:100%"
-                  >
-                  </div>
+                  <div id="danger-bar" class="h-full rounded-full bg-[#ff4d4d] transition-[width] duration-150" style="width:100%"></div>
                 </div>
               </div>
             </div>
 
-            <!-- Start overlay -->
-            <div
-              id="overlay-ready"
-              class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-ink/85 px-6 text-center text-white"
-            >
+            <!-- Ready -->
+            <div id="overlay-ready" class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-ink/85 px-6 text-center text-white">
               <p class="font-mono text-xs uppercase tracking-wide text-white/60">Thief Run</p>
               <h2 class="text-3xl font-semibold tracking-tight">Outrun the police.</h2>
-              <p class="max-w-xs text-sm text-white/70">
-                ← / → switch lanes · ↑ jump · ↓ slide. Dodge barriers, grab
-                coins, clear all 10 levels.
-              </p>
-              <button
-                id="btn-start"
-                type="button"
-                class="inline-flex h-12 items-center rounded-pill bg-white px-8 text-base font-semibold text-ink hover:opacity-90"
-                >Start run</button
-              >
+              <p id="ready-sub" class="max-w-xs text-sm text-white/70">World 1 · Ancient Forest</p>
+              <p class="max-w-xs text-xs text-white/50">← / → lanes · ↑ / Space jump · ↓ slide · Esc pause. Swipe on touch.</p>
+              <button id="btn-start" type="button" class="inline-flex h-12 items-center rounded-pill bg-white px-8 text-base font-semibold text-ink hover:opacity-90">Start run</button>
+              <button id="btn-settings" type="button" class="text-xs text-white/60 underline-offset-4 hover:underline">Settings</button>
             </div>
 
-            <!-- Level clear overlay -->
-            <div
-              id="overlay-clear"
-              class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-ink/85 px-6 text-center text-white"
-            >
-              <p class="font-mono text-xs uppercase tracking-wide text-white/60">Level cleared</p>
-              <h2 id="clear-title" class="text-3xl font-semibold tracking-tight">
-                Level 1 complete
-              </h2>
-              <button
-                id="btn-next"
-                type="button"
-                class="inline-flex h-12 items-center rounded-pill bg-white px-8 text-base font-semibold text-ink hover:opacity-90"
-                >Next level</button
-              >
+            <!-- Pause -->
+            <div id="overlay-pause" class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-ink/85 px-6 text-center text-white">
+              <h2 class="text-2xl font-semibold tracking-tight">Paused</h2>
+              <button id="btn-resume" type="button" class="inline-flex h-11 items-center rounded-pill bg-white px-8 text-sm font-semibold text-ink hover:opacity-90">Resume</button>
+              <button id="btn-mute" type="button" class="text-sm text-white/70">Sound: On</button>
+              <button id="btn-rm" type="button" class="text-sm text-white/70">Reduced motion: Off</button>
+              <button id="btn-restart-pause" type="button" class="text-sm text-white/60 underline-offset-4 hover:underline">Restart run</button>
             </div>
 
-            <!-- Game over overlay -->
-            <div
-              id="overlay-over"
-              class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-ink/90 px-6 text-center text-white"
-            >
+            <!-- Chapter clear -->
+            <div id="overlay-clear" class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-ink/85 px-6 text-center text-white">
+              <p class="font-mono text-xs uppercase tracking-wide text-[#00dfd8]">Chapter cleared</p>
+              <h2 id="clear-title" class="text-3xl font-semibold tracking-tight">Chapter 1</h2>
+              <p id="clear-sub" class="text-sm text-white/70"></p>
+              <button id="btn-next" type="button" class="inline-flex h-12 items-center rounded-pill bg-white px-8 text-base font-semibold text-ink hover:opacity-90">Next chapter</button>
+            </div>
+
+            <!-- Boss -->
+            <div id="overlay-boss" class="pointer-events-none absolute inset-x-0 top-24 z-10 hidden flex-col items-center justify-center gap-1 px-6 text-center text-white">
+              <p class="font-mono text-xs uppercase tracking-wide text-[#ff4d4d]">Boss</p>
+              <h2 id="boss-title" class="text-2xl font-semibold tracking-tight drop-shadow">Survive!</h2>
+              <p id="boss-sub" class="text-sm text-white/80 drop-shadow">Dodge the enforcer for 8s.</p>
+            </div>
+
+            <!-- Game over -->
+            <div id="overlay-over" class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-ink/90 px-6 text-center text-white">
               <p class="font-mono text-xs uppercase tracking-wide text-[#ff4d4d]">Caught</p>
               <h2 class="text-3xl font-semibold tracking-tight">The police got you.</h2>
               <p id="over-score" class="text-sm text-white/70">Score 0</p>
               <div class="flex gap-3">
-                <button
-                  id="btn-retry"
-                  type="button"
-                  class="inline-flex h-11 items-center rounded-pill bg-white px-6 text-sm font-semibold text-ink hover:opacity-90"
-                  >Retry level</button
-                >
-                <button
-                  id="btn-restart"
-                  type="button"
-                  class="inline-flex h-11 items-center rounded-pill border border-white/30 px-6 text-sm font-semibold text-white hover:bg-white/10"
-                  >Restart</button
-                >
+                <button id="btn-retry" type="button" class="inline-flex h-11 items-center rounded-pill bg-white px-6 text-sm font-semibold text-ink hover:opacity-90">Retry</button>
+                <button id="btn-home" type="button" class="inline-flex h-11 items-center rounded-pill border border-white/30 px-6 text-sm font-semibold text-white hover:bg-white/10">Menu</button>
               </div>
             </div>
 
-            <!-- Win overlay -->
-            <div
-              id="overlay-win"
-              class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-ink/90 px-6 text-center text-white"
-            >
-              <p class="font-mono text-xs uppercase tracking-wide text-[#00dfd8]">Escaped</p>
-              <h2 class="text-3xl font-semibold tracking-tight">All 10 levels cleared.</h2>
-              <p id="win-score" class="text-sm text-white/70">Score 0</p>
-              <button
-                id="btn-win-restart"
-                type="button"
-                class="inline-flex h-12 items-center rounded-pill bg-white px-8 text-base font-semibold text-ink hover:opacity-90"
-                >Play again</button
-              >
+            <!-- Win (all 100) -->
+            <div id="overlay-win" class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-ink/90 px-6 text-center text-white">
+              <p class="font-mono text-xs uppercase tracking-wide text-[#00dfd8]">Endless unlocked</p>
+              <h2 class="text-3xl font-semibold tracking-tight">All 100 chapters cleared.</h2>
+              <p class="text-sm text-white/70">Infinite Mode is now available.</p>
+              <button id="btn-win" type="button" class="inline-flex h-12 items-center rounded-pill bg-white px-8 text-base font-semibold text-ink hover:opacity-90">Keep running</button>
             </div>
           </div>
 
           <!-- Touch controls -->
-          <div class="mt-4 grid w-full max-w-[440px] grid-cols-4 gap-2">
+          <div class="mt-4 grid w-full max-w-[480px] grid-cols-4 gap-2">
             <button data-act="left" type="button" class="touch-btn" aria-label="Move left">←</button>
             <button data-act="jump" type="button" class="touch-btn" aria-label="Jump">↑</button>
             <button data-act="slide" type="button" class="touch-btn" aria-label="Slide">↓</button>
@@ -196,438 +140,447 @@ import Layout from "../layouts/Layout.astro";
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="border-t border-hairline bg-canvas px-6 py-16">
-    <div
-      class="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-2 border-t border-hairline pt-6 text-sm text-mute sm:flex-row sm:items-center"
-    >
+    <div class="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-2 border-t border-hairline pt-6 text-sm text-mute sm:flex-row sm:items-center">
       <span>© {new Date().getFullYear()} YOUTUBE PLAYABLES. All rights reserved.</span>
-      <span class="font-mono text-xs text-body">youtubeplayables</span>
+      <span class="font-mono text-xs">youtubeplayables</span>
     </div>
   </footer>
 </Layout>
 
 <style is:global>
   .touch-btn {
-    height: 56px;
-    border-radius: 12px;
-    border: 1px solid var(--color-hairline);
-    background: var(--color-canvas);
-    color: var(--color-ink);
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1;
+    height: 56px; border-radius: 12px; border: 1px solid var(--color-hairline);
+    background: var(--color-canvas); color: var(--color-ink); font-size: 1.25rem; font-weight: 600; line-height: 1;
   }
-  .touch-btn:active {
-    background: var(--color-canvas-soft-2);
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .touch-btn {
-      display: none;
-    }
-  }
+  .touch-btn:active { background: var(--color-canvas-soft-2); }
+  @media (hover: hover) and (pointer: fine) { .touch-btn { display: none; } }
 </style>
 
 <script>
-  const canvas = document.getElementById("game");
-  const ctx = canvas.getContext("2d");
-  const W = canvas.width;
-  const H = canvas.height;
+// GAME_SCRIPT
+import * as THREE from 'three';
 
-  const LANES = [-1, 0, 1];
-  const TOTAL_LEVELS = 10;
+/* ===== CONFIG: worlds, chapters, obstacles, power-ups ===== */
+const LANE_W = 2.2;
+const TOTAL_CHAPTERS = 100;
+const WORLDS = [
+  { name: 'Ancient Forest', sky: 0x9fd8a0, fog: 0xbfe3c0, ground: 0x4a7c43, accent: 0x2f5d2a, light: 0xffffff, weather: 'leaves' },
+  { name: 'Golden Desert', sky: 0xf6d9a0, fog: 0xf2cf94, ground: 0xd9b06a, accent: 0xb8893f, light: 0xfff0c0, weather: 'sandstorm' },
+  { name: 'Frozen Mountains', sky: 0xdff1ff, fog: 0xeaf6ff, ground: 0xcfe6f2, accent: 0x9fc4dd, light: 0xffffff, weather: 'snow' },
+  { name: 'Volcano Kingdom', sky: 0x2a1414, fog: 0x3a1818, ground: 0x3b2320, accent: 0xff5a2c, light: 0xff7a3c, weather: 'ash' },
+  { name: 'Jungle Ruins', sky: 0x8fd0c0, fog: 0xa9ddd0, ground: 0x2f6b54, accent: 0x1f4a3a, light: 0xeafff5, weather: 'fog' },
+  { name: 'Lost Temple', sky: 0x3a2f1f, fog: 0x4a3a25, ground: 0x6b5638, accent: 0xf2c14e, light: 0xffe0a0, weather: 'dust' },
+  { name: 'Crystal Caverns', sky: 0x1a1030, fog: 0x241444, ground: 0x2a1d4a, accent: 0x7a5cff, light: 0xb9a6ff, weather: 'glow' },
+  { name: 'Sky Islands', sky: 0xbfe3ff, fog: 0xdaf2ff, ground: 0xe8f4ff, accent: 0x6fb7ff, light: 0xffffff, weather: 'wind' },
+  { name: 'Cyber City', sky: 0x0a0a18, fog: 0x12122a, ground: 0x14142a, accent: 0x19e6ff, light: 0x39c6ff, weather: 'rain' },
+  { name: 'Mythical Realm', sky: 0x2a1030, fog: 0x3a1840, ground: 0x3a1d4a, accent: 0xff5cf0, light: 0xff9cf0, weather: 'magic' },
+];
+const OBSTACLE_TYPES = ['block', 'low', 'hurdle'];
+const POWER_TYPES = ['magnet', 'shield', 'double', 'slow'];
 
-  // Projection (pseudo-3D): t = 0 near (bottom), t = 1 far (vanishing)
-  function project(worldX, t) {
-    const horizonY = H * 0.34;
-    const groundY = H * 0.94;
-    const nearW = W * 0.46;
-    const farW = W * 0.045;
-    const sy = groundY + (horizonY - groundY) * t;
-    const halfW = nearW + (farW - nearW) * t;
-    const sx = W / 2 + worldX * halfW;
-    return { x: sx, y: sy, halfW, horizonY };
-  }
-
-  const state = {
-    mode: "ready", // ready | playing | clear | over | win
-    level: 1,
-    speed: 6,
-    target: 300,
-    spawnEvery: 1.1,
-    dist: 0,
-    coins: 0,
-    score: 0,
-    lane: 1,
-    laneF: 1,
-    jumping: false,
-    jumpT: 0,
-    sliding: false,
-    slideT: 0,
-    policeGap: 100,
-    objects: [],
-    spawnTimer: 0,
-    shake: 0,
-    flash: 0,
+function chapterConfig(chapter) {
+  const c = Math.min(chapter, 220);
+  const worldIndex = Math.floor((Math.min(chapter, TOTAL_CHAPTERS) - 1) / 10);
+  return {
+    worldIndex: worldIndex % WORLDS.length,
+    endless: chapter > TOTAL_CHAPTERS,
+    speed: 15 + c * 1.05,
+    target: 200 + c * 85,
+    spawnEvery: Math.max(0.42, 1.15 - c * 0.007),
+    obstacleChance: Math.min(0.85, 0.62 + c * 0.0022),
+    isBoss: chapter % 10 === 0,
   };
+}
+function missionFor(chapter) {
+  const type = ['coins', 'jumps', 'distance'][chapter % 3];
+  const goal = type === 'coins' ? 40 + chapter * 4 : type === 'jumps' ? 8 + chapter : Math.floor((200 + chapter * 85) * 0.6);
+  const label = type === 'coins' ? `Collect ${goal} coins` : type === 'jumps' ? `Jump ${goal} times` : `Run ${goal}m`;
+  return { type, goal, progress: 0, label };
+}
 
-  const JUMP_DUR = 0.62;
-  const SLIDE_DUR = 0.6;
+/* ===== STORAGE: localStorage save system ===== */
+const SAVE_KEY = 'thiefrun_save_v1';
+const Storage = {
+  load() { try { return JSON.parse(localStorage.getItem(SAVE_KEY)) || {}; } catch { return {}; } },
+  save(d) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(d)); } catch {} },
+};
+let save = Object.assign({ coins: 0, highScore: 0, chapter: 1, settings: { mute: false, reducedMotion: false } }, Storage.load());
+save.settings = Object.assign({ mute: false, reducedMotion: false }, save.settings || {});
 
-  function levelConfig(n) {
-    return {
-      target: 240 + n * 110,
-      speed: 5.6 + n * 0.85,
-      spawnEvery: Math.max(0.5, 1.25 - n * 0.08),
-      obstacleChance: Math.min(0.82, 0.6 + n * 0.025),
-    };
+/* ===== AUDIO: lightweight synth, no external assets ===== */
+const Audio = {
+  ctx: null,
+  init() { if (!this.ctx) { try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch {} } },
+  beep(freq, dur = 0.08, type = 'square', gain = 0.05) {
+    if (save.settings.mute || !this.ctx) return;
+    const o = this.ctx.createOscillator(), g = this.ctx.createGain();
+    o.type = type; o.frequency.value = freq; g.gain.value = gain;
+    o.connect(g); g.connect(this.ctx.destination);
+    const t = this.ctx.currentTime; o.start(t);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur); o.stop(t + dur);
+  },
+  coin() { this.beep(880, 0.06, 'square', 0.04); },
+  jump() { this.beep(440, 0.1, 'sine', 0.05); },
+  hit() { this.beep(120, 0.2, 'sawtooth', 0.06); },
+  power() { this.beep(660, 0.12, 'triangle', 0.05); },
+};
+
+// CHUNK_B
+/* ===== ENGINE: renderer / scene / camera / lights ===== */
+const canvas = document.getElementById('game');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFShadowMap;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(62, 1, 0.1, 300);
+camera.position.set(0, 4.3, 9);
+camera.lookAt(0, 1.2, -6);
+
+const hemi = new THREE.HemisphereLight(0xffffff, 0x404040, 0.9);
+scene.add(hemi);
+const sun = new THREE.DirectionalLight(0xffffff, 1.1);
+sun.position.set(6, 14, 6); sun.castShadow = true;
+sun.shadow.mapSize.set(1024, 1024);
+sun.shadow.camera.near = 1; sun.shadow.camera.far = 60;
+sun.shadow.camera.left = -20; sun.shadow.camera.right = 20;
+sun.shadow.camera.top = 20; sun.shadow.camera.bottom = -20;
+scene.add(sun);
+scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+
+function resize() {
+  const w = canvas.clientWidth || 480, h = canvas.clientHeight || 640;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', resize);
+
+/* ===== WORLD: ground treadmill, lanes, rungs, weather ===== */
+const worldGroup = new THREE.Group(); scene.add(worldGroup);
+let groundMat, laneMats = [];
+
+function applyWorld(worldIndex) {
+  const w = WORLDS[worldIndex];
+  scene.background = new THREE.Color(w.sky);
+  scene.fog = new THREE.Fog(w.fog, 30, 110);
+  hemi.color.set(w.light); hemi.groundColor.set(w.ground);
+  sun.color.set(w.light);
+  if (groundMat) groundMat.color.set(w.ground);
+  laneMats.forEach((m) => m.color.set(w.accent));
+  buildWeather(w.weather);
+}
+
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 400), new THREE.MeshStandardMaterial({ color: 0x4a7c43, roughness: 1 }));
+ground.rotation.x = -Math.PI / 2; ground.position.z = -60; ground.receiveShadow = true;
+worldGroup.add(ground); groundMat = ground.material;
+
+for (const x of [-LANE_W, 0, LANE_W]) {
+  const lm = new THREE.MeshStandardMaterial({ color: 0x2f5d2a });
+  const line = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.02, 400), lm);
+  line.position.set(x, 0.02, -60); worldGroup.add(line); laneMats.push(lm);
+}
+
+const rungs = [];
+const rungGeo = new THREE.BoxGeometry(40, 0.04, 0.4);
+for (let i = 0; i < 24; i++) {
+  const m = new THREE.Mesh(rungGeo, new THREE.MeshStandardMaterial({ color: 0x000000, transparent: true, opacity: 0.12 }));
+  m.position.set(0, 0.03, -i * 8); worldGroup.add(m); rungs.push(m);
+}
+
+/* ===== WEATHER particles ===== */
+let weather = null;
+const WEATHER_N = 220;
+const wPos = new Float32Array(WEATHER_N * 3);
+const weatherGeo = new THREE.BufferGeometry();
+weatherGeo.setAttribute('position', new THREE.BufferAttribute(wPos, 3));
+const weatherPts = new THREE.Points(weatherGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.12, transparent: true, opacity: 0.7 }));
+scene.add(weatherPts);
+function buildWeather(type) {
+  weather = type;
+  weatherPts.visible = !save.settings.reducedMotion && type !== 'none';
+  const col = { snow: 0xffffff, rain: 0x9fc4ff, sandstorm: 0xe8c98a, ash: 0x666666, leaves: 0x9fd86a, fog: 0xdddddd, dust: 0xcbb58a, glow: 0xb9a6ff, wind: 0xffffff, magic: 0xff9cf0 }[type] || 0xffffff;
+  weatherPts.material.color.set(col);
+  for (let i = 0; i < WEATHER_N; i++) { wPos[i * 3] = (Math.random() - 0.5) * 30; wPos[i * 3 + 1] = Math.random() * 16; wPos[i * 3 + 2] = -Math.random() * 90; }
+  weatherGeo.attributes.position.needsUpdate = true;
+}
+function updateWeather(dt) {
+  if (!weatherPts.visible) return;
+  const fall = (weather === 'rain' || weather === 'snow') ? 14 : 2;
+  for (let i = 0; i < WEATHER_N; i++) {
+    wPos[i * 3 + 1] -= fall * dt;
+    if (weather === 'wind' || weather === 'sandstorm') wPos[i * 3] += 4 * dt;
+    if (wPos[i * 3 + 1] < 0) { wPos[i * 3 + 1] = 16; wPos[i * 3] = (Math.random() - 0.5) * 30; }
+    if (wPos[i * 3] > 16) wPos[i * 3] = -16;
   }
+  weatherGeo.attributes.position.needsUpdate = true;
+}
 
-  function startLevel(n) {
-    const cfg = levelConfig(n);
-    state.mode = "playing";
-    state.level = n;
-    state.speed = cfg.speed;
-    state.target = cfg.target;
-    state.spawnEvery = cfg.spawnEvery;
-    state.dist = 0;
-    state.coins = 0;
-    state.lane = 1;
-    state.laneF = 1;
-    state.jumping = false;
-    state.sliding = false;
-    state.policeGap = 100;
-    state.objects = [];
-    state.spawnTimer = 0.6;
-    state.shake = 0;
-    state.flash = 0;
-    hideOverlays();
-    updateHud();
-  }
+/* ===== CHARACTER: original stylized runner ===== */
+function makeRunner(palette) {
+  const g = new THREE.Group();
+  const mat = (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.7 });
+  const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.35, 0.7, 4, 8), mat(palette.body));
+  body.position.y = 1.0; body.castShadow = true; g.add(body);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.32, 12, 12), mat(palette.skin));
+  head.position.y = 1.75; head.castShadow = true; g.add(head);
+  const hat = new THREE.Mesh(new THREE.ConeGeometry(0.34, 0.4, 12), mat(palette.hat));
+  hat.position.y = 2.05; g.add(hat);
+  const mkLimb = (x, y) => {
+    const pivot = new THREE.Group(); pivot.position.set(x, y, 0);
+    const limb = new THREE.Mesh(new THREE.CapsuleGeometry(0.12, 0.5, 4, 6), mat(palette.limb));
+    limb.position.y = -0.3; limb.castShadow = true; pivot.add(limb); g.add(pivot); return pivot;
+  };
+  return { group: g, lLeg: mkLimb(-0.16, 0.65), rLeg: mkLimb(0.16, 0.65), lArm: mkLimb(-0.45, 1.35), rArm: mkLimb(0.45, 1.35) };
+}
+const player = makeRunner({ body: 0x222831, skin: 0xe0ac69, hat: 0x111111, limb: 0x393e46 });
+player.group.position.set(0, 0, 0); scene.add(player.group);
+const police = makeRunner({ body: 0x1f3a93, skin: 0xd9b38c, hat: 0x0a1a4f, limb: 0x2a4db0 });
+police.group.scale.set(1.15, 1.15, 1.15); scene.add(police.group);
 
-  function restartGame() {
-    startLevel(1);
-  }
+// CHUNK_C
+/* ===== POOLS: obstacles, coins, gems, power-ups ===== */
+const active = [];
+const laneX = (l) => (l - 1) * LANE_W;
 
-  function hideOverlays() {
-    document.getElementById("overlay-ready").classList.add("hidden");
-    document.getElementById("overlay-clear").classList.add("hidden");
-    document.getElementById("overlay-over").classList.add("hidden");
-    document.getElementById("overlay-win").classList.add("hidden");
+function makeObstacleMesh(type, world) {
+  const a = world.accent; let mesh;
+  if (type === 'block') {
+    mesh = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.4, 1.0), new THREE.MeshStandardMaterial({ color: a, roughness: 0.8 }));
+    mesh.position.y = 0.7;
+  } else if (type === 'low') {
+    mesh = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.5, 0.6), new THREE.MeshStandardMaterial({ color: 0xf5a623 }));
+    mesh.position.y = 1.7;
+  } else {
+    mesh = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 1.8, 10), new THREE.MeshStandardMaterial({ color: a }));
+    mesh.rotation.z = Math.PI / 2; mesh.position.y = 0.4;
   }
+  mesh.castShadow = true; return mesh;
+}
+function makeCoinMesh() {
+  const m = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.35, 0.08, 16), new THREE.MeshStandardMaterial({ color: 0xf9cb28, metalness: 0.6, roughness: 0.3, emissive: 0x4a3500 }));
+  m.rotation.x = Math.PI / 2; m.position.y = 1.0; return m;
+}
+function makeGemMesh() {
+  const m = new THREE.Mesh(new THREE.OctahedronGeometry(0.4), new THREE.MeshStandardMaterial({ color: 0x7a5cff, emissive: 0x2a1d4a, metalness: 0.4, roughness: 0.2 }));
+  m.position.y = 1.1; return m;
+}
+const POWER_COLORS = { magnet: 0xff4d4d, shield: 0x19a0ff, double: 0xf9cb28, slow: 0x00dfd8 };
+function makePowerMesh(type) {
+  const m = new THREE.Mesh(new THREE.IcosahedronGeometry(0.45, 0), new THREE.MeshStandardMaterial({ color: POWER_COLORS[type], emissive: POWER_COLORS[type], emissiveIntensity: 0.4 }));
+  m.position.y = 1.1; return m;
+}
+function spawnRow(cfg, world) {
+  const worldIndex = world; // world is WORLDS[index]
+  if (Math.random() < cfg.obstacleChance) {
+    const count = Math.random() < 0.25 ? 2 : 1;
+    const lanes = [0, 1, 2].sort(() => Math.random() - 0.5);
+    for (let i = 0; i < count; i++) {
+      const lane = lanes[i];
+      const type = OBSTACLE_TYPES[Math.floor(Math.random() * OBSTACLE_TYPES.length)];
+      const mesh = makeObstacleMesh(type, worldIndex); mesh.position.x = laneX(lane); mesh.position.z = -90;
+      scene.add(mesh); active.push({ kind: 'obs', type, lane, z: -90, mesh, resolved: false });
+    }
+  } else {
+    const lane = Math.floor(Math.random() * 3);
+    const isGem = Math.random() < 0.12;
+    const mesh = isGem ? makeGemMesh() : makeCoinMesh();
+    mesh.position.x = laneX(lane); mesh.position.z = -90; scene.add(mesh);
+    active.push({ kind: isGem ? 'gem' : 'coin', lane, z: -90, mesh, resolved: false });
+  }
+  if (Math.random() < 0.12) {
+    const type = POWER_TYPES[Math.floor(Math.random() * POWER_TYPES.length)];
+    const mesh = makePowerMesh(type); const lane = Math.floor(Math.random() * 3);
+    mesh.position.x = laneX(lane); mesh.position.z = -90; scene.add(mesh);
+    active.push({ kind: 'power', power: type, lane, z: -90, mesh, resolved: false });
+  }
+}
+function clearActive() { for (const o of active) scene.remove(o.mesh); active.length = 0; }
 
-  function showOverlay(id) {
-    document.getElementById(id).classList.remove("hidden");
-  }
+/* ===== STATE ===== */
+const S = {
+  mode: 'ready', chapter: 1, speed: 16, target: 200,
+  dist: 0, coins: 0, gems: 0, score: 0, lane: 1, laneF: 1,
+  jumping: false, jumpT: 0, sliding: false, slideT: 0, danger: 100,
+  spawnTimer: 0, runPhase: 0, invuln: 0, mission: null,
+  powers: { magnet: 0, shield: 0, double: 0, slow: 0 }, boss: false, bossTimer: 0,
+};
+function startChapter(ch) {
+  const cfg = chapterConfig(ch);
+  S.mode = 'playing'; S.chapter = ch; S.speed = cfg.speed; S.target = cfg.target;
+  S.dist = 0; S.coins = 0; S.gems = 0; S.score = 0; S.lane = 1; S.laneF = 1;
+  S.jumping = false; S.sliding = false; S.danger = 100; S.spawnTimer = 0.6;
+  S.invuln = 0; S.powers = { magnet: 0, shield: 0, double: 0, slow: 0 };
+  S.mission = missionFor(ch); S.boss = false; S.bossTimer = 0;
+  police.group.scale.set(1.15, 1.15, 1.15);
+  clearActive(); applyWorld(cfg.worldIndex); hideAll(); updateHud();
+}
+function hideAll() { ['ready', 'pause', 'clear', 'boss', 'over', 'win'].forEach((id) => document.getElementById('overlay-' + id).classList.add('hidden')); }
 
-  function updateHud() {
-    document.getElementById("hud-level").textContent = `${state.level}/${TOTAL_LEVELS}`;
-    document.getElementById("hud-dist").textContent = `${Math.floor(state.dist)}m`;
-    document.getElementById("hud-coins").textContent = String(state.coins);
-    document.getElementById("police-bar").style.width = `${Math.max(0, state.policeGap)}%`;
-  }
+// CHUNK_D
+/* ===== INPUT ===== */
+function moveLane(d) { if (S.mode !== 'playing') return; S.lane = Math.max(0, Math.min(2, S.lane + d)); }
+function doJump() { if (S.mode !== 'playing') return; if (!S.jumping && !S.sliding) { S.jumping = true; S.jumpT = 0; Audio.jump(); if (S.mission && S.mission.type === 'jumps') S.mission.progress++; } }
+function doSlide() { if (S.mode !== 'playing') return; if (!S.sliding && !S.jumping) { S.sliding = true; S.slideT = 0; } }
+function togglePause() { if (S.mode === 'playing') { S.mode = 'paused'; show('pause'); } else if (S.mode === 'paused') { S.mode = 'playing'; hide('pause'); } }
+function show(id) { document.getElementById('overlay-' + id).classList.remove('hidden'); }
+function hide(id) { document.getElementById('overlay-' + id).classList.add('hidden'); }
 
-  // --- Input ---
-  function moveLane(dir) {
-    if (state.mode !== "playing") return;
-    state.lane = Math.max(0, Math.min(2, state.lane + dir));
-  }
-  function doJump() {
-    if (state.mode !== "playing") return;
-    if (!state.jumping && !state.sliding) {
-      state.jumping = true;
-      state.jumpT = 0;
+window.addEventListener('keydown', (e) => {
+  if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', ' '].includes(e.key)) e.preventDefault();
+  if (e.key === 'ArrowLeft' || e.key === 'a') moveLane(-1);
+  else if (e.key === 'ArrowRight' || e.key === 'd') moveLane(1);
+  else if (e.key === 'ArrowUp' || e.key === 'w' || e.key === ' ') doJump();
+  else if (e.key === 'ArrowDown' || e.key === 's') doSlide();
+  else if (e.key === 'Escape') togglePause();
+});
+document.querySelectorAll('.touch-btn').forEach((b) => {
+  const act = b.dataset.act;
+  const fn = () => { if (act === 'left') moveLane(-1); else if (act === 'right') moveLane(1); else if (act === 'jump') doJump(); else if (act === 'slide') doSlide(); };
+  b.addEventListener('touchstart', (e) => { e.preventDefault(); fn(); }, { passive: false });
+  b.addEventListener('mousedown', fn);
+});
+let tsx = 0, tsy = 0;
+canvas.addEventListener('touchstart', (e) => { const t = e.changedTouches[0]; tsx = t.clientX; tsy = t.clientY; }, { passive: true });
+canvas.addEventListener('touchend', (e) => {
+  const t = e.changedTouches[0]; const dx = t.clientX - tsx, dy = t.clientY - tsy;
+  if (Math.abs(dx) > 30 || Math.abs(dy) > 30) { if (Math.abs(dx) > Math.abs(dy)) moveLane(dx > 0 ? 1 : -1); else if (dy < 0) doJump(); else doSlide(); }
+}, { passive: true });
+
+/* ===== BUTTONS ===== */
+document.getElementById('btn-start').onclick = () => { Audio.init(); startChapter(Math.min(save.chapter, TOTAL_CHAPTERS)); };
+document.getElementById('btn-next').onclick = () => startChapter(S.chapter + 1);
+document.getElementById('btn-retry').onclick = () => startChapter(S.chapter);
+document.getElementById('btn-home').onclick = () => { S.mode = 'ready'; hideAll(); document.getElementById('ready-sub').textContent = 'World ' + (Math.floor((Math.min(save.chapter, TOTAL_CHAPTERS) - 1) / 10) + 1) + ' · ' + WORLDS[Math.floor((Math.min(save.chapter, TOTAL_CHAPTERS) - 1) / 10)].name; show('ready'); };
+document.getElementById('btn-resume').onclick = () => togglePause();
+document.getElementById('btn-restart-pause').onclick = () => startChapter(S.chapter);
+document.getElementById('btn-mute').onclick = () => { save.settings.mute = !save.settings.mute; Storage.save(save); document.getElementById('btn-mute').textContent = 'Sound: ' + (save.settings.mute ? 'Off' : 'On'); };
+document.getElementById('btn-rm').onclick = () => { save.settings.reducedMotion = !save.settings.reducedMotion; Storage.save(save); document.getElementById('btn-rm').textContent = 'Reduced motion: ' + (save.settings.reducedMotion ? 'On' : 'Off'); buildWeather(weather); };
+document.getElementById('btn-settings').onclick = () => { S.mode = 'paused'; document.getElementById('btn-mute').textContent = 'Sound: ' + (save.settings.mute ? 'Off' : 'On'); document.getElementById('btn-rm').textContent = 'Reduced motion: ' + (save.settings.reducedMotion ? 'On' : 'Off'); show('pause'); };
+document.getElementById('btn-win').onclick = () => startChapter(S.chapter + 1);
+
+/* ===== OUTCOMES ===== */
+function damage() {
+  if (S.invuln > 0) return;
+  if (S.powers.shield > 0) { S.powers.shield = 0; S.invuln = 0.6; Audio.power(); return; }
+  S.danger -= 34; S.invuln = 0.6; Audio.hit();
+  if (S.danger <= 0) { S.danger = 0; gameOver(); }
+}
+function gameOver() {
+  S.mode = 'over'; S.score = Math.floor(S.dist) + S.coins * 10 + S.gems * 50;
+  save.coins += S.coins; save.highScore = Math.max(save.highScore, S.score); Storage.save(save);
+  document.getElementById('over-score').textContent = 'Score ' + S.score + ' · +' + S.coins + ' coins';
+  show('over');
+}
+function chapterCleared() {
+  S.mode = 'clear';
+  S.score = Math.floor(S.dist) + S.coins * 10 + S.gems * 50;
+  save.coins += S.coins; save.highScore = Math.max(save.highScore, S.score);
+  save.chapter = Math.max(save.chapter, Math.min(S.chapter + 1, TOTAL_CHAPTERS + 1)); Storage.save(save);
+  if (S.chapter >= TOTAL_CHAPTERS) { document.getElementById('clear-title').textContent = 'Chapter ' + S.chapter; document.getElementById('clear-sub').textContent = 'Final chapter cleared!'; document.getElementById('btn-next').textContent = 'Continue (Endless)'; }
+  else { document.getElementById('clear-title').textContent = 'Chapter ' + S.chapter + ' cleared'; document.getElementById('clear-sub').textContent = (S.mission.progress >= S.mission.goal ? 'Mission complete · ' : '') + 'Banked +' + S.coins + ' coins'; }
+  show('clear');
+}
+function startBoss() { S.boss = true; S.bossTimer = 8; police.group.scale.set(1.9, 1.9, 1.9); show('boss'); setTimeout(() => hide('boss'), 1300); }
+function activatePower(type) {
+  Audio.power();
+  if (type === 'magnet') S.powers.magnet = 8;
+  else if (type === 'shield') S.powers.shield = 1;
+  else if (type === 'double') S.powers.double = 10;
+  else if (type === 'slow') S.powers.slow = 6;
+}
+
+/* ===== UPDATE ===== */
+function update(dt) {
+  if (S.mode !== 'playing') return;
+  const sp = S.speed * (S.powers.slow > 0 ? 0.55 : 1);
+  S.dist += sp * dt * 1.1;
+  S.score = Math.floor(S.dist) + S.coins * 10 + S.gems * 50;
+  if (S.mission.type === 'distance') S.mission.progress = Math.floor(S.dist);
+
+  S.laneF += (laneX(S.lane) - S.laneF) * Math.min(1, dt * 12);
+  if (S.jumping) { S.jumpT += dt; if (S.jumpT >= 0.62) { S.jumping = false; S.jumpT = 0; } }
+  if (S.sliding) { S.slideT += dt; if (S.slideT >= 0.6) { S.sliding = false; S.slideT = 0; } }
+  if (S.invuln > 0) S.invuln -= dt;
+  for (const k in S.powers) if (S.powers[k] > 0) S.powers[k] = Math.max(0, S.powers[k] - dt);
+  S.danger = Math.min(100, S.danger + dt * 1.2);
+
+  for (const r of rungs) { r.position.z += sp * dt; if (r.position.z > 20) r.position.z -= 192; }
+
+  const cfg = chapterConfig(S.chapter);
+  S.spawnTimer -= dt;
+  if (S.spawnTimer <= 0) { S.spawnTimer = cfg.spawnEvery * (0.8 + Math.random() * 0.4); spawnRow(cfg, WORLDS[cfg.worldIndex]); }
+
+  for (const o of active) {
+    o.z += sp * dt; o.mesh.position.z = o.z;
+    if (o.mesh.rotation) o.mesh.rotation.y += dt * 3;
+    if (o.kind === 'coin') o.mesh.rotation.z += dt * 4;
+    if (o.kind === 'coin' && S.powers.magnet > 0 && o.z > -50 && o.z < 6) o.mesh.position.x += (S.laneF - o.mesh.position.x) * Math.min(1, dt * 5);
+    if (!o.resolved && o.z >= 0) {
+      o.resolved = true;
+      const same = Math.abs(o.mesh.position.x - S.laneF) < 0.6;
+      if (o.kind === 'coin') { if (same || S.powers.magnet > 0) { S.coins += S.powers.double > 0 ? 2 : 1; if (S.mission.type === 'coins') S.mission.progress++; Audio.coin(); scene.remove(o.mesh); } }
+      else if (o.kind === 'gem') { if (same) { S.gems++; Audio.coin(); scene.remove(o.mesh); } }
+      else if (o.kind === 'power') { if (same) { activatePower(o.power); scene.remove(o.mesh); } }
+      else { let hit = false; if (same) { if (o.type === 'block') hit = true; else if (o.type === 'low') hit = !S.sliding; else if (o.type === 'hurdle') hit = !S.jumping; } if (hit) damage(); }
     }
   }
-  function doSlide() {
-    if (state.mode !== "playing") return;
-    if (!state.sliding && !state.jumping) {
-      state.sliding = true;
-      state.slideT = 0;
-    }
-  }
+  for (let i = active.length - 1; i >= 0; i--) if (active[i].z > 14) { scene.remove(active[i].mesh); active.splice(i, 1); }
 
-  window.addEventListener("keydown", (e) => {
-    if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(e.key))
-      e.preventDefault();
-    if (e.key === "ArrowLeft" || e.key === "a") moveLane(-1);
-    else if (e.key === "ArrowRight" || e.key === "d") moveLane(1);
-    else if (e.key === "ArrowUp" || e.key === "w" || e.key === " ") doJump();
-    else if (e.key === "ArrowDown" || e.key === "s") doSlide();
-  });
-
-  document.querySelectorAll(".touch-btn").forEach((btn) => {
-    const act = btn.dataset.act;
-    const fn = () => {
-      if (act === "left") moveLane(-1);
-      else if (act === "right") moveLane(1);
-      else if (act === "jump") doJump();
-      else if (act === "slide") doSlide();
-    };
-    btn.addEventListener("touchstart", (e) => { e.preventDefault(); fn(); }, { passive: false });
-    btn.addEventListener("mousedown", fn);
-  });
-
-  document.getElementById("btn-start").addEventListener("click", () => restartGame());
-  document.getElementById("btn-retry").addEventListener("click", () => startLevel(state.level));
-  document.getElementById("btn-restart").addEventListener("click", () => restartGame());
-  document.getElementById("btn-win-restart").addEventListener("click", () => restartGame());
-  document.getElementById("btn-next").addEventListener("click", () => {
-    if (state.level < TOTAL_LEVELS) startLevel(state.level + 1);
-    else restartGame();
-  });
-
-  // --- Spawning ---
-  function spawn() {
-    const r = Math.random();
-    const cfg = levelConfig(state.level);
-    if (r < cfg.obstacleChance) {
-      const lane = Math.floor(Math.random() * 3);
-      const type = ["block", "low", "hurdle"][Math.floor(Math.random() * 3)];
-      state.objects.push({ kind: "obs", type, lane, z: 1, resolved: false });
-    } else {
-      const lane = Math.floor(Math.random() * 3);
-      state.objects.push({ kind: "coin", lane, z: 1, resolved: false });
-    }
-  }
-
-  // --- Update ---
-  function update(dt) {
-    if (state.mode !== "playing") return;
-
-    state.dist += state.speed * dt * 9;
-    state.score = Math.floor(state.dist) + state.coins * 10;
-
-    // lane animation
-    const target = LANES[state.lane];
-    state.laneF += (target - state.laneF) * Math.min(1, dt * 12);
-
-    // jump / slide timers
-    if (state.jumping) {
-      state.jumpT += dt;
-      if (state.jumpT >= JUMP_DUR) { state.jumping = false; state.jumpT = 0; }
-    }
-    if (state.sliding) {
-      state.slideT += dt;
-      if (state.slideT >= SLIDE_DUR) { state.sliding = false; state.slideT = 0; }
-    }
-
-    // gentle police recovery for clean running
-    state.policeGap = Math.min(100, state.policeGap + dt * 1.5);
-
-    // move objects
-    for (const o of state.objects) o.z -= state.speed * dt * 0.42;
-
-    // resolve collisions at player plane (z <= 0)
-    for (const o of state.objects) {
-      if (!o.resolved && o.z <= 0) {
-        o.resolved = true;
-        if (o.kind === "coin") {
-          if (o.lane === state.lane) { state.coins += 1; state.score += 10; }
-        } else {
-          const sameLane = o.lane === state.lane;
-          let hit = false;
-          if (!sameLane) hit = false;
-          else if (o.type === "block") hit = true;
-          else if (o.type === "low") hit = !state.sliding;
-          else if (o.type === "hurdle") hit = !state.jumping;
-          if (hit) {
-            state.policeGap -= 32;
-            state.flash = 0.25;
-            state.shake = 0.3;
-            if (state.policeGap <= 0) {
-              state.policeGap = 0;
-              gameOver();
-            }
-          }
-        }
-      }
-    }
-
-    // cull passed objects
-    state.objects = state.objects.filter((o) => o.z > -0.15);
-
-    // spawn
-    state.spawnTimer -= dt;
-    if (state.spawnTimer <= 0) {
-      state.spawnTimer = state.spawnEvery * (0.8 + Math.random() * 0.4);
-      spawn();
-    }
-
-    // level clear
-    if (state.dist >= state.target) levelClear();
-
-    if (state.flash > 0) state.flash = Math.max(0, state.flash - dt);
-    if (state.shake > 0) state.shake = Math.max(0, state.shake - dt);
-
-    updateHud();
-  }
-
-  function levelClear() {
-    state.mode = "clear";
-    if (state.level >= TOTAL_LEVELS) {
-      state.mode = "win";
-      document.getElementById("win-score").textContent = `Score ${state.score}`;
-      showOverlay("overlay-win");
-    } else {
-      document.getElementById("clear-title").textContent = `Level ${state.level} complete`;
-      showOverlay("overlay-clear");
-    }
-  }
-
-  function gameOver() {
-    state.mode = "over";
-    document.getElementById("over-score").textContent = `Score ${state.score}`;
-    showOverlay("overlay-over");
-  }
-
-  // --- Render ---
-  function drawEmoji(em, x, y, size) {
-    ctx.font = `${size}px serif`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(em, x, y);
-  }
-
-  function drawRoad() {
-    // sky
-    const sky = ctx.createLinearGradient(0, 0, 0, H);
-    sky.addColorStop(0, "#0c0c0f");
-    sky.addColorStop(0.34, "#16161a");
-    sky.addColorStop(1, "#0a0a0c");
-    ctx.fillStyle = sky;
-    ctx.fillRect(0, 0, W, H);
-
-    // ground / road polygon
-    const bl = project(-1.6, 0);
-    const br = project(1.6, 0);
-    const tl = project(-1.6, 1);
-    const tr = project(1.6, 1);
-    ctx.beginPath();
-    ctx.moveTo(bl.x, bl.y);
-    ctx.lineTo(br.x, br.y);
-    ctx.lineTo(tr.x, tr.y);
-    ctx.lineTo(tl.x, tl.y);
-    ctx.closePath();
-    const road = ctx.createLinearGradient(0, tl.y, 0, bl.y);
-    road.addColorStop(0, "#1c1c20");
-    road.addColorStop(1, "#2a2a30");
-    ctx.fillStyle = road;
-    ctx.fill();
-
-    // edge rails (brand gradient colors)
-    ctx.lineWidth = 3;
-    ctx.strokeStyle = "#007cf0";
-    ctx.beginPath(); ctx.moveTo(bl.x, bl.y); ctx.lineTo(tl.x, tl.y); ctx.stroke();
-    ctx.strokeStyle = "#ff0080";
-    ctx.beginPath(); ctx.moveTo(br.x, br.y); ctx.lineTo(tr.x, tr.y); ctx.stroke();
-
-    // lane dividers (dashed)
-    ctx.strokeStyle = "rgba(255,255,255,0.25)";
-    ctx.lineWidth = 2;
-    for (const wx of [-0.5, 0.5]) {
-      const a = project(wx, 0);
-      const b = project(wx, 1);
-      ctx.setLineDash([10, 12]);
-      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-    }
-    ctx.setLineDash([]);
-  }
-
-  function drawObject(o) {
-    const t = Math.max(0, Math.min(1, o.z));
-    const wx = LANES[o.lane];
-    const p = project(wx, t);
-    const size = (1 - t * 0.82) * 52;
-    if (o.kind === "coin") {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y - size * 0.4, size * 0.32, 0, Math.PI * 2);
-      ctx.fillStyle = "#f9cb28";
-      ctx.fill();
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = "#ffe28a";
-      ctx.stroke();
-    } else {
-      const yTop = p.y - size * 0.95;
-      if (o.type === "block") {
-        roundRect(p.x - size * 0.34, yTop + size * 0.2, size * 0.68, size * 0.9, 6, "#ff4d4d");
-      } else if (o.type === "low") {
-        // overhead beam: draw near the top of the lane box
-        roundRect(p.x - size * 0.4, yTop, size * 0.8, size * 0.28, 5, "#f5a623");
-      } else if (o.type === "hurdle") {
-        roundRect(p.x - size * 0.36, p.y - size * 0.5, size * 0.72, size * 0.34, 5, "#007cf0");
-      }
-    }
-  }
-
-  function roundRect(x, y, w, h, r, color) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.arcTo(x + w, y, x + w, y + h, r);
-    ctx.arcTo(x + w, y + h, x, y + h, r);
-    ctx.arcTo(x, y + h, x, y, r);
-    ctx.arcTo(x, y, x + w, y, r);
-    ctx.closePath();
-    ctx.fillStyle = color;
-    ctx.fill();
-  }
-
-  function drawPlayer() {
-    const p = project(state.laneF, 0);
-    let yOff = 0;
-    if (state.jumping) yOff = Math.sin((state.jumpT / JUMP_DUR) * Math.PI) * 46;
-    const size = state.sliding ? 34 : 46;
-    const y = p.y - yOff - (state.sliding ? 14 : 26);
-    // shadow
-    ctx.beginPath();
-    ctx.ellipse(p.x, p.y - 6, 18, 6, 0, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(0,0,0,0.35)";
-    ctx.fill();
-    drawEmoji(state.sliding ? "🛝" : "🏃", p.x, y, size);
-  }
-
-  function drawPolice() {
-    // closer (lower gap) = bigger and lower on screen
-    const closeness = 1 - state.policeGap / 100; // 0 far, 1 imminent
-    const size = 40 + closeness * 60;
-    const y = H * 0.99 - closeness * 6;
-    const x = W / 2;
-    ctx.save();
-    ctx.globalAlpha = 0.55 + closeness * 0.4;
-    drawEmoji("👮", x, y, size);
-    ctx.restore();
-  }
-
-  function render() {
-    ctx.save();
-    if (state.shake > 0) {
-      const s = state.shake * 10;
-      ctx.translate((Math.random() - 0.5) * s, (Math.random() - 0.5) * s);
-    }
-    drawRoad();
-    // far -> near
-    const sorted = [...state.objects].sort((a, b) => b.z - a.z);
-    for (const o of sorted) drawObject(o);
-    drawPlayer();
-    drawPolice();
-    ctx.restore();
-
-    if (state.flash > 0) {
-      ctx.fillStyle = `rgba(255,77,77,${state.flash * 0.8})`;
-      ctx.fillRect(0, 0, W, H);
-    }
-  }
-
-  let last = performance.now();
-  function loop(now) {
-    let dt = (now - last) / 1000;
-    last = now;
-    if (dt > 0.05) dt = 0.05;
-    update(dt);
-    render();
-    requestAnimationFrame(loop);
-  }
+  if (cfg.isBoss && !S.boss && S.dist >= S.target) startBoss();
+  if (S.boss) { S.bossTimer -= dt; if (S.bossTimer <= 0) { S.boss = false; police.group.scale.set(1.15, 1.15, 1.15); chapterCleared(); } }
+  else if (S.dist >= S.target) chapterCleared();
 
   updateHud();
+}
+
+// CHUNK_E
+/* ===== HUD ===== */
+function updateHud() {
+  document.getElementById('hud-chapter').textContent = S.chapter > TOTAL_CHAPTERS ? '∞' : S.chapter;
+  const wi = Math.floor((Math.min(S.chapter, TOTAL_CHAPTERS) - 1) / 10) % WORLDS.length;
+  document.getElementById('hud-world').textContent = WORLDS[wi].name + (S.chapter > TOTAL_CHAPTERS ? ' (Endless)' : '');
+  document.getElementById('hud-dist').textContent = Math.floor(S.dist) + 'm';
+  document.getElementById('hud-coins').textContent = S.coins;
+  document.getElementById('hud-gems').textContent = '◆ ' + S.gems;
+  const m = S.mission;
+  document.getElementById('hud-mission').textContent = m ? (m.label + ': ' + Math.min(m.progress, m.goal) + '/' + m.goal) : '—';
+  document.getElementById('danger-bar').style.width = Math.max(0, S.danger) + '%';
+  const ps = document.getElementById('power-strip'); ps.innerHTML = '';
+  const labels = { magnet: 'Magnet', shield: 'Shield', double: 'x2', slow: 'Slow' };
+  for (const k in S.powers) if (S.powers[k] > 0) { const s = document.createElement('span'); s.className = 'rounded-full bg-white/15 px-2 py-0.5 font-mono text-[10px] text-white'; s.textContent = labels[k] + ' ' + Math.ceil(S.powers[k]) + 's'; ps.appendChild(s); }
+}
+
+/* ===== RENDER ===== */
+function render(dt) {
+  S.runPhase += dt * S.speed * 0.5;
+  const sw = Math.sin(S.runPhase) * 0.6;
+  player.lLeg.rotation.x = sw; player.rLeg.rotation.x = -sw;
+  player.lArm.rotation.x = -sw; player.rArm.rotation.x = sw;
+  const y = S.jumping ? Math.sin((S.jumpT / 0.62) * Math.PI) * 1.4 : 0;
+  player.group.position.set(S.laneF, y, 0);
+  player.group.scale.y = S.sliding ? 0.55 : 1;
+  player.group.rotation.x = S.sliding ? 0.9 : 0;
+  const close = 1 - S.danger / 100;
+  police.group.position.set(0, 0, 6 + close * 4);
+  const shake = S.invuln > 0 && !save.settings.reducedMotion ? S.invuln * 0.5 : 0;
+  camera.position.set((Math.random() - 0.5) * shake, 4.3, 9);
+  camera.lookAt(0, 1.2, -6);
+  renderer.render(scene, camera);
+}
+
+/* ===== LOOP + INIT ===== */
+resize();
+let last = performance.now();
+function loop(now) {
+  let dt = (now - last) / 1000; last = now;
+  if (dt > 0.05) dt = 0.05;
+  update(dt); render(dt); updateWeather(dt);
   requestAnimationFrame(loop);
+}
+applyWorld(0);
+updateHud();
+document.getElementById('ready-sub').textContent = 'World 1 · ' + WORLDS[0].name;
+requestAnimationFrame(loop);
 </script>
