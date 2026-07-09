@@ -62,8 +62,8 @@ const jsonLd = {
         </div>
 
         <div class="mt-10 flex flex-col items-center">
-          <div id="game-wrap" class="relative w-full max-w-[480px] overflow-hidden rounded-xl border border-hairline bg-ink shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
-            <div id="board" class="flex w-full h-[520px] flex-col items-center justify-center px-6 text-center text-white">
+          <div id="game-wrap" class="relative w-full max-w-[480px] h-[calc(100vh-12rem)] overflow-hidden rounded-xl border border-hairline bg-ink shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
+            <div id="board" class="grid w-full h-full place-items-center p-6 text-center text-white">
               <slot />
             </div>
           </div>

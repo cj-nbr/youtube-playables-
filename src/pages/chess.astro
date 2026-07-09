@@ -15,7 +15,7 @@ const game = {
 ---
 
 <GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
-  <div id="chess-board" class="w-full flex justify-center"></div>
+  <div id="chess-board" class="w-full h-full"></div>
 </GameShell>
 
 <script>
@@ -73,7 +73,7 @@ function draw() {
 
       const p = board[r][c];
       if (p) {
-        sq.innerHTML = `<span class="absolute inset-0 flex items-center justify-center text-xl" style="color:${(p === p.toUpperCase() && turn === 'w') || (p === p.toLowerCase() && turn === 'b') ? '#fff' : '#000'}">${pieces[p]}</span>`;
+        sq.innerHTML = `<span class="absolute inset-0 flex items-center justify-center text-2xl" style="color:${(p === p.toUpperCase() && turn === 'w') || (p === p.toLowerCase() && turn === 'b') ? '#fff' : '#000'}">${pieces[p]}</span>`;
       }
 
       // Highlight selected piece
@@ -107,17 +107,16 @@ function getMoves(r, c) {
   const p = board[r][c];
   if (!p) return [];
   const moves = [];
-  const isWhite = p === p.toUpperCase();
-  
-  // Pawn (Corrected movement direction)
+// Pawn
   if (p.toUpperCase() === 'P') {
-    const dir = isWhite ? 1 : -1;
+    const isWhite = p === p.toUpperCase();
+    const dir = isWhite ? -1 : 1;
     if (!board[r + dir]?.[c]) moves.push([r + dir, c]);
-    if (r === (isWhite ? 1 : 6) && !board[r + dir]?.[c] && !board[r + 2 * dir]?.[c]) {
+    if (r === (isWhite ? 6 : 1) && !board[r + dir]?.[c] && !board[r + 2 * dir]?.[c]) {
       moves.push([r + 2 * dir, c]);
     }
-    if (board[r + dir]?.[c - 1]) moves.push([r + dir, c - 1]);
-    if (board[r + dir]?.[c + 1]) moves.push([r + dir, c + 1]);
+    if (board[r + dir]?.[c - 1] && isEmptyOrEnemy(r + dir, c - 1, isWhite)) moves.push([r + dir, c - 1]);
+    if (board[r + dir]?.[c + 1] && isEmptyOrEnemy(r + dir, c + 1, isWhite)) moves.push([r + dir, c + 1]);
   }
   // Knight
   else if (p.toUpperCase() === 'N') {
