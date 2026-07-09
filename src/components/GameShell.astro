@@ -119,17 +119,13 @@ const jsonLd = {
         const screen = document.getElementById('over-screen');
         if (screen) {
           screen.classList.add('hidden');
-          setTimeout(() => {
-            screen.remove(); // Force DOM cleanup
-          }, 100);
+          screen.classList.remove('flex');
         }
       };
       
       document.getElementById('over-again').addEventListener('click', () => {
         window.__hideOver();
-        setTimeout(() => {
-          if (typeof window.__resetGame === 'function') window.__resetGame();
-        }, 200);
+        if (typeof window.__resetGame === 'function') window.__resetGame();
       });
     </script>
 </Layout>
