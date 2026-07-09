@@ -15,20 +15,20 @@ const game = {
 ---
 
 <GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
-  <div id="chess" class="w-full max-w-[360px] mx-auto"></div>
+  <div id="chess-board" class="w-full flex justify-center"></div>
 </GameShell>
 
 <script>
 const SIZE = 8;
-const CELL = 42;
+const CELL = 40;
 
-const gameEl = document.getElementById('chess');
+const boardEl = document.getElementById('chess-board');
 const resetBtn = document.getElementById('reset-btn');
 const statusEl = document.getElementById('status');
 
 let board = [];
 let selected = null;
-let turn = 'w'; // white starts
+let turn = 'w';
 let gameOver = false;
 
 function initBoard() {
@@ -51,91 +51,59 @@ const pieces = {
   'P': '♙', 'R': '♖', 'N': '♘', 'B': '♗', 'Q': '♕', 'K': '♔',
 };
 
-function draw() {
-  gameEl.innerHTML = '';
-  const colors = ['#b7965e', '#8c6d3e'];
-
-  for (let r = 0; r < SIZE; r++) {
-    for (let c = 0; c < SIZE; c++) {
-      const sq = document.createElement('div');
-      sq.className = 'absolute flex items-center justify-center text-2xl';
-      sq.style.left = (c * CELL) + 'px';
-      sq.style.top = ((SIZE - 1 - r) * CELL) + 'px';
-      sq.style.width = CELL + 'px';
-      sq.style.height = CELL + 'px';
-      sq.style.background = colors[(r + c) % 2];
-      sq.dataset.r = r;
-      sq.dataset.c = c;
-
-      const p = board[r][c];
-      if (p) {
-        sq.textContent = pieces[p];
-        sq.style.cursor = turn === (p === p.toUpperCase() ? 'w' : 'b') ? 'pointer' : 'default';
-        sq.addEventListener('click', () => handleClick(r, c, sq));
-      }
-
-      if (selected && selected.r === r && selected.c === c) {
-        sq.style.outline = '3px solid #00ffd8';
-      }
-
-      gameEl.appendChild(sq);
-    }
-  }
-}
-
+// Get valid moves for a piece
 function getMoves(r, c) {
   const p = board[r][c];
+  if (!p) return [];
   const moves = [];
-  if (!p) return moves;
   const isWhite = p === p.toUpperCase();
+  const dir = isWhite ? -1 : 1; // white moves up (-1), black down (+1)
 
-  const dirs = {
-    'p': [[-1, -1], [-1, 1]],
-    'P': [[1, -1], [1, 1]]
-  };
-
-  for (let dr = -2; dr <= 2; dr++) {
-    for (let dc = -2; dc <= 2; dc++) {
-      let valid = false;
-      const absR = Math.abs(dr), absC = Math.abs(dc);
-
-      if (p.toUpperCase() === 'P') {
-        const dir = isWhite ? 1 : -1;
-        if (dc === 0 && !board[r + dir]?.[c]) valid = true;
-        if (dc !== 0 && dr === dir && board[r + dir]?.[c + dc]) valid = true;
-      } else if (p.toUpperCase() === 'R') {
-        if (dr === 0 || dc === 0) valid = canSlide(r, c, dr, dc);
-      } else if (p.toUpperCase() === 'N') {
-        valid = (absR === 2 && absC === 1) || (absR === 1 && absC === 2);
-        valid = valid && isEmptyOrEnemy(r + dr, c + dc, isWhite);
-      } else if (p.toUpperCase() === 'B') {
-        if (absR === absC) valid = canSlide(r, c, dr, dc);
-      } else if (p.toUpperCase() === 'Q') {
-        if (dr === 0 || dc === 0 || absR === absC) valid = canSlide(r, c, dr, dc);
-      } else if (p.toUpperCase() === 'K') {
-        if (absR <= 1 && absC <= 1) valid = isEmptyOrEnemy(r + dr, c + dc, isWhite);
+  // Pawn
+  if (p.toUpperCase() === 'P') {
+    const startRow = isWhite ? 6 : 1;
+    if (!board[r + dir]?.[c]) moves.push([r + dir, c]);
+    if (r === startRow && !board[r + dir]?.[c] && !board[r + dir * 2]?.[c]) moves.push([r + dir * 2, c]);
+    if (board[r + dir]?.[c - 1]) moves.push([r + dir, c - 1]);
+    if (board[r + dir]?.[c + 1]) moves.push([r + dir, c + 1]);
+  }
+  // Knight
+  else if (p.toUpperCase() === 'N') {
+    const knightMoves = [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]];
+    for (const [dr, dc] of knightMoves) {
+      const nr = r + dr, nc = c + dc;
+      if (isEmptyOrEnemy(nr, nc, isWhite)) moves.push([nr, nc]);
+    }
+  }
+  // King
+  else if (p.toUpperCase() === 'K') {
+    for (let dr = -1; dr <= 1; dr++) {
+      for (let dc = -1; dc <= 1; dc++) {
+        if (dr || dc) {
+          const nr = r + dr, nc = c + dc;
+          if (isEmptyOrEnemy(nr, nc, isWhite)) moves.push([nr, nc]);
+        }
       }
-
-      if (valid && board[r + dr] && board[r + dr][c + dc] !== undefined) {
-        moves.push([r + dr, c + dc]);
+    }
+  }
+  // Sliding pieces
+  else {
+    const dirs = p.toUpperCase() === 'B' ? [[-1,-1],[-1,1],[1,-1],[1,1]] :
+                 p.toUpperCase() === 'R' ? [[-1,0],[1,0],[0,-1],[0,1]] :
+                 [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
+    for (const [dr, dc] of dirs) {
+      for (let step = 1; step < SIZE; step++) {
+        const nr = r + dr * step, nc = c + dc * step;
+        if (nr < 0 || nr >= SIZE || nc < 0 || nc >= SIZE) break;
+        if (!board[nr][nc]) moves.push([nr, nc]);
+        else {
+          if (isEmptyOrEnemy(nr, nc, isWhite)) moves.push([nr, nc]);
+          break;
+        }
       }
     }
   }
   return moves;
-}
-
-function canSlide(r, c, dr, dc) {
-  const p = board[r][c];
-  const isWhite = p === p.toUpperCase();
-  let stepR = dr < 0 ? -1 : dr > 0 ? 1 : 0;
-  let stepC = dc < 0 ? -1 : dc > 0 ? 1 : 0;
-  let steps = Math.max(Math.abs(dr), Math.abs(dc)) || 1;
-
-  for (let i = 1; i < steps; i++) {
-    if (board[r + stepR * i]?.[c + stepC * i]) return false;
-  }
-  const tr = r + dr, tc = c + dc;
-  return isEmptyOrEnemy(tr, tc, isWhite);
 }
 
 function isEmptyOrEnemy(r, c, isWhite) {
@@ -144,8 +112,36 @@ function isEmptyOrEnemy(r, c, isWhite) {
   return !target || (target === target.toUpperCase()) !== isWhite;
 }
 
+function draw() {
+  boardEl.innerHTML = '';
+  const colors = ['#b7965e', '#8c6d3e'];
+
+  for (let r = 0; r < SIZE; r++) {
+    for (let c = 0; c < SIZE; c++) {
+      const sq = document.createElement('div');
+      sq.className = 'relative';
+      sq.style.width = CELL + 'px';
+      sq.style.height = CELL + 'px';
+      sq.style.background = colors[(r + c) % 2];
+      sq.style.border = selected && selected.r === r && selected.c === c ? '2px solid #00ffd8' : '1px solid rgba(0,0,0,.1)';
+      sq.dataset.r = r;
+      sq.dataset.c = c;
+
+      const p = board[r][c];
+      if (p) {
+        sq.innerHTML = `<span class="absolute inset-0 flex items-center justify-center text-3xl" style="color:${isWhite ? '#fff' : '#000'}">${pieces[p]}</span>`;
+        sq.style.cursor = (turn === 'w' && p === p.toUpperCase()) || (turn === 'b' && p === p.toLowerCase()) ? 'pointer' : 'default';
+        sq.addEventListener('click', () => handleClick(r, c));
+      }
+
+      boardEl.appendChild(sq);
+    }
+  }
+}
+
 function handleClick(r, c) {
   if (gameOver) return;
+  
   if (!selected) {
     const p = board[r][c];
     if (p && ((p === p.toUpperCase()) === (turn === 'w'))) {
@@ -153,27 +149,23 @@ function handleClick(r, c) {
       draw();
     }
   } else {
-    const moves = getMoves(selected.r, selected.c);
-    const target = moves.find(m => m[0] === r && m[1] === c);
-    if (target) {
+    const validMoves = getMoves(selected.r, selected.c);
+    const move = validMoves.find(m => m[0] === r && m[1] === c);
+    
+    if (move) {
       board[r][c] = board[selected.r][selected.c];
       board[selected.r][selected.c] = null;
       selected = null;
       turn = turn === 'w' ? 'b' : 'w';
       statusEl.textContent = turn === 'w' ? 'White to move' : 'Black to move';
+    } else if (board[r][c] && ((board[r][c] === board[r][c].toUpperCase()) === (turn === 'w'))) {
+      // Clicked own piece - select it instead
+      selected = { r, c };
     } else {
       selected = null;
-      draw();
     }
+    draw();
   }
-}
-
-function checkGameOver() {
-  // Simplified check: if king not found
-  const wk = board.flat().includes('K');
-  const bk = board.flat().includes('k');
-  if (!wk) { statusEl.textContent = 'Black wins!'; gameOver = true; }
-  else if (!bk) { statusEl.textContent = 'White wins!'; gameOver = true; }
 }
 
 function reset() {

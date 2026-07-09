@@ -15,7 +15,7 @@ const game = {
 ---
 
 <GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
-  <div id="stack" class="relative w-full max-w-[360px] mx-auto"></div>
+  <div id="stack-container" class="relative w-full max-w-[360px] mx-auto overflow-hidden" style="height: 480px;"></div>
 </GameShell>
 
 <script>
@@ -23,18 +23,17 @@ const W = 360;
 const BH = 24;
 const H = 480;
 
-const stackEl = document.getElementById('stack');
+const container = document.getElementById('stack-container');
 const resetBtn = document.getElementById('reset-btn');
-const statusEl = document.getElementById('status'); // from GameShell
+const statusEl = document.getElementById('status');
 
-let stack = []; // [{x, w}]
-let moving = null; // {x, w, dir, speed}
+let stack = [];
+let moving = null;
 let score = 0;
 let over = false;
 let raf = null;
 
 function init() {
-  // Base platform
   stack = [{ x: 0, w: W }];
   score = 0;
   over = false;
@@ -49,12 +48,12 @@ function randX(maxWidth) {
 
 function spawnMoving() {
   const below = stack[stack.length - 1];
-  const w = below.w;
+  const w = Math.max(40, below.w * (0.7 + Math.random() * 0.3));
   moving = {
     x: randX(w),
     w,
     dir: Math.random() < 0.5 ? -1 : 1,
-    speed: 2.5 + score * 0.15
+    speed: 2.0 + score * 0.08
   };
 }
 
@@ -71,7 +70,6 @@ function drop() {
     return;
   }
 
-  // New block sits on the overlap region
   stack.push({ x: left, w: overlap });
   score++;
   statusEl.textContent = 'Score: ' + score;
@@ -81,18 +79,16 @@ function drop() {
 }
 
 function draw() {
-  stackEl.innerHTML = '';
-
+  container.innerHTML = '';
   const inner = document.createElement('div');
   inner.style.position = 'relative';
   inner.style.width = W + 'px';
-  inner.style.margin = '0 auto';
+  inner.style.height = (stack.length + 1) * BH + 'px';
 
   const totalH = stack.length * BH;
-  const offset = Math.max(0, totalH - H + BH);
+  const offset = Math.max(0, totalH - H);
   inner.style.transform = `translateY(${-offset}px)`;
 
-  // Draw stack blocks from bottom up
   stack.forEach((b, i) => {
     const d = document.createElement('div');
     d.style.position = 'absolute';
@@ -100,13 +96,12 @@ function draw() {
     d.style.bottom = (i * BH) + 'px';
     d.style.width = b.w + 'px';
     d.style.height = BH + 'px';
-    d.style.background = `hsl(${(i * 35) % 360} 75% 55%)`;
+    d.style.background = `hsl(${(i * 35) % 360}, 75%, 55%)`;
     d.style.border = '1px solid rgba(0,0,0,.2)';
     d.style.borderRadius = '2px';
     inner.appendChild(d);
   });
 
-  // Draw moving block at top
   if (moving && !over) {
     const d = document.createElement('div');
     d.style.position = 'absolute';
@@ -120,7 +115,7 @@ function draw() {
     inner.appendChild(d);
   }
 
-  stackEl.appendChild(inner);
+  container.appendChild(inner);
 }
 
 function animate() {
@@ -140,7 +135,7 @@ function reset() {
 }
 
 resetBtn.addEventListener('click', reset);
-document.getElementById('board').addEventListener('click', drop);
+container.addEventListener('click', drop);
 
 init();
 animate();
