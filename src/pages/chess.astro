@@ -107,9 +107,10 @@ function getMoves(r, c) {
   const p = board[r][c];
   if (!p) return [];
   const moves = [];
-// Pawn
+  const isWhite = p === p.toUpperCase();
+  
+  // Pawn
   if (p.toUpperCase() === 'P') {
-    const isWhite = p === p.toUpperCase();
     const dir = isWhite ? -1 : 1;
     if (!board[r + dir]?.[c]) moves.push([r + dir, c]);
     if (r === (isWhite ? 6 : 1) && !board[r + dir]?.[c] && !board[r + 2 * dir]?.[c]) {
@@ -180,22 +181,22 @@ function handleClick(r, c) {
     const move = validMoves.find(m => m[0] === r && m[1] === c);
     console.log('Valid moves:', validMoves, 'Clicked move:', move);
     
-    if (move) {
-      board[r][c] = board[selected.r][selected.c];
-      board[selected.r][selected.c] = null;
-      selected = null;
-      turn = turn === 'w' ? 'b' : 'w';
-      statusEl.textContent = turn === 'w' ? 'White to move' : 'Black to move';
-      checkGameOver();
-      draw();
-    } else if (board[r][c] && ((board[r][c] === board[r][c].toUpperCase()) === (turn === 'w'))) {
-      // Clicked own piece - select it instead
-      selected = { r, c };
-      draw();
-    } else {
-      selected = null;
-      draw();
-    }
+if (move) {
+        board[r][c] = board[selected.r][selected.c];
+        board[selected.r][selected.c] = null;
+        selected = null;
+        turn = turn === 'w' ? 'b' : 'w';
+        statusEl.textContent = turn === 'w' ? 'White to move' : 'Black to move';
+        // checkGameOver(); // temporarily disabled to prevent blackout
+        draw();
+      } else if (board[r][c] && ((board[r][c] === board[r][c].toUpperCase()) === (turn === 'w'))) {
+        // Clicked own piece - select it instead
+        selected = { r, c };
+        draw();
+      } else {
+        selected = null;
+        draw();
+      }
   }
 }
 
