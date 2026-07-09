@@ -109,13 +109,14 @@ function getMoves(r, c) {
   if (!p) return [];
   const moves = [];
   const isWhite = p === p.toUpperCase();
-
-  // Pawn
+  
+  // Pawn (Corrected movement direction)
   if (p.toUpperCase() === 'P') {
-    const startRow = isWhite ? 6 : 1;
-    const dir = isWhite ? -1 : 1;
+    const dir = isWhite ? 1 : -1;
     if (!board[r + dir]?.[c]) moves.push([r + dir, c]);
-    if (r === startRow && !board[r + dir]?.[c] && !board[r + 2 * dir]?.[c]) moves.push([r + 2 * dir, c]);
+    if (r === (isWhite ? 1 : 6) && !board[r + dir]?.[c] && !board[r + 2 * dir]?.[c]) {
+      moves.push([r + 2 * dir, c]);
+    }
     if (board[r + dir]?.[c - 1]) moves.push([r + dir, c - 1]);
     if (board[r + dir]?.[c + 1]) moves.push([r + dir, c + 1]);
   }
@@ -225,16 +226,19 @@ reset();
 </script>
 
 <style>
-  #chess-board { 
+  #chess-board {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
-    width: 100%;
-    max-width: 320px;
+    width: 100vw;
+    height: 100vh;
     aspect-ratio: 1;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     border: 2px solid #00ffd8;
     border-radius: 6px;
-    overflow: hidden;
   }
   #chess-board > div {
     width: 100%;
