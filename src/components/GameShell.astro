@@ -114,14 +114,22 @@ const jsonLd = {
         screen.classList.remove('hidden');
         screen.classList.add('flex');
       };
+      
       window.__hideOver = () => {
         const screen = document.getElementById('over-screen');
-        screen.classList.add('hidden');
-        screen.classList.remove('flex');
+        if (screen) {
+          screen.classList.add('hidden');
+          setTimeout(() => {
+            screen.remove(); // Force DOM cleanup
+          }, 100);
+        }
       };
+      
       document.getElementById('over-again').addEventListener('click', () => {
         window.__hideOver();
-        if (typeof window.__resetGame === 'function') window.__resetGame();
+        setTimeout(() => {
+          if (typeof window.__resetGame === 'function') window.__resetGame();
+        }, 200);
       });
     </script>
 </Layout>
