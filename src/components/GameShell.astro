@@ -106,21 +106,22 @@ const jsonLd = {
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
 
-  <script is:inline>
-    window.__showOver = (title, msg) => {
-      const screen = document.getElementById('over-screen');
-      if (title) document.getElementById('over-title').textContent = title;
-      if (msg) document.getElementById('over-msg').textContent = msg;
-      screen.classList.remove('hidden');
-      screen.classList.add('flex');
-    };
-    window.__hideOver = () => {
-      const screen = document.getElementById('over-screen');
-      screen.classList.add('hidden');
-      screen.classList.remove('flex');
-    };
-    document.getElementById('over-again').addEventListener('click', () => {
-      if (typeof window.__resetGame === 'function') window.__resetGame();
-    });
-  </script>
+<script is:inline>
+      window.__showOver = (title, msg) => {
+        const screen = document.getElementById('over-screen');
+        if (title) document.getElementById('over-title').textContent = title;
+        if (msg) document.getElementById('over-msg').textContent = msg;
+        screen.classList.remove('hidden');
+        screen.classList.add('flex');
+      };
+      window.__hideOver = () => {
+        const screen = document.getElementById('over-screen');
+        screen.classList.add('hidden');
+        screen.classList.remove('flex');
+      };
+      document.getElementById('over-again').addEventListener('click', () => {
+        window.__hideOver();
+        if (typeof window.__resetGame === 'function') window.__resetGame();
+      });
+    </script>
 </Layout>
