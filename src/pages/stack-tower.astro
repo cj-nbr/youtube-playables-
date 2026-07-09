@@ -64,11 +64,11 @@ function drop() {
   const right = Math.min(moving.x + moving.w, below.x + below.w);
   const overlap = right - left;
 
-  if (overlap <= 0) {
-    over = true;
-    statusEl.textContent = 'Game Over! Score: ' + score;
-    return;
-  }
+if (overlap <= 0) {
+        over = true;
+        statusEl.textContent = 'Game Over! Score: ' + score;
+        window.__showOver('Game Over!', 'Score: ' + score);
+      }
 
   stack.push({ x: left, w: overlap });
   score++;
@@ -139,4 +139,6 @@ container.addEventListener('click', drop);
 
 init();
 animate();
+
+window.__resetGame = reset;
 </script>

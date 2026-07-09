@@ -156,10 +156,25 @@ function submitRound(timeBonus = true) {
 
 function endGame() {
   gameOver = true;
-  statusEl.textContent = `Game Over! Final Score: ${score}`;
   submitBtn.disabled = true;
   skipBtn.disabled = true;
+  window.__showOver('Game Over!', 'Final Score: ' + score);
 }
+
+function reset() {
+  score = 0;
+  round = 1;
+  gameOver = false;
+  scoreEl.textContent = '0';
+  roundEl.textContent = '1/10';
+  submitBtn.disabled = false;
+  skipBtn.disabled = false;
+  statusEl.textContent = '';
+  window.__hideOver();
+  newRound();
+}
+
+window.__resetGame = reset;
 
 function skipRound() {
   clearInterval(timerId);

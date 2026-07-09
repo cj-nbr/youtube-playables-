@@ -26,9 +26,24 @@ const boardEl = document.getElementById('chess-board');
 const resetBtn = document.getElementById('reset-btn');
 const statusEl = document.getElementById('status');
 
+// Create overlay for game over message
+const overlay = document.createElement('div');
+overlay.id = 'chess-overlay';
+overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);color:#fff;display:flex;align-items:center;justify-content:center;z-index:1000;font-family:sans-serif;display:none;';
+overlay.innerHTML = `
+  <div style="background:#fff;color:#000;padding:20px;border-radius:8px;text-align:center;">
+    <h2>Game Over</h2>
+    <p id="chess-game-over-msg"></p>
+    <button id="chess-play-again" style="margin-top:10px;padding:8px 16px;">Play Again</button>
+  </div>
+`;
+document.body.appendChild(overlay);
+const overlayMsg = document.getElementById('chess-game-over-msg');
+const playAgainBtn = document.getElementById('chess-play-again');
+
 let board = [];
 let selected = null;
-let turn = 'w';
+let turn = 'w'; // white starts
 let gameOver = false;
 
 function initBoard() {
@@ -51,21 +66,50 @@ const pieces = {
   'P': '♙', 'R': '♖', 'N': '♘', 'B': '♗', 'Q': '♕', 'K': '♔',
 };
 
-// Get valid moves for a piece
+function draw() {
+  boardEl.innerHTML = '';
+  const colors = ['#b7965e', '#8c6d3e'];
+
+  for (let r = 0; r < SIZE; r++) {
+    for (let c = 0; c < SIZE; c++) {
+      const sq = document.createElement('div');
+      sq.className = 'relative';
+      sq.style.width = CELL + 'px';
+      sq.style.height = CELL + 'px';
+      sq.style.background = colors[(r + c) % 2];
+      sq.style.border = selected && selected.r === r && selected.c === c ? '2px solid #00ffd8' : '1px solid rgba(0,0,0,.1)';
+      sq.dataset.r = r;
+      sq.dataset.c = c;
+
+      const p = board[r][c];
+      if (p) {
+        sq.innerHTML = `<span class="absolute inset-0 flex items-center justify-center text-3xl" style="color:${(p === p.toUpperCase() && turn === 'w') || (p === p.toLowerCase() && turn === 'b') ? '#fff' : '#000'}">${pieces[p]}</span>`;
+        sq.style.cursor = turn === 'w' && p === p.toUpperCase() || turn === 'b' && p === p.toLowerCase() ? 'pointer' : 'default';
+        sq.addEventListener('click', () => handleClick(r, c));
+      }
+
+      if (selected && selected.r === r && selected.c === c) {
+        sq.style.outline = '3px solid #00ffd8';
+      }
+
+      boardEl.appendChild(sq);
+    }
+  }
+}
+
 function getMoves(r, c) {
   const p = board[r][c];
   if (!p) return [];
   const moves = [];
   const isWhite = p === p.toUpperCase();
-  const dir = isWhite ? -1 : 1; // white moves up (-1), black down (+1)
 
   // Pawn
   if (p.toUpperCase() === 'P') {
     const startRow = isWhite ? 6 : 1;
-    if (!board[r + dir]?.[c]) moves.push([r + dir, c]);
-    if (r === startRow && !board[r + dir]?.[c] && !board[r + dir * 2]?.[c]) moves.push([r + dir * 2, c]);
-    if (board[r + dir]?.[c - 1]) moves.push([r + dir, c - 1]);
-    if (board[r + dir]?.[c + 1]) moves.push([r + dir, c + 1]);
+    if (!board[r + (isWhite ? -1 : 1)]?.[c]) moves.push([r + (isWhite ? -1 : 1), c]);
+    if (r === startRow && !board[r + (isWhite ? -2 : -1)]?.[c] && !board[r + (isWhite ? -2 : -1)]?.[c]) moves.push([r + (isWhite ? -2 : 0), c]);
+    if (board[r + (isWhite ? -1 : 1)]?.[c - 1]) moves.push([r + (isWhite ? -1 : 1), c - 1]);
+    if (board[r + (isWhite ? -1 : 1)]?.[c + 1]) moves.push([r + (isWhite ? -1 : 1), c + 1]);
   }
   // Knight
   else if (p.toUpperCase() === 'N') {
@@ -112,33 +156,6 @@ function isEmptyOrEnemy(r, c, isWhite) {
   return !target || (target === target.toUpperCase()) !== isWhite;
 }
 
-function draw() {
-  boardEl.innerHTML = '';
-  const colors = ['#b7965e', '#8c6d3e'];
-
-  for (let r = 0; r < SIZE; r++) {
-    for (let c = 0; c < SIZE; c++) {
-      const sq = document.createElement('div');
-      sq.className = 'relative';
-      sq.style.width = CELL + 'px';
-      sq.style.height = CELL + 'px';
-      sq.style.background = colors[(r + c) % 2];
-      sq.style.border = selected && selected.r === r && selected.c === c ? '2px solid #00ffd8' : '1px solid rgba(0,0,0,.1)';
-      sq.dataset.r = r;
-      sq.dataset.c = c;
-
-      const p = board[r][c];
-      if (p) {
-        sq.innerHTML = `<span class="absolute inset-0 flex items-center justify-center text-3xl" style="color:${isWhite ? '#fff' : '#000'}">${pieces[p]}</span>`;
-        sq.style.cursor = (turn === 'w' && p === p.toUpperCase()) || (turn === 'b' && p === p.toLowerCase()) ? 'pointer' : 'default';
-        sq.addEventListener('click', () => handleClick(r, c));
-      }
-
-      boardEl.appendChild(sq);
-    }
-  }
-}
-
 function handleClick(r, c) {
   if (gameOver) return;
   
@@ -168,6 +185,16 @@ function handleClick(r, c) {
   }
 }
 
+function checkGameOver() {
+  const wk = board.flat().includes('K');
+  const bk = board.flat().includes('k');
+  if (!wk || !bk) { 
+    gameOver = true; 
+    const winner = !wk ? 'Black' : 'White';
+    window.__showOver(winner + ' wins!', null);
+  }
+}
+
 function reset() {
   selected = null;
   turn = 'w';
@@ -175,8 +202,21 @@ function reset() {
   initBoard();
   draw();
   statusEl.textContent = 'White to move';
+  window.__hideOver();
 }
 
-resetBtn.addEventListener('click', reset);
+window.__resetGame = reset;
 reset();
 </script>
+
+<style>
+  /* Ensure the board fills its container */
+  #chess-board { 
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 500px;
+  }
+</style>
