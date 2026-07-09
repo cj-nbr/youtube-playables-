@@ -20,7 +20,6 @@ const game = {
 
 <script>
 const SIZE = 8;
-const CELL = 40;
 
 const boardEl = document.getElementById('chess-board');
 const resetBtn = document.getElementById('reset-btn');
@@ -60,6 +59,10 @@ function draw() {
   boardEl.style.aspectRatio = '1';
   const colors = ['#b7965e', '#8c6d3e'];
 
+  // Get valid moves for selected piece
+  const validMoves = selected ? getMoves(selected.r, selected.c) : [];
+  console.log('Draw: selected=', selected, 'validMoves=', validMoves, 'turn=', turn);
+
   for (let r = 0; r < SIZE; r++) {
     for (let c = 0; c < SIZE; c++) {
       const sq = document.createElement('div');
@@ -67,15 +70,33 @@ function draw() {
       sq.dataset.r = r;
       sq.dataset.c = c;
       sq.style.background = colors[(r + c) % 2];
+      sq.addEventListener('click', () => handleClick(r, c));
 
       const p = board[r][c];
       if (p) {
         sq.innerHTML = `<span class="absolute inset-0 flex items-center justify-center text-xl" style="color:${(p === p.toUpperCase() && turn === 'w') || (p === p.toLowerCase() && turn === 'b') ? '#fff' : '#000'}">${pieces[p]}</span>`;
-        sq.addEventListener('click', () => handleClick(r, c));
       }
 
+      // Highlight selected piece
       if (selected && selected.r === r && selected.c === c) {
         sq.style.outline = '3px solid #00ffd8';
+        sq.style.background = 'rgba(0, 255, 216, 0.1)';
+      }
+      // Highlight valid move squares
+      else if (validMoves.some(move => move[0] === r && move[1] === c)) {
+        sq.style.background = 'rgba(0, 255, 216, 0.2)';
+        sq.style.border = '2px solid rgba(0, 255, 216, 0.5)';
+        // Add a dot indicator for move target
+        const dot = document.createElement('div');
+        dot.style.width = '12px';
+        dot.style.height = '12px';
+        dot.style.background = '#00ffd8';
+        dot.style.borderRadius = '50%';
+        dot.style.position = 'absolute';
+        dot.style.top = '50%';
+        dot.style.left = '50%';
+        dot.style.transform = 'translate(-50%, -50%)';
+        sq.appendChild(dot);
       }
 
       boardEl.appendChild(sq);
@@ -92,10 +113,11 @@ function getMoves(r, c) {
   // Pawn
   if (p.toUpperCase() === 'P') {
     const startRow = isWhite ? 6 : 1;
-    if (!board[r + (isWhite ? -1 : 1)]?.[c]) moves.push([r + (isWhite ? -1 : 1), c]);
-    if (r === startRow && !board[r + (isWhite ? -2 : -1)]?.[c] && !board[r + (isWhite ? -2 : -1)]?.[c]) moves.push([r + (isWhite ? -2 : 0), c]);
-    if (board[r + (isWhite ? -1 : 1)]?.[c - 1]) moves.push([r + (isWhite ? -1 : 1), c - 1]);
-    if (board[r + (isWhite ? -1 : 1)]?.[c + 1]) moves.push([r + (isWhite ? -1 : 1), c + 1]);
+    const dir = isWhite ? -1 : 1;
+    if (!board[r + dir]?.[c]) moves.push([r + dir, c]);
+    if (r === startRow && !board[r + dir]?.[c] && !board[r + 2 * dir]?.[c]) moves.push([r + 2 * dir, c]);
+    if (board[r + dir]?.[c - 1]) moves.push([r + dir, c - 1]);
+    if (board[r + dir]?.[c + 1]) moves.push([r + dir, c + 1]);
   }
   // Knight
   else if (p.toUpperCase() === 'N') {
@@ -144,16 +166,20 @@ function isEmptyOrEnemy(r, c, isWhite) {
 
 function handleClick(r, c) {
   if (gameOver) return;
-  
+  console.log('Click:', r, c, 'piece:', board[r][c], 'selected:', selected);
+
   if (!selected) {
     const p = board[r][c];
     if (p && ((p === p.toUpperCase()) === (turn === 'w'))) {
       selected = { r, c };
       draw();
+    } else {
+      console.log('Cannot select - not your piece or empty');
     }
   } else {
     const validMoves = getMoves(selected.r, selected.c);
     const move = validMoves.find(m => m[0] === r && m[1] === c);
+    console.log('Valid moves:', validMoves, 'Clicked move:', move);
     
     if (move) {
       board[r][c] = board[selected.r][selected.c];
@@ -162,13 +188,15 @@ function handleClick(r, c) {
       turn = turn === 'w' ? 'b' : 'w';
       statusEl.textContent = turn === 'w' ? 'White to move' : 'Black to move';
       checkGameOver();
+      draw();
     } else if (board[r][c] && ((board[r][c] === board[r][c].toUpperCase()) === (turn === 'w'))) {
       // Clicked own piece - select it instead
       selected = { r, c };
+      draw();
     } else {
       selected = null;
+      draw();
     }
-    draw();
   }
 }
 
