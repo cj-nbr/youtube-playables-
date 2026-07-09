@@ -161,21 +161,6 @@ function endGame() {
   window.__showOver('Game Over!', 'Final Score: ' + score);
 }
 
-function reset() {
-  score = 0;
-  round = 1;
-  gameOver = false;
-  scoreEl.textContent = '0';
-  roundEl.textContent = '1/10';
-  submitBtn.disabled = false;
-  skipBtn.disabled = false;
-  statusEl.textContent = '';
-  window.__hideOver();
-  newRound();
-}
-
-window.__resetGame = reset;
-
 function skipRound() {
   clearInterval(timerId);
   round++;
@@ -192,8 +177,11 @@ function reset() {
   submitBtn.disabled = false;
   skipBtn.disabled = false;
   statusEl.textContent = '';
+  window.__hideOver();
   newRound();
 }
+
+window.__resetGame = reset;
 
 [rSlider, gSlider, bSlider].forEach(s => s.addEventListener('input', updateMix));
 submitBtn.addEventListener('click', () => submitRound(true));
