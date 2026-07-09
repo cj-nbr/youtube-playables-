@@ -53,6 +53,11 @@ const pieces = {
 
 function draw() {
   boardEl.innerHTML = '';
+  boardEl.style.display = 'grid';
+  boardEl.style.gridTemplateColumns = 'repeat(8, 1fr)';
+  boardEl.style.gridTemplateRows = 'repeat(8, 1fr)';
+  boardEl.style.width = 'min(90vw, 320px)';
+  boardEl.style.aspectRatio = '1';
   const colors = ['#b7965e', '#8c6d3e'];
 
   for (let r = 0; r < SIZE; r++) {
@@ -65,7 +70,7 @@ function draw() {
 
       const p = board[r][c];
       if (p) {
-        sq.innerHTML = `<span class="absolute inset-0 flex items-center justify-center text-3xl" style="color:${(p === p.toUpperCase() && turn === 'w') || (p === p.toLowerCase() && turn === 'b') ? '#fff' : '#000'}">${pieces[p]}</span>`;
+        sq.innerHTML = `<span class="absolute inset-0 flex items-center justify-center text-xl" style="color:${(p === p.toUpperCase() && turn === 'w') || (p === p.toLowerCase() && turn === 'b') ? '#fff' : '#000'}">${pieces[p]}</span>`;
         sq.addEventListener('click', () => handleClick(r, c));
       }
 
@@ -193,13 +198,19 @@ reset();
 
 <style>
   #chess-board { 
-    width: 320px; 
-    height: 320px;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1;
     border: 2px solid #00ffd8;
-    border-radius: 4px;
+    border-radius: 6px;
+    overflow: hidden;
   }
-  #chess-board > div { cursor: pointer; }
+  #chess-board > div {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
 </style>
