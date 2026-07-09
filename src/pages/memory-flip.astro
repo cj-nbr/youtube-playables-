@@ -1,0 +1,117 @@
+---
+import GameShell from "../components/GameShell.astro";
+
+const game = {
+  title: "Memory Flip",
+  description: "Flip cards to find matching pairs. Test your short-term memory!",
+  genre: ["Puzzle", "Casual"],
+  guide: [
+    { heading: "Goal", body: "Find all matching pairs before the timer runs out." },
+    { heading: "How to play", body: "Click two cards to flip them. If they match, they stay flipped. If not, they flip back. Keep track of positions!" },
+    { heading: "Strategy", body: "Remember locations. Start with the center cards — they're easiest to recall. Use elimination: if two cards are face-down and you know one's match, flip it immediately." },
+    { heading: "Example", body: "Card at position (0,0) shows 🐶. The next time you see a 🐶, click that position to match." },
+  ],
+};
+---
+
+<GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
+  <div id="memory-flip" class="w-full max-w-[360px] mx-auto"></div>
+</GameShell>
+
+<script>
+const PAIRS = 8;
+const CELL = 60;
+const GAP = 4;
+const GRID_W = 4;
+const GRID_H = 4;
+
+const gameEl = document.getElementById('memory-flip');
+const resetBtn = document.getElementById('reset-btn');
+const statusEl = document.getElementById('status');
+
+let cards = [];
+let first = null, second = null;
+let lock = false;
+let moves = 0;
+let best = 0;
+const symbols = ['🐶','🐱','🦊','🐰','🐹','🐼','🦁','🐵'];
+
+function createCards() {
+  const shuffled = [...symbols, ...symbols].sort(() => Math.random() - 0.5);
+  cards = [];
+  for (let i = 0; i < PAIRS * 2; i++) {
+    cards.push({ symbol: shuffled[i], revealed: false, matched: false });
+  }
+}
+
+function draw() {
+  gameEl.innerHTML = '';
+  gameEl.style.width = (GRID_W * (CELL + GAP) - GAP) + 'px';
+  gameEl.style.height = (GRID_H * (CELL + GAP) - GAP) + 'px';
+  gameEl.style.position = 'relative';
+
+  for (let i = 0; i < cards.length; i++) {
+    const c = i % GRID_W;
+    const r = Math.floor(i / GRID_W);
+    const card = document.createElement('button');
+    card.className = 'absolute rounded-lg border-2 border-white/20 text-2xl transition-all duration-150';
+    card.style.left = (c * (CELL + GAP)) + 'px';
+    card.style.top = (r * (CELL + GAP)) + 'px';
+    card.style.width = CELL + 'px';
+    card.style.height = CELL + 'px';
+    card.style.background = cards[i].revealed || cards[i].matched ? cards[i].symbol : 'rgba(255,255,255,.1)';
+    card.style.color = cards[i].revealed || cards[i].matched ? '#fff' : 'transparent';
+    card.style.boxShadow = cards[i].matched ? '0 0 0 2px #00dfd8' : '0 2px 4px rgba(0,0,0,.2)';
+    card.textContent = cards[i].revealed || cards[i].matched ? cards[i].symbol : '?';
+    if (!cards[i].matched) card.addEventListener('click', () => flip(i));
+    gameEl.appendChild(card);
+  }
+}
+
+function flip(idx) {
+  if (lock || cards[idx].revealed || cards[idx].matched) return;
+  cards[idx].revealed = true;
+  draw();
+
+  if (!first) {
+    first = idx;
+  } else {
+    second = idx;
+    lock = true;
+    moves++;
+    if (cards[first].symbol === cards[second].symbol) {
+      cards[first].matched = true;
+      cards[second].matched = true;
+      first = second = null;
+      lock = false;
+      const remaining = cards.filter(c => !c.matched).length;
+      if (remaining === 0) {
+        if (moves < best || best === 0) best = moves;
+        statusEl.textContent = `Complete! Moves: ${moves} | Best: ${best}`;
+      } else {
+        statusEl.textContent = `Moves: ${moves}`;
+      }
+    } else {
+      setTimeout(() => {
+        cards[first].revealed = false;
+        cards[second].revealed = false;
+        first = second = null;
+        lock = false;
+        statusEl.textContent = `Moves: ${moves}`;
+      }, 800);
+    }
+  }
+}
+
+function reset() {
+  moves = 0;
+  first = second = null;
+  lock = false;
+  createCards();
+  draw();
+  statusEl.textContent = 'Moves: 0';
+}
+
+resetBtn.addEventListener('click', reset);
+reset();
+</script>

@@ -1,135 +1,67 @@
 ---
-import Layout from "../layouts/Layout.astro";
-
 const games = [
   {
     title: "Tic Tac Toe",
-    blurb: "Classic 3x3 grid strategy. Place X or O and get three in a row to win.",
-    tag: "Play",
+    description: "Classic two-player game. Take turns placing X or O to make three in a row.",
+    genre: ["Puzzle", "Strategy"],
+    guide: "Place your mark on an empty square. First to align three horizontally, vertically, or diagonally wins.",
+    href: "/arrow-game", // Will fix this
+    live: true,
+  },
+  {
+    title: "Stack Tower",
+    description: "Stack blocks carefully to build the tallest tower without toppling it.",
+    genre: ["Arcade", "Puzzle"],
+    guide: "Move the block left and right. Click to drop it instantly. The overlap becomes the next block width. Game over if overlap <= 0.",
     href: "/arrow-game",
     live: true,
   },
-  { title: "Stack Tower", blurb: "Balance the blocks before the tower topples.", tag: "Soon", href: "#", live: false },
-  { title: "Color Match", blurb: "Pair the shifting hues before time runs out.", tag: "Soon", href: "#", live: false },
-  { title: "Block Blast", blurb: "Clear the grid with satisfying chain reactions.", tag: "Soon", href: "#", live: false },
-  { title: "Number Slide", blurb: "A minimal 15-puzzle with a calm twist.", tag: "Soon", href: "#", live: false },
-  { title: "Memory Flip", blurb: "Flip, match, and beat your best streak.", tag: "Soon", href: "#", live: false },
+  {
+    title: "Color Match",
+    description: "Match target colors by adjusting RGB sliders before time runs out.",
+    genre: ["Puzzle", "Casual"],
+    guide: "A target color appears. Adjust R, G, B sliders to match it. Click Submit to score. Brightness and speed affect difficulty.",
+    href: "/arrow-game",
+    live: true,
+  },
+  {
+    title: "Block Blast",
+    description: "Clear groups of matching colored blocks. Lower groups score more than singles.",
+    genre: ["Puzzle", "Strategy"],
+    guide: "Click a block in a group of 2+ same color. Clear it, then blocks above fall down. Empty columns shift left. Score = groupSize².",
+    href: "/arrow-game",
+    live: true,
+  },
+  {
+    title: "Number Slide",
+    description: "Classic 15-puzzle. Slide numbered tiles into sequential order.",
+    genre: ["Puzzle", "Strategy"],
+    guide: "Click an adjacent tile to move it into the empty space. Solve row-by-row left to right.",
+    href: "/arrow-game",
+    live: true,
+  },
+  {
+    title: "Memory Flip",
+    description: "Match pairs of hidden cards using memory.",
+    genre: ["Puzzle", "Casual"],
+    guide: "Flip two cards at a time. If they match, they stay flipped. Complete all pairs in few moves.",
+    href: "/arrow-game",
+    live: true,
+  },
+  {
+    title: "Chess",
+    description: "Classic two-player strategy game.",
+    genre: ["Strategy", "Board"],
+    guide: "Each piece has unique movement rules. Control the board through foresight and planning.",
+    href: "/arrow-game",
+    live: true,
+  },
+  {
+    title: "Dots and Boxes",
+    description: "Draw lines to complete squares on the grid.",
+    genre: ["Strategy", "Puzzle"],
+    guide: "Take turns drawing one line between adjacent dots. Complete a square to claim it and get another turn. The player with most squares wins.",
+    href: "/arrow-game",
+    live: true,
+  },
 ];
----
-
-<Layout title="Playables — YOUTUBE PLAYABLES">
-  <a href="#main" class="skip-link">Skip to content</a>
-
-  <!-- Nav -->
-  <header
-    class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md"
-  >
-    <nav
-      class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6"
-    >
-      <a href="/" class="flex items-center gap-2">
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-          <rect width="24" height="24" rx="5" fill="#171717"></rect>
-          <path d="M10 8.5v7l5.5-3.5L10 8.5z" fill="#fff"></path>
-        </svg>
-        <span class="text-sm font-semibold tracking-tight text-ink"
-          >YOUTUBE PLAYABLES</span
-        >
-      </a>
-
-      <div class="hidden items-center gap-1 md:flex">
-        <a href="/playables" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Playables</a>
-      </div>
-
-      <div class="flex items-center gap-2">
-        <a
-          href="/login"
-          class="hidden h-7 items-center rounded-sm border border-hairline px-3 text-sm font-medium text-ink hover:bg-canvas-soft sm:inline-flex"
-          >Log In</a
-        >
-        <a
-          href="/signup"
-          class="inline-flex h-7 items-center rounded-sm bg-ink px-3 text-sm font-medium text-white"
-          >Sign Up</a
-        >
-      </div>
-    </nav>
-  </header>
-
-  <main id="main">
-    <!-- Header -->
-    <section class="relative overflow-hidden border-b border-hairline">
-      <div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-[1400px] px-6 py-24 text-center md:py-32">
-        <span
-          class="mb-6 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]"
-          >Playables</span
-        >
-        <h1
-          class="mx-auto max-w-3xl text-[40px] font-semibold leading-[1.05] tracking-[-2.4px] text-ink sm:text-[56px]"
-        >
-          Pick a game. Play free.
-        </h1>
-        <p class="mx-auto mt-6 max-w-xl text-lg leading-7 text-body">
-          A growing library of quick, browser-native playables. No installs, no
-          accounts to explore.
-        </p>
-      </div>
-    </section>
-
-    <!-- Games grid -->
-    <section class="border-b border-hairline bg-canvas-soft px-6 py-24">
-      <div class="mx-auto grid max-w-[1400px] gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          games.map((game) => (
-            <article class="group flex flex-col rounded-lg border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
-              <div class="mb-5 flex items-center justify-between">
-                <div class="flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">
-                  ▶
-                </div>
-                <span
-                  class:list={[
-                    "rounded-full px-2 py-0.5 font-mono text-xs",
-                    game.live
-                      ? "bg-link-bg-soft text-link-deep"
-                      : "bg-canvas-soft-2 text-mute",
-                  ]}
-                >
-                  {game.tag}
-                </span>
-              </div>
-              <h2 class="text-xl font-semibold tracking-tight text-ink">
-                {game.title}
-              </h2>
-              <p class="mt-2 flex-1 text-base leading-6 text-body">
-                {game.blurb}
-              </p>
-              {game.live ? (
-                <a
-                  href={game.href}
-                  class="mt-6 inline-flex h-10 items-center justify-center rounded-pill bg-ink px-5 text-sm font-medium text-white hover:opacity-90"
-                >
-                  Play now
-                </a>
-              ) : (
-                <span class="mt-6 inline-flex h-10 items-center justify-center rounded-pill border border-hairline bg-canvas px-5 text-sm font-medium text-mute">
-                  Coming soon
-                </span>
-              )}
-            </article>
-          ))
-        }
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-hairline bg-canvas px-6 py-16">
-    <div
-      class="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-2 border-t border-hairline pt-6 text-sm text-mute sm:flex-row sm:items-center"
-    >
-      <span>© {new Date().getFullYear()} YOUTUBE PLAYABLES. All rights reserved.</span>
-      <span class="font-mono text-xs">hello jhunu.</span>
-    </div>
-  </footer>
-</Layout>

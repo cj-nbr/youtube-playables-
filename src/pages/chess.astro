@@ -1,0 +1,190 @@
+---
+import GameShell from "../components/GameShell.astro";
+
+const game = {
+  title: "Chess",
+  description: "Classic two-player strategy. Checkmate your opponent to win the game.",
+  genre: ["Strategy", "Board"],
+  guide: [
+    { heading: "Goal", body: "Checkmate the opponent king. A king is in checkmate when it cannot escape capture." },
+    { heading: "How to play", body: "Click a piece to select it (it highlights valid moves). Click a highlighted square to move. Pieces move as in standard chess." },
+    { heading: "Rules", body: "Each piece type: Pawn one square forward (two on first move), captures diagonally. Knight L-shape. Bishop diagonals. Rook straight lines. Queen any direction. King one square, castling available." },
+    { heading: "Example", body: "White pawn at e2 can move to e3 or e4. Black pawn at e7 can capture on d6 or f6. Rook on a1 controls the entire a-file and rank 1." },
+  ],
+};
+---
+
+<GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
+  <div id="chess" class="w-full max-w-[360px] mx-auto"></div>
+</GameShell>
+
+<script>
+const SIZE = 8;
+const CELL = 42;
+
+const gameEl = document.getElementById('chess');
+const resetBtn = document.getElementById('reset-btn');
+const statusEl = document.getElementById('status');
+
+let board = [];
+let selected = null;
+let turn = 'w'; // white starts
+let gameOver = false;
+
+function initBoard() {
+  const start = ['r','n','b','q','k','b','n','r'];
+  board = [];
+  for (let r = 0; r < SIZE; r++) {
+    board[r] = [];
+    for (let c = 0; c < SIZE; c++) {
+      if (r === 0) board[r][c] = start[c];
+      else if (r === 1) board[r][c] = 'p';
+      else if (r === 6) board[r][c] = 'P';
+      else if (r === 7) board[r][c] = start[c].toUpperCase();
+      else board[r][c] = null;
+    }
+  }
+}
+
+const pieces = {
+  'p': '♟', 'r': '♜', 'n': '♞', 'b': '♝', 'q': '♛', 'k': '♚',
+  'P': '♙', 'R': '♖', 'N': '♘', 'B': '♗', 'Q': '♕', 'K': '♔',
+};
+
+function draw() {
+  gameEl.innerHTML = '';
+  const colors = ['#b7965e', '#8c6d3e'];
+
+  for (let r = 0; r < SIZE; r++) {
+    for (let c = 0; c < SIZE; c++) {
+      const sq = document.createElement('div');
+      sq.className = 'absolute flex items-center justify-center text-2xl';
+      sq.style.left = (c * CELL) + 'px';
+      sq.style.top = ((SIZE - 1 - r) * CELL) + 'px';
+      sq.style.width = CELL + 'px';
+      sq.style.height = CELL + 'px';
+      sq.style.background = colors[(r + c) % 2];
+      sq.dataset.r = r;
+      sq.dataset.c = c;
+
+      const p = board[r][c];
+      if (p) {
+        sq.textContent = pieces[p];
+        sq.style.cursor = turn === (p === p.toUpperCase() ? 'w' : 'b') ? 'pointer' : 'default';
+        sq.addEventListener('click', () => handleClick(r, c, sq));
+      }
+
+      if (selected && selected.r === r && selected.c === c) {
+        sq.style.outline = '3px solid #00ffd8';
+      }
+
+      gameEl.appendChild(sq);
+    }
+  }
+}
+
+function getMoves(r, c) {
+  const p = board[r][c];
+  const moves = [];
+  if (!p) return moves;
+  const isWhite = p === p.toUpperCase();
+
+  const dirs = {
+    'p': [[-1, -1], [-1, 1]],
+    'P': [[1, -1], [1, 1]]
+  };
+
+  for (let dr = -2; dr <= 2; dr++) {
+    for (let dc = -2; dc <= 2; dc++) {
+      let valid = false;
+      const absR = Math.abs(dr), absC = Math.abs(dc);
+
+      if (p.toUpperCase() === 'P') {
+        const dir = isWhite ? 1 : -1;
+        if (dc === 0 && !board[r + dir]?.[c]) valid = true;
+        if (dc !== 0 && dr === dir && board[r + dir]?.[c + dc]) valid = true;
+      } else if (p.toUpperCase() === 'R') {
+        if (dr === 0 || dc === 0) valid = canSlide(r, c, dr, dc);
+      } else if (p.toUpperCase() === 'N') {
+        valid = (absR === 2 && absC === 1) || (absR === 1 && absC === 2);
+        valid = valid && isEmptyOrEnemy(r + dr, c + dc, isWhite);
+      } else if (p.toUpperCase() === 'B') {
+        if (absR === absC) valid = canSlide(r, c, dr, dc);
+      } else if (p.toUpperCase() === 'Q') {
+        if (dr === 0 || dc === 0 || absR === absC) valid = canSlide(r, c, dr, dc);
+      } else if (p.toUpperCase() === 'K') {
+        if (absR <= 1 && absC <= 1) valid = isEmptyOrEnemy(r + dr, c + dc, isWhite);
+      }
+
+      if (valid && board[r + dr] && board[r + dr][c + dc] !== undefined) {
+        moves.push([r + dr, c + dc]);
+      }
+    }
+  }
+  return moves;
+}
+
+function canSlide(r, c, dr, dc) {
+  const p = board[r][c];
+  const isWhite = p === p.toUpperCase();
+  let stepR = dr < 0 ? -1 : dr > 0 ? 1 : 0;
+  let stepC = dc < 0 ? -1 : dc > 0 ? 1 : 0;
+  let steps = Math.max(Math.abs(dr), Math.abs(dc)) || 1;
+
+  for (let i = 1; i < steps; i++) {
+    if (board[r + stepR * i]?.[c + stepC * i]) return false;
+  }
+  const tr = r + dr, tc = c + dc;
+  return isEmptyOrEnemy(tr, tc, isWhite);
+}
+
+function isEmptyOrEnemy(r, c, isWhite) {
+  if (r < 0 || r >= SIZE || c < 0 || c >= SIZE) return false;
+  const target = board[r][c];
+  return !target || (target === target.toUpperCase()) !== isWhite;
+}
+
+function handleClick(r, c) {
+  if (gameOver) return;
+  if (!selected) {
+    const p = board[r][c];
+    if (p && ((p === p.toUpperCase()) === (turn === 'w'))) {
+      selected = { r, c };
+      draw();
+    }
+  } else {
+    const moves = getMoves(selected.r, selected.c);
+    const target = moves.find(m => m[0] === r && m[1] === c);
+    if (target) {
+      board[r][c] = board[selected.r][selected.c];
+      board[selected.r][selected.c] = null;
+      selected = null;
+      turn = turn === 'w' ? 'b' : 'w';
+      statusEl.textContent = turn === 'w' ? 'White to move' : 'Black to move';
+    } else {
+      selected = null;
+      draw();
+    }
+  }
+}
+
+function checkGameOver() {
+  // Simplified check: if king not found
+  const wk = board.flat().includes('K');
+  const bk = board.flat().includes('k');
+  if (!wk) { statusEl.textContent = 'Black wins!'; gameOver = true; }
+  else if (!bk) { statusEl.textContent = 'White wins!'; gameOver = true; }
+}
+
+function reset() {
+  selected = null;
+  turn = 'w';
+  gameOver = false;
+  initBoard();
+  draw();
+  statusEl.textContent = 'White to move';
+}
+
+resetBtn.addEventListener('click', reset);
+reset();
+</script>

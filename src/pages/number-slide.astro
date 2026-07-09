@@ -1,0 +1,121 @@
+---
+import GameShell from "../components/GameShell.astro";
+
+const game = {
+  title: "Number Slide",
+  description: "Slide numbered tiles into order. Use the empty space to solve the classic 15-puzzle.",
+  genre: ["Puzzle", "Strategy"],
+  guide: [
+    { heading: "Goal", body: "Arrange tiles 1-15 in ascending order. The empty space lets you slide tiles into place." },
+    { heading: "How to play", body: "Click a tile adjacent to the empty space to slide it. Plan ahead — random moves won't solve it easily." },
+    { heading: "Strategy", body: "Solve row by row, left to right. Keep the empty tile in the bottom-right for easier row transitions." },
+    { heading: "Example", body: "If tile 5 is next to empty, click tile 5 to swap. Work systematically: solve top row (1-4), then next, etc." },
+  ],
+};
+---
+
+<GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
+  <div id="number-slide" class="w-full max-w-[360px] mx-auto"></div>
+</GameShell>
+
+<script>
+const SIZE = 4;
+const CELL = 80;
+
+const gameEl = document.getElementById('number-slide');
+const resetBtn = document.getElementById('reset-btn');
+const statusEl = document.getElementById('status');
+
+let board = [];
+let emptyPos = { r: SIZE - 1, c: SIZE - 1 };
+let moves = 0;
+let gameOver = false;
+
+function createBoard() {
+  board = [];
+  let nums = [...Array(SIZE * SIZE - 1).keys()].map(x => x + 1);
+  nums.sort(() => Math.random() - 0.5);
+  for (let r = 0; r < SIZE; r++) {
+    board[r] = [];
+    for (let c = 0; c < SIZE; c++) {
+      const idx = r * SIZE + c;
+      board[r][c] = idx < nums.length ? nums[idx] : 0;
+    }
+  }
+  for (let r = 0; r < SIZE; r++) {
+    for (let c = 0; c < SIZE; c++) {
+      if (board[r][c] === 0) {
+        emptyPos = { r, c };
+        return;
+      }
+    }
+  }
+}
+
+function draw() {
+  gameEl.innerHTML = '';
+  gameEl.style.width = (SIZE * CELL) + 'px';
+  gameEl.style.height = (SIZE * CELL) + 'px';
+  gameEl.style.position = 'relative';
+
+  for (let r = 0; r < SIZE; r++) {
+    for (let c = 0; c < SIZE; c++) {
+      const val = board[r][c];
+      if (val === 0) continue;
+      const tile = document.createElement('button');
+      tile.className = 'absolute flex items-center justify-center rounded-lg bg-white/10 border-2 border-white/20 text-3xl font-bold text-white';
+      tile.style.left = (c * CELL) + 'px';
+      tile.style.top = (r * CELL) + 'px';
+      tile.style.width = (CELL - 2) + 'px';
+      tile.style.height = (CELL - 2) + 'px';
+      tile.textContent = val;
+      tile.dataset.r = r;
+      tile.dataset.c = c;
+      tile.addEventListener('click', () => tryMove(r, c));
+      gameEl.appendChild(tile);
+    }
+  }
+}
+
+function canMove(r, c) {
+  const er = emptyPos.r, ec = emptyPos.c;
+  return (Math.abs(r - er) === 1 && c === ec) || (Math.abs(c - ec) === 1 && r === er);
+}
+
+function tryMove(r, c) {
+  if (gameOver || !canMove(r, c)) return;
+  board[emptyPos.r][emptyPos.c] = board[r][c];
+  board[r][c] = 0;
+  emptyPos = { r, c };
+  moves++;
+  draw();
+  if (checkWin()) {
+    gameOver = true;
+    statusEl.textContent = `Solved in ${moves} moves!`;
+  } else {
+    statusEl.textContent = `Moves: ${moves}`;
+  }
+}
+
+function checkWin() {
+  let expected = 1;
+  for (let r = 0; r < SIZE; r++) {
+    for (let c = 0; c < SIZE; c++) {
+      if (board[r][c] !== expected && expected !== SIZE * SIZE) return false;
+      expected++;
+    }
+  }
+  return true;
+}
+
+function reset() {
+  moves = 0;
+  gameOver = false;
+  createBoard();
+  draw();
+  statusEl.textContent = 'Moves: 0';
+}
+
+resetBtn.addEventListener('click', reset);
+reset();
+</script>

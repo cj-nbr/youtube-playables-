@@ -1,144 +1,90 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import GameShell from "../components/GameShell.astro";
+
+const game = {
+  title: "Tic Tac Toe",
+  description: "Place X or O on a 3×3 grid. First to align three in a row wins.",
+  genre: ["Puzzle", "Strategy"],
+  guide: [
+    { heading: "Objective", body: "Be the first player to get three of your marks (X or O) in a row, column, or diagonal." },
+    { heading: "How to play", body: "Players take turns clicking empty squares. X always goes first. After a win or draw, hit Reset to play again." },
+    { heading: "Pro tip", body: "Control the center (cell 5) early—it’s involved in the most winning lines." },
+  ],
+};
 ---
 
-<Layout title="Tic Tac Toe — YOUTUBE PLAYABLES">
-  <a href="#main" class="skip-link">Skip to content</a>
+<GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
+  <div id="status" class="mb-4 font-mono text-sm uppercase tracking-wide text-white/70">X's turn</div>
+  
+  <div id="board" class="grid grid-cols-3 gap-1.5" role="grid" aria-label="Tic Tac Toe board">
+    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="0" aria-label="Cell 1"></button>
+    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="1" aria-label="Cell 2"></button>
+    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="2" aria-label="Cell 3"></button>
+    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="3" aria-label="Cell 4"></button>
+    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="4" aria-label="Cell 5"></button>
+    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="5" aria-label="Cell 6"></button>
+    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="6" aria-label="Cell 7"></button>
+    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="7" aria-label="Cell 8"></button>
+    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="8" aria-label="Cell 9"></button>
+  </div>
 
-  <header class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md">
-    <nav class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6">
-      <a href="/" class="flex items-center gap-2">
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-          <rect width="24" height="24" rx="5" fill="#171717"></rect>
-          <path d="M10 8.5v7l5.5-3.5L10 8.5z" fill="#fff"></path>
-        </svg>
-        <span class="text-sm font-semibold tracking-tight text-ink">YOUTUBE PLAYABLES</span>
-      </a>
-      <div class="hidden items-center gap-1 md:flex">
-        <a href="/playables" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Playables</a>
-      </div>
-      <div class="flex items-center gap-2">
-        <a href="/login" class="hidden h-7 items-center rounded-sm border border-hairline px-3 text-sm font-medium text-ink hover:bg-canvas-soft sm:inline-flex">Log In</a>
-        <a href="/signup" class="inline-flex h-7 items-center rounded-sm bg-ink px-3 text-sm font-medium text-white">Sign Up</a>
-      </div>
-    </nav>
-  </header>
+  <div id="win-msg" class="hidden mt-4 text-2xl font-semibold text-white"></div>
+</GameShell>
 
-  <main id="main">
-    <section class="relative overflow-hidden border-b border-hairline">
-      <div class="mesh-soft pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-[1400px] px-6 py-16">
-        <a href="/playables" class="font-mono text-xs text-link underline-offset-4 hover:underline">← All playables</a>
-        <div class="mt-4">
-          <span class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">Playables</span>
-          <h1 class="max-w-2xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]">Tic Tac Toe.</h1>
-          <p class="mt-4 max-w-xl text-lg leading-7 text-body">
-            Classic 3x3 grid game. Take turns placing X or O. First to three in a row wins.
-          </p>
-        </div>
+<script>
+const board = Array(9).fill(null);
+let current = 'X';
+const statusEl = document.getElementById('status');
+const cells = document.querySelectorAll('.cell');
+const winMsg = document.getElementById('win-msg');
+const resetBtn = document.getElementById('reset-btn');
+const WIN_PATTERNS = [
+  [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]
+];
 
-        <div class="mt-10 flex flex-col items-center">
-          <div id="game-wrap" class="relative w-full max-w-[480px] overflow-hidden rounded-xl border border-hairline bg-ink shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
-            <div class="flex h-[500px] w-full flex-col items-center justify-center px-6 text-center text-white">
-              <div id="status" class="mb-4 font-mono text-sm uppercase tracking-wide text-white/70">X's turn</div>
-              
-              <div id="board" class="grid grid-cols-3 gap-1.5" role="grid" aria-label="Tic Tac Toe board">
-                <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="0" aria-label="Cell 1"></button>
-                <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="1" aria-label="Cell 2"></button>
-                <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="2" aria-label="Cell 3"></button>
-                <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="3" aria-label="Cell 4"></button>
-                <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="4" aria-label="Cell 5"></button>
-                <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="5" aria-label="Cell 6"></button>
-                <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="6" aria-label="Cell 7"></button>
-                <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="7" aria-label="Cell 8"></button>
-                <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="8" aria-label="Cell 9"></button>
-              </div>
+function updateStatus() {
+  statusEl.textContent = current + "'s turn";
+}
 
-              <div id="win-msg" class="hidden mt-4 text-2xl font-semibold text-white"></div>
-              
-              <button id="reset-btn" type="button" class="mt-6 inline-flex h-10 items-center rounded-pill border border-white/30 px-6 text-sm font-medium text-white hover:bg-white/10">Reset</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+function checkWin(p) {
+  for (const combo of WIN_PATTERNS) {
+    if (combo.every(i => board[i] === p)) return combo;
+  }
+  return null;
+}
 
-  <footer class="border-t border-hairline bg-canvas px-6 py-16">
-    <div class="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-2 border-t border-hairline pt-6 text-sm text-mute sm:flex-row sm:items-center">
-      <span>© {new Date().getFullYear()} YOUTUBE PLAYABLES. All rights reserved.</span>
-      <span class="font-mono text-xs">youtubeplayables</span>
-    </div>
-  </footer>
+function checkDraw() {
+  return board.every(cell => cell !== null);
+}
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "VideoGame",
-      "name": "Tic Tac Toe",
-      "genre": ["Puzzle", "Strategy"],
-      "gamePlatform": ["Web", "Browser"],
-      "operatingSystem": "Any",
-      "applicationCategory": "Game",
-      "description": "Classic two-player Tic Tac Toe. Take turns placing X and O on a 3x3 grid. First to align three symbols wins."
-    }
-  </script>
-
-  <script>
-    const board = Array(9).fill(null);
-    let current = 'X';
-    const statusEl = document.getElementById('status');
-    const cells = document.querySelectorAll('.cell');
-    const winMsg = document.getElementById('win-msg');
-    const resetBtn = document.getElementById('reset-btn');
-    const WIN_PATTERNS = [
-      [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]
-    ];
-
-    function updateStatus() {
-      statusEl.textContent = current + "'s turn";
-    }
-
-    function checkWin(p) {
-      for (const combo of WIN_PATTERNS) {
-        if (combo.every(i => board[i] === p)) return combo;
-      }
-      return null;
-    }
-
-    function checkDraw() {
-      return board.every(cell => cell !== null);
-    }
-
-    function handleClick(e) {
-      const i = +e.target.dataset.i;
-      if (board[i] || winMsg.classList.contains('hidden') === false) return;
-      board[i] = current;
-      e.target.textContent = current;
-      const win = checkWin(current);
-      if (win) {
-        winMsg.textContent = current + " wins!";
-        winMsg.classList.remove('hidden');
-        cells.forEach(c => c.disabled = true);
-      } else if (checkDraw()) {
-        winMsg.textContent = "Draw!";
-        winMsg.classList.remove('hidden');
-      } else {
-        current = current === 'X' ? 'O' : 'X';
-        updateStatus();
-      }
-    }
-
-    function reset() {
-      board.fill(null);
-      current = 'X';
-      cells.forEach(c => { c.textContent = ''; c.disabled = false; });
-      winMsg.classList.add('hidden');
-      updateStatus();
-    }
-
-    cells.forEach(c => c.addEventListener('click', handleClick));
-    resetBtn.addEventListener('click', reset);
+function handleClick(e) {
+  const i = +e.target.dataset.i;
+  if (board[i] || winMsg.classList.contains('hidden') === false) return;
+  board[i] = current;
+  e.target.textContent = current;
+  const win = checkWin(current);
+  if (win) {
+    winMsg.textContent = current + " wins!";
+    winMsg.classList.remove('hidden');
+    cells.forEach(c => c.disabled = true);
+  } else if (checkDraw()) {
+    winMsg.textContent = "Draw!";
+    winMsg.classList.remove('hidden');
+  } else {
+    current = current === 'X' ? 'O' : 'X';
     updateStatus();
-  </script>
-</Layout>
+  }
+}
+
+function reset() {
+  board.fill(null);
+  current = 'X';
+  cells.forEach(c => { c.textContent = ''; c.disabled = false; });
+  winMsg.classList.add('hidden');
+  updateStatus();
+}
+
+cells.forEach(c => c.addEventListener('click', handleClick));
+resetBtn.addEventListener('click', reset);
+updateStatus();
+</script>
