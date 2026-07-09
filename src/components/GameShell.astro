@@ -11,10 +11,9 @@ interface Props {
   description: string;
   genre: string[];
   guide: GuideItem[];
-  rulesContent: string;
 }
 
-const { title, description, genre, guide, rulesContent } = Astro.props;
+const { title, description, genre, guide } = Astro.props;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -63,26 +62,29 @@ const jsonLd = {
 
         <div class="mt-10 flex flex-col items-center">
           <div id="game-wrap" class="relative w-full max-w-[480px] overflow-hidden rounded-xl border border-hairline bg-ink shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
-            <div id="board" class="flex w-full h-[520px] flex-col items-center justify-center overflow-y-auto px-6 text-center text-white" style="overflow-y: auto; height: 520px;">
+            <div id="board" class="flex w-full h-[520px] flex-col items-center justify-center px-6 text-center text-white">
               <slot />
             </div>
           </div>
 
-          <button id="reset-btn" type="button" class="mt-6 inline-flex h-10 items-center rounded-pill border border-canvas-soft bg-canvas px-6 text-sm font-medium text-ink">New game</button>
+          <button id="reset-btn" type="button" class="mt-6 inline-flex h-10 items-center rounded-pill border border-hairline bg-canvas px-6 text-sm font-medium text-ink hover:bg-canvas-soft">New game</button>
+          <p id="status" class="mt-3 min-h-[1.25rem] font-mono text-sm text-mute"></p>
         </div>
       </div>
     </section>
 
     <section class="px-6 py-16">
-      <div class="mx-auto max-w-[1400px] text-center">
-        <div class="mb-8 text-lg text-white-70">How to play {title}</div>
-        <div class="max-w-2xl mx-auto space-y-4 text-white">
-          {guide.map((g) => (
-            <div class="p-4 space-y-3 bg-cyan-700/30 rounded-lg border border-cyan-700/30">
-              <div class="font-medium">{g.heading}</div>
-              <p class="text-sm">{g.body}</p>
-            </div>
-          ))}
+      <div class="mx-auto max-w-[1400px]">
+        <h2 class="text-2xl font-semibold tracking-tight text-ink">How to play {title}</h2>
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          {
+            guide.map((g) => (
+              <div class="rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
+                <h3 class="text-lg font-semibold text-ink">{g.heading}</h3>
+                <p class="mt-2 text-sm leading-6 text-body">{g.body}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
