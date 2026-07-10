@@ -1,8 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { games, newGames, popularGames, trendingGames, gameUrl } from "../shared/games";
+import { SITE_NAME } from "../shared/config";
+
+const latest = newGames(4);
+const popular = popularGames(4);
+const trending = trendingGames(4);
+const categories = Array.from(new Set(games.flatMap((g) => g.genre))).sort();
 ---
 
-<Layout>
+<Layout title={`${SITE_NAME} — free browser-native playables`} description={`Play free browser-native HTML5 games on ${SITE_NAME}. No downloads, no accounts — open and play.`}>
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Announcement banner -->
@@ -38,7 +45,8 @@ import Layout from "../layouts/Layout.astro";
       </a>
 
       <div class="hidden items-center gap-1 md:flex">
-        <a href="/playables" class="rounded-full px-3 py-1.5 text-sm text-body hover:text-ink">Playables</a>
+        <a href="/playables" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Playables</a>
+        <a href="/blog" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Blog</a>
       </div>
 
       <div class="flex items-center gap-2">
@@ -91,82 +99,143 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </section>
 
-    <!-- Three-up feature band -->
-    <section id="playables" class="scroll-mt-20 border-b border-hairline bg-canvas-soft px-6 py-24">
+    <!-- Search + Categories -->
+    <section class="border-b border-hairline bg-canvas-soft px-6 py-12">
       <div class="mx-auto max-w-[1400px]">
-        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">
-          What you get
-        </p>
-        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">
-          A compute model for all your playables.
-        </h2>
-        <div class="mt-12 grid gap-6 md:grid-cols-3">
-          <article
-            class="rounded-lg border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]"
-          >
-            <div
-              class="mb-5 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink"
-              >▶</div
-            >
-            <h3 class="text-xl font-semibold tracking-tight text-ink">
-              Free playables
-            </h3>
-            <p class="mt-2 text-base leading-6 text-body">
-              Instantly play curated YouTube playables — no install, no account
-              required to explore.
-            </p>
-          </article>
-
-          <article
-            class="rounded-lg border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]"
-          >
-            <div
-              class="mb-5 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink"
-              >★</div
-            >
-            <h3 class="text-xl font-semibold tracking-tight text-ink">
-              Daily challenges
-            </h3>
-            <p class="mt-2 text-base leading-6 text-body">
-              Fresh playable challenges every day to keep your streak alive and
-              your reflexes sharp.
-            </p>
-          </article>
-
-          <article
-            class="rounded-lg border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]"
-          >
-            <div
-              class="mb-5 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink"
-              >⚡</div
-            >
-            <h3 class="text-xl font-semibold tracking-tight text-ink">
-              Ship in seconds
-            </h3>
-            <p class="mt-2 text-base leading-6 text-body">
-              Deploy and share your own playables on a global edge network,
-              ready the moment you publish.
-            </p>
-          </article>
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div class="flex-1">
+            <label for="game-search" class="sr-only">Search games</label>
+            <input
+              id="game-search"
+              type="search"
+              placeholder="Search games, genres, or tags..."
+              class="h-11 w-full rounded-sm border border-hairline bg-canvas px-4 text-body placeholder:text-mute focus:outline-none focus:ring-2 focus:ring-link/40"
+            />
+          </div>
+          <div class="flex flex-wrap gap-2" id="category-chips">
+            <button data-cat="all" class="cat-chip rounded-full bg-ink px-3 py-1.5 text-sm font-medium text-white">All</button>
+            {categories.map((cat) => (
+              <button data-cat={cat} class="cat-chip rounded-full bg-canvas px-3 py-1.5 text-sm font-medium text-ink hover:bg-canvas-soft">{cat}</button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Soft CTA band -->
-    <section id="pricing" class="mesh-soft scroll-mt-20 bg-canvas-soft px-6 py-24">
-      <div class="mx-auto max-w-[1400px] text-center">
-        <h2 class="mx-auto max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">
-          Deploy your first playable in seconds.
-        </h2>
-        <p class="mx-auto mt-4 max-w-xl text-lg leading-7 text-body">
-          Start free. No credit card, no friction.
-        </p>
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href="/signup"
-            class="inline-flex h-12 items-center rounded-pill bg-ink px-6 text-base font-medium text-white hover:opacity-90"
-            >Start deploying</a
-          >
+    <!-- Latest Games -->
+    <section class="border-b border-hairline bg-canvas px-6 py-24">
+      <div class="mx-auto max-w-[1400px]">
+        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Latest Games</p>
+        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">Fresh playables, just added.</h2>
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {latest.map((g) => (
+            <a href={gameUrl(g.id)} class="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 hover:shadow-[0_2px_2px_#0000000a,0_8px_8px_-8px_#0000000a]">
+              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">▶</div>
+              <h3 class="text-lg font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h3>
+              <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {g.genre.slice(0, 2).map((x) => (
+                  <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{x}</span>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular + Trending -->
+    <section class="border-b border-hairline bg-canvas-soft px-6 py-24">
+      <div class="mx-auto max-w-[1400px]">
+        <div class="grid gap-12 lg:grid-cols-2">
+          <div>
+            <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Popular</p>
+            <h2 class="text-3xl font-semibold tracking-[-1.28px] text-ink">Most played this week.</h2>
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              {popular.map((g) => (
+                <a href={gameUrl(g.id)} class="group rounded-lg border border-hairline bg-canvas p-5 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5">
+                  <span class="font-mono text-xs text-mute">POPULAR</span>
+                  <h4 class="mt-1 text-base font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h4>
+                  <p class="mt-1 text-sm text-body">{g.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Trending</p>
+            <h2 class="text-3xl font-semibold tracking-[-1.28px] text-ink">On the rise.</h2>
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              {trending.map((g) => (
+                <a href={gameUrl(g.id)} class="group rounded-lg border border-hairline bg-canvas p-5 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5">
+                  <span class="font-mono text-xs text-mute">TRENDING</span>
+                  <h4 class="mt-1 text-base font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h4>
+                  <p class="mt-1 text-sm text-body">{g.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Games -->
+    <section class="border-b border-hairline bg-canvas px-6 py-24">
+      <div class="mx-auto max-w-[1400px]">
+        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Library</p>
+        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">All playables.</h2>
+        <div id="games-grid" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {games.map((g) => (
+            <a href={gameUrl(g.id)} data-genres={g.genre.join(",")} data-title={g.title.toLowerCase()} class="game-card group flex flex-col rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 hover:shadow-[0_2px_2px_#0000000a,0_8px_8px_-8px_#0000000a]">
+              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">▶</div>
+              <h3 class="text-lg font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h3>
+              <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {g.genre.slice(0, 3).map((x) => (
+                  <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{x}</span>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
+        <p id="no-results" class="hidden mt-6 text-center text-sm text-mute">No games match your search or filter.</p>
+      </div>
+    </section>
+
+    <!-- Recently Played -->
+    <section class="border-b border-hairline bg-canvas-soft px-6 py-24">
+      <div class="mx-auto max-w-[1400px]">
+        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Recently Played</p>
+        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">Pick up where you left off.</h2>
+        <div id="recent-list" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <p id="recent-empty" class="text-sm text-mute">Play any game and it’ll appear here.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog / Guides CTA -->
+    <section class="border-b border-hairline bg-canvas px-6 py-24">
+      <div class="mx-auto max-w-[1400px]">
+        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Guides & strategies</p>
+        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">Learn, practice, improve.</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="/blog/best-brain-games-for-adults" class="group rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5">
+            <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">Brain Training</span>
+            <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">Best Brain Games for Adults</h3>
+            <p class="mt-2 text-sm leading-6 text-body">Discover free browser games that improve memory, focus, and cognitive fitness.</p>
+          </a>
+          <a href="/blog/best-free-online-games" class="group rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5">
+            <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">Online Games</span>
+            <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">Best Free Online Games</h3>
+            <p class="mt-2 text-sm leading-6 text-body">A curated list of instant HTML5 games you can play without downloading.</p>
+          </a>
+          <a href="/blog/brain-training-games-that-improve-memory" class="group rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5">
+            <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">Memory</span>
+            <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">Brain Training Games That Improve Memory</h3>
+            <p class="mt-2 text-sm leading-6 text-body">Explore the best memory games designed to boost recall and mental clarity.</p>
+          </a>
+        </div>
+        <div class="mt-6">
+          <a href="/blog" class="text-link underline-offset-4 hover:underline">View all articles →</a>
         </div>
       </div>
     </section>
@@ -181,35 +250,44 @@ import Layout from "../layouts/Layout.astro";
             <rect width="24" height="24" rx="5" fill="#171717"></rect>
             <path d="M10 8.5v7l5.5-3.5L10 8.5z" fill="#fff"></path>
           </svg>
-          <span class="text-sm font-semibold tracking-tight text-ink"
-            >YOUTUBE PLAYABLES</span
-          >
+          <span class="text-sm font-semibold tracking-tight text-ink">YOUTUBE PLAYABLES</span>
         </div>
-        <p class="mt-4 text-sm text-body">
-          Free YouTube playables.
-        </p>
+        <p class="mt-4 text-sm text-body">Free browser-native HTML5 games.</p>
+        <div class="mt-4 flex flex-wrap gap-3 text-sm">
+          <a href="/about" class="text-body hover:text-ink">About</a>
+          <a href="/contact" class="text-body hover:text-ink">Contact</a>
+          <a href="/privacy" class="text-body hover:text-ink">Privacy</a>
+          <a href="/terms" class="text-body hover:text-ink">Terms</a>
+        </div>
       </div>
 
       <div>
-        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Product</p>
+        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Games</p>
         <ul class="space-y-2 text-sm text-body">
-          <li><a href="#playables" class="hover:text-ink">Playables</a></li>
-          <li><a href="#pricing" class="hover:text-ink">Pricing</a></li>
+          {games.slice(0, 5).map((g) => (
+            <li><a href={gameUrl(g.id)} class="hover:text-ink">{g.title}</a></li>
+          ))}
+          <li><a href="/playables" class="hover:text-ink">View all games →</a></li>
         </ul>
       </div>
 
       <div>
         <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Resources</p>
         <ul class="space-y-2 text-sm text-body">
-          <li><a href="#docs" class="hover:text-ink">Docs</a></li>
-          <li><a href="/changelog" class="hover:text-ink">Changelog</a></li>
+          <li><a href="/playables" class="hover:text-ink">Playables</a></li>
+          <li><a href="/blog" class="hover:text-ink">Blog</a></li>
           <li><a href="/support" class="hover:text-ink">Support</a></li>
+          <li><a href="/changelog" class="hover:text-ink">Changelog</a></li>
         </ul>
       </div>
 
       <div>
-        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Brand</p>
-        <span class="text-sm text-body">youtubeplayables</span>
+        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Categories</p>
+        <ul class="space-y-2 text-sm text-body">
+          {categories.slice(0, 6).map((cat) => (
+            <li><a href={`/playables?category=${encodeURIComponent(cat)}`} class="hover:text-ink">{cat}</a></li>
+          ))}
+        </ul>
       </div>
     </div>
 
@@ -220,4 +298,61 @@ import Layout from "../layouts/Layout.astro";
       <span class="font-mono text-xs">youtubeplayables</span>
     </div>
   </footer>
+
+  <script is:inline>
+    (() => {
+      const searchInput = document.getElementById('game-search');
+      const catChips = document.querySelectorAll('.cat-chip');
+      const cards = document.querySelectorAll('.game-card');
+      const noResults = document.getElementById('no-results');
+      let activeCategory = 'all';
+
+      const filter = () => {
+        const q = (searchInput?.value || '').toLowerCase().trim();
+        let visible = 0;
+        cards.forEach((card) => {
+          const title = (card.getAttribute('data-title') || '').toLowerCase();
+          const genres = (card.getAttribute('data-genres') || '').toLowerCase();
+          const matchSearch = !q || title.includes(q) || genres.includes(q);
+          const matchCat = activeCategory === 'all' || genres.includes(activeCategory.toLowerCase());
+          const show = matchSearch && matchCat;
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        if (noResults) noResults.classList.toggle('hidden', visible > 0);
+      };
+
+      searchInput?.addEventListener('input', filter);
+      catChips.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          catChips.forEach((b) => {
+            b.classList.remove('bg-ink', 'text-white');
+            b.classList.add('bg-canvas', 'text-ink');
+          });
+          btn.classList.remove('bg-canvas', 'text-ink');
+          btn.classList.add('bg-ink', 'text-white');
+          activeCategory = btn.getAttribute('data-cat') || 'all';
+          filter();
+        });
+      });
+
+      // Recently played
+      const recentList = document.getElementById('recent-list');
+      const recentEmpty = document.getElementById('recent-empty');
+      try {
+        const recent = JSON.parse(localStorage.getItem('ytp:recent') || '[]').slice(0, 4);
+        if (recent.length && recentList) {
+          recentList.innerHTML = '';
+          recent.forEach((g) => {
+            const a = document.createElement('a');
+            a.href = '/' + g.id;
+            a.className = 'group rounded-lg border border-hairline bg-canvas p-5 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5';
+            a.innerHTML = '<span class="font-mono text-xs text-mute">RECENT</span><h4 class="mt-1 text-base font-semibold tracking-tight text-ink group-hover:text-link">' + g.title + '</h4>';
+            recentList.appendChild(a);
+          });
+          if (recentEmpty) recentEmpty.remove();
+        }
+      } catch {}
+    })();
+  </script>
 </Layout>

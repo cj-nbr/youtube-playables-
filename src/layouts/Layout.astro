@@ -2,11 +2,11 @@
 import "../styles/global.css";
 import Seo from "../components/Seo.astro";
 import type { GameMeta } from "../shared/types";
+import { SITE_URL, SITE_NAME } from "../shared/config";
 
 interface Props {
   title?: string;
   description?: string;
-  /** When provided, full per-game SEO (canonical, OG, JSON-LD) is rendered. */
   game?: GameMeta;
 }
 
@@ -15,6 +15,55 @@ const {
   description = "YOUTUBE PLAYABLES — free YouTube playables.",
   game,
 } = Astro.props;
+
+const path = Astro.url.pathname;
+const isPlayables = path === "/playables";
+const isBlog = path.startsWith("/blog");
+const isArticle = isBlog && !path.endsWith("/blog");
+
+const orgLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/favicon.svg`,
+  description: "Free browser-native HTML5 games.",
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: "Free browser-native HTML5 games.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE_URL}/search?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const collectionPageLd = isPlayables
+  ? {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Playables",
+      description: "A growing library of quick, free, browser-native playables.",
+      url: `${SITE_URL}/playables`,
+      isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE_URL },
+    }
+  : null;
+
+const webPageLd = !game && (isBlog || path === "/about" || path === "/contact" || path === "/privacy" || path === "/terms")
+  ? {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: title,
+      description,
+      url: `${SITE_URL}${path}`,
+      isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE_URL },
+    }
+  : null;
 ---
 
 <!doctype html>
@@ -35,6 +84,11 @@ const {
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
       rel="stylesheet"
     />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(orgLd)}></script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteLd)}></script>
+    {collectionPageLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(collectionPageLd)}></script>}
+    {webPageLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(webPageLd)}></script>}
   </head>
   <body>
     <slot />

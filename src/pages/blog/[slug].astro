@@ -1,0 +1,127 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getBlogPost, recentBlogPosts } from "../../shared/blog";
+import { games, gameUrl } from "../../shared/games";
+import { SITE_NAME, SITE_URL } from "../../shared/config";
+
+export async function getStaticPaths() {
+  return [
+    { params: { slug: "best-brain-games-for-adults" } },
+    { params: { slug: "best-free-online-games" } },
+    { params: { slug: "free-browser-games-without-downloading" } },
+    { params: { slug: "brain-training-games-that-improve-memory" } },
+    { params: { slug: "benefits-of-playing-brain-games" } },
+    { params: { slug: "color-matching-games-explained" } },
+  ];
+}
+
+const { slug } = Astro.params;
+const post = getBlogPost(slug!);
+if (!post) return Astro.redirect("/blog");
+
+const relatedPosts = recentBlogPosts(3).filter((p) => p.slug !== post.slug).slice(0, 3);
+const relatedGames = games.filter((g) => post.tags.some((t) => g.genre.some((genre) => t.includes(genre) || genre.includes(t)) || post.content.includes(g.title))).slice(0, 4);
+---
+
+<Layout title={`${post.title} — YOUTUBE PLAYABLES`} description={post.description}>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md">
+    <nav class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6">
+      <a href="/" class="flex items-center gap-2">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <rect width="24" height="24" rx="5" fill="#171717"></rect>
+          <path d="M10 8.5v7l5.5-3.5L10 8.5z" fill="#fff"></path>
+        </svg>
+        <span class="text-sm font-semibold tracking-tight text-ink">YOUTUBE PLAYABLES</span>
+      </a>
+      <div class="hidden items-center gap-1 md:flex">
+        <a href="/playables" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Playables</a>
+        <a href="/blog" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Blog</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="/login" class="hidden h-7 items-center rounded-sm border border-hairline px-3 text-sm font-medium text-ink hover:bg-canvas-soft sm:inline-flex">Log In</a>
+        <a href="/signup" class="inline-flex h-7 items-center rounded-sm bg-ink px-3 text-sm font-medium text-white">Sign Up</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-16">
+    <a href="/blog" class="font-mono text-xs text-link underline-offset-4 hover:underline">← All articles</a>
+    <div class="mt-4">
+      <span class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">{post.category}</span>
+      <h1 class="max-w-3xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]">{post.title}</h1>
+      <p class="mt-4 max-w-xl text-lg leading-7 text-body">{post.description}</p>
+      <p class="mt-2 font-mono text-xs text-mute">Last updated: {post.date}</p>
+    </div>
+
+    <article class="prose mt-10 max-w-3xl">
+      <div set:html={post.content} class="space-y-6 text-body leading-7"></div>
+
+      <div class="mt-12 border-t border-hairline pt-8">
+        <h2 class="text-2xl font-semibold tracking-tight text-ink">Frequently asked questions</h2>
+        <div class="mt-6 divide-y divide-hairline rounded-lg border border-hairline bg-canvas">
+          {post.faqs.map((f) => (
+            <details class="group p-6">
+              <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium text-ink">
+                <span>{f.q}</span>
+                <span class="ml-4 text-mute transition group-open:rotate-45" aria-hidden="true">+</span>
+              </summary>
+              <p class="mt-3 text-sm leading-6 text-body">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </article>
+
+    {relatedGames.length > 0 && (
+      <section class="mt-16" aria-labelledby="related-games">
+        <h2 id="related-games" class="text-2xl font-semibold tracking-tight text-ink">Related games</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {relatedGames.map((g) => (
+            <a href={gameUrl(g.id)} class="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 hover:shadow-[0_2px_2px_#0000000a,0_8px_8px_-8px_#0000000a]">
+              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">▶</div>
+              <h3 class="text-lg font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h3>
+              <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {relatedPosts.length > 0 && (
+      <section class="mt-16" aria-labelledby="related-articles">
+        <h2 id="related-articles" class="text-2xl font-semibold tracking-tight text-ink">Related articles</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedPosts.map((p) => (
+            <a href={`/blog/${p.slug}`} class="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 hover:shadow-[0_2px_2px_#0000000a,0_8px_8px_-8px_#0000000a]">
+              <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep w-fit">{p.category}</span>
+              <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">{p.title}</h3>
+              <p class="mt-2 flex-1 text-sm leading-6 text-body">{p.description}</p>
+              <span class="mt-4 font-mono text-xs text-mute">{p.date}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+
+  <footer class="border-t border-hairline bg-canvas px-6 py-16">
+    <div class="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-2 border-t border-hairline pt-6 text-sm text-mute sm:flex-row sm:items-center">
+      <span>© {new Date().getFullYear()} YOUTUBE PLAYABLES. All rights reserved.</span>
+      <span class="font-mono text-xs">youtubeplayables</span>
+    </div>
+  </footer>
+</Layout>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.description,
+  datePublished: post.date,
+  dateModified: post.date,
+  author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${post.slug}` },
+})}></script>
