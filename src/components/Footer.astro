@@ -1,16 +1,14 @@
 ---
 import { games, popularGames } from "../shared/games";
 import { SITE_NAME } from "../shared/config";
+import Logo from "./Logo.astro";
 ---
 
 <footer class="border-t border-hairline bg-canvas px-6 py-16">
   <div class="mx-auto grid max-w-[1400px] gap-10 md:grid-cols-4">
     <div class="md:col-span-1">
       <div class="flex items-center gap-2">
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-          <rect width="24" height="24" rx="5" fill="#171717"></rect>
-          <path d="M10 8.5v7l5.5-3.5L10 8.5z" fill="#fff"></path>
-        </svg>
+        <Logo />
         <span class="text-sm font-semibold tracking-tight text-ink">{SITE_NAME}</span>
       </div>
       <p class="mt-4 text-sm text-body">Free browser-native HTML5 games.</p>

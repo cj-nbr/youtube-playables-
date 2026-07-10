@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /_astro/
+Disallow: /dist/
 
 Sitemap: https://youtubeplayables.caloriecalculatorfree.com/sitemap.xml

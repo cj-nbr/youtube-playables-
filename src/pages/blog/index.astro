@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { blogPosts, recentBlogPosts } from "../../shared/blog";
+import Logo from "../../components/Logo.astro";
 ---
 
 <Layout title="Blog — YOUTUBE PLAYABLES" description="Free guides, strategies, and articles about brain games, puzzle games, and browser-based play.">
@@ -9,10 +10,7 @@ import { blogPosts, recentBlogPosts } from "../../shared/blog";
   <header class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md">
     <nav class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6">
       <a href="/" class="flex items-center gap-2">
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-          <rect width="24" height="24" rx="5" fill="#171717"></rect>
-          <path d="M10 8.5v7l5.5-3.5L10 8.5z" fill="#fff"></path>
-        </svg>
+        <Logo />
         <span class="text-sm font-semibold tracking-tight text-ink">YOUTUBE PLAYABLES</span>
       </a>
       <div class="hidden items-center gap-1 md:flex">
@@ -32,9 +30,9 @@ import { blogPosts, recentBlogPosts } from "../../shared/blog";
 
     <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {blogPosts.map((post) => (
-        <a href={`/blog/${post.slug}`} class="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 hover:shadow-[0_2px_2px_#0000000a,0_8px_8px_-8px_#0000000a]">
+        <a href={`/blog/${post.slug}`} class="card card-hover p-6">
           <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep w-fit">{post.category}</span>
-          <h2 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">{post.title}</h2>
+          <h2 class="mt-3 text-lg font-semibold tracking-tight text-ink">{post.title}</h2>
           <p class="mt-2 flex-1 text-sm leading-6 text-body">{post.description}</p>
           <span class="mt-4 font-mono text-xs text-mute">{post.date}</span>
         </a>

@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { games } from "../shared/games";
+import Logo from "../components/Logo.astro";
 ---
 
 <Layout
@@ -12,10 +13,7 @@ import { games } from "../shared/games";
   <header class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md">
     <nav class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6">
       <a href="/" class="flex items-center gap-2">
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-          <rect width="24" height="24" rx="5" fill="#171717"></rect>
-          <path d="M10 8.5v7l5.5-3.5L10 8.5z" fill="#fff"></path>
-        </svg>
+        <Logo />
         <span class="text-sm font-semibold tracking-tight text-ink">YOUTUBE PLAYABLES</span>
       </a>
       <div class="hidden items-center gap-1 md:flex">
@@ -33,7 +31,10 @@ import { games } from "../shared/games";
     <section class="relative overflow-hidden border-b border-hairline">
       <div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-[1400px] px-6 py-24 text-center md:py-32">
-        <span class="mb-6 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">Playables</span>
+        <span class="mb-6 inline-flex items-center gap-2 rounded-full bg-canvas/90 px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014] backdrop-blur-sm">
+          <span class="h-2 w-2 rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8] animate-pulse-soft"></span>
+          Playables
+        </span>
         <h1 class="mx-auto max-w-3xl text-[40px] font-semibold leading-[1.05] tracking-[-2.4px] text-ink sm:text-[56px]">
           Pick a game. Play free.
         </h1>
@@ -47,21 +48,19 @@ import { games } from "../shared/games";
       <div class="mx-auto grid max-w-[1400px] gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           games.map((game) => (
-            <article class="group flex flex-col rounded-lg border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 hover:shadow-[0_2px_2px_#0000000a,0_8px_8px_-8px_#0000000a]">
+            <article class="card card-hover flex flex-col p-8">
               <div class="mb-5 flex items-center justify-between">
                 <div class="flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">▶</div>
                 <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">Play</span>
               </div>
-              <h2 class="text-xl font-semibold tracking-tight text-ink group-hover:text-link">{game.title}</h2>
+              <h2 class="text-xl font-semibold tracking-tight text-ink">{game.title}</h2>
               <p class="mt-2 flex-1 text-base leading-6 text-body">{game.description}</p>
               <div class="mt-4 flex flex-wrap gap-2">
                 {game.genre.map((g) => (
                   <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{g}</span>
                 ))}
               </div>
-              <a href={`/${game.id}`} class="mt-6 inline-flex h-10 items-center justify-center rounded-pill bg-ink px-5 text-sm font-medium text-white hover:opacity-90">
-                Play now
-              </a>
+              <a href={`/${game.id}`} class="btn btn-primary mt-6 h-10 px-5 text-sm">Play now</a>
             </article>
           ))
         }
