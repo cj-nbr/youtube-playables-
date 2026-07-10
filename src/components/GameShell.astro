@@ -62,8 +62,8 @@ const jsonLd = {
         </div>
 
         <div class="mt-10 flex flex-col items-center">
-          <div id="game-wrap" class="relative w-full max-w-[480px] h-[calc(100vh-12rem)] overflow-hidden rounded-xl border border-hairline bg-ink shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
-            <div id="board" class="grid w-full h-full place-items-center p-6 text-center text-white">
+          <div id="game-wrap" class="relative w-full max-w-[min(480px,100vw-2rem)] h-[min(520px,100dvh-10rem)] overflow-hidden rounded-xl border border-hairline bg-ink shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
+            <div id="board" class="grid w-full h-full place-items-center p-4 sm:p-6 text-center text-white">
               <slot />
             </div>
           </div>
@@ -106,7 +106,7 @@ const jsonLd = {
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
 
-<script is:inline>
+  <script is:inline>
       window.__showOver = (title, msg) => {
         const screen = document.getElementById('over-screen');
         if (title) document.getElementById('over-title').textContent = title;
@@ -114,7 +114,7 @@ const jsonLd = {
         screen.classList.remove('hidden');
         screen.classList.add('flex');
       };
-      
+
       window.__hideOver = () => {
         const screen = document.getElementById('over-screen');
         if (screen) {
@@ -122,10 +122,21 @@ const jsonLd = {
           screen.classList.remove('flex');
         }
       };
-      
+
       document.getElementById('over-again').addEventListener('click', () => {
         window.__hideOver();
         if (typeof window.__resetGame === 'function') window.__resetGame();
       });
+
+      // Returns the available pixel size of the game board area (inside padding)
+      window.__getGameArea = () => {
+        const board = document.getElementById('board');
+        if (!board) return { w: 320, h: 400 };
+        const rect = board.getBoundingClientRect();
+        const cs = getComputedStyle(board);
+        const padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+        const padY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+        return { w: Math.max(0, rect.width - padX), h: Math.max(0, rect.height - padY) };
+      };
     </script>
 </Layout>

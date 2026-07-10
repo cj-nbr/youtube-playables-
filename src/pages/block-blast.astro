@@ -15,14 +15,13 @@ const game = {
 ---
 
 <GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
-  <div id="block-blast" class="w-full max-w-[400px] mx-auto"></div>
+  <div id="block-blast" class="w-full max-w-[min(400px,100vw-2rem)] mx-auto"></div>
 </GameShell>
 
 <script>
 const COLS = 10;
 const ROWS = 12;
 const COLORS = ['#ff4444', '#44ff44', '#4488ff', '#ffcc00', '#ff66ff', '#00ffff'];
-const CELL = 36;
 
 const boardEl = document.getElementById('block-blast');
 const resetBtn = document.getElementById('reset-btn');
@@ -32,6 +31,11 @@ let grid = [];
 let score = 0;
 let selected = null;
 let animating = false;
+
+function getCellSize() {
+  const area = window.__getGameArea ? window.__getGameArea() : { w: 360, h: 432 };
+  return Math.min(area.w / COLS, area.h / ROWS, 40);
+}
 
 function createGrid() {
   grid = [];
@@ -45,6 +49,7 @@ function createGrid() {
 
 function draw() {
   boardEl.innerHTML = '';
+  const CELL = getCellSize();
   boardEl.style.width = (COLS * CELL) + 'px';
   boardEl.style.height = (ROWS * CELL) + 'px';
   boardEl.style.position = 'relative';

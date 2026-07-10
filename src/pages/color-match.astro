@@ -15,18 +15,18 @@ const game = {
 ---
 
 <GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
-  <div id="color-match" class="w-full max-w-[400px] mx-auto">
+  <div id="color-match" class="w-full max-w-[min(400px,100vw-2rem)] mx-auto">
     <div class="mb-4">
       <div class="flex justify-between text-sm text-white/70 mb-1">
         <span>Target</span><span id="target-hex">#000000</span>
       </div>
-      <div id="target-swatch" class="h-20 rounded-lg border-2 border-white/20"></div>
+      <div id="target-swatch" class="h-16 sm:h-20 rounded-lg border-2 border-white/20"></div>
     </div>
     <div class="mb-4">
       <div class="flex justify-between text-sm text-white/70 mb-1">
         <span>Your Mix</span><span id="mix-hex">#000000</span>
       </div>
-      <div id="mix-swatch" class="h-20 rounded-lg border-2 border-white/20"></div>
+      <div id="mix-swatch" class="h-16 sm:h-20 rounded-lg border-2 border-white/20"></div>
     </div>
     <div class="space-y-3 mb-4">
       <div>

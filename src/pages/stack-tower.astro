@@ -15,13 +15,20 @@ const game = {
 ---
 
 <GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
-  <div id="stack-container" class="relative w-full max-w-[360px] mx-auto overflow-hidden" style="height: 480px;"></div>
+  <div id="stack-container" class="relative w-full max-w-[min(360px,100vw-2rem)] mx-auto overflow-hidden" style="height: min(480px, 100dvh-10rem);"></div>
 </GameShell>
 
 <script>
-const W = 360;
-const BH = 24;
-const H = 480;
+function getDims() {
+  const area = window.__getGameArea ? window.__getGameArea() : { w: 360, h: 480 };
+  const w = Math.min(360, area.w);
+  const bh = Math.max(16, Math.min(28, Math.floor(area.h / 18)));
+  const h = Math.min(480, area.h);
+  return { w, bh, h };
+}
+
+let dims = getDims();
+let W = dims.w, BH = dims.bh, H = dims.h;
 
 const container = document.getElementById('stack-container');
 const resetBtn = document.getElementById('reset-btn');
@@ -33,7 +40,18 @@ let score = 0;
 let over = false;
 let raf = null;
 
+function syncDims() {
+  const d = getDims();
+  if (d.w !== W || d.bh !== BH || d.h !== H) {
+    const sx = d.w / W, sy = d.h / H;
+    stack = stack.map(b => ({ x: b.x * sx, w: b.w * sx }));
+    if (moving) { moving.x *= sx; moving.w *= sx; }
+    W = d.w; BH = d.bh; H = d.h;
+  }
+}
+
 function init() {
+  syncDims();
   stack = [{ x: 0, w: W }];
   score = 0;
   over = false;
@@ -64,11 +82,12 @@ function drop() {
   const right = Math.min(moving.x + moving.w, below.x + below.w);
   const overlap = right - left;
 
-if (overlap <= 0) {
-        over = true;
-        statusEl.textContent = 'Game Over! Score: ' + score;
-        window.__showOver('Game Over!', 'Score: ' + score);
-      }
+  if (overlap <= 0) {
+    over = true;
+    statusEl.textContent = 'Game Over! Score: ' + score;
+    window.__showOver('Game Over!', 'Score: ' + score);
+    return;
+  }
 
   stack.push({ x: left, w: overlap });
   score++;
@@ -79,6 +98,7 @@ if (overlap <= 0) {
 }
 
 function draw() {
+  syncDims();
   container.innerHTML = '';
   const inner = document.createElement('div');
   inner.style.position = 'relative';

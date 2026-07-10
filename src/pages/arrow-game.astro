@@ -16,16 +16,16 @@ const game = {
 <GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
   <div id="status" class="mb-4 font-mono text-sm uppercase tracking-wide text-white/70">X's turn</div>
   
-  <div id="board" class="grid grid-cols-3 gap-1.5" role="grid" aria-label="Tic Tac Toe board">
-    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="0" aria-label="Cell 1"></button>
-    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="1" aria-label="Cell 2"></button>
-    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="2" aria-label="Cell 3"></button>
-    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="3" aria-label="Cell 4"></button>
-    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="4" aria-label="Cell 5"></button>
-    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="5" aria-label="Cell 6"></button>
-    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="6" aria-label="Cell 7"></button>
-    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="7" aria-label="Cell 8"></button>
-    <button class="cell h-20 w-20 rounded-lg border-2 border-white/20 bg-white/5 text-3xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="8" aria-label="Cell 9"></button>
+  <div id="board" class="grid grid-cols-3 gap-1.5 w-full max-w-[min(320px,80vw)] mx-auto" role="grid" aria-label="Tic Tac Toe board">
+    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="0" aria-label="Cell 1"></button>
+    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="1" aria-label="Cell 2"></button>
+    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="2" aria-label="Cell 3"></button>
+    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="3" aria-label="Cell 4"></button>
+    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="4" aria-label="Cell 5"></button>
+    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="5" aria-label="Cell 6"></button>
+    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="6" aria-label="Cell 7"></button>
+    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="7" aria-label="Cell 8"></button>
+    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="8" aria-label="Cell 9"></button>
   </div>
 
   <div id="win-msg" class="hidden mt-4 text-2xl font-semibold text-white"></div>

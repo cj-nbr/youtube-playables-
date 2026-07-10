@@ -20,8 +20,6 @@ const game = {
 
 <script>
 const PAIRS = 8;
-const CELL = 60;
-const GAP = 4;
 const GRID_W = 4;
 const GRID_H = 4;
 
@@ -36,6 +34,13 @@ let moves = 0;
 let best = 0;
 const symbols = ['🐶','🐱','🦊','🐰','🐹','🐼','🦁','🐵'];
 
+function getCellSize() {
+  const area = window.__getGameArea ? window.__getGameArea() : { w: 252, h: 252 };
+  const gap = 4;
+  const cellSize = Math.min(area.w, area.h) / GRID_W;
+  return Math.max(40, Math.min(cellSize - gap, 70));
+}
+
 function createCards() {
   const shuffled = [...symbols, ...symbols].sort(() => Math.random() - 0.5);
   cards = [];
@@ -46,6 +51,8 @@ function createCards() {
 
 function draw() {
   gameEl.innerHTML = '';
+  const CELL = getCellSize();
+  const GAP = 4;
   gameEl.style.width = (GRID_W * (CELL + GAP) - GAP) + 'px';
   gameEl.style.height = (GRID_H * (CELL + GAP) - GAP) + 'px';
   gameEl.style.position = 'relative';

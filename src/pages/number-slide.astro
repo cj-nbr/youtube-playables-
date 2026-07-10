@@ -19,51 +19,49 @@ const game = {
 </GameShell>
 
 <script>
-const SIZE = 4;
-const CELL = 80;
-
 const gameEl = document.getElementById('number-slide');
 const resetBtn = document.getElementById('reset-btn');
 const statusEl = document.getElementById('status');
 
 let board = [];
-let emptyPos = { r: SIZE - 1, c: SIZE - 1 };
+let emptyPos = { r: 0, c: 0 };
 let moves = 0;
 let gameOver = false;
 
+function getCellSize() {
+  const area = window.__getGameArea ? window.__getGameArea() : { w: 320, h: 320 };
+  // For 4x4 grid, make it square and fit in available space
+  const size = Math.min(area.w, area.h) / 4;
+  return Math.max(40, Math.min(size, 100)); // Between 40px and 100px
+}
+
 function createBoard() {
-  board = [];
-  let nums = [...Array(SIZE * SIZE - 1).keys()].map(x => x + 1);
+  const nums = [...Array(15).keys()].map(x => x + 1);
   nums.sort(() => Math.random() - 0.5);
-  for (let r = 0; r < SIZE; r++) {
+  board = [];
+  for (let r = 0; r < 4; r++) {
     board[r] = [];
-    for (let c = 0; c < SIZE; c++) {
-      const idx = r * SIZE + c;
+    for (let c = 0; c < 4; c++) {
+      const idx = r * 4 + c;
       board[r][c] = idx < nums.length ? nums[idx] : 0;
-    }
-  }
-  for (let r = 0; r < SIZE; r++) {
-    for (let c = 0; c < SIZE; c++) {
-      if (board[r][c] === 0) {
-        emptyPos = { r, c };
-        return;
-      }
+      if (board[r][c] === 0) emptyPos = { r, c };
     }
   }
 }
 
 function draw() {
   gameEl.innerHTML = '';
-  gameEl.style.width = (SIZE * CELL) + 'px';
-  gameEl.style.height = (SIZE * CELL) + 'px';
+  const CELL = getCellSize();
+  gameEl.style.width = (4 * CELL) + 'px';
+  gameEl.style.height = (4 * CELL) + 'px';
   gameEl.style.position = 'relative';
 
-  for (let r = 0; r < SIZE; r++) {
-    for (let c = 0; c < SIZE; c++) {
+  for (let r = 0; r < 4; r++) {
+    for (let c = 0; c < 4; c++) {
       const val = board[r][c];
       if (val === 0) continue;
       const tile = document.createElement('button');
-      tile.className = 'absolute flex items-center justify-center rounded-lg bg-white/10 border-2 border-white/20 text-3xl font-bold text-white';
+      tile.className = 'absolute flex items-center justify-center rounded-lg bg-white/10 border-2 border-white/20 text-2xl font-bold text-white';
       tile.style.left = (c * CELL) + 'px';
       tile.style.top = (r * CELL) + 'px';
       tile.style.width = (CELL - 2) + 'px';
@@ -99,9 +97,9 @@ function tryMove(r, c) {
 
 function checkWin() {
   let expected = 1;
-  for (let r = 0; r < SIZE; r++) {
-    for (let c = 0; c < SIZE; c++) {
-      if (board[r][c] !== expected && expected !== SIZE * SIZE) return false;
+  for (let r = 0; r < 4; r++) {
+    for (let c = 0; c < 4; c++) {
+      if (board[r][c] !== expected && expected !== 16) return false;
       expected++;
     }
   }
