@@ -1,49 +1,34 @@
 ---
 import GameShell from "../components/GameShell.astro";
-
-const game = {
-  title: "Color Match",
-  description: "Match the target color by adjusting RGB sliders. Test your color perception and speed!",
-  genre: ["Puzzle", "Casual"],
-  guide: [
-    { heading: "Goal", body: "Match the target color as closely as possible within the time limit." },
-    { heading: "How to play", body: "A target color appears at the top. Use the R, G, B sliders to reproduce it in the mixing area. Click Submit when you think it matches. Score is based on accuracy and speed." },
-    { heading: "Strategy", body: "Start with the dominant channel. Use the preview to gauge. Small adjustments matter — the score uses Euclidean distance in RGB space." },
-    { heading: "Example", body: "Target is #8A4FFF (R=138, G=79, B=255). Set sliders near those values. Submit within 3s for time bonus. Exact match = 1000 pts." },
-  ],
-};
+import { getGame } from "../shared/games";
+const game = getGame("color-match");
 ---
-
-<GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
-  <div id="color-match" class="w-full max-w-[min(400px,100vw-2rem)] mx-auto">
+<GameShell game={game}>
+  <div id="color-match" class="mx-auto w-full max-w-[min(400px,100vw-2rem)]">
     <div class="mb-4">
-      <div class="flex justify-between text-sm text-white/70 mb-1">
-        <span>Target</span><span id="target-hex">#000000</span>
-      </div>
-      <div id="target-swatch" class="h-16 sm:h-20 rounded-lg border-2 border-white/20"></div>
+      <div class="mb-1 flex justify-between text-sm text-white/70"><span>Target</span><span id="target-hex">#000000</span></div>
+      <div id="target-swatch" class="h-16 rounded-lg border-2 border-white/20 sm:h-20"></div>
     </div>
     <div class="mb-4">
-      <div class="flex justify-between text-sm text-white/70 mb-1">
-        <span>Your Mix</span><span id="mix-hex">#000000</span>
-      </div>
-      <div id="mix-swatch" class="h-16 sm:h-20 rounded-lg border-2 border-white/20"></div>
+      <div class="mb-1 flex justify-between text-sm text-white/70"><span>Your Mix</span><span id="mix-hex">#000000</span></div>
+      <div id="mix-swatch" class="h-16 rounded-lg border-2 border-white/20 sm:h-20"></div>
     </div>
-    <div class="space-y-3 mb-4">
+    <div class="mb-4 space-y-3">
       <div>
-        <div class="flex justify-between text-sm text-white/70"><span>R</span><span id="r-val">0</span></div>
-        <input type="range" id="r-slider" min="0" max="255" value="0" class="w-full accent-[#ff4444]">
+        <div class="flex justify-between text-sm text-white/70"><span>R</span><span id="r-val">128</span></div>
+        <input type="range" id="r-slider" min="0" max="255" value="128" class="w-full accent-[#ff4444]" aria-label="Red" />
       </div>
       <div>
-        <div class="flex justify-between text-sm text-white/70"><span>G</span><span id="g-val">0</span></div>
-        <input type="range" id="g-slider" min="0" max="255" value="0" class="w-full accent-[#44ff44]">
+        <div class="flex justify-between text-sm text-white/70"><span>G</span><span id="g-val">128</span></div>
+        <input type="range" id="g-slider" min="0" max="255" value="128" class="w-full accent-[#44ff44]" aria-label="Green" />
       </div>
       <div>
-        <div class="flex justify-between text-sm text-white/70"><span>B</span><span id="b-val">0</span></div>
-        <input type="range" id="b-slider" min="0" max="255" value="0" class="w-full accent-[#4444ff]">
+        <div class="flex justify-between text-sm text-white/70"><span>B</span><span id="b-val">128</span></div>
+        <input type="range" id="b-slider" min="0" max="255" value="128" class="w-full accent-[#4444ff]" aria-label="Blue" />
       </div>
     </div>
-    <div class="flex gap-2 mb-4">
-      <button id="submit-btn" class="flex-1 h-10 rounded-pill bg-white text-ink font-medium hover:opacity-90">Submit</button>
+    <div class="mb-4 flex gap-2">
+      <button id="submit-btn" class="flex-1 h-10 rounded-pill bg-white font-medium text-ink hover:opacity-90">Submit</button>
       <button id="skip-btn" class="flex-1 h-10 rounded-pill border border-white/30 text-white hover:bg-white/10">Skip</button>
     </div>
     <div class="flex justify-between text-sm text-white/70">
@@ -55,138 +40,6 @@ const game = {
 </GameShell>
 
 <script>
-const targetSwatch = document.getElementById('target-swatch');
-const mixSwatch = document.getElementById('mix-swatch');
-const targetHex = document.getElementById('target-hex');
-const mixHex = document.getElementById('mix-hex');
-const rSlider = document.getElementById('r-slider');
-const gSlider = document.getElementById('g-slider');
-const bSlider = document.getElementById('b-slider');
-const rVal = document.getElementById('r-val');
-const gVal = document.getElementById('g-val');
-const bVal = document.getElementById('b-val');
-const submitBtn = document.getElementById('submit-btn');
-const skipBtn = document.getElementById('skip-btn');
-const timerEl = document.getElementById('timer');
-const scoreEl = document.getElementById('score');
-const roundEl = document.getElementById('round');
-const resetBtn = document.getElementById('reset-btn');
-const statusEl = document.getElementById('status');
-
-let target = { r: 0, g: 0, b: 0 };
-let score = 0;
-let round = 1;
-const MAX_ROUNDS = 10;
-let timeLeft = 30;
-let timerId = null;
-let gameOver = false;
-
-function rgbToHex(r, g, b) {
-  return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
-}
-
-function colorDist(c1, c2) {
-  const dr = c1.r - c2.r;
-  const dg = c1.g - c2.g;
-  const db = c1.b - c2.b;
-  return Math.sqrt(dr*dr + dg*dg + db*db);
-}
-
-function randomColor() {
-  return {
-    r: Math.floor(Math.random() * 256),
-    g: Math.floor(Math.random() * 256),
-    b: Math.floor(Math.random() * 256)
-  };
-}
-
-function setSliders(r, g, b) {
-  rSlider.value = r; gSlider.value = g; bSlider.value = b;
-  rVal.textContent = r; gVal.textContent = g; bVal.textContent = b;
-  updateMix();
-}
-
-function updateMix() {
-  const r = +rSlider.value, g = +gSlider.value, b = +bSlider.value;
-  rVal.textContent = r; gVal.textContent = g; bVal.textContent = b;
-  const hex = rgbToHex(r, g, b);
-  mixSwatch.style.background = hex;
-  mixHex.textContent = hex;
-}
-
-function newRound() {
-  if (round > MAX_ROUNDS) return endGame();
-  target = randomColor();
-  const hex = rgbToHex(target.r, target.g, target.b);
-  targetSwatch.style.background = hex;
-  targetHex.textContent = hex;
-  setSliders(128, 128, 128);
-  timeLeft = 30;
-  timerEl.textContent = timeLeft;
-  startTimer();
-}
-
-function startTimer() {
-  if (timerId) clearInterval(timerId);
-  timerId = setInterval(() => {
-    timeLeft--;
-    timerEl.textContent = timeLeft;
-    if (timeLeft <= 0) {
-      clearInterval(timerId);
-      submitRound(false);
-    }
-  }, 1000);
-}
-
-function submitRound(timeBonus = true) {
-  clearInterval(timerId);
-  const r = +rSlider.value, g = +gSlider.value, b = +bSlider.value;
-  const dist = colorDist(target, { r, g, b });
-  const maxDist = Math.sqrt(3 * 255 * 255);
-  const accuracy = Math.max(0, 1 - dist / maxDist);
-  let pts = Math.round(accuracy * 1000);
-  if (timeBonus) pts += Math.round(timeLeft * 5);
-  score += pts;
-  scoreEl.textContent = score;
-  roundEl.textContent = round + '/' + MAX_ROUNDS;
-  round++;
-  if (round > MAX_ROUNDS) endGame();
-  else newRound();
-}
-
-function endGame() {
-  gameOver = true;
-  submitBtn.disabled = true;
-  skipBtn.disabled = true;
-  window.__showOver('Game Over!', 'Final Score: ' + score);
-}
-
-function skipRound() {
-  clearInterval(timerId);
-  round++;
-  if (round > MAX_ROUNDS) endGame();
-  else newRound();
-}
-
-function reset() {
-  score = 0;
-  round = 1;
-  gameOver = false;
-  scoreEl.textContent = '0';
-  roundEl.textContent = '1/10';
-  submitBtn.disabled = false;
-  skipBtn.disabled = false;
-  statusEl.textContent = '';
-  window.__hideOver();
-  newRound();
-}
-
-window.__resetGame = reset;
-
-[rSlider, gSlider, bSlider].forEach(s => s.addEventListener('input', updateMix));
-submitBtn.addEventListener('click', () => submitRound(true));
-skipBtn.addEventListener('click', skipRound);
-resetBtn.addEventListener('click', reset);
-
-reset();
+  import { initGame } from "../games/color-match/scripts/game";
+  initGame();
 </script>

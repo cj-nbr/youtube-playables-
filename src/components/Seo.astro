@@ -1,0 +1,94 @@
+---
+// Centralised SEO component. Renders canonical, meta description, keywords,
+// Open Graph, Twitter Card tags, and structured-data JSON-LD
+// (VideoGame + BreadcrumbList + FAQPage + ItemList for related games).
+import type { GameMeta } from "../shared/types";
+import { SITE_URL, SITE_NAME, SITE_TWITTER } from "../shared/config";
+import { canonicalUrl, gameUrl, relatedGames } from "../shared/games";
+
+interface Props {
+  game: GameMeta;
+}
+
+const { game } = Astro.props;
+
+const url = canonicalUrl(game.id);
+const ogImage = `${SITE_URL}/favicon.svg`;
+const keywords = [
+  game.title,
+  ...game.seo.keywords,
+  ...game.genre,
+].join(", ");
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
+    { "@type": "ListItem", position: 2, name: "Playables", item: SITE_URL + "/playables" },
+    { "@type": "ListItem", position: 3, name: game.title, item: url },
+  ],
+};
+
+const videoGame = {
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  name: game.title,
+  description: game.description,
+  genre: game.genre,
+  gamePlatform: ["Web", "Browser", "Mobile"],
+  operatingSystem: "Any",
+  applicationCategory: "Game",
+  url,
+  inLanguage: "en",
+  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+};
+
+const faq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: game.content.faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const related = relatedGames(game.id, 4);
+const itemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `Games related to ${game.title}`,
+  itemListElement: related.map((g, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: g.title,
+    url: SITE_URL + gameUrl(g.id),
+  })),
+};
+---
+
+<link rel="canonical" href={url} />
+<meta name="description" content={game.description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content={SITE_NAME} />
+<meta name="theme-color" content="#171717" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:title" content={`${game.title} — ${SITE_NAME}`} />
+<meta property="og:description" content={game.description} />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={SITE_TWITTER} />
+<meta name="twitter:title" content={`${game.title} — ${SITE_NAME}`} />
+<meta name="twitter:description" content={game.description} />
+<meta name="twitter:image" content={ogImage} />
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)}></script>
+<script type="application/ld+json" is:inline set:html={JSON.stringify(videoGame)}></script>
+<script type="application/ld+json" is:inline set:html={JSON.stringify(faq)}></script>
+<script type="application/ld+json" is:inline set:html={JSON.stringify(itemList)}></script>

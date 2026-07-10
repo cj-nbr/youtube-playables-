@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Sign up — YOUTUBE PLAYABLES" description="Create a YOUTUBE PLAYABLES account to save high scores and pick up where you left off.">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-24">
+    <div class="mx-auto max-w-md rounded-xl border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
+      <h1 class="text-3xl font-semibold tracking-tight text-ink">Create your account.</h1>
+      <p class="mt-2 text-body">Sign up free to save high scores and continue your streak.</p>
+      <form class="mt-6 space-y-4" onsubmit="return false">
+        <div>
+          <label class="mb-1 block text-sm font-medium text-ink" for="email">Email</label>
+          <input id="email" type="email" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="you@example.com" />
+        </div>
+        <div>
+          <label class="mb-1 block text-sm font-medium text-ink" for="password">Password</label>
+          <input id="password" type="password" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="••••••••" />
+        </div>
+        <button type="submit" class="inline-flex h-11 w-full items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Sign up</button>
+      </form>
+      <p class="mt-4 text-sm text-body">Already have an account? <a href="/login" class="text-link underline-offset-4 hover:underline">Log in</a>.</p>
+      <a href="/playables" class="mt-6 inline-block text-sm text-link underline-offset-4 hover:underline">← Back to playables</a>
+    </div>
+  </main>
+</Layout>

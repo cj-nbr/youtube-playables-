@@ -1,228 +1,11 @@
 ---
 import GameShell from "../components/GameShell.astro";
-
-const game = {
-  title: "Chess",
-  description: "Classic two-player strategy. Checkmate your opponent to win the game.",
-  genre: ["Strategy", "Board"],
-  guide: [
-    { heading: "Goal", body: "Checkmate the opponent king. A king is in checkmate when it cannot escape capture." },
-    { heading: "How to play", body: "Click a piece to select it (it highlights valid moves). Click a highlighted square to move. Pieces move as in standard chess." },
-    { heading: "Rules", body: "Each piece type: Pawn one square forward (two on first move), captures diagonally. Knight L-shape. Bishop diagonals. Rook straight lines. Queen any direction. King one square, castling available." },
-    { heading: "Example", body: "White pawn at e2 can move to e3 or e4. Black pawn at e7 can capture on d6 or f6. Rook on a1 controls the entire a-file and rank 1." },
-  ]
-};
+import { getGame } from "../shared/games";
+const game = getGame("chess");
 ---
-
-<GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
-  <div id="chess-board" class="w-full h-full"></div>
+<GameShell game={game}>
+  <div id="chess-board" class="mx-auto"></div>
 </GameShell>
-
-<script>
-const SIZE = 8;
-
-const boardEl = document.getElementById('chess-board');
-const resetBtn = document.getElementById('reset-btn');
-const statusEl = document.getElementById('status');
-
-let board = [];
-let selected = null;
-let turn = 'w'; // white starts
-let gameOver = false;
-
-function initBoard() {
-  const start = ['r','n','b','q','k','b','n','r'];
-  board = [];
-  for (let r = 0; r < SIZE; r++) {
-    board[r] = [];
-    for (let c = 0; c < SIZE; c++) {
-      if (r === 0) board[r][c] = start[c];
-      else if (r === 1) board[r][c] = 'p';
-      else if (r === 6) board[r][c] = 'P';
-      else if (r === 7) board[r][c] = start[c].toUpperCase();
-      else board[r][c] = null;
-    }
-  }
-}
-
-const pieces = {
-  'p': '♟', 'r': '♜', 'n': '♞', 'b': '♝', 'q': '♛', 'k': '♚',
-  'P': '♙', 'R': '♖', 'N': '♘', 'B': '♗', 'Q': '♕', 'K': '♔',
-};
-
-function draw() {
-  boardEl.innerHTML = '';
-  boardEl.style.display = 'grid';
-  boardEl.style.gridTemplateColumns = 'repeat(8, 1fr)';
-  boardEl.style.gridTemplateRows = 'repeat(8, 1fr)';
-  // Don't set width/height/aspectRatio here - let CSS handle it
-  const colors = ['#b7965e', '#8c6d3e'];
-
-  // Get valid moves for selected piece
-  const validMoves = selected ? getMoves(selected.r, selected.c) : [];
-  console.log('Draw: selected=', selected, 'validMoves=', validMoves, 'turn=', turn);
-
-  for (let r = 0; r < SIZE; r++) {
-    for (let c = 0; c < SIZE; c++) {
-      const sq = document.createElement('div');
-      sq.className = 'relative';
-      sq.dataset.r = r;
-      sq.dataset.c = c;
-      sq.style.background = colors[(r + c) % 2];
-      sq.addEventListener('click', () => handleClick(r, c));
-
-      const p = board[r][c];
-      if (p) {
-        sq.innerHTML = `<span class="absolute inset-0 flex items-center justify-center text-2xl" style="color:${(p === p.toUpperCase() && turn === 'w') || (p === p.toLowerCase() && turn === 'b') ? '#fff' : '#000'}">${pieces[p]}</span>`;
-      }
-
-      // Highlight selected piece
-      if (selected && selected.r === r && selected.c === c) {
-        sq.style.outline = '3px solid #00ffd8';
-        sq.style.background = 'rgba(0, 255, 216, 0.1)';
-      }
-      // Highlight valid move squares
-      else if (validMoves.some(move => move[0] === r && move[1] === c)) {
-        sq.style.background = 'rgba(0, 255, 216, 0.2)';
-        sq.style.border = '2px solid rgba(0, 255, 216, 0.5)';
-        // Add a dot indicator for move target
-        const dot = document.createElement('div');
-        dot.style.width = '12px';
-        dot.style.height = '12px';
-        dot.style.background = '#00ffd8';
-        dot.style.borderRadius = '50%';
-        dot.style.position = 'absolute';
-        dot.style.top = '50%';
-        dot.style.left = '50%';
-        dot.style.transform = 'translate(-50%, -50%)';
-        sq.appendChild(dot);
-      }
-
-      boardEl.appendChild(sq);
-    }
-  }
-}
-
-function getMoves(r, c) {
-  const p = board[r][c];
-  if (!p) return [];
-  const moves = [];
-  const isWhite = p === p.toUpperCase();
-  
-  // Pawn
-  if (p.toUpperCase() === 'P') {
-    const dir = isWhite ? -1 : 1;
-    if (!board[r + dir]?.[c]) moves.push([r + dir, c]);
-    if (r === (isWhite ? 6 : 1) && !board[r + dir]?.[c] && !board[r + 2 * dir]?.[c]) {
-      moves.push([r + 2 * dir, c]);
-    }
-    if (board[r + dir]?.[c - 1] && isEmptyOrEnemy(r + dir, c - 1, isWhite)) moves.push([r + dir, c - 1]);
-    if (board[r + dir]?.[c + 1] && isEmptyOrEnemy(r + dir, c + 1, isWhite)) moves.push([r + dir, c + 1]);
-  }
-  // Knight
-  else if (p.toUpperCase() === 'N') {
-    const knightMoves = [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]];
-    for (const [dr, dc] of knightMoves) {
-      const nr = r + dr, nc = c + dc;
-      if (isEmptyOrEnemy(nr, nc, isWhite)) moves.push([nr, nc]);
-    }
-  }
-  // King
-  else if (p.toUpperCase() === 'K') {
-    for (let dr = -1; dr <= 1; dr++) {
-      for (let dc = -1; dc <= 1; dc++) {
-        if (dr || dc) {
-          const nr = r + dr, nc = c + dc;
-          if (isEmptyOrEnemy(nr, nc, isWhite)) moves.push([nr, nc]);
-        }
-      }
-    }
-  }
-  // Sliding pieces
-  else {
-    const dirs = p.toUpperCase() === 'B' ? [[-1,-1],[-1,1],[1,-1],[1,1]] :
-                 p.toUpperCase() === 'R' ? [[-1,0],[1,0],[0,-1],[0,1]] :
-                 [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
-    for (const [dr, dc] of dirs) {
-      for (let step = 1; step < SIZE; step++) {
-        const nr = r + dr * step, nc = c + dc * step;
-        if (nr < 0 || nr >= SIZE || nc < 0 || nc >= SIZE) break;
-        if (!board[nr][nc]) moves.push([nr, nc]);
-        else {
-          if (isEmptyOrEnemy(nr, nc, isWhite)) moves.push([nr, nc]);
-          break;
-        }
-      }
-    }
-  }
-  return moves;
-}
-
-function isEmptyOrEnemy(r, c, isWhite) {
-  if (r < 0 || r >= SIZE || c < 0 || c >= SIZE) return false;
-  const target = board[r][c];
-  return !target || (target === target.toUpperCase()) !== isWhite;
-}
-
-function handleClick(r, c) {
-  if (gameOver) return;
-  console.log('Click:', r, c, 'piece:', board[r][c], 'selected:', selected);
-
-  if (!selected) {
-    const p = board[r][c];
-    if (p && ((p === p.toUpperCase()) === (turn === 'w'))) {
-      selected = { r, c };
-      draw();
-    } else {
-      console.log('Cannot select - not your piece or empty');
-    }
-  } else {
-    const validMoves = getMoves(selected.r, selected.c);
-    const move = validMoves.find(m => m[0] === r && m[1] === c);
-    console.log('Valid moves:', validMoves, 'Clicked move:', move);
-    
-if (move) {
-        board[r][c] = board[selected.r][selected.c];
-        board[selected.r][selected.c] = null;
-        selected = null;
-        turn = turn === 'w' ? 'b' : 'w';
-        statusEl.textContent = turn === 'w' ? 'White to move' : 'Black to move';
-        // checkGameOver(); // temporarily disabled to prevent blackout
-        draw();
-      } else if (board[r][c] && ((board[r][c] === board[r][c].toUpperCase()) === (turn === 'w'))) {
-        // Clicked own piece - select it instead
-        selected = { r, c };
-        draw();
-      } else {
-        selected = null;
-        draw();
-      }
-  }
-}
-
-function checkGameOver() {
-  const wk = board.flat().includes('K');
-  const bk = board.flat().includes('k');
-  if (!wk || !bk) { 
-    gameOver = true; 
-    const winner = !wk ? 'Black' : 'White';
-    window.__showOver(winner + ' wins!', null);
-  }
-}
-
-function reset() {
-  selected = null;
-  turn = 'w';
-  gameOver = false;
-  initBoard();
-  draw();
-  statusEl.textContent = 'White to move';
-  window.__hideOver();
-}
-
-window.__resetGame = reset;
-reset();
-</script>
 
 <style>
   #chess-board {
@@ -230,7 +13,8 @@ reset();
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
     width: 100%;
-    height: 100%;
+    max-width: min(460px, 90vw);
+    aspect-ratio: 1 / 1;
     border: 2px solid #00ffd8;
     border-radius: 6px;
     overflow: hidden;
@@ -238,7 +22,11 @@ reset();
   #chess-board > div {
     width: 100%;
     height: 100%;
-    cursor: pointer;
     box-sizing: border-box;
   }
 </style>
+
+<script>
+  import { initGame } from "../games/chess/scripts/game";
+  initGame();
+</script>

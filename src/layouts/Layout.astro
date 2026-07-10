@@ -1,14 +1,19 @@
 ---
 import "../styles/global.css";
+import Seo from "../components/Seo.astro";
+import type { GameMeta } from "../shared/types";
 
 interface Props {
   title?: string;
   description?: string;
+  /** When provided, full per-game SEO (canonical, OG, JSON-LD) is rendered. */
+  game?: GameMeta;
 }
 
 const {
   title = "YOUTUBE PLAYABLES",
-  description = "YOUTUBE PLAYABLES — free YouTube playables. hello jhunu.",
+  description = "YOUTUBE PLAYABLES — free YouTube playables.",
+  game,
 } = Astro.props;
 ---
 
@@ -17,16 +22,12 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="YOUTUBE PLAYABLES" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
     <title>{title}</title>
+
+    {game && <Seo game={game} />}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

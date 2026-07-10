@@ -1,90 +1,27 @@
 ---
 import GameShell from "../components/GameShell.astro";
-
-const game = {
-  title: "Tic Tac Toe",
-  description: "Place X or O on a 3×3 grid. First to align three in a row wins.",
-  genre: ["Puzzle", "Strategy"],
-  guide: [
-    { heading: "Objective", body: "Be the first player to get three of your marks (X or O) in a row, column, or diagonal." },
-    { heading: "How to play", body: "Players take turns clicking empty squares. X always goes first. After a win or draw, hit Reset to play again." },
-    { heading: "Pro tip", body: "Control the center (cell 5) early—it’s involved in the most winning lines." },
-  ],
-};
+import { getGame } from "../shared/games";
+const game = getGame("arrow-game");
 ---
-
-<GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
-  <div id="status" class="mb-4 font-mono text-sm uppercase tracking-wide text-white/70">X's turn</div>
-  
-  <div id="board" class="grid grid-cols-3 gap-1.5 w-full max-w-[min(320px,80vw)] mx-auto" role="grid" aria-label="Tic Tac Toe board">
-    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="0" aria-label="Cell 1"></button>
-    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="1" aria-label="Cell 2"></button>
-    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="2" aria-label="Cell 3"></button>
-    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="3" aria-label="Cell 4"></button>
-    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="4" aria-label="Cell 5"></button>
-    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="5" aria-label="Cell 6"></button>
-    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="6" aria-label="Cell 7"></button>
-    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="7" aria-label="Cell 8"></button>
-    <button class="cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl sm:text-5xl font-bold text-white hover:bg-white/10 focus:outline-2 focus:outline-white/50" data-i="8" aria-label="Cell 9"></button>
+<GameShell game={game}>
+  <div
+    class="grid w-full max-w-[min(320px,80vw)] grid-cols-3 gap-1.5 mx-auto"
+    role="grid"
+    aria-label="Tic Tac Toe board"
+  >
+    {
+      Array.from({ length: 9 }).map((_, i) => (
+        <button
+          class="ttt-cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl font-bold text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-white/60 sm:text-5xl"
+          data-i={i}
+          aria-label={`Cell ${i + 1}`}
+        />
+      ))
+    }
   </div>
-
-  <div id="win-msg" class="hidden mt-4 text-2xl font-semibold text-white"></div>
 </GameShell>
 
 <script>
-const board = Array(9).fill(null);
-let current = 'X';
-const statusEl = document.getElementById('status');
-const cells = document.querySelectorAll('.cell');
-const winMsg = document.getElementById('win-msg');
-const resetBtn = document.getElementById('reset-btn');
-const WIN_PATTERNS = [
-  [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]
-];
-
-function updateStatus() {
-  statusEl.textContent = current + "'s turn";
-}
-
-function checkWin(p) {
-  for (const combo of WIN_PATTERNS) {
-    if (combo.every(i => board[i] === p)) return combo;
-  }
-  return null;
-}
-
-function checkDraw() {
-  return board.every(cell => cell !== null);
-}
-
-function handleClick(e) {
-  const i = +e.target.dataset.i;
-  if (board[i] || winMsg.classList.contains('hidden') === false) return;
-  board[i] = current;
-  e.target.textContent = current;
-  const win = checkWin(current);
-  if (win) {
-    winMsg.textContent = current + " wins!";
-    winMsg.classList.remove('hidden');
-    cells.forEach(c => c.disabled = true);
-  } else if (checkDraw()) {
-    winMsg.textContent = "Draw!";
-    winMsg.classList.remove('hidden');
-  } else {
-    current = current === 'X' ? 'O' : 'X';
-    updateStatus();
-  }
-}
-
-function reset() {
-  board.fill(null);
-  current = 'X';
-  cells.forEach(c => { c.textContent = ''; c.disabled = false; });
-  winMsg.classList.add('hidden');
-  updateStatus();
-}
-
-cells.forEach(c => c.addEventListener('click', handleClick));
-resetBtn.addEventListener('click', reset);
-updateStatus();
+  import { initGame } from "../games/arrow-game/scripts/game";
+  initGame();
 </script>
