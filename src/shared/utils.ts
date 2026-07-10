@@ -177,6 +177,9 @@ class SoundEngine {
       (window as any).AudioContext || (window as any).webkitAudioContext;
     if (!Ctor) return null;
     if (!this.ctx) this.ctx = new Ctor();
+    // Browsers create the context suspended until a user gesture resumes it.
+    // Without this, beeps are silently dropped.
+    if (this.ctx.state === "suspended") this.ctx.resume().catch(() => {});
     return this.ctx;
   }
 
@@ -190,6 +193,7 @@ class SoundEngine {
     if (this.muted) return;
     const ctx = this.context();
     if (!ctx) return;
+    if (ctx.state === "suspended") ctx.resume().catch(() => {});
     const freq = opts.freq ?? 440;
     const duration = opts.duration ?? 0.12;
     const type = opts.type ?? "sine";
@@ -208,7 +212,7 @@ class SoundEngine {
   }
 
   click(): void {
-    this.beep({ freq: 320, duration: 0.06, type: "square", volume: 0.04 });
+    this.beep({ freq: 440, duration: 0.07, type: "square", volume: 0.05 });
   }
   success(): void {
     this.beep({ freq: 660, duration: 0.12, type: "triangle" });

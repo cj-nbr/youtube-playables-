@@ -105,6 +105,7 @@ function shiftColumns() {
 
 async function handleClick(c: number, r: number) {
   if (animating || over) return;
+  sound.click();
   const group = getGroup(c, r);
   if (group.length < 2) return;
 
@@ -122,7 +123,6 @@ async function handleClick(c: number, r: number) {
 
   group.forEach(([gc, gr]) => (grid[gc][gr] = null));
   score += group.length * group.length;
-  sound.click();
   applyGravity();
   shiftColumns();
   draw();
