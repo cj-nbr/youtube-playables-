@@ -15,43 +15,30 @@ const game = {
 ---
 
 <GameShell title={game.title} description={game.description} genre={game.genre} guide={game.guide}>
-  <div id="stack-container" class="relative w-full max-w-[min(360px,100vw-2rem)] mx-auto overflow-hidden" style="height: min(480px, 100dvh-10rem);"></div>
+  <div id="stack-container" class="relative w-full max-w-[min(360px,100vw-2rem)] mx-auto overflow-hidden" style="height: min(480px, calc(100dvh - 12rem));"></div>
 </GameShell>
 
 <script>
-function getDims() {
-  const area = window.__getGameArea ? window.__getGameArea() : { w: 360, h: 480 };
-  const w = Math.min(360, area.w);
-  const bh = Math.max(16, Math.min(28, Math.floor(area.h / 18)));
-  const h = Math.min(480, area.h);
-  return { w, bh, h };
-}
-
-let dims = getDims();
-let W = dims.w, BH = dims.bh, H = dims.h;
-
 const container = document.getElementById('stack-container');
 const resetBtn = document.getElementById('reset-btn');
 const statusEl = document.getElementById('status');
 
+let W = 360, BH = 22, H = 480;
 let stack = [];
 let moving = null;
 let score = 0;
 let over = false;
 let raf = null;
 
-function syncDims() {
-  const d = getDims();
-  if (d.w !== W || d.bh !== BH || d.h !== H) {
-    const sx = d.w / W, sy = d.h / H;
-    stack = stack.map(b => ({ x: b.x * sx, w: b.w * sx }));
-    if (moving) { moving.x *= sx; moving.w *= sx; }
-    W = d.w; BH = d.bh; H = d.h;
-  }
+function measure() {
+  const rect = container.getBoundingClientRect();
+  W = Math.max(120, rect.width || 360);
+  H = Math.max(200, rect.height || 480);
+  BH = Math.max(16, Math.min(30, Math.floor(H / 18)));
 }
 
 function init() {
-  syncDims();
+  measure();
   stack = [{ x: 0, w: W }];
   score = 0;
   over = false;
@@ -98,7 +85,6 @@ function drop() {
 }
 
 function draw() {
-  syncDims();
   container.innerHTML = '';
   const inner = document.createElement('div');
   inner.style.position = 'relative';
