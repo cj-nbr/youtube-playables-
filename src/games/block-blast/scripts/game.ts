@@ -68,9 +68,11 @@ function draw() {
 }
 
 function createGrid() {
-  grid = Array(COLS)
-    .fill(null)
-    .map(() => Array(ROWS).fill(Math.floor(Math.random() * COLORS.length)));
+  // A fresh random color per cell — `Array(n).fill(x)` would reuse one value
+  // for the whole row, producing solid colored bands instead of a scramble.
+  grid = Array.from({ length: COLS }, () =>
+    Array.from({ length: ROWS }, () => Math.floor(Math.random() * COLORS.length))
+  );
 }
 
 function applyGravity() {
