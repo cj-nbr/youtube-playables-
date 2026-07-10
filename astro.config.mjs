@@ -5,9 +5,9 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://youtube-playables.vercel.app',
+  site: 'https://youtubeplayables.caloriecalculatorfree.com',
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [sitemap()],
+  // Removed @astrojs/sitemap; using manual public/sitemap.xml instead.
 });

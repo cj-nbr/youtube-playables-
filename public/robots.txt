@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://youtube-playables.vercel.app/sitemap-index.xml
+Sitemap: https://youtubeplayables.caloriecalculatorfree.com/sitemap.xml
