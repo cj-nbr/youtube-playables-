@@ -168,11 +168,13 @@ function isComplete(bR: number, bC: number) {
 }
 
 function claimH(r: number, c: number) {
+  sound.click();
   if (gameOver || hLines[r][c]) return;
   hLines[r][c] = current;
   finishTurn(boxesAround(r, c));
 }
 function claimV(r: number, c: number) {
+  sound.click();
   if (gameOver || vLines[r][c]) return;
   vLines[r][c] = current;
   finishTurn(boxesAroundV(r, c));

@@ -241,6 +241,7 @@ function draw() {
 }
 
 function handleClick(r: number, c: number) {
+  sound.click();
   if (gameOver) return;
 
   if (!selected) {

@@ -144,6 +144,18 @@ const MUTE_KEY = "ytp:sound-muted";
 class SoundEngine {
   private ctx: AudioContext | null = null;
 
+  constructor() {
+    // Pre-unlock audio on the first user gesture anywhere on the page.
+    // Browsers only allow an AudioContext to start inside a gesture, so we
+    // eagerly create + resume it the moment the player interacts.
+    if (typeof document !== "undefined") {
+      const unlock = () => this.context();
+      document.addEventListener("pointerdown", unlock, { once: true });
+      document.addEventListener("keydown", unlock, { once: true });
+      document.addEventListener("touchstart", unlock, { once: true });
+    }
+  }
+
   // Mute state is stored in localStorage (not in-memory) so that the
   // GameShell toggle and each game's beeps — which may be bundled into
   // separate scripts — always agree on the current value.
@@ -177,8 +189,6 @@ class SoundEngine {
       (window as any).AudioContext || (window as any).webkitAudioContext;
     if (!Ctor) return null;
     if (!this.ctx) this.ctx = new Ctor();
-    // Browsers create the context suspended until a user gesture resumes it.
-    // Without this, beeps are silently dropped.
     if (this.ctx.state === "suspended") this.ctx.resume().catch(() => {});
     return this.ctx;
   }
@@ -193,37 +203,49 @@ class SoundEngine {
     if (this.muted) return;
     const ctx = this.context();
     if (!ctx) return;
-    if (ctx.state === "suspended") ctx.resume().catch(() => {});
-    const freq = opts.freq ?? 440;
-    const duration = opts.duration ?? 0.12;
-    const type = opts.type ?? "sine";
-    const volume = opts.volume ?? 0.06;
 
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = type;
-    osc.frequency.value = freq;
-    gain.gain.setValueAtTime(volume, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + duration);
+    const play = () => {
+      if (!ctx || ctx.state === "closed") return;
+      const freq = opts.freq ?? 440;
+      const duration = opts.duration ?? 0.12;
+      const type = opts.type ?? "sine";
+      const volume = opts.volume ?? 0.06;
+      const t0 = ctx.currentTime;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(volume, t0);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t0 + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(t0);
+      osc.stop(t0 + duration);
+    };
+
+    // If the context is still suspended, wait for resume() to finish before
+    // scheduling — otherwise the tone is dropped on the floor.
+    if (ctx.state === "suspended") {
+      ctx.resume().then(play).catch(play);
+    } else {
+      play();
+    }
   }
 
   click(): void {
-    this.beep({ freq: 440, duration: 0.07, type: "square", volume: 0.05 });
+    this.beep({ freq: 520, duration: 0.09, type: "square", volume: 0.18 });
   }
   success(): void {
-    this.beep({ freq: 660, duration: 0.12, type: "triangle" });
-    setTimeout(() => this.beep({ freq: 880, duration: 0.12, type: "triangle" }), 90);
+    this.beep({ freq: 780, duration: 0.15, type: "triangle", volume: 0.20 });
+    setTimeout(() => this.beep({ freq: 1040, duration: 0.15, type: "triangle", volume: 0.20 }), 90);
   }
   error(): void {
-    this.beep({ freq: 160, duration: 0.18, type: "sawtooth", volume: 0.05 });
+    this.beep({ freq: 180, duration: 0.22, type: "sawtooth", volume: 0.20 });
   }
   win(): void {
     [523, 659, 784, 1047].forEach((f, i) =>
-      setTimeout(() => this.beep({ freq: f, duration: 0.14, type: "triangle" }), i * 110)
+      setTimeout(() => this.beep({ freq: f, duration: 0.18, type: "triangle", volume: 0.22 }), i * 110)
     );
   }
 }

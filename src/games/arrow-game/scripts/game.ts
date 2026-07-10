@@ -44,6 +44,7 @@ function checkWin(player: string): number[] | null {
 }
 
 function handleClick(e: Event) {
+  sound.click();
   const target = e.currentTarget as HTMLButtonElement;
   const i = Number(target.dataset.i);
   if (over || board[i]) return;

@@ -61,6 +61,7 @@ function spawnMoving() {
 }
 
 function drop() {
+  sound.click();
   if (over || paused || !moving) return;
   const below = stack[stack.length - 1];
   const left = Math.max(moving.x, below.x);

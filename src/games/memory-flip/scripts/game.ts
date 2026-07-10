@@ -74,6 +74,7 @@ function draw() {
 }
 
 function flip(idx: number) {
+  sound.click();
   if (lock || cards[idx].revealed || cards[idx].matched) return;
   cards[idx].revealed = true;
   sound.click();

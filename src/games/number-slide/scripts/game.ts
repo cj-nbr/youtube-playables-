@@ -101,6 +101,7 @@ function canMove(r: number, c: number): boolean {
 }
 
 function tryMove(r: number, c: number) {
+  sound.click();
   if (over || !canMove(r, c)) return;
   board[emptyPos.r][emptyPos.c] = board[r][c];
   board[r][c] = 0;
