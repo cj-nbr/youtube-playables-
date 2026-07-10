@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Seo from "../components/Seo.astro";
+import Footer from "../components/Footer.astro";
 import type { GameMeta } from "../shared/types";
 import { SITE_URL, SITE_NAME } from "../shared/config";
 
@@ -92,5 +93,6 @@ const webPageLd = !game && (isBlog || path === "/about" || path === "/contact" |
   </head>
   <body>
     <slot />
+    <Footer />
   </body>
 </html>
