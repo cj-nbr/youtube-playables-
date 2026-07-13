@@ -62,6 +62,32 @@
   --radius-pill-sm: 64px;
 }
 
+/*
+  Dark mode token override.
+  These custom theme colors are referenced by every utility (text-*, bg-*,
+  border-*, divide-*). Without reassigning the variables under `.dark`, the
+  light values persist and text disappears on the dark background.
+  NOTE: `--color-ink` is intentionally left dark — it is used as `bg-ink`
+  for solid dark surfaces/buttons — so `.text-ink` is flipped separately below.
+*/
+.dark {
+  --color-canvas: var(--color-canvas-dark);
+  --color-canvas-soft: var(--color-canvas-soft-dark);
+  --color-canvas-soft-2: var(--color-canvas-soft-2-dark);
+  --color-body: var(--color-body-dark);
+  --color-mute: var(--color-mute-dark);
+  --color-hairline: var(--color-hairline-dark);
+  --color-hairline-strong: var(--color-hairline-strong-dark);
+  --color-link: var(--color-link-dark);
+  --color-link-deep: var(--color-link-deep-dark);
+  --color-link-bg-soft: var(--color-link-bg-soft-dark);
+}
+
+/* Flip foreground text (ink) without touching bg-ink dark surfaces. */
+.dark .text-ink {
+  color: var(--color-ink-dark);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

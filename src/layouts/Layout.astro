@@ -72,6 +72,16 @@ const webPageLd = !game && (isBlog || path === "/about" || path === "/contact" |
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script is:inline>
+      (() => {
+        try {
+          const stored = localStorage.getItem("ytp:theme");
+          const dark = stored !== null ? stored === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.classList.toggle("dark", dark);
+        } catch {}
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
