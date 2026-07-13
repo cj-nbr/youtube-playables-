@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("symmetris");
+---
+<GameShell game={game}>
+  <div id="symmetris" class="mx-auto w-full max-w-[min(320px,90vw)]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/symmetris/scripts/game";
+  initGame();
+</script>

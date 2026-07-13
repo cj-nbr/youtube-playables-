@@ -1,0 +1,12 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("memocoly");
+---
+<GameShell game={game}>
+  <div id="memocoly" class="mx-auto w-full max-w-[min(320px,100vw-2rem)]" tabindex="0"></div>
+</GameShell>
+<script>
+  import { initGame } from "../games/memocoly/scripts/game";
+  initGame();
+</script>

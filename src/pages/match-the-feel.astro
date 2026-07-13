@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("match-the-feel");
+---
+<GameShell game={game}>
+  <div id="match-the-feel-board" class="mx-auto w-full max-w-[min(400px,100vw-2rem)]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/match-the-feel/scripts/game";
+  initGame();
+</script>

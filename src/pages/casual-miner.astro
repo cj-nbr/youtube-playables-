@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("casual-miner");
+---
+<GameShell game={game}>
+  <div id="casual-miner" class="mx-auto w-full max-w-[min(360px,95vw)]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/casual-miner/scripts/game";
+  initGame();
+</script>

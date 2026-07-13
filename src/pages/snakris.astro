@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("snakris");
+---
+<GameShell game={game}>
+  <div id="snakris-board" class="mx-auto w-full max-w-[min(400px,100vw-2rem)]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/snakris/scripts/game";
+  initGame();
+</script>

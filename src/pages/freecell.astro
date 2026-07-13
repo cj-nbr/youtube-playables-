@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("freecell");
+---
+<GameShell game={game}>
+  <div id="freecell" class="mx-auto w-full max-w-[520px]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/freecell/scripts/game";
+  initGame();
+</script>

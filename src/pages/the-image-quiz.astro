@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("the-image-quiz");
+---
+<GameShell game={game}>
+  <div id="the-image-quiz" class="mx-auto w-full max-w-[360px]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/the-image-quiz/scripts/game";
+  initGame();
+</script>

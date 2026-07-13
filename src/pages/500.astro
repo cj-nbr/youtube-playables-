@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Logo from "../components/Logo.astro";
+import DarkModeToggle from "../components/DarkModeToggle.astro";
 
 const title = "Something broke — YOUTUBE PLAYABLES";
 ---
@@ -17,7 +18,9 @@ const title = "Something broke — YOUTUBE PLAYABLES";
       <div class="hidden items-center gap-1 md:flex">
         <a href="/playables" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Playables</a>
       </div>
+
       <div class="flex items-center gap-2">
+        <DarkModeToggle />
         <a href="/login" class="hidden h-7 items-center rounded-sm border border-hairline px-3 text-sm font-medium text-ink hover:bg-canvas-soft sm:inline-flex">Log In</a>
         <a href="/signup" class="inline-flex h-7 items-center rounded-sm bg-ink px-3 text-sm font-medium text-white">Sign Up</a>
       </div>

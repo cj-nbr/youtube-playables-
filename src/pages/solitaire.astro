@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("solitaire");
+---
+<GameShell game={game}>
+  <div id="solitaire" class="mx-auto w-full max-w-[480px]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/solitaire/scripts/game";
+  initGame();
+</script>

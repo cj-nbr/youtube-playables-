@@ -1,0 +1,30 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("guess-the-colors");
+const COLORS = [
+  { name: "red", hex: "#ff4d4d", key: "r" },
+  { name: "blue", hex: "#4d4dff", key: "b" },
+  { name: "green", hex: "#4dff4d", key: "g" },
+  { name: "yellow", hex: "#ffcc00", key: "y" },
+  { name: "orange", hex: "#ff9933", key: "o" },
+  { name: "purple", hex: "#cc66ff", key: "p" },
+];
+---
+<GameShell game={game}>
+  <div id="guess-word" class="mx-auto mb-6 text-center text-5xl font-semibold tracking-tight text-ink sm:text-6xl">READY</div>
+  <div id="guess-score" class="mx-auto mb-2 text-center font-mono text-sm text-mute">Score: 0</div>
+  <div id="guess-combo" class="mx-auto mb-4 text-center font-mono text-sm text-mute">Combo: x0</div>
+  <div id="guess-timer" class="mx-auto mb-6 text-center font-mono text-lg text-ink">Time: 30s</div>
+  <div class="mx-auto flex max-w-[min(400px,100vw-2rem)] flex-wrap justify-center gap-2">
+    {COLORS.map((c) => (
+      <button data-color={c.name} type="button" class="btn btn-ghost h-10 px-4 text-sm border-2" style="border-color:{c.hex}; color:{c.hex}">{c.name}</button>
+    ))}
+  </div>
+  <p class="mx-auto mt-4 text-center text-xs text-mute">Tip: type the first letter for faster play (R, B, G, Y, O, P)</p>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/guess-the-colors/scripts/game";
+  initGame();
+</script>

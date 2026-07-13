@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("colored-lines");
+---
+<GameShell game={game}>
+  <div id="colored-lines-board" class="mx-auto w-full max-w-[min(420px,100vw-2rem)] aspect-square rounded-xl border border-hairline bg-ink shadow-[0_8px_30px_rgba(0,0,0,0.12)]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/colored-lines/scripts/game";
+  initGame();
+</script>

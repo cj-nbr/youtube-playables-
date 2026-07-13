@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { games, newGames, popularGames, trendingGames, gameUrl } from "../shared/games";
 import { SITE_NAME } from "../shared/config";
 import Logo from "../components/Logo.astro";
+import DarkModeToggle from "../components/DarkModeToggle.astro";
 
 const latest = newGames(4);
 const popular = popularGames(4);
@@ -48,6 +49,7 @@ const categories = Array.from(new Set(games.flatMap((g) => g.genre))).sort();
       </div>
 
       <div class="flex items-center gap-2">
+        <DarkModeToggle />
         <a
           href="/login"
           class="hidden h-7 items-center rounded-sm border border-hairline px-3 text-sm font-medium text-ink hover:bg-canvas-soft sm:inline-flex"

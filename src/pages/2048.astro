@@ -1,0 +1,12 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("2048");
+---
+<GameShell game={game}>
+  <div id="game-2048" class="mx-auto w-full max-w-[min(360px,100vw-2rem)]" tabindex="0"></div>
+</GameShell>
+<script>
+  import { initGame } from "../games/2048/scripts/game";
+  initGame();
+</script>

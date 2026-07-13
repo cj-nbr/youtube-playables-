@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("rotate2");
+---
+<GameShell game={game}>
+  <div id="rotate2-board" class="mx-auto w-full max-w-[380px]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/rotate2/scripts/game";
+  initGame();
+</script>

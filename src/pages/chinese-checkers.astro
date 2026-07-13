@@ -1,0 +1,15 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("chinese-checkers");
+---
+<GameShell game={game}>
+  <div
+    class="mx-auto w-full max-w-[min(520px,90vw)]"
+    id="chinese-checkers-board"
+  />
+</GameShell>
+<script>
+  import { initGame } from "../games/chinese-checkers/scripts/game";
+  initGame();
+</script>

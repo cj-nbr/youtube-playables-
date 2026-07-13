@@ -1,0 +1,15 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("letterama");
+---
+<GameShell game={game}>
+  <div id="letterama" class="mx-auto w-full max-w-[min(420px,100vw-2rem)]">
+    <div id="word-list" class="mb-2 flex flex-wrap gap-2"></div>
+    <div id="letterama-grid" class="relative"></div>
+  </div>
+</GameShell>
+<script>
+  import { initGame } from "../games/letterama/scripts/game";
+  initGame();
+</script>

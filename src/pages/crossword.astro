@@ -1,0 +1,18 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("crossword");
+---
+<GameShell game={game}>
+  <div id="crossword-board" class="mx-auto w-full max-w-[min(400px,100vw-2rem)] overflow-hidden rounded-xl border border-hairline bg-canvas shadow-[0_2px_8px_rgba(0,0,0,0.06)]"></div>
+  <div class="mx-auto mt-4 flex flex-wrap items-center justify-center gap-2">
+    <button id="crossword-check" type="button" class="btn btn-ghost h-10 px-6 text-sm">Check</button>
+    <button id="crossword-reveal" type="button" class="btn btn-ghost h-10 px-6 text-sm">Reveal word</button>
+  </div>
+  <div id="crossword-clues" class="mx-auto mt-6 w-full max-w-[min(400px,100vw-2rem)] grid gap-6 md:grid-cols-2"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/crossword/scripts/game";
+  initGame();
+</script>

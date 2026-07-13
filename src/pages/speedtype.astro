@@ -1,0 +1,14 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("speedtype");
+---
+<GameShell game={game}>
+  <div id="speedtype-board" class="relative mx-auto w-full max-w-[min(520px,100vw-2rem)] h-[min(400px,60dvh)] overflow-hidden rounded-xl border border-hairline bg-ink shadow-[0_8px_30px_rgba(0,0,0,0.12)]"></div>
+  <input id="speedtype-input" type="text" autocomplete="off" class="mx-auto mt-4 h-10 w-full max-w-[min(320px,100vw-2rem)] rounded-xl border border-hairline bg-canvas px-4 text-center text-sm text-ink outline-none focus:ring-2 focus:ring-link/40" placeholder="Type the word and press Enter..." />
+</GameShell>
+
+<script>
+  import { initGame } from "../games/speedtype/scripts/game";
+  initGame();
+</script>

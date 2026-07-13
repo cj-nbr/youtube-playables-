@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("oooze");
+---
+<GameShell game={game}>
+  <div id="oooze" class="mx-auto h-[min(420px,calc(100dvh-14rem))] w-full max-w-[min(420px,100vw-2rem)] overflow-hidden rounded-2xl"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/oooze/scripts/game";
+  initGame();
+</script>

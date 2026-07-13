@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("trivianut");
+---
+<GameShell game={game}>
+  <div id="trivianut-board" class="mx-auto w-full max-w-[460px]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/trivianut/scripts/game";
+  initGame();
+</script>

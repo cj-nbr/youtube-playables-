@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("counterfeit");
+---
+<GameShell game={game}>
+  <div id="counterfeit-board" class="mx-auto w-full max-w-[min(520px,100vw-2rem)]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/counterfeit/scripts/game";
+  initGame();
+</script>

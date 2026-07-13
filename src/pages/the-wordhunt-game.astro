@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("the-wordhunt-game");
+---
+<GameShell game={game}>
+  <div id="the-wordhunt-game" class="mx-auto w-full max-w-[360px]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/the-wordhunt-game/scripts/game";
+  initGame();
+</script>

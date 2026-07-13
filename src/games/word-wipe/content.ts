@@ -1,0 +1,171 @@
+import type { GameContent } from "../../shared/types";
+
+export const content: GameContent = {
+  guide: [
+    {
+      heading: "Goal",
+      body: "Connect adjacent letters to spell hidden words and wipe them off the board. Clear every hidden word to win the level. Letters can link in any of the eight directions, including diagonals.",
+    },
+    {
+      heading: "How to play",
+      body: "Drag across neighbouring letters to build a word, or type one and press Enter. If your word matches a hidden word, those tiles shatter, the letters above fall to fill the gaps, and fresh letters drop in from the top. Keep connecting until the board is cleared.",
+    },
+    {
+      heading: "Strategy",
+      body: "Work the edges first, where words are easiest to start and extend. Look for vowels to anchor longer words, and sweep diagonally as well as across. Because cleared tiles refill from the top, new words constantly appear — stay flexible and rescan after every wipe.",
+    },
+    {
+      heading: "Example",
+      body: "You trace P-L-A-N-E-T across the middle row. It matches a hidden word, so those seven tiles vanish, the letters above drop down, and new random letters fill the top. The found list ticks up, and you move on to the next hidden word.",
+    },
+  ],
+  instructions: {
+    objective:
+      "Connect adjacent letters to form every hidden word on the board and clear them all to complete the level.",
+    desktop:
+      "Click and drag across neighbouring letters — in any of eight directions — to spell a word, then release to submit. You can also type a word in the box and press Enter. Valid hidden words shatter, tiles fall, and new letters drop in. Clear all hidden words to win.",
+    mobile:
+      "Touch and drag your finger across adjacent letters to build a word, lifting to submit. The grid is responsive with large, touch-friendly cells. The typed box opens the on-screen keyboard as an alternative input.",
+    winning:
+      "You win the moment every hidden word has been found and wiped from the board. Your score is the sum of points from each cleared word, with longer words worth more, and it is saved as your best.",
+    losing:
+      "Word Wipe has no fail state — there is no timer and no lives to lose. You can take your time connecting words. The only goal is to find them all, so every board is guaranteed solvable.",
+    tips: [
+      "Scan diagonally as well as in rows and columns to spot more words.",
+      "Anchor on vowels; every word needs at least one to start or extend.",
+      "After each wipe, rescan — new letters create fresh word opportunities.",
+      "Longer words score more, so chase them when you have a clear path.",
+      "Use the type box for words you can see but find awkward to drag.",
+      "Clear edge words first; they are easiest to trace and free up space.",
+    ],
+  },
+  faqs: [
+    {
+      q: "How do you play Word Wipe?",
+      a: "Drag across adjacent letters in any of eight directions to spell a hidden word, then release. You can also type a word and press Enter. When your word matches a hidden one, those tiles vanish, the letters above fall, and new letters drop in. Clear every hidden word to win the level.",
+    },
+    {
+      q: "Can letters connect diagonally?",
+      a: "Yes. Connections work horizontally, vertically, and diagonally, and a single word can bend through different directions as long as each letter touches the previous one. This flexibility is what makes the board so rich with words.",
+    },
+    {
+      q: "How is Word Wipe scored?",
+      a: "Each cleared word awards points based on its length, with longer words worth more. Your level score is the total of all cleared words, and your best level score is saved locally in your browser for you to beat.",
+    },
+    {
+      q: "Is there a time limit or lives?",
+      a: "No. Word Wipe is a relaxed puzzle with no countdown and no lives to lose. You can think as long as you like. The challenge is purely finding every hidden word on the board.",
+    },
+    {
+      q: "What happens when I clear a word?",
+      a: "The tiles of that word shatter and disappear. Letters above them fall down to fill the gaps, and brand-new random letters drop in from the top. This reshuffles the board and opens up fresh word possibilities.",
+    },
+    {
+      q: "Can I type words instead of dragging?",
+      a: "Yes. Type a word into the box and press Enter; the game checks whether it traces a valid path in the current grid and matches a hidden word. It is a handy alternative when a word is hard to drag accurately.",
+    },
+    {
+      q: "How many hidden words are on the board?",
+      a: "Each board hides a set of words of varying lengths, woven into the letter grid at the start of the level. Because cleared tiles refill with new letters, the board keeps offering words until you have found them all.",
+    },
+    {
+      q: "Is Word Wipe guaranteed solvable?",
+      a: "Yes. The board is generated by planting real words you can reach, and any hidden word that gets disrupted by a clear is replanted so it remains findable. You can always complete the level.",
+    },
+    {
+      q: "Does Word Wipe track a best score?",
+      a: "Yes. Your highest level score is stored locally in your browser and shown at the start of each game. Clearing your browser data or switching devices resets it, since the record lives on your device.",
+    },
+    {
+      q: "What is the best strategy for Word Wipe?",
+      a: "Clear edge and diagonal words first to free space, anchor on vowels, and rescan after every wipe since new letters appear. Chase longer words for bigger scores, and use the typed box to bank words you can see but not easily trace.",
+    },
+    {
+      q: "Is Word Wipe good for the brain?",
+      a: "Yes. It exercises spelling, pattern recognition, and planning as you hunt and connect letters. The calm, untimed format makes it a pleasant daily brain workout.",
+    },
+    {
+      q: "Can kids play Word Wipe?",
+      a: "Yes. The controls are simple drag or type, there is no time pressure, and the content is family-friendly. It builds literacy and spelling skills while feeling like play.",
+    },
+    {
+      q: "Is Word Wipe free to play?",
+      a: "Yes. It runs in the browser with no cost, no account, and no download. Open the page and start connecting immediately. Your score and best record stay private on your device.",
+    },
+    {
+      q: "Can I play Word Wipe on mobile?",
+      a: "Yes. The grid is responsive with large touch targets, and dragging across letters works with a finger. The typed box opens the on-screen keyboard for an alternative input method.",
+    },
+    {
+      q: "What if I trace a word that is not hidden?",
+      a: "If the word is not one of the hidden words, it is simply rejected and nothing clears. There is no penalty, so experiment freely. Only valid hidden words shatter and score.",
+    },
+    {
+      q: "Can a letter be used twice in one word?",
+      a: "No. A traced word cannot reuse the same tile; each step must move to a new adjacent letter. This keeps paths clean and matches standard word-connect rules.",
+    },
+    {
+      q: "How do I know which words are hidden?",
+      a: "You discover them by exploring the grid rather than from a fixed list, which is part of the fun. As you clear words they are added to a found list so you can track your progress toward clearing the whole board.",
+    },
+  ],
+  blog: [
+    {
+      title: "Word Wipe — Complete Guide",
+      excerpt:
+        "Learn how to play Word Wipe, master its letter-connecting puzzle, and clear every hidden word.",
+      headings: [
+        "What Is Word Wipe",
+        "How Connecting Works",
+        "The Falling Board",
+        "Tips for New Players",
+        "Why It Is So Relaxing",
+      ],
+      body: [
+        "Word Wipe is a calm, browser-native word puzzle. A grid of letters hides a set of words, and your job is to connect adjacent letters to spell each one and wipe it from the board. Clear them all to win the level — with no timer and no lives to lose.",
+        "You connect letters by dragging across neighbours in any of eight directions, or by typing a word and pressing Enter. When your word matches a hidden one, those tiles shatter. The board then collapses: letters above the gap fall, and fresh random letters drop in from the top.",
+        "That falling, refilling board is the heart of Word Wipe. Every clear reshuffles the grid and reveals new word opportunities, so the puzzle keeps evolving. Because any disrupted hidden word is replanted, the board is always guaranteed solvable.",
+        "New players improve by scanning diagonals as well as rows and columns, anchoring on vowels, and clearing edge words first to open space. Rescan after every wipe, chase longer words for bigger scores, and use the typed box to bank words you can see but not easily drag.",
+        "With no countdown and no fail state, Word Wipe is as relaxing as it is engaging. It is a gentle workout for spelling and pattern recognition that you can pick up for a minute or settle into for twenty. The only goal is the quiet satisfaction of a fully cleared board.",
+      ],
+    },
+    {
+      title: "Connect Smarter: Word Wipe Tactics",
+      excerpt:
+        "Habits that help you clear boards faster and spot words others miss.",
+      headings: [
+        "Sweep the Diagonals",
+        "Anchor on Vowels",
+        "Clear the Edges First",
+        "Rescan After Every Wipe",
+        "Bank Words by Typing",
+      ],
+      body: [
+        "Most players only scan rows and columns, so diagonal words are the easiest to overlook — and often the longest. Make a habit of sweeping both diagonal directions; that is where satisfying high-score words tend to hide.",
+        "Every English word needs a vowel, so use vowels as anchors. Spot an E or A and check its eight neighbours for a strong second letter, then extend. Vowel-first scanning finds words faster than wandering randomly across the grid.",
+        "Edge words are the simplest to trace because they have fewer neighbours to confuse the path. Clearing them early also opens up the board, making interior words easier to reach once the edges are gone.",
+        "Because every clear drops new letters from the top, the board changes after each move. Rescan thoroughly instead of assuming the old layout holds; many words only become possible once fresh letters arrive.",
+        "When a word is obvious but fiddly to drag, type it. The text box validates the path instantly, sparing you awkward selections. It is the quickest way to secure a word you already see clearly.",
+      ],
+    },
+    {
+      title: "The Calm Brain Workout",
+      excerpt:
+        "Why an untimed word puzzle is exactly what a busy mind needs.",
+      headings: [
+        "No Clock, No Stress",
+        "Spelling Through Play",
+        "Pattern Recognition",
+        "A Mindful Break",
+        "Make It a Daily Ritual",
+      ],
+      body: [
+        "Word Wipe removes the two things that make puzzles stressful: the timer and the fail state. Without a clock, you can think, experiment, and enjoy the search. That low-pressure context is where the brain learns best.",
+        "Spelling improves because you build each word letter by letter under your own control. Wrong paths simply fail to clear, so you learn correct letter order through immediate, consequence-free feedback — the ideal way to cement spelling.",
+        "Constantly hunting for valid connections trains pattern recognition, the skill behind fluent reading and quick thinking. Over time your brain spots letter combinations faster, and that speed shows up far beyond the game.",
+        "A few minutes of Word Wipe is a genuine mindful break. The focused, repetitive scanning quiets mental noise, while the small wins release a gentle dopamine lift. It resets attention without the jolt of a fast arcade game.",
+        "Make it a daily ritual. Short, frequent sessions deliver the spaced repetition science favours, and tracking your best score keeps you returning. Within weeks you will feel quicker, wider-ranging, and more confident with words.",
+      ],
+    },
+  ],
+};

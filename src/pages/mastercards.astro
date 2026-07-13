@@ -1,0 +1,15 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("mastercards");
+---
+<GameShell game={game}>
+  <div
+    class="mx-auto w-full max-w-[min(420px,90vw)]"
+    id="mastercards-board"
+  />
+</GameShell>
+<script>
+  import { initGame } from "../games/mastercards/scripts/game";
+  initGame();
+</script>

@@ -1,0 +1,13 @@
+---
+import GameShell from "../components/GameShell.astro";
+import { getGame } from "../shared/games";
+const game = getGame("anagramania");
+---
+<GameShell game={game}>
+  <div id="anagramania" class="mx-auto w-full max-w-[380px]"></div>
+</GameShell>
+
+<script>
+  import { initGame } from "../games/anagramania/scripts/game";
+  initGame();
+</script>

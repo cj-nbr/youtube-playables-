@@ -1,0 +1,48 @@
+---
+const isDark = () => {
+  if (typeof document === "undefined") return false;
+  return document.documentElement.classList.contains("dark");
+};
+---
+
+<button
+  id="dark-toggle"
+  type="button"
+  aria-label="Toggle dark mode"
+  title={isDark() ? "Switch to light mode" : "Switch to dark mode"}
+  class="btn btn-ghost h-9 w-9 rounded-full p-0"
+>
+  <span id="dark-icon" class="text-base leading-none" aria-hidden="true">
+    {isDark() ? "☀️" : "🌙"}
+  </span>
+</button>
+
+<script>
+  (() => {
+    const key = "ytp:theme";
+    const root = document.documentElement;
+    const btn = document.getElementById("dark-toggle");
+    const icon = document.getElementById("dark-icon");
+    if (!btn || !icon) return;
+
+    const apply = (dark) => {
+      root.classList.toggle("dark", dark);
+      icon.textContent = dark ? "☀️" : "🌙";
+      btn.title = dark ? "Switch to light mode" : "Switch to dark mode";
+      btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    };
+
+    const stored = localStorage.getItem(key);
+    if (stored !== null) {
+      apply(stored === "dark");
+    } else {
+      apply(root.classList.contains("dark"));
+    }
+
+    btn.addEventListener("click", () => {
+      const next = !root.classList.contains("dark");
+      apply(next);
+      try { localStorage.setItem(key, next ? "dark" : "light"); } catch {}
+    });
+  })();
+</script>
