@@ -42,6 +42,10 @@ let over = false;
 let paused = false;
 let raf: number | null = null;
 let started = false;
+// Grace period (ms) after the player first moves during which a bigger cell
+// cannot absorb them — gives the player time to react at the start.
+let graceUntil = 0;
+const GRACE_MS = 5000;
 
 function rand(a: number, b: number) {
   return a + Math.random() * (b - a);
@@ -101,6 +105,7 @@ function buildCanvas() {
   c.addEventListener("pointerdown", (e) => {
     sound.click();
     started = true;
+    graceUntil = performance.now() + GRACE_MS;
     updateTarget(e.clientX, e.clientY);
   });
 }
@@ -109,6 +114,7 @@ function reset() {
   over = false;
   paused = false;
   started = false;
+  graceUntil = 0;
   score = 0;
   if (raf) cancelAnimationFrame(raf);
   buildCanvas();
@@ -129,6 +135,9 @@ function reset() {
 
 function step() {
   if (over || paused) return;
+  // Don't simulate until the player starts moving — otherwise a bigger cell
+  // could absorb the stationary player before they even interact.
+  if (!started) return;
 
   // Player drifts toward target.
   const dx = target.x - player.x;
@@ -187,8 +196,17 @@ function step() {
         spawnEnemy();
       } else if (e.r > player.r * 1.1) {
         // Enemy eats player.
-        die();
-        return;
+        if (performance.now() < graceUntil) {
+          // Grace period: shove the hunter away instead of dying.
+          const ang = Math.atan2(e.y - player.y, e.x - player.x);
+          const push = player.r + e.r + 6;
+          e.x += Math.cos(ang) * push;
+          e.y += Math.sin(ang) * push;
+          clampToArena(e);
+        } else {
+          die();
+          return;
+        }
       }
     }
   }
