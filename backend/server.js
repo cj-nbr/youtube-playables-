@@ -18,9 +18,26 @@ import achievementRoutes from "./routes/achievements.js";
 
 const app = express();
 
+// Reflect any localhost / 127.0.0.1 origin (any dev port) and the explicitly
+// configured production origins. Using `credentials: true` lets the browser
+// store the session cookie on the cross-origin response. A mismatched origin
+// would otherwise make the browser reject the request as a CORS error, which
+// surfaces in the frontend as a generic "Network error".
+function isAllowedOrigin(origin, callback) {
+  if (!origin) return callback(null, true);
+  try {
+    const host = new URL(origin).hostname;
+    const isLocal = host === "localhost" || host === "127.0.0.1" || host === "::1";
+    if (isLocal || config.corsOrigin.includes(origin)) return callback(null, true);
+  } catch {
+    // fall through to deny
+  }
+  callback(null, false);
+}
+
 app.use(helmet());
 app.use(cors({
-  origin: config.corsOrigin,
+  origin: isAllowedOrigin,
   credentials: true,
 }));
 app.use(cookieParser());
