@@ -4,6 +4,8 @@ import {
   showOverlay,
   hideOverlay,
   sound,
+  randInt,
+  shuffle,
   getHighScore,
   setHighScore,
 } from "../../../shared/utils";

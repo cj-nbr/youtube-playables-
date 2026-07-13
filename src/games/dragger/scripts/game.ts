@@ -4,6 +4,7 @@ import {
   showOverlay,
   hideOverlay,
   sound,
+  randInt,
   getHighScore,
   setHighScore,
 } from "../../../shared/utils";
@@ -84,7 +85,7 @@ function draw() {
       sq.style.top = r * (size + GAP) + "px";
       sq.style.width = size + "px";
       sq.style.height = size + "px";
-      sq.style.background = "#1a1a1a";
+      sq.style.background = "#262630";
       sq.style.borderRadius = "4px";
       sq.dataset.r = String(r);
       sq.dataset.c = String(c);

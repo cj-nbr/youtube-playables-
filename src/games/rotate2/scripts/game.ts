@@ -4,6 +4,7 @@ import {
   showOverlay,
   hideOverlay,
   sound,
+  getGameArea,
   getHighScore,
   setHighScore,
 } from "../../../shared/utils";

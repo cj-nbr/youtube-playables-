@@ -4,6 +4,7 @@ import {
   showOverlay,
   hideOverlay,
   sound,
+  shuffle,
   getHighScore,
   setHighScore,
 } from "../../../shared/utils";

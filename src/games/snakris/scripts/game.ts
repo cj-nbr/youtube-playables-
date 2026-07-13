@@ -11,7 +11,7 @@ import {
   clamp,
 } from "../../../shared/utils";
 
-const BOARD_ID = "snakris";
+  const BOARD_ID = "snakris-board";
 const COLS = 10;
 const ROWS = 20;
 const EMPTY = 0;

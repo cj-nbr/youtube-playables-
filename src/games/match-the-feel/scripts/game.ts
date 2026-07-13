@@ -13,7 +13,7 @@ import {
   colorDistance,
 } from "../../../shared/utils";
 
-const BOARD_ID = "match-the-feel";
+  const BOARD_ID = "match-the-feel-board";
 const ROUND_SECONDS = 90;
 const BASE_SCORE = 100;
 const TIME_BONUS_MAX = 50;

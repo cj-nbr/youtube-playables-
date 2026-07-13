@@ -4,6 +4,7 @@ import {
   showOverlay,
   hideOverlay,
   sound,
+  randInt,
   getHighScore,
   setHighScore,
 } from "../../../shared/utils";
@@ -28,14 +29,14 @@ let nextTimer: number | null;
 function spawnWord() {
   const word = WORDS[randInt(0, WORDS.length - 1)];
   const x = randInt(0, 10);
-  const el = document.createElement("div");
-  el.className = "absolute font-mono text-sm text-white drop-shadow-md";
-  el.style.left = x * 40 + 16 + "px";
-  el.style.top = "0px";
-  el.textContent = word;
+  const wordEl = document.createElement("div");
+  wordEl.className = "absolute font-mono text-sm text-white drop-shadow-md";
+  wordEl.style.left = x * 40 + 16 + "px";
+  wordEl.style.top = "0px";
+  wordEl.textContent = word;
   const board = el("speedtype-board");
-  if (board) board.appendChild(el);
-  drops.push({ word, y: 0, x, el });
+  if (board) board.appendChild(wordEl);
+  drops.push({ word, y: 0, x, el: wordEl });
 }
 
 function update() {

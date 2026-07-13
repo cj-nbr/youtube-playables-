@@ -4,13 +4,14 @@ import {
   showOverlay,
   hideOverlay,
   sound,
+  getGameArea,
   getHighScore,
   setHighScore,
   shuffle,
   randInt,
 } from "../../../shared/utils";
 
-const BOARD_ID = "shipfind";
+  const BOARD_ID = "shipfind-board";
 const SIZE = 10;
 
 type Cell = { ship: number | null; hit: boolean; miss: boolean };

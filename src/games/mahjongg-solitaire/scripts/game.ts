@@ -8,6 +8,7 @@ import {
   getHighScore,
   setHighScore,
   randInt,
+  shuffle,
 } from "../../../shared/utils";
 
 interface Tile {

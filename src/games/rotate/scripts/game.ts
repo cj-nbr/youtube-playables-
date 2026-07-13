@@ -11,7 +11,7 @@ import {
   randInt,
 } from "../../../shared/utils";
 
-const BOARD_ID = "rotate";
+  const BOARD_ID = "rotate-board";
 
 const TILE_TYPES: Record<number, number[]> = {
   0: [0, 0, 0, 0],
