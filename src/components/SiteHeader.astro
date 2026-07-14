@@ -1,0 +1,60 @@
+---
+import { SITE_NAME } from "../shared/config";
+import Logo from "./Logo.astro";
+---
+
+<header class="border-b border-hairline bg-canvas">
+  <div class="mx-auto flex h-14 max-w-[1400px] items-center justify-between px-6">
+    <a href="/" class="flex items-center gap-2" aria-label={`${SITE_NAME} home`}>
+      <Logo />
+      <span class="text-sm font-semibold tracking-tight text-ink">{SITE_NAME}</span>
+    </a>
+    <nav class="flex items-center gap-4">
+      <a href="/playables" class="text-sm text-body hover:text-ink">Playables</a>
+      <span id="auth-status" class="flex items-center gap-3 text-sm"></span>
+    </nav>
+  </div>
+</header>
+
+<script>
+  import { fetchMe, logout } from "../shared/auth";
+
+  const el = document.getElementById("auth-status");
+  if (el) {
+    const render = (user) => {
+      el.innerHTML = "";
+      if (user) {
+        const name = document.createElement("span");
+        name.className = "text-body";
+        name.textContent = user.username || "Account";
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className =
+          "rounded-sm bg-ink px-3 py-1 text-sm font-medium text-white hover:opacity-90";
+        btn.textContent = "Log out";
+        btn.addEventListener("click", async () => {
+          await logout();
+          window.location.href = "/";
+        });
+
+        el.append(name, btn);
+      } else {
+        const login = document.createElement("a");
+        login.href = "/login";
+        login.className = "text-body hover:text-ink";
+        login.textContent = "Log in";
+
+        const signup = document.createElement("a");
+        signup.href = "/signup";
+        signup.className =
+          "rounded-sm border border-hairline bg-canvas px-3 py-1 text-sm font-medium text-ink hover:opacity-90";
+        signup.textContent = "Sign up";
+
+        el.append(login, signup);
+      }
+    };
+
+    fetchMe().then(render).catch(() => render(null));
+  }
+</script>

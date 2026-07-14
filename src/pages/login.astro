@@ -25,40 +25,28 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </main>
 
-  <script is:inline>
-    (() => {
-      const form = document.getElementById("login-form");
-      const errorEl = document.getElementById("login-error");
-      if (!form) return;
+  <script>
+    import { login } from "../shared/auth";
 
+    const form = document.getElementById("login-form");
+    const errorEl = document.getElementById("login-error");
+    if (form) {
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         errorEl.style.display = "none";
 
-        const login = document.getElementById("login").value.trim();
+        const loginValue = document.getElementById("login").value.trim();
         const password = document.getElementById("password").value;
 
         try {
-          const res = await fetch("http://localhost:4000/api/v1/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ login, password }),
-            credentials: "include",
-          });
-
-          const data = await res.json().catch(() => ({}));
-          if (!res.ok) {
-            errorEl.textContent = data.message || "Login failed";
-            errorEl.style.display = "block";
-            return;
-          }
-
+          await login(loginValue, password);
           window.location.href = "/playables";
         } catch (err) {
-          errorEl.textContent = "Network error. Please try again.";
+          errorEl.textContent =
+            err instanceof Error ? err.message : "Login failed";
           errorEl.style.display = "block";
         }
       });
-    })();
+    }
   </script>
 </Layout>

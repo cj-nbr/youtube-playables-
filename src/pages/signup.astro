@@ -29,12 +29,12 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </main>
 
-  <script is:inline>
-    (() => {
-      const form = document.getElementById("signup-form");
-      const errorEl = document.getElementById("signup-error");
-      if (!form) return;
+  <script>
+    import { register } from "../shared/auth";
 
+    const form = document.getElementById("signup-form");
+    const errorEl = document.getElementById("signup-error");
+    if (form) {
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         errorEl.style.display = "none";
@@ -44,26 +44,14 @@ import Layout from "../layouts/Layout.astro";
         const password = document.getElementById("password").value;
 
         try {
-          const res = await fetch("http://localhost:4000/api/v1/auth/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, email, password }),
-            credentials: "include",
-          });
-
-          const data = await res.json().catch(() => ({}));
-          if (!res.ok) {
-            errorEl.textContent = data.message || "Sign up failed";
-            errorEl.style.display = "block";
-            return;
-          }
-
+          await register(username, email, password);
           window.location.href = "/playables";
         } catch (err) {
-          errorEl.textContent = "Network error. Please try again.";
+          errorEl.textContent =
+            err instanceof Error ? err.message : "Sign up failed";
           errorEl.style.display = "block";
         }
       });
-    })();
+    }
   </script>
 </Layout>

@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Seo from "../components/Seo.astro";
 import Footer from "../components/Footer.astro";
+import SiteHeader from "../components/SiteHeader.astro";
 import type { GameMeta } from "../shared/types";
 import { SITE_URL, SITE_NAME } from "../shared/config";
 
@@ -102,6 +103,7 @@ const webPageLd = !game && (isBlog || path === "/about" || path === "/contact" |
     {webPageLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(webPageLd)}></script>}
   </head>
   <body>
+    <SiteHeader />
     <slot />
     <Footer />
   </body>

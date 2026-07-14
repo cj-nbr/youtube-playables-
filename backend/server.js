@@ -18,17 +18,24 @@ import achievementRoutes from "./routes/achievements.js";
 
 const app = express();
 
-// Reflect any localhost / 127.0.0.1 origin (any dev port) and the explicitly
-// configured production origins. Using `credentials: true` lets the browser
-// store the session cookie on the cross-origin response. A mismatched origin
-// would otherwise make the browser reject the request as a CORS error, which
-// surfaces in the frontend as a generic "Network error".
+// Only allow the configured production origins and any localhost / 127.0.0.1
+// origin (any dev port) to call the API cross-origin. With `credentials:
+// true` the browser rejects a wildcard `*` response, so we mirror the
+// request origin when it is allowed instead of blindly returning `*`. A
+// mismatched origin would otherwise surface in the frontend as a generic
+// "Network error".
+const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
+
 function isAllowedOrigin(origin, callback) {
+  // Non-browser requests (e.g. health checks, server-to-server) have no origin.
   if (!origin) return callback(null, true);
+
   try {
-    const host = new URL(origin).hostname;
-    const isLocal = host === "localhost" || host === "127.0.0.1" || host === "::1";
-    if (isLocal || config.corsOrigin.includes(origin)) return callback(null, true);
+    const url = new URL(origin);
+    const isLocal = LOCAL_HOSTS.has(url.hostname) || url.hostname.endsWith(".localhost");
+    if (isLocal || config.corsOrigin.includes(origin)) {
+      return callback(null, origin);
+    }
   } catch {
     // fall through to deny
   }
