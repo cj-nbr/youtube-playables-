@@ -54,7 +54,11 @@ import Layout from "../layouts/Layout.astro";
             successEl.style.display = "block";
             form.reset();
           } else {
-            window.location.href = "/playables";
+            successEl.textContent = "Sign up successful! Redirecting…";
+            successEl.style.display = "block";
+            window.setTimeout(() => {
+              window.location.href = "/playables";
+            }, 1200);
           }
         } catch (err) {
           let message = err instanceof Error ? err.message : "Sign up failed";

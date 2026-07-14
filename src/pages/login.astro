@@ -34,6 +34,8 @@ import Layout from "../layouts/Layout.astro";
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         errorEl.style.display = "none";
+        const btn = form.querySelector("button[type=submit]") as HTMLButtonElement | null;
+        if (btn) { btn.disabled = true; btn.textContent = "Signing in…"; }
 
         const loginValue = document.getElementById("login").value.trim();
         const password = document.getElementById("password").value;
@@ -42,6 +44,7 @@ import Layout from "../layouts/Layout.astro";
           await login(loginValue, password);
           window.location.href = "/playables";
         } catch (err) {
+          if (btn) { btn.disabled = false; btn.textContent = "Log in"; }
           errorEl.textContent =
             err instanceof Error ? err.message : "Login failed";
           errorEl.style.display = "block";
