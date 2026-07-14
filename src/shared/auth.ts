@@ -25,10 +25,11 @@ export interface ApiError extends Error {
   status: number;
 }
 
-// In dev the Astro site (4321) and the API (4000) are different origins;
-// set PUBLIC_API_URL (or CORS + proxy) for production.
-const API_BASE: string =
-  (import.meta.env.PUBLIC_API_URL as string | undefined) || "http://localhost:4000";
+// In dev the Astro site is proxied to the API on the same origin (see
+// astro.config.mjs), so API_BASE defaults to "" and requests use the
+// relative `/api/v1/...` paths. For a production deployment on a separate
+// domain, set PUBLIC_API_URL to the backend origin (e.g. https://api.example.com).
+const API_BASE: string = import.meta.env.PUBLIC_API_URL ?? "";
 
 const SESSION_KEY = "ytp:session";
 
