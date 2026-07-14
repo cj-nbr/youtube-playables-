@@ -2,17 +2,24 @@
 import { SITE_NAME } from "../shared/config";
 import Logo from "./Logo.astro";
 import AuthMenu from "./AuthMenu.astro";
+import DarkModeToggle from "./DarkModeToggle.astro";
 ---
 
-<header class="border-b border-hairline bg-canvas">
-  <div class="mx-auto flex h-14 max-w-[1400px] items-center justify-between px-6">
+<header class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md">
+  <div class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6">
     <a href="/" class="flex items-center gap-2" aria-label={`${SITE_NAME} home`}>
       <Logo />
       <span class="text-sm font-semibold tracking-tight text-ink">{SITE_NAME}</span>
     </a>
     <nav class="flex items-center gap-4">
-      <a href="/playables" class="text-sm text-body hover:text-ink">Playables</a>
-      <AuthMenu />
+      <div class="hidden items-center gap-1 md:flex">
+        <a href="/playables" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Playables</a>
+        <a href="/blog" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Blog</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <DarkModeToggle />
+        <AuthMenu />
+      </div>
     </nav>
   </div>
 </header>

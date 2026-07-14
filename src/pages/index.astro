@@ -2,8 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import { games, newGames, popularGames, trendingGames, gameUrl } from "../shared/games";
 import { SITE_NAME } from "../shared/config";
-import Logo from "../components/Logo.astro";
-import DarkModeToggle from "../components/DarkModeToggle.astro";
 
 const latest = newGames(4);
 const popular = popularGames(4);
@@ -24,35 +22,10 @@ const categories = Array.from(new Set(games.flatMap((g) => g.genre))).sort();
         class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute"
         >NEW</span
       >
-      <span>Introducing YOUTUBE PLAYABLES — free YouTube playables.</span
+      <span>Introducing YOUTUBE PLAYABLES — free YouTube playables.</span>
       >
     </a>
   </div>
-
-  <!-- Nav -->
-  <header
-    class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md"
-  >
-    <nav
-      class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6"
-    >
-      <a href="/" class="flex items-center gap-2">
-        <Logo />
-        <span class="text-sm font-semibold tracking-tight text-ink"
-          >YOUTUBE PLAYABLES</span
-        >
-      </a>
-
-      <div class="hidden items-center gap-1 md:flex">
-        <a href="/playables" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Playables</a>
-        <a href="/blog" class="rounded-full bg-canvas-soft px-3 py-1.5 text-sm text-ink">Blog</a>
-      </div>
-
-      <div class="flex items-center gap-2">
-        <DarkModeToggle />
-      </div>
-    </nav>
-  </header>
 
   <main id="main">
     <!-- Hero -->
