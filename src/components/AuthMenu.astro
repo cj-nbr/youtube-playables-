@@ -1,0 +1,94 @@
+---
+// Shared auth menu: shows "Log in" / "Sign up" when logged out, and a
+// profile avatar that opens a dropdown (Log out, and room for future
+// items) when logged in. Used in the global header so it appears once.
+---
+
+<div class="auth-menu" data-auth-menu></div>
+
+<script>
+  import { authService } from "../lib/auth/auth-service.js";
+
+  const renderMenu = (root, state) => {
+    root.innerHTML = "";
+    const user = state?.user;
+    const profile = state?.profile;
+
+    if (!user) {
+      if (state?.loading) return;
+      const login = document.createElement("a");
+      login.href = "/login";
+      login.className = "text-body hover:text-ink";
+      login.textContent = "Log in";
+
+      const signup = document.createElement("a");
+      signup.href = "/signup";
+      signup.className =
+        "rounded-sm border border-hairline bg-canvas px-3 py-1 text-sm font-medium text-ink hover:opacity-90";
+      signup.textContent = "Sign up";
+
+      root.append(login, signup);
+      return;
+    }
+
+    const name = profile?.username || profile?.display_name || user.email || "Account";
+    const initial = (profile?.username || name).charAt(0).toUpperCase();
+
+    const wrap = document.createElement("div");
+    wrap.className = "relative";
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className =
+      "flex h-8 w-8 items-center justify-center rounded-full bg-ink text-sm font-semibold text-white hover:opacity-90";
+    btn.textContent = initial;
+    btn.title = name;
+    btn.setAttribute("aria-haspopup", "true");
+    btn.setAttribute("aria-expanded", "false");
+
+    const menu = document.createElement("div");
+    menu.className =
+      "auth-dropdown absolute right-0 top-full z-50 mt-2 w-48 rounded-xl border border-hairline bg-canvas p-2 text-left shadow-[0_8px_30px_rgba(0,0,0,0.12)]";
+    // Add future items here (e.g. Settings, Achievements) as <a>/<button> rows.
+    menu.innerHTML = `
+      <div class="px-3 py-2 text-sm font-medium text-ink">${name}</div>
+      <div class="my-1 h-px bg-hairline"></div>
+      <a href="/profile" class="block rounded-md px-3 py-2 text-sm text-ink hover:bg-canvas-soft">Profile</a>
+      <button type="button" class="auth-logout block w-full rounded-md px-3 py-2 text-left text-sm text-ink hover:bg-canvas-soft">Log out</button>
+    `;
+
+    wrap.append(btn, menu);
+
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = menu.classList.toggle("hidden") === false;
+      btn.setAttribute("aria-expanded", String(open));
+    });
+
+    menu.querySelector(".auth-logout")?.addEventListener("click", async () => {
+      await authService.signOut();
+      window.location.href = "/";
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!wrap.contains(e.target)) {
+        menu.classList.add("hidden");
+        btn.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    root.append(wrap);
+  };
+
+  const init = () => {
+    document.querySelectorAll("[data-auth-menu]").forEach((root) => {
+      if (root.dataset.authReady) return;
+      root.dataset.authReady = "1";
+      const render = (state) => renderMenu(root, state);
+      authService.subscribe(render);
+      render(authService.getState());
+    });
+  };
+
+  init();
+</script>

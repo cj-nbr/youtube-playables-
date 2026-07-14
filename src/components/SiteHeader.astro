@@ -1,6 +1,7 @@
 ---
 import { SITE_NAME } from "../shared/config";
 import Logo from "./Logo.astro";
+import AuthMenu from "./AuthMenu.astro";
 ---
 
 <header class="border-b border-hairline bg-canvas">
@@ -11,60 +12,7 @@ import Logo from "./Logo.astro";
     </a>
     <nav class="flex items-center gap-4">
       <a href="/playables" class="text-sm text-body hover:text-ink">Playables</a>
-      <span id="auth-status" class="flex items-center gap-3 text-sm"></span>
+      <AuthMenu />
     </nav>
   </div>
 </header>
-
-<script>
-  import { authService } from "../lib/auth/auth-service.js";
-
-  const el = document.getElementById("auth-status");
-  if (el) {
-    const render = (state) => {
-      el.innerHTML = "";
-      const user = state?.user;
-      const profile = state?.profile;
-
-      if (user) {
-        const name = profile?.username || profile?.display_name || user.email || "Account";
-        const initial = (profile?.username || name).charAt(0).toUpperCase();
-
-        const avatar = document.createElement("a");
-        avatar.href = "/profile";
-        avatar.className =
-          "flex h-8 w-8 items-center justify-center rounded-full bg-ink text-sm font-semibold text-white hover:opacity-90";
-        avatar.textContent = initial;
-        avatar.title = name;
-
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className =
-          "rounded-sm border border-hairline bg-canvas px-3 py-1 text-sm font-medium text-ink hover:opacity-90";
-        btn.textContent = "Log out";
-        btn.addEventListener("click", async () => {
-          await authService.signOut();
-          window.location.href = "/";
-        });
-
-        el.append(avatar, btn);
-      } else if (!state?.loading) {
-        const login = document.createElement("a");
-        login.href = "/login";
-        login.className = "text-body hover:text-ink";
-        login.textContent = "Log in";
-
-        const signup = document.createElement("a");
-        signup.href = "/signup";
-        signup.className =
-          "rounded-sm border border-hairline bg-canvas px-3 py-1 text-sm font-medium text-ink hover:opacity-90";
-        signup.textContent = "Sign up";
-
-        el.append(login, signup);
-      }
-    };
-
-    authService.subscribe(render);
-    render(authService.getState());
-  }
-</script>
