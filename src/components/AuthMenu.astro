@@ -18,7 +18,7 @@
       if (state?.loading) return;
       const login = document.createElement("a");
       login.href = "/login";
-      login.className = "text-body hover:text-ink";
+      login.className = "text-sm text-body hover:text-ink";
       login.textContent = "Log in";
 
       const signup = document.createElement("a");
@@ -27,7 +27,10 @@
         "rounded-sm border border-hairline bg-canvas px-3 py-1 text-sm font-medium text-ink hover:opacity-90";
       signup.textContent = "Sign up";
 
-      root.append(login, signup);
+      const wrap = document.createElement("div");
+      wrap.className = "flex items-center gap-3";
+      wrap.append(login, signup);
+      root.append(wrap);
       return;
     }
 
