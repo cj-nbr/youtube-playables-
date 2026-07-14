@@ -17,29 +17,38 @@ import Logo from "./Logo.astro";
 </header>
 
 <script>
-  import { fetchMe, logout } from "../shared/auth";
+  import { authService } from "../lib/auth/auth-service.js";
 
   const el = document.getElementById("auth-status");
   if (el) {
-    const render = (user) => {
+    const render = (state) => {
       el.innerHTML = "";
+      const user = state?.user;
+      const profile = state?.profile;
+
       if (user) {
-        const name = document.createElement("span");
-        name.className = "text-body";
-        name.textContent = user.username || "Account";
+        const name = profile?.username || profile?.display_name || user.email || "Account";
+        const initial = (profile?.username || name).charAt(0).toUpperCase();
+
+        const avatar = document.createElement("a");
+        avatar.href = "/profile";
+        avatar.className =
+          "flex h-8 w-8 items-center justify-center rounded-full bg-ink text-sm font-semibold text-white hover:opacity-90";
+        avatar.textContent = initial;
+        avatar.title = name;
 
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className =
-          "rounded-sm bg-ink px-3 py-1 text-sm font-medium text-white hover:opacity-90";
+          "rounded-sm border border-hairline bg-canvas px-3 py-1 text-sm font-medium text-ink hover:opacity-90";
         btn.textContent = "Log out";
         btn.addEventListener("click", async () => {
-          await logout();
+          await authService.signOut();
           window.location.href = "/";
         });
 
-        el.append(name, btn);
-      } else {
+        el.append(avatar, btn);
+      } else if (!state?.loading) {
         const login = document.createElement("a");
         login.href = "/login";
         login.className = "text-body hover:text-ink";
@@ -55,6 +64,7 @@ import Logo from "./Logo.astro";
       }
     };
 
-    fetchMe().then(render).catch(() => render(null));
+    authService.subscribe(render);
+    render(authService.getState());
   }
 </script>

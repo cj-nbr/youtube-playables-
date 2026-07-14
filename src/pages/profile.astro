@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Profile — YOUTUBE PLAYABLES" description="Your YOUTUBE PLAYABLES profile and statistics.">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-24">
+    <div id="profile-content" class="mx-auto max-w-2xl">
+      <p class="text-body">Loading profile...</p>
+    </div>
+  </main>
+
+  <script>
+    import { authService } from "../lib/auth/auth-service.js";
+
+    const container = document.getElementById("profile-content");
+    if (container) {
+      async function render() {
+        const state = authService.getState();
+        if (!state.user) {
+          container.innerHTML = `
+            <div class="text-center">
+              <h1 class="text-3xl font-semibold tracking-tight text-ink">Profile</h1>
+              <p class="mt-4 text-body">Please log in to view your profile.</p>
+              <a href="/login" class="mt-6 inline-flex h-11 items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Log In</a>
+            </div>
+          `;
+          return;
+        }
+
+        const profile = state.profile;
+        container.innerHTML = `
+          <div class="card p-8">
+            <div class="flex items-center gap-4">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-ink text-2xl font-bold text-white">
+                ${profile?.username?.[0]?.toUpperCase() ?? "U"}
+              </div>
+              <div>
+                <h1 class="text-2xl font-semibold tracking-tight text-ink">${profile?.display_name ?? profile?.username ?? "User"}</h1>
+                <p class="text-sm text-body">@${profile?.username ?? "unknown"}</p>
+              </div>
+            </div>
+            <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+              <div class="card p-4">
+                <div class="text-2xl font-bold text-ink">${profile?.statistics?.total_games_played ?? 0}</div>
+                <div class="text-sm text-body">Games Played</div>
+              </div>
+              <div class="card p-4">
+                <div class="text-2xl font-bold text-ink">${profile?.statistics?.wins ?? 0}</div>
+                <div class="text-sm text-body">Wins</div>
+              </div>
+              <div class="card p-4">
+                <div class="text-2xl font-bold text-ink">${profile?.statistics?.losses ?? 0}</div>
+                <div class="text-sm text-body">Losses</div>
+              </div>
+            </div>
+            <div class="mt-8">
+              <button id="logout-btn" class="btn btn-ghost h-10 px-6 text-sm">Log out</button>
+            </div>
+          </div>
+        `;
+
+        document.getElementById("logout-btn")?.addEventListener("click", async () => {
+          await authService.signOut();
+          window.location.href = "/";
+        });
+      }
+
+      const unsub = authService.subscribe(() => {
+        render();
+      });
+      render();
+    }
+  </script>
+</Layout>

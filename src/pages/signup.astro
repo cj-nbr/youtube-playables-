@@ -24,6 +24,7 @@ import Layout from "../layouts/Layout.astro";
         <button type="submit" class="inline-flex h-11 w-full items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Sign up</button>
       </form>
       <p id="signup-error" class="mt-4 text-sm" style="color:#ee0000;display:none;"></p>
+      <p id="signup-success" class="mt-4 text-sm" style="color:#0a7d28;display:none;"></p>
       <p class="mt-4 text-sm text-body">Already have an account? <a href="/login" class="text-link underline-offset-4 hover:underline">Log in</a>.</p>
       <a href="/playables" class="mt-6 inline-block text-sm text-link underline-offset-4 hover:underline">← Back to playables</a>
     </div>
@@ -32,23 +33,36 @@ import Layout from "../layouts/Layout.astro";
   <script>
     import { register } from "../shared/auth";
 
-    const form = document.getElementById("signup-form");
+    const form = document.getElementById("signup-form") as HTMLFormElement | null;
     const errorEl = document.getElementById("signup-error");
+    const successEl = document.getElementById("signup-success");
     if (form) {
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         errorEl.style.display = "none";
+        successEl.style.display = "none";
 
-        const username = document.getElementById("username").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
+        const username = (document.getElementById("username") as HTMLInputElement).value.trim();
+        const email = (document.getElementById("email") as HTMLInputElement).value.trim();
+        const password = (document.getElementById("password") as HTMLInputElement).value;
 
         try {
-          await register(username, email, password);
-          window.location.href = "/playables";
+          const result = await register(username, email, password);
+          if (result.needsConfirmation) {
+            successEl.textContent =
+              "Account created! Please check your email to confirm, then log in.";
+            successEl.style.display = "block";
+            form.reset();
+          } else {
+            window.location.href = "/playables";
+          }
         } catch (err) {
-          errorEl.textContent =
-            err instanceof Error ? err.message : "Sign up failed";
+          let message = err instanceof Error ? err.message : "Sign up failed";
+          if (/rate limit|too many requests|429/i.test(message)) {
+            message =
+              "Too many sign-up attempts. Please wait a few minutes and try again.";
+          }
+          errorEl.textContent = message;
           errorEl.style.display = "block";
         }
       });
