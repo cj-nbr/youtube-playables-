@@ -251,3 +251,10 @@ class SoundEngine {
 }
 
 export const sound = new SoundEngine();
+
+export function gameImagePath(id: string, file: string): string {
+  return `/images/games/${id}/${file}`;
+}
+
+export const gameCover = (id: string) => gameImagePath(id, "cover.webp");
+export const gameThumb = (id: string) => gameImagePath(id, "thumbnail.webp");

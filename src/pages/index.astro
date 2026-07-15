@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { games, newGames, popularGames, trendingGames, gameUrl } from "../shared/games";
 import { SITE_NAME } from "../shared/config";
+import { gameCover, gameThumb } from "../shared/utils";
 
 const latest = newGames(4);
 const popular = popularGames(4);
@@ -93,14 +94,18 @@ const categories = Array.from(new Set(games.flatMap((g) => g.genre))).sort();
         <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">Fresh playables, just added.</h2>
         <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {latest.map((g) => (
-            <a href={gameUrl(g.id)} class="game-card card card-hover p-6">
-              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">▶</div>
-              <h3 class="text-lg font-semibold tracking-tight text-ink">{g.title}</h3>
-              <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                {g.genre.slice(0, 2).map((x) => (
-                  <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{x}</span>
-                ))}
+            <a href={gameUrl(g.id)} class="game-card card card-hover p-0 overflow-hidden group">
+              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold tracking-tight text-ink">{g.title}</h3>
+                <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {g.genre.slice(0, 2).map((x) => (
+                    <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{x}</span>
+                  ))}
+                </div>
               </div>
             </a>
           ))}
@@ -117,10 +122,15 @@ const categories = Array.from(new Set(games.flatMap((g) => g.genre))).sort();
             <h2 class="text-3xl font-semibold tracking-[-1.28px] text-ink">Most played this week.</h2>
             <div class="mt-8 grid gap-4 sm:grid-cols-2">
               {popular.map((g) => (
-                <a href={gameUrl(g.id)} class="card card-hover p-5">
-                  <span class="font-mono text-xs text-mute">POPULAR</span>
-                  <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
-                  <p class="mt-1 text-sm text-body">{g.description}</p>
+                <a href={gameUrl(g.id)} class="card card-hover p-0 overflow-hidden flex">
+                  <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden bg-canvas-soft-2">
+                    <img src={gameThumb(g.id)} alt={`${g.title} thumbnail`} title={g.title} loading="lazy" class="h-full w-full object-cover" width="400" height="300" />
+                  </div>
+                  <div class="p-4 flex flex-col">
+                    <span class="font-mono text-xs text-mute">POPULAR</span>
+                    <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+                    <p class="mt-1 text-sm text-body line-clamp-2">{g.description}</p>
+                  </div>
                 </a>
               ))}
             </div>
@@ -130,10 +140,15 @@ const categories = Array.from(new Set(games.flatMap((g) => g.genre))).sort();
             <h2 class="text-3xl font-semibold tracking-[-1.28px] text-ink">On the rise.</h2>
             <div class="mt-8 grid gap-4 sm:grid-cols-2">
               {trending.map((g) => (
-                <a href={gameUrl(g.id)} class="card card-hover p-5">
-                  <span class="font-mono text-xs text-mute">TRENDING</span>
-                  <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
-                  <p class="mt-1 text-sm text-body">{g.description}</p>
+                <a href={gameUrl(g.id)} class="card card-hover p-0 overflow-hidden flex">
+                  <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden bg-canvas-soft-2">
+                    <img src={gameThumb(g.id)} alt={`${g.title} thumbnail`} title={g.title} loading="lazy" class="h-full w-full object-cover" width="400" height="300" />
+                  </div>
+                  <div class="p-4 flex flex-col">
+                    <span class="font-mono text-xs text-mute">TRENDING</span>
+                    <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+                    <p class="mt-1 text-sm text-body line-clamp-2">{g.description}</p>
+                  </div>
                 </a>
               ))}
             </div>
@@ -149,14 +164,18 @@ const categories = Array.from(new Set(games.flatMap((g) => g.genre))).sort();
         <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">All playables.</h2>
         <div id="games-grid" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {games.map((g) => (
-            <a href={gameUrl(g.id)} data-genres={g.genre.join(",")} data-title={g.title.toLowerCase()} class="game-card card card-hover p-6">
-              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">▶</div>
-              <h3 class="text-lg font-semibold tracking-tight text-ink">{g.title}</h3>
-              <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                {g.genre.slice(0, 3).map((x) => (
-                  <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{x}</span>
-                ))}
+            <a href={gameUrl(g.id)} data-genres={g.genre.join(",")} data-title={g.title.toLowerCase()} class="game-card card card-hover p-0 overflow-hidden group">
+              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold tracking-tight text-ink">{g.title}</h3>
+                <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {g.genre.slice(0, 3).map((x) => (
+                    <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{x}</span>
+                  ))}
+                </div>
               </div>
             </a>
           ))}

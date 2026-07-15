@@ -7,7 +7,7 @@ import {
   trendingGames,
   newGames,
 } from "../shared/games";
-import { sound } from "../shared/utils";
+import { sound, gameCover, gameThumb } from "../shared/utils";
 
 interface Props {
   game: GameMeta;
@@ -31,10 +31,15 @@ const ins = game.content.instructions;
       <div class="mesh-soft pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-[1400px] px-6 py-16">
         <a href="/playables" class="font-mono text-xs text-link underline-offset-4 hover:underline">← All playables</a>
-        <div class="mt-4">
-          <span class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">Playables</span>
-          <h1 class="max-w-2xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]">{game.title}.</h1>
-          <p class="mt-4 max-w-xl text-lg leading-7 text-body">{game.description}</p>
+        <div class="mt-4 flex flex-col md:flex-row gap-8 items-start">
+          <div class="relative w-full md:w-80 flex-shrink-0 aspect-[4/3] overflow-hidden rounded-xl bg-canvas-soft-2 border border-hairline">
+            <img src={gameCover(game.id)} alt={`${game.title} cover artwork`} title={game.title} class="h-full w-full object-cover" width="800" height="600" />
+          </div>
+          <div class="flex-1">
+            <span class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">Playables</span>
+            <h1 class="max-w-2xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]">{game.title}.</h1>
+            <p class="mt-4 max-w-xl text-lg leading-7 text-body">{game.description}</p>
+          </div>
         </div>
 
         <div class="mt-10 flex flex-col items-center">
@@ -124,40 +129,59 @@ const ins = game.content.instructions;
         <p class="mt-2 max-w-xl text-body">More free, browser-native playables you might enjoy.</p>
         <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {related.map((g) => (
-            <a href={`/${g.id}`} class="card card-hover p-6">
-              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">▶</div>
-              <h3 class="text-lg font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h3>
-              <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+            <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
+              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+              </div>
+              <div class="p-5 flex flex-col flex-1">
+                <h3 class="text-lg font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h3>
+                <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+              </div>
             </a>
           ))}
         </div>
 
         <h3 class="mt-12 text-xl font-semibold tracking-tight text-ink">Popular right now</h3>
-        <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {popular.map((g) => (
-            <a href={`/${g.id}`} class="card card-hover p-5">
-              <span class="font-mono text-xs text-mute">POPULAR</span>
-              <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+            <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
+              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+              </div>
+              <div class="p-4">
+                <span class="font-mono text-xs text-mute">POPULAR</span>
+                <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+              </div>
             </a>
           ))}
         </div>
 
         <h3 class="mt-12 text-xl font-semibold tracking-tight text-ink">Trending</h3>
-        <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {trending.map((g) => (
-            <a href={`/${g.id}`} class="card card-hover p-5">
-              <span class="font-mono text-xs text-mute">TRENDING</span>
-              <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+            <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
+              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+              </div>
+              <div class="p-4">
+                <span class="font-mono text-xs text-mute">TRENDING</span>
+                <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+              </div>
             </a>
           ))}
         </div>
 
         <h3 class="mt-12 text-xl font-semibold tracking-tight text-ink">New games</h3>
-        <div class="mt-6 grid gap-6 sm:grid-cols-3">
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
           {fresh.map((g) => (
-            <a href={`/${g.id}`} class="card card-hover p-5">
-              <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">NEW</span>
-              <h4 class="mt-2 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+            <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
+              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+              </div>
+              <div class="p-4">
+                <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">NEW</span>
+                <h4 class="mt-2 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+              </div>
             </a>
           ))}
         </div>
@@ -328,8 +352,8 @@ const ins = game.content.instructions;
           recent.forEach((g) => {
             const a = document.createElement('a');
             a.href = '/' + g.id;
-            a.className = 'group rounded-lg border border-hairline bg-canvas p-5 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5';
-            a.innerHTML = '<span class="font-mono text-xs text-mute">RECENT</span><h4 class="mt-1 text-base font-semibold tracking-tight text-ink group-hover:text-link">' + g.title + '</h4>';
+            a.className = 'group flex rounded-lg border border-hairline bg-canvas shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 overflow-hidden';
+            a.innerHTML = '<div class="relative w-24 h-24 flex-shrink-0 overflow-hidden bg-canvas-soft-2"><img src="/images/games/' + g.id + '/cover.webp" alt="' + g.title + ' cover" class="h-full w-full object-cover" loading="lazy" /></div><div class="p-4 flex flex-col flex-1"><span class="font-mono text-xs text-mute">RECENT</span><h4 class="mt-1 text-base font-semibold tracking-tight text-ink group-hover:text-link">' + g.title + '</h4></div>';
             list.appendChild(a);
           });
           wrap.classList.remove('hidden');

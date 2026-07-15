@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { games } from "../shared/games";
+import { gameCover, gameThumb } from "../shared/utils";
 ---
 
 <Layout
@@ -30,19 +31,21 @@ import { games } from "../shared/games";
       <div class="mx-auto grid max-w-[1400px] gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           games.map((game) => (
-            <article class="card card-hover flex flex-col p-8">
-              <div class="mb-5 flex items-center justify-between">
-                <div class="flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">▶</div>
-                <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">Play</span>
+            <article class="card card-hover flex flex-col p-0 overflow-hidden group">
+              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+                <img src={gameCover(game.id)} alt={`${game.title} cover artwork`} title={game.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+                <span class="absolute top-3 right-3 rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">Play</span>
               </div>
-              <h2 class="text-xl font-semibold tracking-tight text-ink">{game.title}</h2>
-              <p class="mt-2 flex-1 text-base leading-6 text-body">{game.description}</p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                {game.genre.map((g) => (
-                  <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{g}</span>
-                ))}
+              <div class="p-6 flex flex-col flex-1">
+                <h2 class="text-xl font-semibold tracking-tight text-ink">{game.title}</h2>
+                <p class="mt-2 flex-1 text-base leading-6 text-body">{game.description}</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {game.genre.map((g) => (
+                    <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{g}</span>
+                  ))}
+                </div>
+                <a href={`/${game.id}`} class="btn btn-primary mt-6 h-10 px-5 text-sm">Play now</a>
               </div>
-              <a href={`/${game.id}`} class="btn btn-primary mt-6 h-10 px-5 text-sm">Play now</a>
             </article>
           ))
         }

@@ -1,10 +1,8 @@
 ---
-// Centralised SEO component. Renders canonical, meta description, keywords,
-// Open Graph, Twitter Card tags, and structured-data JSON-LD
-// (VideoGame + BreadcrumbList + FAQPage + ItemList for related games).
 import type { GameMeta } from "../shared/types";
 import { SITE_URL, SITE_NAME, SITE_TWITTER } from "../shared/config";
 import { canonicalUrl, gameUrl, relatedGames } from "../shared/games";
+import { gameCover } from "../shared/utils";
 
 interface Props {
   game: GameMeta;
@@ -13,7 +11,7 @@ interface Props {
 const { game } = Astro.props;
 
 const url = canonicalUrl(game.id);
-const ogImage = `${SITE_URL}/favicon.svg`;
+const ogImage = `${SITE_URL}${gameCover(game.id)}`;
 const keywords = [
   game.title,
   ...game.seo.keywords,
