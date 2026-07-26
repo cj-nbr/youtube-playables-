@@ -291,6 +291,161 @@
   animation: pulse-soft 2.5s ease-in-out infinite;
 }
 
+/* ===================== ARTICLE / PROSE ===================== */
+.prose {
+  color: var(--color-ink);
+  font-size: 17px;
+  line-height: 1.7;
+}
+.prose > * + * { margin-top: 1.5rem; }
+.prose p { color: var(--color-body); }
+.prose h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-ink);
+  margin-top: 2.75rem;
+  scroll-margin-top: 5rem;
+}
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin-top: 2rem;
+  scroll-margin-top: 5rem;
+}
+.prose h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-top: 1.5rem;
+}
+.prose a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  font-weight: 500;
+}
+.prose a:hover { color: var(--color-link-deep); }
+.prose strong { color: var(--color-ink); font-weight: 600; }
+.prose ul, .prose ol { padding-left: 1.4rem; color: var(--color-body); }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li { margin-top: 0.5rem; }
+.prose li::marker { color: var(--color-mute); }
+.prose blockquote {
+  border-left: 3px solid var(--color-link);
+  background: var(--color-canvas-soft);
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  color: var(--color-body);
+  font-style: italic;
+}
+.prose blockquote p { color: var(--color-body); }
+.prose hr { border: 0; border-top: 1px solid var(--color-hairline); margin: 2.5rem 0; }
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin-top: 1.75rem;
+}
+.prose th, .prose td {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--color-hairline);
+  color: var(--color-body);
+}
+.prose thead th {
+  background: var(--color-canvas-soft);
+  color: var(--color-ink);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+.prose tbody tr:nth-child(even) td { background: var(--color-canvas-soft); }
+
+.prose figure { margin: 2rem 0; }
+.prose figure img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--color-hairline);
+  background: var(--color-canvas-soft-2);
+}
+.prose figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--color-mute);
+  text-align: center;
+}
+
+/* CTA box — attractive, game-linked call to action */
+.cta-box {
+  margin: 2rem 0;
+  padding: 1.75rem;
+  border-radius: 16px;
+  border: 1px solid var(--color-hairline);
+  background:
+    radial-gradient(at 0% 0%, rgba(0,124,240,0.10), transparent 60%),
+    radial-gradient(at 100% 100%, rgba(255,0,128,0.10), transparent 60%),
+    var(--color-canvas);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05);
+}
+.cta-box h3 { margin-top: 0; }
+.cta-box p { color: var(--color-body); margin-top: 0.5rem; }
+.cta-box .btn { margin-top: 1rem; }
+
+/* Callout / tip / summary boxes */
+.callout {
+  border: 1px solid var(--color-link-bg-soft);
+  background: var(--color-link-bg-soft);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  color: var(--color-ink);
+}
+.callout strong { color: var(--color-link-deep); }
+.summary-box {
+  border: 1px solid var(--color-hairline);
+  background: var(--color-canvas-soft);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+.summary-box h3, .summary-box h4 { margin-top: 0; }
+.tip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: #fff;
+}
+
+/* Author byline + bio */
+.author-row { display: flex; align-items: center; gap: 0.75rem; }
+.author-row img { width: 44px; height: 44px; border-radius: 999px; }
+.author-name { font-weight: 600; color: var(--color-ink); }
+.author-role { font-size: 0.8rem; color: var(--color-mute); }
+
+/* Table of contents */
+.toc {
+  border: 1px solid var(--color-hairline);
+  border-radius: 12px;
+  background: var(--color-canvas-soft);
+  padding: 1.1rem 1.3rem;
+}
+.toc h2, .toc h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+.toc ol { list-style: none; padding: 0; margin: 0; }
+.toc li { margin: 0.35rem 0; }
+.toc a { color: var(--color-body); text-decoration: none; font-size: 0.95rem; }
+.toc a:hover { color: var(--color-link); }
+.toc .lvl-3 { padding-left: 1rem; font-size: 0.9rem; }
+
 /* Responsive helpers */
 @media (max-width: 640px) {
   .mesh-gradient {

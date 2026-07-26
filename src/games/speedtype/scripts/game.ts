@@ -22,26 +22,35 @@ let best = 0;
 let lives = 3;
 let level = 1;
 let speed = 1.2;
+let startTime = 0;
 let drops: { word: string; y: number; x: number; el: HTMLElement }[];
 let raf: number | null;
 let nextTimer: number | null;
 
 function spawnWord() {
   const word = WORDS[randInt(0, WORDS.length - 1)];
-  const x = randInt(0, 10);
+  const board = el("speedtype-board");
+  if (!board) return;
+  const cols = Math.max(1, Math.floor((board.clientWidth - 32) / 40));
+  const x = randInt(0, cols - 1);
   const wordEl = document.createElement("div");
   wordEl.className = "absolute font-mono text-sm text-white drop-shadow-md";
   wordEl.style.left = x * 40 + 16 + "px";
   wordEl.style.top = "0px";
   wordEl.textContent = word;
-  const board = el("speedtype-board");
-  if (board) board.appendChild(wordEl);
+  board.appendChild(wordEl);
   drops.push({ word, y: 0, x, el: wordEl });
 }
 
 function update() {
   const board = el("speedtype-board");
   if (!board) return;
+
+  // Difficulty ramps with elapsed time, not per-frame score.
+  const elapsed = (performance.now() - startTime) / 1000;
+  level = Math.min(20, 1 + Math.floor(elapsed / 12));
+  speed = 1.2 + (level - 1) * 0.25;
+
   const height = board.clientHeight || 400;
   drops.forEach((d) => {
     d.y += speed * 0.4;
@@ -62,8 +71,6 @@ function update() {
     endGame();
     return;
   }
-  score += 1;
-  if (score % 50 === 0) { level++; speed += 0.2; }
   const status = el("status");
   if (status) status.textContent = `Score: ${score} · Level: ${level} · Best: ${best}`;
   raf = requestAnimationFrame(update);
@@ -82,6 +89,7 @@ function reset() {
   lives = 3;
   level = 1;
   speed = 1.2;
+  startTime = performance.now();
   best = getHighScore("speedtype");
   drops = [];
   const board = el("speedtype-board");
@@ -92,7 +100,7 @@ function reset() {
   if (raf) cancelAnimationFrame(raf);
   raf = requestAnimationFrame(update);
   if (nextTimer) clearInterval(nextTimer);
-  nextTimer = window.setInterval(spawnWord, 2200);
+  nextTimer = window.setInterval(spawnWord, 2000);
   spawnWord();
 }
 

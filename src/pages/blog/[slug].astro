@@ -1,100 +1,232 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getBlogPost, recentBlogPosts } from "../../shared/blog";
+import {
+  getBlogPost,
+  recentBlogPosts,
+  relatedPosts,
+  allCategories,
+  blogPosts,
+} from "../../shared/blog";
 import { games, gameUrl } from "../../shared/games";
-import { SITE_NAME, SITE_URL } from "../../shared/config";
+import { getAuthor } from "../../shared/authors";
+import { SITE_NAME, SITE_URL, SITE_TWITTER } from "../../shared/config";
+import { extractToc, injectHeadingIds, estimateReadingTime } from "../../shared/article-utils";
 
-export async function getStaticPaths() {
-  return [
-    { params: { slug: "best-brain-games-for-adults" } },
-    { params: { slug: "best-free-online-games" } },
-    { params: { slug: "free-browser-games-without-downloading" } },
-    { params: { slug: "brain-training-games-that-improve-memory" } },
-    { params: { slug: "benefits-of-playing-brain-games" } },
-    { params: { slug: "color-matching-games-explained" } },
-  ];
+export function getStaticPaths() {
+  // Derived from the blog registry so every article (seed + globed) gets a route.
+  return blogPosts.map((p) => ({ params: { slug: p.slug } }));
 }
 
 const { slug } = Astro.params;
 const post = getBlogPost(slug!);
 if (!post) return Astro.redirect("/blog");
 
-const relatedPosts = recentBlogPosts(3).filter((p) => p.slug !== post.slug).slice(0,3);
-const relatedGames = games.filter((g) => post.tags.some((t) => g.genre.some((genre) => t.includes(genre) || genre.includes(t)) || post.content.includes(g.title))).slice(0,4);
----
+const author = getAuthor(post.authorId);
+const cover = post.cover || "/images/articles/default-cover.svg";
+const toc = extractToc(post.content);
+const contentHtml = injectHeadingIds(post.content);
+const readingTime = post.readingTime ?? estimateReadingTime(post.content);
+const published = post.date;
+const modified = post.updatedAt ?? post.date;
+const pageUrl = `${SITE_URL}/blog/${post.slug}`;
 
-<Layout title={`${post.title} — YOUTUBE PLAYABLES`} description={post.description}>
-  <a href="#main" class="skip-link">Skip to content</a>
+const linked: typeof games = [];
+if (post.gameId) {
+  const g = games.find((x) => x.id === post.gameId);
+  if (g) linked.push(g);
+}
+const extra = games
+  .filter(
+    (g) =>
+      !linked.includes(g) &&
+      post.tags.some(
+        (t) =>
+          g.genre.some((genre) => t.includes(genre) || genre.includes(t)) ||
+          post.title.includes(g.title) ||
+          post.content.includes(g.title)
+      )
+  )
+  .slice(0, 4 - linked.length);
+const relatedGames = [...linked, ...extra].slice(0, 4);
 
-  <main id="main" class="mx-auto max-w-[1400px] px-6 py-16">
-    <a href="/blog" class="font-mono text-xs text-link underline-offset-4 hover:underline">← All articles</a>
-    <div class="mt-4">
-      <span class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">{post.category}</span>
-      <h1 class="max-w-3xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]">{post.title}</h1>
-      <p class="mt-4 max-w-xl text-lg leading-7 text-body">{post.description}</p>
-      <p class="mt-2 font-mono text-xs text-mute">Last updated: {post.date}</p>
-    </div>
+const relPosts = [
+  ...relatedPosts(post.slug, 3),
+  ...recentBlogPosts(6).filter((p) => p.slug !== post.slug),
+].filter((p, i, arr) => arr.findIndex((x) => x.slug === p.slug) === i).slice(0, 3);
 
-    <article class="prose mt-10 max-w-3xl">
-      <div set:html={post.content} class="space-y-6 text-body leading-7"></div>
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: SITE_URL + "/blog" },
+    { "@type": "ListItem", position: 3, name: post.title, item: pageUrl },
+  ],
+};
 
-      <div class="mt-12 border-t border-hairline pt-8">
-        <h2 class="text-2xl font-semibold tracking-tight text-ink">Frequently asked questions</h2>
-        <div class="mt-6 divide-y divide-hairline rounded-lg border border-hairline bg-canvas">
-          {post.faqs.map((f) => (
-            <details class="group p-6">
-              <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium text-ink">
-                <span>{f.q}</span>
-                <span class="ml-4 text-mute transition group-open:rotate-45" aria-hidden="true">+</span>
-              </summary>
-              <p class="mt-3 text-sm leading-6 text-body">{f.a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </article>
-
-    {relatedGames.length > 0 && (
-      <section class="mt-16" aria-labelledby="related-games">
-        <h2 id="related-games" class="text-2xl font-semibold tracking-tight text-ink">Related games</h2>
-        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {relatedGames.map((g) => (
-            <a href={gameUrl(g.id)} class="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 hover:shadow-[0_2px_2px_#0000000a,0_8px_8px_-8px_#0000000a]">
-              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">▶</div>
-              <h3 class="text-lg font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h3>
-              <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
-            </a>
-          ))}
-        </div>
-      </section>
-    )}
-
-    {relatedPosts.length > 0 && (
-      <section class="mt-16" aria-labelledby="related-articles">
-        <h2 id="related-articles" class="text-2xl font-semibold tracking-tight text-ink">Related articles</h2>
-        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {relatedPosts.map((p) => (
-            <a href={`/blog/${p.slug}`} class="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 hover:shadow-[0_2px_2px_#0000000a,0_8px_8px_-8px_#0000000a]">
-              <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep w-fit">{p.category}</span>
-              <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">{p.title}</h3>
-              <p class="mt-2 flex-1 text-sm leading-6 text-body">{p.description}</p>
-              <span class="mt-4 font-mono text-xs text-mute">{p.date}</span>
-            </a>
-          ))}
-        </div>
-      </section>
-    )}
-  </main>
-</Layout>
-
-<script type="application/ld+json" is:inline set:html={JSON.stringify({
+const articleLd = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   headline: post.title,
   description: post.description,
-  datePublished: post.date,
-  dateModified: post.date,
-  author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
-  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
-  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${post.slug}` },
-})}></script>
+  image: SITE_URL + cover,
+  datePublished: published,
+  dateModified: modified,
+  author: {
+    "@type": "Person",
+    name: author.name,
+    url: SITE_URL + "/blog",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: SITE_URL + "/favicon.svg" },
+  },
+  mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+  keywords: post.secondaryKeywords?.join(", ") || post.tags.join(", "),
+};
+
+const imageLd = {
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  url: SITE_URL + cover,
+  caption: post.title,
+};
+
+const faqLd = post.faqs.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: post.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    }
+  : null;
+
+const schemas = [breadcrumbLd, articleLd, imageLd, faqLd].filter(Boolean) as Record<string, unknown>[];
+---
+
+<Layout
+  title={`${post.title} — ${SITE_NAME}`}
+  description={post.description}
+  canonical={`/blog/${post.slug}`}
+  ogImage={cover}
+  ogType="article"
+  jsonLd={schemas}
+>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-16">
+    <a href="/blog" class="font-mono text-xs text-link underline-offset-4 hover:underline">← All articles</a>
+    <div class="mt-4 max-w-3xl">
+      <a href="/blog" class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">{post.category}</a>
+      <h1 class="text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]">{post.title}</h1>
+      <p class="mt-4 text-lg leading-7 text-body">{post.description}</p>
+      <div class="author-row mt-6">
+        <img src={author.avatar} alt={author.name} width="44" height="44" loading="lazy" />
+        <div>
+          <div class="author-name">{author.name}</div>
+          <div class="author-role">{author.role} · {readingTime} min read · Updated {modified}</div>
+        </div>
+      </div>
+    </div>
+
+    {
+      toc.length > 1 && (
+        <nav class="toc mt-10 max-w-3xl" aria-label="Table of contents">
+          <h2 class="font-mono text-xs uppercase tracking-wide text-mute">In this article</h2>
+          <ol>
+            {toc.map((t) => (
+              <li class={t.level === 3 ? "lvl-3" : ""}>
+                <a href={`#${t.id}`}>{t.text}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )
+    }
+
+    <article class="prose mt-10 max-w-3xl">
+      <div set:html={contentHtml}></div>
+
+      <div class="mt-10 border-t border-hairline pt-8">
+        <div class="author-row">
+          <img src={author.avatar} alt={author.name} width="48" height="48" loading="lazy" />
+          <div>
+            <div class="author-name">{author.name}</div>
+            <div class="author-role">{author.role}</div>
+          </div>
+        </div>
+        <p class="mt-3 text-sm leading-6 text-body">{author.bio}</p>
+      </div>
+
+      {
+        post.faqs.length > 0 && (
+          <section class="mt-12" aria-labelledby="faq-h">
+            <h2 id="faq-h" class="text-2xl font-semibold tracking-tight text-ink">Frequently asked questions</h2>
+            <div class="mt-6 divide-y divide-hairline rounded-xl border border-hairline bg-canvas">
+              {post.faqs.map((f) => (
+                <details class="group p-6">
+                  <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium text-ink">
+                    <span>{f.q}</span>
+                    <span class="ml-4 text-mute transition group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-3 text-sm leading-6 text-body">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )
+      }
+    </article>
+
+    {
+      relatedGames.length > 0 && (
+        <section class="mt-16" aria-labelledby="related-games">
+          <h2 id="related-games" class="text-2xl font-semibold tracking-tight text-ink">Related games</h2>
+          <p class="mt-2 max-w-xl text-body">Put the tips to work — play the game this article is about.</p>
+          <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {relatedGames.map((g) => (
+              <a href={gameUrl(g.id)} class="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 hover:shadow-[0_2px_2px_#0000000a,0_8px_8px_-8px_#0000000a]">
+                <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-canvas-soft-2 text-lg font-semibold text-ink">▶</div>
+                <h3 class="text-lg font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h3>
+                <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+                <span class="mt-4 inline-flex w-fit items-center rounded-full bg-ink px-4 py-1.5 text-xs font-medium text-white">Play free →</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      relPosts.length > 0 && (
+        <section class="mt-16" aria-labelledby="related-articles">
+          <h2 id="related-articles" class="text-2xl font-semibold tracking-tight text-ink">Continue reading</h2>
+          <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {relPosts.map((p) => (
+              <a href={`/blog/${p.slug}`} class="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 hover:shadow-[0_2px_2px_#0000000a,0_8px_8px_-8px_#0000000a]">
+                <span class="w-fit rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">{p.category}</span>
+                <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">{p.title}</h3>
+                <p class="mt-2 flex-1 text-sm leading-6 text-body">{p.description}</p>
+                <span class="mt-4 font-mono text-xs text-mute">{p.date}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="mt-16 border-t border-hairline pt-12">
+      <h2 class="text-2xl font-semibold tracking-tight text-ink">Browse by topic</h2>
+      <div class="mt-6 flex flex-wrap gap-3">
+        {allCategories().map((c) => (
+          <a href="/blog" class="rounded-full border border-hairline bg-canvas px-4 py-2 text-sm text-body transition hover:border-link hover:text-link">{c.name} <span class="font-mono text-xs text-mute">({c.count})</span></a>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

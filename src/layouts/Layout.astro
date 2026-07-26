@@ -4,24 +4,39 @@ import Seo from "../components/Seo.astro";
 import Footer from "../components/Footer.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import type { GameMeta } from "../shared/types";
-import { SITE_URL, SITE_NAME } from "../shared/config";
+import { SITE_URL, SITE_NAME, SITE_TWITTER } from "../shared/config";
 
 interface Props {
   title?: string;
   description?: string;
   game?: GameMeta;
+  /** Absolute or root-relative canonical URL override (e.g. /blog/slug). */
+  canonical?: string;
+  /** Open Graph / Twitter image (absolute URL or root-relative path). */
+  ogImage?: string;
+  /** "website" | "article" — controls og:type. Defaults to website. */
+  ogType?: string;
+  /** Extra JSON-LD schema objects to inject (Article, FAQPage, etc.). */
+  jsonLd?: Record<string, unknown>[];
 }
 
 const {
   title = "YOUTUBE PLAYABLES",
   description = "YOUTUBE PLAYABLES — free YouTube playables.",
   game,
+  canonical,
+  ogImage,
+  ogType = "website",
+  jsonLd = [],
 } = Astro.props;
 
 const path = Astro.url.pathname;
 const isPlayables = path === "/playables";
 const isBlog = path.startsWith("/blog");
 const isArticle = isBlog && !path.endsWith("/blog");
+
+const pageUrl = canonical ? (canonical.startsWith("http") ? canonical : SITE_URL + canonical) : SITE_URL + path;
+const ogImg = ogImage ? (ogImage.startsWith("http") ? ogImage : SITE_URL + ogImage) : `${SITE_URL}/images/articles/default-cover.svg`;
 
 const orgLd = {
   "@context": "https://schema.org",
@@ -89,6 +104,31 @@ const webPageLd = !game && (isBlog || path === "/about" || path === "/contact" |
     <title>{title}</title>
 
     {game && <Seo game={game} />}
+
+    {!game && (
+      <>
+        <link rel="canonical" href={pageUrl} />
+        <meta name="description" content={description} />
+        <meta name="author" content={SITE_NAME} />
+        <meta name="theme-color" content="#171717" />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:site_name" content={SITE_NAME} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={ogImg} />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content={SITE_TWITTER} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImg} />
+      </>
+    )}
+
+    {jsonLd.map((ld, i) => (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(ld)} data-schema={i}></script>
+    ))}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
