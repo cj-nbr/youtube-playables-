@@ -16,35 +16,46 @@ class AuthService {
   private listeners: Set<AuthListener> = new Set();
 
   constructor() {
+    console.log("[AuthService] Initializing...");
     this.init();
   }
 
   private async init() {
+    console.log("[AuthService] Initializing auth state");
     const token = localStorage.getItem("session_token");
     this.user = null;
     this.profile = null;
+    this.loading = true;
     
     if (token) {
+      console.log("[AuthService] Found session token");
       try {
         const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
+        console.log(`[AuthService] /me response status: ${response.status}`);
         if (response.ok) {
           const data = await response.json();
+          console.log("[AuthService] /me data:", data);
           if (data.success) {
             this.user = data.data;
+            console.log("[AuthService] User set:", this.user);
           }
         }
       } catch (err) {
-        console.error("Failed to fetch user on init:", err);
+        console.error("[AuthService] Failed to fetch user on init:", err);
       }
+    } else {
+      console.log("[AuthService] No session token found");
     }
     
     this.loading = false;
+    console.log("[AuthService] Notifying initial state");
     this.notify();
     
     // Listen for storage changes
     window.addEventListener("storage", (e) => {
+      console.log("[AuthService] Storage change detected:", e);
       if (e.key === "session_token") {
         this.init();
       }
@@ -57,15 +68,18 @@ class AuthService {
       profile: this.profile,
       loading: this.loading,
     };
+    console.log("[AuthService] Notifying state change:", state);
     this.listeners.forEach((fn) => fn(state));
   }
 
   subscribe(listener: AuthListener) {
+    console.log("[AuthService] New subscriber added");
     this.listeners.add(listener);
     return () => this.listeners.delete(listener);
   }
 
   getState(): AuthState {
+    console.log("[AuthService] getState called");
     return {
       user: this.user,
       profile: this.profile,
@@ -82,6 +96,7 @@ class AuthService {
   }
 
   async signUp(fullName: string, email: string, phone: string, secretCode: string) {
+    console.log("[AuthService] Signing up...");
     const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -103,6 +118,7 @@ class AuthService {
   }
 
   async signIn(login: string, secretCode: string) {
+    console.log("[AuthService] Signing in...");
     const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -124,6 +140,7 @@ class AuthService {
   }
 
   async signOut() {
+    console.log("[AuthService] Signing out");
     localStorage.removeItem("session_token");
     this.user = null;
     this.profile = null;
@@ -131,19 +148,25 @@ class AuthService {
   }
 
   async fetchProfile() {
-    if (!this.user) return;
+    if (!this.user) {
+      console.log("[AuthService] fetchProfile: no user");
+      return;
+    }
+    console.log("[AuthService] Fetching profile for user:", this.user.id);
     try {
+      const token = localStorage.getItem("session_token");
       const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/me`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("session_token")}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
           this.profile = data.data;
+          console.log("[AuthService] Profile fetched:", this.profile);
         }
       }
     } catch (err) {
-      console.error("Failed to fetch profile:", err);
+      console.error("[AuthService] Failed to fetch profile:", err);
     }
   }
 
