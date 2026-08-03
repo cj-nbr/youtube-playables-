@@ -1,13 +1,13 @@
 import { supabase } from "../database/connection.js";
 import { AppError } from "../errors/index.js";
+import bcrypt from "bcrypt";
 
-// User accounts live in Supabase Auth; the `profiles` table mirrors the
-// account + public profile fields keyed by the auth user id (uuid).
+const SALT_ROUNDS = 12;
 
 export const userRepository = {
   async findById(id) {
     const { data, error } = await supabase
-      .from("profiles")
+      .from("users")
       .select("*")
       .eq("id", id)
       .maybeSingle();
@@ -17,7 +17,7 @@ export const userRepository = {
 
   async findByEmail(email) {
     const { data, error } = await supabase
-      .from("profiles")
+      .from("users")
       .select("*")
       .eq("email", email)
       .maybeSingle();
@@ -25,65 +25,108 @@ export const userRepository = {
     return data || null;
   },
 
-  async findByUsername(username) {
+  async findByPhone(phone) {
     const { data, error } = await supabase
-      .from("profiles")
+      .from("users")
       .select("*")
-      .eq("username", username)
+      .eq("phone", phone)
       .maybeSingle();
     if (error) throw AppError.internal(error.message);
     return data || null;
   },
 
   async findByLogin(login) {
-    return (await this.findByEmail(login)) || (await this.findByUsername(login));
+    return (await this.findByEmail(login)) || (await this.findByPhone(login));
   },
 
   async emailExists(email) {
     const { count, error } = await supabase
-      .from("profiles")
+      .from("users")
       .select("id", { count: "exact", head: true })
       .eq("email", email);
     if (error) throw AppError.internal(error.message);
     return (count || 0) > 0;
   },
 
-  async usernameExists(username) {
+  async emailExistsExcluding(email, userId) {
     const { count, error } = await supabase
-      .from("profiles")
+      .from("users")
       .select("id", { count: "exact", head: true })
-      .eq("username", username);
+      .eq("email", email)
+      .neq("id", userId);
     if (error) throw AppError.internal(error.message);
     return (count || 0) > 0;
   },
 
-  async create({ id, username, email, role = "user", status = "active", email_verified = false }) {
+  async phoneExists(phone) {
+    const { count, error } = await supabase
+      .from("users")
+      .select("id", { count: "exact", head: true })
+      .eq("phone", phone);
+    if (error) throw AppError.internal(error.message);
+    return (count || 0) > 0;
+  },
+
+  async phoneExistsExcluding(phone, userId) {
+    const { count, error } = await supabase
+      .from("users")
+      .select("id", { count: "exact", head: true })
+      .eq("phone", phone)
+      .neq("id", userId);
+    if (error) throw AppError.internal(error.message);
+    return (count || 0) > 0;
+  },
+
+  async isSecretCodeUnique(code, excludeUserId = null) {
+    const hash = await this.hashSecretCode(code);
+    let query = supabase.from("users").select("id", { count: "exact", head: true }).eq("secret_code_hash", hash);
+    if (excludeUserId) {
+      query = query.neq("id", excludeUserId);
+    }
+    const { count, error } = await query;
+    if (error) throw AppError.internal(error.message);
+    return (count || 0) === 0;
+  },
+
+  async hashSecretCode(code) {
+    return bcrypt.hash(code, SALT_ROUNDS);
+  },
+
+  async verifySecretCode(code, hash) {
+    return bcrypt.compare(code, hash);
+  },
+
+  async create({ id, full_name, email, phone, secret_code_hash }) {
     const { data, error } = await supabase
-      .from("profiles")
-      .insert({ id, username, email, role, status, email_verified })
+      .from("users")
+      .insert({ id, full_name, email, phone, secret_code_hash })
       .select("*")
       .single();
     if (error) throw AppError.conflict(error.message);
     return data;
   },
 
-  async updateLastLogin(id) {
-    await supabase
-      .from("profiles")
-      .update({ last_login: new Date().toISOString(), updated_at: new Date().toISOString() })
-      .eq("id", id);
+  async update(id, fields) {
+    const { data, error } = await supabase
+      .from("users")
+      .update({ ...fields, updated_at: new Date().toISOString() })
+      .eq("id", id)
+      .select("*")
+      .single();
+    if (error) throw AppError.internal(error.message);
+    return data;
   },
 
-  async updateLastPlayed(id) {
+  async updateLastLogin(id) {
     await supabase
-      .from("profiles")
-      .update({ last_played: new Date().toISOString() })
+      .from("users")
+      .update({ last_login: new Date().toISOString(), updated_at: new Date().toISOString() })
       .eq("id", id);
   },
 
   async setStatus(id, status) {
     await supabase
-      .from("profiles")
+      .from("users")
       .update({ status, updated_at: new Date().toISOString() })
       .eq("id", id);
   },

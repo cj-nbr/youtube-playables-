@@ -17,7 +17,60 @@ import DarkModeToggle from "./DarkModeToggle.astro";
       </div>
       <div class="flex items-center gap-2">
         <DarkModeToggle />
+        <button id="profile-btn" class="hidden h-8 w-8 items-center justify-center rounded-full bg-canvas-soft text-ink transition-colors hover:bg-canvas-hover md:flex" aria-label="Profile">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A10 10 0 1118.9 12m-1.17 3.602a4 4 0 11-7.47 0 4 4 0 017.47 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 01-3 3" />
+          </svg>
+        </button>
       </div>
     </nav>
   </div>
 </header>
+
+<script>
+  import { authService } from "../lib/auth/auth-service.js";
+
+  const profileBtn = document.getElementById("profile-btn");
+
+  function handleProfileClick() {
+    const state = authService.getState();
+    if (state.loading) return;
+    
+    if (state.user) {
+      window.location.href = "/dashboard";
+    } else {
+      window.location.href = "/login";
+    }
+  }
+
+  function updateButtonVisibility() {
+    if (profileBtn) {
+      const state = authService.getState();
+      profileBtn.classList.toggle("hidden", state.loading || !state.user);
+    }
+  }
+
+  // Initialize button visibility
+  updateButtonVisibility();
+
+  // Subscribe to auth state changes
+  const unsubscribe = authService.subscribe(() => {
+    updateButtonVisibility();
+  });
+
+  // Add click handler
+  if (profileBtn) {
+    profileBtn.addEventListener("click", handleProfileClick);
+  }
+
+  // Clean up on component unload
+  window.addEventListener("beforeunload", unsubscribe);
+</script>
+
+<auth-menu></auth-menu>
+<style>
+  .bg-canvas-hover {
+    background-color: var(--color-canvas-hover, rgba(0,0,0,0.05));
+  }
+</style>

@@ -1,22 +1,28 @@
 import { z } from "zod";
 
 export const registerSchema = z.object({
-  username: z.string().min(3).max(32).regex(/^[a-zA-Z0-9_]+$/),
-  email: z.string().email(),
-  password: z.string().min(8).max(128),
+  fullName: z.string().min(1).max(128),
+  email: z.string().email().optional().or(z.literal("")),
+  phone: z.string().min(1).max(20).optional().or(z.literal("")),
+  secretCode: z.string().length(6),
 });
 
 export const loginSchema = z.object({
   login: z.string().min(1),
-  password: z.string().min(1),
-  rememberMe: z.boolean().optional(),
+  secretCode: z.string().length(6),
 });
 
 export const profileUpdateSchema = z.object({
-  display_name: z.string().max(64).optional(),
-  bio: z.string().max(256).optional(),
-  location: z.string().max(128).optional(),
+  full_name: z.string().max(128).optional(),
+  email: z.string().email().optional().or(z.literal("")),
+  phone: z.string().max(20).optional().or(z.literal("")),
+  avatar_url: z.string().optional(),
   avatar_color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
+});
+
+export const changeSecretCodeSchema = z.object({
+  current_code: z.string().length(6),
+  new_code: z.string().length(6),
 });
 
 export const progressUpsertSchema = z.object({

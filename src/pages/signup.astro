@@ -10,16 +10,21 @@ import Layout from "../layouts/Layout.astro";
       <p class="mt-2 text-body">Sign up free to save high scores and continue your streak.</p>
       <form id="signup-form" class="mt-6 space-y-4">
         <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="username">Username</label>
-          <input id="username" type="text" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="gamer123" required />
+          <label class="mb-1 block text-sm font-medium text-ink" for="fullName">Full Name</label>
+          <input id="fullName" type="text" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="John Doe" required />
         </div>
         <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="email">Email</label>
-          <input id="email" type="email" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="you@example.com" required />
+          <label class="mb-1 block text-sm font-medium text-ink" for="email">Email (optional)</label>
+          <input id="email" type="email" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="you@example.com" />
         </div>
         <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="password">Password</label>
-          <input id="password" type="password" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="••••••••" required minlength="8" />
+          <label class="mb-1 block text-sm font-medium text-ink" for="phone">Phone Number (optional)</label>
+          <input id="phone" type="tel" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="+1234567890" />
+        </div>
+        <div>
+          <label class="mb-1 block text-sm font-medium text-ink" for="secretCode">Secret Code</label>
+          <input id="secretCode" type="text" maxlength="6" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="••••••" required />
+          <p class="mt-1 text-xs text-body">Exactly 6 characters, letters or numbers</p>
         </div>
         <button type="submit" class="inline-flex h-11 w-full items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Sign up</button>
       </form>
@@ -42,12 +47,13 @@ import Layout from "../layouts/Layout.astro";
         errorEl.style.display = "none";
         successEl.style.display = "none";
 
-        const username = (document.getElementById("username") as HTMLInputElement).value.trim();
+        const fullName = (document.getElementById("fullName") as HTMLInputElement).value.trim();
         const email = (document.getElementById("email") as HTMLInputElement).value.trim();
-        const password = (document.getElementById("password") as HTMLInputElement).value;
+        const phone = (document.getElementById("phone") as HTMLInputElement).value.trim();
+        const secretCode = (document.getElementById("secretCode") as HTMLInputElement).value;
 
         try {
-          const result = await register(username, email, password);
+          const result = await register(fullName, email, phone, secretCode);
           if (result.needsConfirmation) {
             successEl.textContent =
               "Account created! Please check your email to confirm, then log in.";

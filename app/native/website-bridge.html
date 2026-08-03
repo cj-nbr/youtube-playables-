@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YouTube Playables - App Bridge</title>
+    <script>
+        /**
+         * YouTube Playables App Bridge
+         * 
+         * This script detects when the website is running inside the Android app
+         * and enables app-specific features. Include this script in your website's
+         * <head> or before the closing </body> tag.
+         * 
+         * The website can detect the app context by checking:
+         * 1. URL parameters: isApp=true, platform=android
+         * 2. JavaScript API: window.__ytpApp
+         * 3. Custom event: 'ytp:app_ready'
+         * 
+         * Example usage:
+         *   if (window.__ytpApp && window.__ytpApp.isApp) {
+         *       // Hide "Download App" button
+         *       // Show "Rate App" button
+         *       // Enable native sharing
+         *       // Show rewarded ads
+         *   }
+         */
+
+        (function() {
+            'use strict';
+
+            // Detect app context from URL parameters
+            function detectAppContext() {
+                var params = new URLSearchParams(window.location.search);
+                return {
+                    isApp: params.get('isApp') === 'true',
+                    platform: params.get('platform') || 'web',
+                    source: params.get('source') || 'web',
+                    baseUrl: params.get('baseUrl') || window.location.origin
+                };
+            }
+
+            // Initialize the app bridge
+            function init() {
+                var context = detectAppContext();
+
+                // Expose app context globally
+                window.__ytpApp = {
+                    isApp: context.isApp,
+                    platform: context.platform,
+                    source: context.source,
+                    baseUrl: context.baseUrl,
+                    version: '1.0.0',
+
+                    // App-specific feature flags
+                    features: {
+                        rewardedAds: context.isApp,
+                        nativeShare: context.isApp,
+                        rateApp: context.isApp,
+                        nativeNotifications: context.isApp,
+                        deepLinks: context.isApp,
+                        appOnlyEvents: context.isApp
+                    },
+
+                    // Send event to native app
+            sendEvent: function(event, data) {
+                        if (window.AndroidBridge && window.AndroidBridge.onEvent) {
+                            window.AndroidBridge.onEvent(event, JSON.stringify(data || {}));
+                        }
+                    },
+
+                    // Show rewarded ad (app-only)
+                    showRewardedAd: function(options) {
+                        if (context.isApp) {
+                            this.sendEvent('show_rewarded_ad', options || {});
+                        }
+                    },
+
+                    // Native share (app-only)
+                    share: function(data) {
+                        if (context.isApp) {
+                            this.sendEvent('share_content', data);
+                        }
+                    },
+
+                    // Rate app (app-only)
+                    rateApp: function() {
+                        if (context.isApp) {
+                            this.sendEvent('rate_app', {});
+                        }
+                    },
+
+                    // Open Play Store (app-only)
+                    openPlayStore: function() {
+                        if (context.isApp) {
+                            this.sendEvent('open_play_store', {});
+                        }
+                    },
+
+                    // Download file (app-only)
+                    downloadFile: function(url, filename) {
+                        if (context.isApp) {
+                            this.sendEvent('download_file', { url: url, filename: filename });
+                        }
+                    }
+                };
+
+                // Dispatch event for website code to listen to
+                window.dispatchEvent(new CustomEvent('ytp:app_ready', {
+                    detail: context
+                }));
+
+                // Log app context in debug mode
+                if (context.isApp) {
+                    console.log('[YTPlayables Bridge] App detected:', context);
+                }
+            }
+
+            // Run on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- This is just a reference file. Include the script tag in your website: -->
+    <!-- <script src="/bridge/ytp-app-bridge.js"></script> -->
+</body>
+</html>

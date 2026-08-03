@@ -1,104 +1,185 @@
 import { supabase } from "../database/connection.js";
 import { userRepository } from "../repositories/userRepository.js";
 import { profileRepository } from "../repositories/profileRepository.js";
+import { sessionRepository } from "../repositories/sessionRepository.js";
 import { AppError } from "../errors/index.js";
+import crypto from "crypto";
 
-// Authentication is delegated to Supabase Auth. The server uses the
-// service-role client to administer users and the anon client (via
-// verifyToken in the auth middleware) to validate sessions.
+const TOKEN_BYTES = 32;
+const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
+function generateToken() {
+  return crypto.randomBytes(TOKEN_BYTES).toString("hex");
+}
+
+function expiresAt() {
+  return new Date(Date.now() + SESSION_TTL_MS).toISOString();
+}
 
 export const authService = {
-  async register({ username, email, password }) {
-    if (await userRepository.usernameExists(username)) {
-      throw AppError.conflict("Username already taken");
+  async register({ fullName, email, phone, secretCode }) {
+    if (!fullName || fullName.trim().length === 0) {
+      throw AppError.badRequest("Full name is required");
     }
-    if (await userRepository.emailExists(email)) {
+    if (!email && !phone) {
+      throw AppError.badRequest("At least one of email or phone number is required");
+    }
+    if (!secretCode || secretCode.length !== 6) {
+      throw AppError.badRequest("Secret code must be exactly 6 characters");
+    }
+
+    if (email && (await userRepository.emailExists(email))) {
       throw AppError.conflict("Email already registered");
     }
-
-    const { data: created, error } = await supabase.auth.admin.createUser({
-      email,
-      password,
-      email_confirm: true, // auto-confirm so players can sign in immediately
-      user_metadata: { username, display_name: username },
-    });
-    if (error) {
-      throw AppError.conflict(error.message || "Unable to create account");
+    if (phone && (await userRepository.phoneExists(phone))) {
+      throw AppError.conflict("Phone number already registered");
     }
-    if (!created?.user) {
-      throw AppError.internal("Account creation did not return a user");
+    if (!(await userRepository.isSecretCodeUnique(secretCode))) {
+      throw AppError.conflict("This secret code is already taken");
     }
 
-    const userId = created.user.id;
-    const profile = await profileRepository.upsert(userId, {
-      username,
-      email,
-      role: "user",
-      status: "active",
-      email_verified: true,
+    const id = crypto.randomUUID();
+    const secretCodeHash = await userRepository.hashSecretCode(secretCode);
+
+    const user = await userRepository.create({
+      id,
+      full_name: fullName.trim(),
+      email: email || null,
+      phone: phone || null,
+      secret_code_hash: secretCodeHash,
     });
 
-    const { data: session, error: signInError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
+    await profileRepository.upsert(id, {
+      display_name: fullName.trim(),
+      email: email || null,
+      phone: phone || null,
     });
-    if (signInError || !session?.session) {
-      // Account exists but we couldn't start a session; still return the profile.
-      return { user: this.sanitize(profile), token: null, expiresIn: 0 };
-    }
+
+    const token = generateToken();
+    await sessionRepository.create(id, token);
 
     return {
-      user: this.sanitize(profile),
-      token: session.session.access_token,
-      expiresIn: session.session.expires_in,
+      user: this.sanitizeUser(user),
+      token,
+      expiresIn: SESSION_TTL_MS,
     };
   },
 
-  async login({ login, password }) {
-    let result = await supabase.auth.signInWithPassword({ email: login, password });
-
-    if (result.error) {
-      // `login` may be a username — resolve it to the registered email.
-      const profile = await userRepository.findByUsername(login);
-      if (!profile?.email) throw AppError.unauthorized("Invalid credentials");
-      result = await supabase.auth.signInWithPassword({ email: profile.email, password });
+  async login({ login, secretCode }) {
+    if (!login || login.length === 0) {
+      throw AppError.badRequest("Email or phone number is required");
+    }
+    if (!secretCode || secretCode.length !== 6) {
+      throw AppError.badRequest("Secret code must be exactly 6 characters");
     }
 
-    if (result.error || !result.data?.session) {
+    const user = await userRepository.findByLogin(login);
+    if (!user) {
       throw AppError.unauthorized("Invalid credentials");
     }
 
-    const authUser = result.data.user;
-    const profile = await userRepository.findById(authUser.id);
-    if (profile?.status === "suspended") throw AppError.forbidden("Account suspended");
-    if (profile?.status === "deleted") throw AppError.unauthorized("Account not found");
+    const valid = await userRepository.verifySecretCode(secretCode, user.secret_code_hash);
+    if (!valid) {
+      throw AppError.unauthorized("Invalid credentials");
+    }
 
-    await userRepository.updateLastLogin(authUser.id);
+    if (user.status !== "active") {
+      throw AppError.forbidden("Account is not active");
+    }
+
+    await userRepository.updateLastLogin(user.id);
+
+    const token = generateToken();
+    await sessionRepository.create(user.id, token);
 
     return {
-      user: this.sanitize(profile),
-      token: result.data.session.access_token,
-      expiresIn: result.data.session.expires_in,
+      user: this.sanitizeUser(user),
+      token,
+      expiresIn: SESSION_TTL_MS,
     };
   },
 
-  // Revoke all of the user's Supabase sessions (true server-side logout).
-  async logout(userId) {
-    if (!userId) return;
-    const { error } = await supabase.auth.admin.signOut({ userId });
-    if (error) throw AppError.internal(error.message);
+  async logout(token) {
+    if (!token) return;
+    await sessionRepository.revoke(token);
   },
 
-  async me(userId) {
-    const profile = await userRepository.findById(userId);
-    if (!profile) throw AppError.unauthorized("User not found");
-    return this.sanitize(profile);
+  async me(token) {
+    const session = await sessionRepository.findByToken(token);
+    if (!session || !session.is_active) {
+      throw AppError.unauthorized("Invalid or expired session");
+    }
+    if (new Date(session.expires_at) < new Date()) {
+      await sessionRepository.revoke(token);
+      throw AppError.unauthorized("Session expired");
+    }
+    const user = await userRepository.findById(session.user_id);
+    if (!user) throw AppError.unauthorized("User not found");
+    return this.sanitizeUser(user);
   },
 
-  sanitize(profile) {
-    // The profile table holds no secrets (passwords live in Supabase Auth),
-    // so it can be returned as-is.
-    return profile;
+  async updateProfile(userId, fields) {
+    const allowed = {};
+    if (fields.full_name !== undefined) allowed.full_name = fields.full_name.trim();
+    if (fields.email !== undefined) allowed.email = fields.email;
+    if (fields.phone !== undefined) allowed.phone = fields.phone;
+    if (fields.avatar_url !== undefined) allowed.avatar_url = fields.avatar_url;
+    if (fields.avatar_color !== undefined) allowed.avatar_color = fields.avatar_color;
+
+    if (Object.keys(allowed).length === 0) {
+      throw AppError.badRequest("No fields provided");
+    }
+
+    if (allowed.email && (await userRepository.emailExistsExcluding(allowed.email, userId))) {
+      throw AppError.conflict("Email already in use");
+    }
+    if (allowed.phone && (await userRepository.phoneExistsExcluding(allowed.phone, userId))) {
+      throw AppError.conflict("Phone number already in use");
+    }
+
+    const user = await userRepository.update(userId, allowed);
+    return this.sanitizeUser(user);
+  },
+
+  async changeSecretCode(userId, currentCode, newCode) {
+    if (!currentCode || currentCode.length !== 6) {
+      throw AppError.badRequest("Current secret code must be 6 characters");
+    }
+    if (!newCode || newCode.length !== 6) {
+      throw AppError.badRequest("New secret code must be 6 characters");
+    }
+
+    const user = await userRepository.findById(userId);
+    if (!user) throw AppError.unauthorized("User not found");
+
+    const valid = await userRepository.verifySecretCode(currentCode, user.secret_code_hash);
+    if (!valid) {
+      throw AppError.unauthorized("Current secret code is incorrect");
+    }
+
+    if (!(await userRepository.isSecretCodeUnique(newCode, userId))) {
+      throw AppError.conflict("This secret code is already taken");
+    }
+
+    const newHash = await userRepository.hashSecretCode(newCode);
+    await userRepository.update(userId, { secret_code_hash: newHash });
+    return { success: true };
+  },
+
+  async refreshSession(token) {
+    const session = await sessionRepository.findByToken(token);
+    if (!session || !session.is_active) {
+      throw AppError.unauthorized("Invalid session");
+    }
+    const newToken = generateToken();
+    await sessionRepository.revoke(token);
+    await sessionRepository.create(session.user_id, newToken);
+    return { token: newToken, expiresIn: SESSION_TTL_MS };
+  },
+
+  sanitizeUser(user) {
+    const { secret_code_hash, ...safe } = user;
+    return safe;
   },
 };
 

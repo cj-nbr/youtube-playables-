@@ -7,15 +7,15 @@ import Layout from "../layouts/Layout.astro";
   <main id="main" class="mx-auto max-w-[1400px] px-6 py-24">
     <div class="mx-auto max-w-md rounded-xl border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
       <h1 class="text-3xl font-semibold tracking-tight text-ink">Welcome back.</h1>
-      <p class="mt-2 text-body">Log in to sync your high scores and recently played games.</p>
+      <p class="mt-2 text-body">Log in with your email or phone and 6-character secret code.</p>
       <form id="login-form" class="mt-6 space-y-4">
         <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="login">Email or username</label>
-          <input id="login" type="text" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="you@example.com" required />
+          <label class="mb-1 block text-sm font-medium text-ink" for="login">Email or Phone Number</label>
+          <input id="login" type="text" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="you@example.com or +1234567890" required />
         </div>
         <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="password">Password</label>
-          <input id="password" type="password" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="••••••••" required />
+          <label class="mb-1 block text-sm font-medium text-ink" for="secret-code">Secret Code</label>
+          <input id="secret-code" type="text" maxlength="6" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="••••••" required />
         </div>
         <button type="submit" class="inline-flex h-11 w-full items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Log in</button>
       </form>
@@ -38,10 +38,10 @@ import Layout from "../layouts/Layout.astro";
         if (btn) { btn.disabled = true; btn.textContent = "Signing in…"; }
 
         const loginValue = document.getElementById("login").value.trim();
-        const password = document.getElementById("password").value;
+        const secretCode = document.getElementById("secret-code").value;
 
         try {
-          await login(loginValue, password);
+          await login(loginValue, secretCode);
           window.location.href = "/playables";
         } catch (err) {
           if (btn) { btn.disabled = false; btn.textContent = "Log in"; }

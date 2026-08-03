@@ -1,37 +1,25 @@
 import { Router } from "express";
 import { authService } from "../services/authService.js";
-import { registerSchema, loginSchema } from "../validators/index.js";
+import { registerSchema, loginSchema, profileUpdateSchema, changeSecretCodeSchema } from "../validators/index.js";
 import { validate } from "../middleware/validate.js";
 import { asyncHandler } from "../helpers/index.js";
 import { authenticate } from "../middleware/auth.js";
-import { verifyToken } from "../database/connection.js";
-import config from "../config/index.js";
 
 export const router = Router();
 export default router;
 
 router.post("/register", validate(registerSchema), asyncHandler(async (req, res) => {
   const result = await authService.register(req.body);
-  if (result.token) {
-    const maxAge = (result.expiresIn || config.session.ttlHours * 60 * 60) * 1000;
-    res.cookie("session_token", result.token, {
-      httpOnly: true,
-      secure: config.isProduction,
-      sameSite: "lax",
-      maxAge,
-    });
-  }
   res.status(201).json({ success: true, data: result });
 }));
 
 router.post("/login", validate(loginSchema), asyncHandler(async (req, res) => {
   const result = await authService.login(req.body);
-  const maxAge = (result.expiresIn || config.session.ttlHours * 60 * 60) * 1000;
   res.cookie("session_token", result.token, {
     httpOnly: true,
-    secure: config.isProduction,
+    secure: false,
     sameSite: "lax",
-    maxAge,
+    maxAge: result.expiresIn,
   });
   res.json({ success: true, data: result });
 }));
@@ -39,8 +27,7 @@ router.post("/login", validate(loginSchema), asyncHandler(async (req, res) => {
 router.post("/logout", asyncHandler(async (req, res) => {
   const token = req.cookies?.session_token || req.headers.authorization?.slice(7);
   if (token) {
-    const authUser = await verifyToken(token);
-    if (authUser) await authService.logout(authUser.id);
+    await authService.logout(token);
   }
   res.clearCookie("session_token");
   res.json({ success: true });
@@ -49,4 +36,26 @@ router.post("/logout", asyncHandler(async (req, res) => {
 router.get("/me", authenticate, asyncHandler(async (req, res) => {
   const user = await authService.me(req.user.id);
   res.json({ success: true, data: user });
+}));
+
+router.patch("/me", authenticate, validate(profileUpdateSchema), asyncHandler(async (req, res) => {
+  const user = await authService.updateProfile(req.user.id, req.body);
+  res.json({ success: true, data: user });
+}));
+
+router.post("/change-secret-code", authenticate, validate(changeSecretCodeSchema), asyncHandler(async (req, res) => {
+  const result = await authService.changeSecretCode(req.user.id, req.body.current_code, req.body.new_code);
+  res.json({ success: true, data: result });
+}));
+
+router.post("/refresh-session", authenticate, asyncHandler(async (req, res) => {
+  const token = req.cookies?.session_token || req.headers.authorization?.slice(7);
+  const result = await authService.refreshSession(token);
+  res.cookie("session_token", result.token, {
+    httpOnly: true,
+    secure: false,
+    sameSite: "lax",
+    maxAge: result.expiresIn,
+  });
+  res.json({ success: true, data: result });
 }));
