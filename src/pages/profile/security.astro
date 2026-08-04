@@ -1,0 +1,101 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { authService } from "../../lib/auth/auth-service";
+const { user } = authService.getState();
+const loading = !user && !authService.isLoggedIn();
+---
+
+<Layout title="Security Settings - YOUTUBE PLAYABLES" description="Manage your security settings including secret code and session management">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
+    <div class="mx-auto max-w-2xl bg-canvas p-8 rounded-xl shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
+      <div class="py-8">
+        <div class="text-center mb-8">
+          <h1 class="text-4xl font-bold text-ink mb-3">Security Settings</h1>
+          <p class="text-body text-lg text-slate-300">
+            Manage your secret code, active sessions, and account security
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          <div class="bg-canvas-border p-6 rounded-xl">
+            <h2 class="text-xl font-semibold text-ink mb-4 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6M9 9a1 1 0 012 0v2a1 1 0 002 0v-2a1 1 0 012 0M9 9v2a3 3 0 006 0V9h-6z" />
+              </svg>
+              Secret Code
+            </h2>
+            <p class="text-slate-400 mb-4">Your secret code is a 6-character code used to sign in. Keep it secure and don't share it with anyone.</p>
+            <div class="flex items-center justify-between p-4 bg-canvas rounded-lg">
+              <div>
+                <span class="text-sm text-slate-400">Current Secret Code:</span>
+                <div class="mt-1 font-mono text-lg text-ink tracking-widest">******</div>
+              </div>
+              <button class="px-4 py-2 rounded-lg bg-canvas-border text-ink hover:bg-canvas-hover transition-colors text-sm">
+                Change Secret Code
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-canvas-border p-6 rounded-xl">
+            <h2 class="text-xl font-semibold text-ink mb-4 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              Active Sessions
+            </h2>
+            <p class="text-slate-400 mb-4">Manage devices currently logged into your account.</p>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between p-4 bg-canvas rounded-lg">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white">
+                    💻
+                  </div>
+                  <div>
+                    <div class="font-medium text-ink">Current Session</div>
+                    <div class="text-sm text-slate-400">Chrome on Windows — Active now</div>
+                  </div>
+                </div>
+                <span class="px-2 py-1 text-xs bg-green-500/20 text-green-500 rounded-full">Current</span>
+              </div>
+              <div class="flex items-center justify-between p-4 bg-canvas rounded-lg">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white">
+                    📱
+                  </div>
+                  <div>
+                    <div class="font-medium text-ink">Mobile Device</div>
+                    <div class="text-sm text-slate-400">Safari on iOS — 2 hours ago</div>
+                  </div>
+                </div>
+                <button class="px-3 py-1 text-xs text-red-500 hover:text-red-700">Revoke</button>
+              </div>
+            </div>
+            <button class="mt-4 px-4 py-2 rounded-lg bg-canvas-border text-ink hover:bg-canvas-hover transition-colors text-sm">
+              Revoke All Other Sessions
+            </button>
+          </div>
+
+          <div class="bg-canvas-border p-6 rounded-xl border border-red-500/20">
+            <h2 class="text-xl font-semibold text-ink mb-4 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              Danger Zone
+            </h2>
+            <p class="text-slate-400 mb-4">Once you delete your account, there is no going back. Please be certain.</p>
+            <button class="px-6 py-2 rounded-lg bg-red-500/10 text-red-500 hover:bg-red-500/20 border border-red-500/30 transition-colors">
+              Delete Account
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <a href="/profile" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">
+            ← Back to Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

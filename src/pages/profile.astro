@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { authService } from "../lib/auth/auth-service";
+const { user } = authService.getState();
+const loading = !user && !authService.isLoggedIn();
 ---
 
 <Layout title="My Profile - YOUTUBE PLAYABLES" description="Your profile, achievements, and personal settings">
@@ -9,98 +12,45 @@ import Layout from "../layouts/Layout.astro";
       <div class="py-8">
         <div class="text-center mb-8">
           <h1 class="text-4xl font-bold text-ink mb-3">My Account</h1>
-          <p class="text-body text-lg text-slate-300">Manage your account, progress, and achievements</p>
+          <p class="text-body text-lg text-slate-300">
+            {loading ? "Loading..." : user?.name || user?.username || user?.email || "Welcome back!"}
+          </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-canvas text-center rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div class="relative h-24 w-24 mx-auto">
-              <img 
-                src="/avatars/avatar-blue.svg" 
-                alt="Profile" 
-                class="w-full h-full rounded-full object-cover cursor-pointer hover:scale-105"
-              />
-            </div>
-            <h2 class="mt-4 text-xl font-medium text-ink">Profile</h2>
-            <p class="mt-1 text-sm text-slate-400">
-              Manage your personal information
-            </p>
-          </div>
-          
-          <div class="bg-canvas text-center rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div class="space-y-3">
-              <p class="text-base font-medium text-ink">Statistics</p>
-              <div class="flex justify-center items-center space-x-3">
-                <div class="flex flex-col items-center">
-                  <span class="text-red-500 text-6xl font-bold">6</span>
-                  <span class="text-slate-400 text-sm">Games</span>
-                </div>
-                <div class="flex flex-col items-center">
-                  <span class="text-red-500 text-6xl font-bold">1245</span>
-                  <span class="text-slate-400 text-sm">Points</span>
-                </div>
-                <div class="flex flex-col items-center">
-                  <span class="text-red-500 text-6xl font-bold">55</span>
-                  <span class="text-slate-400 text-sm">Levels</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="bg-canvas text-center rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div class="space-y-4">
-              <p class="text-base font-medium text-ink">Achievements</p>
-              <div class="flex items-start">
-                <div class="flex-1 mx-3 min-h-16 h-full flex items-center">
-                  <div class="flex items-center">
-                    <div class="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center">
-                      <span class="text-white text-xs font-medium">3</span>
-                    </div>
-                    <span class="ml-1 text-sm text-slate-400">Newbie</span>
-                  </div>
-                </div>
-                <div class="flex-1 mx-3 min-h-16 h-full flex items-center">
-                  <div class="flex items-center">
-                    <div class="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center">
-                      <span class="text-white text-xs font-medium">12</span>
-                    </div>
-                    <span class="ml-1 text-sm text-slate-400">Completed Tasks</span>
-                  </div>
-                </div>
-                <div class="flex-1 mx-3 min-h-16 h-full flex items-center">
-                  <div class="flex items-center">
-                    <div class="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center">
-                      <span class="text-white text-xs font-medium">5</span>
-                    </div>
-                    <span class="ml-1 text-sm text-slate-400">Invites</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-canvas rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow mt-12">
-          <div class="space-y-4">
-            <p class="text-base font-medium text-ink mb-2">Security Settings</p>
-            <div class="flex flex-col space-y-2">
-              <button class="flex items-center gap-2 w-full text-left p-3 bg-canvas-border rounded-lg hover:bg-canvas-border hover:bg-opacity-75 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V9m-5-4h3Z" />
-                </svg>
-                <span>Current Secret Code:</span>
-                <span class="ml-2 text-sm text-slate-400 truncate">
-                  **********
-                </span>
-              </button>
-              <button class="flex items-center gap-2 w-full text-left p-3 bg-canvas-border rounded-lg hover:bg-canvas-border hover:bg-opacity-75 transition-colors text-red-600 hover:text-red-800">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 3a2 2 0 012 2v10.55a.5.5 0 01-.236 0.971l-2.34 1.69a1 1 0 01-.802-.281h-1.42a1 1 0 01-0.951-0.719L3 12.5V5a1 1 0 011-1h14z" />
-                </svg>
-                <span>Change Secret Code</span>
-              </button>
-            </div>
-          </div>
+        <nav class="space-y-4">
+          <a href="/profile/details" class="flex items-center gap-3 w-full text-left p-3 rounded-lg hover:bg-canvas-hover transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 12h14M5 16h14" />
+            </svg>
+            <span class="text-base font-medium text-ink">Profile Details</span>
+          </a>
+
+          <a href="/profile/achievements" class="flex items-center gap-3 w-full text-left p-3 rounded-lg hover:bg-canvas-hover transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5a1 1 0 110 2H9a1 1 0 010-2h5zm0 4-6 6v2h12v-2l-6-6z" />
+            </svg>
+            <span class="text-base font-medium text-ink">Achievements</span>
+          </a>
+
+          <a href="/profile/statistics" class="flex items-center gap-3 w-full text-left p-3 rounded-lg hover:bg-canvas-hover transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6M9 5v6m12 0v6m-6-6v6m6-6H9" />
+            </svg>
+            <span class="text-base font-medium text-ink">Statistics</span>
+          </a>
+
+          <a href="/profile/security" class="flex items-center gap-3 w-full text-left p-3 rounded-lg hover:bg-canvas-hover transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6M9 9a1 1 0 012 0v2a1 1 0 002 0v-2a1 1 0 012 0M9 9v2a3 3 0 006 0V9h-6z" />
+            </svg>
+            <span class="text-base font-medium text-ink">Security Settings</span>
+          </a>
+        </nav>
+
+        <div class="mt-12 flex justify-center">
+          <a href="/login" class="px-6 py-2 rounded-lg bg-gradient-to-r from-[#007cf0] to-[#00dfd8] text-white hover:opacity-90 transition-opacity">
+            <span class="text-sm">Sign Out</span>
+          </a>
         </div>
       </div>
     </div>
