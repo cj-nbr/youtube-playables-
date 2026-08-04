@@ -1,0 +1,134 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { authService } from "../../lib/auth/auth-service";
+const { user, loading } = authService.getState();
+
+const level = user?.current_level || 1;
+const gamesPlayed = user?.games_played || 0;
+const highScore = user?.highest_score || 0;
+const achievements = user?.achievements_count || 0;
+const playTime = user?.total_play_time || 0;
+const playTimeHours = Math.floor(playTime / 60);
+const playTimeMinutes = playTime % 60;
+const coins = user?.coins || 0;
+const experience = user?.experience || 0;
+const rank = user?.player_rank || "Bronze";
+
+const winRate = gamesPlayed > 0 ? Math.round((achievements / gamesPlayed) * 100) : 0;
+const avgScore = gamesPlayed > 0 ? Math.round(highScore / gamesPlayed) : 0;
+---
+
+<Layout title="Statistics — YOUTUBE PLAYABLES" description="View your gaming statistics and progress">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
+    {loading ? (
+      <div class="mx-auto max-w-2xl py-20 text-center">
+        <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
+        <p class="mt-4 text-body">Loading statistics...</p>
+      </div>
+    ) : !user ? (
+      <div class="mx-auto max-w-2xl py-20 text-center">
+        <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
+        <p class="text-body mb-6">You need to be logged in to view statistics.</p>
+        <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+      </div>
+    ) : (
+      <div class="mx-auto max-w-3xl space-y-6">
+        <div class="mb-8">
+          <h1 class="text-3xl font-bold text-ink">Statistics</h1>
+          <p class="mt-2 text-body">Track your gaming progress and performance.</p>
+        </div>
+
+        <div class="bg-canvas rounded-xl border border-hairline p-6">
+          <h2 class="text-lg font-semibold text-ink mb-4">Overview</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-3xl font-bold text-[#007cf0]">{level}</div>
+              <div class="text-xs text-body mt-1">Current Level</div>
+            </div>
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-3xl font-bold text-[#007cf0]">{gamesPlayed}</div>
+              <div class="text-xs text-body mt-1">Games Played</div>
+            </div>
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-3xl font-bold text-[#007cf0]">{highScore.toLocaleString()}</div>
+              <div class="text-xs text-body mt-1">Highest Score</div>
+            </div>
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-3xl font-bold text-[#007cf0]">{achievements}</div>
+              <div class="text-xs text-body mt-1">Achievements</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-canvas rounded-xl border border-hairline p-6">
+          <h2 class="text-lg font-semibold text-ink mb-4">Performance</h2>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-sm text-body">Win Rate</span>
+                <span class="text-sm font-medium text-ink">{winRate}%</span>
+              </div>
+              <div class="h-2 rounded-full bg-canvas-border overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8]" style="width: {winRate}%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-sm text-body">Level Progress</span>
+                <span class="text-sm font-medium text-ink">Level {level}</span>
+              </div>
+              <div class="h-2 rounded-full bg-canvas-border overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8]" style="width: {Math.min((experience % 1000) / 10, 100)}%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-canvas rounded-xl border border-hairline p-6">
+          <h2 class="text-lg font-semibold text-ink mb-4">Time & Rewards</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-[#007cf0]">{playTimeHours}h {playTimeMinutes}m</div>
+              <div class="text-xs text-body mt-1">Total Play Time</div>
+            </div>
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-[#007cf0]">{coins.toLocaleString()}</div>
+              <div class="text-xs text-body mt-1">Coins</div>
+            </div>
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-[#007cf0]">{experience.toLocaleString()}</div>
+              <div class="text-xs text-body mt-1">Experience</div>
+            </div>
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-[#007cf0]">{rank}</div>
+              <div class="text-xs text-body mt-1">Rank</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-canvas rounded-xl border border-hairline p-6">
+          <h2 class="text-lg font-semibold text-ink mb-4">Game Stats</h2>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-[#007cf0]">{avgScore.toLocaleString()}</div>
+              <div class="text-xs text-body mt-1">Average Score</div>
+            </div>
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-[#007cf0]">{Math.round(winRate)}%</div>
+              <div class="text-xs text-body mt-1">Win Rate</div>
+            </div>
+            <div class="bg-canvas-border rounded-lg p-4 text-center">
+              <div class="text-2xl font-bold text-[#007cf0]">{Math.max(0, gamesPlayed - achievements)}</div>
+              <div class="text-xs text-body mt-1">Games Remaining</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between">
+          <a href="/profile" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">← Back to Profile</a>
+        </div>
+      </div>
+    )}
+  </main>
+</Layout>

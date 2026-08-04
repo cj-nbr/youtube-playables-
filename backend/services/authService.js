@@ -40,6 +40,7 @@ export const authService = {
 
     const id = crypto.randomUUID();
     const secretCodeHash = await userRepository.hashSecretCode(secretCode);
+    const uniqueUserCode = await userRepository.generateUniqueCode();
 
     const user = await userRepository.create({
       id,
@@ -47,6 +48,7 @@ export const authService = {
       email: email || null,
       phone: phone || null,
       secret_code_hash: secretCodeHash,
+      unique_user_code: uniqueUserCode,
     });
 
     await profileRepository.upsert(id, {

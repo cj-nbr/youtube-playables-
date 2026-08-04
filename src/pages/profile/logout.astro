@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { authService } from "../../lib/auth/auth-service";
+const { user, loading } = authService.getState();
+---
+
+<Layout title="Log Out — YOUTUBE PLAYABLES" description="Log out of your YOUTUBE PLAYABLES account">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
+    {loading ? (
+      <div class="mx-auto max-w-md py-20 text-center">
+        <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
+        <p class="mt-4 text-body">Loading...</p>
+      </div>
+    ) : !user ? (
+      <div class="mx-auto max-w-md py-20 text-center">
+        <h1 class="text-3xl font-bold text-ink mb-4">You are not logged in</h1>
+        <p class="text-body mb-6">You are already logged out.</p>
+        <a href="/playables" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Go to Playables</a>
+      </div>
+    ) : (
+      <div class="mx-auto max-w-md">
+        <div class="bg-canvas rounded-xl border border-hairline p-8 text-center shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
+          <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-red-500/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+          </div>
+          <h1 class="text-2xl font-bold text-ink mb-2">Are you sure you want to log out?</h1>
+          <p class="text-body mb-8">You will need to enter your secret code again to access your account.</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="/profile" class="inline-flex items-center justify-center rounded-pill border border-hairline px-6 py-2.5 text-sm font-medium text-ink hover:bg-canvas-hover transition-colors">Cancel</a>
+            <button id="logout-btn" class="inline-flex items-center justify-center rounded-pill bg-red-500 px-6 py-2.5 text-sm font-medium text-white hover:opacity-90 transition-opacity">Log Out</button>
+          </div>
+        </div>
+      </div>
+    )}
+  </main>
+
+  <script>
+    (() => {
+      const btn = document.getElementById("logout-btn");
+      if (btn) {
+        btn.addEventListener("click", async () => {
+          await authService.signOut();
+          window.location.href = "/";
+        });
+      }
+    })();
+  </script>
+</Layout>

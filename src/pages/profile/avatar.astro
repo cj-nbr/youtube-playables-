@@ -1,0 +1,120 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { authService } from "../../lib/auth/auth-service";
+const { user, loading } = authService.getState();
+
+const avatars = [
+  { name: "Robot", src: "/avatars/gaming/robot.svg" },
+  { name: "Knight", src: "/avatars/gaming/knight.svg" },
+  { name: "Wizard", src: "/avatars/gaming/wizard.svg" },
+  { name: "Samurai", src: "/avatars/gaming/samurai.svg" },
+  { name: "Ninja", src: "/avatars/gaming/ninja.svg" },
+  { name: "Cyberpunk", src: "/avatars/gaming/cyberpunk.svg" },
+  { name: "Astronaut", src: "/avatars/gaming/astronaut.svg" },
+  { name: "Alien", src: "/avatars/gaming/alien.svg" },
+  { name: "Dragon", src: "/avatars/gaming/dragon.svg" },
+  { name: "Pixel Hero", src: "/avatars/gaming/pixel-hero.svg" },
+  { name: "Girl Gamer", src: "/avatars/gaming/girl-gamer.svg" },
+  { name: "Pirate", src: "/avatars/gaming/pirate.svg" },
+  { name: "Mage", src: "/avatars/gaming/mage.svg" },
+  { name: "Viking", src: "/avatars/gaming/viking.svg" },
+  { name: "Fox", src: "/avatars/gaming/fox.svg" },
+  { name: "Wolf", src: "/avatars/gaming/wolf.svg" },
+  { name: "Cat", src: "/avatars/gaming/cat.svg" },
+  { name: "Panda", src: "/avatars/gaming/panda.svg" },
+  { name: "Space Soldier", src: "/avatars/gaming/space-soldier.svg" },
+  { name: "Arcade Character", src: "/avatars/gaming/arcade-character.svg" },
+];
+
+let selectedAvatar = user?.avatar_url || "";
+let saving = false;
+let message = "";
+let messageType = "";
+---
+
+<Layout title="Choose Avatar — YOUTUBE PLAYABLES" description="Select your gaming avatar">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
+    {loading ? (
+      <div class="mx-auto max-w-2xl py-20 text-center">
+        <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
+        <p class="mt-4 text-body">Loading...</p>
+      </div>
+    ) : !user ? (
+      <div class="mx-auto max-w-2xl py-20 text-center">
+        <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
+        <p class="text-body mb-6">You need to be logged in to choose an avatar.</p>
+        <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+      </div>
+    ) : (
+      <div class="mx-auto max-w-3xl">
+        <div class="mb-8">
+          <h1 class="text-3xl font-bold text-ink">Choose Your Avatar</h1>
+          <p class="mt-2 text-body">Select a gaming avatar that represents you.</p>
+        </div>
+
+        <div class="bg-canvas rounded-xl border border-hairline p-6 mb-6">
+          <div class="flex items-center gap-4">
+            <div class="h-20 w-20 rounded-full bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-2xl font-bold overflow-hidden">
+              {selectedAvatar ? (
+                <img src={selectedAvatar} alt="Selected avatar" class="h-full w-full object-cover" />
+              ) : (
+                (user?.full_name || user?.name || "U").charAt(0).toUpperCase()
+              )}
+            </div>
+            <div>
+              <h2 class="text-lg font-semibold text-ink">Current Avatar</h2>
+              <p class="text-sm text-body">Click an avatar below to change it.</p>
+            </div>
+          </div>
+        </div>
+
+        {message && (
+          <div class={`mb-6 rounded-lg p-4 text-sm ${messageType === "error" ? "bg-red-500/10 text-red-500 border border-red-500/20" : "bg-green-500/10 text-green-500 border border-green-500/20"}`}>
+            {message}
+          </div>
+        )}
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {avatars.map((avatar) => {
+            const isSelected = selectedAvatar === avatar.src;
+            return (
+              <button
+                type="button"
+                onclick={async () => {
+                  selectedAvatar = avatar.src;
+                  saving = true;
+                  message = "";
+                  try {
+                    await authService.updateProfile({ avatar_url: avatar.src });
+                    message = "Avatar updated successfully!";
+                    messageType = "success";
+                  } catch (err) {
+                    message = err instanceof Error ? err.message : "Failed to update avatar";
+                    messageType = "error";
+                  }
+                  saving = false;
+                }}
+                class={`relative flex flex-col items-center gap-3 rounded-xl border-2 p-4 transition-all hover:scale-105 ${isSelected ? "border-[#007cf0] bg-[#007cf0]/5" : "border-hairline hover:border-[#007cf0]/50"}`}
+              >
+                <div class="h-16 w-16 rounded-full bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center overflow-hidden">
+                  <img src={avatar.src} alt={avatar.name} class="h-full w-full object-cover" />
+                </div>
+                <span class="text-xs font-medium text-ink">{avatar.name}</span>
+                {isSelected && (
+                  <span class="absolute top-2 right-2 h-5 w-5 rounded-full bg-[#007cf0] flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        <div class="mt-8 flex justify-between">
+          <a href="/profile" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">← Back to Profile</a>
+        </div>
+      </div>
+    )}
+  </main>
+</Layout>

@@ -1,58 +1,139 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { authService } from "../lib/auth/auth-service";
-const { user } = authService.getState();
-const loading = !user && !authService.isLoggedIn();
+const { user, loading } = authService.getState();
+
+const initials = user?.full_name || user?.name || "U";
+const initialLetter = initials.charAt(0).toUpperCase();
+
+const memberSince = user?.created_at ? new Date(user.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long" }) : "N/A";
+const lastLogin = user?.last_login ? new Date(user.last_login).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "N/A";
+
+const level = user?.current_level || 1;
+const gamesPlayed = user?.games_played || 0;
+const achievements = user?.achievements_count || 0;
+const highScore = user?.highest_score || 0;
+const rank = user?.player_rank || "Bronze";
+const playTime = user?.total_play_time || 0;
+const playTimeHours = Math.floor(playTime / 60);
+const coins = user?.coins || 0;
+const experience = user?.experience || 0;
 ---
 
-<Layout title="My Profile - YOUTUBE PLAYABLES" description="Your profile, achievements, and personal settings">
+<Layout title="My Profile — YOUTUBE PLAYABLES" description="View and manage your YOUTUBE PLAYABLES profile, stats, and achievements">
   <a href="#main" class="skip-link">Skip to content</a>
   <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
-    <div class="mx-auto max-w-2xl bg-canvas p-8 rounded-xl shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
-      <div class="py-8">
-        <div class="text-center mb-8">
-          <h1 class="text-4xl font-bold text-ink mb-3">My Account</h1>
-          <p class="text-body text-lg text-slate-300">
-            {loading ? "Loading..." : user?.name || user?.username || user?.email || "Welcome back!"}
-          </p>
+    {loading ? (
+      <div class="mx-auto max-w-2xl py-20 text-center">
+        <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
+        <p class="mt-4 text-body">Loading profile...</p>
+      </div>
+    ) : !user ? (
+      <div class="mx-auto max-w-2xl py-20 text-center">
+        <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
+        <p class="text-body mb-6">You need to be logged in to view your profile.</p>
+        <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+      </div>
+    ) : (
+      <div class="mx-auto max-w-2xl space-y-6">
+        <div class="bg-canvas rounded-xl border border-hairline shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] overflow-hidden">
+          <div class="relative h-32 bg-gradient-to-r from-[#007cf0] to-[#00dfd8]"></div>
+          <div class="px-6 pb-6">
+            <div class="relative -mt-16 mb-4">
+              <div class="h-32 w-32 rounded-full border-4 border-canvas bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-3xl font-bold shadow-lg overflow-hidden">
+                {user.avatar_url ? (
+                  <img src={user.avatar_url} alt="Avatar" class="h-full w-full object-cover" />
+                ) : (
+                  initialLetter
+                )}
+              </div>
+              <span class="absolute bottom-1 right-1 h-5 w-5 rounded-full bg-green-500 border-4 border-canvas"></span>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h1 class="text-2xl font-bold text-ink">{user.full_name || user.name || "Player"}</h1>
+                <p class="text-sm text-body font-mono mt-1">Code: {user.unique_user_code || "------"}</p>
+                <p class="text-sm text-body mt-1">{user.email || user.phone || ""}</p>
+              </div>
+              <div class="flex gap-2">
+                <a href="/profile/edit" class="inline-flex items-center rounded-pill border border-hairline px-4 py-2 text-sm font-medium text-ink hover:bg-canvas-hover transition-colors">Edit Profile</a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <nav class="space-y-4">
-          <a href="/profile/details" class="flex items-center gap-3 w-full text-left p-3 rounded-lg hover:bg-canvas-hover transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 12h14M5 16h14" />
-            </svg>
-            <span class="text-base font-medium text-ink">Profile Details</span>
-          </a>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
+            <div class="text-2xl font-bold text-[#007cf0]">{level}</div>
+            <div class="text-xs text-body mt-1">Level</div>
+          </div>
+          <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
+            <div class="text-2xl font-bold text-[#007cf0]">{gamesPlayed}</div>
+            <div class="text-xs text-body mt-1">Games Played</div>
+          </div>
+          <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
+            <div class="text-2xl font-bold text-[#007cf0]">{achievements}</div>
+            <div class="text-xs text-body mt-1">Achievements</div>
+          </div>
+          <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
+            <div class="text-2xl font-bold text-[#007cf0]">{highScore.toLocaleString()}</div>
+            <div class="text-xs text-body mt-1">High Score</div>
+          </div>
+        </div>
 
-          <a href="/profile/achievements" class="flex items-center gap-3 w-full text-left p-3 rounded-lg hover:bg-canvas-hover transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5a1 1 0 110 2H9a1 1 0 010-2h5zm0 4-6 6v2h12v-2l-6-6z" />
-            </svg>
-            <span class="text-base font-medium text-ink">Achievements</span>
-          </a>
+        <div class="bg-canvas rounded-xl border border-hairline p-6">
+          <h2 class="text-lg font-semibold text-ink mb-4">Account Details</h2>
+          <div class="space-y-3">
+            <div class="flex justify-between py-2 border-b border-hairline">
+              <span class="text-sm text-body">Member Since</span>
+              <span class="text-sm text-ink font-medium">{memberSince}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-hairline">
+              <span class="text-sm text-body">Last Login</span>
+              <span class="text-sm text-ink font-medium">{lastLogin}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-hairline">
+              <span class="text-sm text-body">Rank</span>
+              <span class="text-sm text-ink font-medium">{rank}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-hairline">
+              <span class="text-sm text-body">Play Time</span>
+              <span class="text-sm text-ink font-medium">{playTimeHours} hours</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-hairline">
+              <span class="text-sm text-body">Coins</span>
+              <span class="text-sm text-ink font-medium">{coins.toLocaleString()}</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span class="text-sm text-body">Experience</span>
+              <span class="text-sm text-ink font-medium">{experience.toLocaleString()} XP</span>
+            </div>
+          </div>
+        </div>
 
-          <a href="/profile/statistics" class="flex items-center gap-3 w-full text-left p-3 rounded-lg hover:bg-canvas-hover transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6M9 5v6m12 0v6m-6-6v6m6-6H9" />
-            </svg>
-            <span class="text-base font-medium text-ink">Statistics</span>
-          </a>
-
-          <a href="/profile/security" class="flex items-center gap-3 w-full text-left p-3 rounded-lg hover:bg-canvas-hover transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6M9 9a1 1 0 012 0v2a1 1 0 002 0v-2a1 1 0 012 0M9 9v2a3 3 0 006 0V9h-6z" />
-            </svg>
-            <span class="text-base font-medium text-ink">Security Settings</span>
-          </a>
-        </nav>
-
-        <div class="mt-12 flex justify-center">
-          <a href="/login" class="px-6 py-2 rounded-lg bg-gradient-to-r from-[#007cf0] to-[#00dfd8] text-white hover:opacity-90 transition-opacity">
-            <span class="text-sm">Sign Out</span>
-          </a>
+        <div class="bg-canvas rounded-xl border border-hairline p-6">
+          <h2 class="text-lg font-semibold text-ink mb-4">Quick Actions</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <a href="/profile/achievements" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.414 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+              <span class="text-xs text-ink font-medium">Achievements</span>
+            </a>
+            <a href="/profile/statistics" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6M9 5v6m12 0v6m-6-6v6m6-6H9" /></svg>
+              <span class="text-xs text-ink font-medium">Statistics</span>
+            </a>
+            <a href="/profile/details" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+              <span class="text-xs text-ink font-medium">Details</span>
+            </a>
+            <a href="/profile/security" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              <span class="text-xs text-ink font-medium">Security</span>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    )}
   </main>
 </Layout>

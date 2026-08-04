@@ -1,66 +1,122 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { authService } from "../../lib/auth/auth-service";
-const { user } = authService.getState();
-const loading = !user && !authService.isLoggedIn();
+const { user, loading } = authService.getState();
 
-const achievements = [
-  { id: 1, title: "First Game", desc: "Complete your first game", icon: "⭐", unlocked: true, date: "2024-01-15" },
-  { id: 2, title: "Score Master", desc: "Score over 1000 points in a single game", icon: "🏆", unlocked: true, date: "2024-02-20" },
-  { id: 3, title: "Daily Streak", desc: "Play 7 games in a row (daily)", icon: "🔥", unlocked: false, progress: "3/7" },
-  { id: 4, title: "Perfect Score", desc: "Complete a game without any mistakes", icon: "✨", unlocked: true, date: "2024-03-10" },
-  { id: 5, title: "Level Climber", desc: "Reach level 25", icon: "📈", unlocked: false, progress: "15/25" },
-  { id: 6, title: "Speed Demon", desc: "Complete 5 games under 30 seconds", icon: "⚡", unlocked: false, progress: "2/5" },
-];
+let achievements = [];
+let error = "";
+
+if (user) {
+  try {
+    const token = localStorage.getItem("session_token");
+    const res = await fetch(`/api/v1/achievements`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data = await res.json();
+    if (data.success) {
+      achievements = data.data;
+    } else {
+      error = data.message || "Failed to load achievements";
+    }
+  } catch (err) {
+    error = err instanceof Error ? err.message : "Failed to load achievements";
+  }
+}
+
+const unlocked = achievements.filter((a: any) => a.unlocked_at).length;
+const total = achievements.length;
+const progress = total > 0 ? Math.round((unlocked / total) * 100) : 0;
+
+function getAchievementIcon(code: string, name: string): string {
+  if (code.includes("first") || code.includes("starter")) return "🎮";
+  if (code.includes("streak") || code.includes("daily")) return "🔥";
+  if (code.includes("score") || code.includes("points")) return "💯";
+  if (code.includes("win") || code.includes("victory")) return "🏆";
+  if (code.includes("level") || code.includes("climber")) return "📈";
+  if (code.includes("speed") || code.includes("time")) return "⚡";
+  if (code.includes("perfect")) return "✨";
+  if (code.includes("legend") || code.includes("grandmaster")) return "👑";
+  if (code.includes("explorer") || code.includes("dedicated")) return "🌍";
+  if (code.includes("game") || code.includes("play")) return "🎯";
+  if (code.includes("hour")) return "⏰";
+  if (code.includes("veteran")) return "🎖️";
+  if (code.includes("master")) return "🏅";
+  if (code.includes("collector")) return "💎";
+  return "🏆";
+}
 ---
 
-<Layout title="My Achievements - YOUTUBE PLAYABLES" description="View your achievements, progress, and earned rewards">
+<Layout title="Achievements — YOUTUBE PLAYABLES" description="View your achievements, progress, and earned rewards">
   <a href="#main" class="skip-link">Skip to content</a>
   <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
-    <div class="mx-auto bg-canvas p-8 rounded-xl shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
-      <div class="py-8">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-          <div class="text-center md:text-left">
-            <h1 class="text-4xl font-bold text-ink mb-3">My Achievements</h1>
-            <p class="text-body text-lg text-slate-300">
-              {achievements.filter(a => a.unlocked).length} of {achievements.length} achievements unlocked
-            </p>
-          </div>
-          <div class="mt-4 md:mt-0">
-            <div class="text-center">
+    {loading ? (
+      <div class="mx-auto max-w-4xl py-20 text-center">
+        <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
+        <p class="mt-4 text-body">Loading achievements...</p>
+      </div>
+    ) : !user ? (
+      <div class="mx-auto max-w-2xl py-20 text-center">
+        <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
+        <p class="text-body mb-6">You need to be logged in to view achievements.</p>
+        <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+      </div>
+    ) : error ? (
+      <div class="mx-auto max-w-2xl py-20 text-center">
+        <h1 class="text-3xl font-bold text-ink mb-4">Error</h1>
+        <p class="text-body mb-6">{error}</p>
+        <a href="/profile" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">← Back to Profile</a>
+      </div>
+    ) : (
+      <div class="mx-auto max-w-4xl">
+        <div class="mb-8">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 class="text-3xl font-bold text-ink">My Achievements</h1>
+              <p class="mt-2 text-body">{unlocked} of {total} achievements unlocked</p>
+            </div>
+            <div class="text-center md:text-right">
               <div class="text-4xl mb-1">🏆</div>
-              <div class="text-sm text-slate-400">{Math.round((achievements.filter(a => a.unlocked).length / achievements.length) * 100)}% Complete</div>
+              <div class="text-sm text-body">{progress}% Complete</div>
             </div>
           </div>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {achievements.map(achievement => (
-            <div key={achievement.id} class={achievement.unlocked ? 'p-6 rounded-xl border border-[#007cf0] bg-gradient-to-br from-[#007cf0]/5 to-[#00dfd8]/5' : 'p-6 rounded-xl border border-hairline bg-canvas-border'}>
-              <div class="text-center mb-4">
-                <div class="text-4xl mb-2">{achievement.icon}</div>
-                <h3 class="font-semibold text-lg text-ink">{achievement.title}</h3>
+          {achievements.map((achievement: any) => {
+            const isUnlocked = !!achievement.unlocked_at;
+            const progressPercent = Math.min((achievement.progress || 0), 100);
+            const icon = getAchievementIcon(achievement.code, achievement.name);
+            return (
+              <div class={`rounded-xl border p-6 transition-all ${isUnlocked ? "border-[#007cf0] bg-gradient-to-br from-[#007cf0]/5 to-[#00dfd8]/5" : "border-hairline bg-canvas-border"}`}>
+                <div class="flex items-start gap-4">
+                  <div class={`text-3xl ${isUnlocked ? "" : "grayscale opacity-50"}`}>{icon}</div>
+                  <div class="flex-1 min-w-0">
+                    <h3 class="font-semibold text-ink truncate">{achievement.name}</h3>
+                    <p class="text-sm text-body mt-1 line-clamp-2">{achievement.description}</p>
+                    {isUnlocked ? (
+                      <span class="inline-block mt-3 text-xs text-[#007cf0] bg-[#007cf0]/10 px-2 py-1 rounded-full">Unlocked</span>
+                    ) : (
+                      <div class="mt-3">
+                        <div class="flex justify-between mb-1">
+                          <span class="text-xs text-body">Progress</span>
+                          <span class="text-xs text-body">{progressPercent}%</span>
+                        </div>
+                        <div class="h-1.5 rounded-full bg-canvas overflow-hidden">
+                          <div class="h-full rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8] transition-all" style="width: {progressPercent}%"></div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
-              <p class="text-sm text-slate-400 text-center mb-4">{achievement.desc}</p>
-              {achievement.unlocked ? (
-                <div class="text-center">
-                  <span class="text-xs text-[#007cf0]">Unlocked on {achievement.date}</span>
-                </div>
-              ) : (
-                <div class="text-center">
-                  <span class="text-xs text-slate-500">{achievement.progress}</span>
-                </div>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        <div class="mt-8 text-center">
-          <a href="/profile" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">
-            ← Back to Profile
-          </a>
+        <div class="mt-8">
+          <a href="/profile" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">← Back to Profile</a>
         </div>
       </div>
-    </div>
+    )}
   </main>
 </Layout>

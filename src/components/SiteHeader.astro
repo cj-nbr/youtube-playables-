@@ -2,6 +2,7 @@
 import { SITE_NAME } from "../shared/config";
 import Logo from "./Logo.astro";
 import DarkModeToggle from "./DarkModeToggle.astro";
+import ProfileMenu from "./ProfileMenu.astro";
 ---
 
 <header class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md">
@@ -17,12 +18,7 @@ import DarkModeToggle from "./DarkModeToggle.astro";
       </div>
       <div class="flex items-center gap-2">
         <DarkModeToggle />
-        <a href="/profile" class="flex h-8 w-8 items-center justify-center rounded-full bg-canvas-soft text-ink transition-colors hover:bg-canvas-hover" aria-label="Profile">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A10 10 0 1118.9 12m-1.17 3.602a4 4 0 11-7.47 0 4 4 0 017.47 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 01-3 3" />
-          </svg>
-        </a>
+        <ProfileMenu />
       </div>
     </nav>
   </div>

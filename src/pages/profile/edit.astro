@@ -1,0 +1,117 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { authService } from "../../lib/auth/auth-service";
+const { user, loading } = authService.getState();
+
+let fullName = user?.full_name || user?.name || "";
+let phone = user?.phone || "";
+let saving = false;
+let message = "";
+let messageType = "";
+---
+
+<Layout title="Edit Profile — YOUTUBE PLAYABLES" description="Update your profile information">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
+    {loading ? (
+      <div class="mx-auto max-w-2xl py-20 text-center">
+        <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
+        <p class="mt-4 text-body">Loading...</p>
+      </div>
+    ) : !user ? (
+      <div class="mx-auto max-w-2xl py-20 text-center">
+        <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
+        <p class="text-body mb-6">You need to be logged in to edit your profile.</p>
+        <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+      </div>
+    ) : (
+      <div class="mx-auto max-w-2xl">
+        <div class="mb-8">
+          <h1 class="text-3xl font-bold text-ink">Edit Profile</h1>
+          <p class="mt-2 text-body">Update your personal information.</p>
+        </div>
+
+        {message && (
+          <div class={`mb-6 rounded-lg p-4 text-sm ${messageType === "error" ? "bg-red-500/10 text-red-500 border border-red-500/20" : "bg-green-500/10 text-green-500 border border-green-500/20"}`}>
+            {message}
+          </div>
+        )}
+
+        <div class="bg-canvas rounded-xl border border-hairline p-6 md:p-8">
+          <form id="edit-profile-form" class="space-y-6">
+            <div class="space-y-2">
+              <label for="fullName" class="block text-sm font-medium text-ink">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                bind:value={fullName}
+                class="w-full px-4 py-3 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none transition-colors"
+                required
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label for="phone" class="block text-sm font-medium text-ink">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                bind:value={phone}
+                class="w-full px-4 py-3 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none transition-colors"
+                placeholder="+1 (555) 000-0000"
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-ink">Avatar</label>
+              <div class="flex items-center gap-4">
+                <div class="h-16 w-16 rounded-full bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-xl font-bold overflow-hidden">
+                  {user?.avatar_url ? (
+                    <img src={user.avatar_url} alt="Avatar" class="h-full w-full object-cover" />
+                  ) : (
+                    (user?.full_name || user?.name || "U").charAt(0).toUpperCase()
+                  )}
+                </div>
+                <a href="/profile/avatar" class="inline-flex rounded-lg border border-hairline px-4 py-2 text-sm font-medium text-ink hover:bg-canvas-hover transition-colors">Change Avatar</a>
+              </div>
+            </div>
+
+            <div class="pt-4 flex flex-col sm:flex-row gap-3">
+              <button
+                type="submit"
+                disabled={saving}
+                class="inline-flex items-center justify-center rounded-pill bg-ink px-6 py-2.5 text-sm font-medium text-white hover:opacity-90 transition-opacity disabled:opacity-50"
+              >
+                {saving ? "Saving..." : "Save Changes"}
+              </button>
+              <a href="/profile" class="inline-flex items-center justify-center rounded-pill border border-hairline px-6 py-2.5 text-sm font-medium text-ink hover:bg-canvas-hover transition-colors">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    )}
+  </main>
+
+  <script>
+    (() => {
+      const form = document.getElementById("edit-profile-form");
+      if (form) {
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const fullNameInput = document.getElementById("fullName") as HTMLInputElement;
+          const phoneInput = document.getElementById("phone") as HTMLInputElement;
+          if (!fullNameInput || !phoneInput) return;
+
+          const fullName = fullNameInput.value.trim();
+          const phone = phoneInput.value.trim();
+
+          try {
+            await authService.updateProfile({ full_name: fullName, phone: phone || null });
+            window.location.href = "/profile";
+          } catch (err) {
+            alert(err instanceof Error ? err.message : "Failed to update profile");
+          }
+        });
+      }
+    })();
+  </script>
+</Layout>

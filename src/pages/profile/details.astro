@@ -1,108 +1,111 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { authService } from "../../lib/auth/auth-service";
-const { user } = authService.getState();
-const loading = !user && !authService.isLoggedIn();
+const { user, loading } = authService.getState();
+
+const memberSince = user?.created_at ? new Date(user.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }) : "N/A";
+const lastLogin = user?.last_login ? new Date(user.last_login).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "N/A";
 ---
 
-<Layout title="My Profile Details - YOUTUBE PLAYABLES" description="Manage your personal profile information and preferences">
+<Layout title="Profile Details — YOUTUBE PLAYABLES" description="Manage your personal profile information and preferences">
   <a href="#main" class="skip-link">Skip to content</a>
   <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
-    <div class="mx-auto max-w-3xl bg-canvas p-8 rounded-xl shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
-      <div class="py-8">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-          <div class="text-center md:text-left">
-            <h1 class="text-4xl font-bold text-ink mb-3">Profile Details</h1>
-            <p class="text-body text-lg text-slate-300">
-              Manage your personal information and account details
-            </p>
-          </div>
-          <div class="mt-4 md:mt-0">
-            <div class="w-20 h-20 rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-2xl font-bold">
-              {user?.name?.charAt(0).toUpperCase() || user?.email?.charAt(0).toUpperCase() || "U"}
+    {loading ? (
+      <div class="mx-auto max-w-3xl py-20 text-center">
+        <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
+        <p class="mt-4 text-body">Loading...</p>
+      </div>
+    ) : !user ? (
+      <div class="mx-auto max-w-3xl py-20 text-center">
+        <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
+        <p class="text-body mb-6">You need to be logged in to view profile details.</p>
+        <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+      </div>
+    ) : (
+      <div class="mx-auto max-w-3xl space-y-6">
+        <div class="mb-8">
+          <h1 class="text-3xl font-bold text-ink">Profile Details</h1>
+          <p class="mt-2 text-body">Manage your personal information and account details</p>
+        </div>
+
+        <div class="bg-canvas rounded-xl border border-hairline p-6 md:p-8">
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="flex-shrink-0">
+              <div class="h-24 w-24 rounded-full bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-3xl font-bold overflow-hidden">
+                {user?.avatar_url ? (
+                  <img src={user.avatar_url} alt="Avatar" class="h-full w-full object-cover" />
+                ) : (
+                  (user?.full_name || user?.name || "U").charAt(0).toUpperCase()
+                )}
+              </div>
+            </div>
+            <div class="flex-1 space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-body mb-1">Full Name</label>
+                <p class="text-ink font-medium">{user?.full_name || user?.name || "Not set"}</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-body mb-1">Email</label>
+                <p class="text-ink font-medium">{user?.email || "Not set"}</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-body mb-1">Phone Number</label>
+                <p class="text-ink font-medium">{user?.phone || "Not set"}</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-body mb-1">Unique User Code</label>
+                <div class="flex items-center gap-2">
+                  <p class="text-ink font-mono font-medium text-lg">{user?.unique_user_code || "------"}</p>
+                  <button onclick={async () => { if (user?.unique_user_code) { await navigator.clipboard.writeText(user.unique_user_code); alert("Copied!"); } }} class="text-xs text-[#007cf0] hover:text-[#00dfd8]">Copy</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <form class="space-y-6">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="space-y-2">
-              <label for="fullName" class="block text-sm font-medium text-ink">Full Name</label>
-              <input 
-                type="text" 
-                id="fullName" 
-                value={user?.name || ""} 
-                class="w-full px-4 py-2 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none"
-              />
+        <div class="bg-canvas rounded-xl border border-hairline p-6 md:p-8">
+          <h2 class="text-lg font-semibold text-ink mb-4">Account Information</h2>
+          <div class="space-y-3">
+            <div class="flex justify-between py-3 border-b border-hairline">
+              <span class="text-sm text-body">Member Since</span>
+              <span class="text-sm text-ink font-medium">{memberSince}</span>
             </div>
-            <div class="space-y-2">
-              <label for="email" class="block text-sm font-medium text-ink">Email Address</label>
-              <input 
-                type="email" 
-                id="email" 
-                value={user?.email || ""} 
-                class="w-full px-4 py-2 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none"
-                disabled
-              />
+            <div class="flex justify-between py-3 border-b border-hairline">
+              <span class="text-sm text-body">Last Login</span>
+              <span class="text-sm text-ink font-medium">{lastLogin}</span>
+            </div>
+            <div class="flex justify-between py-3 border-b border-hairline">
+              <span class="text-sm text-body">Current Level</span>
+              <span class="text-sm text-ink font-medium">{user?.current_level || 1}</span>
+            </div>
+            <div class="flex justify-between py-3 border-b border-hairline">
+              <span class="text-sm text-body">Games Played</span>
+              <span class="text-sm text-ink font-medium">{user?.games_played || 0}</span>
+            </div>
+            <div class="flex justify-between py-3 border-b border-hairline">
+              <span class="text-sm text-body">Highest Score</span>
+              <span class="text-sm text-ink font-medium">{(user?.highest_score || 0).toLocaleString()}</span>
+            </div>
+            <div class="flex justify-between py-3 border-b border-hairline">
+              <span class="text-sm text-body">Achievements</span>
+              <span class="text-sm text-ink font-medium">{user?.achievements_count || 0}</span>
+            </div>
+            <div class="flex justify-between py-3 border-b border-hairline">
+              <span class="text-sm text-body">Rank</span>
+              <span class="text-sm text-ink font-medium">{user?.player_rank || "Bronze"}</span>
+            </div>
+            <div class="flex justify-between py-3">
+              <span class="text-sm text-body">Play Time</span>
+              <span class="text-sm text-ink font-medium">{Math.floor((user?.total_play_time || 0) / 60)}h {(user?.total_play_time || 0) % 60}m</span>
             </div>
           </div>
+        </div>
 
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="space-y-2">
-              <label for="phone" class="block text-sm font-medium text-ink">Phone Number</label>
-              <input 
-                type="tel" 
-                id="phone" 
-                value={user?.phone || ""} 
-                class="w-full px-4 py-2 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none"
-                placeholder="+1 (555) 000-0000"
-              />
-            </div>
-            <div class="space-y-2">
-              <label for="avatar" class="block text-sm font-medium text-ink">Profile Avatar</label>
-              <div class="flex items-center space-x-4">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white">
-                  A
-                </div>
-                <button type="button" class="px-4 py-2 rounded-lg bg-canvas-border text-ink hover:bg-canvas-hover transition-colors">
-                  Change Avatar
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-6 border-t border-hairline">
-            <h2 class="text-xl font-semibold text-ink mb-4">Account Statistics</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div class="bg-canvas-border p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-[#007cf0]">1245</div>
-                <div class="text-sm text-slate-400">Total Points</div>
-              </div>
-              <div class="bg-canvas-border p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-[#007cf0]">55</div>
-                <div class="text-sm text-slate-400">Levels Reached</div>
-              </div>
-              <div class="bg-canvas-border p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-[#007cf0]">12</div>
-                <div class="text-sm text-slate-400">Achievements</div>
-              </div>
-              <div class="bg-canvas-border p-4 rounded-lg text-center">
-                <div class="text-2xl font-bold text-[#007cf0]">6</div>
-                <div class="text-sm text-slate-400">Games Played</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-6 flex justify-end space-x-4">
-            <button type="button" class="px-6 py-2 rounded-lg bg-canvas-border text-ink hover:bg-canvas-hover transition-colors">
-              Cancel
-            </button>
-            <button type="submit" class="px-6 py-2 rounded-lg bg-gradient-to-r from-[#007cf0] to-[#00dfd8] text-white hover:opacity-90 transition-opacity">
-              Save Changes
-            </button>
-          </div>
-        </form>
+        <div class="flex justify-between">
+          <a href="/profile" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">← Back to Profile</a>
+          <a href="/profile/edit" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">Edit Profile →</a>
+        </div>
       </div>
-    </div>
+    )}
   </main>
 </Layout>

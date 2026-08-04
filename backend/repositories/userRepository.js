@@ -92,14 +92,20 @@ export const userRepository = {
     return bcrypt.hash(code, SALT_ROUNDS);
   },
 
+  async generateUniqueCode() {
+    const { data, error } = await supabase.rpc("generate_unique_user_code");
+    if (error) throw AppError.internal(error.message);
+    return data;
+  },
+
   async verifySecretCode(code, hash) {
     return bcrypt.compare(code, hash);
   },
 
-  async create({ id, full_name, email, phone, secret_code_hash }) {
+  async create({ id, full_name, email, phone, secret_code_hash, unique_user_code }) {
     const { data, error } = await supabase
       .from("users")
-      .insert({ id, full_name, email, phone, secret_code_hash })
+      .insert({ id, full_name, email, phone, secret_code_hash, unique_user_code })
       .select("*")
       .single();
     if (error) throw AppError.conflict(error.message);

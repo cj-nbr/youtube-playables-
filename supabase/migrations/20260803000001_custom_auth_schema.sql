@@ -19,6 +19,7 @@ create table if not exists public.users (
   secret_code_hash text not null,
   avatar_url text,
   avatar_color text not null default '#0070f3',
+  unique_user_code text unique,
   games_played integer not null default 0,
   total_play_time integer not null default 0,
   highest_score integer not null default 0,
@@ -36,6 +37,7 @@ create table if not exists public.users (
 create index if not exists idx_users_email on public.users (email);
 create index if not exists idx_users_phone on public.users (phone);
 create index if not exists idx_users_status on public.users (status);
+create index if not exists idx_users_unique_code on public.users (unique_user_code);
 
 -- ---------------------------------------------------------------------------
 -- Sessions table (custom session management)
@@ -228,6 +230,25 @@ begin
   elsif total_score >= 200 then return 'Rookie';
   else return 'Beginner';
   end if;
+end;
+$$;
+
+-- Generate a unique 6-digit user code
+create or replace function public.generate_unique_user_code()
+returns text
+language plpgsql
+security definer
+as $$
+declare
+  code text;
+  cnt integer;
+begin
+  loop
+    code := lpad(floor(random() * 900000 + 100000)::text, 6, '0');
+    select count(*) into cnt from public.users where unique_user_code = code;
+    exit when cnt = 0;
+  end loop;
+  return code;
 end;
 $$;
 
