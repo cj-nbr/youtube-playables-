@@ -1,6 +1,7 @@
 import { verifyToken } from "../database/connection.js";
 import { userRepository } from "../repositories/userRepository.js";
 import { AppError } from "../errors/index.js";
+import { asyncHandler } from "../helpers/index.js";
 
 export const authenticate = asyncHandler(async (req, res, next) => {
   let token;

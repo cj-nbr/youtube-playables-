@@ -26,7 +26,7 @@ import Layout from "../layouts/Layout.astro";
           <input id="secretCode" type="text" maxlength="6" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="••••••" required />
           <p class="mt-1 text-xs text-body">Exactly 6 characters, letters or numbers</p>
         </div>
-        <button type="submit" class="inline-flex h-11 w-full items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Sign up</button>
+        <button type="submit" id="signup-btn" class="inline-flex h-11 w-full items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Sign up</button>
       </form>
       <p id="signup-error" class="mt-4 text-sm" style="color:#ee0000;display:none;"></p>
       <p id="signup-success" class="mt-4 text-sm" style="color:#0a7d28;display:none;"></p>
@@ -41,11 +41,13 @@ import Layout from "../layouts/Layout.astro";
     const form = document.getElementById("signup-form") as HTMLFormElement | null;
     const errorEl = document.getElementById("signup-error");
     const successEl = document.getElementById("signup-success");
+    const btn = document.getElementById("signup-btn") as HTMLButtonElement | null;
     if (form) {
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         errorEl.style.display = "none";
         successEl.style.display = "none";
+        if (btn) { btn.disabled = true; btn.textContent = "Creating account…"; }
 
         const fullName = (document.getElementById("fullName") as HTMLInputElement).value.trim();
         const email = (document.getElementById("email") as HTMLInputElement).value.trim();
@@ -54,23 +56,17 @@ import Layout from "../layouts/Layout.astro";
 
         try {
           const result = await register(fullName, email, phone, secretCode);
-          if (result.needsConfirmation) {
-            successEl.textContent =
-              "Account created! Please check your email to confirm, then log in.";
-            successEl.style.display = "block";
-            form.reset();
-          } else {
-            successEl.textContent = "Sign up successful! Redirecting…";
-            successEl.style.display = "block";
-            window.setTimeout(() => {
-              window.location.href = "/playables";
-            }, 1200);
-          }
+          if (btn) { btn.disabled = false; btn.textContent = "Sign up"; }
+          successEl.textContent = "Account created! Please log in now.";
+          successEl.style.display = "block";
+          form.reset();
         } catch (err) {
+          if (btn) { btn.disabled = false; btn.textContent = "Sign up"; }
           let message = err instanceof Error ? err.message : "Sign up failed";
           if (/rate limit|too many requests|429/i.test(message)) {
-            message =
-              "Too many sign-up attempts. Please wait a few minutes and try again.";
+            message = "Too many sign-up attempts. Please wait a few minutes and try again.";
+          } else if (/failed to fetch|network error|network/i.test(message)) {
+            message = "Cannot reach the server. Please make sure the backend is running and try again.";
           }
           errorEl.textContent = message;
           errorEl.style.display = "block";

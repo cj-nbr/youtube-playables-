@@ -53,6 +53,7 @@ export const authService = {
 
     await profileRepository.upsert(id, {
       display_name: fullName.trim(),
+      username: email || phone || fullName.trim().replace(/\s+/g, ".").toLowerCase(),
       email: email || null,
       phone: phone || null,
     });
