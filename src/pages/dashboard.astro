@@ -1,11 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { authService } from "../../lib/auth/auth-service.ts";
+import { authService } from "../lib/auth/auth-service";
 
 ---
 <Layout title="My Profile - YOUTUBE PLAYABLES" description="Your profile, achievements, and personal settings">
   <a href="#main" class="skip-link">Skip to content</a>
-  <main id="main" class="mx-auto max-w-[1400px] px-6 py-12 contnet">
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-12 content">
     <div class="mx-auto max-w-2xl bg-canvas p-8 rounded-xl shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
       <div class="py-8">
         <div class="text-center mb-8">
@@ -14,11 +14,11 @@ import { authService } from "../../lib/auth/auth-service.ts";
         </div>
 
         <div class="container mx-auto px-4 py-12">
-          <div class="grid semi-transparent-grow lg:grid-cols-3 gap-6">
+          <div class="grid lg:grid-cols-3 gap-6">
             <div class="bg-canvas text-center rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
               <div class="relative h-24 w-24 mx-auto">
                 <img 
-                  src="/avatars/default-avatar.png" 
+                  src="/avatars/avatar-blue.svg" 
                   alt="Profile" 
                   class="w-full h-full rounded-full object-cover cursor-pointer hover:scale-105"
                 />
@@ -92,18 +92,12 @@ import { authService } from "../../lib/auth/auth-service.ts";
                   </svg>
                   <span>Current Secret Code:</span>
                   <span class="ml-2 text-sm text-slate-400 truncate">
-                    {authSettings.token || '**********'}
+                    **********
                   </span>
                 </button>
                 <button class="flex items-center gap-2 w-full text-left p-3 bg-canvas-border rounded-lg hover:bg-canvas-border hover:bg-opacity-75 transition-colors text-red-600 hover:text-red-800">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 3a2 2 0 012 2v10.55a.5.5 0 01-.236 0.971l-2.34 1.69a1 1 0 01-.802-.281h-1.42a1 1 0 01-0.951-0.719L3 12.5V5a1 1 0 011-1h14z" />
-                  </svg>
-                  <span>Change Secret Code</span>
-                </button>
-                <button class="flex items-center gap-2 w-full text-left p-3 bg-canvas-border rounded-lg hover:bg-canvas-border hover:bg-opacity-75 transition-colors text-red-600 hover:text-red-800">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 3a2 2 0 012 2v10.55a.5.5 0 01-.236.971l-2.34 1.69a1 1 0 01-.802-.281h-1.42a1 1 0 01-0.951-0.719L3 12.5V5a1 1 0 011-1h14z" />
                   </svg>
                   <span>Change Secret Code</span>
                 </button>
