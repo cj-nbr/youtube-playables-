@@ -1,6 +1,7 @@
 name = "youtubeplayables"
-main = "./dist/index.html"
-build.command = "npm run build"
-build.output_dir = "./dist"
-upload.assets = "./dist"
 compatibility_date = "2026-01-01"
+
+[build]
+command = "npm run build"
+dir = "."
+output_dir = "dist"
