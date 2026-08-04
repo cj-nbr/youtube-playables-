@@ -35,24 +35,24 @@ const achievements = [
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {#each achievements as a}
-            <div class={`p-6 rounded-xl border ${a.unlocked ? 'border-[#007cf0] bg-gradient-to-br from-[#007cf0]/5 to-[#00dfd8]/5' : 'border-hairline bg-canvas-border'}`}>
+          {achievements.map(achievement => (
+            <div key={achievement.id} class={achievement.unlocked ? 'p-6 rounded-xl border border-[#007cf0] bg-gradient-to-br from-[#007cf0]/5 to-[#00dfd8]/5' : 'p-6 rounded-xl border border-hairline bg-canvas-border'}>
               <div class="text-center mb-4">
-                <div class="text-4xl mb-2">{a.icon}</div>
-                <h3 class="font-semibold text-lg text-ink">{a.title}</h3>
+                <div class="text-4xl mb-2">{achievement.icon}</div>
+                <h3 class="font-semibold text-lg text-ink">{achievement.title}</h3>
               </div>
-              <p class="text-sm text-slate-400 text-center mb-4">{a.desc}</p>
-              {#if a.unlocked}
+              <p class="text-sm text-slate-400 text-center mb-4">{achievement.desc}</p>
+              {achievement.unlocked ? (
                 <div class="text-center">
-                  <span class="text-xs text-[#007cf0]">Unlocked on {a.date}</span>
+                  <span class="text-xs text-[#007cf0]">Unlocked on {achievement.date}</span>
                 </div>
-              {:else}
+              ) : (
                 <div class="text-center">
-                  <span class="text-xs text-slate-500">{a.progress}</span>
+                  <span class="text-xs text-slate-500">{achievement.progress}</span>
                 </div>
-              {/if}
+              )}
             </div>
-          {/each}
+          ))}
         </div>
 
         <div class="mt-8 text-center">
