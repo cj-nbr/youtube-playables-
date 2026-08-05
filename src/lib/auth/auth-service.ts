@@ -24,8 +24,6 @@ class AuthService {
     this.notify();
 
     if (typeof window === "undefined") {
-      this.loading = false;
-      this.notify();
       return;
     }
 
@@ -41,6 +39,7 @@ class AuthService {
   private async restoreSession() {
     try {
       const { data: { session } } = await supabase.auth.getSession();
+      console.log("[Auth] restoreSession got session:", session?.user ? "yes" : "no");
       if (session?.user) {
         this.user = {
           id: session.user.id,
@@ -54,7 +53,7 @@ class AuthService {
         this.profile = null;
       }
     } catch (err) {
-      console.error("Failed to restore session:", err);
+      console.error("[Auth] Failed to restore session:", err);
       this.user = null;
       this.profile = null;
     } finally {
@@ -62,14 +61,24 @@ class AuthService {
       this.notify();
 
       if (typeof window !== "undefined") {
+        if ((this as any)._unsubscribe) {
+          (this as any)._unsubscribe();
+        }
+
         window.addEventListener("storage", (e) => {
           if (e.key === "supabase.auth.token") {
+            console.log("[Auth] Storage event, re-initializing");
+            this.sessionCheckPromise = null;
             this.init();
           }
         });
 
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-          if (session?.user) {
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+          console.log("[Auth] onAuthStateChange:", event, session?.user ? "user" : "no user");
+          if (event === "SIGNED_OUT") {
+            this.user = null;
+            this.profile = null;
+          } else if (session?.user) {
             this.user = {
               id: session.user.id,
               email: session.user.email,
@@ -77,9 +86,6 @@ class AuthService {
               ...session.user.user_metadata,
             };
             this.fetchProfile();
-          } else {
-            this.user = null;
-            this.profile = null;
           }
           this.loading = false;
           this.notify();

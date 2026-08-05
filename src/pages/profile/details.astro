@@ -10,6 +10,7 @@ const lastLogin = user?.last_login ? new Date(user.last_login).toLocaleDateStrin
 <Layout title="Profile Details — YOUTUBE PLAYABLES" description="Manage your personal profile information and preferences">
   <a href="#main" class="skip-link">Skip to content</a>
   <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
+    <div id="profile-root">
     {loading ? (
       <div class="mx-auto max-w-3xl py-20 text-center">
         <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
@@ -107,5 +108,21 @@ const lastLogin = user?.last_login ? new Date(user.last_login).toLocaleDateStrin
         </div>
       </div>
     )}
+    </div>
   </main>
+
+  <script type="module">
+    import { authService } from "../../lib/auth/auth-service.js";
+
+    const root = document.getElementById("profile-root");
+    if (root) {
+      const unsubscribe = authService.subscribe((state) => {
+        if (!state.loading) {
+          if (!state.user) {
+            window.location.href = "/login";
+          }
+        }
+      });
+    }
+  </script>
 </Layout>
