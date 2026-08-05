@@ -179,6 +179,7 @@ class AuthService {
           email: email || null,
           phone: phone || null,
           full_name: fullName,
+          code: secretCode,
         });
 
       if (profileError) {
