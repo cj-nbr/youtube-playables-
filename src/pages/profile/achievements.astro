@@ -1,23 +1,39 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { authService } from "../../lib/auth/auth-service";
+import { supabase } from "../../lib/supabase/client";
 const { user, loading } = authService.getState();
 
-let achievements = [];
+let achievements: any[] = [];
 let error = "";
 
 if (user) {
   try {
-    const token = localStorage.getItem("session_token");
-    const res = await fetch(`/api/v1/achievements`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const data = await res.json();
-    if (data.success) {
-      achievements = data.data;
-    } else {
-      error = data.message || "Failed to load achievements";
+    const { data, error: queryError } = await supabase
+      .from("achievements")
+      .select(`
+        id,
+        code,
+        name,
+        description,
+        tier,
+        reward,
+        user_achievements (
+          progress,
+          unlocked_at
+        )
+      `)
+      .order("created_at", { ascending: true });
+
+    if (queryError) {
+      throw queryError;
     }
+
+    achievements = (data || []).map((achievement: any) => ({
+      ...achievement,
+      progress: achievement.user_achievements?.[0]?.progress || 0,
+      unlocked_at: achievement.user_achievements?.[0]?.unlocked_at || null,
+    }));
   } catch (err) {
     error = err instanceof Error ? err.message : "Failed to load achievements";
   }

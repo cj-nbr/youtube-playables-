@@ -1,5 +1,4 @@
 import { supabase } from "../supabase/client.js";
-import { PUBLIC_API_URL } from "../supabase/env";
 
 export interface AuthState {
   user: any | null;
@@ -14,50 +13,88 @@ class AuthService {
   private profile: any | null = null;
   private loading = true;
   private listeners: Set<AuthListener> = new Set();
+  private sessionCheckPromise: Promise<void> | null = null;
 
   constructor() {
     this.init();
   }
 
   private async init() {
-    const token = this.getToken();
-    this.user = null;
-    this.profile = null;
     this.loading = true;
-    
-    if (token) {
-      try {
-        const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/me`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            this.user = data.data;
-          }
-        }
-      } catch (err) {
-        console.error("Failed to fetch user on init:", err);
-      }
-    }
-    
-    this.loading = false;
     this.notify();
-    
-    if (typeof window !== "undefined") {
-      window.addEventListener("storage", (e) => {
-        if (e.key === "session_token") {
-          this.init();
+
+    if (typeof window === "undefined") {
+      this.loading = false;
+      this.notify();
+      return;
+    }
+
+    if (this.sessionCheckPromise) {
+      await this.sessionCheckPromise;
+      return;
+    }
+
+    this.sessionCheckPromise = this.restoreSession();
+    await this.sessionCheckPromise;
+  }
+
+  private async restoreSession() {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        this.user = {
+          id: session.user.id,
+          email: session.user.email,
+          phone: session.user.phone,
+          ...session.user.user_metadata,
+        };
+        await this.fetchProfile();
+      } else {
+        this.user = null;
+        this.profile = null;
+      }
+    } catch (err) {
+      console.error("Failed to restore session:", err);
+      this.user = null;
+      this.profile = null;
+    } finally {
+      this.loading = false;
+      this.notify();
+
+      if (typeof window !== "undefined") {
+        window.addEventListener("storage", (e) => {
+          if (e.key === "supabase.auth.token") {
+            this.init();
+          }
+        });
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+          if (session?.user) {
+            this.user = {
+              id: session.user.id,
+              email: session.user.email,
+              phone: session.user.phone,
+              ...session.user.user_metadata,
+            };
+            this.fetchProfile();
+          } else {
+            this.user = null;
+            this.profile = null;
+          }
+          this.loading = false;
+          this.notify();
+        });
+
+        if (subscription) {
+          (this as any)._unsubscribe = subscription.unsubscribe;
         }
-      });
+      }
     }
   }
 
-  private getToken(): string | null {
-    if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("session_token");
-    }
-    return null;
+  subscribe(listener: AuthListener) {
+    this.listeners.add(listener);
+    return () => this.listeners.delete(listener);
   }
 
   private notify() {
@@ -67,11 +104,6 @@ class AuthService {
       loading: this.loading,
     };
     this.listeners.forEach((fn) => fn(state));
-  }
-
-  subscribe(listener: AuthListener) {
-    this.listeners.add(listener);
-    return () => this.listeners.delete(listener);
   }
 
   getState(): AuthState {
@@ -91,49 +123,125 @@ class AuthService {
   }
 
   async signUp(fullName: string, email: string, phone: string, secretCode: string) {
-    const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fullName, email, phone, secretCode }),
-    });
-    
-    const data = await response.json();
-    if (!data.success) {
-      throw new Error(data.message || "Sign up failed");
+    if (!email && !phone) {
+      throw new Error("Email or phone number is required");
     }
-    
-    const { token } = data.data;
-    this.setToken(token);
-    this.user = data.data.user;
-    await this.fetchProfile();
-    this.notify();
-    
-    return { session: { access_token: token }, needsConfirmation: false, data: data.data };
+
+    const loginIdentifier = email || phone;
+
+    const { data, error } = await supabase.auth.signUp({
+      email: email || undefined,
+      phone: phone || undefined,
+      password: secretCode,
+      options: {
+        data: {
+          full_name: fullName,
+          display_name: fullName,
+        },
+      },
+    });
+
+    if (error) {
+      throw new Error(error.message || "Sign up failed");
+    }
+
+    if (data.user) {
+      this.user = {
+        id: data.user.id,
+        email: data.user.email,
+        phone: data.user.phone,
+        full_name: fullName,
+        display_name: fullName,
+      };
+
+      const { data: uniqueCodeData } = await supabase.rpc("generate_unique_user_code");
+
+      const { error: userError } = await supabase
+        .from("users")
+        .insert({
+          id: data.user.id,
+          full_name: fullName,
+          email: email || null,
+          phone: phone || null,
+          unique_user_code: uniqueCodeData || null,
+        });
+
+      if (userError) {
+        console.error("Failed to create user record:", userError);
+      }
+
+      const { error: profileError } = await supabase
+        .from("profiles")
+        .upsert({
+          id: data.user.id,
+          username: loginIdentifier,
+          display_name: fullName,
+          email: email || null,
+          phone: phone || null,
+          full_name: fullName,
+        });
+
+      if (profileError) {
+        console.error("Failed to create profile:", profileError);
+      }
+
+      await this.fetchProfile();
+      this.notify();
+    }
+
+    return {
+      session: data.session,
+      needsConfirmation: !data.session,
+      data,
+    };
   }
 
   async signIn(login: string, secretCode: string) {
-    const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ login, secretCode }),
+    let { data, error } = await supabase.auth.signInWithPassword({
+      email: login,
+      password: secretCode,
     });
-    
-    const data = await response.json();
-    if (!data.success) {
-      throw new Error(data.message || "Login failed");
+
+    if (error && !login.includes("@")) {
+      const { data: profileData } = await supabase
+        .from("profiles")
+        .select("email")
+        .eq("phone", login)
+        .maybeSingle();
+
+      if (profileData?.email) {
+        const retry = await supabase.auth.signInWithPassword({
+          email: profileData.email,
+          password: secretCode,
+        });
+        data = retry.data;
+        error = retry.error;
+      }
     }
-    
-    const { token } = data.data;
-    this.setToken(token);
-    this.user = data.data.user;
-    await this.fetchProfile();
-    this.notify();
-    
-    return data.data;
+
+    if (error) {
+      throw new Error(error.message || "Login failed");
+    }
+
+    if (data.user) {
+      this.user = {
+        id: data.user.id,
+        email: data.user.email,
+        phone: data.user.phone,
+        ...data.user.user_metadata,
+      };
+      await this.fetchProfile();
+      this.notify();
+    }
+
+    return data;
   }
 
   async signOut() {
-    this.removeToken();
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Sign out error:", error);
+    }
     this.user = null;
     this.profile = null;
     this.notify();
@@ -142,102 +250,90 @@ class AuthService {
   async fetchProfile() {
     if (!this.user) return;
     try {
-      const token = this.getToken();
-      const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success) {
-          this.profile = data.data;
-        }
+      const [profileResult, userResult] = await Promise.all([
+        supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", this.user.id)
+          .maybeSingle(),
+        supabase
+          .from("users")
+          .select("id, full_name, email, phone, avatar_url, avatar_color, unique_user_code, games_played, total_play_time, highest_score, achievements_count, player_rank, current_level, status, created_at, updated_at, last_login, coins, experience")
+          .eq("id", this.user.id)
+          .maybeSingle(),
+      ]);
+
+      if (profileResult.error) {
+        console.error("Failed to fetch profile:", profileResult.error);
       }
+
+      if (userResult.error) {
+        console.error("Failed to fetch user:", userResult.error);
+      }
+
+      this.profile = profileResult.data;
+      this.user = {
+        ...this.user,
+        ...userResult.data,
+        ...profileResult.data,
+      };
     } catch (err) {
       console.error("Failed to fetch profile:", err);
     }
   }
 
   async updateProfile(fields: any) {
-    const token = this.getToken();
-    if (!token) throw new Error("Not logged in");
+    if (!this.user) throw new Error("Not logged in");
+
+    const allowedFields: Record<string, any> = {};
+    const allowedKeys = ["full_name", "display_name", "email", "phone", "avatar_url", "avatar_color", "bio", "location"];
     
-    const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/me`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(fields),
-    });
-    
-    const data = await response.json();
-    if (!data.success) {
-      throw new Error(data.message || "Profile update failed");
+    for (const key of allowedKeys) {
+      if (fields[key] !== undefined) {
+        allowedFields[key] = fields[key];
+      }
     }
-    
-    this.user = data.data;
-    await this.fetchProfile();
+
+    if (Object.keys(allowedFields).length === 0) {
+      throw new Error("No fields provided");
+    }
+
+    const { data, error } = await supabase
+      .from("profiles")
+      .upsert({ id: this.user.id, ...allowedFields, updated_at: new Date().toISOString() })
+      .select("*")
+      .single();
+
+    if (error) {
+      throw new Error(error.message || "Profile update failed");
+    }
+
+    this.profile = data;
     this.notify();
-    
-    return data.data;
+
+    return data;
   }
 
   async changeSecretCode(currentCode: string, newCode: string) {
-    const token = this.getToken();
-    if (!token) throw new Error("Not logged in");
-    
-    const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/change-secret-code`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ current_code: currentCode, new_code: newCode }),
+    if (!this.user) throw new Error("Not logged in");
+
+    const { error } = await supabase.auth.updateUser({
+      password: newCode,
     });
-    
-    const data = await response.json();
-    if (!data.success) {
-      throw new Error(data.message || "Failed to change secret code");
+
+    if (error) {
+      throw new Error(error.message || "Failed to change secret code");
     }
-    
-    return data.data;
+
+    return { success: true };
   }
 
   async refreshSession() {
-    const token = this.getToken();
-    if (!token) throw new Error("No session to refresh");
-    
-    const response = await fetch(`${PUBLIC_API_URL}/api/v1/auth/refresh-session`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    
-    const data = await response.json();
-    if (!data.success) {
-      throw new Error(data.message || "Failed to refresh session");
+    const { data, error } = await supabase.auth.refreshSession();
+    if (error) {
+      throw new Error(error.message || "Failed to refresh session");
     }
-    
-    this.setToken(data.data.token);
-    this.user = data.data.user;
-    await this.fetchProfile();
-    this.notify();
-    
-    return data.data;
-  }
-
-  private setToken(token: string) {
-    if (typeof localStorage !== "undefined") {
-      localStorage.setItem("session_token", token);
-    }
-  }
-
-  private removeToken() {
-    if (typeof localStorage !== "undefined") {
-      localStorage.removeItem("session_token");
-    }
+    return data;
   }
 }
 
