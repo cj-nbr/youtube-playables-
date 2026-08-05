@@ -35,20 +35,20 @@ let messageType = "";
 <Layout title="Choose Avatar — YOUTUBE PLAYABLES" description="Select your gaming avatar">
   <a href="#main" class="skip-link">Skip to content</a>
   <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
-    <div id="profile-root">
-    {loading ? (
+    <div id="auth-loading" style={{ display: loading ? 'block' : 'none' }}>
       <div class="mx-auto max-w-2xl py-20 text-center">
         <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
         <p class="mt-4 text-body">Loading...</p>
       </div>
-    ) : !user ? (
+    </div>
+    <div id="auth-login" style={{ display: !loading && !user ? 'block' : 'none' }}>
       <div class="mx-auto max-w-2xl py-20 text-center">
         <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
         <p class="text-body mb-6">You need to be logged in to choose an avatar.</p>
         <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
       </div>
-    ) : (
-      <div class="mx-auto max-w-3xl">
+    </div>
+    <div id="auth-content" style={{ display: !loading && user ? 'block' : 'none' }}>
         <div class="mb-8">
           <h1 class="text-3xl font-bold text-ink">Choose Your Avatar</h1>
           <p class="mt-2 text-body">Select a gaming avatar that represents you.</p>
@@ -115,23 +115,25 @@ let messageType = "";
         <div class="mt-8 flex justify-between">
           <a href="/profile" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">← Back to Profile</a>
         </div>
-      </div>
-    )}
     </div>
   </main>
 
   <script type="module">
     import { authService } from "../../lib/auth/auth-service.js";
 
-    const root = document.getElementById("profile-root");
-    if (root) {
-      const unsubscribe = authService.subscribe((state) => {
-        if (!state.loading) {
-          if (!state.user) {
-            window.location.href = "/login";
-          }
-        }
-      });
-    }
+    const setAuthVisibility = (state) => {
+      const loadingEl = document.getElementById("auth-loading");
+      const loginEl = document.getElementById("auth-login");
+      const contentEl = document.getElementById("auth-content");
+      if (loadingEl) loadingEl.style.display = state.loading ? "block" : "none";
+      if (loginEl) loginEl.style.display = !state.loading && !state.user ? "block" : "none";
+      if (contentEl) contentEl.style.display = !state.loading && state.user ? "block" : "none";
+      if (!state.loading && !state.user) {
+        window.location.href = "/login";
+      }
+    };
+
+    setAuthVisibility(authService.getState());
+    const unsubscribe = authService.subscribe(setAuthVisibility);
   </script>
 </Layout>

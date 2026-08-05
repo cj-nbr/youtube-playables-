@@ -226,7 +226,7 @@ class AuthService {
   async fetchProfile() {
     if (!this.user) return;
     try {
-      const [profileResult, userResult] = await Promise.all([
+      const [profileResult, userResult, achievementsResult] = await Promise.all([
         supabase
           .from("profiles")
           .select("*")
@@ -237,6 +237,11 @@ class AuthService {
           .select("id, full_name, email, phone, avatar_url, avatar_color, unique_user_code, games_played, total_play_time, highest_score, achievements_count, player_rank, current_level, status, created_at, updated_at, last_login, coins, experience")
           .eq("id", this.user.id)
           .maybeSingle(),
+        supabase
+          .from("achievements")
+          .select("id, code, name, description, tier, reward, unlocked_at, progress, created_at, user_id")
+          .eq("user_id", this.user.id)
+          .order("earned_at", { ascending: false }),
       ]);
 
       if (profileResult.error) {
@@ -247,11 +252,16 @@ class AuthService {
         console.error("Failed to fetch user:", userResult.error);
       }
 
+      if (achievementsResult.error) {
+        console.error("Failed to fetch achievements:", achievementsResult.error);
+      }
+
       this.profile = profileResult.data;
       this.user = {
         ...this.user,
         ...userResult.data,
         ...profileResult.data,
+        achievements: achievementsResult.data || [],
       };
     } catch (err) {
       console.error("Failed to fetch profile:", err);
