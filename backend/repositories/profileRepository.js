@@ -43,9 +43,22 @@ export const profileRepository = {
       return data;
     }
 
+    const username =
+      fields.username ||
+      existing.username ||
+      "user_" + String(user_id).slice(0, 8);
+    const displayName =
+      fields.display_name || existing.display_name || username;
+
     const { data, error } = await supabase
       .from("profiles")
-      .upsert({ id: user_id, ...fields, updated_at: new Date().toISOString() }, {
+      .upsert({
+        id: user_id,
+        username,
+        display_name: displayName,
+        ...fields,
+        updated_at: new Date().toISOString(),
+      }, {
         onConflict: "id",
       })
       .select("*")

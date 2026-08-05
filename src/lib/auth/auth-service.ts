@@ -338,6 +338,8 @@ class AuthService {
         .from("profiles")
         .upsert({ 
           id: this.user.id, 
+          username: generatedUsername,
+          display_name: generatedDisplayName,
           ...profileFields, 
           updated_at: new Date().toISOString() 
         }, {
