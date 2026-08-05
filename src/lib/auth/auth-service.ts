@@ -257,12 +257,19 @@ class AuthService {
       }
 
       this.profile = profileResult.data;
+      const userDbData = userResult.data || {};
+      const profileData = profileResult.data || {};
+      
       this.user = {
         ...this.user,
-        ...userResult.data,
-        ...profileResult.data,
+        ...userDbData,
+        ...profileData,
         achievements: achievementsResult.data || [],
       };
+      
+      if (!this.user.email && userDbData.phone) {
+        this.user.email = this.user.email || null;
+      }
     } catch (err) {
       console.error("Failed to fetch profile:", err);
     }
@@ -293,17 +300,30 @@ class AuthService {
     let profileData;
     let profileError;
 
+    const ensureString = (val: any, fallback: string) => {
+      if (typeof val === "string" && val.trim() !== "") return val.trim();
+      return fallback;
+    };
+
+    const generatedUsername = ensureString(
+      this.user.email?.includes("@") ? this.user.email.split("@")[0] : this.user.phone || this.user.id,
+      "user_" + String(this.user.id || "").slice(0, 8)
+    );
+
+    const generatedDisplayName = ensureString(
+      fields.full_name || this.user.full_name || this.user.name || this.user.phone,
+      generatedUsername
+    );
+
     if (!existingProfile) {
-      const username = this.user.email ? this.user.email.split("@")[0] : `user_${this.user.id.slice(0, 8)}`;
-      const displayName = fields.full_name || this.user.full_name || this.user.name || username;
-      
       const result = await supabase
         .from("profiles")
         .insert({
           id: this.user.id,
-          username,
-          display_name: displayName,
-          email: this.user.email,
+          username: generatedUsername,
+          display_name: generatedDisplayName,
+          email: this.user.email || null,
+          phone: this.user.phone || null,
           ...profileFields,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
@@ -316,7 +336,13 @@ class AuthService {
     } else {
       const result = await supabase
         .from("profiles")
-        .upsert({ id: this.user.id, ...profileFields, updated_at: new Date().toISOString() })
+        .upsert({ 
+          id: this.user.id, 
+          ...profileFields, 
+          updated_at: new Date().toISOString() 
+        }, {
+          onConflict: "id",
+        })
         .select("*")
         .single();
       
@@ -325,6 +351,7 @@ class AuthService {
     }
 
     if (profileError) {
+      console.error("Profile update error:", profileError);
       throw new Error(profileError.message || "Profile update failed");
     }
 
