@@ -40,23 +40,20 @@ const experience = user?.experience || 0;
         <div class="bg-canvas rounded-xl border border-hairline shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] overflow-hidden">
           <div class="relative h-32 bg-gradient-to-r from-[#007cf0] to-[#00dfd8]"></div>
           <div class="px-6 pb-6">
-            <div class="relative -mt-16 mb-4">
-              <div class="h-32 w-32 rounded-full border-4 border-canvas bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-3xl font-bold shadow-lg overflow-hidden">
-                {user?.avatar_url ? (
-                  <img src={user.avatar_url} alt="Avatar" class="h-full w-full object-cover" />
-                ) : (
-                  initialLetter
-                )}
-              </div>
-              <span class="absolute bottom-1 right-1 h-5 w-5 rounded-full bg-green-500 border-4 border-canvas"></span>
-            </div>
+             <div class="relative -mt-16 mb-4">
+               <div class="h-32 w-32 rounded-full border-4 border-canvas bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-3xl font-bold shadow-lg overflow-hidden" id="profile-avatar">
+                 <img id="profile-avatar-img" src="" alt="Avatar" class="h-full w-full object-cover hidden" />
+                 <span id="profile-avatar-letter">U</span>
+               </div>
+               <span class="absolute bottom-1 right-1 h-5 w-5 rounded-full bg-green-500 border-4 border-canvas"></span>
+             </div>
 
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <h1 class="text-2xl font-bold text-ink">{user?.full_name || user?.name || "Player"}</h1>
-                <p class="text-sm text-body font-mono mt-1">Code: {user?.unique_user_code || "------"}</p>
-                <p class="text-sm text-body mt-1">{user?.email || user?.phone || ""}</p>
-              </div>
+             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+               <div>
+                 <h1 class="text-2xl font-bold text-ink" id="profile-name">Player</h1>
+                 <p class="text-sm text-body font-mono mt-1">Code: <span id="profile-code">------</span></p>
+                 <p class="text-sm text-body mt-1" id="profile-contact"></p>
+               </div>
               <div class="flex gap-2">
                 <a href="/profile/edit" class="inline-flex items-center rounded-pill border border-hairline px-4 py-2 text-sm font-medium text-ink hover:bg-canvas-hover transition-colors">Edit Profile</a>
               </div>
@@ -66,19 +63,19 @@ const experience = user?.experience || 0;
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
-            <div class="text-2xl font-bold text-[#007cf0]">{level}</div>
+            <div class="text-2xl font-bold text-[#007cf0]" id="profile-level">1</div>
             <div class="text-xs text-body mt-1">Level</div>
           </div>
           <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
-            <div class="text-2xl font-bold text-[#007cf0]">{gamesPlayed}</div>
+            <div class="text-2xl font-bold text-[#007cf0]" id="profile-games">0</div>
             <div class="text-xs text-body mt-1">Games Played</div>
           </div>
           <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
-            <div class="text-2xl font-bold text-[#007cf0]">{achievements}</div>
+            <div class="text-2xl font-bold text-[#007cf0]" id="profile-achievements">0</div>
             <div class="text-xs text-body mt-1">Achievements</div>
           </div>
           <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
-            <div class="text-2xl font-bold text-[#007cf0]">{highScore.toLocaleString()}</div>
+            <div class="text-2xl font-bold text-[#007cf0]" id="profile-highscore">0</div>
             <div class="text-xs text-body mt-1">High Score</div>
           </div>
         </div>
@@ -88,27 +85,27 @@ const experience = user?.experience || 0;
           <div class="space-y-3">
             <div class="flex justify-between py-2 border-b border-hairline">
               <span class="text-sm text-body">Member Since</span>
-              <span class="text-sm text-ink font-medium">{memberSince}</span>
+              <span class="text-sm text-ink font-medium" id="profile-member-since">N/A</span>
             </div>
             <div class="flex justify-between py-2 border-b border-hairline">
               <span class="text-sm text-body">Last Login</span>
-              <span class="text-sm text-ink font-medium">{lastLogin}</span>
+              <span class="text-sm text-ink font-medium" id="profile-last-login">N/A</span>
             </div>
             <div class="flex justify-between py-2 border-b border-hairline">
               <span class="text-sm text-body">Rank</span>
-              <span class="text-sm text-ink font-medium">{rank}</span>
+              <span class="text-sm text-ink font-medium" id="profile-rank">Bronze</span>
             </div>
             <div class="flex justify-between py-2 border-b border-hairline">
               <span class="text-sm text-body">Play Time</span>
-              <span class="text-sm text-ink font-medium">{playTimeHours} hours</span>
+              <span class="text-sm text-ink font-medium" id="profile-playtime">0 hours</span>
             </div>
             <div class="flex justify-between py-2 border-b border-hairline">
               <span class="text-sm text-body">Coins</span>
-              <span class="text-sm text-ink font-medium">{coins.toLocaleString()}</span>
+              <span class="text-sm text-ink font-medium" id="profile-coins">0</span>
             </div>
             <div class="flex justify-between py-2">
               <span class="text-sm text-body">Experience</span>
-              <span class="text-sm text-ink font-medium">{experience.toLocaleString()} XP</span>
+              <span class="text-sm text-ink font-medium" id="profile-xp">0 XP</span>
             </div>
           </div>
         </div>
@@ -154,5 +151,65 @@ const experience = user?.experience || 0;
 
     setAuthVisibility(authService.getState());
     const unsubscribe = authService.subscribe(setAuthVisibility);
+
+    async function refreshProfile() {
+      const state = authService.getState();
+      if (!state.user) return;
+      
+      try {
+        await authService.fetchProfile();
+        const user = authService.getState().user;
+        if (!user) return;
+
+        const avatarImg = document.getElementById("profile-avatar-img");
+        const avatarLetter = document.getElementById("profile-avatar-letter");
+        const nameEl = document.getElementById("profile-name");
+        const codeEl = document.getElementById("profile-code");
+        const contactEl = document.getElementById("profile-contact");
+        const levelEl = document.getElementById("profile-level");
+        const gamesEl = document.getElementById("profile-games");
+        const achievementsEl = document.getElementById("profile-achievements");
+        const highscoreEl = document.getElementById("profile-highscore");
+        const memberSinceEl = document.getElementById("profile-member-since");
+        const lastLoginEl = document.getElementById("profile-last-login");
+        const rankEl = document.getElementById("profile-rank");
+        const playtimeEl = document.getElementById("profile-playtime");
+        const coinsEl = document.getElementById("profile-coins");
+        const xpEl = document.getElementById("profile-xp");
+
+        if (avatarImg && avatarLetter) {
+          if (user.avatar_url) {
+            avatarImg.src = user.avatar_url;
+            avatarImg.classList.remove("hidden");
+            avatarLetter.classList.add("hidden");
+          } else {
+            avatarImg.classList.add("hidden");
+            avatarLetter.classList.remove("hidden");
+            avatarLetter.textContent = (user.full_name || user.name || "U").charAt(0).toUpperCase();
+          }
+        }
+
+        if (nameEl) nameEl.textContent = user.full_name || user.name || "Player";
+        if (codeEl) codeEl.textContent = user.unique_user_code || "------";
+        if (contactEl) contactEl.textContent = user.email || user.phone || "";
+
+        if (levelEl) levelEl.textContent = user.current_level || 1;
+        if (gamesEl) gamesEl.textContent = user.games_played || 0;
+        if (achievementsEl) achievementsEl.textContent = user.achievements_count || 0;
+        if (highscoreEl) highscoreEl.textContent = (user.highest_score || 0).toLocaleString();
+
+        if (memberSinceEl) memberSinceEl.textContent = user.created_at ? new Date(user.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long" }) : "N/A";
+        if (lastLoginEl) lastLoginEl.textContent = user.last_login ? new Date(user.last_login).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "N/A";
+        if (rankEl) rankEl.textContent = user.player_rank || "Bronze";
+        if (playtimeEl) playtimeEl.textContent = Math.floor((user.total_play_time || 0) / 60) + " hours";
+        if (coinsEl) coinsEl.textContent = (user.coins || 0).toLocaleString();
+        if (xpEl) xpEl.textContent = (user.experience || 0).toLocaleString() + " XP";
+      } catch (err) {
+        console.error("Failed to refresh profile:", err);
+      }
+    }
+
+    refreshProfile();
+    const refreshUnsubscribe = authService.subscribe(refreshProfile);
   </script>
 </Layout>
