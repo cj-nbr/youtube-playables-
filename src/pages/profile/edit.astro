@@ -127,7 +127,7 @@ const { user, loading } = authService.getState();
 
         try {
           await authService.updateProfile({ full_name: fullName, phone: phone || null });
-          showMessage("Profile updated successfully!", "success");
+          window.location.href = "/profile";
         } catch (err) {
           showMessage(err instanceof Error ? err.message : "Failed to update profile", "error");
         } finally {
