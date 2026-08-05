@@ -137,6 +137,7 @@ class AuthService {
         data: {
           full_name: fullName,
           display_name: fullName,
+          code: secretCode,
         },
       },
     });
@@ -153,38 +154,6 @@ class AuthService {
         full_name: fullName,
         display_name: fullName,
       };
-
-      const { data: uniqueCodeData } = await supabase.rpc("generate_unique_user_code");
-
-      const { error: userError } = await supabase
-        .from("users")
-        .insert({
-          id: data.user.id,
-          full_name: fullName,
-          email: email || null,
-          phone: phone || null,
-          unique_user_code: uniqueCodeData || null,
-        });
-
-      if (userError) {
-        console.error("Failed to create user record:", userError);
-      }
-
-      const { error: profileError } = await supabase
-        .from("profiles")
-        .upsert({
-          id: data.user.id,
-          username: loginIdentifier,
-          display_name: fullName,
-          email: email || null,
-          phone: phone || null,
-          full_name: fullName,
-          code: secretCode,
-        });
-
-      if (profileError) {
-        console.error("Failed to create profile:", profileError);
-      }
 
       await this.fetchProfile();
       this.notify();
@@ -287,7 +256,7 @@ class AuthService {
     if (!this.user) throw new Error("Not logged in");
 
     const allowedFields: Record<string, any> = {};
-    const allowedKeys = ["full_name", "display_name", "email", "phone", "avatar_url", "avatar_color", "bio", "location"];
+    const allowedKeys = ["full_name", "display_name", "email", "phone", "avatar_url", "avatar_color", "bio", "location", "code"];
     
     for (const key of allowedKeys) {
       if (fields[key] !== undefined) {
