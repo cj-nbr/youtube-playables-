@@ -2,12 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 import { authService } from "../../lib/auth/auth-service";
 const { user, loading } = authService.getState();
-
-let fullName = user?.full_name || user?.name || "";
-let phone = user?.phone || "";
-let saving = false;
-let message = "";
-let messageType = "";
 ---
 
 <Layout title="Edit Profile — YOUTUBE PLAYABLES" description="Update your profile information">
@@ -32,11 +26,9 @@ let messageType = "";
           <p class="mt-2 text-body">Update your personal information.</p>
         </div>
 
-        {message && (
-          <div class={`mb-6 rounded-lg p-4 text-sm ${messageType === "error" ? "bg-red-500/10 text-red-500 border border-red-500/20" : "bg-green-500/10 text-green-500 border border-green-500/20"}`}>
-            {message}
-          </div>
-        )}
+        <div id="edit-message" class="mb-6 hidden">
+          <div id="edit-message-text" class="rounded-lg p-4 text-sm"></div>
+        </div>
 
         <div class="bg-canvas rounded-xl border border-hairline p-6 md:p-8">
           <form id="edit-profile-form" class="space-y-6">
@@ -45,7 +37,7 @@ let messageType = "";
               <input
                 type="text"
                 id="fullName"
-                bind:value={fullName}
+                value={user?.full_name || user?.name || ""}
                 class="w-full px-4 py-3 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none transition-colors"
                 required
               />
@@ -56,7 +48,7 @@ let messageType = "";
               <input
                 type="tel"
                 id="phone"
-                bind:value={phone}
+                value={user?.phone || ""}
                 class="w-full px-4 py-3 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none transition-colors"
                 placeholder="+1 (555) 000-0000"
               />
@@ -67,7 +59,7 @@ let messageType = "";
               <div class="flex items-center gap-4">
                 <div class="h-16 w-16 rounded-full bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-xl font-bold overflow-hidden">
                   {user?.avatar_url ? (
-                    <img src={user?.avatar_url} alt="Avatar" class="h-full w-full object-cover" />
+                    <img src={user.avatar_url} alt="Avatar" class="h-full w-full object-cover" />
                   ) : (
                     (user?.full_name || user?.name || "U").charAt(0).toUpperCase()
                   )}
@@ -79,10 +71,10 @@ let messageType = "";
             <div class="pt-4 flex flex-col sm:flex-row gap-3">
               <button
                 type="submit"
-                disabled={saving}
-                class="inline-flex items-center justify-center rounded-pill bg-ink px-6 py-2.5 text-sm font-medium text-white hover:opacity-90 transition-opacity disabled:opacity-50"
+                id="save-btn"
+                class="inline-flex items-center justify-center rounded-pill bg-ink px-6 py-2.5 text-sm font-medium text-white hover:opacity-90 transition-opacity"
               >
-                {saving ? "Saving..." : "Save Changes"}
+                Save Changes
               </button>
               <a href="/profile" class="inline-flex items-center justify-center rounded-pill border border-hairline px-6 py-2.5 text-sm font-medium text-ink hover:bg-canvas-hover transition-colors">Cancel</a>
             </div>
@@ -108,29 +100,41 @@ let messageType = "";
 
     setAuthVisibility(authService.getState());
     const unsubscribe = authService.subscribe(setAuthVisibility);
-  </script>
 
-  <script>
-    (() => {
-      const form = document.getElementById("edit-profile-form");
-      if (form) {
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const fullNameInput = document.getElementById("fullName") as HTMLInputElement;
-          const phoneInput = document.getElementById("phone") as HTMLInputElement;
-          if (!fullNameInput || !phoneInput) return;
+    const form = document.getElementById("edit-profile-form");
+    const saveBtn = document.getElementById("save-btn");
+    const messageBox = document.getElementById("edit-message");
+    const messageText = document.getElementById("edit-message-text");
 
-          const fullName = fullNameInput.value.trim();
-          const phone = phoneInput.value.trim();
+    function showMessage(text, type) {
+      messageBox.classList.remove("hidden");
+      messageText.textContent = text;
+      messageText.className = `rounded-lg p-4 text-sm ${type === "error" ? "bg-red-500/10 text-red-500 border border-red-500/20" : "bg-green-500/10 text-green-500 border border-green-500/20"}`;
+    }
 
-          try {
-            await authService.updateProfile({ full_name: fullName, phone: phone || null });
-            window.location.href = "/profile";
-          } catch (err) {
-            alert(err instanceof Error ? err.message : "Failed to update profile");
-          }
-        });
-      }
-    })();
+    if (form) {
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const fullNameInput = document.getElementById("fullName");
+        const phoneInput = document.getElementById("phone");
+        if (!fullNameInput || !phoneInput) return;
+
+        const fullName = fullNameInput.value.trim();
+        const phone = phoneInput.value.trim();
+
+        saveBtn.disabled = true;
+        saveBtn.textContent = "Saving...";
+
+        try {
+          await authService.updateProfile({ full_name: fullName, phone: phone || null });
+          showMessage("Profile updated successfully!", "success");
+        } catch (err) {
+          showMessage(err instanceof Error ? err.message : "Failed to update profile", "error");
+        } finally {
+          saveBtn.disabled = false;
+          saveBtn.textContent = "Save Changes";
+        }
+      });
+    }
   </script>
 </Layout>
