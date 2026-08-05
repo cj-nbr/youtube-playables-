@@ -127,7 +127,10 @@ const { user, loading } = authService.getState();
 
         try {
           await authService.updateProfile({ full_name: fullName, phone: phone || null });
-          window.location.href = "/profile";
+          showMessage("Changes saved successfully!", "success");
+          setTimeout(() => {
+            window.location.href = "/profile";
+          }, 1200);
         } catch (err) {
           showMessage(err instanceof Error ? err.message : "Failed to update profile", "error");
         } finally {

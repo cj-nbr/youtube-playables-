@@ -271,16 +271,16 @@ class AuthService {
   async updateProfile(fields: any) {
     if (!this.user) throw new Error("Not logged in");
 
-    const allowedFields: Record<string, any> = {};
-    const allowedKeys = ["full_name", "display_name", "email", "phone", "avatar_url", "avatar_color", "bio", "location", "code"];
+    const profileFields: Record<string, any> = {};
+    const profileKeys = ["display_name", "email", "phone", "avatar_url", "avatar_color", "bio", "location", "code"];
     
-    for (const key of allowedKeys) {
+    for (const key of profileKeys) {
       if (fields[key] !== undefined) {
-        allowedFields[key] = fields[key];
+        profileFields[key] = fields[key];
       }
     }
 
-    if (Object.keys(allowedFields).length === 0) {
+    if (Object.keys(profileFields).length === 0 && !fields.full_name) {
       throw new Error("No fields provided");
     }
 
@@ -290,12 +290,12 @@ class AuthService {
       .eq("id", this.user.id)
       .maybeSingle();
 
-    let data;
-    let error;
+    let profileData;
+    let profileError;
 
     if (!existingProfile) {
       const username = this.user.email ? this.user.email.split("@")[0] : `user_${this.user.id.slice(0, 8)}`;
-      const displayName = this.user.full_name || this.user.name || username;
+      const displayName = fields.full_name || this.user.full_name || this.user.name || username;
       
       const result = await supabase
         .from("profiles")
@@ -304,34 +304,45 @@ class AuthService {
           username,
           display_name: displayName,
           email: this.user.email,
-          ...allowedFields,
+          ...profileFields,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         })
         .select("*")
         .single();
       
-      data = result.data;
-      error = result.error;
+      profileData = result.data;
+      profileError = result.error;
     } else {
       const result = await supabase
         .from("profiles")
-        .upsert({ id: this.user.id, ...allowedFields, updated_at: new Date().toISOString() })
+        .upsert({ id: this.user.id, ...profileFields, updated_at: new Date().toISOString() })
         .select("*")
         .single();
       
-      data = result.data;
-      error = result.error;
+      profileData = result.data;
+      profileError = result.error;
     }
 
-    if (error) {
-      throw new Error(error.message || "Profile update failed");
+    if (profileError) {
+      throw new Error(profileError.message || "Profile update failed");
     }
 
-    this.profile = data;
+    if (fields.full_name !== undefined) {
+      const { error: userError } = await supabase
+        .from("users")
+        .update({ full_name: fields.full_name, updated_at: new Date().toISOString() })
+        .eq("id", this.user.id);
+
+      if (userError) {
+        console.error("Failed to update users table:", userError);
+      }
+    }
+
+    this.profile = profileData;
     this.notify();
 
-    return data;
+    return profileData;
   }
 
   async changeSecretCode(currentCode: string, newCode: string) {

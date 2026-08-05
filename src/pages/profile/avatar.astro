@@ -167,7 +167,10 @@ const avatars = [
 
         try {
           await authService.updateProfile({ avatar_url: src });
-          window.location.href = "/profile";
+          showMessage("Avatar updated successfully!", "success");
+          setTimeout(() => {
+            window.location.href = "/profile";
+          }, 1200);
         } catch (err) {
           showMessage(err instanceof Error ? err.message : "Failed to update avatar", "error");
         }
