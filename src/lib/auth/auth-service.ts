@@ -284,11 +284,45 @@ class AuthService {
       throw new Error("No fields provided");
     }
 
-    const { data, error } = await supabase
+    const { data: existingProfile } = await supabase
       .from("profiles")
-      .upsert({ id: this.user.id, ...allowedFields, updated_at: new Date().toISOString() })
-      .select("*")
-      .single();
+      .select("id, username, display_name, email")
+      .eq("id", this.user.id)
+      .maybeSingle();
+
+    let data;
+    let error;
+
+    if (!existingProfile) {
+      const username = this.user.email ? this.user.email.split("@")[0] : `user_${this.user.id.slice(0, 8)}`;
+      const displayName = this.user.full_name || this.user.name || username;
+      
+      const result = await supabase
+        .from("profiles")
+        .insert({
+          id: this.user.id,
+          username,
+          display_name: displayName,
+          email: this.user.email,
+          ...allowedFields,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        })
+        .select("*")
+        .single();
+      
+      data = result.data;
+      error = result.error;
+    } else {
+      const result = await supabase
+        .from("profiles")
+        .upsert({ id: this.user.id, ...allowedFields, updated_at: new Date().toISOString() })
+        .select("*")
+        .single();
+      
+      data = result.data;
+      error = result.error;
+    }
 
     if (error) {
       throw new Error(error.message || "Profile update failed");
