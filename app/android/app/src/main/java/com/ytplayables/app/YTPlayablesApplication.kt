@@ -28,7 +28,7 @@ class YTPlayablesApplication : Application(), Configuration.Provider {
         const val KEY_USERNAME = "username"
         const val KEY_COINS = "coins"
         const val KEY_SETTINGS = "app_settings"
-        const val BASE_URL = "https://playables.caloriecalculatorfree.com"
+        const val BASE_URL = "https://youtubeplayables.caloriecalculatorfree.com"
 
         @Volatile
         lateinit var instance: YTPlayablesApplication
