@@ -464,3 +464,29 @@
 /* App-only bottom nav: hidden on website, shown only inside the Android app */
 .ytp-app-bottom-nav { display: none !important; }
 .ytp-app .ytp-app-bottom-nav { display: flex !important; }
+
+.ytp-app body { padding-bottom: 64px !important; }
+
+/* Hide website chrome in app */
+.ytp-app .site-header,
+.ytp-app .main-header,
+.ytp-app header,
+.ytp-app .site-footer,
+.ytp-app .main-footer,
+.ytp-app footer,
+.ytp-app #profile-menu-container,
+.ytp-app #profile-menu-btn,
+.ytp-app #profile-menu-panel,
+.ytp-app .profile-menu,
+.ytp-app .profile-dropdown,
+.ytp-app .user-menu,
+.ytp-app .account-menu,
+.ytp-app [data-testid="profile"],
+.ytp-app [data-testid="account"] {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  visibility: hidden !important;
+  overflow: hidden !important;
+}

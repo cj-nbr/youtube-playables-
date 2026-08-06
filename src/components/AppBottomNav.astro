@@ -6,16 +6,16 @@ const tabs = [
 ];
 ---
 
-<nav class="ytp-app-bottom-nav fixed inset-x-0 bottom-0 z-50 hidden border-t border-hairline bg-canvas/95 backdrop-blur-md safe-bottom" style="padding-bottom: env(safe-area-inset-bottom);">
-  <div class="mx-auto flex max-w-[1400px] items-center justify-around">
+<nav class="ytp-app-bottom-nav fixed inset-x-0 bottom-0 z-[9999] hidden border-t border-hairline bg-canvas/95 backdrop-blur-md" style="padding-bottom: env(safe-area-inset-bottom);">
+  <div class="mx-auto flex items-center justify-around">
     {tabs.map((tab) => (
       <a
         href={tab.href}
-        class="flex flex-col items-center gap-1 py-2 text-xs text-body hover:text-ink"
+        class="flex flex-col items-center justify-center gap-1 py-1.5 text-[10px] text-body hover:text-ink min-w-[64px]"
         data-nav-tab={tab.id}
       >
-        <span class="text-base leading-none">{tab.icon === "home" ? "🏠" : tab.icon === "games" ? "🎮" : "👤"}</span>
-        <span>{tab.label}</span>
+        <span class="text-lg leading-none">{tab.icon === "home" ? "🏠" : tab.icon === "games" ? "🎮" : "👤"}</span>
+        <span class="font-medium">{tab.label}</span>
       </a>
     ))}
   </div>
@@ -28,7 +28,11 @@ const tabs = [
       const isApp = params.get('isApp') === 'true';
       if (isApp) {
         const nav = document.querySelector('.ytp-app-bottom-nav');
-        if (nav) nav.classList.remove('hidden');
+        if (nav) {
+          nav.classList.remove('hidden');
+          nav.style.display = 'flex';
+        }
+        document.body.style.paddingBottom = '64px';
       }
     } catch {}
   })();

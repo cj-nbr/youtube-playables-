@@ -128,9 +128,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideWebsiteChrome() {
         val js = """
-            var style = document.createElement('style');
-            style.innerHTML = 'header, footer, nav, aside, .header, .footer, .navbar, .navigation, .sidebar, .ad-banner, .advertisement, .promo-banner, .site-header, .site-footer, .main-header, .main-footer, .top-nav, .profile-menu, .profile-dropdown, .user-menu, .account-menu, [data-testid="profile"], [data-testid="account"] { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; visibility: hidden !important; } body { margin: 0 !important; padding: 0 !important; } .ytp-app-bottom-nav { display: flex !important; }';
-            document.head.appendChild(style);
+            (function() {
+              var style = document.createElement('style');
+              style.id = 'ytp-app-chrome';
+              style.innerHTML = '.ytp-app .site-header, .ytp-app .main-header, .ytp-app header, .ytp-app .site-footer, .ytp-app .main-footer, .ytp-app footer, .ytp-app .profile-menu, .ytp-app .profile-dropdown, .ytp-app .user-menu, .ytp-app .account-menu, .ytp-app [data-testid="profile"], .ytp-app [data-testid="account"] { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; visibility: hidden !important; overflow: hidden !important; } .ytp-app body { padding-bottom: 64px !important; } .ytp-app-bottom-nav { display: flex !important; }';
+              var existing = document.getElementById('ytp-app-chrome');
+              if (existing) existing.remove();
+              document.head.appendChild(style);
+            })();
         """.trimIndent()
         webView.evaluateJavascript("javascript:($js);", null)
     }
