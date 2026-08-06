@@ -13,22 +13,7 @@ const categories = Array.from(new Set(games.flatMap((g) => g.genre))).sort();
 <Layout title={`${SITE_NAME} — free browser-native playables`} description={`Play free browser-native HTML5 games on ${SITE_NAME}. No downloads, no accounts — open and play.`}>
  <a href="#main" class="skip-link">Skip to content</a>
 
- <!-- Announcement banner -->
- <div class="flex w-full justify-center border-b border-hairline bg-canvas">
-  <a
-   href="/"
-   class="mx-auto flex max-w-[1400px] items-center gap-2 px-6 py-2 text-sm text-body"
-  >
-   <span
-    class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute"
-    >NEW</span
-   >
-   <span>Introducing PLAYABLES — free playables.</span>
-   >
-  </a>
- </div>
-
- <main id="main">
+  <main id="main">
   <!-- Hero -->
   <section class="relative overflow-hidden border-b border-hairline">
    <div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
