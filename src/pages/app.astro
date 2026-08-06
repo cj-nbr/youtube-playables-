@@ -63,58 +63,14 @@ import { gameCover } from "../shared/utils";
         </div>
       </section>
 
-<!-- Profile Tab -->
-<section id="tab-profile" class="app-tab" data-tab="profile">
-  <div id="profile-content">
-    <div id="profile-loader" class="relative h-96 w-full flex items-center justify-center bg-canvas rounded-xl border border-hairline">
-      <div class="inline-block animate-spin h-8 w-8 rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
-      <p class="mt-4 text-body text-ink" id="loading-message">Loading profile...</p>
-    </div>
-    
-    <script is:module>
-      import { authService } from "../lib/auth/auth-service.js";
-      
-      // Force authentication check when profile tab activates
-      const checkProfile = async () => {
-        const loadingEl = document.getElementById("loading-message");
-        if (!loadingEl) return;
-        
-        // Show loading state immediately
-        if (loadingEl) loadingEl.style.display = "block";
-        
-        try {
-          // Trigger session restoration
-          await authService.restoreSession();
-          
-          const state = authService.getState();
-          if (state.user) {
-            // Update UI with real data
-            document.getElementById("profile-name")?.textContent = state.user.full_name || "Player";
-            document.getElementById("profile-games")?.textContent = state.user.games_played || "0";
-            loadingEl.style.display = "none";
-          } else if (authService.error) {
-            loadingEl.textContent = `Error: ${authService.error}. Reload to retry.`;
-          }
-        } catch (err) {
-          loadingEl.textContent = `Load failed: ${err.message}. Reload to retry.`;
-        }
-      };
-      
-      // Trigger on initial load
-      checkProfile();
-      
-      // Also check when tab becomes visible
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) checkProfile();
-        });
-      });
-      
-      const profileSection = document.getElementById("profile-content");
-      if (profileSection) observer.observe(profileSection);
-    </script>
-  </div>
-</section>
+      <!-- Profile Tab -->
+      <section id="tab-profile" class="app-tab hidden">
+        <div id="profile-content">
+          <div class="card p-6">
+            <p class="text-sm text-body">Loading profile…</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <AppBottomNav />

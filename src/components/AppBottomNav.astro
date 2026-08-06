@@ -6,13 +6,12 @@ const tabs = [
 ];
 ---
 
-<nav class="ytp-app-bottom-nav fixed inset-x-0 bottom-0 z-[9999] hidden border-t border-hairline bg-canvas/95 backdrop-blur-md" style="padding-bottom: env(safe-area-inset-bottom);">
+<nav class="ytp-app-bottom-nav fixed inset-x-0 bottom-0 z-[9999] border-t border-hairline bg-canvas/95 backdrop-blur-md" style="padding-bottom: env(safe-area-inset-bottom);">
   <div class="mx-auto flex items-center justify-around">
     {tabs.map((tab) => (
       <a
         href={tab.href}
         class="flex flex-col items-center justify-center gap-1 py-1.5 text-[10px] text-body hover:text-ink min-w-[64px]"
-        data-nav-tab={tab.id}
       >
         <span class="text-lg leading-none">{tab.icon === "home" ? "🏠" : tab.icon === "games" ? "🎮" : "👤"}</span>
         <span class="font-medium">{tab.label}</span>
@@ -26,46 +25,39 @@ const tabs = [
 </nav>
 
 <script is:inline>
-    (() => {
-      try {
-        // Theme toggle functionality
-        const toggle = document.getElementById('ytp-theme-toggle');
-        const icon = document.getElementById('ytp-theme-icon');
-        const label = document.getElementById('ytp-theme-label');
-        if (toggle && icon && label) {
-          toggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.toggle('dark');
-            try { localStorage.setItem('ytp:theme', isDark ? 'dark' : 'light'); } catch {}
-            icon.textContent = isDark ? '☀️' : '🌙';
-            label.textContent = isDark ? 'Light' : 'Dark';
-          });
-          const stored = localStorage.getItem('ytp:theme');
-          const dark = stored !== null ? stored === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-          if (dark) {
-            document.documentElement.classList.add('dark');
-            icon.textContent = '☀️';
-            label.textContent = 'Light';
-          }
-        }
-
-        // Only set up tab switching on pages that have tab containers (like the app page)
-        const tabContainers = document.querySelectorAll('[id^="tab-"]');
-        if (tabContainers.length === 0) return;
-
-        const navLinks = document.querySelectorAll('[data-nav-tab]');
-
-        navLinks.forEach(link => {
-          link.addEventListener('click', (e) => {
-            const tabId = link.getAttribute('data-nav-tab');
-            if (tabId) {
-              e.preventDefault();
-              const tabs = document.querySelectorAll('.app-tab');
-              tabs.forEach(tab => tab.classList.add('hidden'));
-              const target = document.getElementById('tab-' + tabId);
-              if (target) target.classList.remove('hidden');
-            }
-          });
+  (() => {
+    try {
+      // Theme toggle functionality
+      const toggle = document.getElementById('ytp-theme-toggle');
+      const icon = document.getElementById('ytp-theme-icon');
+      const label = document.getElementById('ytp-theme-label');
+      if (toggle && icon && label) {
+        toggle.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.toggle('dark');
+          try { localStorage.setItem('ytp:theme', isDark ? 'dark' : 'light'); } catch {}
+          icon.textContent = isDark ? '☀️' : '🌙';
+          label.textContent = isDark ? 'Light' : 'Dark';
         });
-      } catch {}
-    })();
-  </script>
+        const stored = localStorage.getItem('ytp:theme');
+        const dark = stored !== null ? stored === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) {
+          document.documentElement.classList.add('dark');
+          icon.textContent = '☀️';
+          label.textContent = 'Light';
+        }
+      }
+      
+      // Profile tab navigation with proper auth handling
+      const profileLink = Array.from(document.querySelectorAll('a[href="/profile"]')).find(a => a.href.includes('/profile'));
+      if (profileLink) {
+        profileLink.addEventListener('click', () => {
+          // Show loading state briefly to indicate navigation
+          const profileContent = document.getElementById('profile-content');
+          if (profileContent) {
+            profileContent.innerHTML = '<div class="animate-pulse space-y-4"><div class="h-8 bg-gray-300 rounded w-3/4 mb-2"></div><div class="h-8 bg-gray-300 rounded w-1/2"></div></div>';
+          }
+        });
+      }
+    } catch {}
+  })();
+</script>
