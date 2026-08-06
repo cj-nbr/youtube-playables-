@@ -64,49 +64,16 @@ import { authService } from "../lib/auth/auth-service";
         </div>
       </section>
 
-       <!-- Profile Tab -->
-       <section id="tab-profile" class="app-tab hidden">
-         <div id="profile-content">
-           <div class="card p-6">
-             <p class="text-sm text-body">Loading profile…</p>
-           </div>
-         </div>
-       </section>
+      <!-- Profile Tab -->
+      <section id="tab-profile" class="app-tab hidden">
+        <div id="profile-content">
+          <div class="card p-6">
+            <p class="text-sm text-body">Loading profile…</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <AppBottomNav />
   </div>
-
-  <script is:inline>
-    (() => {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        const isApp = params.get('isApp') === 'true';
-        if (!isApp) return;
-
-        const tabs = document.querySelectorAll('.app-tab');
-        const navLinks = document.querySelectorAll('[data-nav-tab]');
-
-        function showTab(tabId) {
-          tabs.forEach(tab => tab.classList.add('hidden'));
-          const target = document.getElementById('tab-' + tabId);
-          if (target) target.classList.remove('hidden');
-          if (tabId === 'profile') {
-            window.location.href = '/profile?isApp=true&platform=android&source=app';
-          }
-        }
-
-        navLinks.forEach(link => {
-          link.addEventListener('click', (e) => {
-            const tabId = link.getAttribute('data-nav-tab');
-            if (tabId) {
-              e.preventDefault();
-              showTab(tabId);
-            }
-          });
-        });
-
-      } catch {}
-    })();
-  </script>
 </AppLayout>

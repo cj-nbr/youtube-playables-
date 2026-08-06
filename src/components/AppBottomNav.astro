@@ -2,7 +2,7 @@
 const tabs = [
   { id: "home", label: "Home", href: "/app?isApp=true&platform=android&source=app", icon: "home" },
   { id: "games", label: "Games", href: "/app?isApp=true&platform=android&source=app", icon: "games" },
-  { id: "profile", label: "Profile", href: "/app?isApp=true&platform=android&source=app", icon: "profile" },
+  { id: "profile", label: "Profile", href: "/profile?isApp=true&platform=android&source=app", icon: "profile" },
 ];
 ---
 
@@ -26,49 +26,46 @@ const tabs = [
 </nav>
 
 <script is:inline>
-  (() => {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const isApp = params.get('isApp') === 'true';
-      if (!isApp) return;
-
-      const tabs = document.querySelectorAll('.app-tab');
-      const navLinks = document.querySelectorAll('[data-nav-tab]');
-
-      function showTab(tabId) {
-        tabs.forEach(tab => tab.classList.add('hidden'));
-        const target = document.getElementById('tab-' + tabId);
-        if (target) target.classList.remove('hidden');
-      }
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          const tabId = link.getAttribute('data-nav-tab');
-          if (tabId) {
-            e.preventDefault();
-            showTab(tabId);
+    (() => {
+      try {
+        // Theme toggle functionality
+        const toggle = document.getElementById('ytp-theme-toggle');
+        const icon = document.getElementById('ytp-theme-icon');
+        const label = document.getElementById('ytp-theme-label');
+        if (toggle && icon && label) {
+          toggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            try { localStorage.setItem('ytp:theme', isDark ? 'dark' : 'light'); } catch {}
+            icon.textContent = isDark ? '☀️' : '🌙';
+            label.textContent = isDark ? 'Light' : 'Dark';
+          });
+          const stored = localStorage.getItem('ytp:theme');
+          const dark = stored !== null ? stored === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+          if (dark) {
+            document.documentElement.classList.add('dark');
+            icon.textContent = '☀️';
+            label.textContent = 'Light';
           }
-        });
-      });
-
-      const toggle = document.getElementById('ytp-theme-toggle');
-      const icon = document.getElementById('ytp-theme-icon');
-      const label = document.getElementById('ytp-theme-label');
-      if (toggle && icon && label) {
-        toggle.addEventListener('click', () => {
-          const isDark = document.documentElement.classList.toggle('dark');
-          try { localStorage.setItem('ytp:theme', isDark ? 'dark' : 'light'); } catch {}
-          icon.textContent = isDark ? '☀️' : '🌙';
-          label.textContent = isDark ? 'Light' : 'Dark';
-        });
-        const stored = localStorage.getItem('ytp:theme');
-        const dark = stored !== null ? stored === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-        if (dark) {
-          document.documentElement.classList.add('dark');
-          icon.textContent = '☀️';
-          label.textContent = 'Light';
         }
-      }
-    } catch {}
-  })();
-</script>
+
+        // Only set up tab switching on pages that have tab containers (like the app page)
+        const tabContainers = document.querySelectorAll('[id^="tab-"]');
+        if (tabContainers.length === 0) return;
+
+        const navLinks = document.querySelectorAll('[data-nav-tab]');
+
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            const tabId = link.getAttribute('data-nav-tab');
+            if (tabId) {
+              e.preventDefault();
+              const tabs = document.querySelectorAll('.app-tab');
+              tabs.forEach(tab => tab.classList.add('hidden'));
+              const target = document.getElementById('tab-' + tabId);
+              if (target) target.classList.remove('hidden');
+            }
+          });
+        });
+      } catch {}
+    })();
+  </script>
