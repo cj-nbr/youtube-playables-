@@ -9,14 +9,6 @@
         android:icon="@drawable/ic_games"
         android:title="@string/games" />
     <item
-        android:id="@+id/nav_categories"
-        android:icon="@drawable/ic_categories"
-        android:title="@string/categories" />
-    <item
-        android:id="@+id/nav_favorites"
-        android:icon="@drawable/ic_favorite"
-        android:title="@string/favorites" />
-    <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_profile"
         android:title="@string/profile" />

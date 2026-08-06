@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
     private fun hideWebsiteChrome() {
         val js = """
             var style = document.createElement('style');
-            style.innerHTML = 'header, footer, nav, aside, .header, .footer, .navbar, .navigation, .sidebar, .ad-banner, .advertisement, .promo-banner, .site-header, .site-footer, .main-header, .main-footer, .top-nav { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; } body { margin: 0 !important; padding: 0 !important; }';
+            style.innerHTML = 'header, footer, nav, aside, .header, .footer, .navbar, .navigation, .sidebar, .ad-banner, .advertisement, .promo-banner, .site-header, .site-footer, .main-header, .main-footer, .top-nav, .profile-menu, .profile-dropdown, .user-menu, .account-menu, [data-testid="profile"], [data-testid="account"] { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; visibility: hidden !important; } body { margin: 0 !important; padding: 0 !important; }';
             document.head.appendChild(style);
         """.trimIndent()
         webView.evaluateJavascript("javascript:($js);", null)
@@ -149,16 +149,6 @@ class MainActivity : AppCompatActivity() {
                     val url = "${YTPlayablesApplication.BASE_URL}/playables?isApp=true&platform=android&source=app"
                     webView.loadUrl(url)
                     currentTab = R.id.nav_games
-                    true
-                }
-                R.id.nav_categories -> {
-                    loadUrlWithAppParam()
-                    currentTab = R.id.nav_categories
-                    true
-                }
-                R.id.nav_favorites -> {
-                    loadUrlWithAppParam()
-                    currentTab = R.id.nav_favorites
                     true
                 }
                 R.id.nav_profile -> {
@@ -203,10 +193,6 @@ class MainActivity : AppCompatActivity() {
             url.contains("ytplayables://category/") -> {
                 val category = url.substringAfter("ytplayables://category/")
                 loadCategory(category)
-            }
-            url.contains("ytplayables://favorites") -> {
-                currentTab = R.id.nav_favorites
-                bottomNav.selectedItemId = R.id.nav_favorites
             }
             url.contains("ytplayables://settings") -> {
                 currentTab = R.id.nav_profile
