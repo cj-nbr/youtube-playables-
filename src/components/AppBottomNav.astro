@@ -18,5 +18,57 @@ const tabs = [
         <span class="font-medium">{tab.label}</span>
       </a>
     ))}
+    <button id="ytp-theme-toggle" class="flex flex-col items-center justify-center gap-1 py-1.5 text-[10px] text-body hover:text-ink min-w-[64px]" aria-label="Toggle dark mode">
+      <span class="text-lg leading-none" id="ytp-theme-icon">🌙</span>
+      <span class="font-medium" id="ytp-theme-label">Dark</span>
+    </button>
   </div>
 </nav>
+
+<script is:inline>
+  (() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const isApp = params.get('isApp') === 'true';
+      if (!isApp) return;
+
+      const tabs = document.querySelectorAll('.app-tab');
+      const navLinks = document.querySelectorAll('[data-nav-tab]');
+
+      function showTab(tabId) {
+        tabs.forEach(tab => tab.classList.add('hidden'));
+        const target = document.getElementById('tab-' + tabId);
+        if (target) target.classList.remove('hidden');
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const tabId = link.getAttribute('data-nav-tab');
+          if (tabId) {
+            e.preventDefault();
+            showTab(tabId);
+          }
+        });
+      });
+
+      const toggle = document.getElementById('ytp-theme-toggle');
+      const icon = document.getElementById('ytp-theme-icon');
+      const label = document.getElementById('ytp-theme-label');
+      if (toggle && icon && label) {
+        toggle.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.toggle('dark');
+          try { localStorage.setItem('ytp:theme', isDark ? 'dark' : 'light'); } catch {}
+          icon.textContent = isDark ? '☀️' : '🌙';
+          label.textContent = isDark ? 'Light' : 'Dark';
+        });
+        const stored = localStorage.getItem('ytp:theme');
+        const dark = stored !== null ? stored === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) {
+          document.documentElement.classList.add('dark');
+          icon.textContent = '☀️';
+          label.textContent = 'Light';
+        }
+      }
+    } catch {}
+  })();
+</script>

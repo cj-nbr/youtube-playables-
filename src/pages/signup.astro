@@ -54,18 +54,22 @@ import Layout from "../layouts/Layout.astro";
     const phone = (document.getElementById("phone") as HTMLInputElement).value.trim();
     const secretCode = (document.getElementById("secretCode") as HTMLInputElement).value;
 
-    try {
-     const result = await register(fullName, email, phone, secretCode);
-     if (btn) { btn.disabled = false; btn.textContent = "Sign up"; }
-     
-     if (result?.needsConfirmation) {
-      successEl.textContent = "Account created! Please check your email to confirm, then log in.";
-      successEl.style.display = "block";
-     } else {
-      successEl.textContent = "Account created! Please log in now.";
-      successEl.style.display = "block";
-     }
-     form.reset();
+     try {
+      const result = await register(fullName, email, phone, secretCode);
+      if (btn) { btn.disabled = false; btn.textContent = "Sign up"; }
+
+      if (result?.needsConfirmation) {
+       successEl.textContent = "Account created! Please check your email to confirm, then log in.";
+       successEl.style.display = "block";
+      } else {
+       successEl.textContent = "Account created! Please log in now.";
+       successEl.style.display = "block";
+       const params = new URLSearchParams(window.location.search);
+       if (params.get('isApp') === 'true') {
+        window.location.href = "/app?isApp=true&platform=android&source=app";
+       }
+      }
+      form.reset();
     } catch (err) {
      if (btn) { btn.disabled = false; btn.textContent = "Sign up"; }
      let message = err instanceof Error ? err.message : "Sign up failed";

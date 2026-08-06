@@ -40,10 +40,15 @@ import Layout from "../layouts/Layout.astro";
     const loginValue = document.getElementById("login").value.trim();
     const secretCode = document.getElementById("secret-code").value;
 
-    try {
-     await login(loginValue, secretCode);
-     window.location.href = "/playables";
-    } catch (err) {
+     try {
+      await login(loginValue, secretCode);
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('isApp') === 'true') {
+       window.location.href = "/app?isApp=true&platform=android&source=app";
+      } else {
+       window.location.href = "/playables";
+      }
+     } catch (err) {
      if (btn) { btn.disabled = false; btn.textContent = "Log in"; }
      errorEl.textContent =
       err instanceof Error ? err.message : "Login failed";
