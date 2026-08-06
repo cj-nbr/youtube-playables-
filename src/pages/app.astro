@@ -1,12 +1,12 @@
 ---
+import AppLayout from "../layouts/AppLayout.astro";
 import AppBottomNav from "../components/AppBottomNav.astro";
 import { games, popularGames, newGames } from "../shared/games";
 import { gameCover } from "../shared/utils";
 import { authService } from "../lib/auth/auth-service";
-import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Playables App" description="Playables mobile app interface">
+<AppLayout title="Playables App" description="Playables mobile app interface">
   <div class="ytp-app-page min-h-screen">
     <!-- App Header -->
     <div class="app-header sticky top-0 z-40 border-b border-hairline bg-canvas/95 backdrop-blur-md">
@@ -109,4 +109,4 @@ import Layout from "../layouts/Layout.astro";
       } catch {}
     })();
   </script>
-</Layout>
+</AppLayout>
