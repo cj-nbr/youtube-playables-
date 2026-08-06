@@ -1,43 +1,43 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "block-blast-complete-beginner-guide",
-    title: "Block Blast Complete Beginner Guide: How to Play, Score, and Win",
-    description:
-      "Learn how to play Block Blast from scratch. This beginner guide covers same-color clears, combos, scoring, and the habits that turn play into high scores.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Puzzle Games",
-    tags: [
-      "block blast",
-      "block puzzle",
-      "puzzle games",
-      "beginner guide",
-      "same color blocks",
-      "block blast scoring",
-      "mobile puzzle",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/block-blast/cover.webp",
-    primaryKeyword: "how to play block blast",
-    secondaryKeywords: [
-      "block blast beginner guide",
-      "block blast rules",
-      "block blast scoring explained",
-      "block blast combos",
-    ],
-    lsiKeywords: [
-      "grid puzzle",
-      "color matching",
-      "tile clearing",
-      "board management",
-      "arcade puzzle",
-    ],
-    gameId: "block-blast",
-    excerpt:
-      "A plain-English walkthrough of Block Blast: how the board works, how clearing same-color blocks builds combos, and how the score actually adds up.",
-    content: `
+ {
+  slug: "block-blast-complete-beginner-guide",
+  title: "Block Blast Complete Beginner Guide: How to Play, Score, and Win",
+  description:
+   "Learn how to play Block Blast from scratch. This beginner guide covers same-color clears, combos, scoring, and the habits that turn play into high scores.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Puzzle Games",
+  tags: [
+   "block blast",
+   "block puzzle",
+   "puzzle games",
+   "beginner guide",
+   "same color blocks",
+   "block blast scoring",
+   "mobile puzzle",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/block-blast/cover.webp",
+  primaryKeyword: "how to play block blast",
+  secondaryKeywords: [
+   "block blast beginner guide",
+   "block blast rules",
+   "block blast scoring explained",
+   "block blast combos",
+  ],
+  lsiKeywords: [
+   "grid puzzle",
+   "color matching",
+   "tile clearing",
+   "board management",
+   "arcade puzzle",
+  ],
+  gameId: "block-blast",
+  excerpt:
+   "A plain-English walkthrough of Block Blast: how the board works, how clearing same-color blocks builds combos, and how the score actually adds up.",
+  content: `
 <h2>What Is Block Blast?</h2>
 <p>Block Blast is a free-to-play block puzzle that drops a steady stream of colored tiles onto a square board. Your only job is to place each piece where it fits, then clear blocks by grouping matching colors together. There is no timer breathing down your neck, no enemies, and no lives to lose. That calm first impression hides a genuinely strategic game once you learn how the board behaves.</p>
 <p>The appeal is easy to explain. Every move is simple, but the consequences stack up quickly. A single careless drop can crowd a corner and force a bad follow-up. A patient player who reads the board a few moves ahead can build enormous chain clears that feel like a small fireworks show.</p>
@@ -150,89 +150,89 @@ export const posts: BlogPost[] = [
 <ul>
 <li>Wikipedia, "Match-three game" - background on color-matching puzzle mechanics.</li>
 <li>Wikipedia, "Tetris" - context on block placement and spatial packing puzzles.</li>
-<li>Official Block Blast game page on the YouTube Playables platform.</li>
+<li>Official Block Blast game page on the Playables platform.</li>
 </ul>
 `,
-    faqs: [
-  {
-    q: "How do you clear blocks in Block Blast?",
-    a: "You clear blocks by connecting a group of the same color so they touch on their sides. The game removes the group automatically once it is complete. Diagonal touching does not count.",
-  },
-  {
-    q: "Is Block Blast free to play?",
-    a: "Yes. Block Blast is free to play and does not require an account to start a round. You can play it directly in your browser on the game page.",
-  },
-  {
-    q: "What ends a game of Block Blast?",
-    a: "A run ends when the board fills up and none of the three pieces in your tray can fit anywhere. There is no timer, so the only fail state is running out of room.",
-  },
-  {
-    q: "How does the combo system work?",
-    a: "A combo happens when one placement causes multiple clears in a chain, such as a clear that opens space and completes another group. Each link adds to your score multiplier.",
-  },
-  {
-    q: "Does Block Blast have a timer?",
-    a: "No. Block Blast is untimed, which is part of its relaxed feel. You can take as long as you like to decide where each piece goes.",
-  },
-  {
-    q: "What is the best strategy for beginners?",
-    a: "Plan all three tray pieces before placing any, keep one open lane, and build groups near edges. These habits keep the board workable far longer than grabbing the first available space.",
-  },
-  {
-    q: "Why did my group not clear?",
-    a: "The most common reason is a gap in the connection. Every block in the group must touch another same-color block on a side. A diagonal or a one-space gap breaks the group.",
-  },
-  {
-    q: "How is the score calculated?",
-    a: "Score comes from the blocks you clear plus a multiplier for chaining clears in one move. Big connected combos earn far more than many small separate clears.",
-  },
-  {
-    q: "Can I play Block Blast on desktop?",
-    a: "Yes. The browser version works with a mouse, and the drag-and-drop placement feels natural on a larger screen where you can see the whole board at once.",
-  },
-  {
-    q: "Is Block Blast like a match-three game?",
-    a: "Only on the surface. Block Blast is a placement and packing puzzle, not a swap-and-match game. You choose where pieces land rather than swapping adjacent tiles. See our <a href=\"/block-blast-vs-match-3-games\">full comparison</a> for the differences.",
-  },
+  faqs: [
+ {
+  q: "How do you clear blocks in Block Blast?",
+  a: "You clear blocks by connecting a group of the same color so they touch on their sides. The game removes the group automatically once it is complete. Diagonal touching does not count.",
+ },
+ {
+  q: "Is Block Blast free to play?",
+  a: "Yes. Block Blast is free to play and does not require an account to start a round. You can play it directly in your browser on the game page.",
+ },
+ {
+  q: "What ends a game of Block Blast?",
+  a: "A run ends when the board fills up and none of the three pieces in your tray can fit anywhere. There is no timer, so the only fail state is running out of room.",
+ },
+ {
+  q: "How does the combo system work?",
+  a: "A combo happens when one placement causes multiple clears in a chain, such as a clear that opens space and completes another group. Each link adds to your score multiplier.",
+ },
+ {
+  q: "Does Block Blast have a timer?",
+  a: "No. Block Blast is untimed, which is part of its relaxed feel. You can take as long as you like to decide where each piece goes.",
+ },
+ {
+  q: "What is the best strategy for beginners?",
+  a: "Plan all three tray pieces before placing any, keep one open lane, and build groups near edges. These habits keep the board workable far longer than grabbing the first available space.",
+ },
+ {
+  q: "Why did my group not clear?",
+  a: "The most common reason is a gap in the connection. Every block in the group must touch another same-color block on a side. A diagonal or a one-space gap breaks the group.",
+ },
+ {
+  q: "How is the score calculated?",
+  a: "Score comes from the blocks you clear plus a multiplier for chaining clears in one move. Big connected combos earn far more than many small separate clears.",
+ },
+ {
+  q: "Can I play Block Blast on desktop?",
+  a: "Yes. The browser version works with a mouse, and the drag-and-drop placement feels natural on a larger screen where you can see the whole board at once.",
+ },
+ {
+  q: "Is Block Blast like a match-three game?",
+  a: "Only on the surface. Block Blast is a placement and packing puzzle, not a swap-and-match game. You choose where pieces land rather than swapping adjacent tiles. See our <a href=\"/block-blast-vs-match-3-games\">full comparison</a> for the differences.",
+ },
 ],
-  },
-  {
-    slug: "block-blast-combo-strategy",
-    title: "Block Blast Combo Strategy: Build Big Groups and Chain Your Clears",
-    description:
-      "Master the Block Blast combo strategy that top players use: build large same-color groups, set up chain clears, and manage the board so every move pays off.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Puzzle Games",
-    tags: [
-      "block blast combos",
-      "block blast strategy",
-      "chain clears",
-      "high score",
-      "puzzle tactics",
-      "board management",
-      "block puzzle tips",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/block-blast/cover.webp",
-    primaryKeyword: "block blast combo strategy",
-    secondaryKeywords: [
-      "block blast chain clears",
-      "block blast high score",
-      "block blast board management",
-      "how to combo in block blast",
-    ],
-    lsiKeywords: [
-      "group building",
-      "cascade clears",
-      "multiplier",
-      "spatial planning",
-      "tile efficiency",
-    ],
-    gameId: "block-blast",
-    excerpt:
-      "The difference between a good Block Blast run and a great one is combos. Here is how to build big groups and trigger chains on purpose.",
-    content: `
+ },
+ {
+  slug: "block-blast-combo-strategy",
+  title: "Block Blast Combo Strategy: Build Big Groups and Chain Your Clears",
+  description:
+   "Master the Block Blast combo strategy that top players use: build large same-color groups, set up chain clears, and manage the board so every move pays off.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Puzzle Games",
+  tags: [
+   "block blast combos",
+   "block blast strategy",
+   "chain clears",
+   "high score",
+   "puzzle tactics",
+   "board management",
+   "block puzzle tips",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/block-blast/cover.webp",
+  primaryKeyword: "block blast combo strategy",
+  secondaryKeywords: [
+   "block blast chain clears",
+   "block blast high score",
+   "block blast board management",
+   "how to combo in block blast",
+  ],
+  lsiKeywords: [
+   "group building",
+   "cascade clears",
+   "multiplier",
+   "spatial planning",
+   "tile efficiency",
+  ],
+  gameId: "block-blast",
+  excerpt:
+   "The difference between a good Block Blast run and a great one is combos. Here is how to build big groups and trigger chains on purpose.",
+  content: `
 <h2>Why Combos Matter More Than Raw Clears</h2>
 <p>If you read the beginner guide, you already know the score rewards chains. This article is about doing that on purpose instead of hoping it happens. A single clear of six blocks is worth less than two linked clears that remove ten. The gap widens as chains grow, so the entire advanced game is about manufacturing those links.</p>
 <p>The mental shift is from "where can this piece fit" to "where can this piece fit so the next two pieces set up a chain." That sounds obvious, but most losing runs come from solving the present move and ignoring the two after it.</p>
@@ -347,89 +347,89 @@ export const posts: BlogPost[] = [
 <ul>
 <li>Wikipedia, "Tetris" - context on spatial packing and board management under piece pressure.</li>
 <li>Wikipedia, "Match-three game" - background on cascading clear mechanics that inspired chain play.</li>
-<li>Official Block Blast game page on the YouTube Playables platform.</li>
+<li>Official Block Blast game page on the Playables platform.</li>
 </ul>
 `,
-    faqs: [
-  {
-    q: "What is the best combo strategy in Block Blast?",
-    a: "The best strategy is to leave groups one block short, build them near walls, and place the finishing block later so one move triggers several linked clears. Planning the full three-piece tray makes this reliable.",
-  },
-  {
-    q: "How do chain clears work?",
-    a: "A chain clear happens when one clear opens space that completes another group, which clears and opens more space. Each link in the chain adds to your score multiplier within the same move.",
-  },
-  {
-    q: "Should I build one big group or many small ones?",
-    a: "Big contained groups usually win. They clear more blocks at once and keep the rest of the board open. The risk is letting one group grow so large it blocks your escape lane, so keep groups regional.",
-  },
-  {
-    q: "Why does my combo keep failing?",
-    a: "Most failures come from filling the gap you meant to leave, or from letting the board crowd the area around your staged groups. Protect the trigger block and keep an open lane nearby.",
-  },
-  {
-    q: "How important is the open lane?",
-    a: "Very. A reserved row or column is your escape when the tray does not fit your plan. Without it, a single awkward piece can end the run.",
-  },
-  {
-    q: "Is speed or planning more important?",
-    a: "Planning. Block Blast is untimed, and strong players are often slower because they keep the board clean. The speed arrives later, for free, once the board stops fighting them.",
-  },
-  {
-    q: "Can I set up a chain across the whole board?",
-    a: "You can stage several groups across regions, but very long chains are fragile because the tray may not supply the right pieces. Two or three linked clears is a realistic, high-value target.",
-  },
-  {
-    q: "What should I do when the tray breaks my plan?",
-    a: "Take the safe placement and rebuild the setup next tray. Abandoning a combo is better than filling the board. Only chase a chain when the tray can actually support it.",
-  },
-  {
-    q: "Do walls really help that much?",
-    a: "Yes. A group against a wall needs one fewer matching neighbor to be complete, so edge building is almost always more efficient than building in the open center.",
-  },
-  {
-    q: "How do I practice combos without losing quickly?",
-    a: "Use drills: clear only large groups, avoid the center squares, or review a lost run to find the move that closed your lane. These build the patience and board sense combos require.",
-  },
+  faqs: [
+ {
+  q: "What is the best combo strategy in Block Blast?",
+  a: "The best strategy is to leave groups one block short, build them near walls, and place the finishing block later so one move triggers several linked clears. Planning the full three-piece tray makes this reliable.",
+ },
+ {
+  q: "How do chain clears work?",
+  a: "A chain clear happens when one clear opens space that completes another group, which clears and opens more space. Each link in the chain adds to your score multiplier within the same move.",
+ },
+ {
+  q: "Should I build one big group or many small ones?",
+  a: "Big contained groups usually win. They clear more blocks at once and keep the rest of the board open. The risk is letting one group grow so large it blocks your escape lane, so keep groups regional.",
+ },
+ {
+  q: "Why does my combo keep failing?",
+  a: "Most failures come from filling the gap you meant to leave, or from letting the board crowd the area around your staged groups. Protect the trigger block and keep an open lane nearby.",
+ },
+ {
+  q: "How important is the open lane?",
+  a: "Very. A reserved row or column is your escape when the tray does not fit your plan. Without it, a single awkward piece can end the run.",
+ },
+ {
+  q: "Is speed or planning more important?",
+  a: "Planning. Block Blast is untimed, and strong players are often slower because they keep the board clean. The speed arrives later, for free, once the board stops fighting them.",
+ },
+ {
+  q: "Can I set up a chain across the whole board?",
+  a: "You can stage several groups across regions, but very long chains are fragile because the tray may not supply the right pieces. Two or three linked clears is a realistic, high-value target.",
+ },
+ {
+  q: "What should I do when the tray breaks my plan?",
+  a: "Take the safe placement and rebuild the setup next tray. Abandoning a combo is better than filling the board. Only chase a chain when the tray can actually support it.",
+ },
+ {
+  q: "Do walls really help that much?",
+  a: "Yes. A group against a wall needs one fewer matching neighbor to be complete, so edge building is almost always more efficient than building in the open center.",
+ },
+ {
+  q: "How do I practice combos without losing quickly?",
+  a: "Use drills: clear only large groups, avoid the center squares, or review a lost run to find the move that closed your lane. These build the patience and board sense combos require.",
+ },
 ],
-  },
-  {
-    slug: "block-blast-how-to-plan-clears",
-    title: "How to Plan Clears in Block Blast: Read the Board and Avoid Dead Ends",
-    description:
-      "Block Blast tips for planning clears ahead: learn to read the board, spot dead ends before they happen, and place pieces so every move keeps your options open.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Puzzle Games",
-    tags: [
-      "block blast tips",
-      "planning clears",
-      "read the board",
-      "avoid dead ends",
-      "puzzle strategy",
-      "block blast advice",
-      "board reading",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/block-blast/cover.webp",
-    primaryKeyword: "block blast tips",
-    secondaryKeywords: [
-      "block blast how to plan",
-      "block blast dead ends",
-      "read the board block blast",
-      "block blast placement tips",
-    ],
-    lsiKeywords: [
-      "lookahead",
-      "option preservation",
-      "footprint",
-      "open lanes",
-      "tray planning",
-    ],
-    gameId: "block-blast",
-    excerpt:
-      "Planning one move ahead changes everything in Block Blast. Here is how to read the board, protect your options, and dodge the dead ends that end runs.",
-    content: `
+ },
+ {
+  slug: "block-blast-how-to-plan-clears",
+  title: "How to Plan Clears in Block Blast: Read the Board and Avoid Dead Ends",
+  description:
+   "Block Blast tips for planning clears ahead: learn to read the board, spot dead ends before they happen, and place pieces so every move keeps your options open.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Puzzle Games",
+  tags: [
+   "block blast tips",
+   "planning clears",
+   "read the board",
+   "avoid dead ends",
+   "puzzle strategy",
+   "block blast advice",
+   "board reading",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/block-blast/cover.webp",
+  primaryKeyword: "block blast tips",
+  secondaryKeywords: [
+   "block blast how to plan",
+   "block blast dead ends",
+   "read the board block blast",
+   "block blast placement tips",
+  ],
+  lsiKeywords: [
+   "lookahead",
+   "option preservation",
+   "footprint",
+   "open lanes",
+   "tray planning",
+  ],
+  gameId: "block-blast",
+  excerpt:
+   "Planning one move ahead changes everything in Block Blast. Here is how to read the board, protect your options, and dodge the dead ends that end runs.",
+  content: `
 <h2>The One Skill That Changes Everything</h2>
 <p>Most players treat Block Blast as a reaction game. A piece appears, they find a hole, they drop it. That works for a while, then the board fills and they wonder why. The players who last twice as long do one extra thing: they look at the board as a set of future options, not just current holes.</p>
 <p>Planning clears is less about cleverness and more about discipline. You ask a short list of questions before every placement, and you keep asking them until they become automatic. This article builds that habit from the ground up.</p>
@@ -546,89 +546,89 @@ export const posts: BlogPost[] = [
 <ul>
 <li>Wikipedia, "Tetris" - context on reading the board and managing limited space under piece pressure.</li>
 <li>Wikipedia, "Match-three game" - background on planning cascades and group assembly.</li>
-<li>Official Block Blast game page on the YouTube Playables platform.</li>
+<li>Official Block Blast game page on the Playables platform.</li>
 </ul>
 `,
-    faqs: [
-  {
-    q: "How do I plan clears in Block Blast?",
-    a: "Read the board in three quick steps: find your open lanes, spot half-built groups, and locate the tightest corner. Then place the hardest tray piece first and use the easy pieces to keep a lane open.",
-  },
-  {
-    q: "What is a dead end in Block Blast?",
-    a: "A dead end is a board state where no tray piece can fit, ending the run. It usually builds from several small placements that each looked fine but together closed your only open lane.",
-  },
-  {
-    q: "How do I avoid single-square holes?",
-    a: "Think in footprints. Prefer rectangular and straight-line placements that leave clean space, and either fill a hole or merge it into a group rather than leaving it as a trap for future pieces.",
-  },
-  {
-    q: "Should I place the easy or hard piece first?",
-    a: "Place the hardest piece first, because it has the fewest valid homes. Use the flexible pieces afterward to clean up the gaps it leaves and protect your lanes.",
-  },
-  {
-    q: "Why does my board fill up so fast?",
-    a: "Usually because placements leave notches and holes instead of clean space, so fewer pieces fit over time. Plan footprints and keep a lane open to slow the fill.",
-  },
-  {
-    q: "Is there a fixed routine I can follow?",
-    a: "Yes. Read the board, rank the three tray pieces, place the hardest first, use the easy pieces to keep a lane, then check that the board is calmer than before. Repeat every move.",
-  },
-  {
-    q: "How do I spot a dead end early?",
-    a: "Watch for no open lane, single-square holes, one crowded corner, and three awkward pieces queued at once. Any two together is a warning to reopen space immediately.",
-  },
-  {
-    q: "Does planning work late in a run?",
-    a: "It works best in the mid-game, when the board is half full and you still have room to act. Early there is slack; late there is little to recover, so the middle is where planning pays off most.",
-  },
-  {
-    q: "How is this different from combo strategy?",
-    a: "Planning is the foundation; combos build on it. You read the board and protect options first, then use that clean board to stage the linked clears described in the <a href=\"/block-blast-combo-strategy\">combo guide</a>.",
-  },
-  {
-    q: "What games train the same skill?",
-    a: "Colored Lines and Mahjongg Solitaire both reward reading a layout before committing to a move, so they are good complements if you want to sharpen the same forward-thinking habit.",
-  },
+  faqs: [
+ {
+  q: "How do I plan clears in Block Blast?",
+  a: "Read the board in three quick steps: find your open lanes, spot half-built groups, and locate the tightest corner. Then place the hardest tray piece first and use the easy pieces to keep a lane open.",
+ },
+ {
+  q: "What is a dead end in Block Blast?",
+  a: "A dead end is a board state where no tray piece can fit, ending the run. It usually builds from several small placements that each looked fine but together closed your only open lane.",
+ },
+ {
+  q: "How do I avoid single-square holes?",
+  a: "Think in footprints. Prefer rectangular and straight-line placements that leave clean space, and either fill a hole or merge it into a group rather than leaving it as a trap for future pieces.",
+ },
+ {
+  q: "Should I place the easy or hard piece first?",
+  a: "Place the hardest piece first, because it has the fewest valid homes. Use the flexible pieces afterward to clean up the gaps it leaves and protect your lanes.",
+ },
+ {
+  q: "Why does my board fill up so fast?",
+  a: "Usually because placements leave notches and holes instead of clean space, so fewer pieces fit over time. Plan footprints and keep a lane open to slow the fill.",
+ },
+ {
+  q: "Is there a fixed routine I can follow?",
+  a: "Yes. Read the board, rank the three tray pieces, place the hardest first, use the easy pieces to keep a lane, then check that the board is calmer than before. Repeat every move.",
+ },
+ {
+  q: "How do I spot a dead end early?",
+  a: "Watch for no open lane, single-square holes, one crowded corner, and three awkward pieces queued at once. Any two together is a warning to reopen space immediately.",
+ },
+ {
+  q: "Does planning work late in a run?",
+  a: "It works best in the mid-game, when the board is half full and you still have room to act. Early there is slack; late there is little to recover, so the middle is where planning pays off most.",
+ },
+ {
+  q: "How is this different from combo strategy?",
+  a: "Planning is the foundation; combos build on it. You read the board and protect options first, then use that clean board to stage the linked clears described in the <a href=\"/block-blast-combo-strategy\">combo guide</a>.",
+ },
+ {
+  q: "What games train the same skill?",
+  a: "Colored Lines and Mahjongg Solitaire both reward reading a layout before committing to a move, so they are good complements if you want to sharpen the same forward-thinking habit.",
+ },
 ],
-  },
-  {
-    slug: "block-blast-common-mistakes",
-    title: "Block Blast Common Mistakes: The Habits That End Runs Early",
-    description:
-      "The Block Blast common mistakes that cost you: scattered clears, ignoring board edges, and panic placing. Learn what to do instead and play longer runs.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Puzzle Games",
-    tags: [
-      "block blast common mistakes",
-      "block blast errors",
-      "panic placing",
-      "board edges",
-      "scattered clears",
-      "block blast help",
-      "puzzle pitfalls",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/block-blast/cover.webp",
-    primaryKeyword: "block blast common mistakes",
-    secondaryKeywords: [
-      "block blast mistakes to avoid",
-      "why do I lose block blast",
-      "block blast panic placing",
-      "block blast edge strategy",
-    ],
-    lsiKeywords: [
-      "reactive play",
-      "cluttered board",
-      "lost lanes",
-      "poor placement",
-      "habit fixing",
-    ],
-    gameId: "block-blast",
-    excerpt:
-      "Most Block Blast runs die from the same few habits. Here are the common mistakes, why they hurt, and the simple fixes that keep you on the board.",
-    content: `
+ },
+ {
+  slug: "block-blast-common-mistakes",
+  title: "Block Blast Common Mistakes: The Habits That End Runs Early",
+  description:
+   "The Block Blast common mistakes that cost you: scattered clears, ignoring board edges, and panic placing. Learn what to do instead and play longer runs.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Puzzle Games",
+  tags: [
+   "block blast common mistakes",
+   "block blast errors",
+   "panic placing",
+   "board edges",
+   "scattered clears",
+   "block blast help",
+   "puzzle pitfalls",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/block-blast/cover.webp",
+  primaryKeyword: "block blast common mistakes",
+  secondaryKeywords: [
+   "block blast mistakes to avoid",
+   "why do I lose block blast",
+   "block blast panic placing",
+   "block blast edge strategy",
+  ],
+  lsiKeywords: [
+   "reactive play",
+   "cluttered board",
+   "lost lanes",
+   "poor placement",
+   "habit fixing",
+  ],
+  gameId: "block-blast",
+  excerpt:
+   "Most Block Blast runs die from the same few habits. Here are the common mistakes, why they hurt, and the simple fixes that keep you on the board.",
+  content: `
 <h2>Why We Repeat the Same Mistakes</h2>
 <p>Block Blast feels forgiving, so it is easy to play on autopilot. Autopilot is exactly where the common mistakes live. None of them feel like a mistake in the moment. Each one looks like the only sensible place to drop a piece, and then twenty moves later the board is jammed and you cannot say why.</p>
 <p>This article names the usual suspects and, more importantly, the fixes. The goal is not to play perfectly but to stop the handful of habits that end most runs. Start with the <a href="/block-blast-complete-beginner-guide">beginner guide</a> if the board is still new to you.</p>
@@ -739,89 +739,89 @@ export const posts: BlogPost[] = [
 <ul>
 <li>Wikipedia, "Tetris" - context on how piece placement discipline prevents board clutter.</li>
 <li>Wikipedia, "Match-three game" - background on grouping and cascade planning.</li>
-<li>Official Block Blast game page on the YouTube Playables platform.</li>
+<li>Official Block Blast game page on the Playables platform.</li>
 </ul>
 `,
-    faqs: [
-  {
-    q: "What is the most common mistake in Block Blast?",
-    a: "Scattered clears. Players take every small clear that appears instead of building one large group, which leaves holes across the board and crowds it faster than a single big clear would.",
-  },
-  {
-    q: "Why should I use the board edges?",
-    a: "A block against a wall needs one fewer same-color neighbor to complete a group, because the wall is a free side. Edge building finishes groups faster and uses less board space than center building.",
-  },
-  {
-    q: "What is panic placing?",
-    a: "Panic placing is dropping the easy tray piece first to get it out of the way, which blocks the spot the awkward piece needed, or dumping pieces anywhere when the board looks full. Both usually end the run.",
-  },
-  {
-    q: "How many open lanes should I keep?",
-    a: "Aim for at least two. One reserved lane is your minimum insurance; with zero, any awkward tray ends the game. Reopen a lane the moment you drop to one.",
-  },
-  {
-    q: "Should I chase a clear on the far side of the board?",
-    a: "Usually no. A distant clear often forces blocks through unrelated colors and strands material in the middle. A smaller local clear usually keeps the board healthier.",
-  },
-  {
-    q: "How do I stop placing pieces so fast?",
-    a: "Use a two-second pause between placements to run a quick board read. That small gap is enough to catch the reflex drop that would otherwise strand a piece.",
-  },
-  {
-    q: "Why does my board get crowded in the middle?",
-    a: "Because center building forces every group to be fully surrounded, needing more pieces and more space. Shift your building toward edges and corners to free the middle.",
-  },
-  {
-    q: "Can fixing mistakes really raise my score?",
-    a: "Yes. Cleaner boards let you stage the linked clears from the <a href=\"/block-blast-combo-strategy\">combo guide</a>, and those chains score far more than the scattered clears mistakes usually produce.",
-  },
-  {
-    q: "How do I find the mistake that ended my run?",
-    a: "Replay the lost board in your head and look for the first move that left the board tighter than before. That move, not the final crowded one, is usually where the run was lost.",
-  },
-  {
-    q: "Is it better to play slow or fast?",
-    a: "Slow, because Block Blast is untimed. Speed invites the reactive mistakes above. Thinking a moment longer between placements prevents more losses than any quick combo.",
-  },
+  faqs: [
+ {
+  q: "What is the most common mistake in Block Blast?",
+  a: "Scattered clears. Players take every small clear that appears instead of building one large group, which leaves holes across the board and crowds it faster than a single big clear would.",
+ },
+ {
+  q: "Why should I use the board edges?",
+  a: "A block against a wall needs one fewer same-color neighbor to complete a group, because the wall is a free side. Edge building finishes groups faster and uses less board space than center building.",
+ },
+ {
+  q: "What is panic placing?",
+  a: "Panic placing is dropping the easy tray piece first to get it out of the way, which blocks the spot the awkward piece needed, or dumping pieces anywhere when the board looks full. Both usually end the run.",
+ },
+ {
+  q: "How many open lanes should I keep?",
+  a: "Aim for at least two. One reserved lane is your minimum insurance; with zero, any awkward tray ends the game. Reopen a lane the moment you drop to one.",
+ },
+ {
+  q: "Should I chase a clear on the far side of the board?",
+  a: "Usually no. A distant clear often forces blocks through unrelated colors and strands material in the middle. A smaller local clear usually keeps the board healthier.",
+ },
+ {
+  q: "How do I stop placing pieces so fast?",
+  a: "Use a two-second pause between placements to run a quick board read. That small gap is enough to catch the reflex drop that would otherwise strand a piece.",
+ },
+ {
+  q: "Why does my board get crowded in the middle?",
+  a: "Because center building forces every group to be fully surrounded, needing more pieces and more space. Shift your building toward edges and corners to free the middle.",
+ },
+ {
+  q: "Can fixing mistakes really raise my score?",
+  a: "Yes. Cleaner boards let you stage the linked clears from the <a href=\"/block-blast-combo-strategy\">combo guide</a>, and those chains score far more than the scattered clears mistakes usually produce.",
+ },
+ {
+  q: "How do I find the mistake that ended my run?",
+  a: "Replay the lost board in your head and look for the first move that left the board tighter than before. That move, not the final crowded one, is usually where the run was lost.",
+ },
+ {
+  q: "Is it better to play slow or fast?",
+  a: "Slow, because Block Blast is untimed. Speed invites the reactive mistakes above. Thinking a moment longer between placements prevents more losses than any quick combo.",
+ },
 ],
-  },
-  {
-    slug: "block-blast-vs-match-3-games",
-    title: "Block Blast vs Match-3 and 2048: Which Puzzle Trains What",
-    description:
-      "A look at the best block puzzle games: how Block Blast compares with match-3 titles and 2048, what each trains, and which one fits the skill you want to build.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Puzzle Games",
-    tags: [
-      "best block puzzle games",
-      "block blast vs match 3",
-      "block blast vs 2048",
-      "puzzle game comparison",
-      "match three",
-      "brain training games",
-      "puzzle recommendations",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/block-blast/cover.webp",
-    primaryKeyword: "best block puzzle games",
-    secondaryKeywords: [
-      "block blast compared to match 3",
-      "block blast or 2048",
-      "puzzle games that train planning",
-      "which puzzle game is best",
-    ],
-    lsiKeywords: [
-      "swap mechanics",
-      "merge mechanics",
-      "spatial reasoning",
-      "forward planning",
-      "puzzle genres",
-    ],
-    gameId: "block-blast",
-    excerpt:
-      "Block Blast, match-3, and 2048 look alike but train different skills. Here is the honest comparison and which game to pick for the skill you want.",
-    content: `
+ },
+ {
+  slug: "block-blast-vs-match-3-games",
+  title: "Block Blast vs Match-3 and 2048: Which Puzzle Trains What",
+  description:
+   "A look at the best block puzzle games: how Block Blast compares with match-3 titles and 2048, what each trains, and which one fits the skill you want to build.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Puzzle Games",
+  tags: [
+   "best block puzzle games",
+   "block blast vs match 3",
+   "block blast vs 2048",
+   "puzzle game comparison",
+   "match three",
+   "brain training games",
+   "puzzle recommendations",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/block-blast/cover.webp",
+  primaryKeyword: "best block puzzle games",
+  secondaryKeywords: [
+   "block blast compared to match 3",
+   "block blast or 2048",
+   "puzzle games that train planning",
+   "which puzzle game is best",
+  ],
+  lsiKeywords: [
+   "swap mechanics",
+   "merge mechanics",
+   "spatial reasoning",
+   "forward planning",
+   "puzzle genres",
+  ],
+  gameId: "block-blast",
+  excerpt:
+   "Block Blast, match-3, and 2048 look alike but train different skills. Here is the honest comparison and which game to pick for the skill you want.",
+  content: `
 <h2>Three Games, Three Different Brains</h2>
 <p>Block Blast, match-three games, and 2048 all show up in the same "relaxing puzzle" shelf, but they ask your brain to do very different things. Picking the right one depends on what you actually want to practice. This comparison is about the mental skill each game trains, not just which one is more fun.</p>
 <p>If you came from the <a href="/block-blast-complete-beginner-guide">Block Blast beginner guide</a>, this puts your game in context. If you are choosing where to spend your time, the table near the end is the shortcut.</p>
@@ -948,48 +948,49 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Tetris" - context on block placement and spatial packing puzzles that inform Block Blast.</li>
 </ul>
 `,
-    faqs: [
-  {
-    q: "Is Block Blast a match-three game?",
-    a: "No. Block Blast is a placement puzzle where you choose where pieces land and clear connected same-color groups. Match-three games have you swap adjacent tiles to line up matches on a fixed board.",
-  },
-  {
-    q: "Which is better, Block Blast or 2048?",
-    a: "Neither is better overall. Block Blast trains spatial packing and is more visual; 2048 trains directional logic and is more numerical. Both are untimed and reward planning several moves ahead.",
-  },
-  {
-    q: "What skill does Block Blast train?",
-    a: "It trains spatial reasoning, lookahead across a few moves, and patience. You constantly decide where pieces fit and what footprint they leave, which builds board-management habits.",
-  },
-  {
-    q: "What skill does a match-three game train?",
-    a: "Match-three trains pattern recognition and quick local decisions. You scan for the best available swap rather than shaping the board, and play is often timed or move-limited.",
-  },
-  {
-    q: "Which puzzle game is best for relaxation?",
-    a: "The untimed ones: Block Blast and 2048. Match-three often adds timers or move limits that some players find stressful. For a calm session, pick the untimed pair.",
-  },
-  {
-    q: "Can playing these games improve each other?",
-    a: "Yes. Lane control from Block Blast helps in 2048, and match-three veterans often spot Block Blast group chances faster. The planning habits reinforce one another across genres.",
-  },
-  {
-    q: "Is 2048 harder than Block Blast?",
-    a: "It depends on your strengths. 2048 is more abstract and mathematically strict about merges, while Block Blast is more spatial and forgiving. Players strong in logic may find 2048 easier and vice versa.",
-  },
-  {
-    q: "Which game should a beginner start with?",
-    a: "Block Blast is the gentlest entry because it is untimed and the rules are simple, yet it still teaches real planning. Move to 2048 or match-three once you want a different kind of challenge.",
-  },
-  {
-    q: "Do these games have timers?",
-    a: "Block Blast and 2048 do not. Many match-three games do, through countdowns or move limits. That distinction is the main reason players pick one over another for mood.",
-  },
-  {
-    q: "What other calm puzzles are similar?",
-    a: "Colored Lines and Mahjongg Solitaire share the no-timer calm and reward reading the board before committing, making them natural companions to Block Blast.",
-  },
+  faqs: [
+ {
+  q: "Is Block Blast a match-three game?",
+  a: "No. Block Blast is a placement puzzle where you choose where pieces land and clear connected same-color groups. Match-three games have you swap adjacent tiles to line up matches on a fixed board.",
+ },
+ {
+  q: "Which is better, Block Blast or 2048?",
+  a: "Neither is better overall. Block Blast trains spatial packing and is more visual; 2048 trains directional logic and is more numerical. Both are untimed and reward planning several moves ahead.",
+ },
+ {
+  q: "What skill does Block Blast train?",
+  a: "It trains spatial reasoning, lookahead across a few moves, and patience. You constantly decide where pieces fit and what footprint they leave, which builds board-management habits.",
+ },
+ {
+  q: "What skill does a match-three game train?",
+  a: "Match-three trains pattern recognition and quick local decisions. You scan for the best available swap rather than shaping the board, and play is often timed or move-limited.",
+ },
+ {
+  q: "Which puzzle game is best for relaxation?",
+  a: "The untimed ones: Block Blast and 2048. Match-three often adds timers or move limits that some players find stressful. For a calm session, pick the untimed pair.",
+ },
+ {
+  q: "Can playing these games improve each other?",
+  a: "Yes. Lane control from Block Blast helps in 2048, and match-three veterans often spot Block Blast group chances faster. The planning habits reinforce one another across genres.",
+ },
+ {
+  q: "Is 2048 harder than Block Blast?",
+  a: "It depends on your strengths. 2048 is more abstract and mathematically strict about merges, while Block Blast is more spatial and forgiving. Players strong in logic may find 2048 easier and vice versa.",
+ },
+ {
+  q: "Which game should a beginner start with?",
+  a: "Block Blast is the gentlest entry because it is untimed and the rules are simple, yet it still teaches real planning. Move to 2048 or match-three once you want a different kind of challenge.",
+ },
+ {
+  q: "Do these games have timers?",
+  a: "Block Blast and 2048 do not. Many match-three games do, through countdowns or move limits. That distinction is the main reason players pick one over another for mood.",
+ },
+ {
+  q: "What other calm puzzles are similar?",
+  a: "Colored Lines and Mahjongg Solitaire share the no-timer calm and reward reading the board before committing, making them natural companions to Block Blast.",
+ },
 ],
-  },
+ },
 ];
+
 

@@ -1,46 +1,46 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "anagram-tips-and-tricks",
-    title: "Anagram Tips and Tricks: How to Rearrange Letters Faster",
-    description:
-      "Practical anagram tips and tricks to spot hidden words, sort letters, and solve faster. Techniques, drills, and a free anagram trainer to build real speed.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Word Games",
-    tags: [
-      "anagram tips",
-      "anagram tricks",
-      "how to solve anagrams",
-      "word game strategy",
-      "anagram practice",
-      "speed anagram",
-      "letter rearrangement",
-    ],
-    authorId: "lena",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "anagram tips",
-    secondaryKeywords: [
-      "anagram solver techniques",
-      "how to get better at anagrams",
-      "anagram practice drills",
-      "word unscramble tips",
-      "anagram trainer game",
-    ],
-    lsiKeywords: [
-      "letter patterns",
-      "vowel consonant split",
-      "two letter words",
-      "word bank",
-      "mental rotation",
-      "scrabble anagrams",
-      "word games",
-      "vocabulary drills",
-    ],
-    excerpt:
-      "A working method for solving anagrams faster: sort the letters, split vowels from consonants, anchor on endings, and drill daily with a free trainer.",
-    content: `
+ {
+  slug: "anagram-tips-and-tricks",
+  title: "Anagram Tips and Tricks: How to Rearrange Letters Faster",
+  description:
+   "Practical anagram tips and tricks to spot hidden words, sort letters, and solve faster. Techniques, drills, and a free anagram trainer to build real speed.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Word Games",
+  tags: [
+   "anagram tips",
+   "anagram tricks",
+   "how to solve anagrams",
+   "word game strategy",
+   "anagram practice",
+   "speed anagram",
+   "letter rearrangement",
+  ],
+  authorId: "lena",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "anagram tips",
+  secondaryKeywords: [
+   "anagram solver techniques",
+   "how to get better at anagrams",
+   "anagram practice drills",
+   "word unscramble tips",
+   "anagram trainer game",
+  ],
+  lsiKeywords: [
+   "letter patterns",
+   "vowel consonant split",
+   "two letter words",
+   "word bank",
+   "mental rotation",
+   "scrabble anagrams",
+   "word games",
+   "vocabulary drills",
+  ],
+  excerpt:
+   "A working method for solving anagrams faster: sort the letters, split vowels from consonants, anchor on endings, and drill daily with a free trainer.",
+  content: `
 <h2>Why Anagrams Feel Hard (and Why They Are Not)</h2>
 <p>An anagram looks impossible until it does not. You see the letters T, A, R, S, and E scattered in front of you, and for a few seconds nothing clicks. Then the word settles and it was obvious all along. That gap is not a vocabulary problem. It is a processing problem. Your brain reads words as fixed shapes, left to right, and an anagram breaks that habit. The good news is that anagram skill is trainable, and most of the gain comes from a small set of repeatable moves rather than from knowing more words.</p>
 <p>This guide collects the techniques that actually shift your speed, the ones used by people who solve anagrams under time pressure. None require memorizing dictionaries. They require a method, a little daily practice, and a willingness to stop staring at the letters in the order they were given to you.</p>
@@ -159,60 +159,60 @@ export const posts: BlogPost[] = [
 <li>Oxford English Dictionary: etymology and variant spellings referenced for pattern grouping.</li>
 </ul>
 `,
-    faqs: [
-      { q: "What is the fastest way to solve anagrams?", a: "Sort the letters first, then split vowels from consonants and anchor on common suffixes like ING or ED. This turns a scramble into a smaller problem you can solve by recognition rather than trial and error." },
-      { q: "How do I get better at anagrams quickly?", a: "Practice under a clock for ten minutes a day. Play a fast trainer such as Anagramania to build the sort-and-scan habit, then use What Word to reinforce patterns at a slower pace." },
-      { q: "Are two-letter words really useful in anagrams?", a: "Yes. Words like ZA, XI, JO, and QA let you place difficult letters that would otherwise seem unusable. They also appear inside longer words, so knowing them widens the solutions you can see." },
-      { q: "Why should I sort letters instead of reading them?", a: "Reading letters in the given order locks your brain onto a false starting point. Sorting removes that anchor and reveals the shapes of real words, which is why it is the first habit every fast solver builds." },
-      { q: "How long should I practice anagrams each day?", a: "Ten minutes of focused daily practice beats an occasional long session. Consistency builds recognition, and recognition is what makes solving feel instant rather than calculated." },
-      { q: "What are the best games to train anagram speed?", a: "Anagramania for timed repetition and What Word for pattern building are the strongest pair. Both run in the browser with no download and adapt to phone or desktop." },
-      { q: "How do I handle long eight or nine letter anagrams?", a: "Pull out doubled letters, anchor the most likely suffix first, then solve the smaller remaining set. The same rules apply as with short words, only the payoff from anchoring is larger." },
-      { q: "Is anagram skill the same as having a big vocabulary?", a: "Not entirely. Vocabulary helps, but most anagram speed comes from pattern recognition and method. A player with a modest vocabulary and a strong sorting habit will beat a reader who knows more words but scans them in order." },
-      { q: "Can children learn these anagram techniques?", a: "They can, and it helps reading. Sorting letters and splitting vowels from consonants reinforces phonics, while short daily drills build focus without feeling like schoolwork." },
-      { q: "Should I write the letters down or solve in my head?", a: "Beginners should write or arrange tiles physically to make the sort visible. As recognition builds, move to mental solving. The goal is to externalize the sort early, then internalize it through repetition." },
-      { q: "Do these tips work for Scrabble and similar games?", a: "They do. Anagram recognition, suffix anchoring, and two-letter word knowledge are exactly the skills that raise a Scrabble score, because every strong play starts from seeing the words hidden on your rack." },
-    ],
-  },
-  {
-    slug: "how-to-get-better-at-wordle-style-games",
-    title: "How to Get Better at Wordle-Style Games: A Practical Training Plan",
-    description:
-      "Learn how to get better at Wordle-style games with opener strategy, letter tracking, and daily drills. Improve fast across formats with free browser puzzles.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Word Games",
-    tags: [
-      "wordle style games",
-      "how to get better at wordle",
-      "wordle strategy",
-      "word guessing game tips",
-      "daily word game practice",
-      "wordle training",
-      "improve word game score",
-    ],
-    authorId: "lena",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "wordle style games",
-    secondaryKeywords: [
-      "wordle strategy guide",
-      "best wordle openers",
-      "how to improve at word games",
-      "wordle practice routine",
-      "letter elimination technique",
-    ],
-    lsiKeywords: [
-      "starting words",
-      "letter frequency",
-      "guess tracking",
-      "vowel coverage",
-      "common consonants",
-      "daily puzzles",
-      "word banks",
-      "browser games",
-    ],
-    excerpt:
-      "A clear plan for improving at Wordle-style games: pick strong openers, track letters, learn odd words, and train across formats with free browser puzzles.",
-    content: `
+  faqs: [
+   { q: "What is the fastest way to solve anagrams?", a: "Sort the letters first, then split vowels from consonants and anchor on common suffixes like ING or ED. This turns a scramble into a smaller problem you can solve by recognition rather than trial and error." },
+   { q: "How do I get better at anagrams quickly?", a: "Practice under a clock for ten minutes a day. Play a fast trainer such as Anagramania to build the sort-and-scan habit, then use What Word to reinforce patterns at a slower pace." },
+   { q: "Are two-letter words really useful in anagrams?", a: "Yes. Words like ZA, XI, JO, and QA let you place difficult letters that would otherwise seem unusable. They also appear inside longer words, so knowing them widens the solutions you can see." },
+   { q: "Why should I sort letters instead of reading them?", a: "Reading letters in the given order locks your brain onto a false starting point. Sorting removes that anchor and reveals the shapes of real words, which is why it is the first habit every fast solver builds." },
+   { q: "How long should I practice anagrams each day?", a: "Ten minutes of focused daily practice beats an occasional long session. Consistency builds recognition, and recognition is what makes solving feel instant rather than calculated." },
+   { q: "What are the best games to train anagram speed?", a: "Anagramania for timed repetition and What Word for pattern building are the strongest pair. Both run in the browser with no download and adapt to phone or desktop." },
+   { q: "How do I handle long eight or nine letter anagrams?", a: "Pull out doubled letters, anchor the most likely suffix first, then solve the smaller remaining set. The same rules apply as with short words, only the payoff from anchoring is larger." },
+   { q: "Is anagram skill the same as having a big vocabulary?", a: "Not entirely. Vocabulary helps, but most anagram speed comes from pattern recognition and method. A player with a modest vocabulary and a strong sorting habit will beat a reader who knows more words but scans them in order." },
+   { q: "Can children learn these anagram techniques?", a: "They can, and it helps reading. Sorting letters and splitting vowels from consonants reinforces phonics, while short daily drills build focus without feeling like schoolwork." },
+   { q: "Should I write the letters down or solve in my head?", a: "Beginners should write or arrange tiles physically to make the sort visible. As recognition builds, move to mental solving. The goal is to externalize the sort early, then internalize it through repetition." },
+   { q: "Do these tips work for Scrabble and similar games?", a: "They do. Anagram recognition, suffix anchoring, and two-letter word knowledge are exactly the skills that raise a Scrabble score, because every strong play starts from seeing the words hidden on your rack." },
+  ],
+ },
+ {
+  slug: "how-to-get-better-at-wordle-style-games",
+  title: "How to Get Better at Wordle-Style Games: A Practical Training Plan",
+  description:
+   "Learn how to get better at Wordle-style games with opener strategy, letter tracking, and daily drills. Improve fast across formats with free browser puzzles.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Word Games",
+  tags: [
+   "wordle style games",
+   "how to get better at wordle",
+   "wordle strategy",
+   "word guessing game tips",
+   "daily word game practice",
+   "wordle training",
+   "improve word game score",
+  ],
+  authorId: "lena",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "wordle style games",
+  secondaryKeywords: [
+   "wordle strategy guide",
+   "best wordle openers",
+   "how to improve at word games",
+   "wordle practice routine",
+   "letter elimination technique",
+  ],
+  lsiKeywords: [
+   "starting words",
+   "letter frequency",
+   "guess tracking",
+   "vowel coverage",
+   "common consonants",
+   "daily puzzles",
+   "word banks",
+   "browser games",
+  ],
+  excerpt:
+   "A clear plan for improving at Wordle-style games: pick strong openers, track letters, learn odd words, and train across formats with free browser puzzles.",
+  content: `
 <h2>Wordle-Style Games Reward Method, Not Luck</h2>
 <p>It is easy to think a good Wordle run is luck. Some days the word falls in three guesses, other days you stall at five and pray. But players who consistently finish in three or four are not luckier. They are following a method, often without naming it. Wordle-style games are constrained puzzles: a fixed answer length, a known letter set, and feedback that rules options in or out. Treat that feedback as data and the game becomes solvable rather than guessable.</p>
 <p>This guide lays out the method that moves a casual player toward consistent results. It covers openers, letter management, tracking, and a daily routine. The same principles apply whether you play the original format, a timed variant, or a grid-based twist.</p>
@@ -324,5 +324,6 @@ export const posts: BlogPost[] = [
 <li>NASPA Word List: competitive word reference for unusual answers and letter sets.</li>
 </ul>
 `,
-  },
+ },
 ];
+

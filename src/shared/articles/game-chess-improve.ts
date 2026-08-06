@@ -1,48 +1,48 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "how-to-get-better-at-chess",
-    title: "How to Get Better at Chess: A Practical Guide for Intermediate Players",
-    description:
-      "A practical guide to improving at chess. Learn opening principles, middlegame planning, endgame fundamentals, and daily practice habits that raise your rating.",
-    date: "2026-07-14",
-    updatedAt: "2026-07-14",
-    category: "Strategy Games",
-    tags: [
-      "how to get better at chess",
-      "chess improvement",
-      "chess strategy",
-      "chess tips",
-      "intermediate chess",
-      "chess practice",
-      "chess rating",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/chess/cover.webp",
-    primaryKeyword: "how to get better at chess",
-    secondaryKeywords: [
-      "chess improvement guide",
-      "chess tips for intermediate players",
-      "how to improve at chess",
-      "chess strategy guide",
-    ],
-    lsiKeywords: [
-      "opening principles",
-      "middlegame planning",
-      "endgame fundamentals",
-      "tactics",
-      "positional play",
-      "pawn structure",
-      "piece activity",
-      "king safety",
-      "practice routine",
-      "chess rating",
-    ],
-    gameId: "chess",
-    excerpt:
-      "Improve your chess with practical tips on openings, middlegame planning, endgame technique, and daily practice habits that raise your rating.",
-    content: `
+ {
+  slug: "how-to-get-better-at-chess",
+  title: "How to Get Better at Chess: A Practical Guide for Intermediate Players",
+  description:
+   "A practical guide to improving at chess. Learn opening principles, middlegame planning, endgame fundamentals, and daily practice habits that raise your rating.",
+  date: "2026-07-14",
+  updatedAt: "2026-07-14",
+  category: "Strategy Games",
+  tags: [
+   "how to get better at chess",
+   "chess improvement",
+   "chess strategy",
+   "chess tips",
+   "intermediate chess",
+   "chess practice",
+   "chess rating",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/chess/cover.webp",
+  primaryKeyword: "how to get better at chess",
+  secondaryKeywords: [
+   "chess improvement guide",
+   "chess tips for intermediate players",
+   "how to improve at chess",
+   "chess strategy guide",
+  ],
+  lsiKeywords: [
+   "opening principles",
+   "middlegame planning",
+   "endgame fundamentals",
+   "tactics",
+   "positional play",
+   "pawn structure",
+   "piece activity",
+   "king safety",
+   "practice routine",
+   "chess rating",
+  ],
+  gameId: "chess",
+  excerpt:
+   "Improve your chess with practical tips on openings, middlegame planning, endgame technique, and daily practice habits that raise your rating.",
+  content: `
 <h2>Why Most Chess Players Plateau</h2>
 <p>Many intermediate players know the rules and can execute basic tactics, yet their rating stalls. The gap between a 1000-rated player and a 1500-rated player is rarely about knowing more openings. It is about making fewer consistent mistakes, planning with purpose, and practicing the right skills in the right order.</p>
 <p>This guide focuses on the four areas that move the needle most: opening principles, middlegame planning, endgame fundamentals, and a sustainable daily practice routine. If you also enjoy two-player strategy, try <a href="/checkers">Checkers</a> or <a href="/reversi">Reversi</a> to sharpen the same planning instincts.</p>
@@ -105,7 +105,7 @@ export const posts: BlogPost[] = [
 </table>
 
 <h2>Put It Into Practice</h2>
-<p>The best way to improve is to play and then review. Open <a href="/chess">Chess</a> on YouTube Playables, play a slow game, and after each game ask yourself: what was my plan? Did I achieve it? What was my biggest mistake?</p>
+<p>The best way to improve is to play and then review. Open <a href="/chess">Chess</a> on Playables, play a slow game, and after each game ask yourself: what was my plan? Did I achieve it? What was my biggest mistake?</p>
 <div class="cta-box">
 <h3>Start your first reviewed game today.</h3>
 <p>Play a slow game of chess and take notes on your plan and mistakes.</p>
@@ -131,12 +131,12 @@ export const posts: BlogPost[] = [
 <li>Chess.com Learning Center â beginner tutorials and interactive lessons</li>
 </ul>
 `,
-    faqs: [
-      { q: "How long does it take to get better at chess?", a: "Most intermediate players see noticeable improvement within three to six months of consistent practice." },
-      { q: "Should I study chess openings?", a: "Yes, but only a handful of simple openings. Learn the ideas behind the Italian Game or the London System rather than memorizing long move sequences." },
-      { q: "Is chess purely a game of memory?", a: "Memory helps, but pattern recognition and calculation matter more." },
-      { q: "What is the best way to practice chess alone?", a: "Solve tactics puzzles daily, play slow games with post-game reviews, and study one master game per week." },
-      { q: "Can I improve at chess without a coach?", a: "Yes. Many strong players are self-taught. The key is deliberate practice." },
-    ],
-  },
+  faqs: [
+   { q: "How long does it take to get better at chess?", a: "Most intermediate players see noticeable improvement within three to six months of consistent practice." },
+   { q: "Should I study chess openings?", a: "Yes, but only a handful of simple openings. Learn the ideas behind the Italian Game or the London System rather than memorizing long move sequences." },
+   { q: "Is chess purely a game of memory?", a: "Memory helps, but pattern recognition and calculation matter more." },
+   { q: "What is the best way to practice chess alone?", a: "Solve tactics puzzles daily, play slow games with post-game reviews, and study one master game per week." },
+   { q: "Can I improve at chess without a coach?", a: "Yes. Many strong players are self-taught. The key is deliberate practice." },
+  ],
+ },
 ];

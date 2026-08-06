@@ -20,196 +20,197 @@ const coins = user?.coins || 0;
 const experience = user?.experience || 0;
 ---
 
-<Layout title="My Profile — YOUTUBE PLAYABLES" description="View and manage your YOUTUBE PLAYABLES profile, stats, and achievements">
-  <a href="#main" class="skip-link">Skip to content</a>
-  <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
-    <div id="auth-loading" style={{ display: loading ? 'block' : 'none' }}>
-      <div class="mx-auto max-w-2xl py-20 text-center">
-        <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
-        <p class="mt-4 text-body">Loading profile...</p>
+<Layout title="My Profile — PLAYABLES" description="View and manage your PLAYABLES profile, stats, and achievements">
+ <a href="#main" class="skip-link">Skip to content</a>
+ <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
+  <div id="auth-loading" style={{ display: loading ? 'block' : 'none' }}>
+   <div class="mx-auto max-w-2xl py-20 text-center">
+    <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
+    <p class="mt-4 text-body">Loading profile...</p>
+   </div>
+  </div>
+  <div id="auth-login" style={{ display: !loading && !user ? 'block' : 'none' }}>
+   <div class="mx-auto max-w-2xl py-20 text-center">
+    <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
+    <p class="text-body mb-6">You need to be logged in to view your profile.</p>
+    <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+   </div>
+  </div>
+  <div id="auth-content" style={{ display: !loading && user ? 'block' : 'none' }}>
+    <div class="bg-canvas rounded-xl border border-hairline shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] overflow-hidden">
+     <div class="relative h-32 bg-gradient-to-r from-[#007cf0] to-[#00dfd8]"></div>
+     <div class="px-6 pb-6">
+       <div class="relative -mt-16 mb-4">
+        <div class="h-32 w-32 rounded-full border-4 border-canvas bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-3xl font-bold shadow-lg overflow-hidden" id="profile-avatar">
+         <img id="profile-avatar-img" src="" alt="Avatar" class="h-full w-full object-cover hidden" />
+         <span id="profile-avatar-letter">U</span>
+        </div>
+        <span class="absolute bottom-1 right-1 h-5 w-5 rounded-full bg-green-500 border-4 border-canvas"></span>
+       </div>
+
+       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+         <h1 class="text-2xl font-bold text-ink" id="profile-name">Player</h1>
+         <p class="text-sm text-body font-mono mt-1">Code: <span id="profile-code">------</span></p>
+         <p class="text-sm text-body mt-1" id="profile-contact"></p>
+        </div>
+       <div class="flex gap-2">
+        <a href="/profile/edit" class="inline-flex items-center rounded-pill border border-hairline px-4 py-2 text-sm font-medium text-ink hover:bg-canvas-hover transition-colors">Edit Profile</a>
+       </div>
       </div>
+     </div>
     </div>
-    <div id="auth-login" style={{ display: !loading && !user ? 'block' : 'none' }}>
-      <div class="mx-auto max-w-2xl py-20 text-center">
-        <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
-        <p class="text-body mb-6">You need to be logged in to view your profile.</p>
-        <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+     <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
+      <div class="text-2xl font-bold text-[#007cf0]" id="profile-level">1</div>
+      <div class="text-xs text-body mt-1">Level</div>
+     </div>
+     <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
+      <div class="text-2xl font-bold text-[#007cf0]" id="profile-games">0</div>
+      <div class="text-xs text-body mt-1">Games Played</div>
+     </div>
+     <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
+      <div class="text-2xl font-bold text-[#007cf0]" id="profile-achievements">0</div>
+      <div class="text-xs text-body mt-1">Achievements</div>
+     </div>
+     <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
+      <div class="text-2xl font-bold text-[#007cf0]" id="profile-highscore">0</div>
+      <div class="text-xs text-body mt-1">High Score</div>
+     </div>
+    </div>
+
+    <div class="bg-canvas rounded-xl border border-hairline p-6">
+     <h2 class="text-lg font-semibold text-ink mb-4">Account Details</h2>
+     <div class="space-y-3">
+      <div class="flex justify-between py-2 border-b border-hairline">
+       <span class="text-sm text-body">Member Since</span>
+       <span class="text-sm text-ink font-medium" id="profile-member-since">N/A</span>
       </div>
+      <div class="flex justify-between py-2 border-b border-hairline">
+       <span class="text-sm text-body">Last Login</span>
+       <span class="text-sm text-ink font-medium" id="profile-last-login">N/A</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-hairline">
+       <span class="text-sm text-body">Rank</span>
+       <span class="text-sm text-ink font-medium" id="profile-rank">Bronze</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-hairline">
+       <span class="text-sm text-body">Play Time</span>
+       <span class="text-sm text-ink font-medium" id="profile-playtime">0 hours</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-hairline">
+       <span class="text-sm text-body">Coins</span>
+       <span class="text-sm text-ink font-medium" id="profile-coins">0</span>
+      </div>
+      <div class="flex justify-between py-2">
+       <span class="text-sm text-body">Experience</span>
+       <span class="text-sm text-ink font-medium" id="profile-xp">0 XP</span>
+      </div>
+     </div>
     </div>
-    <div id="auth-content" style={{ display: !loading && user ? 'block' : 'none' }}>
-        <div class="bg-canvas rounded-xl border border-hairline shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] overflow-hidden">
-          <div class="relative h-32 bg-gradient-to-r from-[#007cf0] to-[#00dfd8]"></div>
-          <div class="px-6 pb-6">
-             <div class="relative -mt-16 mb-4">
-               <div class="h-32 w-32 rounded-full border-4 border-canvas bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-3xl font-bold shadow-lg overflow-hidden" id="profile-avatar">
-                 <img id="profile-avatar-img" src="" alt="Avatar" class="h-full w-full object-cover hidden" />
-                 <span id="profile-avatar-letter">U</span>
-               </div>
-               <span class="absolute bottom-1 right-1 h-5 w-5 rounded-full bg-green-500 border-4 border-canvas"></span>
-             </div>
 
-             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-               <div>
-                 <h1 class="text-2xl font-bold text-ink" id="profile-name">Player</h1>
-                 <p class="text-sm text-body font-mono mt-1">Code: <span id="profile-code">------</span></p>
-                 <p class="text-sm text-body mt-1" id="profile-contact"></p>
-               </div>
-              <div class="flex gap-2">
-                <a href="/profile/edit" class="inline-flex items-center rounded-pill border border-hairline px-4 py-2 text-sm font-medium text-ink hover:bg-canvas-hover transition-colors">Edit Profile</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
-            <div class="text-2xl font-bold text-[#007cf0]" id="profile-level">1</div>
-            <div class="text-xs text-body mt-1">Level</div>
-          </div>
-          <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
-            <div class="text-2xl font-bold text-[#007cf0]" id="profile-games">0</div>
-            <div class="text-xs text-body mt-1">Games Played</div>
-          </div>
-          <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
-            <div class="text-2xl font-bold text-[#007cf0]" id="profile-achievements">0</div>
-            <div class="text-xs text-body mt-1">Achievements</div>
-          </div>
-          <div class="bg-canvas rounded-xl border border-hairline p-4 text-center">
-            <div class="text-2xl font-bold text-[#007cf0]" id="profile-highscore">0</div>
-            <div class="text-xs text-body mt-1">High Score</div>
-          </div>
-        </div>
-
-        <div class="bg-canvas rounded-xl border border-hairline p-6">
-          <h2 class="text-lg font-semibold text-ink mb-4">Account Details</h2>
-          <div class="space-y-3">
-            <div class="flex justify-between py-2 border-b border-hairline">
-              <span class="text-sm text-body">Member Since</span>
-              <span class="text-sm text-ink font-medium" id="profile-member-since">N/A</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-hairline">
-              <span class="text-sm text-body">Last Login</span>
-              <span class="text-sm text-ink font-medium" id="profile-last-login">N/A</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-hairline">
-              <span class="text-sm text-body">Rank</span>
-              <span class="text-sm text-ink font-medium" id="profile-rank">Bronze</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-hairline">
-              <span class="text-sm text-body">Play Time</span>
-              <span class="text-sm text-ink font-medium" id="profile-playtime">0 hours</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-hairline">
-              <span class="text-sm text-body">Coins</span>
-              <span class="text-sm text-ink font-medium" id="profile-coins">0</span>
-            </div>
-            <div class="flex justify-between py-2">
-              <span class="text-sm text-body">Experience</span>
-              <span class="text-sm text-ink font-medium" id="profile-xp">0 XP</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-canvas rounded-xl border border-hairline p-6">
-          <h2 class="text-lg font-semibold text-ink mb-4">Quick Actions</h2>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <a href="/profile/achievements" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.414 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
-              <span class="text-xs text-ink font-medium">Achievements</span>
-            </a>
-            <a href="/profile/statistics" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6M9 5v6m12 0v6m-6-6v6m6-6H9" /></svg>
-              <span class="text-xs text-ink font-medium">Statistics</span>
-            </a>
-            <a href="/profile/details" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-              <span class="text-xs text-ink font-medium">Details</span>
-            </a>
-            <a href="/profile/security" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-              <span class="text-xs text-ink font-medium">Security</span>
-            </a>
-          </div>
-        </div>
+    <div class="bg-canvas rounded-xl border border-hairline p-6">
+     <h2 class="text-lg font-semibold text-ink mb-4">Quick Actions</h2>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <a href="/profile/achievements" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.414 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+       <span class="text-xs text-ink font-medium">Achievements</span>
+      </a>
+      <a href="/profile/statistics" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6M9 5v6m12 0v6m-6-6v6m6-6H9" /></svg>
+       <span class="text-xs text-ink font-medium">Statistics</span>
+      </a>
+      <a href="/profile/details" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+       <span class="text-xs text-ink font-medium">Details</span>
+      </a>
+      <a href="/profile/security" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+       <span class="text-xs text-ink font-medium">Security</span>
+      </a>
+     </div>
     </div>
-  </main>
+  </div>
+ </main>
 
-  <script type="module">
-    import { authService } from "../lib/auth/auth-service.js";
+ <script type="module">
+  import { authService } from "../lib/auth/auth-service.js";
 
-    const setAuthVisibility = (state) => {
-      const loadingEl = document.getElementById("auth-loading");
-      const loginEl = document.getElementById("auth-login");
-      const contentEl = document.getElementById("auth-content");
-      if (loadingEl) loadingEl.style.display = state.loading ? "block" : "none";
-      if (loginEl) loginEl.style.display = !state.loading && !state.user ? "block" : "none";
-      if (contentEl) contentEl.style.display = !state.loading && state.user ? "block" : "none";
-      if (!state.loading && !state.user) {
-        window.location.href = "/login";
-      }
-    };
+  const setAuthVisibility = (state) => {
+   const loadingEl = document.getElementById("auth-loading");
+   const loginEl = document.getElementById("auth-login");
+   const contentEl = document.getElementById("auth-content");
+   if (loadingEl) loadingEl.style.display = state.loading ? "block" : "none";
+   if (loginEl) loginEl.style.display = !state.loading && !state.user ? "block" : "none";
+   if (contentEl) contentEl.style.display = !state.loading && state.user ? "block" : "none";
+   if (!state.loading && !state.user) {
+    window.location.href = "/login";
+   }
+  };
 
-    setAuthVisibility(authService.getState());
-    const unsubscribe = authService.subscribe(setAuthVisibility);
+  setAuthVisibility(authService.getState());
+  const unsubscribe = authService.subscribe(setAuthVisibility);
 
-    async function refreshProfile() {
-      const state = authService.getState();
-      if (!state.user) return;
-      
-      try {
-        await authService.fetchProfile();
-        const user = authService.getState().user;
-        if (!user) return;
+  async function refreshProfile() {
+   const state = authService.getState();
+   if (!state.user) return;
+   
+   try {
+    await authService.fetchProfile();
+    const user = authService.getState().user;
+    if (!user) return;
 
-        const avatarImg = document.getElementById("profile-avatar-img");
-        const avatarLetter = document.getElementById("profile-avatar-letter");
-        const nameEl = document.getElementById("profile-name");
-        const codeEl = document.getElementById("profile-code");
-        const contactEl = document.getElementById("profile-contact");
-        const levelEl = document.getElementById("profile-level");
-        const gamesEl = document.getElementById("profile-games");
-        const achievementsEl = document.getElementById("profile-achievements");
-        const highscoreEl = document.getElementById("profile-highscore");
-        const memberSinceEl = document.getElementById("profile-member-since");
-        const lastLoginEl = document.getElementById("profile-last-login");
-        const rankEl = document.getElementById("profile-rank");
-        const playtimeEl = document.getElementById("profile-playtime");
-        const coinsEl = document.getElementById("profile-coins");
-        const xpEl = document.getElementById("profile-xp");
+    const avatarImg = document.getElementById("profile-avatar-img");
+    const avatarLetter = document.getElementById("profile-avatar-letter");
+    const nameEl = document.getElementById("profile-name");
+    const codeEl = document.getElementById("profile-code");
+    const contactEl = document.getElementById("profile-contact");
+    const levelEl = document.getElementById("profile-level");
+    const gamesEl = document.getElementById("profile-games");
+    const achievementsEl = document.getElementById("profile-achievements");
+    const highscoreEl = document.getElementById("profile-highscore");
+    const memberSinceEl = document.getElementById("profile-member-since");
+    const lastLoginEl = document.getElementById("profile-last-login");
+    const rankEl = document.getElementById("profile-rank");
+    const playtimeEl = document.getElementById("profile-playtime");
+    const coinsEl = document.getElementById("profile-coins");
+    const xpEl = document.getElementById("profile-xp");
 
-        if (avatarImg && avatarLetter) {
-          if (user.avatar_url) {
-            avatarImg.src = user.avatar_url;
-            avatarImg.classList.remove("hidden");
-            avatarLetter.classList.add("hidden");
-          } else {
-            avatarImg.classList.add("hidden");
-            avatarLetter.classList.remove("hidden");
-            avatarLetter.textContent = (user.full_name || user.name || "U").charAt(0).toUpperCase();
-          }
-        }
-
-        if (nameEl) nameEl.textContent = user.full_name || user.name || "Player";
-        if (codeEl) codeEl.textContent = user.unique_user_code || "------";
-        if (contactEl) contactEl.textContent = user.email || user.phone || "";
-
-        if (levelEl) levelEl.textContent = user.current_level || 1;
-        if (gamesEl) gamesEl.textContent = user.games_played || 0;
-        if (achievementsEl) achievementsEl.textContent = user.achievements_count || 0;
-        if (highscoreEl) highscoreEl.textContent = (user.highest_score || 0).toLocaleString();
-
-        if (memberSinceEl) memberSinceEl.textContent = user.created_at ? new Date(user.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long" }) : "N/A";
-        if (lastLoginEl) lastLoginEl.textContent = user.last_login ? new Date(user.last_login).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "N/A";
-        if (rankEl) rankEl.textContent = user.player_rank || "Bronze";
-        if (playtimeEl) playtimeEl.textContent = Math.floor((user.total_play_time || 0) / 60) + " hours";
-        if (coinsEl) coinsEl.textContent = (user.coins || 0).toLocaleString();
-        if (xpEl) xpEl.textContent = (user.experience || 0).toLocaleString() + " XP";
-      } catch (err) {
-        console.error("Failed to refresh profile:", err);
-      }
+    if (avatarImg && avatarLetter) {
+     if (user.avatar_url) {
+      avatarImg.src = user.avatar_url;
+      avatarImg.classList.remove("hidden");
+      avatarLetter.classList.add("hidden");
+     } else {
+      avatarImg.classList.add("hidden");
+      avatarLetter.classList.remove("hidden");
+      avatarLetter.textContent = (user.full_name || user.name || "U").charAt(0).toUpperCase();
+     }
     }
 
-    refreshProfile();
-    const refreshUnsubscribe = authService.subscribe(refreshProfile);
-  </script>
+    if (nameEl) nameEl.textContent = user.full_name || user.name || "Player";
+    if (codeEl) codeEl.textContent = user.unique_user_code || "------";
+    if (contactEl) contactEl.textContent = user.email || user.phone || "";
+
+    if (levelEl) levelEl.textContent = user.current_level || 1;
+    if (gamesEl) gamesEl.textContent = user.games_played || 0;
+    if (achievementsEl) achievementsEl.textContent = user.achievements_count || 0;
+    if (highscoreEl) highscoreEl.textContent = (user.highest_score || 0).toLocaleString();
+
+    if (memberSinceEl) memberSinceEl.textContent = user.created_at ? new Date(user.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long" }) : "N/A";
+    if (lastLoginEl) lastLoginEl.textContent = user.last_login ? new Date(user.last_login).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "N/A";
+    if (rankEl) rankEl.textContent = user.player_rank || "Bronze";
+    if (playtimeEl) playtimeEl.textContent = Math.floor((user.total_play_time || 0) / 60) + " hours";
+    if (coinsEl) coinsEl.textContent = (user.coins || 0).toLocaleString();
+    if (xpEl) xpEl.textContent = (user.experience || 0).toLocaleString() + " XP";
+   } catch (err) {
+    console.error("Failed to refresh profile:", err);
+   }
+  }
+
+  refreshProfile();
+  const refreshUnsubscribe = authService.subscribe(refreshProfile);
+ </script>
 </Layout>
+

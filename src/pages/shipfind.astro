@@ -4,10 +4,11 @@ import { getGame } from "../shared/games";
 const game = getGame("shipfind");
 ---
 <GameShell game={game}>
-  <div id="shipfind-board" class="mx-auto w-full max-w-[min(480px,100vw-2rem)]"></div>
+ <div id="shipfind-board" class="mx-auto w-full max-w-[min(480px,100vw-2rem)]"></div>
 </GameShell>
 
 <script>
-  import { initGame } from "../games/shipfind/scripts/game";
-  initGame();
+ import { initGame } from "../games/shipfind/scripts/game";
+ initGame();
 </script>
+

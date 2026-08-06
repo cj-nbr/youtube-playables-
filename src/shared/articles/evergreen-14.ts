@@ -1,45 +1,45 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "classroom-brain-games",
-    title: "Classroom Brain Games That Teachers Actually Use in 2026",
-    description:
-      "Teacher-tested classroom brain games that build focus, spelling, and word skills without worksheets. Practical picks you can run on any classroom screen today.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Educational Games",
-    tags: [
-      "classroom brain games",
-      "brain games for students",
-      "word games for the classroom",
-      "teaching spelling",
-      "educational word games",
-      "classroom warm up activities",
-      "screen free learning",
-    ],
-    authorId: "lena",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "classroom brain games",
-    secondaryKeywords: [
-      "brain games for students",
-      "word games for the classroom",
-      "teaching spelling",
-      "classroom warm up activities",
-    ],
-    lsiKeywords: [
-      "focus",
-      "working memory",
-      "spelling practice",
-      "pattern recognition",
-      "literacy",
-      "vocabulary",
-      "attention span",
-      "gamified learning",
-    ],
-    excerpt:
-      "A classroom teacher explains which brain games earn a place in the daily schedule, why word games beat worksheets for engagement, and how to run them on shared devices.",
-    content: `
+ {
+  slug: "classroom-brain-games",
+  title: "Classroom Brain Games That Teachers Actually Use in 2026",
+  description:
+   "Teacher-tested classroom brain games that build focus, spelling, and word skills without worksheets. Practical picks you can run on any classroom screen today.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Educational Games",
+  tags: [
+   "classroom brain games",
+   "brain games for students",
+   "word games for the classroom",
+   "teaching spelling",
+   "educational word games",
+   "classroom warm up activities",
+   "screen free learning",
+  ],
+  authorId: "lena",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "classroom brain games",
+  secondaryKeywords: [
+   "brain games for students",
+   "word games for the classroom",
+   "teaching spelling",
+   "classroom warm up activities",
+  ],
+  lsiKeywords: [
+   "focus",
+   "working memory",
+   "spelling practice",
+   "pattern recognition",
+   "literacy",
+   "vocabulary",
+   "attention span",
+   "gamified learning",
+  ],
+  excerpt:
+   "A classroom teacher explains which brain games earn a place in the daily schedule, why word games beat worksheets for engagement, and how to run them on shared devices.",
+  content: `
 <h2>Why Classrooms Are Turning to Brain Games</h2>
 <p>The phrase classroom brain games sounds like a marketing label, but the shift behind it is real and practical. Teachers are short on time and shorter on attention from students who arrive having already spent the morning on a phone. A game that loads in a browser, needs no login, and starts in ten seconds is easier to fit between a spelling test and a reading block than a photocopied worksheet that takes three minutes to hand out and another five to explain.</p>
 <p>The games that survive contact with a real classroom are not the ones with the brightest graphics. They are the ones with a single clear rule, an obvious win condition, and a score that resets fast. Children know within one round whether they are good at it, and that knowledge drives the second round without any adult prompting. That self-starting quality is what makes a game useful in a room of thirty students and one teacher.</p>
@@ -137,92 +137,92 @@ export const posts: BlogPost[] = [
 <li>Common Sense Education, "Classroom Management with Digital Tools" - practical notes on using browser-based activities on shared devices.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are the best classroom brain games",
-        a: "The most useful ones are word games that load without login and reset fast: Anagramania, What Word, Word Wipe, The WordHunt Game, and Letterama. Each builds spelling, pattern recognition, or vocabulary while fitting a short classroom window.",
-      },
-      {
-        q: "Are brain games better than worksheets",
-        a: "For engagement, often yes. A game with a visible score and a fast reset gives students immediate feedback and a reason to repeat the skill. Worksheets still have a place, but games tend to produce more voluntary practice, which matters for literacy.",
-      },
-      {
-        q: "Do these games need accounts or downloads",
-        a: "No. All five run in a browser tab, need no install, and require no sign-up. That makes them practical on shared classroom devices where students rotate through the same tablet or laptop.",
-      },
-      {
-        q: "Which game is best for younger students",
-        a: "Letterama is the gentlest and best for grades one to three or for English-as-an-additional-language learners who need letter repetitions without pressure. Anagramania also works well once basic spelling is in place.",
-      },
-      {
-        q: "Can I use these for whole-class play",
-        a: "Yes. Project Word Wipe or The WordHunt Game on a whiteboard and let teams call out moves. The shared board and visible rounds make them natural fit for a projected, competitive warm up.",
-      },
-      {
-        q: "How long should a brain game session last",
-        a: "Two to ten minutes is the sweet spot. Short enough to fit between lessons, long enough for a few rounds. Anything past fifteen minutes starts to eat the curriculum you are meant to be teaching.",
-      },
-      {
-        q: "Do brain games improve spelling",
-        a: "Word games improve the skills under spelling: letter order, pattern recognition, and working memory. They are a supplement, not a replacement for explicit teaching, but daily play clearly reinforces what is taught in class.",
-      },
-      {
-        q: "Are these games safe on school networks",
-        a: "They use standard web delivery and typically pass basic content filters. Still, test the link on a student device before the lesson, since every school filter is configured differently.",
-      },
-      {
-        q: "Can brain games help English language learners",
-        a: "Yes. Letterama and Anagramania give repeated, low-pressure exposure to letters and word shapes. The forgiving pace lets a learner build confidence without the embarrassment of a timed written test.",
-      },
-      {
-        q: "How do I stop games becoming a reward instead of a routine",
-        a: "Fix them to a time of day, like a morning warm up, rather than offering them as a Friday treat. When the game is routine, it becomes the on-ramp to learning instead of a distraction from it.",
-      },
-      {
-        q: "Should I track scores for assessment",
-        a: "Not formally. Use the board word or the daily best as a light motivator, but treat game scores as engagement signals, not grades. The point is repetition and confidence, not measurement.",
-      },
-    ],
-  },
-  {
-    slug: "vocabulary-games-for-students",
-    title: "Vocabulary Games for Students: Building Word Power Without the Drill",
-    description:
-      "Vocabulary games for students that build word power through play. Practical, browser-based picks teachers can run in minutes to stretch spelling and meaning.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Educational Games",
-    tags: [
-      "vocabulary games for students",
-      "vocabulary building games",
-      "word games for students",
-      "improve vocabulary",
-      "spelling and vocabulary",
-      "fun vocabulary activities",
-      "online vocabulary games",
-    ],
-    authorId: "lena",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "vocabulary games",
-    secondaryKeywords: [
-      "vocabulary games for students",
-      "word games for students",
-      "improve vocabulary",
-      "online vocabulary games",
-    ],
-    lsiKeywords: [
-      "word meaning",
-      "spelling",
-      "morphology",
-      "word roots",
-      "retention",
-      "context clues",
-      "literacy",
-      "word recall",
-    ],
-    excerpt:
-      "A practical guide to vocabulary games for students: how play builds word retention, which browser games actually stretch meaning, and how to use them in a real lesson.",
-    content: `
+  faqs: [
+   {
+    q: "What are the best classroom brain games",
+    a: "The most useful ones are word games that load without login and reset fast: Anagramania, What Word, Word Wipe, The WordHunt Game, and Letterama. Each builds spelling, pattern recognition, or vocabulary while fitting a short classroom window.",
+   },
+   {
+    q: "Are brain games better than worksheets",
+    a: "For engagement, often yes. A game with a visible score and a fast reset gives students immediate feedback and a reason to repeat the skill. Worksheets still have a place, but games tend to produce more voluntary practice, which matters for literacy.",
+   },
+   {
+    q: "Do these games need accounts or downloads",
+    a: "No. All five run in a browser tab, need no install, and require no sign-up. That makes them practical on shared classroom devices where students rotate through the same tablet or laptop.",
+   },
+   {
+    q: "Which game is best for younger students",
+    a: "Letterama is the gentlest and best for grades one to three or for English-as-an-additional-language learners who need letter repetitions without pressure. Anagramania also works well once basic spelling is in place.",
+   },
+   {
+    q: "Can I use these for whole-class play",
+    a: "Yes. Project Word Wipe or The WordHunt Game on a whiteboard and let teams call out moves. The shared board and visible rounds make them natural fit for a projected, competitive warm up.",
+   },
+   {
+    q: "How long should a brain game session last",
+    a: "Two to ten minutes is the sweet spot. Short enough to fit between lessons, long enough for a few rounds. Anything past fifteen minutes starts to eat the curriculum you are meant to be teaching.",
+   },
+   {
+    q: "Do brain games improve spelling",
+    a: "Word games improve the skills under spelling: letter order, pattern recognition, and working memory. They are a supplement, not a replacement for explicit teaching, but daily play clearly reinforces what is taught in class.",
+   },
+   {
+    q: "Are these games safe on school networks",
+    a: "They use standard web delivery and typically pass basic content filters. Still, test the link on a student device before the lesson, since every school filter is configured differently.",
+   },
+   {
+    q: "Can brain games help English language learners",
+    a: "Yes. Letterama and Anagramania give repeated, low-pressure exposure to letters and word shapes. The forgiving pace lets a learner build confidence without the embarrassment of a timed written test.",
+   },
+   {
+    q: "How do I stop games becoming a reward instead of a routine",
+    a: "Fix them to a time of day, like a morning warm up, rather than offering them as a Friday treat. When the game is routine, it becomes the on-ramp to learning instead of a distraction from it.",
+   },
+   {
+    q: "Should I track scores for assessment",
+    a: "Not formally. Use the board word or the daily best as a light motivator, but treat game scores as engagement signals, not grades. The point is repetition and confidence, not measurement.",
+   },
+  ],
+ },
+ {
+  slug: "vocabulary-games-for-students",
+  title: "Vocabulary Games for Students: Building Word Power Without the Drill",
+  description:
+   "Vocabulary games for students that build word power through play. Practical, browser-based picks teachers can run in minutes to stretch spelling and meaning.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Educational Games",
+  tags: [
+   "vocabulary games for students",
+   "vocabulary building games",
+   "word games for students",
+   "improve vocabulary",
+   "spelling and vocabulary",
+   "fun vocabulary activities",
+   "online vocabulary games",
+  ],
+  authorId: "lena",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "vocabulary games",
+  secondaryKeywords: [
+   "vocabulary games for students",
+   "word games for students",
+   "improve vocabulary",
+   "online vocabulary games",
+  ],
+  lsiKeywords: [
+   "word meaning",
+   "spelling",
+   "morphology",
+   "word roots",
+   "retention",
+   "context clues",
+   "literacy",
+   "word recall",
+  ],
+  excerpt:
+   "A practical guide to vocabulary games for students: how play builds word retention, which browser games actually stretch meaning, and how to use them in a real lesson.",
+  content: `
 <h2>Why Vocabulary Games Beat the Word List</h2>
 <p>The traditional vocabulary lesson hands students a list of twenty words on Monday and tests them on Friday. It works, after a fashion, but the learning is shallow and short-lived. Most of those words are gone by the following month because the student met each one once, in isolation, under no pressure to use it. Vocabulary games for students attack the problem from the other side. They drop words into a context where the student has to recognize, build, and deploy them rapidly, which is closer to how vocabulary actually sticks.</p>
 <p>The mechanism is not mysterious. Memory strengthens through retrieval, not through re-reading. A game that forces a student to pull a word out of their head under a gentle time limit is doing retrieval practice without calling it that. The student thinks they are playing. The brain thinks it is being tested, and testing is what builds the pathway.</p>
@@ -328,51 +328,52 @@ export const posts: BlogPost[] = [
 <li>Oxford Learner's Dictionaries, "How to Improve Your Vocabulary" - practical suggestions on word roots, context, and active use of new words.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are the best vocabulary games for students",
-        a: "The strongest browser-based picks are What Word for word length and rarity, Word Wipe for breadth and speed, The WordHunt Game for spoken rehearsal, Anagramania for spelling, and Letterama for foundational letter sense. All run without login.",
-      },
-      {
-        q: "Do vocabulary games actually improve word knowledge",
-        a: "Yes, when they force retrieval rather than recognition. Games that make a student build or choose a word under light pressure practice the same memory pathway that tests do, but with far higher engagement and repetition.",
-      },
-      {
-        q: "Are these games suitable for different age groups",
-        a: "They scale by challenge rather than by being separate products. Letterama suits younger or early-language learners, while What Word and Word Wipe stretch confident readers. The same games serve a wide range by how far a student pushes them.",
-      },
-      {
-        q: "How often should students play vocabulary games",
-        a: "Short sessions, two to ten minutes, several times a week beat one long session. Frequent, low-stakes retrieval is what builds durable vocabulary, and brief games fit that rhythm without eating curriculum time.",
-      },
-      {
-        q: "Can games replace explicit vocabulary teaching",
-        a: "No. Games are a supplement that reinforces explicit teaching, not a replacement for it. Teach the word and its meaning first, then let the game provide the repetitions that make the learning stick.",
-      },
-      {
-        q: "Which game is best for poor spellers",
-        a: "Anagramania and Letterama are the best fit. Anagramania forces attention to internal letter order by rebuilding scrambled words, while Letterama keeps words short and the pace forgiving for learners still building confidence.",
-      },
-      {
-        q: "Should vocabulary game scores count toward grades",
-        a: "No. Grading game play raises the cost of being wrong and suppresses the willingness to try unusual words. Keep scores as light motivation, and the vocabulary gains will be larger, not smaller.",
-      },
-      {
-        q: "How do I connect games to the words we teach",
-        a: "Teach a word or root explicitly, then use a game like What Word that surfaces those letters later in the week, then ask for a sentence, then revisit the word in reading. Three retrievals in different contexts lock it in.",
-      },
-      {
-        q: "Are browser vocabulary games safe for school use",
-        a: "They use standard web delivery and typically pass basic filters, but test the link on a student device before the lesson. They need no account, which also keeps student data out of the equation.",
-      },
-      {
-        q: "Can vocabulary games help English language learners",
-        a: "Yes. Letterama and Anagramania give low-pressure, repeated exposure to letter patterns and short words. The forgiving pace lets a learner build confidence before facing the faster, broader games.",
-      },
-      {
-        q: "What is the difference between a vocabulary game and flashcards",
-        a: "Flashcards test recognition of a fixed pair. Good vocabulary games make the student retrieve, build, or choose a word under mild pressure, which trains deeper and more flexible word knowledge than repeated viewing.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "What are the best vocabulary games for students",
+    a: "The strongest browser-based picks are What Word for word length and rarity, Word Wipe for breadth and speed, The WordHunt Game for spoken rehearsal, Anagramania for spelling, and Letterama for foundational letter sense. All run without login.",
+   },
+   {
+    q: "Do vocabulary games actually improve word knowledge",
+    a: "Yes, when they force retrieval rather than recognition. Games that make a student build or choose a word under light pressure practice the same memory pathway that tests do, but with far higher engagement and repetition.",
+   },
+   {
+    q: "Are these games suitable for different age groups",
+    a: "They scale by challenge rather than by being separate products. Letterama suits younger or early-language learners, while What Word and Word Wipe stretch confident readers. The same games serve a wide range by how far a student pushes them.",
+   },
+   {
+    q: "How often should students play vocabulary games",
+    a: "Short sessions, two to ten minutes, several times a week beat one long session. Frequent, low-stakes retrieval is what builds durable vocabulary, and brief games fit that rhythm without eating curriculum time.",
+   },
+   {
+    q: "Can games replace explicit vocabulary teaching",
+    a: "No. Games are a supplement that reinforces explicit teaching, not a replacement for it. Teach the word and its meaning first, then let the game provide the repetitions that make the learning stick.",
+   },
+   {
+    q: "Which game is best for poor spellers",
+    a: "Anagramania and Letterama are the best fit. Anagramania forces attention to internal letter order by rebuilding scrambled words, while Letterama keeps words short and the pace forgiving for learners still building confidence.",
+   },
+   {
+    q: "Should vocabulary game scores count toward grades",
+    a: "No. Grading game play raises the cost of being wrong and suppresses the willingness to try unusual words. Keep scores as light motivation, and the vocabulary gains will be larger, not smaller.",
+   },
+   {
+    q: "How do I connect games to the words we teach",
+    a: "Teach a word or root explicitly, then use a game like What Word that surfaces those letters later in the week, then ask for a sentence, then revisit the word in reading. Three retrievals in different contexts lock it in.",
+   },
+   {
+    q: "Are browser vocabulary games safe for school use",
+    a: "They use standard web delivery and typically pass basic filters, but test the link on a student device before the lesson. They need no account, which also keeps student data out of the equation.",
+   },
+   {
+    q: "Can vocabulary games help English language learners",
+    a: "Yes. Letterama and Anagramania give low-pressure, repeated exposure to letter patterns and short words. The forgiving pace lets a learner build confidence before facing the faster, broader games.",
+   },
+   {
+    q: "What is the difference between a vocabulary game and flashcards",
+    a: "Flashcards test recognition of a fixed pair. Good vocabulary games make the student retrieve, build, or choose a word under mild pressure, which trains deeper and more flexible word knowledge than repeated viewing.",
+   },
+  ],
+ },
 ];
+

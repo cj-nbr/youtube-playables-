@@ -1,49 +1,49 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "best-memory-games-to-train-your-brain",
-    title: "Best Memory Games to Train Your Brain",
-    description:
-      "Discover the best memory games that boost recall, focus, and mental clarity. Free browser-based picks you can play instantly with no download.",
-    date: "2026-07-14",
-    updatedAt: "2026-07-14",
-    category: "Brain Training",
-    tags: [
-      "best memory games",
-      "memory training",
-      "brain games",
-      "memory flip",
-      "cognitive games",
-      "recall games",
-      "focus games",
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "best memory games",
-    secondaryKeywords: [
-      "memory training games",
-      "brain memory games",
-      "free memory games online",
-      "recall games",
-      "focus games",
-    ],
-    lsiKeywords: [
-      "working memory",
-      "visual recall",
-      "spatial memory",
-      "retrieval",
-      "concentration",
-      "pattern recognition",
-      "cognitive reserve",
-    ],
-    gameId: "memory-flip",
-    excerpt:
-      "A curated look at the best memory games that train recall, focus, and mental clarity. All are free, browser-based, and playable instantly.",
-    content: `
+ {
+  slug: "best-memory-games-to-train-your-brain",
+  title: "Best Memory Games to Train Your Brain",
+  description:
+   "Discover the best memory games that boost recall, focus, and mental clarity. Free browser-based picks you can play instantly with no download.",
+  date: "2026-07-14",
+  updatedAt: "2026-07-14",
+  category: "Brain Training",
+  tags: [
+   "best memory games",
+   "memory training",
+   "brain games",
+   "memory flip",
+   "cognitive games",
+   "recall games",
+   "focus games",
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "best memory games",
+  secondaryKeywords: [
+   "memory training games",
+   "brain memory games",
+   "free memory games online",
+   "recall games",
+   "focus games",
+  ],
+  lsiKeywords: [
+   "working memory",
+   "visual recall",
+   "spatial memory",
+   "retrieval",
+   "concentration",
+   "pattern recognition",
+   "cognitive reserve",
+  ],
+  gameId: "memory-flip",
+  excerpt:
+   "A curated look at the best memory games that train recall, focus, and mental clarity. All are free, browser-based, and playable instantly.",
+  content: `
 <h2>Why Memory Games Matter</h2>
 <p>Memory is the foundation of nearly every cognitive task you perform daily. Remembering names, directions, study material, and even where you left your keys all rely on the same underlying systems. Memory games target these systems directly, strengthening the neural pathways involved in encoding, storing, and retrieving information.</p>
-<p>The best memory games are the ones you can play without friction. No downloads, no accounts, no setup. Just open a tab and start training. <a href="/memory-flip">Memory Flip</a> on YouTube Playables is the cleanest example: flip cards, remember positions, and match every pair.</p>
+<p>The best memory games are the ones you can play without friction. No downloads, no accounts, no setup. Just open a tab and start training. <a href="/memory-flip">Memory Flip</a> on Playables is the cleanest example: flip cards, remember positions, and match every pair.</p>
 <p>If you want broader brain training, also try <a href="/number-slide">Number Slide</a> for spatial reasoning and <a href="/chess">Chess</a> for long-term planning. Both complement memory training by challenging different cognitive skills.</p>
 
 <h2>What Makes a Good Memory Game</h2>
@@ -120,12 +120,12 @@ export const posts: BlogPost[] = [
 <li>Background on cognitive training from peer-reviewed overviews.</li>
 </ul>
 `,
-    faqs: [
-      { q: "Do memory games actually improve recall?", a: "Yes. Studies show that targeted memory practice improves performance on similar tasks." },
-      { q: "How often should I play memory games?", a: "Short daily sessions of 10 to 15 minutes are more effective than long weekly marathons." },
-      { q: "Are there memory games for students?", a: "Yes. Memory Flip is appropriate for all ages and helps with focus and recall." },
-      { q: "Can memory games help with age-related decline?", a: "Regular cognitive exercise can help maintain cognitive function alongside a healthy lifestyle." },
-      { q: "What is the best memory game for beginners?", a: "Memory Flip is the best starting point. The rules are simple and the game is calm." },
-    ],
-  },
+  faqs: [
+   { q: "Do memory games actually improve recall?", a: "Yes. Studies show that targeted memory practice improves performance on similar tasks." },
+   { q: "How often should I play memory games?", a: "Short daily sessions of 10 to 15 minutes are more effective than long weekly marathons." },
+   { q: "Are there memory games for students?", a: "Yes. Memory Flip is appropriate for all ages and helps with focus and recall." },
+   { q: "Can memory games help with age-related decline?", a: "Regular cognitive exercise can help maintain cognitive function alongside a healthy lifestyle." },
+   { q: "What is the best memory game for beginners?", a: "Memory Flip is the best starting point. The rules are simple and the game is calm." },
+  ],
+ },
 ];

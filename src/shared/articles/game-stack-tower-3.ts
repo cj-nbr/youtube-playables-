@@ -1,45 +1,45 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "stack-tower-vs-other-timing-games",
-    title: "Stack Tower vs Other Timing Games: What Each One Actually Trains",
-    description:
-      "A clear comparison of Stack Tower against Color Match and Match the Feel, three browser timing games, and which different mental skills each one really trains.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Arcade & Casual",
-    tags: [
-      "stack tower",
-      "timing games",
-      "browser games",
-      "color match",
-      "match the feel",
-      "reaction speed",
-      "precision games",
-      "arcade comparison",
-    ],
-    authorId: "dev",
-    cover: "/images/games/stack-tower/cover.webp",
-    primaryKeyword: "best timing games browser",
-    secondaryKeywords: [
-      "stack tower vs color match",
-      "stack tower vs match the feel",
-      "timing games comparison",
-      "browser arcade games compared",
-    ],
-    lsiKeywords: [
-      "reaction time",
-      "precision tapping",
-      "perceptual speed",
-      "hand-eye coordination",
-      "rhythm training",
-      "focus drills",
-    ],
-    gameId: "stack-tower",
-    excerpt:
-      "Stack Tower, Color Match, and Match the Feel all look like quick arcade fillers, but they train different skills. Here is how they compare and where each one fits.",
-    content: `
+ {
+  slug: "stack-tower-vs-other-timing-games",
+  title: "Stack Tower vs Other Timing Games: What Each One Actually Trains",
+  description:
+   "A clear comparison of Stack Tower against Color Match and Match the Feel, three browser timing games, and which different mental skills each one really trains.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Arcade & Casual",
+  tags: [
+   "stack tower",
+   "timing games",
+   "browser games",
+   "color match",
+   "match the feel",
+   "reaction speed",
+   "precision games",
+   "arcade comparison",
+  ],
+  authorId: "dev",
+  cover: "/images/games/stack-tower/cover.webp",
+  primaryKeyword: "best timing games browser",
+  secondaryKeywords: [
+   "stack tower vs color match",
+   "stack tower vs match the feel",
+   "timing games comparison",
+   "browser arcade games compared",
+  ],
+  lsiKeywords: [
+   "reaction time",
+   "precision tapping",
+   "perceptual speed",
+   "hand-eye coordination",
+   "rhythm training",
+   "focus drills",
+  ],
+  gameId: "stack-tower",
+  excerpt:
+   "Stack Tower, Color Match, and Match the Feel all look like quick arcade fillers, but they train different skills. Here is how they compare and where each one fits.",
+  content: `
 <h2>Why Compare Three Timing Games?</h2>
 <p>Timing games get lumped together because they all punish a mistimed click. Under that surface they ask for very different things from your brain. <a href="/stack-tower">Stack Tower</a> rewards a single clean tap at the right instant. Color Match asks your eyes to judge a subtle difference before a clock runs out. Match the Feel layers speed on top of sorting and dragging. If you are picking a game for a five-minute warm-up, the difference matters more than you might expect.</p>
 <p>This piece puts the three side by side so you can decide what you actually want to practice. None of them requires an account or a download, and all three run in the browser, which is exactly why they show up in the same casual corner of most game collections. The interesting part is not which is best in the abstract, but which is best for the skill you are trying to sharpen on a given day.</p>
@@ -150,56 +150,57 @@ export const posts: BlogPost[] = [
 
 <h2>Sources &amp; References</h2>
 <ul>
-<li>Official Stack Tower game page on the YouTube Playables platform for rules and mechanics.</li>
-<li>Official Color Match and Match the Feel game pages on the YouTube Playables platform for their timing and scoring rules.</li>
+<li>Official Stack Tower game page on the Playables platform for rules and mechanics.</li>
+<li>Official Color Match and Match the Feel game pages on the Playables platform for their timing and scoring rules.</li>
 <li>Wikipedia, "Video game genre" - background on arcade and casual game classification used to separate timing from planning games.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are the best timing games to play in a browser?",
-        a: "Strong browser timing games include Stack Tower for anticipatory tapping, Color Match for fast color judgment, and Match the Feel for coordinated sorting under pressure. Each trains a different skill, so the best one depends on what you want to practice.",
-      },
-      {
-        q: "How is Stack Tower different from Color Match?",
-        a: "Stack Tower is a one-tap precision game where you drop a moving block as close to center as possible. Color Match is a perceptual game where you reproduce a target color against a clock. One trains steady tapping; the other trains quick visual judgment.",
-      },
-      {
-        q: "Does Match the Feel train timing or coordination?",
-        a: "Mostly coordination. You drag shapes to matching targets before a countdown ends, which blends hand-eye control with fast sorting. The timing element is throughput under pressure rather than a single precise tap.",
-      },
-      {
-        q: "Which game is best for improving reaction speed?",
-        a: "Stack Tower is the closest to a reaction trainer, because success depends on committing a tap at the right instant as block speed rises. Color Match and Match the Feel add perception and coordination layers that dilute the pure reaction demand.",
-      },
-      {
-        q: "Can these games actually improve focus?",
-        a: "They can help shift you into an alert, calm state for a few minutes, which is useful as a warm-up between tasks. The effect is modest and mostly about arousal, not a lasting skill gain, so keep sessions short.",
-      },
-      {
-        q: "Is Block Blast a timing game too?",
-        a: "No. Block Blast is untimed and rewards spatial planning and patience rather than a well-placed tap under pressure. It belongs to the planning genre, not the timing genre, even though it is a quick browser game.",
-      },
-      {
-        q: "Which timing game is best before design work?",
-        a: "Color Match is the better choice before visual work, because it wakes up color perception and quick judgment, the same channels design tasks use. Stack Tower is better before calm, precise input work like data entry.",
-      },
-      {
-        q: "Are these games good for kids?",
-        a: "Yes. All three are family friendly, have no violence or complex text, and run instantly in a browser. Stack Tower is especially approachable for young children because it needs only a single tap per block.",
-      },
-      {
-        q: "How long should a timing-game warm-up be?",
-        a: "Two to three minutes is enough. The goal is to sharpen attention, not to chase a high score. Longer sessions tend to tire the same pathways you wanted to wake up, which works against the warm-up.",
-      },
-      {
-        q: "Do these games get harder over time?",
-        a: "They apply pressure differently. Stack Tower speeds up each level, Color Match shortens its clock, and Match the Feel combines a countdown with a combo system. Each ramps difficulty, but through a different mechanism.",
-      },
-      {
-        q: "Can I play all three on mobile?",
-        a: "Yes. Stack Tower and Match the Feel are touch friendly with tap and drag controls, and Color Match works with on-screen sliders. All three run in a mobile browser without an install.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "What are the best timing games to play in a browser?",
+    a: "Strong browser timing games include Stack Tower for anticipatory tapping, Color Match for fast color judgment, and Match the Feel for coordinated sorting under pressure. Each trains a different skill, so the best one depends on what you want to practice.",
+   },
+   {
+    q: "How is Stack Tower different from Color Match?",
+    a: "Stack Tower is a one-tap precision game where you drop a moving block as close to center as possible. Color Match is a perceptual game where you reproduce a target color against a clock. One trains steady tapping; the other trains quick visual judgment.",
+   },
+   {
+    q: "Does Match the Feel train timing or coordination?",
+    a: "Mostly coordination. You drag shapes to matching targets before a countdown ends, which blends hand-eye control with fast sorting. The timing element is throughput under pressure rather than a single precise tap.",
+   },
+   {
+    q: "Which game is best for improving reaction speed?",
+    a: "Stack Tower is the closest to a reaction trainer, because success depends on committing a tap at the right instant as block speed rises. Color Match and Match the Feel add perception and coordination layers that dilute the pure reaction demand.",
+   },
+   {
+    q: "Can these games actually improve focus?",
+    a: "They can help shift you into an alert, calm state for a few minutes, which is useful as a warm-up between tasks. The effect is modest and mostly about arousal, not a lasting skill gain, so keep sessions short.",
+   },
+   {
+    q: "Is Block Blast a timing game too?",
+    a: "No. Block Blast is untimed and rewards spatial planning and patience rather than a well-placed tap under pressure. It belongs to the planning genre, not the timing genre, even though it is a quick browser game.",
+   },
+   {
+    q: "Which timing game is best before design work?",
+    a: "Color Match is the better choice before visual work, because it wakes up color perception and quick judgment, the same channels design tasks use. Stack Tower is better before calm, precise input work like data entry.",
+   },
+   {
+    q: "Are these games good for kids?",
+    a: "Yes. All three are family friendly, have no violence or complex text, and run instantly in a browser. Stack Tower is especially approachable for young children because it needs only a single tap per block.",
+   },
+   {
+    q: "How long should a timing-game warm-up be?",
+    a: "Two to three minutes is enough. The goal is to sharpen attention, not to chase a high score. Longer sessions tend to tire the same pathways you wanted to wake up, which works against the warm-up.",
+   },
+   {
+    q: "Do these games get harder over time?",
+    a: "They apply pressure differently. Stack Tower speeds up each level, Color Match shortens its clock, and Match the Feel combines a countdown with a combo system. Each ramps difficulty, but through a different mechanism.",
+   },
+   {
+    q: "Can I play all three on mobile?",
+    a: "Yes. Stack Tower and Match the Feel are touch friendly with tap and drag controls, and Color Match works with on-screen sliders. All three run in a mobile browser without an install.",
+   },
+  ],
+ },
 ];
+

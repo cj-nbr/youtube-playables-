@@ -1,43 +1,43 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "memory-flip-complete-beginner-guide",
-    title: "Memory Flip Complete Beginner Guide: How to Play, Match Pairs, and Score",
-    description:
-      "New to Memory Flip? This beginner guide explains how to play, flip tiles, match pairs, read the scoring, and work the timer to clear the whole board faster.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Memory Games",
-    tags: [
-      "memory flip",
-      "memory flip how to play",
-      "matching pairs game",
-      "memory game for beginners",
-      "concentration card game",
-      "flip card game",
-      "brain training game",
-    ],
-    authorId: "mira",
-    cover: "/images/games/memory-flip/cover.webp",
-    primaryKeyword: "how to play memory flip",
-    secondaryKeywords: [
-      "memory flip beginner guide",
-      "memory flip rules",
-      "memory flip scoring explained",
-      "memory flip pairs",
-    ],
-    lsiKeywords: [
-      "concentration",
-      "matching game",
-      "working memory",
-      "tile flipping",
-      "pattern recall",
-    ],
-    gameId: "memory-flip",
-    excerpt:
-      "A plain-English walkthrough of Memory Flip: how the board works, how flipping reveals tiles, why matching pairs is the whole game, and how the score adds up.",
-    content: `
+ {
+  slug: "memory-flip-complete-beginner-guide",
+  title: "Memory Flip Complete Beginner Guide: How to Play, Match Pairs, and Score",
+  description:
+   "New to Memory Flip? This beginner guide explains how to play, flip tiles, match pairs, read the scoring, and work the timer to clear the whole board faster.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Memory Games",
+  tags: [
+   "memory flip",
+   "memory flip how to play",
+   "matching pairs game",
+   "memory game for beginners",
+   "concentration card game",
+   "flip card game",
+   "brain training game",
+  ],
+  authorId: "mira",
+  cover: "/images/games/memory-flip/cover.webp",
+  primaryKeyword: "how to play memory flip",
+  secondaryKeywords: [
+   "memory flip beginner guide",
+   "memory flip rules",
+   "memory flip scoring explained",
+   "memory flip pairs",
+  ],
+  lsiKeywords: [
+   "concentration",
+   "matching game",
+   "working memory",
+   "tile flipping",
+   "pattern recall",
+  ],
+  gameId: "memory-flip",
+  excerpt:
+   "A plain-English walkthrough of Memory Flip: how the board works, how flipping reveals tiles, why matching pairs is the whole game, and how the score adds up.",
+  content: `
 <h2>What Is Memory Flip?</h2>
 <p>Memory Flip is a free matching-pair game built on a classic idea most people first met as a paper card game. A grid of face-down tiles sits in front of you. Under each tile is a symbol, a picture, or a number. Your job is to turn tiles over two at a time and find the ones that match. Every match clears those tiles from the board. Clear them all and the round is won.</p>
 <p>The twist that makes it a memory game rather than a lucky guessing game is that the tiles flip back down when they do not match. You have to remember where each symbol lives, so the next time you need it you can go straight to it. That simple loop, flip, look, remember, is what has kept this format popular for generations.</p>
@@ -143,91 +143,91 @@ export const posts: BlogPost[] = [
 <ul>
 <li>Wikipedia, "Concentration (card game)" - background on the classic flip-and-match memory format.</li>
 <li>Wikipedia, "Working memory" - context on the recall skills Memory Flip exercises.</li>
-<li>Official Memory Flip game page on the YouTube Playables platform.</li>
+<li>Official Memory Flip game page on the Playables platform.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "How do you play Memory Flip?",
-        a: "You flip two face-down tiles at a time. If they match, they clear. If not, they flip back and you try to remember where they were. Clear every pair to win the round.",
-      },
-      {
-        q: "Is Memory Flip free to play?",
-        a: "Yes. Memory Flip is free to play in your browser and does not require an account to start a round. You can open the game page and begin immediately.",
-      },
-      {
-        q: "What happens when two tiles do not match?",
-        a: "Both tiles flip back down after a short pause. The mismatch is still useful, because you have now learned two tile locations you can use later.",
-      },
-      {
-        q: "How is the score calculated?",
-        a: "Score comes from the pairs you match plus bonuses for clearing the board in few flips and for a fast time. Efficient, planned play earns more than scattershot guessing.",
-      },
-      {
-        q: "Does Memory Flip have a timer?",
-        a: "Most boards include a timer that adds gentle pressure. It rewards a steady pace rather than frantic clicking, and a clean clear with few flips still scores well even if the clock runs.",
-      },
-      {
-        q: "What is the best strategy for beginners?",
-        a: "Open with two unseen tiles, label each location out loud or in your head, and work one region at a time. Go straight to a remembered partner instead of guessing a new tile.",
-      },
-      {
-        q: "Why do I keep re-flipping the same wrong tiles?",
-        a: "Usually because you are not labeling locations as they flip back. Naming the spot, even silently, turns a glance into a memory and stops you from repeating the same failed guess.",
-      },
-      {
-        q: "How can I improve my memory for the game?",
-        a: "Play at a steady pace, label tile positions, and focus on one board region before moving on. Consistency matters more than raw effort, and best scores climb as your recall tightens.",
-      },
-      {
-        q: "Can I play Memory Flip on desktop?",
-        a: "Yes. The browser version works with a mouse, and a larger screen makes it easier to scan the whole grid and keep track of where each symbol sits.",
-      },
-      {
-        q: "Is Memory Flip good for brain training?",
-        a: "It exercises working memory and visual recall, the same skills used in concentration card games. It is a light, pleasant way to practice those skills rather than a clinical test.",
-      },
-    ],
-  },
-  {
-    slug: "memory-flip-how-to-improve",
-    title: "How to Improve at Memory Flip: Chunking, Loci, and Attention Habits",
-    description:
-      "Get better at memory games with practical methods: chunking, the method of loci, attention training, and spaced practice that lift your Memory Flip scores.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Memory Games",
-    tags: [
-      "how to get better at memory games",
-      "memory improvement",
-      "method of loci",
-      "chunking",
-      "attention training",
-      "memory flip tips",
-      "memory techniques",
-      "brain training",
-    ],
-    authorId: "mira",
-    cover: "/images/games/memory-flip/cover.webp",
-    primaryKeyword: "how to get better at memory games",
-    secondaryKeywords: [
-      "memory flip how to improve",
-      "memory game techniques",
-      "improve working memory",
-      "memory training methods",
-    ],
-    lsiKeywords: [
-      "chunking",
-      "loci method",
-      "spaced repetition",
-      "visualization",
-      "focus",
-      "recall practice",
-    ],
-    gameId: "memory-flip",
-    excerpt:
-      "Real memory gains come from method, not effort. Here are the techniques, chunking, loci, and attention work, that actually move your Memory Flip scores up.",
-    content: `
+  faqs: [
+   {
+    q: "How do you play Memory Flip?",
+    a: "You flip two face-down tiles at a time. If they match, they clear. If not, they flip back and you try to remember where they were. Clear every pair to win the round.",
+   },
+   {
+    q: "Is Memory Flip free to play?",
+    a: "Yes. Memory Flip is free to play in your browser and does not require an account to start a round. You can open the game page and begin immediately.",
+   },
+   {
+    q: "What happens when two tiles do not match?",
+    a: "Both tiles flip back down after a short pause. The mismatch is still useful, because you have now learned two tile locations you can use later.",
+   },
+   {
+    q: "How is the score calculated?",
+    a: "Score comes from the pairs you match plus bonuses for clearing the board in few flips and for a fast time. Efficient, planned play earns more than scattershot guessing.",
+   },
+   {
+    q: "Does Memory Flip have a timer?",
+    a: "Most boards include a timer that adds gentle pressure. It rewards a steady pace rather than frantic clicking, and a clean clear with few flips still scores well even if the clock runs.",
+   },
+   {
+    q: "What is the best strategy for beginners?",
+    a: "Open with two unseen tiles, label each location out loud or in your head, and work one region at a time. Go straight to a remembered partner instead of guessing a new tile.",
+   },
+   {
+    q: "Why do I keep re-flipping the same wrong tiles?",
+    a: "Usually because you are not labeling locations as they flip back. Naming the spot, even silently, turns a glance into a memory and stops you from repeating the same failed guess.",
+   },
+   {
+    q: "How can I improve my memory for the game?",
+    a: "Play at a steady pace, label tile positions, and focus on one board region before moving on. Consistency matters more than raw effort, and best scores climb as your recall tightens.",
+   },
+   {
+    q: "Can I play Memory Flip on desktop?",
+    a: "Yes. The browser version works with a mouse, and a larger screen makes it easier to scan the whole grid and keep track of where each symbol sits.",
+   },
+   {
+    q: "Is Memory Flip good for brain training?",
+    a: "It exercises working memory and visual recall, the same skills used in concentration card games. It is a light, pleasant way to practice those skills rather than a clinical test.",
+   },
+  ],
+ },
+ {
+  slug: "memory-flip-how-to-improve",
+  title: "How to Improve at Memory Flip: Chunking, Loci, and Attention Habits",
+  description:
+   "Get better at memory games with practical methods: chunking, the method of loci, attention training, and spaced practice that lift your Memory Flip scores.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Memory Games",
+  tags: [
+   "how to get better at memory games",
+   "memory improvement",
+   "method of loci",
+   "chunking",
+   "attention training",
+   "memory flip tips",
+   "memory techniques",
+   "brain training",
+  ],
+  authorId: "mira",
+  cover: "/images/games/memory-flip/cover.webp",
+  primaryKeyword: "how to get better at memory games",
+  secondaryKeywords: [
+   "memory flip how to improve",
+   "memory game techniques",
+   "improve working memory",
+   "memory training methods",
+  ],
+  lsiKeywords: [
+   "chunking",
+   "loci method",
+   "spaced repetition",
+   "visualization",
+   "focus",
+   "recall practice",
+  ],
+  gameId: "memory-flip",
+  excerpt:
+   "Real memory gains come from method, not effort. Here are the techniques, chunking, loci, and attention work, that actually move your Memory Flip scores up.",
+  content: `
 <h2>Why Raw Effort Is Not Enough</h2>
 <p>Most players who stall at Memory Flip blame their memory. They say they are just bad at remembering, or that the board is too big. In practice, the ceiling is rarely native talent. It is method. People who get better at memory games are not born with bigger recall. They use a handful of techniques that turn a blurry glance into a stored fact.</p>
 <p>This article walks through the methods that transfer directly to <a href="/memory-flip">Memory Flip</a> and to sibling titles like <a href="/memocoly">Memocoly</a> and <a href="/mastercards">Mastercards</a>. None require special equipment. They are habits you can start on your next round.</p>
@@ -336,87 +336,87 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Spaced repetition" - research on why distributed practice improves retention.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "How can I get better at memory games?",
-        a: "Use method over effort: chunk the board into regions, place tiles in a mental space with the loci method, pay full attention to each flip, and space your practice across the day rather than cramming.",
-      },
-      {
-        q: "What is chunking in Memory Flip?",
-        a: "Chunking means grouping tiles by region instead of remembering each square alone. Storing four quadrants of four is far easier for the brain than storing sixteen separate tiles.",
-      },
-      {
-        q: "How do I use the method of loci for a grid?",
-        a: "Map the board regions onto rooms or places you know, then picture each flipped tile as a strange object in that place. Later, visit the place in your mind to retrieve the tile.",
-      },
-      {
-        q: "Why does attention matter more than technique?",
-        a: "Techniques only work if the fact was encoded in the first place. If your mind is elsewhere during the flip, no method can recover what was never stored. Attention is the gate to memory.",
-      },
-      {
-        q: "Is spaced practice really better than one long session?",
-        a: "Yes. Memory consolidates between sessions. Several short rounds across a day tend to stick better than one long grind of the same total minutes, and varied games help the skill transfer.",
-      },
-      {
-        q: "Should I play fast to get better?",
-        a: "No. Fast flipping without focus buries facts. Slow, attentive flips encode locations properly, and speed arrives later for free once recall is reliable.",
-      },
-      {
-        q: "How many techniques should I learn at once?",
-        a: "One per week is plenty. Picking a single technique to practice lets you see its effect on your score, which is how you learn which methods actually fit your play.",
-      },
-      {
-        q: "Do these methods help with other memory games?",
-        a: "They do. Chunking, loci, and attention transfer straight to titles like Memocoly, Mastercards, and What Was There, because the underlying recall skill is the same.",
-      },
-      {
-        q: "Why do I forget tiles I just saw?",
-        a: "Usually the flip was too quick or your attention was split. Slow the flip to a full second of focus and label the location, and the fact is far more likely to stick.",
-      },
-      {
-        q: "What is the fastest way to raise my score?",
-        a: "Slow down and label locations out loud or in your head. Most score gains come from fewer re-guesses, and labeling is the cheapest habit that cuts them.",
-      },
-    ],
-  },
-  {
-    slug: "memory-flip-daily-routine",
-    title: "Build a Memory Flip Daily Routine: Track Best Scores and Train Recall",
-    description:
-      "Build a memory game daily routine around Memory Flip: short sessions, score tracking, and easy streaks that train recall and show real progress over weeks.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Memory Games",
-    tags: [
-      "memory game daily routine",
-      "daily brain training",
-      "track best scores",
-      "memory flip habit",
-      "consistency",
-      "recall practice",
-      "memory streak",
-    ],
-    authorId: "mira",
-    cover: "/images/games/memory-flip/cover.webp",
-    primaryKeyword: "memory game daily routine",
-    secondaryKeywords: [
-      "memory flip daily practice",
-      "how to track memory scores",
-      "build a brain training habit",
-      "memory game streak",
-    ],
-    lsiKeywords: [
-      "habit stacking",
-      "score log",
-      "progress tracking",
-      "warm up",
-      "consistent practice",
-      "reflection",
-    ],
-    gameId: "memory-flip",
-    excerpt:
-      "A daily Memory Flip habit beats occasional long sessions. Here is a simple routine, with score tracking and streaks, that builds recall without taking over your day.",
-    content: `
+  faqs: [
+   {
+    q: "How can I get better at memory games?",
+    a: "Use method over effort: chunk the board into regions, place tiles in a mental space with the loci method, pay full attention to each flip, and space your practice across the day rather than cramming.",
+   },
+   {
+    q: "What is chunking in Memory Flip?",
+    a: "Chunking means grouping tiles by region instead of remembering each square alone. Storing four quadrants of four is far easier for the brain than storing sixteen separate tiles.",
+   },
+   {
+    q: "How do I use the method of loci for a grid?",
+    a: "Map the board regions onto rooms or places you know, then picture each flipped tile as a strange object in that place. Later, visit the place in your mind to retrieve the tile.",
+   },
+   {
+    q: "Why does attention matter more than technique?",
+    a: "Techniques only work if the fact was encoded in the first place. If your mind is elsewhere during the flip, no method can recover what was never stored. Attention is the gate to memory.",
+   },
+   {
+    q: "Is spaced practice really better than one long session?",
+    a: "Yes. Memory consolidates between sessions. Several short rounds across a day tend to stick better than one long grind of the same total minutes, and varied games help the skill transfer.",
+   },
+   {
+    q: "Should I play fast to get better?",
+    a: "No. Fast flipping without focus buries facts. Slow, attentive flips encode locations properly, and speed arrives later for free once recall is reliable.",
+   },
+   {
+    q: "How many techniques should I learn at once?",
+    a: "One per week is plenty. Picking a single technique to practice lets you see its effect on your score, which is how you learn which methods actually fit your play.",
+   },
+   {
+    q: "Do these methods help with other memory games?",
+    a: "They do. Chunking, loci, and attention transfer straight to titles like Memocoly, Mastercards, and What Was There, because the underlying recall skill is the same.",
+   },
+   {
+    q: "Why do I forget tiles I just saw?",
+    a: "Usually the flip was too quick or your attention was split. Slow the flip to a full second of focus and label the location, and the fact is far more likely to stick.",
+   },
+   {
+    q: "What is the fastest way to raise my score?",
+    a: "Slow down and label locations out loud or in your head. Most score gains come from fewer re-guesses, and labeling is the cheapest habit that cuts them.",
+   },
+  ],
+ },
+ {
+  slug: "memory-flip-daily-routine",
+  title: "Build a Memory Flip Daily Routine: Track Best Scores and Train Recall",
+  description:
+   "Build a memory game daily routine around Memory Flip: short sessions, score tracking, and easy streaks that train recall and show real progress over weeks.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Memory Games",
+  tags: [
+   "memory game daily routine",
+   "daily brain training",
+   "track best scores",
+   "memory flip habit",
+   "consistency",
+   "recall practice",
+   "memory streak",
+  ],
+  authorId: "mira",
+  cover: "/images/games/memory-flip/cover.webp",
+  primaryKeyword: "memory game daily routine",
+  secondaryKeywords: [
+   "memory flip daily practice",
+   "how to track memory scores",
+   "build a brain training habit",
+   "memory game streak",
+  ],
+  lsiKeywords: [
+   "habit stacking",
+   "score log",
+   "progress tracking",
+   "warm up",
+   "consistent practice",
+   "reflection",
+  ],
+  gameId: "memory-flip",
+  excerpt:
+   "A daily Memory Flip habit beats occasional long sessions. Here is a simple routine, with score tracking and streaks, that builds recall without taking over your day.",
+  content: `
 <h2>Why a Daily Routine Beats Occasional Binges</h2>
 <p>The temptation with any brain game is to play hard for an hour on a free afternoon and call it training. It feels productive and mostly is not. Memory, like a muscle, responds to steady load with recovery between, not to one giant workout. A few minutes most days will move your <a href="/memory-flip">Memory Flip</a> scores more than a single Sunday marathon.</p>
 <p>The reason is consolidation. The skill you practice settles in during the breaks, not during the play. A daily routine gives your brain those breaks on a reliable schedule, so each short session builds on the last instead of starting cold from scratch.</p>
@@ -530,50 +530,51 @@ export const posts: BlogPost[] = [
 <ul>
 <li>Wikipedia, "Habit stacking" - background on attaching new habits to existing cues.</li>
 <li>Wikipedia, "Spaced repetition" - context on why distributed daily practice aids retention.</li>
-<li>Official Memory Flip game page on the YouTube Playables platform.</li>
+<li>Official Memory Flip game page on the Playables platform.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "How do I build a memory game daily routine?",
-        a: "Keep it short and consistent: a warm-up round, two focused rounds using memory techniques, one timed round, then log your best score. Attach it to a habit you already have so you do not rely on motivation.",
-      },
-      {
-        q: "How long should a daily Memory Flip session be?",
-        a: "About ten minutes is plenty for a daily session. The streak matters more than the length, so design the routine to survive busy days with a single quick round if needed.",
-      },
-      {
-        q: "What should I track in my score log?",
-        a: "Record the date, your best score, and the number of flips used on your best clear. Over weeks, watch the trend rather than any single day to see real improvement.",
-      },
-      {
-        q: "How do I keep a streak without burning out?",
-        a: "Make the streak rule tiny, like one round of any length, so it survives travel and low-energy days. A small sustainable streak beats an ambitious one that breaks in a week.",
-      },
-      {
-        q: "Should I play every day or take rest days?",
-        a: "A light weekly rest or an easy round keeps the streak while letting memory consolidate. Six focused days and one easy day is a common, sustainable shape.",
-      },
-      {
-        q: "What is habit stacking?",
-        a: "Habit stacking means attaching the new routine to an existing one, such as playing right after morning coffee. The old habit cues the new one, so you stop relying on willpower to remember.",
-      },
-      {
-        q: "Why log my score instead of just playing?",
-        a: "A logged score lets you see the trend over weeks, turning vague I feel sharper into evidence. The log also shows which board sizes and techniques actually help.",
-      },
-      {
-        q: "Can this routine help other memory games?",
-        a: "Yes. The same short-session-plus-log format transfers to Memocoly, Mastercards, and similar titles. The habit is the real gain, because it keeps you practicing when motivation fades.",
-      },
-      {
-        q: "What if I miss a day?",
-        a: "Resume the next day without penalty. One missed day means nothing to the trend; what matters is returning. If misses cluster, shrink the streak rule so it fits your real life.",
-      },
-      {
-        q: "How do I know the routine is working?",
-        a: "Your best score and flip count trend upward over a couple of weeks, and rounds feel less like guessing and more like retrieval. The log is where you confirm both.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "How do I build a memory game daily routine?",
+    a: "Keep it short and consistent: a warm-up round, two focused rounds using memory techniques, one timed round, then log your best score. Attach it to a habit you already have so you do not rely on motivation.",
+   },
+   {
+    q: "How long should a daily Memory Flip session be?",
+    a: "About ten minutes is plenty for a daily session. The streak matters more than the length, so design the routine to survive busy days with a single quick round if needed.",
+   },
+   {
+    q: "What should I track in my score log?",
+    a: "Record the date, your best score, and the number of flips used on your best clear. Over weeks, watch the trend rather than any single day to see real improvement.",
+   },
+   {
+    q: "How do I keep a streak without burning out?",
+    a: "Make the streak rule tiny, like one round of any length, so it survives travel and low-energy days. A small sustainable streak beats an ambitious one that breaks in a week.",
+   },
+   {
+    q: "Should I play every day or take rest days?",
+    a: "A light weekly rest or an easy round keeps the streak while letting memory consolidate. Six focused days and one easy day is a common, sustainable shape.",
+   },
+   {
+    q: "What is habit stacking?",
+    a: "Habit stacking means attaching the new routine to an existing one, such as playing right after morning coffee. The old habit cues the new one, so you stop relying on willpower to remember.",
+   },
+   {
+    q: "Why log my score instead of just playing?",
+    a: "A logged score lets you see the trend over weeks, turning vague I feel sharper into evidence. The log also shows which board sizes and techniques actually help.",
+   },
+   {
+    q: "Can this routine help other memory games?",
+    a: "Yes. The same short-session-plus-log format transfers to Memocoly, Mastercards, and similar titles. The habit is the real gain, because it keeps you practicing when motivation fades.",
+   },
+   {
+    q: "What if I miss a day?",
+    a: "Resume the next day without penalty. One missed day means nothing to the trend; what matters is returning. If misses cluster, shrink the streak rule so it fits your real life.",
+   },
+   {
+    q: "How do I know the routine is working?",
+    a: "Your best score and flip count trend upward over a couple of weeks, and rounds feel less like guessing and more like retrieval. The log is where you confirm both.",
+   },
+  ],
+ },
 ];
+

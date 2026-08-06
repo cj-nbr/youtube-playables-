@@ -1,5 +1,5 @@
 -- ============================================================================
--- Custom Authentication Schema for YOUTUBE PLAYABLES
+-- Custom Authentication Schema for PLAYABLES
 -- Replaces Supabase Auth with a fully custom authentication system.
 -- Users are stored in public.users; sessions are managed via public.sessions.
 -- Passwords are hashed with Argon2id (via the hash_secret_code function).
@@ -12,26 +12,26 @@ create extension if not exists "uuid-ossp";
 -- Users table (replaces auth.users for custom auth)
 -- ---------------------------------------------------------------------------
 create table if not exists public.users (
-  id uuid primary key default gen_random_uuid(),
-  full_name text not null,
-  email text unique,
-  phone text unique,
-  secret_code_hash text not null,
-  avatar_url text,
-  avatar_color text not null default '#0070f3',
-  unique_user_code text unique,
-  games_played integer not null default 0,
-  total_play_time integer not null default 0,
-  highest_score integer not null default 0,
-  achievements_count integer not null default 0,
-  player_rank text not null default 'Bronze',
-  current_level integer not null default 1,
-  status text not null default 'active',
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  last_login timestamptz,
-  constraint email_or_phone check (email is not null or phone is not null),
-  constraint secret_code_length check (secret_code_hash is not null)
+ id uuid primary key default gen_random_uuid(),
+ full_name text not null,
+ email text unique,
+ phone text unique,
+ secret_code_hash text not null,
+ avatar_url text,
+ avatar_color text not null default '#0070f3',
+ unique_user_code text unique,
+ games_played integer not null default 0,
+ total_play_time integer not null default 0,
+ highest_score integer not null default 0,
+ achievements_count integer not null default 0,
+ player_rank text not null default 'Bronze',
+ current_level integer not null default 1,
+ status text not null default 'active',
+ created_at timestamptz not null default now(),
+ updated_at timestamptz not null default now(),
+ last_login timestamptz,
+ constraint email_or_phone check (email is not null or phone is not null),
+ constraint secret_code_length check (secret_code_hash is not null)
 );
 
 create index if not exists idx_users_email on public.users (email);
@@ -43,15 +43,15 @@ create index if not exists idx_users_unique_code on public.users (unique_user_co
 -- Sessions table (custom session management)
 -- ---------------------------------------------------------------------------
 create table if not exists public.sessions (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null references public.users (id) on delete cascade,
-  token text not null unique,
-  ip_address text,
-  user_agent text,
-  is_active boolean not null default true,
-  expires_at timestamptz not null,
-  created_at timestamptz not null default now(),
-  revoked_at timestamptz
+ id uuid primary key default gen_random_uuid(),
+ user_id uuid not null references public.users (id) on delete cascade,
+ token text not null unique,
+ ip_address text,
+ user_agent text,
+ is_active boolean not null default true,
+ expires_at timestamptz not null,
+ created_at timestamptz not null default now(),
+ revoked_at timestamptz
 );
 
 create index if not exists idx_sessions_user on public.sessions (user_id);
@@ -62,15 +62,15 @@ create index if not exists idx_sessions_active on public.sessions (user_id, is_a
 -- Notifications / Message Center
 -- ---------------------------------------------------------------------------
 create table if not exists public.notifications (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null references public.users (id) on delete cascade,
-  title text not null,
-  body text not null,
-  type text not null default 'info',
-  is_read boolean not null default false,
-  metadata jsonb not null default '{}',
-  created_at timestamptz not null default now(),
-  read_at timestamptz
+ id uuid primary key default gen_random_uuid(),
+ user_id uuid not null references public.users (id) on delete cascade,
+ title text not null,
+ body text not null,
+ type text not null default 'info',
+ is_read boolean not null default false,
+ metadata jsonb not null default '{}',
+ created_at timestamptz not null default now(),
+ read_at timestamptz
 );
 
 create index if not exists idx_notifications_user on public.notifications (user_id);
@@ -80,14 +80,14 @@ create index if not exists idx_notifications_unread on public.notifications (use
 -- Achievements catalog (expanded per-game achievements)
 -- ---------------------------------------------------------------------------
 create table if not exists public.achievements (
-  id uuid primary key default gen_random_uuid(),
-  code text not null unique,
-  game_id text not null,
-  name text not null,
-  description text,
-  tier text not null default 'Beginner',
-  reward text,
-  created_at timestamptz not null default now()
+ id uuid primary key default gen_random_uuid(),
+ code text not null unique,
+ game_id text not null,
+ name text not null,
+ description text,
+ tier text not null default 'Beginner',
+ reward text,
+ created_at timestamptz not null default now()
 );
 
 create index if not exists idx_achievements_game on public.achievements (game_id);
@@ -97,11 +97,11 @@ create index if not exists idx_achievements_tier on public.achievements (tier);
 -- User achievement progress
 -- ---------------------------------------------------------------------------
 create table if not exists public.user_achievements (
-  user_id uuid not null references public.users (id) on delete cascade,
-  achievement_id uuid not null references public.achievements (id) on delete cascade,
-  unlocked_at timestamptz,
-  progress integer not null default 0,
-  primary key (user_id, achievement_id)
+ user_id uuid not null references public.users (id) on delete cascade,
+ achievement_id uuid not null references public.achievements (id) on delete cascade,
+ unlocked_at timestamptz,
+ progress integer not null default 0,
+ primary key (user_id, achievement_id)
 );
 
 create index if not exists idx_user_ach_user on public.user_achievements (user_id);
@@ -110,11 +110,11 @@ create index if not exists idx_user_ach_user on public.user_achievements (user_i
 -- Avatars (reference for avatar selection)
 -- ---------------------------------------------------------------------------
 create table if not exists public.avatars (
-  id uuid primary key default gen_random_uuid(),
-  filename text not null unique,
-  category text not null default 'default',
-  is_premium boolean not null default false,
-  created_at timestamptz not null default now()
+ id uuid primary key default gen_random_uuid(),
+ filename text not null unique,
+ category text not null default 'default',
+ is_premium boolean not null default false,
+ created_at timestamptz not null default now()
 );
 
 -- ---------------------------------------------------------------------------
@@ -174,10 +174,10 @@ language plpgsql
 security definer
 as $$
 begin
-  if length(code) != 6 then
-    raise exception 'Secret code must be exactly 6 characters';
-  end if;
-  return crypt(code, gen_salt('bf', 12));
+ if length(code) != 6 then
+  raise exception 'Secret code must be exactly 6 characters';
+ end if;
+ return crypt(code, gen_salt('bf', 12));
 end;
 $$;
 
@@ -188,10 +188,10 @@ language plpgsql
 security definer
 as $$
 begin
-  if length(code) != 6 then
-    return false;
-  end if;
-  return crypt(code, hash) = hash;
+ if length(code) != 6 then
+  return false;
+ end if;
+ return crypt(code, hash) = hash;
 end;
 $$;
 
@@ -202,13 +202,13 @@ language plpgsql
 security definer
 as $$
 declare
-  cnt integer;
+ cnt integer;
 begin
-  if length(code) != 6 then
-    return false;
-  end if;
-  select count(*) into cnt from public.users where secret_code_hash = public.hash_secret_code(code);
-  return cnt = 0;
+ if length(code) != 6 then
+  return false;
+ end if;
+ select count(*) into cnt from public.users where secret_code_hash = public.hash_secret_code(code);
+ return cnt = 0;
 end;
 $$;
 
@@ -219,17 +219,17 @@ language plpgsql
 immutable
 as $$
 begin
-  if total_score >= 100000 then return 'Grandmaster';
-  elsif total_score >= 50000 then return 'Legend';
-  elsif total_score >= 25000 then return 'Champion';
-  elsif total_score >= 10000 then return 'Elite';
-  elsif total_score >= 5000 then return 'Master';
-  elsif total_score >= 2000 then return 'Expert';
-  elsif total_score >= 1000 then return 'Skilled';
-  elsif total_score >= 500 then return 'Explorer';
-  elsif total_score >= 200 then return 'Rookie';
-  else return 'Beginner';
-  end if;
+ if total_score >= 100000 then return 'Grandmaster';
+ elsif total_score >= 50000 then return 'Legend';
+ elsif total_score >= 25000 then return 'Champion';
+ elsif total_score >= 10000 then return 'Elite';
+ elsif total_score >= 5000 then return 'Master';
+ elsif total_score >= 2000 then return 'Expert';
+ elsif total_score >= 1000 then return 'Skilled';
+ elsif total_score >= 500 then return 'Explorer';
+ elsif total_score >= 200 then return 'Rookie';
+ else return 'Beginner';
+ end if;
 end;
 $$;
 
@@ -240,15 +240,15 @@ language plpgsql
 security definer
 as $$
 declare
-  code text;
-  cnt integer;
+ code text;
+ cnt integer;
 begin
-  loop
-    code := lpad(floor(random() * 900000 + 100000)::text, 6, '0');
-    select count(*) into cnt from public.users where unique_user_code = code;
-    exit when cnt = 0;
-  end loop;
-  return code;
+ loop
+  code := lpad(floor(random() * 900000 + 100000)::text, 6, '0');
+  select count(*) into cnt from public.users where unique_user_code = code;
+  exit when cnt = 0;
+ end loop;
+ return code;
 end;
 $$;
 
@@ -345,3 +345,4 @@ insert into public.achievements (code, game_id, name, description, tier, reward)
 ('any_level_25', 'all', 'Level 25', 'Reach level 25.', 'Expert', '50 coins'),
 ('any_level_50', 'all', 'Level 50', 'Reach level 50.', 'Master', '100 coins'),
 ('any_level_100', 'all', 'Max Level', 'Reach level 100.', 'Grandmaster', '300 coins');
+

@@ -4,10 +4,11 @@ import { getGame } from "../shared/games";
 const game = getGame("what-word");
 ---
 <GameShell game={game}>
-  <div id="what-word" class="mx-auto w-full max-w-[360px]"></div>
+ <div id="what-word" class="mx-auto w-full max-w-[360px]"></div>
 </GameShell>
 
 <script>
-  import { initGame } from "../games/what-word/scripts/game";
-  initGame();
+ import { initGame } from "../games/what-word/scripts/game";
+ initGame();
 </script>
+

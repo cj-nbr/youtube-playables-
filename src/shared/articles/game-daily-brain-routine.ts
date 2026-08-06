@@ -1,49 +1,49 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "how-to-build-a-daily-brain-training-routine",
-    title: "How to Build a Daily Brain Training Routine",
-    description:
-      "A practical guide to building a daily brain training routine with free browser games. Start small, stay consistent, and track your progress.",
-    date: "2026-07-14",
-    updatedAt: "2026-07-14",
-    category: "Brain Training",
-    tags: [
-      "daily brain training",
-      "brain training routine",
-      "how to build a brain habit",
-      "cognitive fitness",
-      "brain games routine",
-      "daily mental exercise",
-      "brain training tips",
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "daily brain training routine",
-    secondaryKeywords: [
-      "how to build a brain training habit",
-      "daily brain exercise",
-      "brain training schedule",
-      "cognitive fitness routine",
-    ],
-    lsiKeywords: [
-      "consistency",
-      "progressive difficulty",
-      "working memory",
-      "focus",
-      "habit formation",
-      "cognitive reserve",
-      "mental sharpness",
-    ],
-    gameId: "memory-flip",
-    excerpt:
-      "A practical guide to building a daily brain training routine with free browser games. Start small, stay consistent, and track your progress.",
-    content: `
+ {
+  slug: "how-to-build-a-daily-brain-training-routine",
+  title: "How to Build a Daily Brain Training Routine",
+  description:
+   "A practical guide to building a daily brain training routine with free browser games. Start small, stay consistent, and track your progress.",
+  date: "2026-07-14",
+  updatedAt: "2026-07-14",
+  category: "Brain Training",
+  tags: [
+   "daily brain training",
+   "brain training routine",
+   "how to build a brain habit",
+   "cognitive fitness",
+   "brain games routine",
+   "daily mental exercise",
+   "brain training tips",
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "daily brain training routine",
+  secondaryKeywords: [
+   "how to build a brain training habit",
+   "daily brain exercise",
+   "brain training schedule",
+   "cognitive fitness routine",
+  ],
+  lsiKeywords: [
+   "consistency",
+   "progressive difficulty",
+   "working memory",
+   "focus",
+   "habit formation",
+   "cognitive reserve",
+   "mental sharpness",
+  ],
+  gameId: "memory-flip",
+  excerpt:
+   "A practical guide to building a daily brain training routine with free browser games. Start small, stay consistent, and track your progress.",
+  content: `
 <h2>Why a Daily Routine Beats Occasional Marathons</h2>
 <p>The brain adapts to regular, consistent challenges. A daily brain training routine, even if it is only ten minutes, produces better results than an occasional hour-long session. This is because neural pathways strengthen through repetition, not intensity.</p>
 <p>Building a daily routine is simpler than most people think. The key is to start small, attach the habit to an existing routine, and track your progress so you can see the improvement over time.</p>
-<p>On YouTube Playables, every game is free, browser-based, and instant to play. This makes it the ideal platform for a daily brain training routine. No downloads, no accounts, no friction.</p>
+<p>On Playables, every game is free, browser-based, and instant to play. This makes it the ideal platform for a daily brain training routine. No downloads, no accounts, no friction.</p>
 
 <h2>The Four Pillars of Brain Training</h2>
 <p>A well-rounded brain training routine covers four cognitive domains. Each domain benefits from a different type of game.</p>
@@ -110,12 +110,12 @@ export const posts: BlogPost[] = [
 <li>Research on cognitive training and habit formation.</li>
 </ul>
 `,
-    faqs: [
-      { q: "How long should a daily brain training session be?", a: "Five to twenty minutes is enough. Consistency matters more than duration." },
-      { q: "What is the best time of day for brain training?", a: "Any time that fits your routine. The best time is the one you will actually do." },
-      { q: "Can brain training games make you smarter?", a: "They can improve specific cognitive skills that transfer to everyday tasks." },
-      { q: "How do I know if my brain training routine is working?", a: "Track your scores and session consistency. Improving scores and mental alertness are signs it is working." },
-      { q: "Should I use apps or browser games for brain training?", a: "Browser games are ideal because they require no install or account." },
-    ],
-  },
+  faqs: [
+   { q: "How long should a daily brain training session be?", a: "Five to twenty minutes is enough. Consistency matters more than duration." },
+   { q: "What is the best time of day for brain training?", a: "Any time that fits your routine. The best time is the one you will actually do." },
+   { q: "Can brain training games make you smarter?", a: "They can improve specific cognitive skills that transfer to everyday tasks." },
+   { q: "How do I know if my brain training routine is working?", a: "Track your scores and session consistency. Improving scores and mental alertness are signs it is working." },
+   { q: "Should I use apps or browser games for brain training?", a: "Browser games are ideal because they require no install or account." },
+  ],
+ },
 ];

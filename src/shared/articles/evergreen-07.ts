@@ -1,46 +1,46 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "best-memory-games-online-free",
-    title: "The Best Memory Games Online (Free): A Practical Curated List",
-    description:
-      "A curated list of the best memory games online free to play in your browser. Compare matching, card, and sequence titles, and pick the right one for your goal.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Memory Games",
-    tags: [
-      "best memory games online",
-      "free memory games",
-      "matching games online",
-      "card memory games",
-      "brain training games",
-      "memory games for adults",
-      "improve memory games",
-      "no download memory games",
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "best memory games online",
-    secondaryKeywords: [
-      "free memory games no download",
-      "memory matching games online",
-      "card matching games",
-      "best brain games for memory",
-      "memory games for adults",
-    ],
-    lsiKeywords: [
-      "visual recall",
-      "working memory",
-      "concentration",
-      "pattern recognition",
-      "attention span",
-      "cognitive exercise",
-      "short term memory",
-    ],
-    excerpt:
-      "A straight-talking roundup of the best memory games you can play free in a browser today, sorted by what each one actually trains and who it suits.",
-    content: `
+ {
+  slug: "best-memory-games-online-free",
+  title: "The Best Memory Games Online (Free): A Practical Curated List",
+  description:
+   "A curated list of the best memory games online free to play in your browser. Compare matching, card, and sequence titles, and pick the right one for your goal.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Memory Games",
+  tags: [
+   "best memory games online",
+   "free memory games",
+   "matching games online",
+   "card memory games",
+   "brain training games",
+   "memory games for adults",
+   "improve memory games",
+   "no download memory games",
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "best memory games online",
+  secondaryKeywords: [
+   "free memory games no download",
+   "memory matching games online",
+   "card matching games",
+   "best brain games for memory",
+   "memory games for adults",
+  ],
+  lsiKeywords: [
+   "visual recall",
+   "working memory",
+   "concentration",
+   "pattern recognition",
+   "attention span",
+   "cognitive exercise",
+   "short term memory",
+  ],
+  excerpt:
+   "A straight-talking roundup of the best memory games you can play free in a browser today, sorted by what each one actually trains and who it suits.",
+  content: `
 <h2>Why a Curated List Instead of a Search</h2>
 <p>Type "best memory games online" into any search box and you get a wall of splashy banners, install prompts, and apps that want your email before you have played a single round. Most of them are fine. A few are genuinely good. The job of this list is to skip the noise and point you at free, browser-based games that actually exercise memory rather than just look like they do.</p>
 <p>Every title below runs without a download and without an account. You open the page and play. That matters more than people expect, because a memory routine you can start in ten seconds is a routine you will keep. The best memory game is the one you reach for on a slow afternoon, not the one that sits behind a signup wall.</p>
@@ -135,61 +135,61 @@ export const posts: BlogPost[] = [
 <li>Harvard Health Publishing, "Memory and aging" articles on everyday memory and training.</li>
 </ul>
 `,
-    faqs: [
-      { q: "What are the best memory games to play online for free?", a: "The strongest free options are browser-based matching and sequence games that need no download. Memory Flip builds recognition, Memocoly builds working memory, Mastercards offers a familiar card feel, and What Was There trains observation. All four are free and start instantly." },
-      { q: "Do memory games actually improve memory?", a: "They improve the specific skills they train, mainly short-term and working memory, when played regularly. The gains are modest and task-specific rather than a general intelligence boost, but daily practice does make those skills more reliable in everyday life." },
-      { q: "Are there memory games with no download?", a: "Yes. The games listed here run entirely in a browser with no install and no account. That low friction is part of why they work, because a routine you can start in seconds is a routine you keep." },
-      { q: "Which memory game is best for beginners?", a: "Memory Flip is the best starting point. Its rules are obvious within seconds, there is no timer pressure, and the board can be sized to comfort. Move to sequence games like Memocoly only once plain matching feels automatic." },
-      { q: "Can memory games help older adults?", a: "They can help maintain attention, recognition, and the habit of noticing details, which is where age-related friction often shows up. Gentle, regular play is more useful than hard games that cause frustration and quit. Calm titles like Memory Flip suit this goal well." },
-      { q: "How long should a memory game session be?", a: "Five to ten minutes on most days works better than a long weekly session. The goal is consistency, not exhaustion. A short routine you repeat beats an occasional marathon that you dread." },
-      { q: "What is the difference between matching and sequence games?", a: "Matching games train recognition and location memory: you find pairs. Sequence games like Memocoly add an order demand, pushing into working memory. Both are useful, and alternating them gives broader coverage." },
-      { q: "Should I play memory games alone or with others?", a: "Either works, but playing with someone else often helps recall stick, because you talk about what you saw. Card-style games like Mastercards are especially good for a casual two-person session without setup." },
-      { q: "Why do free games work as well as paid apps?", a: "The training is the act of recalling, and free browser games deliver that act just as well as paid apps. Paid apps mostly add dashboards and streaks, which motivate some people but are not the exercise itself." },
-      { q: "How many different memory games should I play?", a: "Two or three is plenty. One matching game, one sequence game, and optionally an observation game covers the main memory types without overwhelming you. Depth of routine matters more than a long list of titles." },
-      { q: "Can kids use these memory games?", a: "Yes. Matching games are a natural fit for children because the rules are instant and the feedback is clear. They build the same recognition and attention skills in kids that they build in adults." },
-      { q: "What is the fastest way to see improvement?", a: "Name what you see out loud or in your head when a tile flips back down. That small act of labeling turns a glance into a memory and is the single biggest habit that separates players who improve from those who guess." },
-    ],
-  },
-  {
-    slug: "how-memory-games-improve-recall",
-    title: "How Memory Games Improve Recall: What the Research Actually Says",
-    description:
-      "How memory games improve recall, explained plainly: what studies say about working memory, spaced practice, and daily habit, plus the games that build it.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Memory Games",
-    tags: [
-      "how memory games work",
-      "memory games improve recall",
-      "working memory training",
-      "brain training science",
-      "memory and recall",
-      "cognitive training",
-      "spaced practice",
-      "neuroplasticity",
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "memory games improve recall",
-    secondaryKeywords: [
-      "do memory games work",
-      "working memory and recall",
-      "science of memory training",
-      "how to improve recall",
-      "brain games and memory",
-    ],
-    lsiKeywords: [
-      "neuroplasticity",
-      "encoding",
-      "retrieval",
-      "spacing effect",
-      "attention",
-      "cognitive load",
-      "consolidation",
-    ],
-    excerpt:
-      "A clear look at how memory games improve recall: the roles of working memory, attention, and spaced practice, what the evidence supports, and how to train without hype.",
-    content: `
+  faqs: [
+   { q: "What are the best memory games to play online for free?", a: "The strongest free options are browser-based matching and sequence games that need no download. Memory Flip builds recognition, Memocoly builds working memory, Mastercards offers a familiar card feel, and What Was There trains observation. All four are free and start instantly." },
+   { q: "Do memory games actually improve memory?", a: "They improve the specific skills they train, mainly short-term and working memory, when played regularly. The gains are modest and task-specific rather than a general intelligence boost, but daily practice does make those skills more reliable in everyday life." },
+   { q: "Are there memory games with no download?", a: "Yes. The games listed here run entirely in a browser with no install and no account. That low friction is part of why they work, because a routine you can start in seconds is a routine you keep." },
+   { q: "Which memory game is best for beginners?", a: "Memory Flip is the best starting point. Its rules are obvious within seconds, there is no timer pressure, and the board can be sized to comfort. Move to sequence games like Memocoly only once plain matching feels automatic." },
+   { q: "Can memory games help older adults?", a: "They can help maintain attention, recognition, and the habit of noticing details, which is where age-related friction often shows up. Gentle, regular play is more useful than hard games that cause frustration and quit. Calm titles like Memory Flip suit this goal well." },
+   { q: "How long should a memory game session be?", a: "Five to ten minutes on most days works better than a long weekly session. The goal is consistency, not exhaustion. A short routine you repeat beats an occasional marathon that you dread." },
+   { q: "What is the difference between matching and sequence games?", a: "Matching games train recognition and location memory: you find pairs. Sequence games like Memocoly add an order demand, pushing into working memory. Both are useful, and alternating them gives broader coverage." },
+   { q: "Should I play memory games alone or with others?", a: "Either works, but playing with someone else often helps recall stick, because you talk about what you saw. Card-style games like Mastercards are especially good for a casual two-person session without setup." },
+   { q: "Why do free games work as well as paid apps?", a: "The training is the act of recalling, and free browser games deliver that act just as well as paid apps. Paid apps mostly add dashboards and streaks, which motivate some people but are not the exercise itself." },
+   { q: "How many different memory games should I play?", a: "Two or three is plenty. One matching game, one sequence game, and optionally an observation game covers the main memory types without overwhelming you. Depth of routine matters more than a long list of titles." },
+   { q: "Can kids use these memory games?", a: "Yes. Matching games are a natural fit for children because the rules are instant and the feedback is clear. They build the same recognition and attention skills in kids that they build in adults." },
+   { q: "What is the fastest way to see improvement?", a: "Name what you see out loud or in your head when a tile flips back down. That small act of labeling turns a glance into a memory and is the single biggest habit that separates players who improve from those who guess." },
+  ],
+ },
+ {
+  slug: "how-memory-games-improve-recall",
+  title: "How Memory Games Improve Recall: What the Research Actually Says",
+  description:
+   "How memory games improve recall, explained plainly: what studies say about working memory, spaced practice, and daily habit, plus the games that build it.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Memory Games",
+  tags: [
+   "how memory games work",
+   "memory games improve recall",
+   "working memory training",
+   "brain training science",
+   "memory and recall",
+   "cognitive training",
+   "spaced practice",
+   "neuroplasticity",
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "memory games improve recall",
+  secondaryKeywords: [
+   "do memory games work",
+   "working memory and recall",
+   "science of memory training",
+   "how to improve recall",
+   "brain games and memory",
+  ],
+  lsiKeywords: [
+   "neuroplasticity",
+   "encoding",
+   "retrieval",
+   "spacing effect",
+   "attention",
+   "cognitive load",
+   "consolidation",
+  ],
+  excerpt:
+   "A clear look at how memory games improve recall: the roles of working memory, attention, and spaced practice, what the evidence supports, and how to train without hype.",
+  content: `
 <h2>The Claim and the Quiet Caveat</h2>
 <p>Walk through any app store and you will see a bold promise: play a few minutes a day and your memory will sharpen across the board. The honest version is narrower but still useful. Memory games improve recall for the specific skills they train, and they do it through ordinary, well-studied mechanisms rather than anything mysterious. The trick is separating the real mechanisms from the marketing.</p>
 <p>This article stays with the evidence and with plain language. We will look at how recall is built, what a game session actually does to the brain, where the limits are, and which free games apply the principles well. No miracle claims, no guilt about missed streaks.</p>
@@ -291,5 +291,6 @@ export const posts: BlogPost[] = [
 <li>National Institute on Aging, guidance on mentally stimulating activity and healthy cognitive aging.</li>
 </ul>
 `,
-  },
+ },
 ];
+

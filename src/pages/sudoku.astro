@@ -4,10 +4,11 @@ import { getGame } from "../shared/games";
 const game = getGame("sudoku");
 ---
 <GameShell game={game}>
-  <div id="sudoku-board" class="mx-auto w-full max-w-[400px]"></div>
+ <div id="sudoku-board" class="mx-auto w-full max-w-[400px]"></div>
 </GameShell>
 
 <script>
-  import { initGame } from "../games/sudoku/scripts/game";
-  initGame();
+ import { initGame } from "../games/sudoku/scripts/game";
+ initGame();
 </script>
+

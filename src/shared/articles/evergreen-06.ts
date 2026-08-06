@@ -1,43 +1,43 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "logic-puzzles-for-beginners",
-    title: "Logic Puzzles for Beginners: Where to Start and How to Improve",
-    description:
-      "New to logic puzzles? Discover the best starting points, essential rules, and step-by-step strategies to build confidence and sharpen your mind.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Puzzle Games",
-    tags: [
-      "logic puzzles",
-      "beginners guide",
-      "deductive reasoning",
-      "puzzle tips",
-      "grid puzzles",
-      "brain games",
-      "problem solving",
-      "critical thinking",
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "logic puzzles for beginners",
-    secondaryKeywords: [
-      "beginner logic puzzles",
-      "puzzle solving tips",
-      "grid puzzles",
-      "deductive reasoning games",
-    ],
-    lsiKeywords: [
-      "deduction",
-      "reasoning",
-      "problem solving",
-      "grid-based puzzles",
-      "critical thinking",
-    ],
-    excerpt:
-      "A practical introduction to logic puzzles for newcomers. Learn what they are, why they train the brain, and which formats are easiest to pick up first.",
-    content: `<h2>What Are Logic Puzzles and Why Do They Matter</h2>
+ {
+  slug: "logic-puzzles-for-beginners",
+  title: "Logic Puzzles for Beginners: Where to Start and How to Improve",
+  description:
+   "New to logic puzzles? Discover the best starting points, essential rules, and step-by-step strategies to build confidence and sharpen your mind.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Puzzle Games",
+  tags: [
+   "logic puzzles",
+   "beginners guide",
+   "deductive reasoning",
+   "puzzle tips",
+   "grid puzzles",
+   "brain games",
+   "problem solving",
+   "critical thinking",
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "logic puzzles for beginners",
+  secondaryKeywords: [
+   "beginner logic puzzles",
+   "puzzle solving tips",
+   "grid puzzles",
+   "deductive reasoning games",
+  ],
+  lsiKeywords: [
+   "deduction",
+   "reasoning",
+   "problem solving",
+   "grid-based puzzles",
+   "critical thinking",
+  ],
+  excerpt:
+   "A practical introduction to logic puzzles for newcomers. Learn what they are, why they train the brain, and which formats are easiest to pick up first.",
+  content: `<h2>What Are Logic Puzzles and Why Do They Matter</h2>
 <p>Logic puzzles are games built on deduction rather than luck or reflexes. Players receive a set of clues and a partially filled grid or scenario, then use elimination and inference to arrive at a single correct answer. Unlike open-ended riddles, these puzzles have a clear verifiable solution, which makes them especially satisfying for newcomers.</p>
 <p>Research from cognitive science consistently shows that regular puzzle practice improves working memory, attention to detail, and systematic thinking. For beginners, the key advantage is that the rules are simple to learn but the depth is essentially unlimited. You can spend five minutes on a tiny grid or tackle a sprawling multi-step challenge depending on the time you have.</p>
 <div class="callout">
@@ -144,85 +144,85 @@ export const posts: BlogPost[] = [
 <li>University of Cambridge, Department of Psychology. "Working memory improvement through structured puzzle practice." Research summary, 2020.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What is the easiest logic puzzle for absolute beginners?",
-        a: "Simple three-by-three or four-by-four grid matching puzzles are the easiest starting point. They require only basic elimination and can usually be completed in under five minutes.",
-      },
-      {
-        q: "Do I need any special skills to start solving logic puzzles?",
-        a: "No. The only requirements are careful reading and the willingness to slow down. Advanced math is never necessary. Most puzzles rely on plain English clues and straightforward deduction.",
-      },
-      {
-        q: "How long should I practice each day?",
-        a: "Ten to fifteen minutes is ideal for beginners. Short daily sessions build habits better than occasional long marathons.",
-      },
-      {
-        q: "Are logic puzzles good for the brain?",
-        a: "Yes. Studies link regular puzzle solving to improved working memory, attention, and problem-solving flexibility. The effect is strongest when the activity is consistent rather than sporadic.",
-      },
-      {
-        q: "What is the difference between Sudoku and other logic puzzles?",
-        a: "Sudoku is a number-placement grid puzzle with strict mathematical rules. Other logic puzzles may use words, colors, or stories, but they share the same core principle: use clues to reach a unique solution.",
-      },
-      {
-        q: "Can I improve my logic skills without playing games?",
-        a: "Yes. Reading mystery novels, learning to code, or studying formal logic exercises all strengthen similar mental muscles. Games simply package the practice in a more engaging format.",
-      },
-      {
-        q: "Why do I keep making the same mistakes?",
-        a: "Most mistakes come from skipping clues or misreading if-then statements. Slow down, read each clue twice, and write down what you know before you act.",
-      },
-      {
-        q: "Should I use a pen or pencil?",
-        a: "Pencil is safer for paper puzzles because errors are easy to correct. Digital puzzles often include built-in undo, which serves the same purpose.",
-      },
-      {
-        q: "What age is best to start logic puzzles?",
-        a: "Children as young as six can handle simplified grid puzzles. Adults at any age benefit equally, because the skill depends on practice rather than innate talent.",
-      },
-      {
-        q: "How do I know if a puzzle is too hard?",
-        a: "If you catch yourself guessing more than deducing, the puzzle is beyond your current level. Drop back to an easier format and rebuild confidence before returning.",
-      },
-    ],
-  },
-  {
-    slug: "how-to-solve-logic-puzzles-faster",
-    title: "How to Solve Logic Puzzles Faster: Proven Techniques for Speed",
-    description:
-      "Speed up your puzzle solving with expert techniques used by competitive players. Learn advanced deduction shortcuts, pattern recognition, and time management tricks.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Puzzle Games",
-    tags: [
-      "speed solving",
-      "logic puzzle techniques",
-      "puzzle strategies",
-      "fast logic games",
-      "deductive shortcuts",
-      "competitive puzzling",
-      "pattern recognition",
-      "time management",
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "how to solve logic puzzles",
-    secondaryKeywords: [
-      "speed solving",
-      "logic puzzle techniques",
-      "puzzle strategies",
-      "fast logic games",
-    ],
-    lsiKeywords: [
-      "pattern recognition",
-      "deductive reasoning",
-      "mental shortcuts",
-      "puzzle tactics",
-    ],
-    excerpt:
-      "Take your logic puzzle speed to the next level. Advanced players use these proven shortcuts and mental frameworks to finish puzzles in record time without sacrificing accuracy.",
-    content: `<h2>Why Speed Matters Without Sacrificing Accuracy</h2>
+  faqs: [
+   {
+    q: "What is the easiest logic puzzle for absolute beginners?",
+    a: "Simple three-by-three or four-by-four grid matching puzzles are the easiest starting point. They require only basic elimination and can usually be completed in under five minutes.",
+   },
+   {
+    q: "Do I need any special skills to start solving logic puzzles?",
+    a: "No. The only requirements are careful reading and the willingness to slow down. Advanced math is never necessary. Most puzzles rely on plain English clues and straightforward deduction.",
+   },
+   {
+    q: "How long should I practice each day?",
+    a: "Ten to fifteen minutes is ideal for beginners. Short daily sessions build habits better than occasional long marathons.",
+   },
+   {
+    q: "Are logic puzzles good for the brain?",
+    a: "Yes. Studies link regular puzzle solving to improved working memory, attention, and problem-solving flexibility. The effect is strongest when the activity is consistent rather than sporadic.",
+   },
+   {
+    q: "What is the difference between Sudoku and other logic puzzles?",
+    a: "Sudoku is a number-placement grid puzzle with strict mathematical rules. Other logic puzzles may use words, colors, or stories, but they share the same core principle: use clues to reach a unique solution.",
+   },
+   {
+    q: "Can I improve my logic skills without playing games?",
+    a: "Yes. Reading mystery novels, learning to code, or studying formal logic exercises all strengthen similar mental muscles. Games simply package the practice in a more engaging format.",
+   },
+   {
+    q: "Why do I keep making the same mistakes?",
+    a: "Most mistakes come from skipping clues or misreading if-then statements. Slow down, read each clue twice, and write down what you know before you act.",
+   },
+   {
+    q: "Should I use a pen or pencil?",
+    a: "Pencil is safer for paper puzzles because errors are easy to correct. Digital puzzles often include built-in undo, which serves the same purpose.",
+   },
+   {
+    q: "What age is best to start logic puzzles?",
+    a: "Children as young as six can handle simplified grid puzzles. Adults at any age benefit equally, because the skill depends on practice rather than innate talent.",
+   },
+   {
+    q: "How do I know if a puzzle is too hard?",
+    a: "If you catch yourself guessing more than deducing, the puzzle is beyond your current level. Drop back to an easier format and rebuild confidence before returning.",
+   },
+  ],
+ },
+ {
+  slug: "how-to-solve-logic-puzzles-faster",
+  title: "How to Solve Logic Puzzles Faster: Proven Techniques for Speed",
+  description:
+   "Speed up your puzzle solving with expert techniques used by competitive players. Learn advanced deduction shortcuts, pattern recognition, and time management tricks.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Puzzle Games",
+  tags: [
+   "speed solving",
+   "logic puzzle techniques",
+   "puzzle strategies",
+   "fast logic games",
+   "deductive shortcuts",
+   "competitive puzzling",
+   "pattern recognition",
+   "time management",
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "how to solve logic puzzles",
+  secondaryKeywords: [
+   "speed solving",
+   "logic puzzle techniques",
+   "puzzle strategies",
+   "fast logic games",
+  ],
+  lsiKeywords: [
+   "pattern recognition",
+   "deductive reasoning",
+   "mental shortcuts",
+   "puzzle tactics",
+  ],
+  excerpt:
+   "Take your logic puzzle speed to the next level. Advanced players use these proven shortcuts and mental frameworks to finish puzzles in record time without sacrificing accuracy.",
+  content: `<h2>Why Speed Matters Without Sacrificing Accuracy</h2>
 <p>Speed in logic puzzles is not about rushing. It is about recognizing recurring structures so quickly that you skip the slow trial-and-error phase entirely. The fastest solvers do not work harder; they work with better pattern libraries built from hundreds of hours of deliberate practice.</p>
 <p>For players who enjoy <a href="/sudoku">Sudoku</a>, <a href="/reversi">Reversi</a>, or <a href="/number-slide">Number Slide</a>, improving speed means reducing the gap between reading a clue and updating the board. That gap shrinks when you stop treating every puzzle as a fresh problem and start treating it as a variation of patterns you have already seen.</p>
 <h2>The Fastest Thinkers Use These Mental Frameworks</h2>
@@ -314,51 +314,52 @@ export const posts: BlogPost[] = [
 <li>University of Cambridge, Department of Psychology. "Working memory improvement through structured puzzle practice." Research summary, 2020.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "How can I solve logic puzzles faster without making mistakes?",
-        a: "Focus on pattern recognition and elimination before guessing. Learn one new technique at a time, practice it until it becomes automatic, and only then add another technique to your toolkit.",
-      },
-      {
-        q: "What is the fastest way to improve at Sudoku?",
-        a: "Master candidate pair locks and block interactions. These two techniques eliminate the most candidates in the fewest moves. Practice them daily in five-minute blitz sessions.",
-      },
-      {
-        q: "Does speed matter if accuracy is high?",
-        a: "Speed matters for motivation. Slow progress discourages daily practice. Faster solving keeps sessions short and satisfying, which leads to more consistent long-term improvement.",
-      },
-      {
-        q: "How many puzzles should I solve per day?",
-        a: "Quality beats quantity. One fully focused fifteen-minute session is better than three distracted sessions. Aim for five to seven puzzles per week with deliberate technique practice.",
-      },
-      {
-        q: "Can I get faster at logic puzzles just by playing more?",
-        a: "Not necessarily. Mindless repetition builds familiarity but not speed. You need deliberate practice: targeted drills, error logging, and focused technique rotation.",
-      },
-      {
-        q: "What are the biggest time-wasters in logic puzzles?",
-        a: "Re-reading clues, guessing instead of deducing, and failing to update the grid after each new placement. Eliminate these habits and your speed will improve automatically.",
-      },
-      {
-        q: "Is there a limit to how fast I can solve puzzles?",
-        a: "Yes, but the limit is usually set by working memory and pattern library size, not raw intelligence. Both can be trained, so your ceiling rises with consistent practice.",
-      },
-      {
-        q: "Do digital puzzles help or hurt speed development?",
-        a: "Digital puzzles help if they enforce no-guess rules and track your time. They hurt if you rely on auto-elimination features without understanding the underlying logic.",
-      },
-      {
-        q: "Should I time myself on easy puzzles?",
-        a: "Yes. Timing easy puzzles builds the habit of moving quickly through simple deductions, which preserves energy for harder sections later.",
-      },
-      {
-        q: "Why do I solve faster in the morning than at night?",
-        a: "Working memory and attention are typically strongest shortly after waking. If you want maximum speed gains, schedule your most demanding puzzle sessions during your personal peak focus window.",
-      },
-      {
-        q: "What game is best for speed training?",
-        a: "Sudoku and Number Slide are excellent because they reward rapid candidate elimination. Mastermind and Reversi train a different kind of speed, but the underlying principle is the same: recognize patterns faster.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "How can I solve logic puzzles faster without making mistakes?",
+    a: "Focus on pattern recognition and elimination before guessing. Learn one new technique at a time, practice it until it becomes automatic, and only then add another technique to your toolkit.",
+   },
+   {
+    q: "What is the fastest way to improve at Sudoku?",
+    a: "Master candidate pair locks and block interactions. These two techniques eliminate the most candidates in the fewest moves. Practice them daily in five-minute blitz sessions.",
+   },
+   {
+    q: "Does speed matter if accuracy is high?",
+    a: "Speed matters for motivation. Slow progress discourages daily practice. Faster solving keeps sessions short and satisfying, which leads to more consistent long-term improvement.",
+   },
+   {
+    q: "How many puzzles should I solve per day?",
+    a: "Quality beats quantity. One fully focused fifteen-minute session is better than three distracted sessions. Aim for five to seven puzzles per week with deliberate technique practice.",
+   },
+   {
+    q: "Can I get faster at logic puzzles just by playing more?",
+    a: "Not necessarily. Mindless repetition builds familiarity but not speed. You need deliberate practice: targeted drills, error logging, and focused technique rotation.",
+   },
+   {
+    q: "What are the biggest time-wasters in logic puzzles?",
+    a: "Re-reading clues, guessing instead of deducing, and failing to update the grid after each new placement. Eliminate these habits and your speed will improve automatically.",
+   },
+   {
+    q: "Is there a limit to how fast I can solve puzzles?",
+    a: "Yes, but the limit is usually set by working memory and pattern library size, not raw intelligence. Both can be trained, so your ceiling rises with consistent practice.",
+   },
+   {
+    q: "Do digital puzzles help or hurt speed development?",
+    a: "Digital puzzles help if they enforce no-guess rules and track your time. They hurt if you rely on auto-elimination features without understanding the underlying logic.",
+   },
+   {
+    q: "Should I time myself on easy puzzles?",
+    a: "Yes. Timing easy puzzles builds the habit of moving quickly through simple deductions, which preserves energy for harder sections later.",
+   },
+   {
+    q: "Why do I solve faster in the morning than at night?",
+    a: "Working memory and attention are typically strongest shortly after waking. If you want maximum speed gains, schedule your most demanding puzzle sessions during your personal peak focus window.",
+   },
+   {
+    q: "What game is best for speed training?",
+    a: "Sudoku and Number Slide are excellent because they reward rapid candidate elimination. Mastermind and Reversi train a different kind of speed, but the underlying principle is the same: recognize patterns faster.",
+   },
+  ],
+ },
 ];
+

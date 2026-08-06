@@ -4,10 +4,11 @@ import { getGame } from "../shared/games";
 const game = getGame("number-slide");
 ---
 <GameShell game={game}>
-  <div id="number-slide" class="mx-auto w-full max-w-[min(280px,90vw)]"></div>
+ <div id="number-slide" class="mx-auto w-full max-w-[min(280px,90vw)]"></div>
 </GameShell>
 
 <script>
-  import { initGame } from "../games/number-slide/scripts/game";
-  initGame();
+ import { initGame } from "../games/number-slide/scripts/game";
+ initGame();
 </script>
+

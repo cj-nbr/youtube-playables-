@@ -1,44 +1,44 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "how-to-build-a-daily-brain-training-habit",
-    title: "How to Build a Daily Brain Training Habit That Actually Sticks",
-    description:
-      "A daily brain training routine that sticks: how to start small, track progress without stress, and pick games that fit real life. Practical, low-pressure plan.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Brain Training",
-    tags: [
-      "daily brain training",
-      "brain training routine",
-      "how to build a habit",
-      "tracking mental exercises",
-      "memory game habit",
-      "consistent brain workouts",
-      "brain training schedule",
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "daily brain training",
-    secondaryKeywords: [
-      "how to build a brain training habit",
-      "daily mental exercise routine",
-      "tracking brain games",
-      "brain training schedule for beginners",
-    ],
-    lsiKeywords: [
-      "habit stacking",
-      "spaced practice",
-      "working memory",
-      "consistency",
-      "cue and reward",
-      "cognitive load",
-      "intrinsic motivation",
-    ],
-    excerpt:
-      "A daily brain training habit is built on rhythm, not willpower. Start small, track without stress, and pick games that fit your real life so the streak survives busy weeks.",
-    content: `
+ {
+  slug: "how-to-build-a-daily-brain-training-habit",
+  title: "How to Build a Daily Brain Training Habit That Actually Sticks",
+  description:
+   "A daily brain training routine that sticks: how to start small, track progress without stress, and pick games that fit real life. Practical, low-pressure plan.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Brain Training",
+  tags: [
+   "daily brain training",
+   "brain training routine",
+   "how to build a habit",
+   "tracking mental exercises",
+   "memory game habit",
+   "consistent brain workouts",
+   "brain training schedule",
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "daily brain training",
+  secondaryKeywords: [
+   "how to build a brain training habit",
+   "daily mental exercise routine",
+   "tracking brain games",
+   "brain training schedule for beginners",
+  ],
+  lsiKeywords: [
+   "habit stacking",
+   "spaced practice",
+   "working memory",
+   "consistency",
+   "cue and reward",
+   "cognitive load",
+   "intrinsic motivation",
+  ],
+  excerpt:
+   "A daily brain training habit is built on rhythm, not willpower. Start small, track without stress, and pick games that fit your real life so the streak survives busy weeks.",
+  content: `
 <h2>Why a Daily Habit Beats a Weekly Marathon</h2>
 <p>The single most common mistake people make with brain training is the Sunday marathon. They feel motivated, sit down for an hour, blast through a stack of puzzles, feel tired and virtuous, and then do nothing for six days. That pattern feels productive and mostly is not. The brain does not build a skill in one heroic session the way it does through repeated, spaced contact with the same challenge.</p>
 <p>The reason is mechanical, not inspirational. Skills like working memory and pattern recognition strengthen through a cycle of load and recovery. You tax the system a little, then you let it rest, and the rest is where the growth lands. A marathon skips the rest and leaves you flattened; a daily habit bakes the rest into the schedule. The habit is the delivery system. The game is just the cargo.</p>
@@ -158,91 +158,91 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Neuroplasticity" - how repeated mental activity shapes the brain over time.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "How long should a daily brain training session be?",
-        a: "Five to fifteen minutes spread across the day is plenty. The benefit comes from showing up regularly, not from the length of any single session. A short round most days outperforms one long weekly marathon.",
-      },
-      {
-        q: "What is the best brain game for a daily habit?",
-        a: "The best one is the game that fits your real gap. Memory Flip suits tiny windows, Number Slide and Memocoly fit slightly longer breaks, and Sudoku or Chess belong to a calm seated hour. Match the game to the time you actually have.",
-      },
-      {
-        q: "Do I need to track my brain training?",
-        a: "Only minimally. A single mark per day, answering whether you showed up, is enough to keep the habit honest. Avoid heavy logging that takes longer than the session itself, because the admin then becomes the thing that breaks the streak.",
-      },
-      {
-        q: "What if I miss a day?",
-        a: "Return the next day and do not try to make it up. A missed day is an interruption, not a failure. The habit survives the miss; it dies only when the miss turns into a quit. Just show up again.",
-      },
-      {
-        q: "How many different games should I use?",
-        a: "Two or three is a good range. One daily driver you return to, plus one or two for variety on rotation, keeps the streak from going stale without fragmenting your attention across too many titles.",
-      },
-      {
-        q: "Should brain training be every day or with rest days?",
-        a: "Daily is fine for light sessions, but build in easier days rather than hard ones. The mind consolidates skill between sessions, so a gentle rhythm with the occasional rest beats a grinding daily push that leads to burnout.",
-      },
-      {
-        q: "Can brain games replace exercise or sleep?",
-        a: "No. A puzzle on a screen is one input among several. Sleep, walking, social contact, and learning physical skills all feed the same system. Use the game as a marker for caring for your mind, not as a substitute for the rest.",
-      },
-      {
-        q: "How do I stop the habit from getting boring",
-        a: "Rotate games by day, vary the board size or pace within a game, and reserve a harder title like Chess for the one quiet day. Variety keeps the streak alive without changing the underlying cue and rhythm.",
-      },
-      {
-        q: "Is it bad to chase my score",
-        a: "Chasing the score is fine as a byproduct, dangerous as a goal. When the number stalls, which it will, a score-chaser quits. A streak-chaser keeps going, and the skill keeps drifting upward quietly anyway.",
-      },
-      {
-        q: "When does brain training become too much",
-        a: "When it costs sleep, relationships, or work, the habit has tipped into compulsion. Pull back to the small daily shape. The helpful dose is the small one taken often, not the large one taken late at night.",
-      },
-      {
-        q: "How long until I notice a difference",
-        a: "Gains are slow and modest. Within a few weeks a board that felt chaotic starts reading as a familiar shape, and your move counts drift down without pressure. The deeper sign is behavioral: you reach for the game without deciding.",
-      },
-    ],
-  },
-  {
-    slug: "do-brain-games-actually-work",
-    title: "Do Brain Games Actually Work? A Straight Look at the Evidence",
-    description:
-      "Do brain games work? A straight look at what the evidence shows, where the gains are real, where they are overstated, and how to play them without the hype.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Brain Training",
-    tags: [
-      "do brain games work",
-      "brain games evidence",
-      "do brain training games help",
-      "brain game research",
-      "brain training effectiveness",
-      "brain game myths",
-      "real benefits of brain games",
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "do brain games work",
-    secondaryKeywords: [
-      "do brain training games actually help",
-      "scientific evidence for brain games",
-      "brain games and memory",
-      "do memory games improve the brain",
-    ],
-    lsiKeywords: [
-      "near transfer",
-      "far transfer",
-      "working memory",
-      "fluid intelligence",
-      "cognitive training",
-      "placebo effect",
-      " randomized controlled trials",
-    ],
-    excerpt:
-      "Do brain games actually work? The honest answer splits in two: they reliably improve the skill you practice, but the leap to sharper thinking everywhere is small and contested. Here is what the studies show.",
-    content: `
+  faqs: [
+   {
+    q: "How long should a daily brain training session be?",
+    a: "Five to fifteen minutes spread across the day is plenty. The benefit comes from showing up regularly, not from the length of any single session. A short round most days outperforms one long weekly marathon.",
+   },
+   {
+    q: "What is the best brain game for a daily habit?",
+    a: "The best one is the game that fits your real gap. Memory Flip suits tiny windows, Number Slide and Memocoly fit slightly longer breaks, and Sudoku or Chess belong to a calm seated hour. Match the game to the time you actually have.",
+   },
+   {
+    q: "Do I need to track my brain training?",
+    a: "Only minimally. A single mark per day, answering whether you showed up, is enough to keep the habit honest. Avoid heavy logging that takes longer than the session itself, because the admin then becomes the thing that breaks the streak.",
+   },
+   {
+    q: "What if I miss a day?",
+    a: "Return the next day and do not try to make it up. A missed day is an interruption, not a failure. The habit survives the miss; it dies only when the miss turns into a quit. Just show up again.",
+   },
+   {
+    q: "How many different games should I use?",
+    a: "Two or three is a good range. One daily driver you return to, plus one or two for variety on rotation, keeps the streak from going stale without fragmenting your attention across too many titles.",
+   },
+   {
+    q: "Should brain training be every day or with rest days?",
+    a: "Daily is fine for light sessions, but build in easier days rather than hard ones. The mind consolidates skill between sessions, so a gentle rhythm with the occasional rest beats a grinding daily push that leads to burnout.",
+   },
+   {
+    q: "Can brain games replace exercise or sleep?",
+    a: "No. A puzzle on a screen is one input among several. Sleep, walking, social contact, and learning physical skills all feed the same system. Use the game as a marker for caring for your mind, not as a substitute for the rest.",
+   },
+   {
+    q: "How do I stop the habit from getting boring",
+    a: "Rotate games by day, vary the board size or pace within a game, and reserve a harder title like Chess for the one quiet day. Variety keeps the streak alive without changing the underlying cue and rhythm.",
+   },
+   {
+    q: "Is it bad to chase my score",
+    a: "Chasing the score is fine as a byproduct, dangerous as a goal. When the number stalls, which it will, a score-chaser quits. A streak-chaser keeps going, and the skill keeps drifting upward quietly anyway.",
+   },
+   {
+    q: "When does brain training become too much",
+    a: "When it costs sleep, relationships, or work, the habit has tipped into compulsion. Pull back to the small daily shape. The helpful dose is the small one taken often, not the large one taken late at night.",
+   },
+   {
+    q: "How long until I notice a difference",
+    a: "Gains are slow and modest. Within a few weeks a board that felt chaotic starts reading as a familiar shape, and your move counts drift down without pressure. The deeper sign is behavioral: you reach for the game without deciding.",
+   },
+  ],
+ },
+ {
+  slug: "do-brain-games-actually-work",
+  title: "Do Brain Games Actually Work? A Straight Look at the Evidence",
+  description:
+   "Do brain games work? A straight look at what the evidence shows, where the gains are real, where they are overstated, and how to play them without the hype.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Brain Training",
+  tags: [
+   "do brain games work",
+   "brain games evidence",
+   "do brain training games help",
+   "brain game research",
+   "brain training effectiveness",
+   "brain game myths",
+   "real benefits of brain games",
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "do brain games work",
+  secondaryKeywords: [
+   "do brain training games actually help",
+   "scientific evidence for brain games",
+   "brain games and memory",
+   "do memory games improve the brain",
+  ],
+  lsiKeywords: [
+   "near transfer",
+   "far transfer",
+   "working memory",
+   "fluid intelligence",
+   "cognitive training",
+   "placebo effect",
+   " randomized controlled trials",
+  ],
+  excerpt:
+   "Do brain games actually work? The honest answer splits in two: they reliably improve the skill you practice, but the leap to sharper thinking everywhere is small and contested. Here is what the studies show.",
+  content: `
 <h2>The Honest Short Answer</h2>
 <p>Do brain games work? Yes, and no, depending on what you mean by work. If the question is whether a memory game makes you better at that memory game, the answer is a firm yes. If the question is whether playing puzzles will sharpen your mind across every part of life, the honest answer is much softer, and the gap between those two claims is where most of the marketing lives.</p>
 <p>The research community has spent two decades arguing about this, and the argument has not produced a clean verdict because the question itself is sloppy. "Work" can mean many things. Does the game train the specific skill it targets? Almost certainly. Does that training spill over into untrained tasks like remembering a shopping list or staying sharp at work? That is the contested part, and the evidence there is modest, inconsistent, and easy to oversell.</p>
@@ -355,51 +355,52 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Fluid and crystallized intelligence" - context for why broad IQ gains from training are hard to demonstrate.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "Do brain games actually improve memory",
-        a: "They improve memory on the tasks they train. A matching game like Memory Flip reliably improves your performance at that matching task. Whether that lifts everyday recall is a smaller, contested effect, real but modest rather than dramatic.",
-      },
-      {
-        q: "Do brain training games work for adults",
-        a: "Yes, in the near-transfer sense: adults get better at the specific skills they practice, and the engagement can replace passive screen time. The broader claim of sharper thinking everywhere is supported only weakly and inconsistently by the evidence.",
-      },
-      {
-        q: "Can brain games prevent dementia",
-        a: "No reputable trial has shown a commercial game prevents or reverses dementia. Staying mentally, physically, and socially active is linked to healthier aging, but no single app is a shield, and anyone selling one has gone past the data.",
-      },
-      {
-        q: "Are brain games better than puzzles like Sudoku",
-        a: "Sudoku is itself a brain game, so the comparison is mostly between formats. The evidence for near transfer applies to both. Pick the format you will actually play, because consistency matters more than which specific puzzle you choose.",
-      },
-      {
-        q: "Why do some studies say they work and others say they do not",
-        a: "They often measured different things. Studies of the training task itself usually find gains. Studies of far-off real-world benefit often find little. The contradiction is mostly a mismatch between what was tested and what was claimed in the summary.",
-      },
-      {
-        q: "Do brain games raise IQ",
-        a: "The strongest evidence says no broad IQ lift from commercial training. You may improve on the trained tasks, but scores on unrelated intelligence tests show at most tiny, inconsistent changes. Expect skill gain, not a higher general number.",
-      },
-      {
-        q: "How much should I play to see any benefit",
-        a: "Short, regular sessions beat long occasional ones, much like physical practice. Around ten to twenty minutes most days is a reasonable shape. The benefit is in the rhythm and the engagement, not in any single heroic session.",
-      },
-      {
-        q: "Are paid brain training apps worth it",
-        a: "Free browser games like Memory Flip, Number Slide, and Sudoku offer the same near-transfer practice without the subscription. Pay only if a specific app's structure keeps you consistent; the core benefit is available without cost.",
-      },
-      {
-        q: "Do brain games work for kids",
-        a: "For healthy kids, the evidence of broad benefit is weak, and sleep, play, reading, and school do more. The games are fine as enjoyable practice, but they are not a shortcut to smarter children, and expectations should stay modest.",
-      },
-      {
-        q: "What actually works better than brain games",
-        a: "Sleep, aerobic exercise, learning genuinely new skills, social connection, and a varied life. These have stronger, broader support than any app. Brain games are a small, pleasant add-on to that foundation, not a replacement for it.",
-      },
-      {
-        q: "Is there any harm in playing them",
-        a: "Direct harm is rare, but wasted money, false hope, and neglected sleep or exercise are real costs when games are treated as a cure-all. Used as a modest pastime, they are harmless. Used as a substitute for real care, they can quietly do damage.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "Do brain games actually improve memory",
+    a: "They improve memory on the tasks they train. A matching game like Memory Flip reliably improves your performance at that matching task. Whether that lifts everyday recall is a smaller, contested effect, real but modest rather than dramatic.",
+   },
+   {
+    q: "Do brain training games work for adults",
+    a: "Yes, in the near-transfer sense: adults get better at the specific skills they practice, and the engagement can replace passive screen time. The broader claim of sharper thinking everywhere is supported only weakly and inconsistently by the evidence.",
+   },
+   {
+    q: "Can brain games prevent dementia",
+    a: "No reputable trial has shown a commercial game prevents or reverses dementia. Staying mentally, physically, and socially active is linked to healthier aging, but no single app is a shield, and anyone selling one has gone past the data.",
+   },
+   {
+    q: "Are brain games better than puzzles like Sudoku",
+    a: "Sudoku is itself a brain game, so the comparison is mostly between formats. The evidence for near transfer applies to both. Pick the format you will actually play, because consistency matters more than which specific puzzle you choose.",
+   },
+   {
+    q: "Why do some studies say they work and others say they do not",
+    a: "They often measured different things. Studies of the training task itself usually find gains. Studies of far-off real-world benefit often find little. The contradiction is mostly a mismatch between what was tested and what was claimed in the summary.",
+   },
+   {
+    q: "Do brain games raise IQ",
+    a: "The strongest evidence says no broad IQ lift from commercial training. You may improve on the trained tasks, but scores on unrelated intelligence tests show at most tiny, inconsistent changes. Expect skill gain, not a higher general number.",
+   },
+   {
+    q: "How much should I play to see any benefit",
+    a: "Short, regular sessions beat long occasional ones, much like physical practice. Around ten to twenty minutes most days is a reasonable shape. The benefit is in the rhythm and the engagement, not in any single heroic session.",
+   },
+   {
+    q: "Are paid brain training apps worth it",
+    a: "Free browser games like Memory Flip, Number Slide, and Sudoku offer the same near-transfer practice without the subscription. Pay only if a specific app's structure keeps you consistent; the core benefit is available without cost.",
+   },
+   {
+    q: "Do brain games work for kids",
+    a: "For healthy kids, the evidence of broad benefit is weak, and sleep, play, reading, and school do more. The games are fine as enjoyable practice, but they are not a shortcut to smarter children, and expectations should stay modest.",
+   },
+   {
+    q: "What actually works better than brain games",
+    a: "Sleep, aerobic exercise, learning genuinely new skills, social connection, and a varied life. These have stronger, broader support than any app. Brain games are a small, pleasant add-on to that foundation, not a replacement for it.",
+   },
+   {
+    q: "Is there any harm in playing them",
+    a: "Direct harm is rare, but wasted money, false hope, and neglected sleep or exercise are real costs when games are treated as a cure-all. Used as a modest pastime, they are harmless. Used as a substitute for real care, they can quietly do damage.",
+   },
+  ],
+ },
 ];
+

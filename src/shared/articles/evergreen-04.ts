@@ -1,44 +1,44 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "brain-games-for-seniors",
-    title: "Brain Games for Seniors: Gentle Ways to Keep the Mind Active",
-    description:
-      "Brain games for seniors: gentle, low-pressure ways to keep memory and focus sharp at home. Which matching, number, and card games help, and how often to play.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Brain Training",
-    tags: [
-      "brain games for seniors",
-      "memory games for older adults",
-      "cognitive exercises for seniors",
-      "mental stimulation for seniors",
-      "matching games for seniors",
-      "number puzzles for seniors",
-      "keep the mind sharp",
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "brain games for seniors",
-    secondaryKeywords: [
-      "memory games for elderly",
-      "cognitive training for seniors",
-      "best brain games for older adults",
-      "mental exercises for seniors at home",
-    ],
-    lsiKeywords: [
-      "working memory",
-      "attention",
-      "neuroplasticity",
-      "processing speed",
-      "recall",
-      "mental fitness",
-      "cognitive engagement",
-    ],
-    excerpt:
-      "A calm, practical look at brain games for seniors: which matching, number, and card games actually help, how often to play, and how to begin without strain.",
-    content: `
+ {
+  slug: "brain-games-for-seniors",
+  title: "Brain Games for Seniors: Gentle Ways to Keep the Mind Active",
+  description:
+   "Brain games for seniors: gentle, low-pressure ways to keep memory and focus sharp at home. Which matching, number, and card games help, and how often to play.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Brain Training",
+  tags: [
+   "brain games for seniors",
+   "memory games for older adults",
+   "cognitive exercises for seniors",
+   "mental stimulation for seniors",
+   "matching games for seniors",
+   "number puzzles for seniors",
+   "keep the mind sharp",
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "brain games for seniors",
+  secondaryKeywords: [
+   "memory games for elderly",
+   "cognitive training for seniors",
+   "best brain games for older adults",
+   "mental exercises for seniors at home",
+  ],
+  lsiKeywords: [
+   "working memory",
+   "attention",
+   "neuroplasticity",
+   "processing speed",
+   "recall",
+   "mental fitness",
+   "cognitive engagement",
+  ],
+  excerpt:
+   "A calm, practical look at brain games for seniors: which matching, number, and card games actually help, how often to play, and how to begin without strain.",
+  content: `
 <h2>What Brain Games Offer Older Adults</h2>
 <p>The phrase brain games for seniors tends to raise two opposite reactions. Some people expect a miracle cure that will hold off forgetfulness forever. Others roll their eyes, certain it is all marketing. The honest middle is more useful than either extreme. Playing a well-chosen game will not rewrite your biology, but it can keep certain mental skills exercised, and exercise is something the aging brain still responds to.</p>
 <p>Think of it the way you think about a walk. A daily walk does not guarantee you will never have a health problem, but it keeps your legs, heart, and balance in better shape than sitting still would. A short, regular game session does something similar for attention, recall, and the habit of noticing details. The benefit is in the repetition and the mild challenge, not in any single heroic effort.</p>
@@ -162,95 +162,95 @@ export const posts: BlogPost[] = [
 <li>Alzheimer's Association, "10 Early Signs and Symptoms of Alzheimer's" - guidance on when memory changes warrant a clinical look.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "Are brain games good for seniors?",
-        a: "They can help keep attention, recall, and the habit of noticing details exercised, much like a walk helps the body. They are a pleasant addition to daily life, not a cure, and the benefit comes from playing regularly rather than from any single hard session.",
-      },
-      {
-        q: "What is the best brain game for older adults?",
-        a: "The best one is the game the person will actually open on a quiet afternoon. Matching titles like Memory Flip and Mastercards are gentle entries, while Number Slide adds planning. Pick by enjoyment, not by difficulty.",
-      },
-      {
-        q: "How often should seniors play brain games?",
-        a: "Short sessions most days work better than one long weekend binge. About ten minutes, five or six days a week, with one easy rest day, is a sustainable shape that lets the mind consolidate the habit between plays.",
-      },
-      {
-        q: "Do brain games prevent dementia?",
-        a: "No reputable claim says a game prevents dementia. Staying mentally, physically, and socially active is linked to healthier aging, but brain games are one small piece of that picture, not a shield. Speak to a clinician about real concerns.",
-      },
-      {
-        q: "Are memory matching games too hard for beginners?",
-        a: "They are among the easiest to start because the rules are obvious in seconds. Begin on the smallest board, label tile locations out loud, and the challenge grows only as comfort does. There is no harsh timer to fight.",
-      },
-      {
-        q: "Can brain games help with memory loss?",
-        a: "They exercise recall skills and can make everyday noticing sharper, but they are not a treatment for diagnosed memory conditions. If memory changes disrupt daily life, a doctor should evaluate them rather than a game.",
-      },
-      {
-        q: "Is Number Slide suitable for seniors",
-        a: "Yes. It asks for light planning and patience rather than quick reactions, and it has no time pressure. Players who enjoyed cards or arithmetic often take to it faster than to matching games.",
-      },
-      {
-        q: "Should family members coach during the game?",
-        a: "Better to keep quiet and keep company. The value is in the player building their own habit of noticing. Correcting moves turns a pleasant round into a performance, which is a fast route to quitting.",
-      },
-      {
-        q: "How long should one session last?",
-        a: "About ten to fifteen minutes is plenty. Stop the moment it stops being fun. A short good round beats a long grim one, because the good round is the one that happens again tomorrow.",
-      },
-      {
-        q: "Do these games need an account or payment?",
-        a: "No. The matching and number games mentioned here are free to open in a browser and need no sign-up, which removes the two biggest barriers to simply starting.",
-      },
-      {
-        q: "What if the player gets frustrated",
-        a: "Switch to the smallest board, drop any timer, and play alongside them without coaching. If frustration persists, change the game. The goal is engagement, and engagement that feels safe is what lasts.",
-      },
-      {
-        q: "Can playing together help",
-        a: "Yes. Shared play turns the session into social time, which is itself good for aging minds. Sit together, let the player lead, and treat the round as a shared pastime rather than a lesson.",
-      },
-    ],
-  },
-  {
-    slug: "brain-games-for-students",
-    title: "Brain Games for Students: Short Study-Break Workouts for Focus",
-    description:
-      "Brain games for students: quick study-break workouts for memory, focus, and mental math. Which matching, number, and card games help, and how to use them between classes.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Brain Training",
-    tags: [
-      "brain games for students",
-      "study break games",
-      "focus games for students",
-      "memory games for studying",
-      "mental math break",
-      "brain breaks for concentration",
-      "games between study sessions",
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "brain games for students",
-    secondaryKeywords: [
-      "brain breaks for students",
-      "study break activities",
-      "games to improve focus while studying",
-      "memory games for college students",
-    ],
-    lsiKeywords: [
-      "attention reset",
-      "working memory",
-      "mental math",
-      "cognitive load",
-      "focus",
-      "spaced study",
-      "recall practice",
-    ],
-    excerpt:
-      "Use brain games as short study-break workouts: matching, number, and card games that reset focus and practice recall between classes without eating your study time.",
-    content: `
+  faqs: [
+   {
+    q: "Are brain games good for seniors?",
+    a: "They can help keep attention, recall, and the habit of noticing details exercised, much like a walk helps the body. They are a pleasant addition to daily life, not a cure, and the benefit comes from playing regularly rather than from any single hard session.",
+   },
+   {
+    q: "What is the best brain game for older adults?",
+    a: "The best one is the game the person will actually open on a quiet afternoon. Matching titles like Memory Flip and Mastercards are gentle entries, while Number Slide adds planning. Pick by enjoyment, not by difficulty.",
+   },
+   {
+    q: "How often should seniors play brain games?",
+    a: "Short sessions most days work better than one long weekend binge. About ten minutes, five or six days a week, with one easy rest day, is a sustainable shape that lets the mind consolidate the habit between plays.",
+   },
+   {
+    q: "Do brain games prevent dementia?",
+    a: "No reputable claim says a game prevents dementia. Staying mentally, physically, and socially active is linked to healthier aging, but brain games are one small piece of that picture, not a shield. Speak to a clinician about real concerns.",
+   },
+   {
+    q: "Are memory matching games too hard for beginners?",
+    a: "They are among the easiest to start because the rules are obvious in seconds. Begin on the smallest board, label tile locations out loud, and the challenge grows only as comfort does. There is no harsh timer to fight.",
+   },
+   {
+    q: "Can brain games help with memory loss?",
+    a: "They exercise recall skills and can make everyday noticing sharper, but they are not a treatment for diagnosed memory conditions. If memory changes disrupt daily life, a doctor should evaluate them rather than a game.",
+   },
+   {
+    q: "Is Number Slide suitable for seniors",
+    a: "Yes. It asks for light planning and patience rather than quick reactions, and it has no time pressure. Players who enjoyed cards or arithmetic often take to it faster than to matching games.",
+   },
+   {
+    q: "Should family members coach during the game?",
+    a: "Better to keep quiet and keep company. The value is in the player building their own habit of noticing. Correcting moves turns a pleasant round into a performance, which is a fast route to quitting.",
+   },
+   {
+    q: "How long should one session last?",
+    a: "About ten to fifteen minutes is plenty. Stop the moment it stops being fun. A short good round beats a long grim one, because the good round is the one that happens again tomorrow.",
+   },
+   {
+    q: "Do these games need an account or payment?",
+    a: "No. The matching and number games mentioned here are free to open in a browser and need no sign-up, which removes the two biggest barriers to simply starting.",
+   },
+   {
+    q: "What if the player gets frustrated",
+    a: "Switch to the smallest board, drop any timer, and play alongside them without coaching. If frustration persists, change the game. The goal is engagement, and engagement that feels safe is what lasts.",
+   },
+   {
+    q: "Can playing together help",
+    a: "Yes. Shared play turns the session into social time, which is itself good for aging minds. Sit together, let the player lead, and treat the round as a shared pastime rather than a lesson.",
+   },
+  ],
+ },
+ {
+  slug: "brain-games-for-students",
+  title: "Brain Games for Students: Short Study-Break Workouts for Focus",
+  description:
+   "Brain games for students: quick study-break workouts for memory, focus, and mental math. Which matching, number, and card games help, and how to use them between classes.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Brain Training",
+  tags: [
+   "brain games for students",
+   "study break games",
+   "focus games for students",
+   "memory games for studying",
+   "mental math break",
+   "brain breaks for concentration",
+   "games between study sessions",
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "brain games for students",
+  secondaryKeywords: [
+   "brain breaks for students",
+   "study break activities",
+   "games to improve focus while studying",
+   "memory games for college students",
+  ],
+  lsiKeywords: [
+   "attention reset",
+   "working memory",
+   "mental math",
+   "cognitive load",
+   "focus",
+   "spaced study",
+   "recall practice",
+  ],
+  excerpt:
+   "Use brain games as short study-break workouts: matching, number, and card games that reset focus and practice recall between classes without eating your study time.",
+  content: `
 <h2>Why Students Need a Different Kind of Break</h2>
 <p>Most study advice stops at "take breaks," as if any pause were equal. It is not. A break spent scrolling a feed can leave you more drained than before, because it asks for attention without giving your mind a real rest. A break that gives the brain a small, contained task, something with a clear start and end, can actually reset focus. That is where brain games for students earn their place.</p>
 <p>The idea is not to add more screen time for its own sake. It is to use a few minutes between subjects to shift mental gears. You close the textbook, play one quick round that demands attention but not heavy thinking, and return to study with a cleaner head. Done right, the game is a palate cleanser, not a detour.</p>
@@ -372,51 +372,52 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Pomodoro Technique" - context on structuring study into focused blocks with short breaks.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "Are brain games good for students",
-        a: "As short, contained breaks they can reset focus and practice recall without eating study time. They are not a substitute for studying, but a well-placed round between blocks can leave you sharper than a passive scroll would.",
-      },
-      {
-        q: "How long should a study-break game last",
-        a: "Five to ten minutes, about one round, is the usable window. Too short fails to reset you; too long breaks your study rhythm. Set a stop before you start and close the tab when the round ends.",
-      },
-      {
-        q: "What is the best brain game between classes",
-        a: "A game with a clean start and end and no harsh timer, like Memory Flip or Number Slide. It should release you after one round, not pull you into a longer session. Match the game to the subject coming next.",
-      },
-      {
-        q: "Do brain games help with memory for exams",
-        a: "They practice recall and holding skills, which transfer loosely to memorizing facts. They are a supplement to spaced review, not a replacement. Use them as markers between review blocks rather than as the study itself.",
-      },
-      {
-        q: "Can games improve focus while studying",
-        a: "A short game can reset attention after a focus dip, so the next block starts sharper. The gain comes from the contrast and the clean break, not from the game training focus in any lasting clinical sense.",
-      },
-      {
-        q: "Is Number Slide good as a study break",
-        a: "Yes, especially before a math or logic class, because it warms up planning without the weight of a problem set. Before a non-numeric class, a matching game is the better contrast.",
-      },
-      {
-        q: "Should I play before or after studying",
-        a: "After. Study first, then play one round as the release. That order trains the habit of studying to earn the break, which is stronger than playing first and studying to make up for it.",
-      },
-      {
-        q: "Are these games a waste of study time",
-        a: "Only if they run long. A single five-to-ten-minute round is a small price for a cleaner next block. The waste appears when the break becomes an hour of avoidance, so keep the stop firm.",
-      },
-      {
-        q: "Can brain games replace a real rest",
-        a: "No. They are for short gaps between study blocks, not for sleep or true relaxation. Use a longer real rest at night and keep the games for the in-day pauses where a nap is not practical.",
-      },
-      {
-        q: "Which game helps with memorizing facts",
-        a: "Memocoly, because it asks you to hold a short sequence, practices the same holding skill cramming needs. Pair it with spaced review rather than using it instead of review for the best effect.",
-      },
-      {
-        q: "How do I stop a break from becoming a binge",
-        a: "Choose the game before you study, play exactly one round, and close the tab immediately. An open tab is a temptation; a closed one is a clean break that protects the next study block.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "Are brain games good for students",
+    a: "As short, contained breaks they can reset focus and practice recall without eating study time. They are not a substitute for studying, but a well-placed round between blocks can leave you sharper than a passive scroll would.",
+   },
+   {
+    q: "How long should a study-break game last",
+    a: "Five to ten minutes, about one round, is the usable window. Too short fails to reset you; too long breaks your study rhythm. Set a stop before you start and close the tab when the round ends.",
+   },
+   {
+    q: "What is the best brain game between classes",
+    a: "A game with a clean start and end and no harsh timer, like Memory Flip or Number Slide. It should release you after one round, not pull you into a longer session. Match the game to the subject coming next.",
+   },
+   {
+    q: "Do brain games help with memory for exams",
+    a: "They practice recall and holding skills, which transfer loosely to memorizing facts. They are a supplement to spaced review, not a replacement. Use them as markers between review blocks rather than as the study itself.",
+   },
+   {
+    q: "Can games improve focus while studying",
+    a: "A short game can reset attention after a focus dip, so the next block starts sharper. The gain comes from the contrast and the clean break, not from the game training focus in any lasting clinical sense.",
+   },
+   {
+    q: "Is Number Slide good as a study break",
+    a: "Yes, especially before a math or logic class, because it warms up planning without the weight of a problem set. Before a non-numeric class, a matching game is the better contrast.",
+   },
+   {
+    q: "Should I play before or after studying",
+    a: "After. Study first, then play one round as the release. That order trains the habit of studying to earn the break, which is stronger than playing first and studying to make up for it.",
+   },
+   {
+    q: "Are these games a waste of study time",
+    a: "Only if they run long. A single five-to-ten-minute round is a small price for a cleaner next block. The waste appears when the break becomes an hour of avoidance, so keep the stop firm.",
+   },
+   {
+    q: "Can brain games replace a real rest",
+    a: "No. They are for short gaps between study blocks, not for sleep or true relaxation. Use a longer real rest at night and keep the games for the in-day pauses where a nap is not practical.",
+   },
+   {
+    q: "Which game helps with memorizing facts",
+    a: "Memocoly, because it asks you to hold a short sequence, practices the same holding skill cramming needs. Pair it with spaced review rather than using it instead of review for the best effect.",
+   },
+   {
+    q: "How do I stop a break from becoming a binge",
+    a: "Choose the game before you study, play exactly one round, and close the tab immediately. An open tab is a temptation; a closed one is a clean break that protects the next study block.",
+   },
+  ],
+ },
 ];
+

@@ -1,9 +1,9 @@
-# YouTube Playables Android Application
+# Playables Android Application
 # ======================================
 
 ## Overview
 
-Production-ready Android gaming application for YouTube Playables. This app provides a native Android gaming experience while using the existing website as the live backend for all games.
+Production-ready Android gaming application for Playables. This app provides a native Android gaming experience while using the existing website as the live backend for all games.
 
 ## Architecture
 
@@ -17,59 +17,59 @@ Production-ready Android gaming application for YouTube Playables. This app prov
 
 ```
 app/
-├── android/                    # Android Studio project
-│   ├── app/
-│   │   ├── src/main/
-│   │   │   ├── java/com/ytplayables/app/
-│   │   │   │   ├── MainActivity.kt        # Main activity with WebView + native UI
-│   │   │   │   ├── GameActivity.kt         # Fullscreen game activity
-│   │   │   │   ├── SplashActivity.kt       # Splash screen
-│   │   │   │   ├── OfflineActivity.kt      # Offline fallback
-│   │   │   │   ├── ErrorActivity.kt        # Error fallback
-│   │   │   │   ├── YTPlayablesApplication.kt # Application class
-│   │   │   │   ├── BridgeService.kt        # JS-to-native bridge service
-│   │   │   │   ├── AdManager.kt            # AdMob integration
-│   │   │   │   ├── NotificationHelper.kt   # Push notifications
-│   │   │   │   ├── DeepLinkHandler.kt      # Deep link handling
-│   │   │   │   ├── NetworkMonitor.kt       # Connectivity monitoring
-│   │   │   │   ├── BootReceiver.kt         # Boot completion receiver
-│   │   │   │   ├── PreferenceManager.kt    # Shared preferences manager
-│   │   │   │   └── GameGridAdapter.kt      # Native game grid adapter
-│   │   │   ├── res/
-│   │   │   │   ├── layout/                 # XML layouts
-│   │   │   │   ├── drawable/               # Vector drawables
-│   │   │   │   ├── values/                 # Strings, colors, themes
-│   │   │   │   ├── menu/                   # Bottom navigation menu
-│   │   │   │   ├── anim/                   # Animation resources
-│   │   │   │   ├── color/                  # Color state lists
-│   │   │   │   └── xml/                    # XML configs (network, backup)
-│   │   │   └── AndroidManifest.xml
-│   │   ├── build.gradle
-│   │   └── proguard-rules.pro
-│   ├── build.gradle
-│   ├── settings.gradle
-│   └── gradle.properties
+├── android/          # Android Studio project
+│  ├── app/
+│  │  ├── src/main/
+│  │  │  ├── java/com/ytplayables/app/
+│  │  │  │  ├── MainActivity.kt    # Main activity with WebView + native UI
+│  │  │  │  ├── GameActivity.kt     # Fullscreen game activity
+│  │  │  │  ├── SplashActivity.kt    # Splash screen
+│  │  │  │  ├── OfflineActivity.kt   # Offline fallback
+│  │  │  │  ├── ErrorActivity.kt    # Error fallback
+│  │  │  │  ├── YTPlayablesApplication.kt # Application class
+│  │  │  │  ├── BridgeService.kt    # JS-to-native bridge service
+│  │  │  │  ├── AdManager.kt      # AdMob integration
+│  │  │  │  ├── NotificationHelper.kt  # Push notifications
+│  │  │  │  ├── DeepLinkHandler.kt   # Deep link handling
+│  │  │  │  ├── NetworkMonitor.kt    # Connectivity monitoring
+│  │  │  │  ├── BootReceiver.kt     # Boot completion receiver
+│  │  │  │  ├── PreferenceManager.kt  # Shared preferences manager
+│  │  │  │  └── GameGridAdapter.kt   # Native game grid adapter
+│  │  │  ├── res/
+│  │  │  │  ├── layout/         # XML layouts
+│  │  │  │  ├── drawable/        # Vector drawables
+│  │  │  │  ├── values/         # Strings, colors, themes
+│  │  │  │  ├── menu/          # Bottom navigation menu
+│  │  │  │  ├── anim/          # Animation resources
+│  │  │  │  ├── color/         # Color state lists
+│  │  │  │  └── xml/          # XML configs (network, backup)
+│  │  │  └── AndroidManifest.xml
+│  │  ├── build.gradle
+│  │  └── proguard-rules.pro
+│  ├── build.gradle
+│  ├── settings.gradle
+│  └── gradle.properties
 ├── capacitor/
-│   └── capacitor.config.ts               # Capacitor configuration
-├── assets/                               # App icons, splash screens
+│  └── capacitor.config.ts        # Capacitor configuration
+├── assets/                # App icons, splash screens
 ├── config/
-│   ├── signing.gradle                    # Signing configuration
-│   └── keystore.jks                      # Release keystore (not committed)
+│  ├── signing.gradle          # Signing configuration
+│  └── keystore.jks           # Release keystore (not committed)
 ├── scripts/
-│   ├── build-apk.sh                      # Build release APK
-│   ├── build-aab.sh                      # Build release AAB
-│   ├── build-debug.sh                    # Build debug APK
-│   ├── build-all.sh                      # Build all variants
-│   ├── deploy.sh                         # Deploy to Play Store
-│   └── generate-keystore.sh              # Generate signing keys
+│  ├── build-apk.sh           # Build release APK
+│  ├── build-aab.sh           # Build release AAB
+│  ├── build-debug.sh          # Build debug APK
+│  ├── build-all.sh           # Build all variants
+│  ├── deploy.sh             # Deploy to Play Store
+│  └── generate-keystore.sh       # Generate signing keys
 ├── native/
-│   └── bridge.js                         # JavaScript bridge code
+│  └── bridge.js             # JavaScript bridge code
 ├── package.json
 ├── capacitor.config.ts
 ├── README.md
-├── ARCHITECTURE.md                       # Detailed architecture documentation
-├── DEPLOYMENT.md                         # Deployment guide
-└── FOLDER_STRUCTURE.md                   # Folder documentation
+├── ARCHITECTURE.md            # Detailed architecture documentation
+├── DEPLOYMENT.md             # Deployment guide
+└── FOLDER_STRUCTURE.md          # Folder documentation
 ```
 
 ## Live Update System

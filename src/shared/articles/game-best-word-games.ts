@@ -1,49 +1,49 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "best-word-games-to-play-online-for-free",
-    title: "Best Word Games to Play Online for Free",
-    description:
-      "Discover the best word games you can play online for free. From word searches to typing challenges, all are browser-based and instant to play.",
-    date: "2026-07-14",
-    updatedAt: "2026-07-14",
-    category: "Word Games",
-    tags: [
-      "best word games",
-      "word games online",
-      "free word games",
-      "word search games",
-      "typing games",
-      "word puzzle games",
-      "browser word games",
-    ],
-    authorId: "lena",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "best word games online",
-    secondaryKeywords: [
-      "free word games online",
-      "word games to play now",
-      "browser word games",
-      "word puzzle games free",
-    ],
-    lsiKeywords: [
-      "vocabulary",
-      "spelling",
-      "typing speed",
-      "word search",
-      "letter grid",
-      "word scramble",
-      "anagram",
-      "reading",
-    ],
-    gameId: "letterama",
-    excerpt:
-      "A curated list of the best word games to play online for free. All are browser-based, instant to play, and require no downloads.",
-    content: `
+ {
+  slug: "best-word-games-to-play-online-for-free",
+  title: "Best Word Games to Play Online for Free",
+  description:
+   "Discover the best word games you can play online for free. From word searches to typing challenges, all are browser-based and instant to play.",
+  date: "2026-07-14",
+  updatedAt: "2026-07-14",
+  category: "Word Games",
+  tags: [
+   "best word games",
+   "word games online",
+   "free word games",
+   "word search games",
+   "typing games",
+   "word puzzle games",
+   "browser word games",
+  ],
+  authorId: "lena",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "best word games online",
+  secondaryKeywords: [
+   "free word games online",
+   "word games to play now",
+   "browser word games",
+   "word puzzle games free",
+  ],
+  lsiKeywords: [
+   "vocabulary",
+   "spelling",
+   "typing speed",
+   "word search",
+   "letter grid",
+   "word scramble",
+   "anagram",
+   "reading",
+  ],
+  gameId: "letterama",
+  excerpt:
+   "A curated list of the best word games to play online for free. All are browser-based, instant to play, and require no downloads.",
+  content: `
 <h2>Why Word Games Are Worth Your Time</h2>
 <p>Word games are more than a way to pass the time. They exercise vocabulary, spelling, pattern recognition, and reading comprehension. Regular play can strengthen your language skills and keep your mind sharp, whether you are a student, a professional, or a casual player looking for a mental warm-up.</p>
-<p>The best word games are the ones you can start immediately. No downloads, no accounts, no setup. YouTube Playables offers a range of browser-native word games that load instantly and run on any device.</p>
+<p>The best word games are the ones you can start immediately. No downloads, no accounts, no setup. Playables offers a range of browser-native word games that load instantly and run on any device.</p>
 <p>If you enjoy word puzzles, you might also like <a href="/anagramania">Anagramania</a> for scrambled letter challenges, <a href="/what-word">What Word?</a> for guessing games, and <a href="/spellice">Spellice</a> for typing speed training.</p>
 
 <h2>The Best Word Games to Play Now</h2>
@@ -101,7 +101,7 @@ export const posts: BlogPost[] = [
 <h3>Do word games improve typing speed?</h3>
 <p>Yes. Games like Spellice and SpeedType combine word knowledge with typing practice, building both speed and accuracy over time.</p>
 <h3>Are these word games free?</h3>
-<p>Yes. All word games on YouTube Playables are free to play with no downloads or sign-up required.</p>
+<p>Yes. All word games on Playables are free to play with no downloads or sign-up required.</p>
 
 <h2>Sources &amp; References</h2>
 <ul>
@@ -109,12 +109,12 @@ export const posts: BlogPost[] = [
 <li>Background on vocabulary and reading comprehension research.</li>
 </ul>
 `,
-    faqs: [
-      { q: "Are word games good for your brain?", a: "Yes. Word games exercise vocabulary, spelling, pattern recognition, and reading comprehension." },
-      { q: "Can word games improve your vocabulary?", a: "Yes. Regular exposure to words in a game context helps reinforce and introduce new words." },
-      { q: "What is the best word game for beginners?", a: "Letterama is the best starting point. Simple rules and self-directed pace." },
-      { q: "Do word games improve typing speed?", a: "Yes. Spellice and SpeedType combine word knowledge with typing practice." },
-      { q: "Are these word games free?", a: "Yes. All word games on YouTube Playables are free to play." },
-    ],
-  },
+  faqs: [
+   { q: "Are word games good for your brain?", a: "Yes. Word games exercise vocabulary, spelling, pattern recognition, and reading comprehension." },
+   { q: "Can word games improve your vocabulary?", a: "Yes. Regular exposure to words in a game context helps reinforce and introduce new words." },
+   { q: "What is the best word game for beginners?", a: "Letterama is the best starting point. Simple rules and self-directed pace." },
+   { q: "Do word games improve typing speed?", a: "Yes. Spellice and SpeedType combine word knowledge with typing practice." },
+   { q: "Are these word games free?", a: "Yes. All word games on Playables are free to play." },
+  ],
+ },
 ];

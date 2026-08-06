@@ -1,47 +1,47 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "number-slide-solving-techniques",
-    title: "Number Slide Solving Techniques: How Experts Solve the 15 Puzzle Faster",
-    description:
-      "Practical techniques for the 15 puzzle: corner strategy, parity checks, and pattern practice that cut move counts and reduce guesswork on the sliding tile grid.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Brain & Logic",
-    tags: [
-      "15 puzzle solving techniques",
-      "how to solve the 15 puzzle",
-      "number slide strategy",
-      "sliding puzzle tips",
-      "parity 15 puzzle",
-      "corner strategy sliding puzzle",
-      "pattern practice number slide",
-      "free puzzle games online",
-    ],
-    authorId: "mira",
-    cover: "/images/games/number-slide/cover.webp",
-    primaryKeyword: "15 puzzle solving techniques",
-    secondaryKeywords: [
-      "how to solve the 15 puzzle",
-      "number slide strategy",
-      "sliding puzzle tips",
-      "parity 15 puzzle",
-    ],
-    lsiKeywords: [
-      "corner strategy",
-      "parity check",
-      "pattern practice",
-      "sliding tile",
-      "permutation",
-      "working memory",
-      "spatial reasoning",
-      "grid puzzle",
-    ],
-    gameId: "number-slide",
-    excerpt:
-      "A clear walkthrough of the three techniques that separate guessers from solvers on the 15 puzzle: corner strategy, parity, and pattern practice.",
-    content: `
+ {
+  slug: "number-slide-solving-techniques",
+  title: "Number Slide Solving Techniques: How Experts Solve the 15 Puzzle Faster",
+  description:
+   "Practical techniques for the 15 puzzle: corner strategy, parity checks, and pattern practice that cut move counts and reduce guesswork on the sliding tile grid.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Brain & Logic",
+  tags: [
+   "15 puzzle solving techniques",
+   "how to solve the 15 puzzle",
+   "number slide strategy",
+   "sliding puzzle tips",
+   "parity 15 puzzle",
+   "corner strategy sliding puzzle",
+   "pattern practice number slide",
+   "free puzzle games online",
+  ],
+  authorId: "mira",
+  cover: "/images/games/number-slide/cover.webp",
+  primaryKeyword: "15 puzzle solving techniques",
+  secondaryKeywords: [
+   "how to solve the 15 puzzle",
+   "number slide strategy",
+   "sliding puzzle tips",
+   "parity 15 puzzle",
+  ],
+  lsiKeywords: [
+   "corner strategy",
+   "parity check",
+   "pattern practice",
+   "sliding tile",
+   "permutation",
+   "working memory",
+   "spatial reasoning",
+   "grid puzzle",
+  ],
+  gameId: "number-slide",
+  excerpt:
+   "A clear walkthrough of the three techniques that separate guessers from solvers on the 15 puzzle: corner strategy, parity, and pattern practice.",
+  content: `
 <h2>The Problem Most Solvers Ignore</h2>
 <p>Everyone who picks up <a href="/number-slide">Number Slide</a> for the first time pushes tiles around the same way. They slide something into the gap, see a few numbers line up, slide again, and eventually clear the first row by accident. The board looks solved, then the remaining tiles refuse to cooperate. That is the moment most people quit, and the moment where technique starts to matter.</p>
 <p>The 15 puzzle is not a guessing game. Every board state has rules, and most failed solves fail because the solver ignored the rules long enough to trap themselves. The three techniques below, corner strategy, parity checking, and pattern practice, are the ones that keep that from happening. They are simple individually and powerful together.</p>
@@ -136,82 +136,82 @@ export const posts: BlogPost[] = [
 <li>R. C. Wilson, "Sliding Puzzles and Permutation Groups" - mathematical treatment of solvability and move optimality on the 15 puzzle.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What is the fastest way to solve the 15 puzzle?",
-        a: "The fastest method combines corner strategy for the top three rows with pattern cycles for the bottom two rows, avoiding moves that re-open solved tiles. This keeps the move count low and the board stable.",
-      },
-      {
-        q: "Is there a guaranteed algorithm for the 15 puzzle?",
-        a: "Yes. The corner strategy with three-cycles and four-cycles solves any solvable board. There are also computer-verified optimal solvers, but the human-friendly version is the row-by-row method described here.",
-      },
-      {
-        q: "Why does my 15 puzzle get stuck near the end?",
-        a: "Stalls near the end usually mean the bottom tiles have a parity mismatch or you accidentally reopened a solved row. Run a parity check on the last two rows, and make sure you have not disturbed tiles 1 through 11 since locking them.",
-      },
-      {
-        q: "What is parity in the 15 puzzle?",
-        a: "Parity is a mathematical property of tile arrangement. A board has even or odd parity, and only even-parity boards are solvable. Three-cycles change parity in a controlled way, which is why they are essential for resolving deadlocks.",
-      },
-      {
-        q: "How long does it take to learn 15 puzzle techniques?",
-        a: "Most players grasp corner strategy in one or two sessions. Pattern practice takes a week or two of focused drilling to feel automatic. Parity is a quick concept to learn but takes longer to apply without thinking.",
-      },
-      {
-        q: "Are there shortcuts for the 15 puzzle?",
-        a: "Shortcuts exist in the form of pre-memorized patterns for common tile clusters. Learning the three-tile and four-tile cycles is the biggest shortcut. Beyond that, the method itself is the shortcut compared to random sliding.",
-      },
-      {
-        q: "Can anyone solve the 15 puzzle under one minute?",
-        a: "With enough pattern practice, yes. Expert solvers clear simple positions in thirty to sixty seconds by recognizing clusters instantly. The speed comes from the patterns, not from faster fingers.",
-      },
-      {
-        q: "Is the 15 puzzle good for cognitive training?",
-        a: "It is. The 15 puzzle trains spatial reasoning, working memory, and planning. Consistent practice with a method transfers those skills better than random play. For related games that build the same muscles, see <a href=\"/sudoku\">Sudoku</a> and <a href=\"/jigsaw\">Jigsaw</a>.",
-      },
-    ],
-  },
-  {
-    slug: "number-slide-why-good-for-brain",
-    title: "Is the 15 Puzzle Good for the Brain? What Sliding Tiles Actually Train",
-    description:
-      "We examine what the 15 puzzle and Number Slide train in the brain, from spatial reasoning to working memory, and whether the benefits transfer to everyday thinking.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Brain & Logic",
-    tags: [
-      "is the 15 puzzle good for the brain",
-      "number slide brain benefits",
-      "sliding puzzle cognitive benefits",
-      "15 puzzle spatial reasoning",
-      "brain training sliding tiles",
-      "does the 15 puzzle help memory",
-      "puzzle games and working memory",
-      "free brain games online",
-    ],
-    authorId: "mira",
-    cover: "/images/games/number-slide/cover.webp",
-    primaryKeyword: "is the 15 puzzle good for the brain",
-    secondaryKeywords: [
-      "number slide brain benefits",
-      "sliding puzzle cognitive benefits",
-      "15 puzzle spatial reasoning",
-      "does the 15 puzzle help memory",
-    ],
-    lsiKeywords: [
-      "spatial reasoning",
-      "working memory",
-      "cognitive training",
-      "problem solving",
-      "mental rotation",
-      "focus",
-      "attention",
-      "grid logic",
-    ],
-    gameId: "number-slide",
-    excerpt:
-      "The 15 puzzle does more than pass time. Here is what research and expert opinion say about what sliding tile puzzles actually train in the brain.",
-    content: `
+  faqs: [
+   {
+    q: "What is the fastest way to solve the 15 puzzle?",
+    a: "The fastest method combines corner strategy for the top three rows with pattern cycles for the bottom two rows, avoiding moves that re-open solved tiles. This keeps the move count low and the board stable.",
+   },
+   {
+    q: "Is there a guaranteed algorithm for the 15 puzzle?",
+    a: "Yes. The corner strategy with three-cycles and four-cycles solves any solvable board. There are also computer-verified optimal solvers, but the human-friendly version is the row-by-row method described here.",
+   },
+   {
+    q: "Why does my 15 puzzle get stuck near the end?",
+    a: "Stalls near the end usually mean the bottom tiles have a parity mismatch or you accidentally reopened a solved row. Run a parity check on the last two rows, and make sure you have not disturbed tiles 1 through 11 since locking them.",
+   },
+   {
+    q: "What is parity in the 15 puzzle?",
+    a: "Parity is a mathematical property of tile arrangement. A board has even or odd parity, and only even-parity boards are solvable. Three-cycles change parity in a controlled way, which is why they are essential for resolving deadlocks.",
+   },
+   {
+    q: "How long does it take to learn 15 puzzle techniques?",
+    a: "Most players grasp corner strategy in one or two sessions. Pattern practice takes a week or two of focused drilling to feel automatic. Parity is a quick concept to learn but takes longer to apply without thinking.",
+   },
+   {
+    q: "Are there shortcuts for the 15 puzzle?",
+    a: "Shortcuts exist in the form of pre-memorized patterns for common tile clusters. Learning the three-tile and four-tile cycles is the biggest shortcut. Beyond that, the method itself is the shortcut compared to random sliding.",
+   },
+   {
+    q: "Can anyone solve the 15 puzzle under one minute?",
+    a: "With enough pattern practice, yes. Expert solvers clear simple positions in thirty to sixty seconds by recognizing clusters instantly. The speed comes from the patterns, not from faster fingers.",
+   },
+   {
+    q: "Is the 15 puzzle good for cognitive training?",
+    a: "It is. The 15 puzzle trains spatial reasoning, working memory, and planning. Consistent practice with a method transfers those skills better than random play. For related games that build the same muscles, see <a href=\"/sudoku\">Sudoku</a> and <a href=\"/jigsaw\">Jigsaw</a>.",
+   },
+  ],
+ },
+ {
+  slug: "number-slide-why-good-for-brain",
+  title: "Is the 15 Puzzle Good for the Brain? What Sliding Tiles Actually Train",
+  description:
+   "We examine what the 15 puzzle and Number Slide train in the brain, from spatial reasoning to working memory, and whether the benefits transfer to everyday thinking.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Brain & Logic",
+  tags: [
+   "is the 15 puzzle good for the brain",
+   "number slide brain benefits",
+   "sliding puzzle cognitive benefits",
+   "15 puzzle spatial reasoning",
+   "brain training sliding tiles",
+   "does the 15 puzzle help memory",
+   "puzzle games and working memory",
+   "free brain games online",
+  ],
+  authorId: "mira",
+  cover: "/images/games/number-slide/cover.webp",
+  primaryKeyword: "is the 15 puzzle good for the brain",
+  secondaryKeywords: [
+   "number slide brain benefits",
+   "sliding puzzle cognitive benefits",
+   "15 puzzle spatial reasoning",
+   "does the 15 puzzle help memory",
+  ],
+  lsiKeywords: [
+   "spatial reasoning",
+   "working memory",
+   "cognitive training",
+   "problem solving",
+   "mental rotation",
+   "focus",
+   "attention",
+   "grid logic",
+  ],
+  gameId: "number-slide",
+  excerpt:
+   "The 15 puzzle does more than pass time. Here is what research and expert opinion say about what sliding tile puzzles actually train in the brain.",
+  content: `
 <h2>The Question Worth Asking</h2>
 <p>People have asked whether sliding puzzles are good for the brain since the 15 puzzle became a craze in 1880. The answer has not changed much since then: they are good for specific skills, not a cure for cognitive decline, and the benefits depend almost entirely on how you play. That is not a vague endorsement. It is a precise statement, and understanding the precision is what turns a casual habit into actual mental exercise.</p>
 <p><a href="/number-slide">Number Slide</a> is a clean example to test the claim against because it is simple. No timer racing you, no levels unlocking with purchases, no confusing interface. A grid, some tiles, a gap, and the act of moving numbers toward order. If a sliding puzzle trains the mind, the mechanism should be visible here, and it is.</p>
@@ -306,55 +306,56 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Cognitive training" - overview of what brain-training research does and does not support.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "Is the 15 puzzle good for the brain?",
-        a: "Yes, for specific skills. The 15 puzzle trains spatial reasoning, working memory, planning, and focused attention through regular, structured play. It is not a cure for cognitive decline, but it is genuine exercise for the skills it targets.",
-      },
-      {
-        q: "What does the 15 puzzle train?",
-        a: "It trains spatial reasoning through visualizing tile moves, working memory through holding board state, problem solving through planning tile sequences, and attention through the need to observe carefully before each slide.",
-      },
-      {
-        q: "Does the 15 puzzle improve spatial reasoning?",
-        a: "Research supports near-transfer improvements in spatial tasks after regular practice with the 15 puzzle. You get better at visualizing object movement, which helps with related tasks like map reading and mental rotation.",
-      },
-      {
-        q: "Can sliding puzzles help with working memory?",
-        a: "They can, especially for the visual-spatial modality. The 15 puzzle forces you to hold tile positions and predict consequences, which is structured working-memory practice. The benefit is strongest for similar tasks.",
-      },
-      {
-        q: "Do puzzle games prevent cognitive decline?",
-        a: "Current research does not support the claim that puzzle games alone prevent cognitive decline. They offer regular mental activity and skill-specific gains, but no proven protection against dementia or age-related decline on their own.",
-      },
-      {
-        q: "How often should I play the 15 puzzle for benefit?",
-        a: "Three to four short sessions per week works better than one long session. Consistency and spaced practice are what cognitive training rewards, so a small daily or near-daily habit beats an occasional intense grind.",
-      },
-      {
-        q: "Is Number Slide better than other brain games?",
-        a: "It is not better, just different. For numeric logic try <a href=\"/sudoku\">Sudoku</a>, for spatial assembly try <a href=\"/jigsaw\">Jigsaw</a>, for strategy try <a href=\"/reversi\">Reversi</a>, and for pathfinding try <a href=\"/lettermaze\">Lettermaze</a>. The best game is the one you keep playing.",
-      },
-      {
-        q: "What is the difference between the 15 puzzle and other brain games?",
-        a: "The 15 puzzle focuses on spatial reasoning and working memory with a sliding-tile mechanic. Sudoku focuses on numeric logic, Jigsaw on spatial assembly, Reversi on strategic planning, and Lettermaze on pathfinding. Each trains a distinct cognitive skill.",
-      },
-      {
-        q: "Can I get better at the 15 puzzle with practice?",
-        a: "Yes. Players who use structured methods like corner strategy and pattern practice show clear improvement in solve time and move efficiency over a few weeks of regular play.",
-      },
-      {
-        q: "Does playing the 15 puzzle help with other puzzles?",
-        a: "It helps with other spatial and logic puzzles through near transfer. Skills like board reading, planning, and visualization transfer to <a href=\"/sudoku\">Sudoku</a>, <a href=\"/jigsaw\">Jigsaw</a>, and <a href=\"/reversi\">Reversi</a>, though each game still has its own rules to learn.",
-      },
-      {
-        q: "Are there brain benefits to playing slowly?",
-        a: "Yes. Playing slowly forces careful visualization and attention, which builds the habit of deliberate spatial thinking. Rushed play skips the visualization step and trains speed without building the underlying skill.",
-      },
-      {
-        q: "Is the 15 puzzle suitable for children?",
-        a: "The 3x3 and 4x4 versions are accessible to children with adult guidance. They teach spatial reasoning and planning at an age-appropriate level, and the simple interface keeps frustration low compared to more complex puzzles.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "Is the 15 puzzle good for the brain?",
+    a: "Yes, for specific skills. The 15 puzzle trains spatial reasoning, working memory, planning, and focused attention through regular, structured play. It is not a cure for cognitive decline, but it is genuine exercise for the skills it targets.",
+   },
+   {
+    q: "What does the 15 puzzle train?",
+    a: "It trains spatial reasoning through visualizing tile moves, working memory through holding board state, problem solving through planning tile sequences, and attention through the need to observe carefully before each slide.",
+   },
+   {
+    q: "Does the 15 puzzle improve spatial reasoning?",
+    a: "Research supports near-transfer improvements in spatial tasks after regular practice with the 15 puzzle. You get better at visualizing object movement, which helps with related tasks like map reading and mental rotation.",
+   },
+   {
+    q: "Can sliding puzzles help with working memory?",
+    a: "They can, especially for the visual-spatial modality. The 15 puzzle forces you to hold tile positions and predict consequences, which is structured working-memory practice. The benefit is strongest for similar tasks.",
+   },
+   {
+    q: "Do puzzle games prevent cognitive decline?",
+    a: "Current research does not support the claim that puzzle games alone prevent cognitive decline. They offer regular mental activity and skill-specific gains, but no proven protection against dementia or age-related decline on their own.",
+   },
+   {
+    q: "How often should I play the 15 puzzle for benefit?",
+    a: "Three to four short sessions per week works better than one long session. Consistency and spaced practice are what cognitive training rewards, so a small daily or near-daily habit beats an occasional intense grind.",
+   },
+   {
+    q: "Is Number Slide better than other brain games?",
+    a: "It is not better, just different. For numeric logic try <a href=\"/sudoku\">Sudoku</a>, for spatial assembly try <a href=\"/jigsaw\">Jigsaw</a>, for strategy try <a href=\"/reversi\">Reversi</a>, and for pathfinding try <a href=\"/lettermaze\">Lettermaze</a>. The best game is the one you keep playing.",
+   },
+   {
+    q: "What is the difference between the 15 puzzle and other brain games?",
+    a: "The 15 puzzle focuses on spatial reasoning and working memory with a sliding-tile mechanic. Sudoku focuses on numeric logic, Jigsaw on spatial assembly, Reversi on strategic planning, and Lettermaze on pathfinding. Each trains a distinct cognitive skill.",
+   },
+   {
+    q: "Can I get better at the 15 puzzle with practice?",
+    a: "Yes. Players who use structured methods like corner strategy and pattern practice show clear improvement in solve time and move efficiency over a few weeks of regular play.",
+   },
+   {
+    q: "Does playing the 15 puzzle help with other puzzles?",
+    a: "It helps with other spatial and logic puzzles through near transfer. Skills like board reading, planning, and visualization transfer to <a href=\"/sudoku\">Sudoku</a>, <a href=\"/jigsaw\">Jigsaw</a>, and <a href=\"/reversi\">Reversi</a>, though each game still has its own rules to learn.",
+   },
+   {
+    q: "Are there brain benefits to playing slowly?",
+    a: "Yes. Playing slowly forces careful visualization and attention, which builds the habit of deliberate spatial thinking. Rushed play skips the visualization step and trains speed without building the underlying skill.",
+   },
+   {
+    q: "Is the 15 puzzle suitable for children?",
+    a: "The 3x3 and 4x4 versions are accessible to children with adult guidance. They teach spatial reasoning and planning at an age-appropriate level, and the simple interface keeps frustration low compared to more complex puzzles.",
+   },
+  ],
+ },
 ];
+

@@ -1,45 +1,45 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "best-free-browser-games-2026",
-    title: "Best Free Browser Games in 2026: A Curated List for Quick Play",
-    description:
-      "A curated look at the best free browser games in 2026: quick picks across arcade, puzzle, and strategy titles you can open without downloads or sign-ups today.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Browser Games",
-    tags: [
-      "best free browser games",
-      "browser games 2026",
-      "free online games no download",
-      "casual browser games",
-      "browser puzzle games",
-      "arcade browser games",
-      "instant play games",
-    ],
-    authorId: "dev",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "best free browser games",
-    secondaryKeywords: [
-      "free online games no download",
-      "browser games 2026",
-      "casual browser games",
-      "instant play games",
-    ],
-    lsiKeywords: [
-      "no install",
-      "cross-platform",
-      "HTML5 games",
-      "quick play",
-      "arcade",
-      "puzzle",
-      "strategy",
-      "casual gaming",
-    ],
-    excerpt:
-      "A journalist-curated list of the best free browser games in 2026: tested picks across arcade, puzzle, and strategy that open instantly with no downloads or accounts.",
-    content: `
+ {
+  slug: "best-free-browser-games-2026",
+  title: "Best Free Browser Games in 2026: A Curated List for Quick Play",
+  description:
+   "A curated look at the best free browser games in 2026: quick picks across arcade, puzzle, and strategy titles you can open without downloads or sign-ups today.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Browser Games",
+  tags: [
+   "best free browser games",
+   "browser games 2026",
+   "free online games no download",
+   "casual browser games",
+   "browser puzzle games",
+   "arcade browser games",
+   "instant play games",
+  ],
+  authorId: "dev",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "best free browser games",
+  secondaryKeywords: [
+   "free online games no download",
+   "browser games 2026",
+   "casual browser games",
+   "instant play games",
+  ],
+  lsiKeywords: [
+   "no install",
+   "cross-platform",
+   "HTML5 games",
+   "quick play",
+   "arcade",
+   "puzzle",
+   "strategy",
+   "casual gaming",
+  ],
+  excerpt:
+   "A journalist-curated list of the best free browser games in 2026: tested picks across arcade, puzzle, and strategy that open instantly with no downloads or accounts.",
+  content: `
 <h2>Why the Best Free Browser Games Keep Getting Better</h2>
 <p>The term best free browser games used to imply compromise. Slow load times, thin graphics, and mechanics that felt like trimmed-down mobile apps dominated the space. That picture has changed. Modern browser titles now run on hardware-accelerated HTML5, load in under a second, and offer enough depth to hold a player for an hour without a single download or sign-up barrier.</p>
 <p>What makes the current crop worth writing about is not just performance. It is variety. A single browser can move from a precision arcade challenge to a logic puzzle to a two-player strategy game without closing a tab or changing devices. That fluidity matters to people who treat games as a pause between tasks rather than a scheduled event.</p>
@@ -125,88 +125,88 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "HTML5" - context on the standard that replaced plugin-dependent browser gaming with native, cross-platform support.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are the best free browser games in 2026",
-        a: "The current standout titles include Stack Tower for arcade precision, Color Match for perception, 2048 for number logic, Sudoku for deep focus, and Reversi for spatial strategy. All load instantly with no downloads.",
-      },
-      {
-        q: "Do browser games need downloads or accounts",
-        a: "The best ones do not. Titles like Stack Tower, Color Match, and 2048 run entirely in the browser tab and need no install, no sign-up, and no plugin. You open, play, and close.",
-      },
-      {
-        q: "Are browser games as good as mobile or PC games",
-        a: "For the curated titles here, yes. Modern HTML5 browser games offer responsive input, stable frame rates, and mechanics deep enough to hold attention for hours. The main difference is convenience, not quality.",
-      },
-      {
-        q: "Can I play browser games on my phone",
-        a: "Yes. The titles listed are built for both mouse and touch input, so they adapt to phone screens without awkward zooming or hidden buttons.",
-      },
-      {
-        q: "Which browser game is best for short breaks",
-        a: "Stack Tower is ideal for under-five-minute windows. One round ends in seconds, the restart is instant, and there is no story or campaign to pull you away from what you were doing.",
-      },
-      {
-        q: "What is the best browser puzzle game",
-        a: "2048 and Color Match both excel. 2048 suits players who enjoy numbers and planning, while Color Match is better for quick perception tests. Try both and see which rhythm fits your thinking style.",
-      },
-      {
-        q: "Are there browser games for logic and strategy",
-        a: "Yes. Sudoku and Reversi are both native browser experiences with full rule sets, no timers unless you want them, and the ability to pause mid-game without losing progress.",
-      },
-      {
-        q: "Do browser games save progress",
-        a: "Many use local storage, so your best score or current board survives a tab close and even a browser restart, without needing an account or cloud sync.",
-      },
-      {
-        q: "Why are browser games better than they used to be",
-        a: "Hardware-accelerated HTML5, better input handling, and higher design standards have closed the gap with native apps. Games that once needed Flash or Java now run natively in any modern tab.",
-      },
-      {
-        q: "What makes a browser game actually good",
-        a: "Fast load, no account gate, responsive input on both mouse and touch, clear scoring, and a clean end when you close the tab. If a game fails those tests, it is filler, not a title worth your time.",
-      },
-    ],
-  },
-  {
-    slug: "why-html5-browser-games-are-the-future",
-    title: "Why HTML5 Browser Games Are the Future of Casual Play",
-    description:
-      "HTML5 browser games offer instant play, cross-device reach, and no installs. Here is why the format keeps improving and where it is headed next for players.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Browser Games",
-    tags: [
-      "html5 browser games",
-      "future of browser games",
-      "HTML5 gaming",
-      "web games technology",
-      "no download games",
-      "casual HTML5 games",
-      "browser game trends",
-    ],
-    authorId: "dev",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "html5 browser games",
-    secondaryKeywords: [
-      "future of browser games",
-      "HTML5 gaming technology",
-      "no download games",
-      "web games trends 2026",
-    ],
-    lsiKeywords: [
-      "WebGL",
-      "WebGPU",
-      "cross-platform",
-      "instant play",
-      "local storage",
-      "responsive input",
-      "game APIs",
-      "no install",
-    ],
-    excerpt:
-      "A practical look at why HTML5 browser games are becoming the future of casual play: faster loads, cross-device play, no downloads, and improving browser APIs.",
-    content: `
+  faqs: [
+   {
+    q: "What are the best free browser games in 2026",
+    a: "The current standout titles include Stack Tower for arcade precision, Color Match for perception, 2048 for number logic, Sudoku for deep focus, and Reversi for spatial strategy. All load instantly with no downloads.",
+   },
+   {
+    q: "Do browser games need downloads or accounts",
+    a: "The best ones do not. Titles like Stack Tower, Color Match, and 2048 run entirely in the browser tab and need no install, no sign-up, and no plugin. You open, play, and close.",
+   },
+   {
+    q: "Are browser games as good as mobile or PC games",
+    a: "For the curated titles here, yes. Modern HTML5 browser games offer responsive input, stable frame rates, and mechanics deep enough to hold attention for hours. The main difference is convenience, not quality.",
+   },
+   {
+    q: "Can I play browser games on my phone",
+    a: "Yes. The titles listed are built for both mouse and touch input, so they adapt to phone screens without awkward zooming or hidden buttons.",
+   },
+   {
+    q: "Which browser game is best for short breaks",
+    a: "Stack Tower is ideal for under-five-minute windows. One round ends in seconds, the restart is instant, and there is no story or campaign to pull you away from what you were doing.",
+   },
+   {
+    q: "What is the best browser puzzle game",
+    a: "2048 and Color Match both excel. 2048 suits players who enjoy numbers and planning, while Color Match is better for quick perception tests. Try both and see which rhythm fits your thinking style.",
+   },
+   {
+    q: "Are there browser games for logic and strategy",
+    a: "Yes. Sudoku and Reversi are both native browser experiences with full rule sets, no timers unless you want them, and the ability to pause mid-game without losing progress.",
+   },
+   {
+    q: "Do browser games save progress",
+    a: "Many use local storage, so your best score or current board survives a tab close and even a browser restart, without needing an account or cloud sync.",
+   },
+   {
+    q: "Why are browser games better than they used to be",
+    a: "Hardware-accelerated HTML5, better input handling, and higher design standards have closed the gap with native apps. Games that once needed Flash or Java now run natively in any modern tab.",
+   },
+   {
+    q: "What makes a browser game actually good",
+    a: "Fast load, no account gate, responsive input on both mouse and touch, clear scoring, and a clean end when you close the tab. If a game fails those tests, it is filler, not a title worth your time.",
+   },
+  ],
+ },
+ {
+  slug: "why-html5-browser-games-are-the-future",
+  title: "Why HTML5 Browser Games Are the Future of Casual Play",
+  description:
+   "HTML5 browser games offer instant play, cross-device reach, and no installs. Here is why the format keeps improving and where it is headed next for players.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Browser Games",
+  tags: [
+   "html5 browser games",
+   "future of browser games",
+   "HTML5 gaming",
+   "web games technology",
+   "no download games",
+   "casual HTML5 games",
+   "browser game trends",
+  ],
+  authorId: "dev",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "html5 browser games",
+  secondaryKeywords: [
+   "future of browser games",
+   "HTML5 gaming technology",
+   "no download games",
+   "web games trends 2026",
+  ],
+  lsiKeywords: [
+   "WebGL",
+   "WebGPU",
+   "cross-platform",
+   "instant play",
+   "local storage",
+   "responsive input",
+   "game APIs",
+   "no install",
+  ],
+  excerpt:
+   "A practical look at why HTML5 browser games are becoming the future of casual play: faster loads, cross-device play, no downloads, and improving browser APIs.",
+  content: `
 <h2>The Quiet Rise of HTML5 Browser Games</h2>
 <p>Five years ago, calling a browser game the future would have drawn polite laughter. The format was associated with slow-loading Flash leftovers, awkward controls, and progress that vanished when you closed the tab. That era is over. HTML5 browser games now load in under two seconds, save state locally, run at smooth frame rates on integrated graphics, and adapt to screens from a 4k monitor to a budget phone.</p>
 <p>The shift is not just technical. It is behavioral. Players have grown used to instant access. A game that demands a three-hundred-megabyte download, an account creation, and a permission prompt before the first round feels heavy by comparison. The browser tab is already open. The game is already there. All that separates the player from play is a single click or tap.</p>
@@ -285,47 +285,48 @@ export const posts: BlogPost[] = [
 <li>W3C, "Progressive Web Apps" - specification and guidance on installing and caching web applications for offline and home-screen use.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are HTML5 browser games",
-        a: "Games built with open web standards that run directly in a modern browser tab. They use Canvas, WebGL, Web Audio, and browser storage APIs instead of plugins or native runtimes.",
-      },
-      {
-        q: "Are HTML5 browser games the future of gaming",
-        a: "For casual play, yes. The format offers instant access, no downloads, cross-device reach, and faster updates than native apps. As browser APIs improve, the quality gap narrows further.",
-      },
-      {
-        q: "Do HTML5 games need plugins",
-        a: "No. Modern HTML5 games run natively in any current browser without Flash, Java, or any other plugin. That is the whole point of the standard.",
-      },
-      {
-        q: "Can HTML5 browser games run offline",
-        a: "Some can, if they use a service worker to cache assets. Not every title enables this, but the capability exists and more developers are adopting it for travel and low-connectivity play.",
-      },
-      {
-        q: "Are browser games safe to play",
-        a: "Games on reputable sites run in the browser's sandbox, which limits what they can access. They cannot read your files, access other tabs, or install software without permission. Stick to known sites for the safest experience.",
-      },
-      {
-        q: "What devices support HTML5 browser games",
-        a: "Every modern desktop and mobile browser supports HTML5, Canvas, and WebGL. That means Windows, Mac, Linux, Android, and iOS devices can all run the same browser game from the same URL.",
-      },
-      {
-        q: "Do HTML5 games save progress",
-        a: "Many use local storage or IndexedDB to save scores, unlocked content, and current board state. The data stays in the browser and survives restarts, though it does not sync across devices unless the game adds an account layer.",
-      },
-      {
-        q: "How do HTML5 games compare to native apps",
-        a: "Native apps still have an edge in raw graphics performance and offline reliability, but HTML5 games are catching up fast. For casual puzzle and arcade play, the difference is already negligible for most players.",
-      },
-      {
-        q: "Will WebGPU improve browser games",
-        a: "Yes. WebGPU gives browsers direct access to the GPU for compute and rendering tasks, which will enable more complex effects, larger worlds, and better physics in browser games without plugins.",
-      },
-      {
-        q: "Can I install an HTML5 browser game like an app",
-        a: "Some progressive web apps let you add a browser game to your home screen with one prompt. It opens in its own window and behaves much like a native app, though it still runs on the browser engine underneath.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "What are HTML5 browser games",
+    a: "Games built with open web standards that run directly in a modern browser tab. They use Canvas, WebGL, Web Audio, and browser storage APIs instead of plugins or native runtimes.",
+   },
+   {
+    q: "Are HTML5 browser games the future of gaming",
+    a: "For casual play, yes. The format offers instant access, no downloads, cross-device reach, and faster updates than native apps. As browser APIs improve, the quality gap narrows further.",
+   },
+   {
+    q: "Do HTML5 games need plugins",
+    a: "No. Modern HTML5 games run natively in any current browser without Flash, Java, or any other plugin. That is the whole point of the standard.",
+   },
+   {
+    q: "Can HTML5 browser games run offline",
+    a: "Some can, if they use a service worker to cache assets. Not every title enables this, but the capability exists and more developers are adopting it for travel and low-connectivity play.",
+   },
+   {
+    q: "Are browser games safe to play",
+    a: "Games on reputable sites run in the browser's sandbox, which limits what they can access. They cannot read your files, access other tabs, or install software without permission. Stick to known sites for the safest experience.",
+   },
+   {
+    q: "What devices support HTML5 browser games",
+    a: "Every modern desktop and mobile browser supports HTML5, Canvas, and WebGL. That means Windows, Mac, Linux, Android, and iOS devices can all run the same browser game from the same URL.",
+   },
+   {
+    q: "Do HTML5 games save progress",
+    a: "Many use local storage or IndexedDB to save scores, unlocked content, and current board state. The data stays in the browser and survives restarts, though it does not sync across devices unless the game adds an account layer.",
+   },
+   {
+    q: "How do HTML5 games compare to native apps",
+    a: "Native apps still have an edge in raw graphics performance and offline reliability, but HTML5 games are catching up fast. For casual puzzle and arcade play, the difference is already negligible for most players.",
+   },
+   {
+    q: "Will WebGPU improve browser games",
+    a: "Yes. WebGPU gives browsers direct access to the GPU for compute and rendering tasks, which will enable more complex effects, larger worlds, and better physics in browser games without plugins.",
+   },
+   {
+    q: "Can I install an HTML5 browser game like an app",
+    a: "Some progressive web apps let you add a browser game to your home screen with one prompt. It opens in its own window and behaves much like a native app, though it still runs on the browser engine underneath.",
+   },
+  ],
+ },
 ];
+

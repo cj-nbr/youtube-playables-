@@ -5,7 +5,7 @@ import { canonicalUrl, gameUrl, relatedGames } from "../shared/games";
 import { gameCover } from "../shared/utils";
 
 interface Props {
-  game: GameMeta;
+ game: GameMeta;
 }
 
 const { game } = Astro.props;
@@ -13,56 +13,56 @@ const { game } = Astro.props;
 const url = canonicalUrl(game.id);
 const ogImage = `${SITE_URL}${gameCover(game.id)}`;
 const keywords = [
-  game.title,
-  ...game.seo.keywords,
-  ...game.genre,
+ game.title,
+ ...game.seo.keywords,
+ ...game.genre,
 ].join(", ");
 
 const breadcrumb = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
-    { "@type": "ListItem", position: 2, name: "Playables", item: SITE_URL + "/playables" },
-    { "@type": "ListItem", position: 3, name: game.title, item: url },
-  ],
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
+  { "@type": "ListItem", position: 2, name: "Playables", item: SITE_URL + "/playables" },
+  { "@type": "ListItem", position: 3, name: game.title, item: url },
+ ],
 };
 
 const videoGame = {
-  "@context": "https://schema.org",
-  "@type": "VideoGame",
-  name: game.title,
-  description: game.description,
-  genre: game.genre,
-  gamePlatform: ["Web", "Browser", "Mobile"],
-  operatingSystem: "Any",
-  applicationCategory: "Game",
-  url,
-  inLanguage: "en",
-  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+ "@context": "https://schema.org",
+ "@type": "VideoGame",
+ name: game.title,
+ description: game.description,
+ genre: game.genre,
+ gamePlatform: ["Web", "Browser", "Mobile"],
+ operatingSystem: "Any",
+ applicationCategory: "Game",
+ url,
+ inLanguage: "en",
+ publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
 };
 
 const faq = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: game.content.faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ mainEntity: game.content.faqs.map((f) => ({
+  "@type": "Question",
+  name: f.q,
+  acceptedAnswer: { "@type": "Answer", text: f.a },
+ })),
 };
 
 const related = relatedGames(game.id, 4);
 const itemList = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: `Games related to ${game.title}`,
-  itemListElement: related.map((g, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    name: g.title,
-    url: SITE_URL + gameUrl(g.id),
-  })),
+ "@context": "https://schema.org",
+ "@type": "ItemList",
+ name: `Games related to ${game.title}`,
+ itemListElement: related.map((g, i) => ({
+  "@type": "ListItem",
+  position: i + 1,
+  name: g.title,
+  url: SITE_URL + gameUrl(g.id),
+ })),
 };
 ---
 
@@ -90,3 +90,4 @@ const itemList = {
 <script type="application/ld+json" is:inline set:html={JSON.stringify(videoGame)}></script>
 <script type="application/ld+json" is:inline set:html={JSON.stringify(faq)}></script>
 <script type="application/ld+json" is:inline set:html={JSON.stringify(itemList)}></script>
+

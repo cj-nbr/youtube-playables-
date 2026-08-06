@@ -1,47 +1,47 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "chess-tips-and-common-mistakes",
-    title: "Chess Tips and Common Mistakes: A Straight Guide for New Players",
-    description:
-      "Practical chess tips for beginners plus the mistakes that cost new players games. Learn the opening habits, safety rules, and checks that turn losses into wins.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Strategy Games",
-    tags: [
-      "chess tips for beginners",
-      "common chess mistakes",
-      "chess strategy",
-      "how to play chess",
-      "beginner chess guide",
-      "chess opening habits",
-      "avoid chess blunders",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/chess/cover.webp",
-    primaryKeyword: "chess tips for beginners",
-    secondaryKeywords: [
-      "common chess mistakes beginners make",
-      "how to stop blundering in chess",
-      "beginner chess strategy guide",
-      "chess opening tips for new players",
-      "improve at chess fast",
-    ],
-    lsiKeywords: [
-      "king safety",
-      "piece development",
-      "pawn structure",
-      "chess tactics",
-      "material count",
-      "blunder",
-      "middlegame plan",
-      "castling",
-    ],
-    gameId: "chess",
-    excerpt:
-      "The fastest way to improve at chess is to stop making the same beginner mistakes. Here are the habits and checks that quietly decide most games between new players.",
-    content: `
+ {
+  slug: "chess-tips-and-common-mistakes",
+  title: "Chess Tips and Common Mistakes: A Straight Guide for New Players",
+  description:
+   "Practical chess tips for beginners plus the mistakes that cost new players games. Learn the opening habits, safety rules, and checks that turn losses into wins.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Strategy Games",
+  tags: [
+   "chess tips for beginners",
+   "common chess mistakes",
+   "chess strategy",
+   "how to play chess",
+   "beginner chess guide",
+   "chess opening habits",
+   "avoid chess blunders",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/chess/cover.webp",
+  primaryKeyword: "chess tips for beginners",
+  secondaryKeywords: [
+   "common chess mistakes beginners make",
+   "how to stop blundering in chess",
+   "beginner chess strategy guide",
+   "chess opening tips for new players",
+   "improve at chess fast",
+  ],
+  lsiKeywords: [
+   "king safety",
+   "piece development",
+   "pawn structure",
+   "chess tactics",
+   "material count",
+   "blunder",
+   "middlegame plan",
+   "castling",
+  ],
+  gameId: "chess",
+  excerpt:
+   "The fastest way to improve at chess is to stop making the same beginner mistakes. Here are the habits and checks that quietly decide most games between new players.",
+  content: `
 <h2>What New Players Get Wrong First</h2>
 <p>Most people who lose their first dozen chess games are not losing because the opponent is smarter. They are losing because they repeat a short list of predictable errors. The board rewards a handful of basic habits, and beginners skip those habits in favor of grabbing material or chasing pieces. The gap between a casual player and a competent one is smaller than the opening looks.</p>
 <p>This guide collects the tips that actually move the needle and the mistakes that actually cost games. None of it requires memorizing grandmaster theory. It requires playing each move with a question attached: what does my opponent want, and what does my move give them? That habit, repeated for a full game, fixes more problems than any opening book.</p>
@@ -160,90 +160,90 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Chess strategy" - survey of development, center control, and planning principles.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are the most common chess mistakes beginners make?",
-        a: "The biggest ones are leaving pieces hanging, forgetting to castle, moving the same piece repeatedly in the opening, grabbing pawns without checking defenders, and trading without counting the resulting position. Most beginner losses trace back to one of these.",
-      },
-      {
-        q: "How do I stop blundering pieces in chess?",
-        a: "Run a quick safety check before every move: see if any of your pieces are attacked, confirm your move does not hang a piece, and check your king safety. Saying the check out loud at first builds the habit until it becomes automatic.",
-      },
-      {
-        q: "Should beginners memorize chess openings?",
-        a: "Not at first. Learn the principles behind openings: control the center, develop minor pieces, and castle. Memorized lines help later, but understanding why moves work matters more than reciting sequences you do not yet understand.",
-      },
-      {
-        q: "Why is castling important in chess?",
-        a: "Castling moves the king to the edge behind a pawn shield and connects the rooks. A king stuck in the center is an easy target once lines open, so castling early is one of the safest habits a beginner can build.",
-      },
-      {
-        q: "How do I know if a capture is a good idea?",
-        a: "Count the defenders of the target square before capturing. If your opponent can recapture and the trade leaves you with a worse position or an exposed king, the capture is a mistake even if the material looks even.",
-      },
-      {
-        q: "What is the best plan for a chess beginner?",
-        a: "Keep it simple: develop your pieces, secure your king, and target one weakness such as a weak pawn or an open file. A modest plan beats no plan, because every move then pushes in the same direction.",
-      },
-      {
-        q: "Is trading pieces good or bad in chess?",
-        a: "It depends on the resulting position, not the trade itself. Trading into a winning endgame is good; trading away a key defender or opening your king is bad. Always picture the board after the trade.",
-      },
-      {
-        q: "How can I improve at chess without studying for hours?",
-        a: "Review your lost games and find the mistakes you repeat, then fix those specific errors. Targeted correction beats random theory, and a short daily game with a safety checklist builds more skill than passive reading.",
-      },
-      {
-        q: "Does playing other strategy games help chess?",
-        a: "Yes. Games like checkers, reversi, and dots and boxes train planning, threat reading, and patience that transfer to chess. Rotating between them sharpens the same mental habits without extra study.",
-      },
-      {
-        q: "What should I focus on in the chess middlegame?",
-        a: "Form a plan and execute it: attack a weakness, open a file for a rook, or improve your worst piece. Avoid random reacting. Every move should connect to a goal, even if that goal is simply improving one piece's square.",
-      },
-    ],
-  },
-  {
-    slug: "chess-how-to-win-faster",
-    title: "How to Win at Chess Faster: Checkmate Patterns and a Quicker Path to Victory",
-    description:
-      "Learn how to win at chess faster with the checkmate patterns, tactics, and endgame shortcuts that end games early. A direct guide to delivering mate without long, slow grind.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Strategy Games",
-    tags: [
-      "how to win at chess faster",
-      "chess checkmate patterns",
-      "fast chess wins",
-      "chess tactics",
-      "checkmate in few moves",
-      "win chess quickly",
-      "chess endgame shortcuts",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/chess/cover.webp",
-    primaryKeyword: "how to win at chess faster",
-    secondaryKeywords: [
-      "chess checkmate patterns for beginners",
-      "how to deliver checkmate quickly",
-      "fastest way to win at chess",
-      "chess tactics to win faster",
-      "endgame shortcuts to win chess",
-    ],
-    lsiKeywords: [
-      "back rank mate",
-      "fork",
-      "skewer",
-      "pin",
-      "promotion",
-      "king hunt",
-      "mating net",
-      "two-move checkmate",
-    ],
-    gameId: "chess",
-    excerpt:
-      "Winning chess faster means knowing the mate patterns and the tactics that create them. Here is a direct route to checkmating sooner instead of grinding a long endgame.",
-    content: `
+  faqs: [
+   {
+    q: "What are the most common chess mistakes beginners make?",
+    a: "The biggest ones are leaving pieces hanging, forgetting to castle, moving the same piece repeatedly in the opening, grabbing pawns without checking defenders, and trading without counting the resulting position. Most beginner losses trace back to one of these.",
+   },
+   {
+    q: "How do I stop blundering pieces in chess?",
+    a: "Run a quick safety check before every move: see if any of your pieces are attacked, confirm your move does not hang a piece, and check your king safety. Saying the check out loud at first builds the habit until it becomes automatic.",
+   },
+   {
+    q: "Should beginners memorize chess openings?",
+    a: "Not at first. Learn the principles behind openings: control the center, develop minor pieces, and castle. Memorized lines help later, but understanding why moves work matters more than reciting sequences you do not yet understand.",
+   },
+   {
+    q: "Why is castling important in chess?",
+    a: "Castling moves the king to the edge behind a pawn shield and connects the rooks. A king stuck in the center is an easy target once lines open, so castling early is one of the safest habits a beginner can build.",
+   },
+   {
+    q: "How do I know if a capture is a good idea?",
+    a: "Count the defenders of the target square before capturing. If your opponent can recapture and the trade leaves you with a worse position or an exposed king, the capture is a mistake even if the material looks even.",
+   },
+   {
+    q: "What is the best plan for a chess beginner?",
+    a: "Keep it simple: develop your pieces, secure your king, and target one weakness such as a weak pawn or an open file. A modest plan beats no plan, because every move then pushes in the same direction.",
+   },
+   {
+    q: "Is trading pieces good or bad in chess?",
+    a: "It depends on the resulting position, not the trade itself. Trading into a winning endgame is good; trading away a key defender or opening your king is bad. Always picture the board after the trade.",
+   },
+   {
+    q: "How can I improve at chess without studying for hours?",
+    a: "Review your lost games and find the mistakes you repeat, then fix those specific errors. Targeted correction beats random theory, and a short daily game with a safety checklist builds more skill than passive reading.",
+   },
+   {
+    q: "Does playing other strategy games help chess?",
+    a: "Yes. Games like checkers, reversi, and dots and boxes train planning, threat reading, and patience that transfer to chess. Rotating between them sharpens the same mental habits without extra study.",
+   },
+   {
+    q: "What should I focus on in the chess middlegame?",
+    a: "Form a plan and execute it: attack a weakness, open a file for a rook, or improve your worst piece. Avoid random reacting. Every move should connect to a goal, even if that goal is simply improving one piece's square.",
+   },
+  ],
+ },
+ {
+  slug: "chess-how-to-win-faster",
+  title: "How to Win at Chess Faster: Checkmate Patterns and a Quicker Path to Victory",
+  description:
+   "Learn how to win at chess faster with the checkmate patterns, tactics, and endgame shortcuts that end games early. A direct guide to delivering mate without long, slow grind.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Strategy Games",
+  tags: [
+   "how to win at chess faster",
+   "chess checkmate patterns",
+   "fast chess wins",
+   "chess tactics",
+   "checkmate in few moves",
+   "win chess quickly",
+   "chess endgame shortcuts",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/chess/cover.webp",
+  primaryKeyword: "how to win at chess faster",
+  secondaryKeywords: [
+   "chess checkmate patterns for beginners",
+   "how to deliver checkmate quickly",
+   "fastest way to win at chess",
+   "chess tactics to win faster",
+   "endgame shortcuts to win chess",
+  ],
+  lsiKeywords: [
+   "back rank mate",
+   "fork",
+   "skewer",
+   "pin",
+   "promotion",
+   "king hunt",
+   "mating net",
+   "two-move checkmate",
+  ],
+  gameId: "chess",
+  excerpt:
+   "Winning chess faster means knowing the mate patterns and the tactics that create them. Here is a direct route to checkmating sooner instead of grinding a long endgame.",
+  content: `
 <h2>Why Games Drag On</h2>
 <p>Most chess games between new players do not end with a clean checkmate. They end when someone resigns, or when a player quietly wins a pawn and then spends forty more moves converting the advantage. The slow grind is not necessary. Many positions contain a faster win that the player simply does not see, because they are hunting material instead of hunting the king.</p>
 <p>Winning faster is a skill you can train. It means recognizing a small set of checkmate patterns, using tactics to set them up, and knowing the endgame shortcuts that turn a slight edge into a forced result. You still need the fundamentals, but once those are in place, speed comes from pattern recognition rather than deep calculation.</p>
@@ -361,47 +361,48 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Promotion (chess)" - the rule of pawn promotion and its role in winning endgames quickly.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What is the fastest way to win at chess?",
-        a: "The fastest forced wins come from recognizing checkmate patterns like the back-rank mate and using tactics such as forks and pins to set them up. In the endgame, pushing a passed pawn to promotion ends games quickly. Speed comes from seeing the mate early, not from moving faster.",
-      },
-      {
-        q: "What is a back-rank mate?",
-        a: "It is a checkmate where the defending king is trapped on its original rank by its own pawns, and a rook or queen delivers check along that rank. The king has no escape square. Giving the king a flight square, called a luft, is the standard defense.",
-      },
-      {
-        q: "How do forks and pins help me win faster?",
-        a: "A fork attacks two pieces at once so you win one, a pin freezes a piece so it cannot move safely, and a skewer wins material in a line. Removing or freezing the key defender often opens the path to a checkmate that would otherwise be blocked.",
-      },
-      {
-        q: "What are the easiest checkmate patterns to learn?",
-        a: "Start with the back-rank mate, the two-rook mate, and the queen-and-king mate. The back-rank mate appears constantly in amateur games, while the rook and queen mates cover most basic endgames. Those three alone let you finish a large share of winning positions.",
-      },
-      {
-        q: "How do I checkmate with two rooks?",
-        a: "Use the rooks to give alternating checks that push the enemy king toward the edge of the board, then deliver mate on the side. The rooks support each other and the king cannot approach them, so the process is mechanical once you keep the checks coming.",
-      },
-      {
-        q: "What is the rule of the square in chess?",
-        a: "It is an endgame shortcut that tells you whether a passed pawn can reach promotion before the enemy king can catch it. If the king is outside the square formed by the pawn's path to the last rank, push the pawn and promote. Promotion usually wins the game on the spot.",
-      },
-      {
-        q: "How does the opposition help in king-and-pawn endgames?",
-        a: "The opposition means placing your king directly in front of the enemy king so it must yield ground. Controlling the key squares this way lets you usher a pawn to promotion or force the enemy king away from a defensive post, shortening the win.",
-      },
-      {
-        q: "Why do I miss mating chances in my games?",
-        a: "Most players focus on winning material and stop calculating after a capture. They also fear sacrificing for an attack and do not scan for checks and threats aimed at the king. Looking one layer past the obvious grab reveals many mates that were already on the board.",
-      },
-      {
-        q: "Are two-move checkmates useful in real games?",
-        a: "Direct two-move mates from the opening are rare in serious play, but practicing them trains the habit of hunting the fastest forced line. That habit helps you spot mates in real positions, which is what actually shortens your games.",
-      },
-      {
-        q: "Should I attack the king or grab material to win faster?",
-        a: "When the opponent's king is weak, attacking usually wins faster than collecting pawns. Slow material grabs let the king escape to safety. Shift to direct attack when pawns are torn open or defenders are missing, and convert with forcing moves.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "What is the fastest way to win at chess?",
+    a: "The fastest forced wins come from recognizing checkmate patterns like the back-rank mate and using tactics such as forks and pins to set them up. In the endgame, pushing a passed pawn to promotion ends games quickly. Speed comes from seeing the mate early, not from moving faster.",
+   },
+   {
+    q: "What is a back-rank mate?",
+    a: "It is a checkmate where the defending king is trapped on its original rank by its own pawns, and a rook or queen delivers check along that rank. The king has no escape square. Giving the king a flight square, called a luft, is the standard defense.",
+   },
+   {
+    q: "How do forks and pins help me win faster?",
+    a: "A fork attacks two pieces at once so you win one, a pin freezes a piece so it cannot move safely, and a skewer wins material in a line. Removing or freezing the key defender often opens the path to a checkmate that would otherwise be blocked.",
+   },
+   {
+    q: "What are the easiest checkmate patterns to learn?",
+    a: "Start with the back-rank mate, the two-rook mate, and the queen-and-king mate. The back-rank mate appears constantly in amateur games, while the rook and queen mates cover most basic endgames. Those three alone let you finish a large share of winning positions.",
+   },
+   {
+    q: "How do I checkmate with two rooks?",
+    a: "Use the rooks to give alternating checks that push the enemy king toward the edge of the board, then deliver mate on the side. The rooks support each other and the king cannot approach them, so the process is mechanical once you keep the checks coming.",
+   },
+   {
+    q: "What is the rule of the square in chess?",
+    a: "It is an endgame shortcut that tells you whether a passed pawn can reach promotion before the enemy king can catch it. If the king is outside the square formed by the pawn's path to the last rank, push the pawn and promote. Promotion usually wins the game on the spot.",
+   },
+   {
+    q: "How does the opposition help in king-and-pawn endgames?",
+    a: "The opposition means placing your king directly in front of the enemy king so it must yield ground. Controlling the key squares this way lets you usher a pawn to promotion or force the enemy king away from a defensive post, shortening the win.",
+   },
+   {
+    q: "Why do I miss mating chances in my games?",
+    a: "Most players focus on winning material and stop calculating after a capture. They also fear sacrificing for an attack and do not scan for checks and threats aimed at the king. Looking one layer past the obvious grab reveals many mates that were already on the board.",
+   },
+   {
+    q: "Are two-move checkmates useful in real games?",
+    a: "Direct two-move mates from the opening are rare in serious play, but practicing them trains the habit of hunting the fastest forced line. That habit helps you spot mates in real positions, which is what actually shortens your games.",
+   },
+   {
+    q: "Should I attack the king or grab material to win faster?",
+    a: "When the opponent's king is weak, attacking usually wins faster than collecting pawns. Slow material grabs let the king escape to safety. Shift to direct attack when pawns are torn open or defenders are missing, and convert with forcing moves.",
+   },
+  ],
+ },
 ];
+

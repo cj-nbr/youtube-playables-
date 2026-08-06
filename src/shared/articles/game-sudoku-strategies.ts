@@ -1,48 +1,48 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "sudoku-strategies-for-beginners-and-beyond",
-    title: "Sudoku Strategies for Beginners and Beyond",
-    description:
-      "Master Sudoku with proven strategies. Learn scanning techniques, pencil marking, and advanced elimination methods to solve any puzzle faster.",
-    date: "2026-07-14",
-    updatedAt: "2026-07-14",
-    category: "Puzzle Games",
-    tags: [
-      "sudoku strategies",
-      "how to solve sudoku",
-      "sudoku tips",
-      "sudoku techniques",
-      "beginner sudoku",
-      "sudoku guide",
-      "number puzzle",
-    ],
-    authorId: "mira",
-    cover: "/images/games/sudoku/cover.webp",
-    primaryKeyword: "sudoku strategies",
-    secondaryKeywords: [
-      "how to solve sudoku puzzles",
-      "sudoku tips and tricks",
-      "sudoku techniques for beginners",
-      "sudoku elimination method",
-    ],
-    lsiKeywords: [
-      "scanning",
-      "pencil marking",
-      "naked pairs",
-      "hidden singles",
-      "pointing pairs",
-      "box-line reduction",
-      "X-wing",
-      "Sudoku rules",
-      "logic puzzle",
-      "9x9 grid",
-    ],
-    gameId: "sudoku",
-    excerpt:
-      "A complete guide to Sudoku strategies from basic scanning to advanced elimination techniques. Improve your solving speed and tackle harder puzzles.",
-    content: `
+ {
+  slug: "sudoku-strategies-for-beginners-and-beyond",
+  title: "Sudoku Strategies for Beginners and Beyond",
+  description:
+   "Master Sudoku with proven strategies. Learn scanning techniques, pencil marking, and advanced elimination methods to solve any puzzle faster.",
+  date: "2026-07-14",
+  updatedAt: "2026-07-14",
+  category: "Puzzle Games",
+  tags: [
+   "sudoku strategies",
+   "how to solve sudoku",
+   "sudoku tips",
+   "sudoku techniques",
+   "beginner sudoku",
+   "sudoku guide",
+   "number puzzle",
+  ],
+  authorId: "mira",
+  cover: "/images/games/sudoku/cover.webp",
+  primaryKeyword: "sudoku strategies",
+  secondaryKeywords: [
+   "how to solve sudoku puzzles",
+   "sudoku tips and tricks",
+   "sudoku techniques for beginners",
+   "sudoku elimination method",
+  ],
+  lsiKeywords: [
+   "scanning",
+   "pencil marking",
+   "naked pairs",
+   "hidden singles",
+   "pointing pairs",
+   "box-line reduction",
+   "X-wing",
+   "Sudoku rules",
+   "logic puzzle",
+   "9x9 grid",
+  ],
+  gameId: "sudoku",
+  excerpt:
+   "A complete guide to Sudoku strategies from basic scanning to advanced elimination techniques. Improve your solving speed and tackle harder puzzles.",
+  content: `
 <h2>The Logic Behind Every Sudoku</h2>
 <p>Sudoku is a pure logic puzzle. No guessing is required. Every valid Sudoku can be solved using deduction alone. The challenge is not in the rules, which fit in one sentence, but in the depth of reasoning required as puzzles grow harder.</p>
 <p>The core rule is simple: every row, column, and 3x3 box must contain the digits 1 through 9 exactly once. From this single constraint, every deduction flows. The strategies below build on each other, from the most basic scanning technique to advanced patterns that unlock the hardest puzzles.</p>
@@ -117,15 +117,15 @@ export const posts: BlogPost[] = [
 <h2>Sources &amp; References</h2>
 <ul>
 <li>Wikipedia, "Sudoku" - history and solving techniques overview.</li>
-<li>Official Sudoku game page on the YouTube Playables platform.</li>
+<li>Official Sudoku game page on the Playables platform.</li>
 </ul>
 `,
-    faqs: [
-      { q: "What is the easiest way to solve a Sudoku?", a: "Start with scanning and counting. Check which digits are already in each cell's row, column, and box." },
-      { q: "Do I need pencil marks to solve hard Sudoku?", a: "Yes. Pencil marks turn vague possibilities into concrete candidates and make advanced techniques possible." },
-      { q: "Is there a single best Sudoku strategy?", a: "Scanning is the most important technique. It solves the majority of easy and medium puzzles." },
-      { q: "Can you solve Sudoku without guessing?", a: "Yes. Every valid Sudoku can be solved using pure logic." },
-      { q: "How can I get faster at Sudoku?", a: "Practice scanning until it becomes automatic. Speed comes from pattern recognition." },
-    ],
-  },
+  faqs: [
+   { q: "What is the easiest way to solve a Sudoku?", a: "Start with scanning and counting. Check which digits are already in each cell's row, column, and box." },
+   { q: "Do I need pencil marks to solve hard Sudoku?", a: "Yes. Pencil marks turn vague possibilities into concrete candidates and make advanced techniques possible." },
+   { q: "Is there a single best Sudoku strategy?", a: "Scanning is the most important technique. It solves the majority of easy and medium puzzles." },
+   { q: "Can you solve Sudoku without guessing?", a: "Yes. Every valid Sudoku can be solved using pure logic." },
+   { q: "How can I get faster at Sudoku?", a: "Practice scanning until it becomes automatic. Speed comes from pattern recognition." },
+  ],
+ },
 ];

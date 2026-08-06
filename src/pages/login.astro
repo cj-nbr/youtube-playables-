@@ -2,54 +2,54 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Log in — YOUTUBE PLAYABLES" description="Log in to YOUTUBE PLAYABLES to track your high scores and recently played games.">
-  <a href="#main" class="skip-link">Skip to content</a>
-  <main id="main" class="mx-auto max-w-[1400px] px-6 py-24">
-    <div class="mx-auto max-w-md rounded-xl border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
-      <h1 class="text-3xl font-semibold tracking-tight text-ink">Welcome back.</h1>
-      <p class="mt-2 text-body">Log in with your email or phone and 6-character secret code.</p>
-      <form id="login-form" class="mt-6 space-y-4">
-        <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="login">Email or Phone Number</label>
-          <input id="login" type="text" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="you@example.com or +1234567890" required />
-        </div>
-        <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="secret-code">Secret Code</label>
-          <input id="secret-code" type="text" maxlength="6" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="••••••" required />
-        </div>
-        <button type="submit" class="inline-flex h-11 w-full items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Log in</button>
-      </form>
-      <p id="login-error" class="mt-4 text-sm" style="color:#ee0000;display:none;"></p>
-      <p class="mt-4 text-sm text-body">New here? <a href="/signup" class="text-link underline-offset-4 hover:underline">Create an account</a>.</p>
-      <a href="/playables" class="mt-6 inline-block text-sm text-link underline-offset-4 hover:underline">← Back to playables</a>
+<Layout title="Log in — PLAYABLES" description="Log in to PLAYABLES to track your high scores and recently played games.">
+ <a href="#main" class="skip-link">Skip to content</a>
+ <main id="main" class="mx-auto max-w-[1400px] px-6 py-24">
+  <div class="mx-auto max-w-md rounded-xl border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
+   <h1 class="text-3xl font-semibold tracking-tight text-ink">Welcome back.</h1>
+   <p class="mt-2 text-body">Log in with your email or phone and 6-character secret code.</p>
+   <form id="login-form" class="mt-6 space-y-4">
+    <div>
+     <label class="mb-1 block text-sm font-medium text-ink" for="login">Email or Phone Number</label>
+     <input id="login" type="text" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="you@example.com or +1234567890" required />
     </div>
-  </main>
+    <div>
+     <label class="mb-1 block text-sm font-medium text-ink" for="secret-code">Secret Code</label>
+     <input id="secret-code" type="text" maxlength="6" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="••••••" required />
+    </div>
+    <button type="submit" class="inline-flex h-11 w-full items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Log in</button>
+   </form>
+   <p id="login-error" class="mt-4 text-sm" style="color:#ee0000;display:none;"></p>
+   <p class="mt-4 text-sm text-body">New here? <a href="/signup" class="text-link underline-offset-4 hover:underline">Create an account</a>.</p>
+   <a href="/playables" class="mt-6 inline-block text-sm text-link underline-offset-4 hover:underline">← Back to playables</a>
+  </div>
+ </main>
 
-  <script>
-    import { login } from "../shared/auth";
+ <script>
+  import { login } from "../shared/auth";
 
-    const form = document.getElementById("login-form");
-    const errorEl = document.getElementById("login-error");
-    if (form) {
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        errorEl.style.display = "none";
-        const btn = form.querySelector("button[type=submit]") as HTMLButtonElement | null;
-        if (btn) { btn.disabled = true; btn.textContent = "Signing in…"; }
+  const form = document.getElementById("login-form");
+  const errorEl = document.getElementById("login-error");
+  if (form) {
+   form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorEl.style.display = "none";
+    const btn = form.querySelector("button[type=submit]") as HTMLButtonElement | null;
+    if (btn) { btn.disabled = true; btn.textContent = "Signing in…"; }
 
-        const loginValue = document.getElementById("login").value.trim();
-        const secretCode = document.getElementById("secret-code").value;
+    const loginValue = document.getElementById("login").value.trim();
+    const secretCode = document.getElementById("secret-code").value;
 
-        try {
-          await login(loginValue, secretCode);
-          window.location.href = "/playables";
-        } catch (err) {
-          if (btn) { btn.disabled = false; btn.textContent = "Log in"; }
-          errorEl.textContent =
-            err instanceof Error ? err.message : "Login failed";
-          errorEl.style.display = "block";
-        }
-      });
+    try {
+     await login(loginValue, secretCode);
+     window.location.href = "/playables";
+    } catch (err) {
+     if (btn) { btn.disabled = false; btn.textContent = "Log in"; }
+     errorEl.textContent =
+      err instanceof Error ? err.message : "Login failed";
+     errorEl.style.display = "block";
     }
-  </script>
+   });
+  }
+ </script>
 </Layout>

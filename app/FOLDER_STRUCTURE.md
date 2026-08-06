@@ -1,4 +1,4 @@
-# YouTube Playables Android App - Folder Structure Documentation
+# Playables Android App - Folder Structure Documentation
 
 ## Root Directory (`app/`)
 

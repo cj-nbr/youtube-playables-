@@ -1,29 +1,29 @@
 {
-  "name": "ytplayables-android",
-  "version": "1.0.0",
-  "description": "Production Android gaming application for YouTube Playables",
-  "private": true,
-  "scripts": {
-    "build:apk": "cd android && ./gradlew assembleRelease",
-    "build:aab": "cd android && ./gradlew bundleRelease",
-    "build:debug": "cd android && ./gradlew assembleDebug",
-    "build:all": "npm run build:debug && npm run build:apk && npm run build:aab",
-    "clean": "cd android && ./gradlew clean",
-    "capacitor:sync": "npx cap sync",
-    "capacitor:android": "npx cap open android",
-    "capacitor:update": "npx cap update android"
-  },
-  "dependencies": {
-    "@capacitor/android": "^7.0.0",
-    "@capacitor/core": "^7.0.0",
-    "@capacitor/splash-screen": "^2.0.0",
-    "@capacitor/status-bar": "^2.0.0",
-    "@capacitor/browser": "^7.0.0",
-    "@capacitor/haptics": "^2.0.0",
-    "@capacitor/local-notifications": "^2.0.0",
-    "@capacitor/push-notifications": "^2.0.0"
-  },
-  "devDependencies": {
-    "capacitor": "^7.0.0"
-  }
+ "name": "ytplayables-android",
+ "version": "1.0.0",
+ "description": "Production Android gaming application for Playables",
+ "private": true,
+ "scripts": {
+  "build:apk": "cd android && ./gradlew assembleRelease",
+  "build:aab": "cd android && ./gradlew bundleRelease",
+  "build:debug": "cd android && ./gradlew assembleDebug",
+  "build:all": "npm run build:debug && npm run build:apk && npm run build:aab",
+  "clean": "cd android && ./gradlew clean",
+  "capacitor:sync": "npx cap sync",
+  "capacitor:android": "npx cap open android",
+  "capacitor:update": "npx cap update android"
+ },
+ "dependencies": {
+  "@capacitor/android": "^7.0.0",
+  "@capacitor/core": "^7.0.0",
+  "@capacitor/splash-screen": "^2.0.0",
+  "@capacitor/status-bar": "^2.0.0",
+  "@capacitor/browser": "^7.0.0",
+  "@capacitor/haptics": "^2.0.0",
+  "@capacitor/local-notifications": "^2.0.0",
+  "@capacitor/push-notifications": "^2.0.0"
+ },
+ "devDependencies": {
+  "capacitor": "^7.0.0"
+ }
 }

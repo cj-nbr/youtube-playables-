@@ -1,6 +1,6 @@
 # Color Match
 
-A fast color-mixing puzzle game for the YouTube Playables platform. Reproduce the
+A fast color-mixing puzzle game for the Playables platform. Reproduce the
 target color by adjusting R/G/B sliders, then submit (or skip) within the 30-second
 timer. Score combines color accuracy (Euclidean RGB distance) with a speed bonus
 across 10 rounds — highest cumulative total wins.
@@ -25,3 +25,4 @@ across 10 rounds — highest cumulative total wins.
 `content.ts` exports a `GameContent` object consumed by the registry, GameShell,
 and SEO components. It includes 4 guide items, full instructions, 18 FAQs, and
 3 blog articles. See `blog/complete-guide.md` for the published article version.
+

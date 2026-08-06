@@ -19,11 +19,12 @@ alter table public.game_progress add column if not exists save_slot text default
 -- unique constraint used by upsert onConflict(user_id, game_id, save_slot)
 do $$
 begin
-  if not exists (
-    select 1 from pg_constraint
-    where conname = 'game_progress_user_game_slot_key'
-  ) then
-    alter table public.game_progress
-      add constraint game_progress_user_game_slot_key unique (user_id, game_id, save_slot);
-  end if;
+ if not exists (
+  select 1 from pg_constraint
+  where conname = 'game_progress_user_game_slot_key'
+ ) then
+  alter table public.game_progress
+   add constraint game_progress_user_game_slot_key unique (user_id, game_id, save_slot);
+ end if;
 end $$;
+

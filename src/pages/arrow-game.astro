@@ -4,24 +4,25 @@ import { getGame } from "../shared/games";
 const game = getGame("arrow-game");
 ---
 <GameShell game={game}>
-  <div
-    class="grid w-full max-w-[min(320px,80vw)] grid-cols-3 gap-1.5 mx-auto"
-    role="grid"
-    aria-label="Tic Tac Toe board"
-  >
-    {
-      Array.from({ length: 9 }).map((_, i) => (
-        <button
-          class="ttt-cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl font-bold text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-white/60 sm:text-5xl"
-          data-i={i}
-          aria-label={`Cell ${i + 1}`}
-        />
-      ))
-    }
-  </div>
+ <div
+  class="grid w-full max-w-[min(320px,80vw)] grid-cols-3 gap-1.5 mx-auto"
+  role="grid"
+  aria-label="Tic Tac Toe board"
+ >
+  {
+   Array.from({ length: 9 }).map((_, i) => (
+    <button
+     class="ttt-cell aspect-square rounded-lg border-2 border-white/20 bg-white/5 text-4xl font-bold text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-white/60 sm:text-5xl"
+     data-i={i}
+     aria-label={`Cell ${i + 1}`}
+    />
+   ))
+  }
+ </div>
 </GameShell>
 
 <script>
-  import { initGame } from "../games/arrow-game/scripts/game";
-  initGame();
+ import { initGame } from "../games/arrow-game/scripts/game";
+ initGame();
 </script>
+

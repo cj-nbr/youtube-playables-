@@ -1,48 +1,48 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "how-to-improve-reaction-time-with-browser-games",
-    title: "How to Improve Your Reaction Time with Browser Games",
-    description:
-      "Browser games are a fun and effective way to train your reaction time. Learn which games help and how to get faster.",
-    date: "2026-07-14",
-    updatedAt: "2026-07-14",
-    category: "Reflex Training",
-    tags: [
-      "reaction time",
-      "reflex games",
-      "browser games",
-      "improve reflexes",
-      "speed training",
-      "free reflex games",
-      "reaction speed",
-    ],
-    authorId: "dev",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "improve reaction time",
-    secondaryKeywords: [
-      "reaction time games",
-      "how to get faster reflexes",
-      "reflex training games",
-      "speed reaction games",
-    ],
-    lsiKeywords: [
-      "reflexes",
-      "response time",
-      "hand-eye coordination",
-      "timing",
-      "speed",
-      "precision",
-      "arcade games",
-    ],
-    gameId: "arrow-game",
-    excerpt:
-      "Browser games can train your reaction time effectively. Discover the best reflex games and how to improve your speed.",
-    content: `
+ {
+  slug: "how-to-improve-reaction-time-with-browser-games",
+  title: "How to Improve Your Reaction Time with Browser Games",
+  description:
+   "Browser games are a fun and effective way to train your reaction time. Learn which games help and how to get faster.",
+  date: "2026-07-14",
+  updatedAt: "2026-07-14",
+  category: "Reflex Training",
+  tags: [
+   "reaction time",
+   "reflex games",
+   "browser games",
+   "improve reflexes",
+   "speed training",
+   "free reflex games",
+   "reaction speed",
+  ],
+  authorId: "dev",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "improve reaction time",
+  secondaryKeywords: [
+   "reaction time games",
+   "how to get faster reflexes",
+   "reflex training games",
+   "speed reaction games",
+  ],
+  lsiKeywords: [
+   "reflexes",
+   "response time",
+   "hand-eye coordination",
+   "timing",
+   "speed",
+   "precision",
+   "arcade games",
+  ],
+  gameId: "arrow-game",
+  excerpt:
+   "Browser games can train your reaction time effectively. Discover the best reflex games and how to improve your speed.",
+  content: `
 <h2>Why Reaction Time Matters</h2>
 <p>Reaction time is the interval between perceiving a stimulus and responding to it. It affects everything from driving safety to sports performance to how quickly you can react in a fast-paced game. While genetics play a role, reaction time is also a trainable skill. Regular practice with the right games can measurably improve your speed.</p>
-<p>The best games for this are the ones that demand quick, precise responses. <a href="/arrow-game">Arrow Game</a> on YouTube Playables is a pure reflex challenge: arrows appear, you match them, and the pace climbs until you miss. No download, no account, just reaction.</p>
+<p>The best games for this are the ones that demand quick, precise responses. <a href="/arrow-game">Arrow Game</a> on Playables is a pure reflex challenge: arrows appear, you match them, and the pace climbs until you miss. No download, no account, just reaction.</p>
 <p>For timing-based training, <a href="/stack-tower">Stack Tower</a> sharpens your tap precision. Each round lasts seconds, and the restart is instant, making it ideal for quick reflex drills.</p>
 
 <h2>How Browser Games Train Reflexes</h2>
@@ -109,15 +109,15 @@ export const posts: BlogPost[] = [
 <h2>Sources &amp; References</h2>
 <ul>
 <li>Research on reaction time training and practice effects.</li>
-<li>Game mechanics from <a href="/arrow-game">Arrow Game</a> and <a href="/stack-tower">Stack Tower</a> on YouTube Playables.</li>
+<li>Game mechanics from <a href="/arrow-game">Arrow Game</a> and <a href="/stack-tower">Stack Tower</a> on Playables.</li>
 </ul>
 `,
-    faqs: [
-      { q: "Can browser games really improve reaction time?", a: "Yes. Regular practice with reflex-based games trains the visual processing and decision-making pathways." },
-      { q: "How long does it take to see improvement?", a: "Most players notice a difference within the first two weeks of regular practice." },
-      { q: "Are reflex games good for anything besides gaming?", a: "Yes. Faster reaction time improves driving safety, sports performance, and daily responsiveness." },
-      { q: "What is the best reflex game for beginners?", a: "Arrow Game is the best starting point. Simple rules and adjustable pace." },
-      { q: "Does age affect reaction time improvement?", a: "Younger players improve faster, but adults of all ages can see meaningful gains." },
-    ],
-  },
+  faqs: [
+   { q: "Can browser games really improve reaction time?", a: "Yes. Regular practice with reflex-based games trains the visual processing and decision-making pathways." },
+   { q: "How long does it take to see improvement?", a: "Most players notice a difference within the first two weeks of regular practice." },
+   { q: "Are reflex games good for anything besides gaming?", a: "Yes. Faster reaction time improves driving safety, sports performance, and daily responsiveness." },
+   { q: "What is the best reflex game for beginners?", a: "Arrow Game is the best starting point. Simple rules and adjustable pace." },
+   { q: "Does age affect reaction time improvement?", a: "Younger players improve faster, but adults of all ages can see meaningful gains." },
+  ],
+ },
 ];

@@ -1,48 +1,48 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "dots-and-boxes-vs-chess",
-    title: "Dots and Boxes vs Chess: Which Game Trains Your Brain Better?",
-    description:
-      "Compare Dots and Boxes and Chess to see which game sharpens logic, memory, and strategy effectively. Explore cognitive benefits and key differences for each.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Strategy Games",
-    tags: [
-      "Dots and Boxes",
-      "Chess",
-      "strategy comparison",
-      "cognitive skills",
-      "brain training",
-      "logic games",
-      "paper games",
-      "board games",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/dots-and-boxes/cover.webp",
-    primaryKeyword: "dots and boxes vs chess",
-    secondaryKeywords: [
-      "which game trains your brain better",
-      "dots and boxes cognitive benefits",
-      "chess cognitive benefits",
-      "strategy games comparison",
-      "logic games for brain training",
-    ],
-    lsiKeywords: [
-      "working memory",
-      "parity reasoning",
-      "chain counting",
-      "spatial visualization",
-      "pattern recognition",
-      "inhibitory control",
-      "combinatorial games",
-      "forward planning",
-    ],
-    gameId: "dots-and-boxes",
-    excerpt:
-      "Dots and Boxes and Chess both train strategic thinking, but they develop different cognitive muscles. Learn which game sharpens logic, memory, and planning best for your goals.",
-    content: `
+ {
+  slug: "dots-and-boxes-vs-chess",
+  title: "Dots and Boxes vs Chess: Which Game Trains Your Brain Better?",
+  description:
+   "Compare Dots and Boxes and Chess to see which game sharpens logic, memory, and strategy effectively. Explore cognitive benefits and key differences for each.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Strategy Games",
+  tags: [
+   "Dots and Boxes",
+   "Chess",
+   "strategy comparison",
+   "cognitive skills",
+   "brain training",
+   "logic games",
+   "paper games",
+   "board games",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/dots-and-boxes/cover.webp",
+  primaryKeyword: "dots and boxes vs chess",
+  secondaryKeywords: [
+   "which game trains your brain better",
+   "dots and boxes cognitive benefits",
+   "chess cognitive benefits",
+   "strategy games comparison",
+   "logic games for brain training",
+  ],
+  lsiKeywords: [
+   "working memory",
+   "parity reasoning",
+   "chain counting",
+   "spatial visualization",
+   "pattern recognition",
+   "inhibitory control",
+   "combinatorial games",
+   "forward planning",
+  ],
+  gameId: "dots-and-boxes",
+  excerpt:
+   "Dots and Boxes and Chess both train strategic thinking, but they develop different cognitive muscles. Learn which game sharpens logic, memory, and planning best for your goals.",
+  content: `
 <h2>Dots and Boxes and Chess: Which Game Trains Your Brain Better?</h2>
 <p>Dots and Boxes and Chess sit at opposite ends of the complexity spectrum, yet both demand sharp thinking and careful planning. Dots and Boxes wraps deep combinatorial logic inside a handful of dots and lines, while Chess unfolds across sixty-four squares with centuries of accumulated theory. Understanding what each game trains helps players choose the right exercise for the mental skill they want to build.</p>
 
@@ -77,64 +77,64 @@ export const posts: BlogPost[] = [
 <p>The table below summarizes which cognitive skills each game emphasizes most strongly.</p>
 
 <table>
-  <thead>
-    <tr>
-      <th>Skill</th>
-      <th>Dots and Boxes</th>
-      <th>Chess</th>
-      <th>Which Is Stronger Training</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Working memory</td>
-      <td>High (chain counting)</td>
-      <td>High (variation trees)</td>
-      <td>Comparable; different format</td>
-    </tr>
-    <tr>
-      <td>Spatial reasoning</td>
-      <td>Localized grid logic</td>
-      <td>Global board visualization</td>
-      <td>Chess for broad scanning</td>
-    </tr>
-    <tr>
-      <td>Logical reasoning</td>
-      <td>Very high (parity)</td>
-      <td>High (tactical motifs)</td>
-      <td>Dots and Boxes for exact logic</td>
-    </tr>
-    <tr>
-      <td>Pattern recognition</td>
-      <td>Medium (chain shapes)</td>
-      <td>Very high (opening theory)</td>
-      <td>Chess for pattern library</td>
-    </tr>
-    <tr>
-      <td>Planning depth</td>
-      <td>Medium (short chains)</td>
-      <td>Very high (long variations)</td>
-      <td>Chess for long-range planning</td>
-    </tr>
-    <tr>
-      <td>Inhibitory control</td>
-      <td>High (avoiding even chains)</td>
-      <td>High (resisting traps)</td>
-      <td>Comparable</td>
-    </tr>
-    <tr>
-      <td>Memory load</td>
-      <td>Low to medium</td>
-      <td>Very high</td>
-      <td>Chess for memory expansion</td>
-    </tr>
-    <tr>
-      <td>Mathematical transfer</td>
-      <td>High (counting, parity)</td>
-      <td>Medium (geometry, combinatorics)</td>
-      <td>Dots and Boxes for arithmetic logic</td>
-    </tr>
-  </tbody>
+ <thead>
+  <tr>
+   <th>Skill</th>
+   <th>Dots and Boxes</th>
+   <th>Chess</th>
+   <th>Which Is Stronger Training</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>Working memory</td>
+   <td>High (chain counting)</td>
+   <td>High (variation trees)</td>
+   <td>Comparable; different format</td>
+  </tr>
+  <tr>
+   <td>Spatial reasoning</td>
+   <td>Localized grid logic</td>
+   <td>Global board visualization</td>
+   <td>Chess for broad scanning</td>
+  </tr>
+  <tr>
+   <td>Logical reasoning</td>
+   <td>Very high (parity)</td>
+   <td>High (tactical motifs)</td>
+   <td>Dots and Boxes for exact logic</td>
+  </tr>
+  <tr>
+   <td>Pattern recognition</td>
+   <td>Medium (chain shapes)</td>
+   <td>Very high (opening theory)</td>
+   <td>Chess for pattern library</td>
+  </tr>
+  <tr>
+   <td>Planning depth</td>
+   <td>Medium (short chains)</td>
+   <td>Very high (long variations)</td>
+   <td>Chess for long-range planning</td>
+  </tr>
+  <tr>
+   <td>Inhibitory control</td>
+   <td>High (avoiding even chains)</td>
+   <td>High (resisting traps)</td>
+   <td>Comparable</td>
+  </tr>
+  <tr>
+   <td>Memory load</td>
+   <td>Low to medium</td>
+   <td>Very high</td>
+   <td>Chess for memory expansion</td>
+  </tr>
+  <tr>
+   <td>Mathematical transfer</td>
+   <td>High (counting, parity)</td>
+   <td>Medium (geometry, combinatorics)</td>
+   <td>Dots and Boxes for arithmetic logic</td>
+  </tr>
+ </tbody>
 </table>
 
 <h2>Which Skills Transfer Between Games</h2>
@@ -201,53 +201,54 @@ export const posts: BlogPost[] = [
 
 <h2>Sources & References</h2>
 <ul>
-  <li>Berlekamp, E. R., Conway, J. H., & Guy, R. K. (1982). <em>Winning Ways for Your Mathematical Plays</em>. Academic Press. Foundational text on combinatorial game theory including Dots and Boxes analysis.</li>
-  <li>Gobet, F., & Campitelli, G. (2007). The role of domain-specific practice in chess expertise. <em>Journal of Applied Psychology</em>, 92(3), 724-732. Review of memory and pattern recognition in chess skill acquisition.</li>
-  <li>Simons, D. J., et al. (2016). Do "brain training" programs work? <em>Psychological Science in the Public Interest</em>, 17(3), 103-186. Critical review of transfer effects from strategy games to general cognition.</li>
-  <li>Rotingen, T., et al. (2014). A review of the effects of physical activity on cognition. <em>British Journal of Sports Medicine</em>, 48(10), 866-870. Includes discussion of strategy games as cognitive interventions.</li>
+ <li>Berlekamp, E. R., Conway, J. H., & Guy, R. K. (1982). <em>Winning Ways for Your Mathematical Plays</em>. Academic Press. Foundational text on combinatorial game theory including Dots and Boxes analysis.</li>
+ <li>Gobet, F., & Campitelli, G. (2007). The role of domain-specific practice in chess expertise. <em>Journal of Applied Psychology</em>, 92(3), 724-732. Review of memory and pattern recognition in chess skill acquisition.</li>
+ <li>Simons, D. J., et al. (2016). Do "brain training" programs work? <em>Psychological Science in the Public Interest</em>, 17(3), 103-186. Critical review of transfer effects from strategy games to general cognition.</li>
+ <li>Rotingen, T., et al. (2014). A review of the effects of physical activity on cognition. <em>British Journal of Sports Medicine</em>, 48(10), 866-870. Includes discussion of strategy games as cognitive interventions.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "Is Dots and Boxes easier to learn than Chess?",
-        a: "Yes. Dots and Boxes takes minutes to explain and a single game to internalize. Chess requires weeks to understand basic tactics and years to master opening principles.",
-      },
-      {
-        q: "Does playing Dots and Boxes improve chess performance?",
-        a: "Indirectly, yes. The counting, parity, and inhibitory control practiced in Dots and Boxes strengthen general strategic thinking. Many chess coaches recommend simple strategy games as warm-ups for students.",
-      },
-      {
-        q: "Which game is better for children?",
-        a: "Dots and Boxes is often better for younger children because it has no piece hierarchy to memorize and no checkmate condition that can feel discouraging. Chess can be introduced around age seven or eight, depending on the child's attention span.",
-      },
-      {
-        q: "Does Chess train working memory more than Dots and Boxes?",
-        a: "Chess generally imposes a heavier memory load because players must hold more pieces and potential moves in mind at once. However, Dots and Boxes trains a more exact form of working memory tied to numerical counting.",
-      },
-      {
-        q: "Can I get better at logic by playing Dots and Boxes?",
-        a: "Yes. Parity reasoning, conditional thinking, and consequence evaluation are all practiced every game. These skills map closely to formal logic and programming.",
-      },
-      {
-        q: "Is there a mathematical proof for the best Dots and Boxes move?",
-        a: "For small grids, yes. The game is solved up to certain sizes, meaning the optimal strategy is known. For larger grids, no complete solution exists, though researchers continue to improve computer play.",
-      },
-      {
-        q: "Should I switch between games to avoid burnout?",
-        a: "Cross-training is beneficial. Switching between Dots and Boxes and Chess keeps your brain flexible and prevents overlearning one pattern set at the expense of broader strategic skills.",
-      },
-      {
-        q: "Which game has a higher skill ceiling?",
-        a: "Chess has a higher documented skill ceiling because it has been studied for centuries and supports deeper opening and endgame theory. Dots and Boxes is solved for small boards, but on large grids it still offers plenty of challenge.",
-      },
-      {
-        q: "Can adults benefit from Dots and Boxes?",
-        a: "Absolutely. Adults use Dots and Boxes to practice precise counting, combat cognitive decline, and enjoy a game that is fast to set up and deep to master.",
-      },
-      {
-        q: "Which game trains spatial reasoning better?",
-        a: "Chess trains broad board visualization and long-range spatial planning. Dots and Boxes trains localized spatial counting. For general spatial ability, Chess has a slight edge, but both games improve the skill.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "Is Dots and Boxes easier to learn than Chess?",
+    a: "Yes. Dots and Boxes takes minutes to explain and a single game to internalize. Chess requires weeks to understand basic tactics and years to master opening principles.",
+   },
+   {
+    q: "Does playing Dots and Boxes improve chess performance?",
+    a: "Indirectly, yes. The counting, parity, and inhibitory control practiced in Dots and Boxes strengthen general strategic thinking. Many chess coaches recommend simple strategy games as warm-ups for students.",
+   },
+   {
+    q: "Which game is better for children?",
+    a: "Dots and Boxes is often better for younger children because it has no piece hierarchy to memorize and no checkmate condition that can feel discouraging. Chess can be introduced around age seven or eight, depending on the child's attention span.",
+   },
+   {
+    q: "Does Chess train working memory more than Dots and Boxes?",
+    a: "Chess generally imposes a heavier memory load because players must hold more pieces and potential moves in mind at once. However, Dots and Boxes trains a more exact form of working memory tied to numerical counting.",
+   },
+   {
+    q: "Can I get better at logic by playing Dots and Boxes?",
+    a: "Yes. Parity reasoning, conditional thinking, and consequence evaluation are all practiced every game. These skills map closely to formal logic and programming.",
+   },
+   {
+    q: "Is there a mathematical proof for the best Dots and Boxes move?",
+    a: "For small grids, yes. The game is solved up to certain sizes, meaning the optimal strategy is known. For larger grids, no complete solution exists, though researchers continue to improve computer play.",
+   },
+   {
+    q: "Should I switch between games to avoid burnout?",
+    a: "Cross-training is beneficial. Switching between Dots and Boxes and Chess keeps your brain flexible and prevents overlearning one pattern set at the expense of broader strategic skills.",
+   },
+   {
+    q: "Which game has a higher skill ceiling?",
+    a: "Chess has a higher documented skill ceiling because it has been studied for centuries and supports deeper opening and endgame theory. Dots and Boxes is solved for small boards, but on large grids it still offers plenty of challenge.",
+   },
+   {
+    q: "Can adults benefit from Dots and Boxes?",
+    a: "Absolutely. Adults use Dots and Boxes to practice precise counting, combat cognitive decline, and enjoy a game that is fast to set up and deep to master.",
+   },
+   {
+    q: "Which game trains spatial reasoning better?",
+    a: "Chess trains broad board visualization and long-range spatial planning. Dots and Boxes trains localized spatial counting. For general spatial ability, Chess has a slight edge, but both games improve the skill.",
+   },
+  ],
+ },
 ];
+

@@ -6,11 +6,11 @@ A one-tap timing game where you drop moving blocks onto a growing tower. Overhan
 
 ```
 stack-tower/
-  content.ts        # Guide, instructions, FAQs, and blog articles (GameContent)
-  README.md         # This file
-  blog/
-    complete-guide.md
-  assets/  images/  audio/  scripts/  styles/  levels/  seo/  components/
+ content.ts    # Guide, instructions, FAQs, and blog articles (GameContent)
+ README.md     # This file
+ blog/
+  complete-guide.md
+ assets/ images/ audio/ scripts/ styles/ levels/ seo/ components/
 ```
 
 ## Controls
@@ -33,3 +33,4 @@ No dragging or holding is required; each block is placed with a single click or 
 - `content.ts` exports `content` typed as `GameContent` from `../../shared/types`.
 - Score is the number of blocks placed (endless play, beat your high score).
 - Assets, scripts, styles, levels, seo, and components are reserved placeholders.
+

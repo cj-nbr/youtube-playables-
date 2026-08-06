@@ -1,47 +1,47 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "best-strategy-games-to-play-with-friends",
-    title: "Best Strategy Games to Play With Friends: 10 Picks for Game Night",
-    description: "Discover the best strategy games to play with friends, from classic board games to modern abstract titles. Compare mechanics, complexity, and replay value.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Strategy Games",
-    tags: [
-      "best strategy games",
-      "two player strategy",
-      "board game night",
-      "abstract strategy",
-      "friends gaming",
-      "competitive games",
-      "replayable strategy",
-      "game night ideas"
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "best strategy games",
-    secondaryKeywords: [
-      "strategy games with friends",
-      "two player strategy games",
-      "board game night ideas",
-      "competitive strategy games",
-      "abstract strategy games"
-    ],
-    lsiKeywords: [
-      "chess",
-      "checkers",
-      "reversi",
-      "dots and boxes",
-      "game mechanics",
-      "replay value",
-      "player count",
-      "depth of strategy",
-      "setup time",
-      "game night"
-    ],
-    excerpt: "The best strategy games to play with friends balance accessibility with depth. Whether you prefer quick matches or longer sessions, these ten picks cover the full spectrum.",
-    content: `<h2>Why Strategy Games Work Best With Friends</h2>
+ {
+  slug: "best-strategy-games-to-play-with-friends",
+  title: "Best Strategy Games to Play With Friends: 10 Picks for Game Night",
+  description: "Discover the best strategy games to play with friends, from classic board games to modern abstract titles. Compare mechanics, complexity, and replay value.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Strategy Games",
+  tags: [
+   "best strategy games",
+   "two player strategy",
+   "board game night",
+   "abstract strategy",
+   "friends gaming",
+   "competitive games",
+   "replayable strategy",
+   "game night ideas"
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "best strategy games",
+  secondaryKeywords: [
+   "strategy games with friends",
+   "two player strategy games",
+   "board game night ideas",
+   "competitive strategy games",
+   "abstract strategy games"
+  ],
+  lsiKeywords: [
+   "chess",
+   "checkers",
+   "reversi",
+   "dots and boxes",
+   "game mechanics",
+   "replay value",
+   "player count",
+   "depth of strategy",
+   "setup time",
+   "game night"
+  ],
+  excerpt: "The best strategy games to play with friends balance accessibility with depth. Whether you prefer quick matches or longer sessions, these ten picks cover the full spectrum.",
+  content: `<h2>Why Strategy Games Work Best With Friends</h2>
 
 <p>Strategy games create natural tension between players. Unlike pure luck games, every move in a good strategy title reflects a real decision. That means victory feels earned, and repeated play reveals new layers of play. The best strategy games to play with friends reward both careful planning and adaptability, making them ideal for two-player matchups or small-group game nights.</p>
 
@@ -60,9 +60,9 @@ export const posts: BlogPost[] = [
 <blockquote>Chess is the art of analysis. Grandmasters spend years studying single opening lines, but casual players still enjoy meaningful matches with just a few hours of practice.</blockquote>
 
 <div class="cta-box">
-  <h3>Ready to play chess?</h3>
-  <p>Open a free match right now and test your opening knowledge.</p>
-  <a class="btn btn-primary h-11 px-8 text-sm" href="/chess">Play Free</a>
+ <h3>Ready to play chess?</h3>
+ <p>Open a free match right now and test your opening knowledge.</p>
+ <a class="btn btn-primary h-11 px-8 text-sm" href="/chess">Play Free</a>
 </div>
 
 <h2>2. Reversi</h2>
@@ -80,7 +80,7 @@ export const posts: BlogPost[] = [
 <p>Mandatory jumps remove decision fatigue and speed up play, which makes checkers ideal for quick rounds between heavier strategy games. The two-player dynamic remains tense because every jump changes the board materially. Kings add a late-game dimension that beginners often underestimate. Tournament checkers uses three-move restrictions and draw rules that most casual players never encounter. If your group loves checkers, consider exploring official rule sets to add rigor.</p>
 
 <div class="callout">
-  <p>Tournament checkers uses three-move restrictions and draw rules that most casual players never encounter. If your group loves checkers, consider exploring official rule sets to add rigor.</p>
+ <p>Tournament checkers uses three-move restrictions and draw rules that most casual players never encounter. If your group loves checkers, consider exploring official rule sets to add rigor.</p>
 </div>
 
 <h2>4. Dots and Boxes</h2>
@@ -90,15 +90,15 @@ export const posts: BlogPost[] = [
 <p>The strategy lies in deciding when to accept a box and when to deliberately avoid completing one. Giving up a small box now might prevent the opponent from chaining a long series of boxes later. Skilled players calculate chains rather than individual boxes, which shifts the game from simple pattern matching to resource management. Dots and boxes also works as a warm-up or cool-down between longer matches because setup takes seconds and rounds are fast.</p>
 
 <table>
-  <thead>
-    <tr><th>Game</th><th>Players</th><th>Avg Session</th><th>Depth</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Chess</td><td>2</td><td>20–60 min</td><td>Very High</td></tr>
-    <tr><td>Reversi</td><td>2</td><td>15–30 min</td><td>High</td></tr>
-    <tr><td>Checkers</td><td>2</td><td>10–25 min</td><td>Medium-High</td></tr>
-    <tr><td>Dots and Boxes</td><td>2–4</td><td>10–20 min</td><td>Medium</td></tr>
-  </tbody>
+ <thead>
+  <tr><th>Game</th><th>Players</th><th>Avg Session</th><th>Depth</th></tr>
+ </thead>
+ <tbody>
+  <tr><td>Chess</td><td>2</td><td>20–60 min</td><td>Very High</td></tr>
+  <tr><td>Reversi</td><td>2</td><td>15–30 min</td><td>High</td></tr>
+  <tr><td>Checkers</td><td>2</td><td>10–25 min</td><td>Medium-High</td></tr>
+  <tr><td>Dots and Boxes</td><td>2–4</td><td>10–20 min</td><td>Medium</td></tr>
+ </tbody>
 </table>
 
 <h2>5. Go</h2>
@@ -132,7 +132,7 @@ export const posts: BlogPost[] = [
 <p>Physical comfort matters too. Board games require table space, while mobile and digital versions compress the same mechanics into smaller screens. If your group meets in cafes or travels often, titles with compact boards or strong digital implementations provide the best experience. Mix physical and digital formats across game nights to keep the routine fresh.</p>
 
 <div class="summary-box">
-  <p><span class="tip">Tip:</span> Rotate games across multiple game nights instead of replaying the same title. Variety keeps interest high and exposes your group to different strategic thinking patterns.</p>
+ <p><span class="tip">Tip:</span> Rotate games across multiple game nights instead of replaying the same title. Variety keeps interest high and exposes your group to different strategic thinking patterns.</p>
 </div>
 
 <h2>Building a Strategy Game Rotation</h2>
@@ -172,63 +172,63 @@ export const posts: BlogPost[] = [
 <h2>Sources &amp; References</h2>
 
 <ul>
-  <li>Murray, H. J. R. (1913). <em>A History of Chess</em>. Oxford University Press.</li>
-  <li>Levy, D. (1986). <em>Computer Chess Compendium</em>. B.T. Batsford.</li>
-  <li>Falkener, E. (1892). <em>Games Ancient and Oriental</em>. Longmans, Green &amp; Co.</li>
+ <li>Murray, H. J. R. (1913). <em>A History of Chess</em>. Oxford University Press.</li>
+ <li>Levy, D. (1986). <em>Computer Chess Compendium</em>. B.T. Batsford.</li>
+ <li>Falkener, E. (1892). <em>Games Ancient and Oriental</em>. Longmans, Green &amp; Co.</li>
 </ul>
-  `,
-    faqs: [
-      { q: "What are the best strategy games for two players?", a: "Chess, reversi, and checkers all rank highly for two-player strategy. Each uses perfect information and rewards careful planning. Dots and boxes also works well for two players, though it supports larger groups." },
-      { q: "Are strategy games better with two players or more?", a: "It depends on the group. Two-player strategy games produce head-to-head contests without kingmaking. Group strategy games add negotiation and social deduction, which some players prefer." },
-      { q: "Can beginners enjoy chess right away?", a: "Yes. Basic moves and capture rules can be learned in minutes. Beginners should expect to lose many games early, but each loss teaches patterns that improve future play." },
-      { q: "Is reversi harder than checkers?", a: "Reversi generally requires more board awareness because every move flips multiple discs. Checkers has simpler movement rules but demands strong endgame calculation at high levels." },
-      { q: "What makes dots and boxes strategically interesting?", a: "The forced-move mechanic after completing a box creates chain reactions. Players must decide whether to give up short-term points to avoid handing a long chain to their opponent." },
-      { q: "How long does a typical chess game last?", a: "Casual games usually finish in twenty to forty minutes. Blitz variants reduce that to five or ten minutes, while classical tournament play can extend past an hour." },
-      { q: "Can I improve at strategy games quickly?", a: "Consistent practice beats occasional marathon sessions. Playing a short game every day and reviewing key moves builds pattern recognition faster than cramming." },
-      { q: "Should I learn multiple strategy games at once?", a: "Learning two or three games simultaneously prevents overfitting to one title and improves transferable skills such as counting, threat recognition, and tempo management." }
-    ]
-  },
-  {
-    slug: "two-player-pass-and-play-games",
-    title: "Two-Player Pass-and-Play Games: A Complete Guide",
-    description: "A practical guide to two-player pass-and-play games covering turn design, frustration control, and title recommendations for phone and tablet play.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Strategy Games",
-    tags: [
-      "pass and play",
-      "two player games",
-      "mobile gaming",
-      "local multiplayer",
-      "tablet games",
-      "strategy games",
-      "phone games",
-      "shared screen gaming"
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "two player games",
-    secondaryKeywords: [
-      "pass and play games",
-      "two player mobile games",
-      "local multiplayer games",
-      "shared screen gaming",
-      "tablet two player games"
-    ],
-    lsiKeywords: [
-      "chess",
-      "checkers",
-      "chinese checkers",
-      "reversi",
-      "dots and boxes",
-      "turn-based design",
-      "screen privacy",
-      "hotseat gaming",
-      "strategy depth",
-      "mobile strategy"
-    ],
-    excerpt: "Pass-and-play design asks more from turn structure than networked multiplayer. Good two-player pass-and-play games hide state, manage downtime, and keep both players engaged.",
-    content: `<h2>What Makes Pass-and-Play Work</h2>
+ `,
+  faqs: [
+   { q: "What are the best strategy games for two players?", a: "Chess, reversi, and checkers all rank highly for two-player strategy. Each uses perfect information and rewards careful planning. Dots and boxes also works well for two players, though it supports larger groups." },
+   { q: "Are strategy games better with two players or more?", a: "It depends on the group. Two-player strategy games produce head-to-head contests without kingmaking. Group strategy games add negotiation and social deduction, which some players prefer." },
+   { q: "Can beginners enjoy chess right away?", a: "Yes. Basic moves and capture rules can be learned in minutes. Beginners should expect to lose many games early, but each loss teaches patterns that improve future play." },
+   { q: "Is reversi harder than checkers?", a: "Reversi generally requires more board awareness because every move flips multiple discs. Checkers has simpler movement rules but demands strong endgame calculation at high levels." },
+   { q: "What makes dots and boxes strategically interesting?", a: "The forced-move mechanic after completing a box creates chain reactions. Players must decide whether to give up short-term points to avoid handing a long chain to their opponent." },
+   { q: "How long does a typical chess game last?", a: "Casual games usually finish in twenty to forty minutes. Blitz variants reduce that to five or ten minutes, while classical tournament play can extend past an hour." },
+   { q: "Can I improve at strategy games quickly?", a: "Consistent practice beats occasional marathon sessions. Playing a short game every day and reviewing key moves builds pattern recognition faster than cramming." },
+   { q: "Should I learn multiple strategy games at once?", a: "Learning two or three games simultaneously prevents overfitting to one title and improves transferable skills such as counting, threat recognition, and tempo management." }
+  ]
+ },
+ {
+  slug: "two-player-pass-and-play-games",
+  title: "Two-Player Pass-and-Play Games: A Complete Guide",
+  description: "A practical guide to two-player pass-and-play games covering turn design, frustration control, and title recommendations for phone and tablet play.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Strategy Games",
+  tags: [
+   "pass and play",
+   "two player games",
+   "mobile gaming",
+   "local multiplayer",
+   "tablet games",
+   "strategy games",
+   "phone games",
+   "shared screen gaming"
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "two player games",
+  secondaryKeywords: [
+   "pass and play games",
+   "two player mobile games",
+   "local multiplayer games",
+   "shared screen gaming",
+   "tablet two player games"
+  ],
+  lsiKeywords: [
+   "chess",
+   "checkers",
+   "chinese checkers",
+   "reversi",
+   "dots and boxes",
+   "turn-based design",
+   "screen privacy",
+   "hotseat gaming",
+   "strategy depth",
+   "mobile strategy"
+  ],
+  excerpt: "Pass-and-play design asks more from turn structure than networked multiplayer. Good two-player pass-and-play games hide state, manage downtime, and keep both players engaged.",
+  content: `<h2>What Makes Pass-and-Play Work</h2>
 
 <p>Pass-and-play means two people share one device. After one player finishes a turn, they hand the device to the opponent, who then takes their turn without seeing the previous player's hidden information. The format works best when turns are short, hidden state is minimal, and the board gives enough visual feedback to make each decision feel consequential.</p>
 
@@ -243,16 +243,16 @@ export const posts: BlogPost[] = [
 <p>Perfect-information games such as chess, checkers, reversi, and dots and boxes expose the entire board after each turn. Nothing needs hiding, so the format fits cleanly. Hidden-role titles require a screen shield or a referee, which adds friction. For pure two-player strategy, stick to titles with perfect or complete information. That principle keeps setup simple and prevents accidental peeks during device handoffs.</p>
 
 <table>
-  <thead>
-    <tr><th>Game</th><th>Hidden State</th><th>Pass-and-Play Rating</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Chess</td><td>None</td><td>Excellent</td></tr>
-    <tr><td>Checkers</td><td>None</td><td>Excellent</td></tr>
-    <tr><td>Reversi</td><td>None</td><td>Excellent</td></tr>
-    <tr><td>Dots and Boxes</td><td>None</td><td>Excellent</td></tr>
-    <tr><td>Chinese Checkers</td><td>None</td><td>Good</td></tr>
-  </tbody>
+ <thead>
+  <tr><th>Game</th><th>Hidden State</th><th>Pass-and-Play Rating</th></tr>
+ </thead>
+ <tbody>
+  <tr><td>Chess</td><td>None</td><td>Excellent</td></tr>
+  <tr><td>Checkers</td><td>None</td><td>Excellent</td></tr>
+  <tr><td>Reversi</td><td>None</td><td>Excellent</td></tr>
+  <tr><td>Dots and Boxes</td><td>None</td><td>Excellent</td></tr>
+  <tr><td>Chinese Checkers</td><td>None</td><td>Good</td></tr>
+ </tbody>
 </table>
 
 <p>Abstract strategy games score highest for pass-and-play because the entire board is visible. Hidden-role games require a screen shield or a referee, which adds friction. For pure two-player strategy, stick to titles with perfect or complete information.</p>
@@ -264,7 +264,7 @@ export const posts: BlogPost[] = [
 <p>Long-form strategy games such as chess and shogi benefit from structured time controls. A ten-minute game with a five-second increment keeps thinking intense but prevents analysis paralysis. For shorter sessions, use sudden-death time controls or no clocks at all. The social contract of pass-and-play works well when players respect reasonable turn lengths without mechanical enforcement.</p>
 
 <div class="callout">
-  <p>Consider using a timer app or a sand timer on phones and tablets. Even a one-minute limit keeps games moving and adds mild pressure that sharpens decision quality.</p>
+ <p>Consider using a timer app or a sand timer on phones and tablets. Even a one-minute limit keeps games moving and adds mild pressure that sharpens decision quality.</p>
 </div>
 
 <h2>Touch Controls and Physical Comfort</h2>
@@ -282,9 +282,9 @@ export const posts: BlogPost[] = [
 <p>Humor and banter also reduce tension. Commentating on surprising moves, celebrating clever traps, and laughing at blunders keeps the mood light. Avoid unsolicited advice unless both players explicitly want coaching. The line between friendly suggestion and condescension is thin, and crossed lines linger longer in shared-screen settings where no one can log off to cool down.</p>
 
 <div class="cta-box">
-  <h3>Try pass-and-play chess now</h3>
-  <p>Load a match on any device and hand the board to a friend. No login required.</p>
-  <a class="btn btn-primary h-11 px-8 text-sm" href="/chess">Play Free</a>
+ <h3>Try pass-and-play chess now</h3>
+ <p>Load a match on any device and hand the board to a friend. No login required.</p>
+ <a class="btn btn-primary h-11 px-8 text-sm" href="/chess">Play Free</a>
 </div>
 
 <h2>Hardware and Access Setup</h2>
@@ -362,25 +362,26 @@ export const posts: BlogPost[] = [
 <h2>Sources &amp; References</h2>
 
 <ul>
-  <li>Pritchard, D. B. (1994). <em>The Encyclopedia of Chess Variants</em>. Games &amp; Puzzles Publications.</li>
-  <li>Bell, R. C. (1979). <em>Board and Table Game Antiques</em>. Shire Publications.</li>
-  <li>Parlett, D. (1999). <em>The Oxford History of Board Games</em>. Oxford University Press.</li>
-  <li>Fox, M. (1998). <em>Teaching with Games</em>. Corwin Press.</li>
+ <li>Pritchard, D. B. (1994). <em>The Encyclopedia of Chess Variants</em>. Games &amp; Puzzles Publications.</li>
+ <li>Bell, R. C. (1979). <em>Board and Table Game Antiques</em>. Shire Publications.</li>
+ <li>Parlett, D. (1999). <em>The Oxford History of Board Games</em>. Oxford University Press.</li>
+ <li>Fox, M. (1998). <em>Teaching with Games</em>. Corwin Press.</li>
 </ul>
-  `,
-    faqs: [
-      { q: "What are pass-and-play games?", a: "Pass-and-play games let two or more players share one device. After each turn, the device passes to the next player, who acts without seeing hidden information from the previous turn." },
-      { q: "Are chess and checkers good for pass-and-play?", a: "Yes. Both titles use perfect information, short discrete moves, and no hidden state. They work well on phones, tablets, and laptops without extra setup." },
-      { q: "How do I avoid downtime during pass-and-play?", a: "Pick games with short turn times or set a simple timer. Abstract strategy games naturally compress turns compared to heavy simulation or role-playing titles." },
-      { q: "Can pass-and-play work on small phone screens?", a: "It works, but board games benefit from larger displays. Tablets reduce handoff friction and make long matches more comfortable." },
-      { q: "What games avoid screen privacy issues?", a: "Perfect-information games such as chess, checkers, reversi, and dots and boxes have nothing to hide between turns. Avoid hidden-role titles unless you use a screen shield." },
-      { q: "Is pass-and-play still popular in 2026?", a: "Yes. Local social gaming remains strong in cafes, classrooms, and travel settings where network access is unreliable or where players want face-to-face interaction." },
-      { q: "Can I save pass-and-play games and resume later?", a: "Most digital board game apps include save slots. Save support is essential for longer strategy games such as chess or reversi when players need breaks between sessions." },
-      { q: "What touch controls work best for pass-and-play?", a: "Tap-to-select and tap-to-move controls work better than drag gestures on shared devices. Large touch targets and clear piece highlighting reduce misclicks during handoffs." },
-      { q: "How long should a pass-and-play session last?", a: "Most casual sessions run thirty to ninety minutes. Mix shorter and longer titles to match energy levels and attention spans within the group." },
-      { q: "Do pass-and-play games support spectators?", a: "Yes. Abstract strategy games are spectator-friendly because the board state is fully visible. Spectators can follow along without rule explanations and often spot moves the players miss." },
-      { q: "Should I use sound and haptics during pass-and-play?", a: "Subtle audio cues and light vibration confirm moves without giving away hidden state. They keep the experience tactile and reduce accidental double-taps during device handoffs." },
-      { q: "Can pass-and-play improve real-world social skills?", a: "Regular face-to-face gaming improves reading body language, managing turn patience, and handling both victory and defeat gracefully. Those skills transfer to negotiations, teamwork, and leadership." }
-    ]
-  }
+ `,
+  faqs: [
+   { q: "What are pass-and-play games?", a: "Pass-and-play games let two or more players share one device. After each turn, the device passes to the next player, who acts without seeing hidden information from the previous turn." },
+   { q: "Are chess and checkers good for pass-and-play?", a: "Yes. Both titles use perfect information, short discrete moves, and no hidden state. They work well on phones, tablets, and laptops without extra setup." },
+   { q: "How do I avoid downtime during pass-and-play?", a: "Pick games with short turn times or set a simple timer. Abstract strategy games naturally compress turns compared to heavy simulation or role-playing titles." },
+   { q: "Can pass-and-play work on small phone screens?", a: "It works, but board games benefit from larger displays. Tablets reduce handoff friction and make long matches more comfortable." },
+   { q: "What games avoid screen privacy issues?", a: "Perfect-information games such as chess, checkers, reversi, and dots and boxes have nothing to hide between turns. Avoid hidden-role titles unless you use a screen shield." },
+   { q: "Is pass-and-play still popular in 2026?", a: "Yes. Local social gaming remains strong in cafes, classrooms, and travel settings where network access is unreliable or where players want face-to-face interaction." },
+   { q: "Can I save pass-and-play games and resume later?", a: "Most digital board game apps include save slots. Save support is essential for longer strategy games such as chess or reversi when players need breaks between sessions." },
+   { q: "What touch controls work best for pass-and-play?", a: "Tap-to-select and tap-to-move controls work better than drag gestures on shared devices. Large touch targets and clear piece highlighting reduce misclicks during handoffs." },
+   { q: "How long should a pass-and-play session last?", a: "Most casual sessions run thirty to ninety minutes. Mix shorter and longer titles to match energy levels and attention spans within the group." },
+   { q: "Do pass-and-play games support spectators?", a: "Yes. Abstract strategy games are spectator-friendly because the board state is fully visible. Spectators can follow along without rule explanations and often spot moves the players miss." },
+   { q: "Should I use sound and haptics during pass-and-play?", a: "Subtle audio cues and light vibration confirm moves without giving away hidden state. They keep the experience tactile and reduce accidental double-taps during device handoffs." },
+   { q: "Can pass-and-play improve real-world social skills?", a: "Regular face-to-face gaming improves reading body language, managing turn patience, and handling both victory and defeat gracefully. Those skills transfer to negotiations, teamwork, and leadership." }
+  ]
+ }
 ];
+

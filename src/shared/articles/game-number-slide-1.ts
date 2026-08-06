@@ -1,45 +1,45 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "number-slide-complete-beginner-guide",
-    title: "Number Slide Complete Beginner Guide: How to Play the 15-Puzzle Without the Frustration",
-    description:
-      "A complete beginner guide to Number Slide, the classic 15-puzzle. Learn the rules, the board, the one move that matters, and a calm first-session plan that works.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Brain & Logic",
-    tags: [
-      "how to play number slide",
-      "15 puzzle for beginners",
-      "number slide rules",
-      "sliding puzzle tutorial",
-      "classic browser puzzle game",
-      "logic puzzle getting started",
-      "number slide tips",
-    ],
-    authorId: "mira",
-    cover: "/images/games/number-slide/cover.webp",
-    primaryKeyword: "how to play number slide",
-    secondaryKeywords: [
-      "15 puzzle rules explained",
-      "number slide beginner tutorial",
-      "sliding tile puzzle how to play",
-      "number slide first session",
-    ],
-    lsiKeywords: [
-      "sliding puzzle",
-      "tile arrangement",
-      "blank space",
-      "goal state",
-      "solvability",
-      "logic game",
-      "grid puzzle",
-    ],
-    gameId: "number-slide",
-    excerpt:
-      "New to Number Slide? This beginner guide walks through the board, the single rule that matters, the most common beginner mistakes, and a first-session plan that keeps the puzzle calm instead of maddening.",
-    content: `
+ {
+  slug: "number-slide-complete-beginner-guide",
+  title: "Number Slide Complete Beginner Guide: How to Play the 15-Puzzle Without the Frustration",
+  description:
+   "A complete beginner guide to Number Slide, the classic 15-puzzle. Learn the rules, the board, the one move that matters, and a calm first-session plan that works.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Brain & Logic",
+  tags: [
+   "how to play number slide",
+   "15 puzzle for beginners",
+   "number slide rules",
+   "sliding puzzle tutorial",
+   "classic browser puzzle game",
+   "logic puzzle getting started",
+   "number slide tips",
+  ],
+  authorId: "mira",
+  cover: "/images/games/number-slide/cover.webp",
+  primaryKeyword: "how to play number slide",
+  secondaryKeywords: [
+   "15 puzzle rules explained",
+   "number slide beginner tutorial",
+   "sliding tile puzzle how to play",
+   "number slide first session",
+  ],
+  lsiKeywords: [
+   "sliding puzzle",
+   "tile arrangement",
+   "blank space",
+   "goal state",
+   "solvability",
+   "logic game",
+   "grid puzzle",
+  ],
+  gameId: "number-slide",
+  excerpt:
+   "New to Number Slide? This beginner guide walks through the board, the single rule that matters, the most common beginner mistakes, and a first-session plan that keeps the puzzle calm instead of maddening.",
+  content: `
 <h2>Why Number Slide Still Has A Hold On People</h2>
 <p>There is a reason the sliding number puzzle has outlasted almost every fad that came after it. It is quiet. It asks nothing of you but patience and a little planning, and it fits in the gap between two meetings or the last five minutes before sleep. You open <a href="/number-slide">Number Slide</a>, the tiles are scrambled, and a small part of your brain immediately wants them ordered. That itch is the whole game, and it is a clean one.</p>
 <p>This guide is for the person who has never solved one on purpose. Maybe you tapped at it as a kid and gave up. Maybe you just found it on this site and want to know what you are looking at. Either way, the goal here is simple: by the end you should be able to sit down with a scrambled board and know exactly what to do first, what to avoid, and how to finish without the panic that sends most beginners into random sliding.</p>
@@ -159,92 +159,92 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Combination puzzle" - context on puzzles solved by rearranging pieces into a goal state, including the 15-puzzle.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What is Number Slide?",
-        a: "Number Slide is a sliding tile puzzle, usually a 4x4 grid holding fifteen numbered tiles and one empty square. You slide tiles into the blank until the numbers run 1 to 15 in order with the gap in the corner.",
-      },
-      {
-        q: "How do you play the 15-puzzle?",
-        a: "You move any tile adjacent to the empty square into that square, one at a time. By repeatedly sliding, you rearrange the tiles into numerical order from top left to bottom right.",
-      },
-      {
-        q: "Can every Number Slide board be solved?",
-        a: "Modern digital versions scramble by making legal moves from the solved state, so the board you are given is always solvable. Older physical toys sometimes shipped in an unsolvable state by accident.",
-      },
-      {
-        q: "What is the easiest way to start solving?",
-        a: "Lock the top row first, left to right, then the left column, then continue peeling the board from the outside in. Named, small goals beat a vague wish to finish.",
-      },
-      {
-        q: "Why do beginners get stuck?",
-        a: "They slide randomly, disturb tiles they already placed, or react to where the blank is instead of sending it where it needs to be. Slowing down and planning each move fixes most of it.",
-      },
-      {
-        q: "Should I watch the numbers or the blank?",
-        a: "Watch the blank. The empty square is the only thing that moves, so learning to drive it is the core skill. Thinking in terms of where the gap should go next makes the board feel ordered.",
-      },
-      {
-        q: "Is the 3x3 version good for learning?",
-        a: "Yes. The 3x3, eight-tile version teaches the blank-square habit with far less complexity, and the skill transfers directly to the classic 4x4 board.",
-      },
-      {
-        q: "How is Number Slide different from Sudoku?",
-        a: "Sudoku is pure deduction with no movement, placing numbers by constraint. Number Slide adds a physical sliding limit, so you can only move tiles that touch the empty square.",
-      },
-      {
-        q: "How long does a 4x4 solve take?",
-        a: "For a beginner, somewhere between five and twenty minutes depending on scramble and method. With practice, a clean solve drops well under five minutes.",
-      },
-      {
-        q: "What other games are like Number Slide?",
-        a: "Sudoku, jigsaw, reversi, and lettermaze all exercise planning and spatial thinking, though each uses a different mechanic. Number Slide's signature is the single moving blank square.",
-      },
-      {
-        q: "Can I get better without grinding?",
-        a: "Yes. A few short solves most days builds the planning skill faster than one long frustrated session, because the improvement comes from repetition, not from duration.",
-      },
-    ],
-  },
-  {
-    slug: "number-slide-how-to-solve-15-puzzle",
-    title: "How to Solve the 15-Puzzle: A Row-by-Row Method That Actually Finishes the Board",
-    description:
-      "A clear step-by-step method for solving the 15-puzzle on Number Slide. Solve it row by row and corner by corner, with the tricks that keep placed tiles from sliding out.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Brain & Logic",
-    tags: [
-      "how to solve the 15 puzzle",
-      "15 puzzle step by step",
-      "row by row sliding puzzle",
-      "number slide solving method",
-      "15 puzzle algorithm",
-      "solve sliding tile puzzle",
-      "number slide strategy",
-    ],
-    authorId: "mira",
-    cover: "/images/games/number-slide/cover.webp",
-    primaryKeyword: "how to solve the 15 puzzle",
-    secondaryKeywords: [
-      "15 puzzle row by row method",
-      "step by step 15 puzzle solve",
-      "number slide solve tutorial",
-      "sliding puzzle solving strategy",
-    ],
-    lsiKeywords: [
-      "top row",
-      "left column",
-      "corner tiles",
-      "blank square routing",
-      "last two rows",
-      "tile placement",
-      "goal configuration",
-    ],
-    gameId: "number-slide",
-    excerpt:
-      "Stuck on the 15-puzzle? This step-by-step row-by-row method shows you how to solve Number Slide without disturbing the tiles you already placed, from the first corner to the final two rows.",
-    content: `
+  faqs: [
+   {
+    q: "What is Number Slide?",
+    a: "Number Slide is a sliding tile puzzle, usually a 4x4 grid holding fifteen numbered tiles and one empty square. You slide tiles into the blank until the numbers run 1 to 15 in order with the gap in the corner.",
+   },
+   {
+    q: "How do you play the 15-puzzle?",
+    a: "You move any tile adjacent to the empty square into that square, one at a time. By repeatedly sliding, you rearrange the tiles into numerical order from top left to bottom right.",
+   },
+   {
+    q: "Can every Number Slide board be solved?",
+    a: "Modern digital versions scramble by making legal moves from the solved state, so the board you are given is always solvable. Older physical toys sometimes shipped in an unsolvable state by accident.",
+   },
+   {
+    q: "What is the easiest way to start solving?",
+    a: "Lock the top row first, left to right, then the left column, then continue peeling the board from the outside in. Named, small goals beat a vague wish to finish.",
+   },
+   {
+    q: "Why do beginners get stuck?",
+    a: "They slide randomly, disturb tiles they already placed, or react to where the blank is instead of sending it where it needs to be. Slowing down and planning each move fixes most of it.",
+   },
+   {
+    q: "Should I watch the numbers or the blank?",
+    a: "Watch the blank. The empty square is the only thing that moves, so learning to drive it is the core skill. Thinking in terms of where the gap should go next makes the board feel ordered.",
+   },
+   {
+    q: "Is the 3x3 version good for learning?",
+    a: "Yes. The 3x3, eight-tile version teaches the blank-square habit with far less complexity, and the skill transfers directly to the classic 4x4 board.",
+   },
+   {
+    q: "How is Number Slide different from Sudoku?",
+    a: "Sudoku is pure deduction with no movement, placing numbers by constraint. Number Slide adds a physical sliding limit, so you can only move tiles that touch the empty square.",
+   },
+   {
+    q: "How long does a 4x4 solve take?",
+    a: "For a beginner, somewhere between five and twenty minutes depending on scramble and method. With practice, a clean solve drops well under five minutes.",
+   },
+   {
+    q: "What other games are like Number Slide?",
+    a: "Sudoku, jigsaw, reversi, and lettermaze all exercise planning and spatial thinking, though each uses a different mechanic. Number Slide's signature is the single moving blank square.",
+   },
+   {
+    q: "Can I get better without grinding?",
+    a: "Yes. A few short solves most days builds the planning skill faster than one long frustrated session, because the improvement comes from repetition, not from duration.",
+   },
+  ],
+ },
+ {
+  slug: "number-slide-how-to-solve-15-puzzle",
+  title: "How to Solve the 15-Puzzle: A Row-by-Row Method That Actually Finishes the Board",
+  description:
+   "A clear step-by-step method for solving the 15-puzzle on Number Slide. Solve it row by row and corner by corner, with the tricks that keep placed tiles from sliding out.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Brain & Logic",
+  tags: [
+   "how to solve the 15 puzzle",
+   "15 puzzle step by step",
+   "row by row sliding puzzle",
+   "number slide solving method",
+   "15 puzzle algorithm",
+   "solve sliding tile puzzle",
+   "number slide strategy",
+  ],
+  authorId: "mira",
+  cover: "/images/games/number-slide/cover.webp",
+  primaryKeyword: "how to solve the 15 puzzle",
+  secondaryKeywords: [
+   "15 puzzle row by row method",
+   "step by step 15 puzzle solve",
+   "number slide solve tutorial",
+   "sliding puzzle solving strategy",
+  ],
+  lsiKeywords: [
+   "top row",
+   "left column",
+   "corner tiles",
+   "blank square routing",
+   "last two rows",
+   "tile placement",
+   "goal configuration",
+  ],
+  gameId: "number-slide",
+  excerpt:
+   "Stuck on the 15-puzzle? This step-by-step row-by-row method shows you how to solve Number Slide without disturbing the tiles you already placed, from the first corner to the final two rows.",
+  content: `
 <h2>The Problem With Guessing Your Way Through</h2>
 <p>If you have ever solved the 15-puzzle by accident, you know the feeling: relief, then no idea how you did it. That is the trap. A method you cannot repeat is not a method, it is luck wearing a costume. This article is the repeatable version. It is a row-by-row solve you can run on any <a href="/number-slide">Number Slide</a> board, and once you have done it three times, the shape of it stays with you.</p>
 <p>The method has a boring name and a reliable result. You build the board from the top down and the left in, locking each finished strip so it cannot be disturbed, until only a small pocket remains that resolves on its own. No memorized algorithms, no parity math, just a consistent order of operations and the discipline to protect your work.</p>
@@ -357,51 +357,52 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Combination puzzle" - the family of rearrange-to-goal puzzles that includes the 15-puzzle and its solving methods.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What is the easiest method to solve the 15-puzzle?",
-        a: "The row-by-row method: lock the top row left to right, then the left column top to bottom, repeat on the smaller inner board, solve the last two rows as pairs, and rotate the final 2x2 pocket into place.",
-      },
-      {
-        q: "Why solve row by row instead of freely?",
-        a: "Free sliding often undoes your progress. Locking each strip before moving on means a mistake is local and recoverable, and you always know you are closer to solved than before.",
-      },
-      {
-        q: "How do I keep placed tiles from sliding out?",
-        a: "Close each corner so the tile cannot move back, and route the blank through unsolved cells only. Once a strip is locked, treat those cells as off-limits for the rest of the solve.",
-      },
-      {
-        q: "Why can't I solve the last two rows one at a time?",
-        a: "There is no row below them to route the blank through, so you solve the bottom two rows together as pairs and rotate the final pocket, rather than laying a single strip.",
-      },
-      {
-        q: "What do I do with the final 2x2 pocket?",
-        a: "Cycle the blank around the four cells. The three remaining tiles rotate through their arrangements until they land in the goal state. Nothing outside the pocket should move.",
-      },
-      {
-        q: "My solve is stuck on the last tiles. What went wrong?",
-        a: "Usually an earlier tile is one cell off. Back up one step, carefully lift the offending tile using the blank, and replace it correctly, then redo the pocket.",
-      },
-      {
-        q: "Does this method work on bigger boards?",
-        a: "Yes. On a 5x5 or larger board you repeat the inner-board step on progressively smaller regions. The row-by-row logic is identical at every size.",
-      },
-      {
-        q: "How is this different from solving Sudoku?",
-        a: "Sudoku is deduction with no movement, placing numbers by constraint. The 15-puzzle adds the sliding constraint, so you route a single blank to pull tiles into place physically.",
-      },
-      {
-        q: "How long should a first method-based solve take?",
-        a: "Plan for ten to twenty minutes the first time as you learn the blank routing. With a few repetitions, a clean 4x4 solve drops to under five minutes.",
-      },
-      {
-        q: "Can the 15-puzzle be impossible to finish?",
-        a: "Only if it was scrambled into an unsolvable state, which legal digital scrambles like those on Number Slide never do. A legal scramble is always solvable by this method.",
-      },
-      {
-        q: "Should I memorize an algorithm instead?",
-        a: "Not needed. The row-by-row method uses no memorized sequences, just a consistent order of operations and careful blank routing, which is easier to keep and to repeat.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "What is the easiest method to solve the 15-puzzle?",
+    a: "The row-by-row method: lock the top row left to right, then the left column top to bottom, repeat on the smaller inner board, solve the last two rows as pairs, and rotate the final 2x2 pocket into place.",
+   },
+   {
+    q: "Why solve row by row instead of freely?",
+    a: "Free sliding often undoes your progress. Locking each strip before moving on means a mistake is local and recoverable, and you always know you are closer to solved than before.",
+   },
+   {
+    q: "How do I keep placed tiles from sliding out?",
+    a: "Close each corner so the tile cannot move back, and route the blank through unsolved cells only. Once a strip is locked, treat those cells as off-limits for the rest of the solve.",
+   },
+   {
+    q: "Why can't I solve the last two rows one at a time?",
+    a: "There is no row below them to route the blank through, so you solve the bottom two rows together as pairs and rotate the final pocket, rather than laying a single strip.",
+   },
+   {
+    q: "What do I do with the final 2x2 pocket?",
+    a: "Cycle the blank around the four cells. The three remaining tiles rotate through their arrangements until they land in the goal state. Nothing outside the pocket should move.",
+   },
+   {
+    q: "My solve is stuck on the last tiles. What went wrong?",
+    a: "Usually an earlier tile is one cell off. Back up one step, carefully lift the offending tile using the blank, and replace it correctly, then redo the pocket.",
+   },
+   {
+    q: "Does this method work on bigger boards?",
+    a: "Yes. On a 5x5 or larger board you repeat the inner-board step on progressively smaller regions. The row-by-row logic is identical at every size.",
+   },
+   {
+    q: "How is this different from solving Sudoku?",
+    a: "Sudoku is deduction with no movement, placing numbers by constraint. The 15-puzzle adds the sliding constraint, so you route a single blank to pull tiles into place physically.",
+   },
+   {
+    q: "How long should a first method-based solve take?",
+    a: "Plan for ten to twenty minutes the first time as you learn the blank routing. With a few repetitions, a clean 4x4 solve drops to under five minutes.",
+   },
+   {
+    q: "Can the 15-puzzle be impossible to finish?",
+    a: "Only if it was scrambled into an unsolvable state, which legal digital scrambles like those on Number Slide never do. A legal scramble is always solvable by this method.",
+   },
+   {
+    q: "Should I memorize an algorithm instead?",
+    a: "Not needed. The row-by-row method uses no memorized sequences, just a consistent order of operations and careful blank routing, which is easier to keep and to repeat.",
+   },
+  ],
+ },
 ];
+

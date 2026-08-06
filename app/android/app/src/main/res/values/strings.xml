@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">YouTube Playables</string>
+    <string name="app_name"> Playables</string>
     <string name="app_name_short">Playables</string>
     <string name="home">Home</string>
     <string name="games">Games</string>
@@ -73,5 +73,5 @@
     <string name="contact">Contact</string>
     <string name="version">Version</string>
     <string name="build_number">Build Number</string>
-    <string name="powered_by">Powered by YouTube Playables</string>
+    <string name="powered_by">Powered by  Playables</string>
 </resources>

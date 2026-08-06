@@ -1,48 +1,48 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "how-to-play-checkers-complete-guide",
-    title: "How to Play Checkers: Complete Guide for Beginners",
-    description:
-      "Learn how to play checkers with this complete beginner guide. Covers rules, piece movements, strategy tips, and how to win.",
-    date: "2026-07-14",
-    updatedAt: "2026-07-14",
-    category: "Board Games",
-    tags: [
-      "how to play checkers",
-      "checkers rules",
-      "checkers guide",
-      "checkers for beginners",
-      "draughts",
-      "board game strategy",
-      "two player games",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/checkers/cover.webp",
-    primaryKeyword: "how to play checkers",
-    secondaryKeywords: [
-      "checkers rules for beginners",
-      "checkers strategy guide",
-      "how to win at checkers",
-      "draughts rules",
-    ],
-    lsiKeywords: [
-      "board",
-      "pieces",
-      "jump",
-      "king",
-      "capture",
-      "strategy",
-      "two player",
-      "classic game",
-      "draughts",
-      "diagonal",
-    ],
-    gameId: "checkers",
-    excerpt:
-      "A complete beginner's guide to checkers. Learn the rules, piece movements, basic strategy, and winning techniques.",
-    content: `
+ {
+  slug: "how-to-play-checkers-complete-guide",
+  title: "How to Play Checkers: Complete Guide for Beginners",
+  description:
+   "Learn how to play checkers with this complete beginner guide. Covers rules, piece movements, strategy tips, and how to win.",
+  date: "2026-07-14",
+  updatedAt: "2026-07-14",
+  category: "Board Games",
+  tags: [
+   "how to play checkers",
+   "checkers rules",
+   "checkers guide",
+   "checkers for beginners",
+   "draughts",
+   "board game strategy",
+   "two player games",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/checkers/cover.webp",
+  primaryKeyword: "how to play checkers",
+  secondaryKeywords: [
+   "checkers rules for beginners",
+   "checkers strategy guide",
+   "how to win at checkers",
+   "draughts rules",
+  ],
+  lsiKeywords: [
+   "board",
+   "pieces",
+   "jump",
+   "king",
+   "capture",
+   "strategy",
+   "two player",
+   "classic game",
+   "draughts",
+   "diagonal",
+  ],
+  gameId: "checkers",
+  excerpt:
+   "A complete beginner's guide to checkers. Learn the rules, piece movements, basic strategy, and winning techniques.",
+  content: `
 <h2>The Classic Board Game of Checkers</h2>
 <p>Checkers, also known as draughts in many countries, is one of the oldest and most widely played board games in the world. The game is played on an 8x8 checkerboard with twelve pieces per player. The objective is simple: capture all of your opponent's pieces or block them so they cannot move.</p>
 <p>If you are new to board games, checkers is an excellent starting point. The rules are straightforward, yet the strategy runs deep. If you enjoy the planning required in checkers, you may also appreciate <a href="/chess">Chess</a> or <a href="/reversi">Reversi</a>, both of which reward forward thinking and board control.</p>
@@ -102,20 +102,20 @@ export const posts: BlogPost[] = [
 <h3>Is checkers a solved game?</h3>
 <p>Yes, checkers has been weakly solved. With perfect play from both sides, the game always ends in a draw. However, perfect play is extremely difficult to achieve, and most games are decided by mistakes.</p>
 <h3>Can I play checkers online for free?</h3>
-<p>Yes. YouTube Playables offers a free browser-based checkers game that requires no download or sign-up.</p>
+<p>Yes. Playables offers a free browser-based checkers game that requires no download or sign-up.</p>
 
 <h2>Sources &amp; References</h2>
 <ul>
 <li>Wikipedia, "Checkers" - rules, history, and strategy overview.</li>
-<li>Official Checkers game page on the YouTube Playables platform.</li>
+<li>Official Checkers game page on the Playables platform.</li>
 </ul>
 `,
-    faqs: [
-      { q: "What are the basic rules of checkers?", a: "Pieces move diagonally forward and capture by jumping over opponent pieces. The goal is to capture all opponent pieces or block them." },
-      { q: "How do you capture in checkers?", a: "Jump over an opponent's piece diagonally to an empty square. Multiple jumps in a single turn are allowed." },
-      { q: "What is a king in checkers?", a: "A piece that has reached the opposite end of the board. Kings can move diagonally both forward and backward." },
-      { q: "Is checkers a solved game?", a: "Yes, with perfect play from both sides, checkers always ends in a draw." },
-      { q: "Can I play checkers online for free?", a: "Yes. YouTube Playables offers a free browser-based checkers game." },
-    ],
-  },
+  faqs: [
+   { q: "What are the basic rules of checkers?", a: "Pieces move diagonally forward and capture by jumping over opponent pieces. The goal is to capture all opponent pieces or block them." },
+   { q: "How do you capture in checkers?", a: "Jump over an opponent's piece diagonally to an empty square. Multiple jumps in a single turn are allowed." },
+   { q: "What is a king in checkers?", a: "A piece that has reached the opposite end of the board. Kings can move diagonally both forward and backward." },
+   { q: "Is checkers a solved game?", a: "Yes, with perfect play from both sides, checkers always ends in a draw." },
+   { q: "Can I play checkers online for free?", a: "Yes. Playables offers a free browser-based checkers game." },
+  ],
+ },
 ];

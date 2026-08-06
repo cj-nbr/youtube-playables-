@@ -1,60 +1,61 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import {
-  blogPosts,
-  recentBlogPosts,
-  allCategories,
+ blogPosts,
+ recentBlogPosts,
+ allCategories,
 } from "../../shared/blog";
 import { getAuthor } from "../../shared/authors";
 ---
 
 <Layout
-  title="Blog — YouTube Playables"
-  description="Free guides, strategies, and articles about brain games, puzzle games, browser-based play, and how to get better at every title on the site."
-  canonical="/blog"
+ title="Blog — Playables"
+ description="Free guides, strategies, and articles about brain games, puzzle games, browser-based play, and how to get better at every title on the site."
+ canonical="/blog"
 >
-  <a href="#main" class="skip-link">Skip to content</a>
+ <a href="#main" class="skip-link">Skip to content</a>
 
-  <main id="main" class="mx-auto max-w-[1400px] px-6 py-16">
-    <div class="relative overflow-hidden rounded-2xl border border-hairline mesh-soft px-8 py-12">
-      <h1 class="text-[40px] font-semibold tracking-[-2.4px] text-ink sm:text-[56px]">Blog.</h1>
-      <p class="mt-4 max-w-2xl text-lg leading-7 text-body">Guides, strategies, and insights about brain games, puzzle games, and browser-based play. Every article links you straight to a free game you can play in seconds.</p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        {allCategories().map((c) => (
-          <a href={`#cat-${c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} class="rounded-full border border-hairline bg-canvas px-4 py-2 text-sm text-body transition hover:border-link hover:text-link">{c.name} <span class="font-mono text-xs text-mute">({c.count})</span></a>
-        ))}
-      </div>
-    </div>
-
-    <h2 class="mt-14 text-2xl font-semibold tracking-tight text-ink">Latest articles</h2>
-    <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {recentBlogPosts(6).map((post) => {
-        const author = getAuthor(post.authorId);
-        return (
-          <a href={`/blog/${post.slug}`} class="card card-hover flex flex-col p-6">
-            <span class="w-fit rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">{post.category}</span>
-            <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">{post.title}</h3>
-            <p class="mt-2 flex-1 text-sm leading-6 text-body">{post.description}</p>
-            <span class="mt-4 font-mono text-xs text-mute">{post.date} · {author.name}</span>
-          </a>
-        );
-      })}
-    </div>
-
+ <main id="main" class="mx-auto max-w-[1400px] px-6 py-16">
+  <div class="relative overflow-hidden rounded-2xl border border-hairline mesh-soft px-8 py-12">
+   <h1 class="text-[40px] font-semibold tracking-[-2.4px] text-ink sm:text-[56px]">Blog.</h1>
+   <p class="mt-4 max-w-2xl text-lg leading-7 text-body">Guides, strategies, and insights about brain games, puzzle games, and browser-based play. Every article links you straight to a free game you can play in seconds.</p>
+   <div class="mt-6 flex flex-wrap gap-3">
     {allCategories().map((c) => (
-      <section id={`cat-${c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} class="mt-14 scroll-mt-24">
-        <h2 class="text-2xl font-semibold tracking-tight text-ink">{c.name}</h2>
-        <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {blogPosts.filter((p) => p.category === c.name).map((post) => (
-            <a href={`/blog/${post.slug}`} class="card card-hover flex flex-col p-6">
-              <span class="w-fit rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">{post.category}</span>
-              <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">{post.title}</h3>
-              <p class="mt-2 flex-1 text-sm leading-6 text-body">{post.description}</p>
-              <span class="mt-4 font-mono text-xs text-mute">{post.date}</span>
-            </a>
-          ))}
-        </div>
-      </section>
+     <a href={`#cat-${c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} class="rounded-full border border-hairline bg-canvas px-4 py-2 text-sm text-body transition hover:border-link hover:text-link">{c.name} <span class="font-mono text-xs text-mute">({c.count})</span></a>
     ))}
-  </main>
+   </div>
+  </div>
+
+  <h2 class="mt-14 text-2xl font-semibold tracking-tight text-ink">Latest articles</h2>
+  <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+   {recentBlogPosts(6).map((post) => {
+    const author = getAuthor(post.authorId);
+    return (
+     <a href={`/blog/${post.slug}`} class="card card-hover flex flex-col p-6">
+      <span class="w-fit rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">{post.category}</span>
+      <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">{post.title}</h3>
+      <p class="mt-2 flex-1 text-sm leading-6 text-body">{post.description}</p>
+      <span class="mt-4 font-mono text-xs text-mute">{post.date} · {author.name}</span>
+     </a>
+    );
+   })}
+  </div>
+
+  {allCategories().map((c) => (
+   <section id={`cat-${c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} class="mt-14 scroll-mt-24">
+    <h2 class="text-2xl font-semibold tracking-tight text-ink">{c.name}</h2>
+    <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+     {blogPosts.filter((p) => p.category === c.name).map((post) => (
+      <a href={`/blog/${post.slug}`} class="card card-hover flex flex-col p-6">
+       <span class="w-fit rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">{post.category}</span>
+       <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink group-hover:text-link">{post.title}</h3>
+       <p class="mt-2 flex-1 text-sm leading-6 text-body">{post.description}</p>
+       <span class="mt-4 font-mono text-xs text-mute">{post.date}</span>
+      </a>
+     ))}
+    </div>
+   </section>
+  ))}
+ </main>
 </Layout>
+

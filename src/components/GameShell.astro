@@ -2,15 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import type { GameMeta } from "../shared/types";
 import {
-  relatedGames,
-  popularGames,
-  trendingGames,
-  newGames,
+ relatedGames,
+ popularGames,
+ trendingGames,
+ newGames,
 } from "../shared/games";
 import { sound, gameCover, gameThumb } from "../shared/utils";
 
 interface Props {
-  game: GameMeta;
+ game: GameMeta;
 }
 
 const { game } = Astro.props;
@@ -23,342 +23,344 @@ const fresh = newGames(3);
 const ins = game.content.instructions;
 ---
 
-<Layout title={`${game.title} — YOUTUBE PLAYABLES`} game={game}>
-  <a href="#main" class="skip-link">Skip to content</a>
+<Layout title={`${game.title} — PLAYABLES`} game={game}>
+ <a href="#main" class="skip-link">Skip to content</a>
 
-  <main id="main" data-game-id={game.id} data-game-title={game.title}>
-    <section class="relative overflow-hidden border-b border-hairline">
-      <div class="mesh-soft pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-[1400px] px-6 py-16">
-        <a href="/playables" class="font-mono text-xs text-link underline-offset-4 hover:underline">← All playables</a>
-        <div class="mt-4 flex flex-col md:flex-row gap-8 items-start">
-          <div class="relative w-full md:w-80 flex-shrink-0 aspect-[4/3] overflow-hidden rounded-xl bg-canvas-soft-2 border border-hairline">
-            <img src={gameCover(game.id)} alt={`${game.title} cover artwork`} title={game.title} class="h-full w-full object-cover" width="800" height="600" />
-          </div>
-          <div class="flex-1">
-            <span class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">Playables</span>
-            <h1 class="max-w-2xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]">{game.title}.</h1>
-            <p class="mt-4 max-w-xl text-lg leading-7 text-body">{game.description}</p>
-          </div>
-        </div>
+ <main id="main" data-game-id={game.id} data-game-title={game.title}>
+  <section class="relative overflow-hidden border-b border-hairline">
+   <div class="mesh-soft pointer-events-none absolute inset-0" aria-hidden="true"></div>
+   <div class="relative mx-auto max-w-[1400px] px-6 py-16">
+    <a href="/playables" class="font-mono text-xs text-link underline-offset-4 hover:underline">← All playables</a>
+    <div class="mt-4 flex flex-col md:flex-row gap-8 items-start">
+     <div class="relative w-full md:w-80 flex-shrink-0 aspect-[4/3] overflow-hidden rounded-xl bg-canvas-soft-2 border border-hairline">
+      <img src={gameCover(game.id)} alt={`${game.title} cover artwork`} title={game.title} class="h-full w-full object-cover" width="800" height="600" />
+     </div>
+     <div class="flex-1">
+      <span class="mb-3 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">Playables</span>
+      <h1 class="max-w-2xl text-[36px] font-semibold leading-[1.05] tracking-[-2px] text-ink sm:text-[48px]">{game.title}.</h1>
+      <p class="mt-4 max-w-xl text-lg leading-7 text-body">{game.description}</p>
+     </div>
+    </div>
 
-        <div class="mt-10 flex flex-col items-center">
-          <div
-            id="game-wrap"
-            class="relative flex w-full max-w-[min(480px,100vw-2rem)] h-[min(520px,100dvh-12rem)] flex-col overflow-hidden rounded-2xl border border-hairline bg-ink shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
-          >
-            <div id="board" class="grid w-full flex-1 place-items-center overflow-auto p-4 text-center text-white sm:p-6">
-              <slot />
-            </div>
-
-            <div id="over-screen" class="absolute inset-0 z-20 hidden flex-col items-center justify-center gap-4 bg-ink/90 px-6 text-center text-white backdrop-blur-sm">
-              <h2 id="over-title" class="text-3xl font-semibold tracking-tight">Game Over</h2>
-              <p id="over-msg" class="max-w-xs text-sm text-white/80"></p>
-              <button id="over-again" type="button" class="btn btn-primary mt-2 h-11 px-8 text-sm">Play again</button>
-            </div>
-
-            <div id="pause-screen" class="absolute inset-0 z-20 hidden flex-col items-center justify-center gap-4 bg-ink/80 px-6 text-center text-white backdrop-blur-sm">
-              <h2 class="text-3xl font-semibold tracking-tight">Paused</h2>
-              <p class="max-w-xs text-sm text-white/80">Take a breath. Your progress is safe.</p>
-              <button id="resume-btn" type="button" class="btn btn-primary mt-2 h-11 px-8 text-sm">Resume</button>
-            </div>
-          </div>
-
-          <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
-            <button id="sound-btn" type="button" aria-pressed={sound.muted ? "true" : "false"} class="btn btn-ghost h-10 gap-2 px-4 text-sm">
-              <span id="sound-icon" aria-hidden="true">{sound.muted ? "🔇" : "🔊"}</span>
-              <span id="sound-label">{sound.muted ? "Sound off" : "Sound on"}</span>
-            </button>
-            <button id="reset-btn" type="button" class="btn btn-ghost h-10 px-6 text-sm">New game</button>
-            <button id="pause-btn" type="button" class="btn btn-primary hidden h-10 px-6 text-sm text-white">Pause</button>
-          </div>
-          <p id="status" class="mt-3 min-h-[1.25rem] text-center font-mono text-sm text-mute" aria-live="polite"></p>
-        </div>
-
-        <section class="mt-16" aria-labelledby="guide-heading">
-          <h2 id="guide-heading" class="text-2xl font-semibold tracking-tight text-ink">How to play {game.title}</h2>
-          <div class="mt-8 grid gap-6 md:grid-cols-2">
-            {
-              game.content.guide.map((g) => (
-                <div class="card p-6">
-                  <h3 class="text-lg font-semibold text-ink">{g.heading}</h3>
-                  <p class="mt-2 text-sm leading-6 text-body">{g.body}</p>
-                </div>
-              ))
-            }
-          </div>
-        </section>
-
-        <section class="mt-16" aria-labelledby="instructions-heading">
-          <h2 id="instructions-heading" class="text-2xl font-semibold tracking-tight text-ink">Player instructions</h2>
-          <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div class="card p-6">
-              <h3 class="text-base font-semibold text-ink">Objective</h3>
-              <p class="mt-2 text-sm leading-6 text-body">{ins.objective}</p>
-            </div>
-            <div class="card p-6">
-              <h3 class="text-base font-semibold text-ink">Desktop controls</h3>
-              <p class="mt-2 text-sm leading-6 text-body">{ins.desktop}</p>
-            </div>
-            <div class="card p-6">
-              <h3 class="text-base font-semibold text-ink">Mobile & touch controls</h3>
-              <p class="mt-2 text-sm leading-6 text-body">{ins.mobile}</p>
-            </div>
-            <div class="card p-6">
-              <h3 class="text-base font-semibold text-ink">Winning conditions</h3>
-              <p class="mt-2 text-sm leading-6 text-body">{ins.winning}</p>
-            </div>
-            <div class="card p-6">
-              <h3 class="text-base font-semibold text-ink">Losing conditions</h3>
-              <p class="mt-2 text-sm leading-6 text-body">{ins.losing}</p>
-            </div>
-            <div class="card p-6">
-              <h3 class="text-base font-semibold text-ink">Tips for beginners</h3>
-              <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-body">
-                {ins.tips.map((t) => <li>{t}</li>)}
-              </ul>
-            </div>
-          </div>
-        </section>
+    <div class="mt-10 flex flex-col items-center">
+     <div
+      id="game-wrap"
+      class="relative flex w-full max-w-[min(480px,100vw-2rem)] h-[min(520px,100dvh-12rem)] flex-col overflow-hidden rounded-2xl border border-hairline bg-ink shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
+     >
+      <div id="board" class="grid w-full flex-1 place-items-center overflow-auto p-4 text-center text-white sm:p-6">
+       <slot />
       </div>
+
+      <div id="over-screen" class="absolute inset-0 z-20 hidden flex-col items-center justify-center gap-4 bg-ink/90 px-6 text-center text-white backdrop-blur-sm">
+       <h2 id="over-title" class="text-3xl font-semibold tracking-tight">Game Over</h2>
+       <p id="over-msg" class="max-w-xs text-sm text-white/80"></p>
+       <button id="over-again" type="button" class="btn btn-primary mt-2 h-11 px-8 text-sm">Play again</button>
+      </div>
+
+      <div id="pause-screen" class="absolute inset-0 z-20 hidden flex-col items-center justify-center gap-4 bg-ink/80 px-6 text-center text-white backdrop-blur-sm">
+       <h2 class="text-3xl font-semibold tracking-tight">Paused</h2>
+       <p class="max-w-xs text-sm text-white/80">Take a breath. Your progress is safe.</p>
+       <button id="resume-btn" type="button" class="btn btn-primary mt-2 h-11 px-8 text-sm">Resume</button>
+      </div>
+     </div>
+
+     <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
+      <button id="sound-btn" type="button" aria-pressed={sound.muted ? "true" : "false"} class="btn btn-ghost h-10 gap-2 px-4 text-sm">
+       <span id="sound-icon" aria-hidden="true">{sound.muted ? "🔇" : "🔊"}</span>
+       <span id="sound-label">{sound.muted ? "Sound off" : "Sound on"}</span>
+      </button>
+      <button id="reset-btn" type="button" class="btn btn-ghost h-10 px-6 text-sm">New game</button>
+      <button id="pause-btn" type="button" class="btn btn-primary hidden h-10 px-6 text-sm text-white">Pause</button>
+     </div>
+     <p id="status" class="mt-3 min-h-[1.25rem] text-center font-mono text-sm text-mute" aria-live="polite"></p>
+    </div>
+
+    <section class="mt-16" aria-labelledby="guide-heading">
+     <h2 id="guide-heading" class="text-2xl font-semibold tracking-tight text-ink">How to play {game.title}</h2>
+     <div class="mt-8 grid gap-6 md:grid-cols-2">
+      {
+       game.content.guide.map((g) => (
+        <div class="card p-6">
+         <h3 class="text-lg font-semibold text-ink">{g.heading}</h3>
+         <p class="mt-2 text-sm leading-6 text-body">{g.body}</p>
+        </div>
+       ))
+      }
+     </div>
     </section>
 
-    <section class="border-b border-hairline bg-canvas-soft px-6 py-16">
-      <div class="mx-auto max-w-[1400px]">
-        <h2 class="text-2xl font-semibold tracking-tight text-ink">Related games</h2>
-        <p class="mt-2 max-w-xl text-body">More free, browser-native playables you might enjoy.</p>
-        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {related.map((g) => (
-            <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
-              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
-                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
-              </div>
-              <div class="p-5 flex flex-col flex-1">
-                <h3 class="text-lg font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h3>
-                <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <h3 class="mt-12 text-xl font-semibold tracking-tight text-ink">Popular right now</h3>
-        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {popular.map((g) => (
-            <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
-              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
-                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
-              </div>
-              <div class="p-4">
-                <span class="font-mono text-xs text-mute">POPULAR</span>
-                <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <h3 class="mt-12 text-xl font-semibold tracking-tight text-ink">Trending</h3>
-        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {trending.map((g) => (
-            <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
-              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
-                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
-              </div>
-              <div class="p-4">
-                <span class="font-mono text-xs text-mute">TRENDING</span>
-                <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <h3 class="mt-12 text-xl font-semibold tracking-tight text-ink">New games</h3>
-        <div class="mt-6 grid gap-4 sm:grid-cols-3">
-          {fresh.map((g) => (
-            <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
-              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
-                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
-              </div>
-              <div class="p-4">
-                <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">NEW</span>
-                <h4 class="mt-2 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <div id="recent-games" class="mt-12 hidden">
-          <h3 class="text-xl font-semibold tracking-tight text-ink">Recently played</h3>
-          <div id="recent-list" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
-        </div>
+    <section class="mt-16" aria-labelledby="instructions-heading">
+     <h2 id="instructions-heading" class="text-2xl font-semibold tracking-tight text-ink">Player instructions</h2>
+     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="card p-6">
+       <h3 class="text-base font-semibold text-ink">Objective</h3>
+       <p class="mt-2 text-sm leading-6 text-body">{ins.objective}</p>
       </div>
-    </section>
-
-    <section class="px-6 py-16">
-      <div class="mx-auto max-w-[1400px]">
-        <h2 class="text-2xl font-semibold tracking-tight text-ink">Guides & strategies</h2>
-        <p class="mt-2 max-w-xl text-body">Deep-dive articles to sharpen your {game.title} skills.</p>
-        <div class="mt-8 space-y-6">
-          {game.content.blog.map((article) => (
-            <article class="card p-8">
-              <h3 class="text-xl font-semibold tracking-tight text-ink">{article.title}</h3>
-              <p class="mt-2 text-body">{article.excerpt}</p>
-              <div class="mt-6 space-y-4">
-                {article.headings.map((h, i) => (
-                  <div>
-                    <h4 class="text-base font-semibold text-ink">{h}</h4>
-                    {article.body[i] && <p class="mt-2 text-sm leading-6 text-body">{article.body[i]}</p>}
-                  </div>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+      <div class="card p-6">
+       <h3 class="text-base font-semibold text-ink">Desktop controls</h3>
+       <p class="mt-2 text-sm leading-6 text-body">{ins.desktop}</p>
       </div>
-    </section>
-
-    <section class="border-t border-hairline bg-canvas-soft px-6 py-16">
-      <div class="mx-auto max-w-[1400px]">
-        <h2 id="faq-heading" class="text-2xl font-semibold tracking-tight text-ink">Frequently asked questions</h2>
-        <div class="mt-8 divide-y divide-hairline rounded-xl border border-hairline bg-canvas">
-          {game.content.faqs.map((f) => (
-            <details class="group p-6">
-              <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium text-ink">
-                <span>{f.q}</span>
-                <span class="ml-4 text-mute transition group-open:rotate-45" aria-hidden="true">+</span>
-              </summary>
-              <p class="mt-3 text-sm leading-6 text-body">{f.a}</p>
-            </details>
-          ))}
-        </div>
+      <div class="card p-6">
+       <h3 class="text-base font-semibold text-ink">Mobile & touch controls</h3>
+       <p class="mt-2 text-sm leading-6 text-body">{ins.mobile}</p>
       </div>
+      <div class="card p-6">
+       <h3 class="text-base font-semibold text-ink">Winning conditions</h3>
+       <p class="mt-2 text-sm leading-6 text-body">{ins.winning}</p>
+      </div>
+      <div class="card p-6">
+       <h3 class="text-base font-semibold text-ink">Losing conditions</h3>
+       <p class="mt-2 text-sm leading-6 text-body">{ins.losing}</p>
+      </div>
+      <div class="card p-6">
+       <h3 class="text-base font-semibold text-ink">Tips for beginners</h3>
+       <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-body">
+        {ins.tips.map((t) => <li>{t}</li>)}
+       </ul>
+      </div>
+     </div>
     </section>
-  </main>
+   </div>
+  </section>
 
-  <script type="application/ld+json" is:inline set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: game.title,
-    description: game.description,
-    url: `https://youtubeplayables.caloriecalculatorfree.com/${game.id}`,
-    isPartOf: { "@type": "WebSite", name: "YOUTUBE PLAYABLES", url: "https://youtubeplayables.caloriecalculatorfree.com" },
-  })}></script>
+  <section class="border-b border-hairline bg-canvas-soft px-6 py-16">
+   <div class="mx-auto max-w-[1400px]">
+    <h2 class="text-2xl font-semibold tracking-tight text-ink">Related games</h2>
+    <p class="mt-2 max-w-xl text-body">More free, browser-native playables you might enjoy.</p>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+     {related.map((g) => (
+      <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
+       <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+        <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+       </div>
+       <div class="p-5 flex flex-col flex-1">
+        <h3 class="text-lg font-semibold tracking-tight text-ink group-hover:text-link">{g.title}</h3>
+        <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+       </div>
+      </a>
+     ))}
+    </div>
 
-  <script is:inline>
-    (() => {
-      const $ = (id) => document.getElementById(id);
+    <h3 class="mt-12 text-xl font-semibold tracking-tight text-ink">Popular right now</h3>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+     {popular.map((g) => (
+      <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
+       <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+        <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+       </div>
+       <div class="p-4">
+        <span class="font-mono text-xs text-mute">POPULAR</span>
+        <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+       </div>
+      </a>
+     ))}
+    </div>
 
-      // ---- Game over overlay ----
-      window.__showOver = (title, msg) => {
-        const screen = $('over-screen');
-        if (title) $('over-title').textContent = title;
-        if (msg != null) $('over-msg').textContent = msg;
-        screen.classList.remove('hidden');
-        screen.classList.add('flex');
-      };
-      window.__hideOver = () => {
-        const screen = $('over-screen');
-        if (screen) {
-          screen.classList.add('hidden');
-          screen.classList.remove('flex');
-        }
-      };
+    <h3 class="mt-12 text-xl font-semibold tracking-tight text-ink">Trending</h3>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+     {trending.map((g) => (
+      <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
+       <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+        <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+       </div>
+       <div class="p-4">
+        <span class="font-mono text-xs text-mute">TRENDING</span>
+        <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+       </div>
+      </a>
+     ))}
+    </div>
 
-      // ---- Pause support (opt-in per game) ----
-      let paused = false;
-      window.__setPausable = (on) => {
-        const btn = $('pause-btn');
-        if (btn) btn.classList.toggle('hidden', !on);
-      };
-      const doPause = () => {
-        if (paused || typeof window.__pauseGame !== 'function') return;
-        paused = true;
-        window.__pauseGame();
-        const s = $('pause-screen');
-        s.classList.remove('hidden'); s.classList.add('flex');
-      };
-      const doResume = () => {
-        if (!paused || typeof window.__resumeGame !== 'function') return;
-        paused = false;
-        window.__resumeGame();
-        const s = $('pause-screen');
-        s.classList.add('hidden'); s.classList.remove('flex');
-      };
-      $('pause-btn')?.addEventListener('click', doPause);
-      $('resume-btn')?.addEventListener('click', doResume);
+    <h3 class="mt-12 text-xl font-semibold tracking-tight text-ink">New games</h3>
+    <div class="mt-6 grid gap-4 sm:grid-cols-3">
+     {fresh.map((g) => (
+      <a href={`/${g.id}`} class="card card-hover p-0 overflow-hidden flex flex-col group">
+       <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+        <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+       </div>
+       <div class="p-4">
+        <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">NEW</span>
+        <h4 class="mt-2 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+       </div>
+      </a>
+     ))}
+    </div>
 
-      // ---- Reset / Play again ----
-      $('over-again')?.addEventListener('click', () => {
-        window.__hideOver();
-        if (typeof window.__resetGame === 'function') window.__resetGame();
-      });
-      $('reset-btn')?.addEventListener('click', () => {
-        window.__hideOver();
-        doResume();
-        if (typeof window.__resetGame === 'function') window.__resetGame();
-      });
+    <div id="recent-games" class="mt-12 hidden">
+     <h3 class="text-xl font-semibold tracking-tight text-ink">Recently played</h3>
+     <div id="recent-list" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
+    </div>
+   </div>
+  </section>
 
-      // ---- Available board area (excludes padding) ----
-      window.__getGameArea = () => {
-        const board = $('board');
-        if (!board) return { w: 320, h: 400 };
-        const rect = board.getBoundingClientRect();
-        const cs = getComputedStyle(board);
-        const padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
-        const padY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
-        return { w: Math.max(0, rect.width - padX), h: Math.max(0, rect.height - padY) };
-      };
+  <section class="px-6 py-16">
+   <div class="mx-auto max-w-[1400px]">
+    <h2 class="text-2xl font-semibold tracking-tight text-ink">Guides & strategies</h2>
+    <p class="mt-2 max-w-xl text-body">Deep-dive articles to sharpen your {game.title} skills.</p>
+    <div class="mt-8 space-y-6">
+     {game.content.blog.map((article) => (
+      <article class="card p-8">
+       <h3 class="text-xl font-semibold tracking-tight text-ink">{article.title}</h3>
+       <p class="mt-2 text-body">{article.excerpt}</p>
+       <div class="mt-6 space-y-4">
+        {article.headings.map((h, i) => (
+         <div>
+          <h4 class="text-base font-semibold text-ink">{h}</h4>
+          {article.body[i] && <p class="mt-2 text-sm leading-6 text-body">{article.body[i]}</p>}
+         </div>
+        ))}
+       </div>
+      </article>
+     ))}
+    </div>
+   </div>
+  </section>
 
-      // ---- Sound toggle (syncs with the shared SoundEngine) ----
-      const soundBtn = $('sound-btn');
-      const soundIcon = $('sound-icon');
-      const soundLabel = $('sound-label');
-      const renderSound = (muted) => {
-        if (!soundIcon || !soundLabel) return;
-        soundIcon.textContent = muted ? '🔇' : '🔊';
-        soundLabel.textContent = muted ? 'Sound off' : 'Sound on';
-        soundBtn?.setAttribute('aria-pressed', muted ? 'true' : 'false');
-      };
-      try {
-        renderSound(localStorage.getItem('ytp:sound-muted') === '1');
-      } catch {}
-      soundBtn?.addEventListener('click', () => {
-        let muted = false;
-        try { muted = localStorage.getItem('ytp:sound-muted') === '1'; } catch {}
-        const next = !muted;
-        try { localStorage.setItem('ytp:sound-muted', next ? '1' : '0'); } catch {}
-        renderSound(next);
-        document.dispatchEvent(new CustomEvent('ytp:sound-change', { detail: { muted: next } }));
-      });
+  <section class="border-t border-hairline bg-canvas-soft px-6 py-16">
+   <div class="mx-auto max-w-[1400px]">
+    <h2 id="faq-heading" class="text-2xl font-semibold tracking-tight text-ink">Frequently asked questions</h2>
+    <div class="mt-8 divide-y divide-hairline rounded-xl border border-hairline bg-canvas">
+     {game.content.faqs.map((f) => (
+      <details class="group p-6">
+       <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium text-ink">
+        <span>{f.q}</span>
+        <span class="ml-4 text-mute transition group-open:rotate-45" aria-hidden="true">+</span>
+       </summary>
+       <p class="mt-3 text-sm leading-6 text-body">{f.a}</p>
+      </details>
+     ))}
+    </div>
+   </div>
+  </section>
+ </main>
 
-      // ---- Recently played (localStorage) ----
-      const RECENT_KEY = 'ytp:recent';
-      const mainEl = document.getElementById('main');
-      const currentId = {
-        id: mainEl?.dataset.gameId || '',
-        title: mainEl?.dataset.gameTitle || '',
-      };
-      try {
-        const raw = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
-        const next = [currentId, ...raw.filter((g) => g.id !== currentId.id)].slice(0, 6);
-        localStorage.setItem(RECENT_KEY, JSON.stringify(next));
-      } catch {}
-      try {
-        const recent = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]')
-          .filter((g) => g.id !== currentId.id)
-          .slice(0, 4);
-        if (recent.length) {
-          const wrap = $('recent-games');
-          const list = $('recent-list');
-          recent.forEach((g) => {
-            const a = document.createElement('a');
-            a.href = '/' + g.id;
-            a.className = 'group flex rounded-lg border border-hairline bg-canvas shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 overflow-hidden';
-            a.innerHTML = '<div class="relative w-24 h-24 flex-shrink-0 overflow-hidden bg-canvas-soft-2"><img src="/images/games/' + g.id + '/cover.webp" alt="' + g.title + ' cover" class="h-full w-full object-cover" loading="lazy" /></div><div class="p-4 flex flex-col flex-1"><span class="font-mono text-xs text-mute">RECENT</span><h4 class="mt-1 text-base font-semibold tracking-tight text-ink group-hover:text-link">' + g.title + '</h4></div>';
-            list.appendChild(a);
-          });
-          wrap.classList.remove('hidden');
-        }
-      } catch {}
-    })();
-  </script>
+ <script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: game.title,
+  description: game.description,
+  url: `https://playables.caloriecalculatorfree.com/${game.id}`,
+  isPartOf: { "@type": "WebSite", name: "Playables", url: "https://playables.caloriecalculatorfree.com" },
+ })}></script>
+
+ <script is:inline>
+  (() => {
+   const $ = (id) => document.getElementById(id);
+
+   // ---- Game over overlay ----
+   window.__showOver = (title, msg) => {
+    const screen = $('over-screen');
+    if (title) $('over-title').textContent = title;
+    if (msg != null) $('over-msg').textContent = msg;
+    screen.classList.remove('hidden');
+    screen.classList.add('flex');
+   };
+   window.__hideOver = () => {
+    const screen = $('over-screen');
+    if (screen) {
+     screen.classList.add('hidden');
+     screen.classList.remove('flex');
+    }
+   };
+
+   // ---- Pause support (opt-in per game) ----
+   let paused = false;
+   window.__setPausable = (on) => {
+    const btn = $('pause-btn');
+    if (btn) btn.classList.toggle('hidden', !on);
+   };
+   const doPause = () => {
+    if (paused || typeof window.__pauseGame !== 'function') return;
+    paused = true;
+    window.__pauseGame();
+    const s = $('pause-screen');
+    s.classList.remove('hidden'); s.classList.add('flex');
+   };
+   const doResume = () => {
+    if (!paused || typeof window.__resumeGame !== 'function') return;
+    paused = false;
+    window.__resumeGame();
+    const s = $('pause-screen');
+    s.classList.add('hidden'); s.classList.remove('flex');
+   };
+   $('pause-btn')?.addEventListener('click', doPause);
+   $('resume-btn')?.addEventListener('click', doResume);
+
+   // ---- Reset / Play again ----
+   $('over-again')?.addEventListener('click', () => {
+    window.__hideOver();
+    if (typeof window.__resetGame === 'function') window.__resetGame();
+   });
+   $('reset-btn')?.addEventListener('click', () => {
+    window.__hideOver();
+    doResume();
+    if (typeof window.__resetGame === 'function') window.__resetGame();
+   });
+
+   // ---- Available board area (excludes padding) ----
+   window.__getGameArea = () => {
+    const board = $('board');
+    if (!board) return { w: 320, h: 400 };
+    const rect = board.getBoundingClientRect();
+    const cs = getComputedStyle(board);
+    const padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+    const padY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+    return { w: Math.max(0, rect.width - padX), h: Math.max(0, rect.height - padY) };
+   };
+
+   // ---- Sound toggle (syncs with the shared SoundEngine) ----
+   const soundBtn = $('sound-btn');
+   const soundIcon = $('sound-icon');
+   const soundLabel = $('sound-label');
+   const renderSound = (muted) => {
+    if (!soundIcon || !soundLabel) return;
+    soundIcon.textContent = muted ? '🔇' : '🔊';
+    soundLabel.textContent = muted ? 'Sound off' : 'Sound on';
+    soundBtn?.setAttribute('aria-pressed', muted ? 'true' : 'false');
+   };
+   try {
+    renderSound(localStorage.getItem('ytp:sound-muted') === '1');
+   } catch {}
+   soundBtn?.addEventListener('click', () => {
+    let muted = false;
+    try { muted = localStorage.getItem('ytp:sound-muted') === '1'; } catch {}
+    const next = !muted;
+    try { localStorage.setItem('ytp:sound-muted', next ? '1' : '0'); } catch {}
+    renderSound(next);
+    document.dispatchEvent(new CustomEvent('ytp:sound-change', { detail: { muted: next } }));
+   });
+
+   // ---- Recently played (localStorage) ----
+   const RECENT_KEY = 'ytp:recent';
+   const mainEl = document.getElementById('main');
+   const currentId = {
+    id: mainEl?.dataset.gameId || '',
+    title: mainEl?.dataset.gameTitle || '',
+   };
+   try {
+    const raw = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+    const next = [currentId, ...raw.filter((g) => g.id !== currentId.id)].slice(0, 6);
+    localStorage.setItem(RECENT_KEY, JSON.stringify(next));
+   } catch {}
+   try {
+    const recent = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]')
+     .filter((g) => g.id !== currentId.id)
+     .slice(0, 4);
+    if (recent.length) {
+     const wrap = $('recent-games');
+     const list = $('recent-list');
+     recent.forEach((g) => {
+      const a = document.createElement('a');
+      a.href = '/' + g.id;
+      a.className = 'group flex rounded-lg border border-hairline bg-canvas shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a] transition hover:-translate-y-0.5 overflow-hidden';
+      a.innerHTML = '<div class="relative w-24 h-24 flex-shrink-0 overflow-hidden bg-canvas-soft-2"><img src="/images/games/' + g.id + '/cover.webp" alt="' + g.title + ' cover" class="h-full w-full object-cover" loading="lazy" /></div><div class="p-4 flex flex-col flex-1"><span class="font-mono text-xs text-mute">RECENT</span><h4 class="mt-1 text-base font-semibold tracking-tight text-ink group-hover:text-link">' + g.title + '</h4></div>';
+      list.appendChild(a);
+     });
+     wrap.classList.remove('hidden');
+    }
+   } catch {}
+  })();
+ </script>
 </Layout>
+
+

@@ -4,10 +4,11 @@ import { getGame } from "../shared/games";
 const game = getGame("threetown");
 ---
 <GameShell game={game}>
-  <div id="threetown" class="mx-auto w-full max-w-[min(320px,90vw)]"></div>
+ <div id="threetown" class="mx-auto w-full max-w-[min(320px,90vw)]"></div>
 </GameShell>
 
 <script>
-  import { initGame } from "../games/threetown/scripts/game";
-  initGame();
+ import { initGame } from "../games/threetown/scripts/game";
+ initGame();
 </script>
+

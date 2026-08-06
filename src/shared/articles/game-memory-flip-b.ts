@@ -1,45 +1,45 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "memory-flip-vs-other-memory-games",
-    title: "Memory Flip vs Other Memory Games: How It Stacks Up Against Mastercards, Memocoly, and What Was There",
-    description:
-      "A straight comparison of Memory Flip against Mastercards, Memocoly, What Was There, and The Image Quiz, so you can pick the right memory game for your goals.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Memory Games",
-    tags: [
-      "best memory games online",
-      "memory flip vs mastercards",
-      "memory flip vs memocoly",
-      "memory flip vs what was there",
-      "comparison of memory games",
-      "free browser memory games",
-      "concentration style games",
-    ],
-    authorId: "mira",
-    cover: "/images/games/memory-flip/cover.webp",
-    primaryKeyword: "best memory games online",
-    secondaryKeywords: [
-      "memory flip compared to other games",
-      "which memory game is best",
-      "memory flip alternatives",
-      "flip and match game comparison",
-    ],
-    lsiKeywords: [
-      "card matching",
-      "sequence recall",
-      "visual memory",
-      "concentration",
-      "pattern memory",
-      "brain game comparison",
-      "tile matching",
-    ],
-    gameId: "memory-flip",
-    excerpt:
-      "Not all memory games train the same skill. Here is how Memory Flip compares to Mastercards, Memocoly, What Was There, and The Image Quiz, and which one fits the way you like to play.",
-    content: `
+ {
+  slug: "memory-flip-vs-other-memory-games",
+  title: "Memory Flip vs Other Memory Games: How It Stacks Up Against Mastercards, Memocoly, and What Was There",
+  description:
+   "A straight comparison of Memory Flip against Mastercards, Memocoly, What Was There, and The Image Quiz, so you can pick the right memory game for your goals.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Memory Games",
+  tags: [
+   "best memory games online",
+   "memory flip vs mastercards",
+   "memory flip vs memocoly",
+   "memory flip vs what was there",
+   "comparison of memory games",
+   "free browser memory games",
+   "concentration style games",
+  ],
+  authorId: "mira",
+  cover: "/images/games/memory-flip/cover.webp",
+  primaryKeyword: "best memory games online",
+  secondaryKeywords: [
+   "memory flip compared to other games",
+   "which memory game is best",
+   "memory flip alternatives",
+   "flip and match game comparison",
+  ],
+  lsiKeywords: [
+   "card matching",
+   "sequence recall",
+   "visual memory",
+   "concentration",
+   "pattern memory",
+   "brain game comparison",
+   "tile matching",
+  ],
+  gameId: "memory-flip",
+  excerpt:
+   "Not all memory games train the same skill. Here is how Memory Flip compares to Mastercards, Memocoly, What Was There, and The Image Quiz, and which one fits the way you like to play.",
+  content: `
 <h2>Why Compare Memory Games At All</h2>
 <p>Memory games look alike from a distance. A grid, some tiles, a timer, a score. Spend five minutes with each and the differences turn out to be sharp. Some train pure visual recall. Others add a sequence you have to hold in order. A couple test whether you even noticed what was on the screen before it vanished. Picking the right one is not about which is best in the abstract. It is about which skill you want to exercise and how much pressure you enjoy.</p>
 <p>This comparison keeps things practical. We put <a href="/memory-flip">Memory Flip</a> next to three close relatives, <a href="/mastercards">Mastercards</a>, <a href="/memocoly">Memocoly</a>, and <a href="/what-was-there">What Was There</a>, plus a cousin called <a href="/the-image-quiz">The Image Quiz</a>. None require a download or an account, and all of them run in a browser. The question is what each one asks your brain to do while you play.</p>
@@ -150,96 +150,96 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Working memory" - the cognitive system these memory games exercise during play.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What is the best memory game online?",
-        a: "There is no single best, because the games train different skills. Memory Flip is the best daily habit for pure location recall, while Memocoly, What Was There, and The Image Quiz add sequence, pressure, and observation respectively.",
-      },
-      {
-        q: "How is Memory Flip different from Mastercards?",
-        a: "Both use a flip-two-and-match loop. Mastercards leans into card styling and often larger boards, so the challenge comes from volume. Memory Flip keeps a plainer board that keeps attention on the recall itself.",
-      },
-      {
-        q: "Is Memocoly harder than Memory Flip?",
-        a: "Yes for most players. Memocoly adds a sequence or order layer on top of matching, which is a heavier working-memory load than simply remembering where tiles sit.",
-      },
-      {
-        q: "What does What Was There test that Memory Flip does not?",
-        a: "What Was There shows you a scene briefly, then removes it and asks what you saw. It tests short-term visual memory and observation under a glance, rather than recall built tile by tile at your own pace.",
-      },
-      {
-        q: "Can skills from Memory Flip transfer to other memory games?",
-        a: "They do. The core habit of labeling tile locations transfers straight to Mastercards and Memocoly, and the visual recall helps with What Was There and The Image Quiz.",
-      },
-      {
-        q: "Which memory game is best for a daily routine?",
-        a: "Memory Flip is the strongest daily driver because it is calm, quick to open, and strips the format down to pure recall, making it easy to play consistently without burning out.",
-      },
-      {
-        q: "Should beginners start with Memory Flip or Memocoly?",
-        a: "Beginners should start with Memory Flip. Learn to remember tile locations there first, then move to Memocoly once holding a few positions feels automatic.",
-      },
-      {
-        q: "Are these memory games free to play?",
-        a: "Yes. Memory Flip, Mastercards, Memocoly, What Was There, and The Image Quiz all run free in a browser without requiring a download or an account.",
-      },
-      {
-        q: "What is the difference between memory and observation games?",
-        a: "Matching games like Memory Flip train where things are, while observation games like The Image Quiz train noticing details in an image you study. They exercise related but distinct visual skills.",
-      },
-      {
-        q: "How do I choose between these games?",
-        a: "Pick by the skill and pressure you want: Memory Flip for calm recall, Mastercards for volume, Memocoly for order, What Was There for glance pressure, and The Image Quiz for observation.",
-      },
-      {
-        q: "Do harder memory games train the brain better?",
-        a: "Harder games train harder skills, but consistency matters more than difficulty. A gentle game played daily usually beats a hard game played rarely, because the habit is what drives improvement.",
-      },
-      {
-        q: "Can I mix several memory games in one week?",
-        a: "Yes, and it helps. A daily Memory Flip baseline plus one harder title weekly shows where your recall still leaks and keeps the routine from going stale.",
-      },
-    ],
-  },
-  {
-    slug: "memory-flip-brain-benefits",
-    title: "Memory Flip Brain Benefits: What the Science Says About Memory Games and Your Mind",
-    description:
-      "Do memory games help your brain? We look at what Memory Flip and similar titles train, what the research supports, and how to play for real cognitive benefit.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Memory Games",
-    tags: [
-      "are memory games good for the brain",
-      "memory flip benefits",
-      "brain training games",
-      "memory game cognitive benefits",
-      "working memory improvement",
-      "do memory games work",
-      "mental exercise",
-    ],
-    authorId: "mira",
-    cover: "/images/games/memory-flip/cover.webp",
-    primaryKeyword: "are memory games good for the brain",
-    secondaryKeywords: [
-      "memory flip brain training",
-      "cognitive benefits of memory games",
-      "do matching games help memory",
-      "memory games and working memory",
-    ],
-    lsiKeywords: [
-      "working memory",
-      "visual recall",
-      "attention",
-      "neuroplasticity",
-      "cognitive training",
-      "focus",
-      "mental exercise",
-    ],
-    gameId: "memory-flip",
-    excerpt:
-      "Memory games like Memory Flip exercise real mental skills, but the benefits have limits. Here is what they train, what the research actually supports, and how to play so the practice pays off.",
-    content: `
+  faqs: [
+   {
+    q: "What is the best memory game online?",
+    a: "There is no single best, because the games train different skills. Memory Flip is the best daily habit for pure location recall, while Memocoly, What Was There, and The Image Quiz add sequence, pressure, and observation respectively.",
+   },
+   {
+    q: "How is Memory Flip different from Mastercards?",
+    a: "Both use a flip-two-and-match loop. Mastercards leans into card styling and often larger boards, so the challenge comes from volume. Memory Flip keeps a plainer board that keeps attention on the recall itself.",
+   },
+   {
+    q: "Is Memocoly harder than Memory Flip?",
+    a: "Yes for most players. Memocoly adds a sequence or order layer on top of matching, which is a heavier working-memory load than simply remembering where tiles sit.",
+   },
+   {
+    q: "What does What Was There test that Memory Flip does not?",
+    a: "What Was There shows you a scene briefly, then removes it and asks what you saw. It tests short-term visual memory and observation under a glance, rather than recall built tile by tile at your own pace.",
+   },
+   {
+    q: "Can skills from Memory Flip transfer to other memory games?",
+    a: "They do. The core habit of labeling tile locations transfers straight to Mastercards and Memocoly, and the visual recall helps with What Was There and The Image Quiz.",
+   },
+   {
+    q: "Which memory game is best for a daily routine?",
+    a: "Memory Flip is the strongest daily driver because it is calm, quick to open, and strips the format down to pure recall, making it easy to play consistently without burning out.",
+   },
+   {
+    q: "Should beginners start with Memory Flip or Memocoly?",
+    a: "Beginners should start with Memory Flip. Learn to remember tile locations there first, then move to Memocoly once holding a few positions feels automatic.",
+   },
+   {
+    q: "Are these memory games free to play?",
+    a: "Yes. Memory Flip, Mastercards, Memocoly, What Was There, and The Image Quiz all run free in a browser without requiring a download or an account.",
+   },
+   {
+    q: "What is the difference between memory and observation games?",
+    a: "Matching games like Memory Flip train where things are, while observation games like The Image Quiz train noticing details in an image you study. They exercise related but distinct visual skills.",
+   },
+   {
+    q: "How do I choose between these games?",
+    a: "Pick by the skill and pressure you want: Memory Flip for calm recall, Mastercards for volume, Memocoly for order, What Was There for glance pressure, and The Image Quiz for observation.",
+   },
+   {
+    q: "Do harder memory games train the brain better?",
+    a: "Harder games train harder skills, but consistency matters more than difficulty. A gentle game played daily usually beats a hard game played rarely, because the habit is what drives improvement.",
+   },
+   {
+    q: "Can I mix several memory games in one week?",
+    a: "Yes, and it helps. A daily Memory Flip baseline plus one harder title weekly shows where your recall still leaks and keeps the routine from going stale.",
+   },
+  ],
+ },
+ {
+  slug: "memory-flip-brain-benefits",
+  title: "Memory Flip Brain Benefits: What the Science Says About Memory Games and Your Mind",
+  description:
+   "Do memory games help your brain? We look at what Memory Flip and similar titles train, what the research supports, and how to play for real cognitive benefit.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Memory Games",
+  tags: [
+   "are memory games good for the brain",
+   "memory flip benefits",
+   "brain training games",
+   "memory game cognitive benefits",
+   "working memory improvement",
+   "do memory games work",
+   "mental exercise",
+  ],
+  authorId: "mira",
+  cover: "/images/games/memory-flip/cover.webp",
+  primaryKeyword: "are memory games good for the brain",
+  secondaryKeywords: [
+   "memory flip brain training",
+   "cognitive benefits of memory games",
+   "do matching games help memory",
+   "memory games and working memory",
+  ],
+  lsiKeywords: [
+   "working memory",
+   "visual recall",
+   "attention",
+   "neuroplasticity",
+   "cognitive training",
+   "focus",
+   "mental exercise",
+  ],
+  gameId: "memory-flip",
+  excerpt:
+   "Memory games like Memory Flip exercise real mental skills, but the benefits have limits. Here is what they train, what the research actually supports, and how to play so the practice pays off.",
+  content: `
 <h2>The Question Everyone Actually Asks</h2>
 <p>Type "are memory games good for the brain" into a search box and you get two camps shouting past each other. One side sells brain training as a cure for decline. The other dismisses it as a placebo with a scoreboard. The honest answer sits between them, and it is more useful than either extreme. Memory games do exercise real cognitive skills. They are not magic, and they are not nothing.</p>
 <p><a href="/memory-flip">Memory Flip</a> is a good specimen to test the claim against, because it is simple. There is no marketing fog around it, no monthly subscription, just a board of tiles and the act of remembering where they are. If any memory game trains the mind, the mechanism should be visible here, and it is.</p>
@@ -357,55 +357,56 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Cognitive training" - overview of what brain-training research does and does not support.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "Are memory games good for the brain?",
-        a: "For the specific skills they train, yes. Games like Memory Flip give working memory, visual recall, and attention structured, repeated use. The benefits are real but bounded, and broad far-transfer claims are not well supported.",
-      },
-      {
-        q: "What does Memory Flip actually train?",
-        a: "It trains working memory through holding and comparing tile locations, visual and spatial recall through remembering where symbols sit, and attention through the need to actually observe each flip.",
-      },
-      {
-        q: "Can memory games prevent dementia?",
-        a: "Current research does not support the claim that memory games prevent dementia. They offer cognitive activity and near-transfer skill gains, but no proven protection against decline on their own.",
-      },
-      {
-        q: "Do memory games raise IQ?",
-        a: "No. Studies show improvement on the trained task and some near-transfer gains, but not reliable increases in general intelligence or fluid reasoning from playing matching games.",
-      },
-      {
-        q: "How often should I play for a benefit?",
-        a: "A few short rounds most days works better than one long session. Consistency and spaced practice are what the research rewards, so a small daily habit beats an occasional intense grind.",
-      },
-      {
-        q: "Why is attention part of the benefit?",
-        a: "You cannot remember what you never attended to. Memory Flip makes scattered attention visible, and practicing slow, focused flips builds the habit of attending, which carries into other tasks.",
-      },
-      {
-        q: "What is the difference between near and far transfer?",
-        a: "Near transfer is getting better at similar tasks, like other matching games, and is well supported. Far transfer is improvement in unrelated daily life skills, which is modest and contested in the research.",
-      },
-      {
-        q: "Is Memory Flip better than other brain games?",
-        a: "It is not better, just simpler and more sustainable. For ordered recall try Memocoly, for glance pressure try What Was There, and for observation try The Image Quiz. The best one is the one you keep playing.",
-      },
-      {
-        q: "Do the benefits stop at some point?",
-        a: "Yes, within the game. Once you clear boards near optimally, more play mainly maintains the skill. To keep improving, change the variable with a bigger board, faster pace, or a different format.",
-      },
-      {
-        q: "Can older adults benefit from Memory Flip?",
-        a: "They can. It offers low-stakes, repeatable cognitive activity with a gentle learning curve, which fits older adults building a consistent mental exercise habit without pressure.",
-      },
-      {
-        q: "How do I know the practice is working?",
-        a: "Your best score and flip count trend upward over a couple of weeks, and boards feel less like guessing and more like retrieval. Logging the score is how you confirm the change is real.",
-      },
-      {
-        q: "Should I pay for brain training instead?",
-        a: "Not necessarily. A free, consistent game like Memory Flip delivers the well-supported near-transfer benefits without a subscription. Paid programs rarely show far-transfer gains the free versions cannot also give you through regular practice.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "Are memory games good for the brain?",
+    a: "For the specific skills they train, yes. Games like Memory Flip give working memory, visual recall, and attention structured, repeated use. The benefits are real but bounded, and broad far-transfer claims are not well supported.",
+   },
+   {
+    q: "What does Memory Flip actually train?",
+    a: "It trains working memory through holding and comparing tile locations, visual and spatial recall through remembering where symbols sit, and attention through the need to actually observe each flip.",
+   },
+   {
+    q: "Can memory games prevent dementia?",
+    a: "Current research does not support the claim that memory games prevent dementia. They offer cognitive activity and near-transfer skill gains, but no proven protection against decline on their own.",
+   },
+   {
+    q: "Do memory games raise IQ?",
+    a: "No. Studies show improvement on the trained task and some near-transfer gains, but not reliable increases in general intelligence or fluid reasoning from playing matching games.",
+   },
+   {
+    q: "How often should I play for a benefit?",
+    a: "A few short rounds most days works better than one long session. Consistency and spaced practice are what the research rewards, so a small daily habit beats an occasional intense grind.",
+   },
+   {
+    q: "Why is attention part of the benefit?",
+    a: "You cannot remember what you never attended to. Memory Flip makes scattered attention visible, and practicing slow, focused flips builds the habit of attending, which carries into other tasks.",
+   },
+   {
+    q: "What is the difference between near and far transfer?",
+    a: "Near transfer is getting better at similar tasks, like other matching games, and is well supported. Far transfer is improvement in unrelated daily life skills, which is modest and contested in the research.",
+   },
+   {
+    q: "Is Memory Flip better than other brain games?",
+    a: "It is not better, just simpler and more sustainable. For ordered recall try Memocoly, for glance pressure try What Was There, and for observation try The Image Quiz. The best one is the one you keep playing.",
+   },
+   {
+    q: "Do the benefits stop at some point?",
+    a: "Yes, within the game. Once you clear boards near optimally, more play mainly maintains the skill. To keep improving, change the variable with a bigger board, faster pace, or a different format.",
+   },
+   {
+    q: "Can older adults benefit from Memory Flip?",
+    a: "They can. It offers low-stakes, repeatable cognitive activity with a gentle learning curve, which fits older adults building a consistent mental exercise habit without pressure.",
+   },
+   {
+    q: "How do I know the practice is working?",
+    a: "Your best score and flip count trend upward over a couple of weeks, and boards feel less like guessing and more like retrieval. Logging the score is how you confirm the change is real.",
+   },
+   {
+    q: "Should I pay for brain training instead?",
+    a: "Not necessarily. A free, consistent game like Memory Flip delivers the well-supported near-transfer benefits without a subscription. Paid programs rarely show far-transfer gains the free versions cannot also give you through regular practice.",
+   },
+  ],
+ },
 ];
+

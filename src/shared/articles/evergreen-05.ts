@@ -1,45 +1,45 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "best-puzzle-games-online-free",
-    title: "Best Puzzle Games Online Free: A Straight Guide to What Is Worth Playing",
-    description:
-      "Best puzzle games online free: a practical, no-hype guide to the puzzle titles worth your time, from block blasts to sliding tiles and matching pairs, no download needed.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Puzzle Games",
-    tags: [
-      "best puzzle games online",
-      "free puzzle games",
-      "online puzzle games",
-      "puzzle games no download",
-      "browser puzzle games",
-      "top puzzle games free",
-      "puzzle games to play now",
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "best puzzle games online",
-    secondaryKeywords: [
-      "free puzzle games online",
-      "puzzle games no download",
-      "best browser puzzle games",
-      "top free puzzle games",
-      "puzzle games to play on pc",
-    ],
-    lsiKeywords: [
-      "sliding puzzle",
-      "block puzzle",
-      "match tiles",
-      "mahjong solitaire",
-      "jigsaw puzzle",
-      "logic puzzle",
-      "brain teaser",
-    ],
-    excerpt:
-      "A direct look at the best puzzle games online free, grouped by the kind of thinking they ask for, with links to titles you can open right now without a download.",
-    content: `
+ {
+  slug: "best-puzzle-games-online-free",
+  title: "Best Puzzle Games Online Free: A Straight Guide to What Is Worth Playing",
+  description:
+   "Best puzzle games online free: a practical, no-hype guide to the puzzle titles worth your time, from block blasts to sliding tiles and matching pairs, no download needed.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Puzzle Games",
+  tags: [
+   "best puzzle games online",
+   "free puzzle games",
+   "online puzzle games",
+   "puzzle games no download",
+   "browser puzzle games",
+   "top puzzle games free",
+   "puzzle games to play now",
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "best puzzle games online",
+  secondaryKeywords: [
+   "free puzzle games online",
+   "puzzle games no download",
+   "best browser puzzle games",
+   "top free puzzle games",
+   "puzzle games to play on pc",
+  ],
+  lsiKeywords: [
+   "sliding puzzle",
+   "block puzzle",
+   "match tiles",
+   "mahjong solitaire",
+   "jigsaw puzzle",
+   "logic puzzle",
+   "brain teaser",
+  ],
+  excerpt:
+   "A direct look at the best puzzle games online free, grouped by the kind of thinking they ask for, with links to titles you can open right now without a download.",
+  content: `
 <h2>What Makes a Puzzle Game Worth Your Time</h2>
 <p>Search for the best puzzle games online and you will drown in lists that rank twenty titles by vibes and stock a handful with games you cannot actually play without an app store, a login, or a credit card. This guide takes a different path. It looks at puzzle games you can open in a browser, for free, and keeps the focus on what each one actually asks your brain to do.</p>
 <p>A puzzle game earns a place on this list for three reasons. It starts in seconds. The rules are clear within a round or two. And there is enough depth underneath the simple surface to keep you coming back. Anything that fails those tests, no matter how pretty, does not belong here.</p>
@@ -167,96 +167,96 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Jigsaw puzzle" - history and mechanics of picture assembly puzzles like Jigsaw.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are the best puzzle games online free?",
-        a: "The best free browser puzzles are ones you can open with no download and no account, such as Number Slide for sliding order, Block Blast for clear combos, Mahjongg Solitaire for matching, Colored Lines for connections, and Jigsaw for assembly. Pick by mood rather than by a fixed ranking.",
-      },
-      {
-        q: "Are there puzzle games with no download",
-        a: "Yes. All the titles in this guide run in a browser and need no install or sign-up. That removes the two biggest barriers to starting: the wait and the commitment. You click, you play, you close the tab.",
-      },
-      {
-        q: "Which free puzzle is best for brain training",
-        a: "Sliding and connection puzzles, like Number Slide and Colored Lines, ask for planning and spatial reasoning, which exercise forward thinking. Matching games like Mahjongg Solitaire exercise memory and calm focus. Rotate between types for the broadest benefit.",
-      },
-      {
-        q: "What is the easiest puzzle game to start",
-        a: "Mahjongg Solitaire and Jigsaw are gentle entries because the rules are obvious within a round and neither rushes you with a timer. Block Blast is also easy to begin but has more pace, so it suits players who want a little energy.",
-      },
-      {
-        q: "Can I play these puzzles on a phone",
-        a: "Browser puzzle games generally work on phones and tablets as well as on a desktop, since they need only a screen and a tap or click. The simpler the controls, the better they feel on a small screen, which favors sliding, matching, and block puzzles.",
-      },
-      {
-        q: "Which puzzle game helps with planning",
-        a: "Number Slide and Colored Lines both reward thinking a few steps ahead. In Number Slide you plan tile moves around a single empty space; in Colored Lines you plan the order of lines so the last one still fits. Both build the habit of looking before you move.",
-      },
-      {
-        q: "Are block puzzle games good for short breaks",
-        a: "Yes. Block Blast gives quick, visible progress and a score to chase, which makes a five-minute break feel productive. Set a stop before you start so the round stays a break and does not become a longer session than you intended.",
-      },
-      {
-        q: "Do puzzle games need an account",
-        a: "The ones listed here do not. No account means no email, no password, and no upsell, which keeps the experience frictionless. If a puzzle demands a login before you can play, that is a reason to look elsewhere.",
-      },
-      {
-        q: "What is the most relaxing free puzzle",
-        a: "Mahjongg Solitaire and Jigsaw are the calmest of the group. They have no harsh timer, the pace is yours, and the actions are simple. They suit the end of a long day when you want attention without pressure.",
-      },
-      {
-        q: "How do I avoid wasting time on puzzle games",
-        a: "Choose the game before you sit down, play one or two rounds, and close the tab. The free browser puzzles here end cleanly, so the discipline is mostly about stopping, not about the game trapping you.",
-      },
-      {
-        q: "Which puzzle is best for kids",
-        a: "Sliding and matching puzzles are friendly for children because the goals are visual and the rules are quick to learn. Block Blast adds a score chase that many kids enjoy. Supervise the choice of title and keep sessions short.",
-      },
-      {
-        q: "Are these puzzles safe to play at work",
-        a: "They are quick and private, with no account or chat, so a short round on a break is low risk. Use them as a true break between tasks rather than during focused work, and keep the session to a few minutes.",
-      },
-    ],
-  },
-  {
-    slug: "relaxing-puzzle-games-for-breaks",
-    title: "Relaxing Puzzle Games for Breaks: Calm Picks That Reset Your Head",
-    description:
-      "Relaxing puzzle games for breaks: calm, low-pressure picks like sliding tiles, gentle block clears, and matching pairs that reset your focus without a single stressful timer.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Puzzle Games",
-    tags: [
-      "relaxing puzzle games",
-      "calm puzzle games",
-      "puzzle games for breaks",
-      "stress relief puzzle games",
-      "low pressure puzzle games",
-      "chill puzzle games",
-      "puzzle games to unwind",
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "relaxing puzzle games",
-    secondaryKeywords: [
-      "calm puzzle games online",
-      "puzzle games for stress relief",
-      "chill puzzle games free",
-      "puzzle games to relax",
-      "low stress puzzle games",
-    ],
-    lsiKeywords: [
-      "slow pace",
-      "no timer",
-      "mindful play",
-      "attention reset",
-      "calm focus",
-      "unwind",
-      "quiet game",
-    ],
-    excerpt:
-      "Calm, low-pressure puzzle games for short breaks: which sliding, matching, and block-clearing titles actually relax you, and how to use them to reset between tasks.",
-    content: `
+  faqs: [
+   {
+    q: "What are the best puzzle games online free?",
+    a: "The best free browser puzzles are ones you can open with no download and no account, such as Number Slide for sliding order, Block Blast for clear combos, Mahjongg Solitaire for matching, Colored Lines for connections, and Jigsaw for assembly. Pick by mood rather than by a fixed ranking.",
+   },
+   {
+    q: "Are there puzzle games with no download",
+    a: "Yes. All the titles in this guide run in a browser and need no install or sign-up. That removes the two biggest barriers to starting: the wait and the commitment. You click, you play, you close the tab.",
+   },
+   {
+    q: "Which free puzzle is best for brain training",
+    a: "Sliding and connection puzzles, like Number Slide and Colored Lines, ask for planning and spatial reasoning, which exercise forward thinking. Matching games like Mahjongg Solitaire exercise memory and calm focus. Rotate between types for the broadest benefit.",
+   },
+   {
+    q: "What is the easiest puzzle game to start",
+    a: "Mahjongg Solitaire and Jigsaw are gentle entries because the rules are obvious within a round and neither rushes you with a timer. Block Blast is also easy to begin but has more pace, so it suits players who want a little energy.",
+   },
+   {
+    q: "Can I play these puzzles on a phone",
+    a: "Browser puzzle games generally work on phones and tablets as well as on a desktop, since they need only a screen and a tap or click. The simpler the controls, the better they feel on a small screen, which favors sliding, matching, and block puzzles.",
+   },
+   {
+    q: "Which puzzle game helps with planning",
+    a: "Number Slide and Colored Lines both reward thinking a few steps ahead. In Number Slide you plan tile moves around a single empty space; in Colored Lines you plan the order of lines so the last one still fits. Both build the habit of looking before you move.",
+   },
+   {
+    q: "Are block puzzle games good for short breaks",
+    a: "Yes. Block Blast gives quick, visible progress and a score to chase, which makes a five-minute break feel productive. Set a stop before you start so the round stays a break and does not become a longer session than you intended.",
+   },
+   {
+    q: "Do puzzle games need an account",
+    a: "The ones listed here do not. No account means no email, no password, and no upsell, which keeps the experience frictionless. If a puzzle demands a login before you can play, that is a reason to look elsewhere.",
+   },
+   {
+    q: "What is the most relaxing free puzzle",
+    a: "Mahjongg Solitaire and Jigsaw are the calmest of the group. They have no harsh timer, the pace is yours, and the actions are simple. They suit the end of a long day when you want attention without pressure.",
+   },
+   {
+    q: "How do I avoid wasting time on puzzle games",
+    a: "Choose the game before you sit down, play one or two rounds, and close the tab. The free browser puzzles here end cleanly, so the discipline is mostly about stopping, not about the game trapping you.",
+   },
+   {
+    q: "Which puzzle is best for kids",
+    a: "Sliding and matching puzzles are friendly for children because the goals are visual and the rules are quick to learn. Block Blast adds a score chase that many kids enjoy. Supervise the choice of title and keep sessions short.",
+   },
+   {
+    q: "Are these puzzles safe to play at work",
+    a: "They are quick and private, with no account or chat, so a short round on a break is low risk. Use them as a true break between tasks rather than during focused work, and keep the session to a few minutes.",
+   },
+  ],
+ },
+ {
+  slug: "relaxing-puzzle-games-for-breaks",
+  title: "Relaxing Puzzle Games for Breaks: Calm Picks That Reset Your Head",
+  description:
+   "Relaxing puzzle games for breaks: calm, low-pressure picks like sliding tiles, gentle block clears, and matching pairs that reset your focus without a single stressful timer.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Puzzle Games",
+  tags: [
+   "relaxing puzzle games",
+   "calm puzzle games",
+   "puzzle games for breaks",
+   "stress relief puzzle games",
+   "low pressure puzzle games",
+   "chill puzzle games",
+   "puzzle games to unwind",
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "relaxing puzzle games",
+  secondaryKeywords: [
+   "calm puzzle games online",
+   "puzzle games for stress relief",
+   "chill puzzle games free",
+   "puzzle games to relax",
+   "low stress puzzle games",
+  ],
+  lsiKeywords: [
+   "slow pace",
+   "no timer",
+   "mindful play",
+   "attention reset",
+   "calm focus",
+   "unwind",
+   "quiet game",
+  ],
+  excerpt:
+   "Calm, low-pressure puzzle games for short breaks: which sliding, matching, and block-clearing titles actually relax you, and how to use them to reset between tasks.",
+  content: `
 <h2>Why a Break Needs to Be Calm, Not Busy</h2>
 <p>Most people treat a break as a gap to fill, and they fill it with the busiest thing available: a feed, a headline, a clip that demands a reaction. That is the opposite of rest. A real break lowers the load on the part of your mind that was working, and relaxing puzzle games do exactly that when you pick the right ones.</p>
 <p>The trick is pace. A puzzle with a ticking clock is not a break; it is a small exam with worse stakes. The games that actually reset you have no timer, clear rules, and an ending you control. You play a round, you stop, you feel steadier. That is the whole point of using a puzzle as a pause.</p>
@@ -386,55 +386,56 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Jigsaw puzzle" - history and mechanics of picture assembly, the basis for visual calm play in Jigsaw.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are the most relaxing puzzle games",
-        a: "The most relaxing are ones with no timer and clear rules, such as Number Slide for slow focus, Mahjongg Solitaire for calm matching, Jigsaw for visual assembly, Colored Lines for clean goals, and Block Blast played gently. They let you set the pace and stop anytime.",
-      },
-      {
-        q: "Are puzzle games good for stress relief",
-        a: "Yes, when they are low-pressure. A calm puzzle gives your attention a single, harmless task, which can quiet a busy mind the way a short walk can. The relief comes from pace and clarity, not from any score, so avoid timed or competitive modes.",
-      },
-      {
-        q: "Which puzzle game has no timer",
-        a: "Number Slide, Mahjongg Solitaire, Colored Lines, and Jigsaw can all be played without a clock, and Block Blast can be played slowly if you ignore any self-imposed score chase. These are the titles to reach for when you want rest rather than a test.",
-      },
-      {
-        q: "Can puzzles help with anxiety",
-        a: "A short calm puzzle can lower momentary tension by giving the mind a contained task, but it is not a treatment for anxiety. If worry is frequent or heavy, speak with a clinician. Think of these games as a small, pleasant pause, not a cure.",
-      },
-      {
-        q: "What is the best puzzle for unwinding at night",
-        a: "Mahjongg Solitaire and Jigsaw are strong night picks because they are visual, slow, and free of a countdown. They let you wind down without screen-fast content. Keep the session short and stop when the board or picture is done.",
-      },
-      {
-        q: "Are block puzzle games relaxing",
-        a: "They can be, if you play them slowly and skip the score chase. Block Blast becomes a calm pattern exercise when you clear clusters at an easy pace and stop when the board feels good. The relaxing version is the one where you set the tempo.",
-      },
-      {
-        q: "How long should a relaxing puzzle break be",
-        a: "Five to ten minutes is plenty. Long enough to feel the shift, short enough to protect the rest of your day. Set a soft alarm and close the tab when it rings, so the calm break stays a break.",
-      },
-      {
-        q: "Can kids use relaxing puzzle games",
-        a: "Yes. Sliding and matching puzzles are friendly for children, with clear goals and no pressure. Keep sessions short and let the child lead. The calm versions work well as a quiet alternative to faster, noisier games.",
-      },
-      {
-        q: "Do these puzzles need an account",
-        a: "No. The relaxing titles listed here open in a browser with no sign-up and no payment, which keeps the experience frictionless. If a puzzle asks for a login before you can play, that friction works against relaxation.",
-      },
-      {
-        q: "What is the difference between calm and busy puzzle games",
-        a: "Calm puzzles let you control pace, have clear rules, and forgive mistakes; busy ones add clocks, scores, and pressure. The same title can be either, depending on how you play it, but the ones here lean calm by design.",
-      },
-      {
-        q: "Can I use these puzzles at work",
-        a: "A short calm round on a real break is reasonable and private, with no account or chat. Use it between tasks, keep it to a few minutes, and avoid playing during focused work so it stays a genuine pause.",
-      },
-      {
-        q: "Which puzzle is best before sleep",
-        a: "Jigsaw or Mahjongg Solitaire, played with the screen dimmed and the session short. They are visual and slow, which suits a wind-down better than faster titles. Stop as soon as you feel sleepy rather than pushing for a finished board.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "What are the most relaxing puzzle games",
+    a: "The most relaxing are ones with no timer and clear rules, such as Number Slide for slow focus, Mahjongg Solitaire for calm matching, Jigsaw for visual assembly, Colored Lines for clean goals, and Block Blast played gently. They let you set the pace and stop anytime.",
+   },
+   {
+    q: "Are puzzle games good for stress relief",
+    a: "Yes, when they are low-pressure. A calm puzzle gives your attention a single, harmless task, which can quiet a busy mind the way a short walk can. The relief comes from pace and clarity, not from any score, so avoid timed or competitive modes.",
+   },
+   {
+    q: "Which puzzle game has no timer",
+    a: "Number Slide, Mahjongg Solitaire, Colored Lines, and Jigsaw can all be played without a clock, and Block Blast can be played slowly if you ignore any self-imposed score chase. These are the titles to reach for when you want rest rather than a test.",
+   },
+   {
+    q: "Can puzzles help with anxiety",
+    a: "A short calm puzzle can lower momentary tension by giving the mind a contained task, but it is not a treatment for anxiety. If worry is frequent or heavy, speak with a clinician. Think of these games as a small, pleasant pause, not a cure.",
+   },
+   {
+    q: "What is the best puzzle for unwinding at night",
+    a: "Mahjongg Solitaire and Jigsaw are strong night picks because they are visual, slow, and free of a countdown. They let you wind down without screen-fast content. Keep the session short and stop when the board or picture is done.",
+   },
+   {
+    q: "Are block puzzle games relaxing",
+    a: "They can be, if you play them slowly and skip the score chase. Block Blast becomes a calm pattern exercise when you clear clusters at an easy pace and stop when the board feels good. The relaxing version is the one where you set the tempo.",
+   },
+   {
+    q: "How long should a relaxing puzzle break be",
+    a: "Five to ten minutes is plenty. Long enough to feel the shift, short enough to protect the rest of your day. Set a soft alarm and close the tab when it rings, so the calm break stays a break.",
+   },
+   {
+    q: "Can kids use relaxing puzzle games",
+    a: "Yes. Sliding and matching puzzles are friendly for children, with clear goals and no pressure. Keep sessions short and let the child lead. The calm versions work well as a quiet alternative to faster, noisier games.",
+   },
+   {
+    q: "Do these puzzles need an account",
+    a: "No. The relaxing titles listed here open in a browser with no sign-up and no payment, which keeps the experience frictionless. If a puzzle asks for a login before you can play, that friction works against relaxation.",
+   },
+   {
+    q: "What is the difference between calm and busy puzzle games",
+    a: "Calm puzzles let you control pace, have clear rules, and forgive mistakes; busy ones add clocks, scores, and pressure. The same title can be either, depending on how you play it, but the ones here lean calm by design.",
+   },
+   {
+    q: "Can I use these puzzles at work",
+    a: "A short calm round on a real break is reasonable and private, with no account or chat. Use it between tasks, keep it to a few minutes, and avoid playing during focused work so it stays a genuine pause.",
+   },
+   {
+    q: "Which puzzle is best before sleep",
+    a: "Jigsaw or Mahjongg Solitaire, played with the screen dimmed and the session short. They are visual and slow, which suits a wind-down better than faster titles. Stop as soon as you feel sleepy rather than pushing for a finished board.",
+   },
+  ],
+ },
 ];
+

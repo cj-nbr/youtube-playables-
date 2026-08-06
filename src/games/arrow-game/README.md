@@ -1,24 +1,24 @@
 # Tic Tac Toe (`arrow-game`)
 
-A local two-player Tic Tac Toe game for the YouTube Playables platform. Players take
+A local two-player Tic Tac Toe game for the Playables platform. Players take
 turns on a 3×3 grid; X goes first, and the first to get three in a row wins.
 
 ## Folder structure
 
 ```
 arrow-game/
-├── content.ts        # SEO + guide/instructions/faqs/blog content (GameContent)
-├── README.md         # This file
+├── content.ts    # SEO + guide/instructions/faqs/blog content (GameContent)
+├── README.md     # This file
 ├── blog/
-│   └── complete-guide.md
-├── assets/           # Static assets (placeholder)
-├── images/           # Image assets (placeholder)
-├── audio/            # Audio assets (placeholder)
-├── scripts/          # Game logic scripts (placeholder)
-├── styles/           # Stylesheets (placeholder)
-├── levels/           # Level data (placeholder)
-├── seo/              # SEO assets (placeholder)
-└── components/       # UI components (placeholder)
+│  └── complete-guide.md
+├── assets/      # Static assets (placeholder)
+├── images/      # Image assets (placeholder)
+├── audio/      # Audio assets (placeholder)
+├── scripts/     # Game logic scripts (placeholder)
+├── styles/      # Stylesheets (placeholder)
+├── levels/      # Level data (placeholder)
+├── seo/       # SEO assets (placeholder)
+└── components/    # UI components (placeholder)
 ```
 
 ## How to run
@@ -48,8 +48,9 @@ Then open the local preview URL and navigate to the Tic Tac Toe game route.
 ## Implementation notes
 
 - Content lives in `content.ts` and satisfies the `GameContent` interface from
-  `../../shared/types` (guide, instructions, faqs, blog).
+ `../../shared/types` (guide, instructions, faqs, blog).
 - Article copy in `blog/complete-guide.md` mirrors the first blog entry in `content.ts`.
 - Placeholder folders (assets, images, audio, scripts, styles, levels, seo,
-  components) are kept via `.gitkeep` so the structure is committed empty.
+ components) are kept via `.gitkeep` so the structure is committed empty.
 - This is a local two-player implementation; no AI opponent or network sync.
+

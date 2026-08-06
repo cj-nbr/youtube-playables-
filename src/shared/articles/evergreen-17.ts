@@ -1,47 +1,47 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "mastermind-strategy-guide",
-    title: "The Mastermind Strategy Guide: How to Break Any Code in Fewer Guesses",
-    description: "A practical mastermind strategy guide for code-breaking. Learn the feedback system, Knuth's algorithm, and daily habits that cut your average solve length fast.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Logic Games",
-    tags: [
-      "mastermind strategy",
-      "code-breaking game",
-      "logic puzzle tactics",
-      "deduction games",
-      "guessing game tips",
-      "peg game solver",
-      "Knuth algorithm",
-      "brain training puzzles"
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "mastermind strategy",
-    secondaryKeywords: [
-      "how to win at mastermind",
-      "mastermind code breaking tips",
-      "mastermind solver algorithm",
-      "best first guess mastermind",
-      "logic game strategy guide"
-    ],
-    lsiKeywords: [
-      "feedback analysis",
-      "black and white pegs",
-      "constraint satisfaction",
-      "hypothesis testing",
-      "information gain",
-      "deductive reasoning",
-      "sudoku",
-      "reversi",
-      "numberhunt",
-      "minimax"
-    ],
-    excerpt: "Mastermind looks like luck until you learn the feedback. This guide explains the deduction behind every guess and shows how to break codes in fewer moves.",
-    content: `<h2>Why Mastermind Is Not a Guessing Game</h2>
+ {
+  slug: "mastermind-strategy-guide",
+  title: "The Mastermind Strategy Guide: How to Break Any Code in Fewer Guesses",
+  description: "A practical mastermind strategy guide for code-breaking. Learn the feedback system, Knuth's algorithm, and daily habits that cut your average solve length fast.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Logic Games",
+  tags: [
+   "mastermind strategy",
+   "code-breaking game",
+   "logic puzzle tactics",
+   "deduction games",
+   "guessing game tips",
+   "peg game solver",
+   "Knuth algorithm",
+   "brain training puzzles"
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "mastermind strategy",
+  secondaryKeywords: [
+   "how to win at mastermind",
+   "mastermind code breaking tips",
+   "mastermind solver algorithm",
+   "best first guess mastermind",
+   "logic game strategy guide"
+  ],
+  lsiKeywords: [
+   "feedback analysis",
+   "black and white pegs",
+   "constraint satisfaction",
+   "hypothesis testing",
+   "information gain",
+   "deductive reasoning",
+   "sudoku",
+   "reversi",
+   "numberhunt",
+   "minimax"
+  ],
+  excerpt: "Mastermind looks like luck until you learn the feedback. This guide explains the deduction behind every guess and shows how to break codes in fewer moves.",
+  content: `<h2>Why Mastermind Is Not a Guessing Game</h2>
 
 <p>The board sits in front of you: four empty slots and six colors. Most first-time players treat Mastermind like a lottery, scattering random pegs and hoping the response lands in their favor. That instinct is wrong. Every guess returns hard information, and a player who reads it correctly can solve a four-peg, six-color code in five moves or fewer. The code is fixed. The feedback is honest. The only variable is how well you use the reply.</p>
 
@@ -54,7 +54,7 @@ export const posts: BlogPost[] = [
 <p>This distinction changes how you reason. Suppose your guess is red, blue, green, yellow and you receive two black pegs and one white peg. Two colors sit exactly where you placed them, and a third is present but misplaced. You do not yet know which slot holds which peg. That uncertainty is the puzzle, and every subsequent guess should aim to split it. Players who internalize this rule stop wasting guesses and start hunting for position.</p>
 
 <div class="callout">
-  <p>Two black pegs never mean the first two slots are correct. The feedback only tells you how many pegs are perfectly placed, not where. Build your next guess to locate them.</p>
+ <p>Two black pegs never mean the first two slots are correct. The feedback only tells you how many pegs are perfectly placed, not where. Build your next guess to locate them.</p>
 </div>
 
 <h2>The Opening Guess That Sets Up the Board</h2>
@@ -74,16 +74,16 @@ export const posts: BlogPost[] = [
 <p>The strongest practical heuristic is to choose the guess that, in the worst case, leaves the smallest remaining set. This is the minimax idea from game theory: minimize the maximum damage. For each candidate guess, imagine every possible feedback, count how many surviving codes each would leave, and take the worst. Then pick the guess with the smallest worst case. After a few games your intuition does most of the work.</p>
 
 <table>
-  <thead>
-    <tr><th>Feedback</th><th>What it proves</th><th>What it does not prove</th><th>Next move</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>0 black, 0 white</td><td>None of those colors are in the code</td><td>Anything about the other colors</td><td>Drop all four colors permanently</td></tr>
-    <tr><td>1 black, 0 white</td><td>One color is correctly placed</td><td>Which slot, or other colors</td><td>Lock that slot, test others</td></tr>
-    <tr><td>0 black, 2 white</td><td>Two colors present, both misplaced</td><td>Exact positions</td><td>Shuffle those two across slots</td></tr>
-    <tr><td>2 black, 2 white</td><td>Two placed, two present but off</td><td>Which are which</td><td>Swap the off ones to locate</td></tr>
-    <tr><td>4 black, 0 white</td><td>Solved</td><td>Nothing left</td><td>Submit and score</td></tr>
-  </tbody>
+ <thead>
+  <tr><th>Feedback</th><th>What it proves</th><th>What it does not prove</th><th>Next move</th></tr>
+ </thead>
+ <tbody>
+  <tr><td>0 black, 0 white</td><td>None of those colors are in the code</td><td>Anything about the other colors</td><td>Drop all four colors permanently</td></tr>
+  <tr><td>1 black, 0 white</td><td>One color is correctly placed</td><td>Which slot, or other colors</td><td>Lock that slot, test others</td></tr>
+  <tr><td>0 black, 2 white</td><td>Two colors present, both misplaced</td><td>Exact positions</td><td>Shuffle those two across slots</td></tr>
+  <tr><td>2 black, 2 white</td><td>Two placed, two present but off</td><td>Which are which</td><td>Swap the off ones to locate</td></tr>
+  <tr><td>4 black, 0 white</td><td>Solved</td><td>Nothing left</td><td>Submit and score</td></tr>
+ </tbody>
 </table>
 
 <h2>Knuth's Five-Guess Algorithm</h2>
@@ -93,8 +93,8 @@ export const posts: BlogPost[] = [
 <p>You do not need a computer to borrow the spirit of Knuth's approach. The lesson is consistency: always guess from codes that fit all feedback so far, and prefer the guess that destroys the most possibilities. Human players rarely match the average, but they beat random play by a wide margin once they adopt the discipline. The algorithm proves Mastermind has a ceiling, and reaching toward it is the whole game.</p>
 
 <figure>
-  <img src="/images/articles/default-cover.svg" alt="A Mastermind board showing four colored pegs and a row of black and white feedback markers" />
-  <figcaption>Each row of feedback pegs is a constraint. Read the count, not the position, and prune your candidate list accordingly.</figcaption>
+ <img src="/images/articles/default-cover.svg" alt="A Mastermind board showing four colored pegs and a row of black and white feedback markers" />
+ <figcaption>Each row of feedback pegs is a constraint. Read the count, not the position, and prune your candidate list accordingly.</figcaption>
 </figure>
 
 <h2>Handling Repeated Colors</h2>
@@ -106,13 +106,13 @@ export const posts: BlogPost[] = [
 <p>The first mistake is ignoring your own feedback history. A guess that contradicts an earlier reply is wasted, yet players make them under time pressure. The second mistake is over-fitting to the last peg instead of the whole pattern. A single white peg can mean several board states, and you must keep them alive until a later guess kills them. The third mistake is treating Mastermind like <a href="/reversi">Reversi</a>, where you react to an opponent. Here the codemaker is static; there is no counterplay, only inference.</p>
 
 <ol>
-  <li>Open with four distinct colors to learn which hues are present.</li>
-  <li>Write down every color the feedback has eliminated.</li>
-  <li>Keep only codes consistent with all replies so far.</li>
-  <li>Pick the guess that halves the remaining field in the worst case.</li>
-  <li>Test repeats directly once a color is confirmed.</li>
-  <li>Lock a slot only after feedback supports the position.</li>
-  <li>Reserve the "likely answer" guess for when the field is tiny.</li>
+ <li>Open with four distinct colors to learn which hues are present.</li>
+ <li>Write down every color the feedback has eliminated.</li>
+ <li>Keep only codes consistent with all replies so far.</li>
+ <li>Pick the guess that halves the remaining field in the worst case.</li>
+ <li>Test repeats directly once a color is confirmed.</li>
+ <li>Lock a slot only after feedback supports the position.</li>
+ <li>Reserve the "likely answer" guess for when the field is tiny.</li>
 </ol>
 
 <h2>How Mastermind Trains Real Reasoning</h2>
@@ -122,9 +122,9 @@ export const posts: BlogPost[] = [
 <blockquote>Mastermind does not reward the player who guesses best. It rewards the player who forgets worst. Every eliminated code is progress, and the board keeps score on discipline, not luck.</blockquote>
 
 <div class="cta-box">
-  <h3>Break your first code the smart way</h3>
-  <p>Open with four colors, read the pegs as counts, and prune. A few boards is all it takes to feel the method click.</p>
-  <a class="btn btn-primary h-11 px-8 text-sm" href="/mastermind">Play Free</a>
+ <h3>Break your first code the smart way</h3>
+ <p>Open with four colors, read the pegs as counts, and prune. A few boards is all it takes to feel the method click.</p>
+ <a class="btn btn-primary h-11 px-8 text-sm" href="/mastermind">Play Free</a>
 </div>
 
 <h2>When to Guess the Answer</h2>
@@ -132,7 +132,7 @@ export const posts: BlogPost[] = [
 <p>There is a moment when the field collapses to one or two codes and further reconnaissance is pointless. Guess the most likely survivor, and if you are wrong, the remaining option is now certain. Knowing when to stop exploring is part of the skill; over-testing a nearly solved board wastes the move you could spend on the next game. Confidence here comes from trust in your pruning, not from a feeling about colors.</p>
 
 <div class="summary-box">
-  <p><span class="tip">Tip:</span> If your average solve is above six guesses, your opener or your repeat test is leaking moves. Fix those two before anything else.</p>
+ <p><span class="tip">Tip:</span> If your average solve is above six guesses, your opener or your repeat test is leaking moves. Fix those two before anything else.</p>
 </div>
 
 <h2>From Mastermind to Other Logic Games</h2>
@@ -140,9 +140,9 @@ export const posts: BlogPost[] = [
 <p>The habits you build here travel. The candidate-list discipline is the same shape as Sudoku elimination. The position-locating patience shows up in Reversi endgames. The feedback-narrowing loop appears in Number Hunt. None of those games is Mastermind, but a mind trained to prune, test, and discard wrong options feels faster in all of them. That transfer is the real prize.</p>
 
 <div class="cta-box">
-  <h3>Put the method to the test</h3>
-  <p>Set a personal record of five guesses or fewer. The board is waiting, and the code is already fixed.</p>
-  <a class="btn btn-primary h-11 px-8 text-sm" href="/mastermind">Play Free</a>
+ <h3>Put the method to the test</h3>
+ <p>Set a personal record of five guesses or fewer. The board is waiting, and the code is already fixed.</p>
+ <a class="btn btn-primary h-11 px-8 text-sm" href="/mastermind">Play Free</a>
 </div>
 
 <h2>Frequently Asked Questions</h2>
@@ -180,72 +180,72 @@ export const posts: BlogPost[] = [
 <h2>Sources &amp; References</h2>
 
 <ul>
-  <li>Knuth, D. E. (1977). <em>The Computer as Master Mind</em>. Journal of Recreational Mathematics.</li>
-  <li>Berghman, L., Goossens, D., &amp; Leus, R. (2009). <em>Efficient Solutions for Mastermind Using Genetic Algorithms</em>. Computers and Operations Research.</li>
-  <li>Kalisker, T., &amp; Camens, D. (2003). <em>Optimal Mastermind Strategies</em>. Simon Fraser University technical report.</li>
+ <li>Knuth, D. E. (1977). <em>The Computer as Master Mind</em>. Journal of Recreational Mathematics.</li>
+ <li>Berghman, L., Goossens, D., &amp; Leus, R. (2009). <em>Efficient Solutions for Mastermind Using Genetic Algorithms</em>. Computers and Operations Research.</li>
+ <li>Kalisker, T., &amp; Camens, D. (2003). <em>Optimal Mastermind Strategies</em>. Simon Fraser University technical report.</li>
 </ul>
 `,
-    faqs: [
-      { q: "What is the best first guess in Mastermind?", a: "A strong opener uses four distinct colors, such as red, blue, green, yellow, so the feedback reveals how many of those hues are in the code. Some players prefer a doubled color to test for repeats, but the key is purpose, not the specific colors chosen." },
-      { q: "Can Mastermind always be solved in five moves?", a: "For the standard four-peg, six-color game, Knuth's algorithm guarantees a solve in at most five guesses and averages about 4.478. Human players rarely hit that average but beat random play by a wide margin using the same pruning discipline." },
-      { q: "What do the black and white pegs mean?", a: "A black peg means a correct color in the correct position. A white peg means a correct color in the wrong position. The order of the pegs is meaningless; only the counts describe the matches." },
-      { q: "How do repeated colors affect the feedback?", a: "Feedback pegs are capped by how many of your guessed colors actually match the code. If the code has two reds and you guess one red, you earn at most one matching peg. Test repeats directly by placing the color in multiple slots and watching the black-peg count." },
-      { q: "Is Mastermind a game of luck or skill?", a: "It is skill once you read the feedback as information. The code is fixed and the replies are deterministic, so a disciplined player consistently solves in fewer guesses than a random one. Luck only appears when a player guesses without pruning." },
-      { q: "How many possible codes are there?", a: "With four slots, six colors, and repeats allowed, there are 1,296 possible codes. If repeats are forbidden the count drops to 360. Each guess should eliminate as many of these as possible." },
-      { q: "What is the minimax strategy in Mastermind?", a: "Minimax means choosing the guess whose worst-case remaining candidate set is smallest. You imagine every possible feedback, count survivors for each, take the worst, and pick the guess that minimizes that worst case. It is the practical heart of strong play." },
-      { q: "Why should I keep a written list of candidates?", a: "Memory fails first in a long game, and a forgotten elimination forces a repeat guess. A short list of colors out, colors in, and slots locked keeps your reasoning honest and saves moves." },
-      { q: "Does Mastermind help with other puzzle games?", a: "Yes. The pruning and hypothesis-testing habits transfer to Sudoku, Reversi, and Number Hunt, because all of them reward eliminating wrong options and reading feedback precisely." },
-      { q: "When should I stop testing and guess the answer?", a: "When the candidate field collapses to one or two codes, further reconnaissance wastes a move. Guess the most likely survivor; if wrong, the remaining option becomes certain." }
-    ]
-  },
-  {
-    slug: "deduction-games-for-logical-thinking",
-    title: "Deduction Games for Logical Thinking: 7 Picks That Train Your Mind to Reason",
-    description: "The best deduction games for logical thinking, from Mastermind to Sudoku. Learn how code-breaking and constraint puzzles build reasoning skills you use daily.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Logic Games",
-    tags: [
-      "deduction games",
-      "logic games for brain",
-      "code breaking puzzles",
-      "critical thinking games",
-      "reasoning puzzles",
-      "puzzle games that teach logic",
-      "strategy puzzle picks",
-      "brain training with games"
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "deduction games",
-    secondaryKeywords: [
-      "best logic deduction games",
-      "games that improve logical thinking",
-      "puzzle games for reasoning",
-      "code breaking board games",
-      "deductive reasoning practice"
-    ],
-    lsiKeywords: [
-      "constraint satisfaction",
-      "hypothesis testing",
-      "elimination",
-      "working memory",
-      "mastermind",
-      "sudoku",
-      "reversi",
-      "numberhunt",
-      "abduction",
-      "logic grid puzzles"
-    ],
-    excerpt: "Deduction games train the mind to eliminate wrong answers and reason from clues. These seven picks build logical thinking you use far beyond the screen.",
-    content: `<h2>What Deduction Actually Means in a Game</h2>
+  faqs: [
+   { q: "What is the best first guess in Mastermind?", a: "A strong opener uses four distinct colors, such as red, blue, green, yellow, so the feedback reveals how many of those hues are in the code. Some players prefer a doubled color to test for repeats, but the key is purpose, not the specific colors chosen." },
+   { q: "Can Mastermind always be solved in five moves?", a: "For the standard four-peg, six-color game, Knuth's algorithm guarantees a solve in at most five guesses and averages about 4.478. Human players rarely hit that average but beat random play by a wide margin using the same pruning discipline." },
+   { q: "What do the black and white pegs mean?", a: "A black peg means a correct color in the correct position. A white peg means a correct color in the wrong position. The order of the pegs is meaningless; only the counts describe the matches." },
+   { q: "How do repeated colors affect the feedback?", a: "Feedback pegs are capped by how many of your guessed colors actually match the code. If the code has two reds and you guess one red, you earn at most one matching peg. Test repeats directly by placing the color in multiple slots and watching the black-peg count." },
+   { q: "Is Mastermind a game of luck or skill?", a: "It is skill once you read the feedback as information. The code is fixed and the replies are deterministic, so a disciplined player consistently solves in fewer guesses than a random one. Luck only appears when a player guesses without pruning." },
+   { q: "How many possible codes are there?", a: "With four slots, six colors, and repeats allowed, there are 1,296 possible codes. If repeats are forbidden the count drops to 360. Each guess should eliminate as many of these as possible." },
+   { q: "What is the minimax strategy in Mastermind?", a: "Minimax means choosing the guess whose worst-case remaining candidate set is smallest. You imagine every possible feedback, count survivors for each, take the worst, and pick the guess that minimizes that worst case. It is the practical heart of strong play." },
+   { q: "Why should I keep a written list of candidates?", a: "Memory fails first in a long game, and a forgotten elimination forces a repeat guess. A short list of colors out, colors in, and slots locked keeps your reasoning honest and saves moves." },
+   { q: "Does Mastermind help with other puzzle games?", a: "Yes. The pruning and hypothesis-testing habits transfer to Sudoku, Reversi, and Number Hunt, because all of them reward eliminating wrong options and reading feedback precisely." },
+   { q: "When should I stop testing and guess the answer?", a: "When the candidate field collapses to one or two codes, further reconnaissance wastes a move. Guess the most likely survivor; if wrong, the remaining option becomes certain." }
+  ]
+ },
+ {
+  slug: "deduction-games-for-logical-thinking",
+  title: "Deduction Games for Logical Thinking: 7 Picks That Train Your Mind to Reason",
+  description: "The best deduction games for logical thinking, from Mastermind to Sudoku. Learn how code-breaking and constraint puzzles build reasoning skills you use daily.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Logic Games",
+  tags: [
+   "deduction games",
+   "logic games for brain",
+   "code breaking puzzles",
+   "critical thinking games",
+   "reasoning puzzles",
+   "puzzle games that teach logic",
+   "strategy puzzle picks",
+   "brain training with games"
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "deduction games",
+  secondaryKeywords: [
+   "best logic deduction games",
+   "games that improve logical thinking",
+   "puzzle games for reasoning",
+   "code breaking board games",
+   "deductive reasoning practice"
+  ],
+  lsiKeywords: [
+   "constraint satisfaction",
+   "hypothesis testing",
+   "elimination",
+   "working memory",
+   "mastermind",
+   "sudoku",
+   "reversi",
+   "numberhunt",
+   "abduction",
+   "logic grid puzzles"
+  ],
+  excerpt: "Deduction games train the mind to eliminate wrong answers and reason from clues. These seven picks build logical thinking you use far beyond the screen.",
+  content: `<h2>What Deduction Actually Means in a Game</h2>
 
 <p>Deduction is reasoning from known rules to a certain conclusion. You start with a fixed set of facts, apply the rules, and arrive at an answer no reasonable person could dispute. A deduction game is built so that every puzzle has exactly one solution reachable by clean inference, not by taste or luck. That is what separates it from a trivia quiz, where you either know the fact or you do not, and from a narrative game, where the answer is whatever the writer decided. In a deduction game, the answer is forced by the clues.</p>
 
 <p>This article picks seven titles that train deduction in different ways, from cracking hidden codes to placing the last digit in a grid. The throughline is that each one asks you to hold evidence, reject what contradicts it, and commit only when the logic is closed. If you want a single place to start, <a href="/mastermind">Mastermind</a> is the purest expression of the form: a hidden code, honest feedback, and nothing to do but reason it out.</p>
 
 <div class="callout">
-  <p>A true deduction puzzle has one forced solution. If a game lets you win by guessing, it is not teaching deduction. Look for titles where every move is justified by the clues in front of you.</p>
+ <p>A true deduction puzzle has one forced solution. If a game lets you win by guessing, it is not teaching deduction. Look for titles where every move is justified by the clues in front of you.</p>
 </div>
 
 <h2>1. Mastermind for Hypothesis Testing</h2>
@@ -283,18 +283,18 @@ export const posts: BlogPost[] = [
 <p>Battleship hides ships on a grid and answers hits or misses. Naive players spray shots. Strong players use parity and pattern: after a hit, they probe adjacent squares to trace the ship's length, and they use a checkerboard search to cover the board with the fewest probes. The deduction is about efficient coverage and exploiting a confirmed hit, a tidy lesson in turning evidence into a plan.</p>
 
 <table>
-  <thead>
-    <tr><th>Game</th><th>Deduction Type</th><th>Core Skill</th><th>Best For</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Mastermind</td><td>Hypothesis testing</td><td>Pruning a candidate set</td><td>Scientific reasoning</td></tr>
-    <tr><td>Sudoku</td><td>Constraint satisfaction</td><td>Candidate elimination</td><td>Math-anxious thinkers</td></tr>
-    <tr><td>Reversi</td><td>Positional consequence</td><td>Second-order reading</td><td>Spatial planners</td></tr>
-    <tr><td>Number Hunt</td><td>Ranged elimination</td><td>Efficient search</td><td>Estimators</td></tr>
-    <tr><td>Logic Grid</td><td>Relational inference</td><td>Constraint bookkeeping</td><td>Rule systems</td></tr>
-    <tr><td>Minesweeper</td><td>Probabilistic deduction</td><td>Risk calibration</td><td>Decision makers</td></tr>
-    <tr><td>Battleship</td><td>Search efficiency</td><td>Systematic coverage</td><td>Debuggers</td></tr>
-  </tbody>
+ <thead>
+  <tr><th>Game</th><th>Deduction Type</th><th>Core Skill</th><th>Best For</th></tr>
+ </thead>
+ <tbody>
+  <tr><td>Mastermind</td><td>Hypothesis testing</td><td>Pruning a candidate set</td><td>Scientific reasoning</td></tr>
+  <tr><td>Sudoku</td><td>Constraint satisfaction</td><td>Candidate elimination</td><td>Math-anxious thinkers</td></tr>
+  <tr><td>Reversi</td><td>Positional consequence</td><td>Second-order reading</td><td>Spatial planners</td></tr>
+  <tr><td>Number Hunt</td><td>Ranged elimination</td><td>Efficient search</td><td>Estimators</td></tr>
+  <tr><td>Logic Grid</td><td>Relational inference</td><td>Constraint bookkeeping</td><td>Rule systems</td></tr>
+  <tr><td>Minesweeper</td><td>Probabilistic deduction</td><td>Risk calibration</td><td>Decision makers</td></tr>
+  <tr><td>Battleship</td><td>Search efficiency</td><td>Systematic coverage</td><td>Debuggers</td></tr>
+ </tbody>
 </table>
 
 <h2>How to Pick the Right Deduction Game</h2>
@@ -308,11 +308,11 @@ export const posts: BlogPost[] = [
 <p>Integration beats addition. Do not stack these games on top of an already full day; replace dead time with them. One sudoku on the commute, one Mastermind board before dinner, one Reversi game to reset the mind. Short daily sessions of five to fifteen minutes outperform a Sunday marathon, because distributed practice is what memory research consistently favors.</p>
 
 <ol>
-  <li>Choose one game aligned to your weakest reasoning habit.</li>
-  <li>Set a daily five-minute floor, not a weekly ceiling.</li>
-  <li>Track your solve length, not your win count.</li>
-  <li>Rotate after a month to train different deduction types.</li>
-  <li>Explain your last move out loud to confirm the logic closed.</li>
+ <li>Choose one game aligned to your weakest reasoning habit.</li>
+ <li>Set a daily five-minute floor, not a weekly ceiling.</li>
+ <li>Track your solve length, not your win count.</li>
+ <li>Rotate after a month to train different deduction types.</li>
+ <li>Explain your last move out loud to confirm the logic closed.</li>
 </ol>
 
 <h2>Avoiding the Luck Trap</h2>
@@ -320,9 +320,9 @@ export const posts: BlogPost[] = [
 <p>Some puzzle apps dress guessing as skill by adding timers and randomness. Resist them. A deduction game earns the name only if the thinking it demands transfers, and a game you can win by mashing buttons teaches nothing. Judge a title by whether a wrong move is always your fault and a right move is always forced by the clues. That standard keeps the practice honest and the skill real.</p>
 
 <div class="cta-box">
-  <h3>Crack a code and feel the method</h3>
-  <p>Mastermind is the fastest way to learn deduction: hide a code, read honest feedback, and prune. A few boards changes how you reason.</p>
-  <a class="btn btn-primary h-11 px-8 text-sm" href="/mastermind">Play Free</a>
+ <h3>Crack a code and feel the method</h3>
+ <p>Mastermind is the fastest way to learn deduction: hide a code, read honest feedback, and prune. A few boards changes how you reason.</p>
+ <a class="btn btn-primary h-11 px-8 text-sm" href="/mastermind">Play Free</a>
 </div>
 
 <h2>Signs the Training Is Working</h2>
@@ -330,7 +330,7 @@ export const posts: BlogPost[] = [
 <p>You will know it landed when you stop guessing and start justifying, when you catch yourself eliminating options aloud, when a sudoku cell resolves because the logic forced it rather than because it felt right. Those signals matter more than any in-app score. They are the real evidence that deduction moved from the board into how you think, which was the point of playing at all.</p>
 
 <div class="summary-box">
-  <p><span class="tip">Tip:</span> After each game, name the one move that decided it. If you cannot, you guessed. If you can, deduction did the work, and that is the rep worth keeping.</p>
+ <p><span class="tip">Tip:</span> After each game, name the one move that decided it. If you cannot, you guessed. If you can, deduction did the work, and that is the rep worth keeping.</p>
 </div>
 
 <h2>From Screen to Everyday Reasoning</h2>
@@ -338,9 +338,9 @@ export const posts: BlogPost[] = [
 <p>The payoff is off the board. A mind trained to prune, test, and discard wrong options reads a contract more carefully, debugs a failing script faster, and argues from evidence instead of appetite. None of these games is a substitute for study or sleep, both of which matter more. But as a cheap, repeatable trainer of the deduction loop, they are hard to beat.</p>
 
 <div class="cta-box">
-  <h3>Try the purest deduction game</h3>
-  <p>Mastermind forces clean inference with no luck and no filler. Open a board and reason your way to the code.</p>
-  <a class="btn btn-primary h-11 px-8 text-sm" href="/mastermind">Play Free</a>
+ <h3>Try the purest deduction game</h3>
+ <p>Mastermind forces clean inference with no luck and no filler. Open a board and reason your way to the code.</p>
+ <a class="btn btn-primary h-11 px-8 text-sm" href="/mastermind">Play Free</a>
 </div>
 
 <h2>Frequently Asked Questions</h2>
@@ -384,25 +384,26 @@ export const posts: BlogPost[] = [
 <h2>Sources &amp; References</h2>
 
 <ul>
-  <li>Bjork, R. A., &amp; Bjork, E. L. (2011). <em>Making Things Hard on Yourself, but in a Good Way</em>. Psychology and the Real World.</li>
-  <li>Gathercole, S. E., &amp; Alloway, T. P. (2008). <em>Working Memory and Learning: A Practical Guide for Teachers</em>. SAGE.</li>
-  <li>Knuth, D. E. (1977). <em>The Computer as Master Mind</em>. Journal of Recreational Mathematics.</li>
-  <li>Melby-Lervag, M., &amp; Hulme, C. (2013). <em>Is Working Memory Training Effective? A Meta-Analytic Review</em>. Developmental Psychology.</li>
+ <li>Bjork, R. A., &amp; Bjork, E. L. (2011). <em>Making Things Hard on Yourself, but in a Good Way</em>. Psychology and the Real World.</li>
+ <li>Gathercole, S. E., &amp; Alloway, T. P. (2008). <em>Working Memory and Learning: A Practical Guide for Teachers</em>. SAGE.</li>
+ <li>Knuth, D. E. (1977). <em>The Computer as Master Mind</em>. Journal of Recreational Mathematics.</li>
+ <li>Melby-Lervag, M., &amp; Hulme, C. (2013). <em>Is Working Memory Training Effective? A Meta-Analytic Review</em>. Developmental Psychology.</li>
 </ul>
 `,
-    faqs: [
-      { q: "What are deduction games?", a: "Deduction games are puzzles with a single solution reachable by clean inference from fixed rules and clues. You observe, hypothesize, test, and eliminate until the answer is forced, with no luck or taste involved in the solve." },
-      { q: "Do deduction games improve logical thinking?", a: "Yes, through near-transfer. Practicing constraint satisfaction, elimination, and hypothesis testing on a board strengthens the same reasoning used in math, debugging, scheduling, and argument, though the gains are strongest on similar tasks." },
-      { q: "Which deduction game should a beginner start with?", a: "Mastermind is the purest starting point because the feedback is honest and the method is simple: propose, read, prune. Sudoku is the better pick for anyone with math anxiety, since its rules are tiny and its logic is pure." },
-      { q: "Are deduction games better than brain-training apps?", a: "Often yes, because many brain-training apps celebrate in-app scores that do not transfer. Deduction games train a real loop, observe, hypothesize, test, eliminate, which applies to genuine problems outside the game." },
-      { q: "How is Sudoku a deduction game?", a: "Every empty cell has a forced value reachable by eliminating digits already present in its row, column, and box. Hard grids add contradiction testing, but the solution is always deduced from the constraints, never guessed." },
-      { q: "What does Reversi teach about logic?", a: "Reversi trains positional deduction: reading the board, projecting moves, and eliminating lines that hand your opponent the corners. It builds second-order thinking, counting the aftermath rather than the immediate gain." },
-      { q: "Can kids benefit from deduction games?", a: "Yes. Titles like Sudoku and Mastermind build working memory, patience, and the habit of justifying a conclusion, habits that transfer to schoolwork. They work best as supplements to reading and math instruction, not replacements." },
-      { q: "How much time should I spend on deduction games?", a: "Five to fifteen minutes daily beats a long weekly session. Distributed practice strengthens memory more reliably than cramming, and short sessions avoid the resistance that comes with added homework." },
-      { q: "What is the difference between deduction and guessing?", a: "Deduction arrives at a forced conclusion from the clues; guessing picks an option without closing the logic. A true deduction puzzle lets a careful player solve without a single lucky pick." },
-      { q: "Do these games help with programming or debugging?", a: "They help with the underlying habit. Mastermind and Number Hunt train efficient search and pruning, and logic grids train constraint bookkeeping, all of which show up when tracing a bug or satisfying interacting rules." },
-      { q: "Why does working memory matter for deduction?", a: "Deduction requires holding several clues and constraints live while weighing them, which loads working memory. Regular puzzle play strengthens that scratchpad, and a stronger scratchpad reasons faster on similar tasks." },
-      { q: "Should I track wins or solve time?", a: "Track solve time or guess count, not wins. In a fair deduction game the win is forced once the method is right, so the metric that reveals improvement is how efficiently you reached the forced answer." }
-    ]
-  }
+  faqs: [
+   { q: "What are deduction games?", a: "Deduction games are puzzles with a single solution reachable by clean inference from fixed rules and clues. You observe, hypothesize, test, and eliminate until the answer is forced, with no luck or taste involved in the solve." },
+   { q: "Do deduction games improve logical thinking?", a: "Yes, through near-transfer. Practicing constraint satisfaction, elimination, and hypothesis testing on a board strengthens the same reasoning used in math, debugging, scheduling, and argument, though the gains are strongest on similar tasks." },
+   { q: "Which deduction game should a beginner start with?", a: "Mastermind is the purest starting point because the feedback is honest and the method is simple: propose, read, prune. Sudoku is the better pick for anyone with math anxiety, since its rules are tiny and its logic is pure." },
+   { q: "Are deduction games better than brain-training apps?", a: "Often yes, because many brain-training apps celebrate in-app scores that do not transfer. Deduction games train a real loop, observe, hypothesize, test, eliminate, which applies to genuine problems outside the game." },
+   { q: "How is Sudoku a deduction game?", a: "Every empty cell has a forced value reachable by eliminating digits already present in its row, column, and box. Hard grids add contradiction testing, but the solution is always deduced from the constraints, never guessed." },
+   { q: "What does Reversi teach about logic?", a: "Reversi trains positional deduction: reading the board, projecting moves, and eliminating lines that hand your opponent the corners. It builds second-order thinking, counting the aftermath rather than the immediate gain." },
+   { q: "Can kids benefit from deduction games?", a: "Yes. Titles like Sudoku and Mastermind build working memory, patience, and the habit of justifying a conclusion, habits that transfer to schoolwork. They work best as supplements to reading and math instruction, not replacements." },
+   { q: "How much time should I spend on deduction games?", a: "Five to fifteen minutes daily beats a long weekly session. Distributed practice strengthens memory more reliably than cramming, and short sessions avoid the resistance that comes with added homework." },
+   { q: "What is the difference between deduction and guessing?", a: "Deduction arrives at a forced conclusion from the clues; guessing picks an option without closing the logic. A true deduction puzzle lets a careful player solve without a single lucky pick." },
+   { q: "Do these games help with programming or debugging?", a: "They help with the underlying habit. Mastermind and Number Hunt train efficient search and pruning, and logic grids train constraint bookkeeping, all of which show up when tracing a bug or satisfying interacting rules." },
+   { q: "Why does working memory matter for deduction?", a: "Deduction requires holding several clues and constraints live while weighing them, which loads working memory. Regular puzzle play strengthens that scratchpad, and a stronger scratchpad reasons faster on similar tasks." },
+   { q: "Should I track wins or solve time?", a: "Track solve time or guess count, not wins. In a fair deduction game the win is forced once the method is right, so the metric that reveals improvement is how efficiently you reached the forced answer." }
+  ]
+ }
 ];
+

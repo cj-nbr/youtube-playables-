@@ -1,50 +1,50 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "benefits-of-playing-strategy-games-every-day",
-    title: "The Benefits of Playing Strategy Games Every Day",
-    description:
-      "Daily strategy game play can improve planning, decision-making, patience, and long-term thinking. Here is what the evidence says.",
-    date: "2026-07-14",
-    updatedAt: "2026-07-14",
-    category: "Strategy Games",
-    tags: [
-      "strategy games benefits",
-      "daily strategy games",
-      "chess benefits",
-      "planning skills",
-      "decision making",
-      "brain training strategy",
-      "two player games",
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "benefits of strategy games",
-    secondaryKeywords: [
-      "why play strategy games daily",
-      "strategy games for brain",
-      "chess benefits daily",
-      "planning skills games",
-    ],
-    lsiKeywords: [
-      "decision making",
-      "patience",
-      "planning",
-      "long-term thinking",
-      "concentration",
-      "problem solving",
-      "two player",
-      "board games",
-    ],
-    gameId: "chess",
-    excerpt:
-      "Daily strategy game play improves planning, decision-making, patience, and long-term thinking. Discover the cognitive and emotional benefits.",
-    content: `
+ {
+  slug: "benefits-of-playing-strategy-games-every-day",
+  title: "The Benefits of Playing Strategy Games Every Day",
+  description:
+   "Daily strategy game play can improve planning, decision-making, patience, and long-term thinking. Here is what the evidence says.",
+  date: "2026-07-14",
+  updatedAt: "2026-07-14",
+  category: "Strategy Games",
+  tags: [
+   "strategy games benefits",
+   "daily strategy games",
+   "chess benefits",
+   "planning skills",
+   "decision making",
+   "brain training strategy",
+   "two player games",
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "benefits of strategy games",
+  secondaryKeywords: [
+   "why play strategy games daily",
+   "strategy games for brain",
+   "chess benefits daily",
+   "planning skills games",
+  ],
+  lsiKeywords: [
+   "decision making",
+   "patience",
+   "planning",
+   "long-term thinking",
+   "concentration",
+   "problem solving",
+   "two player",
+   "board games",
+  ],
+  gameId: "chess",
+  excerpt:
+   "Daily strategy game play improves planning, decision-making, patience, and long-term thinking. Discover the cognitive and emotional benefits.",
+  content: `
 <h2>Why Strategy Games Deserve a Daily Spot</h2>
 <p>Strategy games are among the most rewarding forms of mental exercise. They require you to think ahead, consider multiple possibilities, and make decisions with lasting consequences. Unlike reflex games that train speed, strategy games train the kind of thinking that applies to real-life planning, problem-solving, and decision-making.</p>
 <p>The benefit of daily play is cumulative. Each session gives your brain a chance to practice strategic thinking in a low-stakes environment. Over time, the skills you develop in games like <a href="/chess">Chess</a>, <a href="/checkers">Checkers</a>, and <a href="/dots-and-boxes">Dots and Boxes</a> transfer to everyday situations.</p>
-<p>All of these games are free and browser-based on YouTube Playables. No downloads, no accounts, no setup.</p>
+<p>All of these games are free and browser-based on Playables. No downloads, no accounts, no setup.</p>
 
 <h2>Cognitive Benefits of Daily Strategy Play</h2>
 <h3>Planning and Foresight</h3>
@@ -121,12 +121,12 @@ export const posts: BlogPost[] = [
 <li>Research on cognitive benefits of strategic thinking and planning.</li>
 </ul>
 `,
-    faqs: [
-      { q: "Are strategy games good for the brain?", a: "Yes. They exercise planning, decision-making, pattern recognition, and patience." },
-      { q: "Can daily strategy game play improve real-life decision-making?", a: "Yes. The forward-thinking skills transfer to real-life planning." },
-      { q: "What is the best strategy game for beginners?", a: "Checkers is the best starting point. Simple rules with significant depth." },
-      { q: "How long should I play strategy games each day?", a: "Fifteen to twenty minutes daily is a good starting point." },
-      { q: "Do I need an opponent to play strategy games?", a: "Many games can be played solo against the computer or a friend." },
-    ],
-  },
+  faqs: [
+   { q: "Are strategy games good for the brain?", a: "Yes. They exercise planning, decision-making, pattern recognition, and patience." },
+   { q: "Can daily strategy game play improve real-life decision-making?", a: "Yes. The forward-thinking skills transfer to real-life planning." },
+   { q: "What is the best strategy game for beginners?", a: "Checkers is the best starting point. Simple rules with significant depth." },
+   { q: "How long should I play strategy games each day?", a: "Fifteen to twenty minutes daily is a good starting point." },
+   { q: "Do I need an opponent to play strategy games?", a: "Many games can be played solo against the computer or a friend." },
+  ],
+ },
 ];

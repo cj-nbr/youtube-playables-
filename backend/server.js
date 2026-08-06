@@ -27,46 +27,46 @@ const app = express();
 const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
 
 function isAllowedOrigin(origin, callback) {
-  // Non-browser requests (e.g. health checks, server-to-server) have no origin.
-  if (!origin) return callback(null, true);
+ // Non-browser requests (e.g. health checks, server-to-server) have no origin.
+ if (!origin) return callback(null, true);
 
-  try {
-    const url = new URL(origin);
-    const isLocal = LOCAL_HOSTS.has(url.hostname) || url.hostname.endsWith(".localhost");
-    if (isLocal || config.corsOrigin.includes(origin)) {
-      return callback(null, origin);
-    }
-  } catch {
-    // fall through to deny
+ try {
+  const url = new URL(origin);
+  const isLocal = LOCAL_HOSTS.has(url.hostname) || url.hostname.endsWith(".localhost");
+  if (isLocal || config.corsOrigin.includes(origin)) {
+   return callback(null, origin);
   }
-  callback(null, false);
+ } catch {
+  // fall through to deny
+ }
+ callback(null, false);
 }
 
 app.use(helmet());
 app.use(cors({
-  origin: isAllowedOrigin,
-  credentials: true,
+ origin: isAllowedOrigin,
+ credentials: true,
 }));
 app.use(cookieParser());
 app.use(express.json({ limit: "1mb" }));
 
 const limiter = rateLimit({
-  windowMs: config.rateLimit.windowMs,
-  max: config.rateLimit.max,
-  standardHeaders: true,
-  legacyHeaders: false,
+ windowMs: config.rateLimit.windowMs,
+ max: config.rateLimit.max,
+ standardHeaders: true,
+ legacyHeaders: false,
 });
 app.use(limiter);
 
 const authLimiter = rateLimit({
-  windowMs: config.rateLimit.windowMs,
-  max: config.rateLimit.authMax,
-  standardHeaders: true,
-  legacyHeaders: false,
+ windowMs: config.rateLimit.windowMs,
+ max: config.rateLimit.authMax,
+ standardHeaders: true,
+ legacyHeaders: false,
 });
 
 app.get("/health", (req, res) => {
-  res.json({ success: true, status: "ok", env: config.env });
+ res.json({ success: true, status: "ok", env: config.env });
 });
 
 app.use("/api/v1/auth", authLimiter, authRoutes);
@@ -79,36 +79,37 @@ app.use("/api/v1/achievements", achievementRoutes);
 app.use(errorHandler);
 
 app.use((req, res) => {
-  res.status(404).json({ success: false, message: "Not found" });
+ res.status(404).json({ success: false, message: "Not found" });
 });
 
 async function start() {
-  try {
-    await initDb();
-    runMigrations();
-    await runSeeds();
-    
-    const server = app.listen(config.port, () => {
-      logger.info(`Server running on port ${config.port} (${config.env})`);
-    });
+ try {
+  await initDb();
+  runMigrations();
+  await runSeeds();
+  
+  const server = app.listen(config.port, () => {
+   logger.info(`Server running on port ${config.port} (${config.env})`);
+  });
 
-    process.on("SIGINT", () => {
-      closeDb();
-      server.close();
-      process.exit(0);
-    });
+  process.on("SIGINT", () => {
+   closeDb();
+   server.close();
+   process.exit(0);
+  });
 
-    process.on("SIGTERM", () => {
-      closeDb();
-      server.close();
-      process.exit(0);
-    });
-  } catch (err) {
-    logger.error("Failed to start server", { error: err.message });
-    process.exit(1);
-  }
+  process.on("SIGTERM", () => {
+   closeDb();
+   server.close();
+   process.exit(0);
+  });
+ } catch (err) {
+  logger.error("Failed to start server", { error: err.message });
+  process.exit(1);
+ }
 }
 
 start();
 
 export default app;
+

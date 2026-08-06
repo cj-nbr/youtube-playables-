@@ -4,14 +4,15 @@ import { getGame } from "../shared/games";
 const game = getGame("stack-tower");
 ---
 <GameShell game={game}>
-  <div
-    id="stack-container"
-    class="relative mx-auto w-full max-w-[min(360px,100vw-2rem)] overflow-hidden"
-    style="height: min(480px, calc(100dvh - 14rem));"
-  ></div>
+ <div
+  id="stack-container"
+  class="relative mx-auto w-full max-w-[min(360px,100vw-2rem)] overflow-hidden"
+  style="height: min(480px, calc(100dvh - 14rem));"
+ ></div>
 </GameShell>
 
 <script>
-  import { initGame } from "../games/stack-tower/scripts/game";
-  initGame();
+ import { initGame } from "../games/stack-tower/scripts/game";
+ initGame();
 </script>
+

@@ -1,52 +1,52 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "visual-memory-exercises",
-    title: "Practical Visual Memory Drills That Actually Work",
-    description:
-      "Evidence-based visual memory exercises to improve recall, boost pattern recognition, and sharpen daily mental performance through simple daily practice.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Memory Games",
-    tags: [
-      "visual memory",
-      "memory drills",
-      "cognitive training",
-      "recall skills",
-      "brain exercises",
-      "pattern recognition",
-      "mental performance",
-      "working memory",
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "visual memory exercises",
-    secondaryKeywords: [
-      "visual memory drills",
-      "how to improve visual memory",
-      "memory training techniques",
-      "visual recall exercises",
-      "working memory exercises",
-      "daily memory practice",
-      "spatial memory drills",
-      "visual cognition training",
-    ],
-    lsiKeywords: [
-      "visual perception",
-      "mental imagery",
-      "pattern recognition",
-      "spatial awareness",
-      "short-term visual memory",
-      "encoding",
-      "retention",
-      "cognitive load",
-      "mental rotation",
-      "association techniques",
-    ],
-    excerpt:
-      "A practical guide to visual memory exercises backed by cognitive science. Learn drills you can start today to strengthen how you see, remember, and retrieve information.",
-    content: `
+ {
+  slug: "visual-memory-exercises",
+  title: "Practical Visual Memory Drills That Actually Work",
+  description:
+   "Evidence-based visual memory exercises to improve recall, boost pattern recognition, and sharpen daily mental performance through simple daily practice.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Memory Games",
+  tags: [
+   "visual memory",
+   "memory drills",
+   "cognitive training",
+   "recall skills",
+   "brain exercises",
+   "pattern recognition",
+   "mental performance",
+   "working memory",
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "visual memory exercises",
+  secondaryKeywords: [
+   "visual memory drills",
+   "how to improve visual memory",
+   "memory training techniques",
+   "visual recall exercises",
+   "working memory exercises",
+   "daily memory practice",
+   "spatial memory drills",
+   "visual cognition training",
+  ],
+  lsiKeywords: [
+   "visual perception",
+   "mental imagery",
+   "pattern recognition",
+   "spatial awareness",
+   "short-term visual memory",
+   "encoding",
+   "retention",
+   "cognitive load",
+   "mental rotation",
+   "association techniques",
+  ],
+  excerpt:
+   "A practical guide to visual memory exercises backed by cognitive science. Learn drills you can start today to strengthen how you see, remember, and retrieve information.",
+  content: `
 <h2>What Is Visual Memory and Why It Matters</h2>
 <p>Visual memory is the ability to store, retain, and later retrieve visual information from the world around you. It is not just about recognizing faces or remembering where you parked the car. Researchers divide it into short-term visual storage and longer-term visual encoding, and both can be trained with deliberate practice.</p>
 <p>Strong visual memory supports reading comprehension, navigation, professional tasks like design and engineering, and even social interactions. A 2023 review in the Journal of Cognitive Enhancement found that consistent visual memory training transfers to broader working memory gains, making it one of the more practical cognitive skills to develop.</p>
@@ -86,46 +86,46 @@ export const posts: BlogPost[] = [
 <p>Track your progress with a simple log. Note which drill you did, how long you practiced, and your accuracy score. After two weeks, you will see patterns: some exercises improve faster than others, and you can adjust your schedule accordingly.</p>
 
 <table>
-  <thead>
-    <tr>
-      <th>Drill</th>
-      <th>Time per Session</th>
-      <th>Primary Skill</th>
-      <th>Best For</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Grid Recall</td>
-      <td>5–10 min</td>
-      <td>Working memory</td>
-      <td>Students, designers</td>
-    </tr>
-    <tr>
-      <td>Mental Rotation</td>
-      <td>10–15 min</td>
-      <td>Spatial reasoning</td>
-      <td>Engineers, gamers</td>
-    </tr>
-    <tr>
-      <td>Method of Loci</td>
-      <td>5 min</td>
-      <td>Long-term encoding</td>
-      <td>Public speakers</td>
-    </tr>
-    <tr>
-      <td>Photo Flash Cards</td>
-      <td>10 min</td>
-      <td>Attention to detail</td>
-      <td>Researchers, writers</td>
-    </tr>
-    <tr>
-      <td>Reverse Sequencing</td>
-      <td>8 min</td>
-      <td>Order memory</td>
-      <td>Musicians, coders</td>
-    </tr>
-  </tbody>
+ <thead>
+  <tr>
+   <th>Drill</th>
+   <th>Time per Session</th>
+   <th>Primary Skill</th>
+   <th>Best For</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>Grid Recall</td>
+   <td>5–10 min</td>
+   <td>Working memory</td>
+   <td>Students, designers</td>
+  </tr>
+  <tr>
+   <td>Mental Rotation</td>
+   <td>10–15 min</td>
+   <td>Spatial reasoning</td>
+   <td>Engineers, gamers</td>
+  </tr>
+  <tr>
+   <td>Method of Loci</td>
+   <td>5 min</td>
+   <td>Long-term encoding</td>
+   <td>Public speakers</td>
+  </tr>
+  <tr>
+   <td>Photo Flash Cards</td>
+   <td>10 min</td>
+   <td>Attention to detail</td>
+   <td>Researchers, writers</td>
+  </tr>
+  <tr>
+   <td>Reverse Sequencing</td>
+   <td>8 min</td>
+   <td>Order memory</td>
+   <td>Musicians, coders</td>
+  </tr>
+ </tbody>
 </table>
 
 <h2>Digital Tools That Support Visual Memory</h2>
@@ -187,104 +187,104 @@ export const posts: BlogPost[] = [
 
 <h2>Sources & References</h2>
 <ul>
-  <li>American Psychological Association, "Improving Memory: 7 Evidence-Based Strategies," 2024. <a href="https://www.apa.org">https://www.apa.org</a></li>
-  <li>Journal of Cognitive Enhancement, "Visual Working Memory Training and Transfer Effects," 2023. <a href="https://link.springer.com/journal/41465">https://link.springer.com/journal/41465</a></li>
-  <li>National Institutes of Health, "Cognitive Training and Brain Plasticity," 2022. <a href="https://www.nih.gov">https://www.nih.gov</a></li>
+ <li>American Psychological Association, "Improving Memory: 7 Evidence-Based Strategies," 2024. <a href="https://www.apa.org">https://www.apa.org</a></li>
+ <li>Journal of Cognitive Enhancement, "Visual Working Memory Training and Transfer Effects," 2023. <a href="https://link.springer.com/journal/41465">https://link.springer.com/journal/41465</a></li>
+ <li>National Institutes of Health, "Cognitive Training and Brain Plasticity," 2022. <a href="https://www.nih.gov">https://www.nih.gov</a></li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "How long should a visual memory exercise session be?",
-        a: "Most studies suggest five to fifteen minutes per session. Shorter sessions with high focus outperform long, distracted ones.",
-      },
-      {
-        q: "Can adults improve visual memory, or is it fixed after childhood?",
-        a: "Adult brains remain plastic. Adults who practice visual memory drills regularly show measurable improvement in recall accuracy and speed.",
-      },
-      {
-        q: "Do memory games actually help, or are they just entertainment?",
-        a: "Well-designed games that require active recall and increase in difficulty do help. Passive games without feedback or progression are less useful.",
-      },
-      {
-        q: "How often should I practice to see results?",
-        a: "Three to five sessions per week for four to six weeks is enough to notice improvement in most people.",
-      },
-      {
-        q: "Is there a best time of day for memory training?",
-        a: "Morning sessions tend to benefit from higher alertness, but any consistent time works. Choose a time when you can focus without interruptions.",
-      },
-      {
-        q: "Can visual memory exercises help with reading?",
-        a: "Yes. Better visual working memory supports faster word recognition and improved comprehension, especially for dense technical text.",
-      },
-      {
-        q: "Should I use digital tools or paper-based drills?",
-        a: "Both are effective. Paper drills encourage active reconstruction, while digital tools provide adaptive difficulty and instant feedback. A mix works well for most people.",
-      },
-      {
-        q: "How do I know if my visual memory is improving?",
-        a: "Keep a log of your accuracy and speed on each drill. A steady upward trend over several weeks is a reliable indicator of improvement.",
-      },
-      {
-        q: "Do these exercises help with face recognition?",
-        a: "Some drills, especially those involving detail scanning and pattern matching, can improve face recognition skills over time.",
-      },
-      {
-        q: "Can children benefit from visual memory drills?",
-        a: "Yes. Age-appropriate visual memory exercises support school readiness, reading, and spatial skills. Keep sessions playful and short for younger children.",
-      },
-      {
-        q: "What is the difference between visual memory and photographic memory?",
-        a: "Photographic memory is a rare and debated phenomenon. Visual memory is a trainable skill that most people use every day and can improve with practice.",
-      },
-    ],
-  },
-  {
-    slug: "memory-games-for-kids",
-    title: "Memory Games for Kids That Boost Recall Without Screen Guilt",
-    description:
-      "Age-appropriate memory games for kids that strengthen recall, focus, and problem-solving while keeping screen time balanced and learning meaningful.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Memory Games",
-    tags: [
-      "memory games for kids",
-      "kids cognitive games",
-      "educational games",
-      "child development",
-      "recall skills",
-      "screen-free activities",
-      "family games",
-      "learning through play",
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "memory games for kids",
-    secondaryKeywords: [
-      "educational memory games",
-      "kids memory activities",
-      "age-appropriate memory games",
-      "memory building games for children",
-      "screen-free memory games",
-      "family memory games",
-      "cognitive games for kids",
-      "learning games for toddlers",
-    ],
-    lsiKeywords: [
-      "child development",
-      "working memory",
-      "attention span",
-      "pattern matching",
-      "recall practice",
-      "executive function",
-      "play-based learning",
-      "visual discrimination",
-      "concentration",
-      "retention strategies",
-    ],
-    excerpt:
-      "Memory games for kids can be both fun and genuinely educational. Here is a practical guide to choosing age-appropriate options that build real cognitive skills.",
-    content: `
+  faqs: [
+   {
+    q: "How long should a visual memory exercise session be?",
+    a: "Most studies suggest five to fifteen minutes per session. Shorter sessions with high focus outperform long, distracted ones.",
+   },
+   {
+    q: "Can adults improve visual memory, or is it fixed after childhood?",
+    a: "Adult brains remain plastic. Adults who practice visual memory drills regularly show measurable improvement in recall accuracy and speed.",
+   },
+   {
+    q: "Do memory games actually help, or are they just entertainment?",
+    a: "Well-designed games that require active recall and increase in difficulty do help. Passive games without feedback or progression are less useful.",
+   },
+   {
+    q: "How often should I practice to see results?",
+    a: "Three to five sessions per week for four to six weeks is enough to notice improvement in most people.",
+   },
+   {
+    q: "Is there a best time of day for memory training?",
+    a: "Morning sessions tend to benefit from higher alertness, but any consistent time works. Choose a time when you can focus without interruptions.",
+   },
+   {
+    q: "Can visual memory exercises help with reading?",
+    a: "Yes. Better visual working memory supports faster word recognition and improved comprehension, especially for dense technical text.",
+   },
+   {
+    q: "Should I use digital tools or paper-based drills?",
+    a: "Both are effective. Paper drills encourage active reconstruction, while digital tools provide adaptive difficulty and instant feedback. A mix works well for most people.",
+   },
+   {
+    q: "How do I know if my visual memory is improving?",
+    a: "Keep a log of your accuracy and speed on each drill. A steady upward trend over several weeks is a reliable indicator of improvement.",
+   },
+   {
+    q: "Do these exercises help with face recognition?",
+    a: "Some drills, especially those involving detail scanning and pattern matching, can improve face recognition skills over time.",
+   },
+   {
+    q: "Can children benefit from visual memory drills?",
+    a: "Yes. Age-appropriate visual memory exercises support school readiness, reading, and spatial skills. Keep sessions playful and short for younger children.",
+   },
+   {
+    q: "What is the difference between visual memory and photographic memory?",
+    a: "Photographic memory is a rare and debated phenomenon. Visual memory is a trainable skill that most people use every day and can improve with practice.",
+   },
+  ],
+ },
+ {
+  slug: "memory-games-for-kids",
+  title: "Memory Games for Kids That Boost Recall Without Screen Guilt",
+  description:
+   "Age-appropriate memory games for kids that strengthen recall, focus, and problem-solving while keeping screen time balanced and learning meaningful.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Memory Games",
+  tags: [
+   "memory games for kids",
+   "kids cognitive games",
+   "educational games",
+   "child development",
+   "recall skills",
+   "screen-free activities",
+   "family games",
+   "learning through play",
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "memory games for kids",
+  secondaryKeywords: [
+   "educational memory games",
+   "kids memory activities",
+   "age-appropriate memory games",
+   "memory building games for children",
+   "screen-free memory games",
+   "family memory games",
+   "cognitive games for kids",
+   "learning games for toddlers",
+  ],
+  lsiKeywords: [
+   "child development",
+   "working memory",
+   "attention span",
+   "pattern matching",
+   "recall practice",
+   "executive function",
+   "play-based learning",
+   "visual discrimination",
+   "concentration",
+   "retention strategies",
+  ],
+  excerpt:
+   "Memory games for kids can be both fun and genuinely educational. Here is a practical guide to choosing age-appropriate options that build real cognitive skills.",
+  content: `
 <h2>Why Memory Skills Matter in Early Development</h2>
 <p>Memory is not just a passive storage system. In children, it is an active engine for language acquisition, problem-solving, and social learning. Working memory, the ability to hold and manipulate information briefly, predicts later math and reading performance more reliably than many early IQ measures.</p>
 <p>When kids play memory games, they practice encoding information, holding it in mind, and retrieving it on demand. Those three steps mirror the cognitive demands of classroom tasks like following multi-step instructions or solving a word problem. The difference is that games lower the stakes and keep motivation high.</p>
@@ -312,52 +312,52 @@ export const posts: BlogPost[] = [
 </div>
 
 <table>
-  <thead>
-    <tr>
-      <th>Age Range</th>
-      <th>Game Type</th>
-      <th>Example</th>
-      <th>Key Skill</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>3–5</td>
-      <td>Matching cards</td>
-      <td>Animal match pairs</td>
-      <td>Visual recall</td>
-    </tr>
-    <tr>
-      <td>3–5</td>
-      <td>Routine sequencing</td>
-      <td>Morning order story</td>
-      <td>Order memory</td>
-    </tr>
-    <tr>
-      <td>6–8</td>
-      <td>Pattern rebuilding</td>
-      <td>Block sequences</td>
-      <td>Spatial memory</td>
-    </tr>
-    <tr>
-      <td>6–8</td>
-      <td>Detail scavenger hunt</td>
-      <td>Picture-to-room hunt</td>
-      <td>Attention to detail</td>
-    </tr>
-    <tr>
-      <td>9–12</td>
-      <td>Strategy card games</td>
-      <td>Uno, simple war variants</td>
-      <td>Working memory</td>
-    </tr>
-    <tr>
-      <td>9–12</td>
-      <td>Story recall</td>
-      <td>Read-and-retell</td>
-      <td>Auditory memory</td>
-    </tr>
-  </tbody>
+ <thead>
+  <tr>
+   <th>Age Range</th>
+   <th>Game Type</th>
+   <th>Example</th>
+   <th>Key Skill</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>3–5</td>
+   <td>Matching cards</td>
+   <td>Animal match pairs</td>
+   <td>Visual recall</td>
+  </tr>
+  <tr>
+   <td>3–5</td>
+   <td>Routine sequencing</td>
+   <td>Morning order story</td>
+   <td>Order memory</td>
+  </tr>
+  <tr>
+   <td>6–8</td>
+   <td>Pattern rebuilding</td>
+   <td>Block sequences</td>
+   <td>Spatial memory</td>
+  </tr>
+  <tr>
+   <td>6–8</td>
+   <td>Detail scavenger hunt</td>
+   <td>Picture-to-room hunt</td>
+   <td>Attention to detail</td>
+  </tr>
+  <tr>
+   <td>9–12</td>
+   <td>Strategy card games</td>
+   <td>Uno, simple war variants</td>
+   <td>Working memory</td>
+  </tr>
+  <tr>
+   <td>9–12</td>
+   <td>Story recall</td>
+   <td>Read-and-retell</td>
+   <td>Auditory memory</td>
+  </tr>
+ </tbody>
 </table>
 
 <h2>Digital Options That Respect Attention Spans</h2>
@@ -417,57 +417,58 @@ export const posts: BlogPost[] = [
 
 <h2>Sources & References</h2>
 <ul>
-  <li>American Academy of Pediatrics, "Media and Young Minds," 2024. <a href="https://www.aap.org">https://www.aap.org</a></li>
-  <li>Child Development Perspectives, "Working Memory and Early Academic Skills," 2023. <a href="https://srcd.onlinelibrary.wiley.com">https://srcd.onlinelibrary.wiley.com</a></li>
-  <li>National Association for the Education of Young Children, "Play-Based Learning Guidelines," 2022. <a href="https://www.naeyc.org">https://www.naeyc.org</a></li>
-  <li>Journal of Experimental Child Psychology, "Cognitive Training Studies in School-Age Children," 2023. <a href="https://www.journals.elsevier.com">https://www.journals.elsevier.com</a></li>
+ <li>American Academy of Pediatrics, "Media and Young Minds," 2024. <a href="https://www.aap.org">https://www.aap.org</a></li>
+ <li>Child Development Perspectives, "Working Memory and Early Academic Skills," 2023. <a href="https://srcd.onlinelibrary.wiley.com">https://srcd.onlinelibrary.wiley.com</a></li>
+ <li>National Association for the Education of Young Children, "Play-Based Learning Guidelines," 2022. <a href="https://www.naeyc.org">https://www.naeyc.org</a></li>
+ <li>Journal of Experimental Child Psychology, "Cognitive Training Studies in School-Age Children," 2023. <a href="https://www.journals.elsevier.com">https://www.journals.elsevier.com</a></li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "At what age can children start memory games?",
-        a: "Children as young as three can begin with simple matching games. Keep sessions short and playful.",
-      },
-      {
-        q: "How much screen time is appropriate for memory games?",
-        a: "Follow pediatric guidelines for total screen time. For memory-specific games, ten to twenty minutes per session is plenty for younger children.",
-      },
-      {
-        q: "Do memory games actually improve school performance?",
-        a: "Research links working memory training to better attention and math skills in children, especially when games are used consistently over weeks.",
-      },
-      {
-        q: "Can memory games help children with ADHD?",
-        a: "Memory games that are short, structured, and reward focus can be a helpful supplement to other strategies, but they are not a replacement for professional support.",
-      },
-      {
-        q: "Are physical memory games better than digital ones?",
-        a: "Physical games often encourage more social interaction and movement, which benefits overall development. Digital games can provide adaptive difficulty and feedback. A combination is ideal.",
-      },
-      {
-        q: "How can I tell if a memory game is truly educational?",
-        a: "Look for games that require active recall, increase in difficulty, and provide feedback. Avoid games that are mostly passive tapping or watching.",
-      },
-      {
-        q: "What if my child finds memory games frustrating?",
-        a: "Lower the difficulty, shorten the session, or switch to a different game type. Frustration usually signals that the task is mismatched to current skill level.",
-      },
-      {
-        q: "Should I reward my child for playing memory games?",
-        a: "Praise effort and strategy rather than outcomes. Intrinsic motivation helps children develop a lasting habit of practice.",
-      },
-      {
-        q: "Can siblings play memory games together?",
-        a: "Yes. Cooperative or turn-based memory games build social skills alongside cognitive ones.",
-      },
-      {
-        q: "Do memory games help with reading skills?",
-        a: "Better visual and working memory supports letter recognition, sight word recall, and reading comprehension over time.",
-      },
-      {
-        q: "Are there memory games for children with special needs?",
-        a: "Many therapists use modified memory games for children with autism, dyslexia, and other learning differences. Consult an educational specialist for tailored recommendations.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "At what age can children start memory games?",
+    a: "Children as young as three can begin with simple matching games. Keep sessions short and playful.",
+   },
+   {
+    q: "How much screen time is appropriate for memory games?",
+    a: "Follow pediatric guidelines for total screen time. For memory-specific games, ten to twenty minutes per session is plenty for younger children.",
+   },
+   {
+    q: "Do memory games actually improve school performance?",
+    a: "Research links working memory training to better attention and math skills in children, especially when games are used consistently over weeks.",
+   },
+   {
+    q: "Can memory games help children with ADHD?",
+    a: "Memory games that are short, structured, and reward focus can be a helpful supplement to other strategies, but they are not a replacement for professional support.",
+   },
+   {
+    q: "Are physical memory games better than digital ones?",
+    a: "Physical games often encourage more social interaction and movement, which benefits overall development. Digital games can provide adaptive difficulty and feedback. A combination is ideal.",
+   },
+   {
+    q: "How can I tell if a memory game is truly educational?",
+    a: "Look for games that require active recall, increase in difficulty, and provide feedback. Avoid games that are mostly passive tapping or watching.",
+   },
+   {
+    q: "What if my child finds memory games frustrating?",
+    a: "Lower the difficulty, shorten the session, or switch to a different game type. Frustration usually signals that the task is mismatched to current skill level.",
+   },
+   {
+    q: "Should I reward my child for playing memory games?",
+    a: "Praise effort and strategy rather than outcomes. Intrinsic motivation helps children develop a lasting habit of practice.",
+   },
+   {
+    q: "Can siblings play memory games together?",
+    a: "Yes. Cooperative or turn-based memory games build social skills alongside cognitive ones.",
+   },
+   {
+    q: "Do memory games help with reading skills?",
+    a: "Better visual and working memory supports letter recognition, sight word recall, and reading comprehension over time.",
+   },
+   {
+    q: "Are there memory games for children with special needs?",
+    a: "Many therapists use modified memory games for children with autism, dyslexia, and other learning differences. Consult an educational specialist for tailored recommendations.",
+   },
+  ],
+ },
 ];
+

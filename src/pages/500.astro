@@ -1,26 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const title = "Something broke — YOUTUBE PLAYABLES";
+const title = "Something broke — PLAYABLES";
 ---
 
 <Layout title={title}>
-  <a href="#main" class="skip-link">Skip to content</a>
+ <a href="#main" class="skip-link">Skip to content</a>
 
-  <main id="main" class="relative overflow-hidden border-b border-hairline">
-    <div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
-    <div class="relative mx-auto max-w-[1400px] px-6 py-24 text-center md:py-32">
-      <span class="mb-6 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">500</span>
-      <h1 class="mx-auto max-w-3xl text-[48px] font-semibold leading-[1.05] tracking-[-2.4px] text-ink sm:text-[64px]">
-        Something broke.
-      </h1>
-      <p class="mx-auto mt-6 max-w-xl text-lg leading-7 text-body">
-        We’re sorry — something went wrong on our side. Refresh or head back to the playables.
-      </p>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <button type="button" onclick="location.reload()" class="btn btn-primary h-12 px-6 text-base">Refresh</button>
-        <a href="/playables" class="btn btn-ghost h-12 px-6 text-base">Browse playables</a>
-      </div>
-    </div>
-  </main>
+ <main id="main" class="relative overflow-hidden border-b border-hairline">
+  <div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-[1400px] px-6 py-24 text-center md:py-32">
+   <span class="mb-6 inline-block rounded-full bg-canvas px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014]">500</span>
+   <h1 class="mx-auto max-w-3xl text-[48px] font-semibold leading-[1.05] tracking-[-2.4px] text-ink sm:text-[64px]">
+    Something broke.
+   </h1>
+   <p class="mx-auto mt-6 max-w-xl text-lg leading-7 text-body">
+    We’re sorry — something went wrong on our side. Refresh or head back to the playables.
+   </p>
+   <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+    <button type="button" onclick="location.reload()" class="btn btn-primary h-12 px-6 text-base">Refresh</button>
+    <a href="/playables" class="btn btn-ghost h-12 px-6 text-base">Browse playables</a>
+   </div>
+  </div>
+ </main>
 </Layout>
+

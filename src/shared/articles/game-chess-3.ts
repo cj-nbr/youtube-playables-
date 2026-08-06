@@ -1,47 +1,47 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "chess-vs-checkers-comparison",
-    title: "Chess vs Checkers: A Clear Comparison and Which One to Learn First",
-    description:
-      "Chess vs checkers compared on rules, depth, and difficulty. See how the two board games differ, which is harder, and which one a new player should learn first.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Strategy Games",
-    tags: [
-      "chess vs checkers",
-      "chess and checkers comparison",
-      "which is harder chess or checkers",
-      "board game strategy",
-      "learn chess first",
-      "checkers strategy",
-      "two player board games",
-    ],
-    authorId: "editorial",
-    cover: "/images/games/chess/cover.webp",
-    primaryKeyword: "chess vs checkers",
-    secondaryKeywords: [
-      "difference between chess and checkers",
-      "is chess harder than checkers",
-      "should i learn chess or checkers first",
-      "chess vs checkers difficulty",
-      "chess and checkers comparison for beginners",
-    ],
-    lsiKeywords: [
-      "game tree complexity",
-      "piece movement",
-      "board size",
-      "strategic depth",
-      "forced capture",
-      "checkmate",
-      "kinging",
-      "opening principles",
-    ],
-    gameId: "chess",
-    excerpt:
-      "Chess and checkers share a board but reward different minds. Here is an honest comparison of their rules, depth, and difficulty, plus which one you should learn first.",
-    content: `
+ {
+  slug: "chess-vs-checkers-comparison",
+  title: "Chess vs Checkers: A Clear Comparison and Which One to Learn First",
+  description:
+   "Chess vs checkers compared on rules, depth, and difficulty. See how the two board games differ, which is harder, and which one a new player should learn first.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Strategy Games",
+  tags: [
+   "chess vs checkers",
+   "chess and checkers comparison",
+   "which is harder chess or checkers",
+   "board game strategy",
+   "learn chess first",
+   "checkers strategy",
+   "two player board games",
+  ],
+  authorId: "editorial",
+  cover: "/images/games/chess/cover.webp",
+  primaryKeyword: "chess vs checkers",
+  secondaryKeywords: [
+   "difference between chess and checkers",
+   "is chess harder than checkers",
+   "should i learn chess or checkers first",
+   "chess vs checkers difficulty",
+   "chess and checkers comparison for beginners",
+  ],
+  lsiKeywords: [
+   "game tree complexity",
+   "piece movement",
+   "board size",
+   "strategic depth",
+   "forced capture",
+   "checkmate",
+   "kinging",
+   "opening principles",
+  ],
+  gameId: "chess",
+  excerpt:
+   "Chess and checkers share a board but reward different minds. Here is an honest comparison of their rules, depth, and difficulty, plus which one you should learn first.",
+  content: `
 <h2>Two Games on One Board</h2>
 <p>Chess and checkers are the two most recognizable board games in the Western world, and they are often mentioned in the same breath. They share the same eight-by-eight checkered board, they seat two players across from each other, and both reward the person who thinks a few moves ahead. Yet the moment you start playing, the resemblance ends. These are two very different tests of the mind wearing similar clothing.</p>
 <p>People ask which one is harder, which one is better, and which one a beginner should learn first. Those are fair questions, but the honest answers depend on what you want from a game. This comparison lays out the rules, the strategic depth, and the learning curve of each, so you can decide with clear eyes instead of received opinion. If you want to try either right now, you can play <a href="/chess">Chess</a> or <a href="/checkers">Checkers</a> and feel the difference for yourself.</p>
@@ -141,47 +141,48 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Solving chess" and "Checkers" - notes on game tree complexity and the 2007 solution proving checkers a draw.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "Is chess harder than checkers?",
-        a: "Chess is harder overall because it has six piece types, special rules, and vastly greater strategic depth. Checkers is easier to learn thanks to its single piece type and simple movement, but it is still hard to master. Chess is both harder to learn and harder to master.",
-      },
-      {
-        q: "What is the main difference between chess and checkers?",
-        a: "The biggest difference is the pieces and the capturing rule. Chess uses six piece types that move in different ways and captures are optional, while checkers uses one piece type that moves diagonally and captures are mandatory when available. The goals also differ: checkmate versus capturing all pieces.",
-      },
-      {
-        q: "Should I learn chess or checkers first?",
-        a: "For most beginners, checkers first is the gentler path because the rules are simple and you can play real games immediately. It builds the habit of planning ahead, which transfers to chess. If you are already excited about chess, however, there is no harm in starting there.",
-      },
-      {
-        q: "Is checkers a solved game?",
-        a: "Yes. In 2007 researchers proved that checkers is a draw with perfect play from both sides. Solving it took years of computation, and no human plays perfectly, so it remains a genuine contest for people. Chess, by contrast, has never been solved.",
-      },
-      {
-        q: "Why is chess considered deeper than checkers?",
-        a: "Chess has far more possible positions and games, a measure called game tree complexity. Its six piece types and the many ways they combine create a practically bottomless well of strategy. Checkers is deep but has a smaller, known ceiling, which is why computers were able to solve it.",
-      },
-      {
-        q: "Do chess and checkers use the same board?",
-        a: "They use the same eight-by-eight checkered board, but differently. Chess uses all 64 squares, while checkers uses only the 32 dark squares and moves diagonally on them. This is why the two games can share a physical board yet feel completely different to play.",
-      },
-      {
-        q: "Which game is better for kids?",
-        a: "Checkers is usually the better first game for young children because the rules are simple and games are short and rewarding. Once a child enjoys thinking ahead in checkers, chess becomes a natural next step that offers much more room to grow.",
-      },
-      {
-        q: "Does playing checkers help you at chess?",
-        a: "Yes. Checkers trains forcing moves, tempo, and thinking a few steps ahead, all of which transfer to chess. It does not teach piece coordination or king safety, but the core habit of planning your opponent's responses is valuable in both games.",
-      },
-      {
-        q: "Are captures mandatory in both games?",
-        a: "No. Captures are mandatory in checkers whenever a jump is available, which shapes much of its strategy. In chess, captures are always optional, so both players choose every move freely. This single rule creates a large part of the difference in how the two games feel.",
-      },
-      {
-        q: "Can the same person be good at both chess and checkers?",
-        a: "Absolutely. The games share the underlying skill of thinking ahead and reading threats, so strength in one supports the other. Many strategy players enjoy rotating between chess, checkers, and related games to keep their planning sharp across different rule sets.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "Is chess harder than checkers?",
+    a: "Chess is harder overall because it has six piece types, special rules, and vastly greater strategic depth. Checkers is easier to learn thanks to its single piece type and simple movement, but it is still hard to master. Chess is both harder to learn and harder to master.",
+   },
+   {
+    q: "What is the main difference between chess and checkers?",
+    a: "The biggest difference is the pieces and the capturing rule. Chess uses six piece types that move in different ways and captures are optional, while checkers uses one piece type that moves diagonally and captures are mandatory when available. The goals also differ: checkmate versus capturing all pieces.",
+   },
+   {
+    q: "Should I learn chess or checkers first?",
+    a: "For most beginners, checkers first is the gentler path because the rules are simple and you can play real games immediately. It builds the habit of planning ahead, which transfers to chess. If you are already excited about chess, however, there is no harm in starting there.",
+   },
+   {
+    q: "Is checkers a solved game?",
+    a: "Yes. In 2007 researchers proved that checkers is a draw with perfect play from both sides. Solving it took years of computation, and no human plays perfectly, so it remains a genuine contest for people. Chess, by contrast, has never been solved.",
+   },
+   {
+    q: "Why is chess considered deeper than checkers?",
+    a: "Chess has far more possible positions and games, a measure called game tree complexity. Its six piece types and the many ways they combine create a practically bottomless well of strategy. Checkers is deep but has a smaller, known ceiling, which is why computers were able to solve it.",
+   },
+   {
+    q: "Do chess and checkers use the same board?",
+    a: "They use the same eight-by-eight checkered board, but differently. Chess uses all 64 squares, while checkers uses only the 32 dark squares and moves diagonally on them. This is why the two games can share a physical board yet feel completely different to play.",
+   },
+   {
+    q: "Which game is better for kids?",
+    a: "Checkers is usually the better first game for young children because the rules are simple and games are short and rewarding. Once a child enjoys thinking ahead in checkers, chess becomes a natural next step that offers much more room to grow.",
+   },
+   {
+    q: "Does playing checkers help you at chess?",
+    a: "Yes. Checkers trains forcing moves, tempo, and thinking a few steps ahead, all of which transfer to chess. It does not teach piece coordination or king safety, but the core habit of planning your opponent's responses is valuable in both games.",
+   },
+   {
+    q: "Are captures mandatory in both games?",
+    a: "No. Captures are mandatory in checkers whenever a jump is available, which shapes much of its strategy. In chess, captures are always optional, so both players choose every move freely. This single rule creates a large part of the difference in how the two games feel.",
+   },
+   {
+    q: "Can the same person be good at both chess and checkers?",
+    a: "Absolutely. The games share the underlying skill of thinking ahead and reading threats, so strength in one supports the other. Many strategy players enjoy rotating between chess, checkers, and related games to keep their planning sharp across different rule sets.",
+   },
+  ],
+ },
 ];
+

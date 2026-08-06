@@ -24,7 +24,7 @@
  * @property {number} xp
  * @property {number} score
  * @property {number} lives
- * @property {string} data  JSON blob for custom/checkpoint data
+ * @property {string} data JSON blob for custom/checkpoint data
  * @property {string} created_at
  * @property {string} updated_at
  */
@@ -38,3 +38,4 @@
 
 export const API_VERSION = "v1";
 export const API_BASE = `/api/${API_VERSION}`;
+

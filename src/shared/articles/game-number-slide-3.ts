@@ -1,46 +1,46 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "number-slide-common-mistakes",
-    title: "Common Beginner Mistakes in Number Slide and How to Fix Them",
-    description:
-      "Most new players hit the same walls in the 15-puzzle. Here are the most common sliding-puzzle mistakes and the simple fixes that will cut your move count fast.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Brain & Logic",
-    tags: [
-      "15 puzzle mistakes",
-      "sliding puzzle tips",
-      "number slide guide",
-      "beginner puzzle errors",
-      "how to solve 15 puzzle",
-      "puzzle strategy",
-      "brain games tips",
-    ],
-    authorId: "mira",
-    cover: "/images/games/number-slide/cover.webp",
-    primaryKeyword: "sliding puzzle common mistakes",
-    secondaryKeywords: [
-      "number slide beginner tips",
-      "15 puzzle mistakes",
-      "how to solve sliding puzzles",
-      "sliding puzzle strategy",
-    ],
-    lsiKeywords: [
-      "spatial reasoning",
-      "pattern recognition",
-      "working memory",
-      "move efficiency",
-      "board layout",
-      "tile positioning",
-      "parity",
-      "problem solving",
-    ],
-    gameId: "number-slide",
-    excerpt:
-      "Beginners waste moves in the 15-puzzle by chasing tiles instead of the empty space. Learn the most common sliding-puzzle mistakes and the practical fixes that sharpen your play from the first shuffle.",
-    content: `
+ {
+  slug: "number-slide-common-mistakes",
+  title: "Common Beginner Mistakes in Number Slide and How to Fix Them",
+  description:
+   "Most new players hit the same walls in the 15-puzzle. Here are the most common sliding-puzzle mistakes and the simple fixes that will cut your move count fast.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Brain & Logic",
+  tags: [
+   "15 puzzle mistakes",
+   "sliding puzzle tips",
+   "number slide guide",
+   "beginner puzzle errors",
+   "how to solve 15 puzzle",
+   "puzzle strategy",
+   "brain games tips",
+  ],
+  authorId: "mira",
+  cover: "/images/games/number-slide/cover.webp",
+  primaryKeyword: "sliding puzzle common mistakes",
+  secondaryKeywords: [
+   "number slide beginner tips",
+   "15 puzzle mistakes",
+   "how to solve sliding puzzles",
+   "sliding puzzle strategy",
+  ],
+  lsiKeywords: [
+   "spatial reasoning",
+   "pattern recognition",
+   "working memory",
+   "move efficiency",
+   "board layout",
+   "tile positioning",
+   "parity",
+   "problem solving",
+  ],
+  gameId: "number-slide",
+  excerpt:
+   "Beginners waste moves in the 15-puzzle by chasing tiles instead of the empty space. Learn the most common sliding-puzzle mistakes and the practical fixes that sharpen your play from the first shuffle.",
+  content: `
 <h2>Why Most Beginners Stumble On Number Slide</h2>
 <p>The 15-puzzle looks simple until the board resists brute force. Five minutes in, most new players realize that sliding a tile toward its target sends three others out of place. The problem is not difficulty. It is that beginners treat a spatial planning game like a sorting task.</p>
 <p>Number Slide trains spatial reasoning, working memory, and patience. The mistakes are always the same: chasing tiles instead of the empty space, ignoring board geometry, fixing a row before the lower board is ready, and treating every shuffle as a fresh mystery instead of a pattern.</p>
@@ -164,47 +164,48 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Reversi" - related strategy game that also rewards spatial planning and lookahead.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "Why do beginners struggle with the 15-puzzle?",
-        a: "Beginners usually chase tiles instead of the empty space, rush the top row before the lower board is ready, and slide reactively without looking ahead. These habits turn a solvable puzzle into a frustrating loop of backtracking.",
-      },
-      {
-        q: "What is the biggest mistake in sliding puzzles?",
-        a: "The biggest mistake is treating the tiles as the active pieces. The empty space is the only true mover. Players who fixate on tile destinations instead of empty-space paths waste the most moves.",
-      },
-      {
-        q: "How do I stop restarting in Number Slide?",
-        a: "Treat every stuck board as practice instead of failure. Pause after twenty moves, identify the move that closed your last corridor, and try a different first step next time. Restarting teaches less than untangling a bad position.",
-      },
-      {
-        q: "Does solving the top row first always work?",
-        a: "No. Locking the top row too early usually creates a cage that blocks the empty space from reaching lower tiles. Keep the solved area small and porous until the final phase of the solve.",
-      },
-      {
-        q: "Why does the empty space matter more than the tiles?",
-        a: "All tiles move only when the empty space trades places with them. The empty space is the engine. Planning around it instead of around tile destinations keeps your moves coordinated and your options open.",
-      },
-      {
-        q: "How many moves ahead should I plan in Number Slide?",
-        a: "One or two moves ahead is enough for most beginners. The habit to build is asking what the empty space will look like after your next slide. That simple check prevents most dead ends.",
-      },
-      {
-        q: "Can Number Slide improve spatial reasoning?",
-        a: "Yes. It forces you to visualize tile positions, predict empty-space paths, and plan several steps ahead. Those are core spatial-reasoning skills, and regular play strengthens them.",
-      },
-      {
-        q: "Is Number Slide harder than Sudoku?",
-        a: "They train different skills. Sudoku is mainly logical deduction with numbers, while Number Slide is spatial planning with physical movement. Many players find Number Slide more intuitive once they stop chasing tiles, but both demand patience and lookahead.",
-      },
-      {
-        q: "Are 15-puzzles always solvable?",
-        a: "Not every shuffle is solvable. About half of all random arrangements of the 15-puzzle are unsolvable because of parity. If you find yourself looping without progress, try shuffling again. A valid scramble will have at least one path to order.",
-      },
-      {
-        q: "What other games help with sliding puzzles?",
-        a: "Games like Jigsaw, Sudoku, and Reversi all train spatial planning, lookahead, and constraint management. The habits you build in Number Slide transfer directly to them.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "Why do beginners struggle with the 15-puzzle?",
+    a: "Beginners usually chase tiles instead of the empty space, rush the top row before the lower board is ready, and slide reactively without looking ahead. These habits turn a solvable puzzle into a frustrating loop of backtracking.",
+   },
+   {
+    q: "What is the biggest mistake in sliding puzzles?",
+    a: "The biggest mistake is treating the tiles as the active pieces. The empty space is the only true mover. Players who fixate on tile destinations instead of empty-space paths waste the most moves.",
+   },
+   {
+    q: "How do I stop restarting in Number Slide?",
+    a: "Treat every stuck board as practice instead of failure. Pause after twenty moves, identify the move that closed your last corridor, and try a different first step next time. Restarting teaches less than untangling a bad position.",
+   },
+   {
+    q: "Does solving the top row first always work?",
+    a: "No. Locking the top row too early usually creates a cage that blocks the empty space from reaching lower tiles. Keep the solved area small and porous until the final phase of the solve.",
+   },
+   {
+    q: "Why does the empty space matter more than the tiles?",
+    a: "All tiles move only when the empty space trades places with them. The empty space is the engine. Planning around it instead of around tile destinations keeps your moves coordinated and your options open.",
+   },
+   {
+    q: "How many moves ahead should I plan in Number Slide?",
+    a: "One or two moves ahead is enough for most beginners. The habit to build is asking what the empty space will look like after your next slide. That simple check prevents most dead ends.",
+   },
+   {
+    q: "Can Number Slide improve spatial reasoning?",
+    a: "Yes. It forces you to visualize tile positions, predict empty-space paths, and plan several steps ahead. Those are core spatial-reasoning skills, and regular play strengthens them.",
+   },
+   {
+    q: "Is Number Slide harder than Sudoku?",
+    a: "They train different skills. Sudoku is mainly logical deduction with numbers, while Number Slide is spatial planning with physical movement. Many players find Number Slide more intuitive once they stop chasing tiles, but both demand patience and lookahead.",
+   },
+   {
+    q: "Are 15-puzzles always solvable?",
+    a: "Not every shuffle is solvable. About half of all random arrangements of the 15-puzzle are unsolvable because of parity. If you find yourself looping without progress, try shuffling again. A valid scramble will have at least one path to order.",
+   },
+   {
+    q: "What other games help with sliding puzzles?",
+    a: "Games like Jigsaw, Sudoku, and Reversi all train spatial planning, lookahead, and constraint management. The habits you build in Number Slide transfer directly to them.",
+   },
+  ],
+ },
 ];
+

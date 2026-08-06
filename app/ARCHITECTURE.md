@@ -1,4 +1,4 @@
-# YouTube Playables Android App - Architecture Documentation
+# Playables Android App - Architecture Documentation
 
 ## System Architecture
 
@@ -6,45 +6,45 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Android App Shell                        │
-│  ┌─────────────┐  ┌──────────────┐  ┌───────────────────┐ │
-│  │  Splash     │  │  Bottom      │  │  Native UI        │ │
-│  │  Screen     │  │  Navigation  │  │  Overlays         │ │
-│  └──────┬──────┘  └──────┬───────┘  └───────────────────┘ │
-│         │                │                                   │
-│  ┌──────▼────────────────▼───────────────────────────────┐  │
-│  │              Main Activity (WebView + Native)          │  │
-│  │  ┌─────────────────────────────────────────────────┐  │  │
-│  │  │              WebView Container                  │  │  │
-│  │  │  Loads: https://youtubeplayables.calorie...    │  │  │
-│  │  │  with: isApp=true&platform=android             │  │  │
-│  │  └─────────────────────────────────────────────────┘  │  │
-│  │  ┌─────────────────────────────────────────────────┐  │  │
-│  │  │              Native Overlay                     │  │  │
-│  │  │  (Game grid, search, categories when needed)   │  │  │
-│  │  └─────────────────────────────────────────────────┘  │  │
-│  └───────────────────────────────────────────────────────┘  │
-│                                                              │
-│  ┌─────────────┐  ┌──────────────┐  ┌───────────────────┐ │
-│  │  AdManager  │  │  Bridge      │  │  Notification     │ │
-│  │  (AdMob)    │  │  Service     │  │  Helper           │ │
-│  └─────────────┘  └──────────────┘  └───────────────────┘ │
-│                                                              │
-│  ┌─────────────┐  ┌──────────────┐  ┌───────────────────┐ │
-│  │  Deep Link  │  │  Network     │  │  Preference       │ │
-│  │  Handler    │  │  Monitor     │  │  Manager          │ │
-│  └─────────────┘  └──────────────┘  └───────────────────┘ │
+│          Android App Shell            │
+│ ┌─────────────┐ ┌──────────────┐ ┌───────────────────┐ │
+│ │ Splash   │ │ Bottom   │ │ Native UI    │ │
+│ │ Screen   │ │ Navigation │ │ Overlays     │ │
+│ └──────┬──────┘ └──────┬───────┘ └───────────────────┘ │
+│     │        │                  │
+│ ┌──────▼────────────────▼───────────────────────────────┐ │
+│ │       Main Activity (WebView + Native)     │ │
+│ │ ┌─────────────────────────────────────────────────┐ │ │
+│ │ │       WebView Container         │ │ │
+│ │ │ Loads: https://playables.calorie...  │ │ │
+│ │ │ with: isApp=true&platform=android       │ │ │
+│ │ └─────────────────────────────────────────────────┘ │ │
+│ │ ┌─────────────────────────────────────────────────┐ │ │
+│ │ │       Native Overlay           │ │ │
+│ │ │ (Game grid, search, categories when needed)  │ │ │
+│ │ └─────────────────────────────────────────────────┘ │ │
+│ └───────────────────────────────────────────────────────┘ │
+│                               │
+│ ┌─────────────┐ ┌──────────────┐ ┌───────────────────┐ │
+│ │ AdManager │ │ Bridge   │ │ Notification   │ │
+│ │ (AdMob)  │ │ Service   │ │ Helper      │ │
+│ └─────────────┘ └──────────────┘ └───────────────────┘ │
+│                               │
+│ ┌─────────────┐ ┌──────────────┐ ┌───────────────────┐ │
+│ │ Deep Link │ │ Network   │ │ Preference    │ │
+│ │ Handler  │ │ Monitor   │ │ Manager     │ │
+│ └─────────────┘ └──────────────┘ └───────────────────┘ │
 └─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
+               │
+               ▼
 ┌─────────────────────────────────────────────────────────────┐
-│              Live Website Backend                           │
-│  (https://youtubeplayables.caloriecalculatorfree.com)      │
-│  - Game data (dynamic, always latest)                      │
-│  - Authentication (shared)                                 │
-│  - User progress (shared)                                  │
-│  - Ad serving (app vs web detection)                       │
-│  - API endpoints for app bridge                            │
+│       Live Website Backend              │
+│ (https://playables.caloriecalculatorfree.com)   │
+│ - Game data (dynamic, always latest)           │
+│ - Authentication (shared)                 │
+│ - User progress (shared)                 │
+│ - Ad serving (app vs web detection)            │
+│ - API endpoints for app bridge              │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -63,14 +63,14 @@
 
 ```
 Website → App:
-  URL params: isApp=true, platform=android, source=app
-  JavaScript: window.__ytpApp API
-  Custom scheme: ytplayables://game/{id}
+ URL params: isApp=true, platform=android, source=app
+ JavaScript: window.__ytpApp API
+ Custom scheme: ytplayables://game/{id}
 
 App → Website:
-  JavaScript injection: window.AndroidBridge.onEvent()
-  URL parameter injection
-  Shared preferences sync
+ JavaScript injection: window.AndroidBridge.onEvent()
+ URL parameter injection
+ Shared preferences sync
 ```
 
 ### Key Design Decisions

@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ANDROID_DIR="$(dirname "$SCRIPT_DIR")/android"
 
 echo "========================================="
-echo "  YouTube Playables - One-Command Build"
+echo "  Playables - One-Command Build"
 echo "========================================="
 echo ""
 
@@ -31,5 +31,6 @@ echo "Release AAB: app/build/outputs/bundle/release/app-release.aab"
 
 echo ""
 echo "========================================="
-echo "  All builds complete!"
+echo " All builds complete!"
 echo "========================================="
+

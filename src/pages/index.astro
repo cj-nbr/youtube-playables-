@@ -11,216 +11,217 @@ const categories = Array.from(new Set(games.flatMap((g) => g.genre))).sort();
 ---
 
 <Layout title={`${SITE_NAME} — free browser-native playables`} description={`Play free browser-native HTML5 games on ${SITE_NAME}. No downloads, no accounts — open and play.`}>
-  <a href="#main" class="skip-link">Skip to content</a>
+ <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- Announcement banner -->
-  <div class="flex w-full justify-center border-b border-hairline bg-canvas">
-    <a
-      href="/"
-      class="mx-auto flex max-w-[1400px] items-center gap-2 px-6 py-2 text-sm text-body"
+ <!-- Announcement banner -->
+ <div class="flex w-full justify-center border-b border-hairline bg-canvas">
+  <a
+   href="/"
+   class="mx-auto flex max-w-[1400px] items-center gap-2 px-6 py-2 text-sm text-body"
+  >
+   <span
+    class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute"
+    >NEW</span
+   >
+   <span>Introducing PLAYABLES — free playables.</span>
+   >
+  </a>
+ </div>
+
+ <main id="main">
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-hairline">
+   <div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
+   <div class="relative mx-auto max-w-[1400px] px-6 py-24 text-center md:py-36">
+    <span
+     class="mb-6 inline-flex items-center gap-2 rounded-full bg-canvas/90 px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014] backdrop-blur-sm"
     >
-      <span
-        class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute"
-        >NEW</span
-      >
-      <span>Introducing YOUTUBE PLAYABLES — free YouTube playables.</span>
-      >
-    </a>
-  </div>
+     <span class="h-2 w-2 rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8] animate-pulse-soft"></span>
+     playables
+    </span>
+    <h1
+     class="mx-auto max-w-4xl text-[44px] font-semibold leading-[1.05] tracking-[-2.4px] text-ink sm:text-[56px] md:text-[80px]"
+    >
+      <span class="text-gradient">Playables</span>.
+    </h1>
+    <p
+     class="mx-auto mt-6 max-w-xl text-lg leading-7 text-body"
+    >
+     Free browser-native playables. No downloads, no accounts — open and play.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+     <a
+      href="/playables"
+      class="btn btn-primary h-12 px-8 text-base"
+      >Browse playables</a
+     >
+     <a
+      href="/blog"
+      class="btn btn-ghost h-12 px-8 text-base"
+      >Read guides</a
+     >
+    </div>
+   </div>
+  </section>
 
-  <main id="main">
-    <!-- Hero -->
-    <section class="relative overflow-hidden border-b border-hairline">
-      <div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-[1400px] px-6 py-24 text-center md:py-36">
-        <span
-          class="mb-6 inline-flex items-center gap-2 rounded-full bg-canvas/90 px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014] backdrop-blur-sm"
-        >
-          <span class="h-2 w-2 rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8] animate-pulse-soft"></span>
-          youtubeplayables
-        </span>
-        <h1
-          class="mx-auto max-w-4xl text-[44px] font-semibold leading-[1.05] tracking-[-2.4px] text-ink sm:text-[56px] md:text-[80px]"
-        >
-          YouTube <span class="text-gradient">Playables</span>.
-        </h1>
-        <p
-          class="mx-auto mt-6 max-w-xl text-lg leading-7 text-body"
-        >
-          Free browser-native playables. No downloads, no accounts — open and play.
-        </p>
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href="/playables"
-            class="btn btn-primary h-12 px-8 text-base"
-            >Browse playables</a
-          >
-          <a
-            href="/blog"
-            class="btn btn-ghost h-12 px-8 text-base"
-            >Read guides</a
-          >
-        </div>
-      </div>
-    </section>
+  <!-- Search + Categories -->
+  <section class="border-b border-hairline bg-canvas-soft px-6 py-10">
+   <div class="mx-auto max-w-[1400px]">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+     <div class="flex-1">
+      <label for="game-search" class="sr-only">Search games</label>
+      <input
+       id="game-search"
+       type="search"
+       placeholder="Search games, genres, or tags..."
+       class="h-12 w-full rounded-xl border border-hairline bg-canvas px-4 text-body placeholder:text-mute focus:outline-none focus:ring-2 focus:ring-link/40 focus:shadow-lg transition"
+      />
+     </div>
+     <div class="flex flex-wrap gap-2" id="category-chips">
+      <button data-cat="all" class="cat-chip rounded-full bg-ink px-3 py-1.5 text-sm font-medium text-white transition">All</button>
+      {categories.map((cat) => (
+       <button data-cat={cat} class="cat-chip rounded-full bg-canvas px-3 py-1.5 text-sm font-medium text-ink hover:bg-canvas-soft border border-hairline transition">{cat}</button>
+      ))}
+     </div>
+    </div>
+   </div>
+  </section>
 
-    <!-- Search + Categories -->
-    <section class="border-b border-hairline bg-canvas-soft px-6 py-10">
-      <div class="mx-auto max-w-[1400px]">
-        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div class="flex-1">
-            <label for="game-search" class="sr-only">Search games</label>
-            <input
-              id="game-search"
-              type="search"
-              placeholder="Search games, genres, or tags..."
-              class="h-12 w-full rounded-xl border border-hairline bg-canvas px-4 text-body placeholder:text-mute focus:outline-none focus:ring-2 focus:ring-link/40 focus:shadow-lg transition"
-            />
-          </div>
-          <div class="flex flex-wrap gap-2" id="category-chips">
-            <button data-cat="all" class="cat-chip rounded-full bg-ink px-3 py-1.5 text-sm font-medium text-white transition">All</button>
-            {categories.map((cat) => (
-              <button data-cat={cat} class="cat-chip rounded-full bg-canvas px-3 py-1.5 text-sm font-medium text-ink hover:bg-canvas-soft border border-hairline transition">{cat}</button>
-            ))}
-          </div>
+  <!-- Latest Games -->
+  <section class="border-b border-hairline bg-canvas px-6 py-24">
+   <div class="mx-auto max-w-[1400px]">
+    <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Latest Games</p>
+    <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">Fresh playables, just added.</h2>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+     {latest.map((g) => (
+      <a href={gameUrl(g.id)} class="game-card card card-hover p-0 overflow-hidden group">
+       <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+        <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+       </div>
+       <div class="p-6">
+        <h3 class="text-lg font-semibold tracking-tight text-ink">{g.title}</h3>
+        <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+         {g.genre.slice(0, 2).map((x) => (
+          <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{x}</span>
+         ))}
         </div>
-      </div>
-    </section>
+       </div>
+      </a>
+     ))}
+    </div>
+   </div>
+  </section>
 
-    <!-- Latest Games -->
-    <section class="border-b border-hairline bg-canvas px-6 py-24">
-      <div class="mx-auto max-w-[1400px]">
-        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Latest Games</p>
-        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">Fresh playables, just added.</h2>
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {latest.map((g) => (
-            <a href={gameUrl(g.id)} class="game-card card card-hover p-0 overflow-hidden group">
-              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
-                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
-              </div>
-              <div class="p-6">
-                <h3 class="text-lg font-semibold tracking-tight text-ink">{g.title}</h3>
-                <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  {g.genre.slice(0, 2).map((x) => (
-                    <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{x}</span>
-                  ))}
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
+  <!-- Popular + Trending -->
+  <section class="border-b border-hairline bg-canvas-soft px-6 py-24">
+   <div class="mx-auto max-w-[1400px]">
+    <div class="grid gap-12 lg:grid-cols-2">
+     <div>
+      <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Popular</p>
+      <h2 class="text-3xl font-semibold tracking-[-1.28px] text-ink">Most played this week.</h2>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2">
+       {popular.map((g) => (
+        <a href={gameUrl(g.id)} class="card card-hover p-0 overflow-hidden flex">
+         <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden bg-canvas-soft-2">
+          <img src={gameThumb(g.id)} alt={`${g.title} thumbnail`} title={g.title} loading="lazy" class="h-full w-full object-cover" width="400" height="300" />
+         </div>
+         <div class="p-4 flex flex-col">
+          <span class="font-mono text-xs text-mute">POPULAR</span>
+          <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+          <p class="mt-1 text-sm text-body line-clamp-2">{g.description}</p>
+         </div>
+        </a>
+       ))}
       </div>
-    </section>
+     </div>
+     <div>
+      <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Trending</p>
+      <h2 class="text-3xl font-semibold tracking-[-1.28px] text-ink">On the rise.</h2>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2">
+       {trending.map((g) => (
+        <a href={gameUrl(g.id)} class="card card-hover p-0 overflow-hidden flex">
+         <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden bg-canvas-soft-2">
+          <img src={gameThumb(g.id)} alt={`${g.title} thumbnail`} title={g.title} loading="lazy" class="h-full w-full object-cover" width="400" height="300" />
+         </div>
+         <div class="p-4 flex flex-col">
+          <span class="font-mono text-xs text-mute">TRENDING</span>
+          <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
+          <p class="mt-1 text-sm text-body line-clamp-2">{g.description}</p>
+         </div>
+        </a>
+       ))}
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
 
-    <!-- Popular + Trending -->
-    <section class="border-b border-hairline bg-canvas-soft px-6 py-24">
-      <div class="mx-auto max-w-[1400px]">
-        <div class="grid gap-12 lg:grid-cols-2">
-          <div>
-            <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Popular</p>
-            <h2 class="text-3xl font-semibold tracking-[-1.28px] text-ink">Most played this week.</h2>
-            <div class="mt-8 grid gap-4 sm:grid-cols-2">
-              {popular.map((g) => (
-                <a href={gameUrl(g.id)} class="card card-hover p-0 overflow-hidden flex">
-                  <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden bg-canvas-soft-2">
-                    <img src={gameThumb(g.id)} alt={`${g.title} thumbnail`} title={g.title} loading="lazy" class="h-full w-full object-cover" width="400" height="300" />
-                  </div>
-                  <div class="p-4 flex flex-col">
-                    <span class="font-mono text-xs text-mute">POPULAR</span>
-                    <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
-                    <p class="mt-1 text-sm text-body line-clamp-2">{g.description}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-          <div>
-            <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Trending</p>
-            <h2 class="text-3xl font-semibold tracking-[-1.28px] text-ink">On the rise.</h2>
-            <div class="mt-8 grid gap-4 sm:grid-cols-2">
-              {trending.map((g) => (
-                <a href={gameUrl(g.id)} class="card card-hover p-0 overflow-hidden flex">
-                  <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden bg-canvas-soft-2">
-                    <img src={gameThumb(g.id)} alt={`${g.title} thumbnail`} title={g.title} loading="lazy" class="h-full w-full object-cover" width="400" height="300" />
-                  </div>
-                  <div class="p-4 flex flex-col">
-                    <span class="font-mono text-xs text-mute">TRENDING</span>
-                    <h4 class="mt-1 text-base font-semibold tracking-tight text-ink">{g.title}</h4>
-                    <p class="mt-1 text-sm text-body line-clamp-2">{g.description}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
+  <!-- All Games -->
+  <section class="border-b border-hairline bg-canvas px-6 py-24">
+   <div class="mx-auto max-w-[1400px]">
+    <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Library</p>
+    <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">All playables.</h2>
+    <div id="games-grid" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+     {games.map((g) => (
+      <a href={gameUrl(g.id)} data-genres={g.genre.join(",")} data-title={g.title.toLowerCase()} class="game-card card card-hover p-0 overflow-hidden group">
+       <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+        <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+       </div>
+       <div class="p-6">
+        <h3 class="text-lg font-semibold tracking-tight text-ink">{g.title}</h3>
+        <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+         {g.genre.slice(0, 3).map((x) => (
+          <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{x}</span>
+         ))}
         </div>
-      </div>
-    </section>
+       </div>
+      </a>
+     ))}
+    </div>
+    <p id="no-results" class="hidden mt-6 text-center text-sm text-mute">No games match your search or filter.</p>
+   </div>
+  </section>
 
-    <!-- All Games -->
-    <section class="border-b border-hairline bg-canvas px-6 py-24">
-      <div class="mx-auto max-w-[1400px]">
-        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Library</p>
-        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">All playables.</h2>
-        <div id="games-grid" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {games.map((g) => (
-            <a href={gameUrl(g.id)} data-genres={g.genre.join(",")} data-title={g.title.toLowerCase()} class="game-card card card-hover p-0 overflow-hidden group">
-              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
-                <img src={gameCover(g.id)} alt={`${g.title} cover artwork`} title={g.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
-              </div>
-              <div class="p-6">
-                <h3 class="text-lg font-semibold tracking-tight text-ink">{g.title}</h3>
-                <p class="mt-2 flex-1 text-sm leading-6 text-body">{g.description}</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  {g.genre.slice(0, 3).map((x) => (
-                    <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{x}</span>
-                  ))}
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-        <p id="no-results" class="hidden mt-6 text-center text-sm text-mute">No games match your search or filter.</p>
-      </div>
-    </section>
+  <!-- Recently Played -->
+  <section class="border-b border-hairline bg-canvas-soft px-6 py-24">
+   <div class="mx-auto max-w-[1400px]">
+    <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Recently Played</p>
+    <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">Pick up where you left off.</h2>
+    <div id="recent-list" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+     <p id="recent-empty" class="text-sm text-mute">Play any game and it’ll appear here.</p>
+    </div>
+   </div>
+  </section>
 
-    <!-- Recently Played -->
-    <section class="border-b border-hairline bg-canvas-soft px-6 py-24">
-      <div class="mx-auto max-w-[1400px]">
-        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Recently Played</p>
-        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">Pick up where you left off.</h2>
-        <div id="recent-list" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <p id="recent-empty" class="text-sm text-mute">Play any game and it’ll appear here.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Blog / Guides CTA -->
-    <section class="border-b border-hairline bg-canvas px-6 py-24">
-      <div class="mx-auto max-w-[1400px]">
-        <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Guides & strategies</p>
-        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">Learn, practice, improve.</h2>
-        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <a href="/blog/best-brain-games-for-adults" class="card card-hover p-6">
-            <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep w-fit">Brain Training</span>
-            <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink">Best Brain Games for Adults</h3>
-            <p class="mt-2 text-sm leading-6 text-body">Discover free browser games that improve memory, focus, and cognitive fitness.</p>
-          </a>
-          <a href="/blog/best-free-online-games" class="card card-hover p-6">
-            <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep w-fit">Online Games</span>
-            <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink">Best Free Online Games</h3>
-            <p class="mt-2 text-sm leading-6 text-body">A curated list of instant HTML5 games you can play without downloading.</p>
-          </a>
-          <a href="/blog/brain-training-games-that-improve-memory" class="card card-hover p-6">
-            <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep w-fit">Memory</span>
-            <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink">Brain Training Games That Improve Memory</h3>
-            <p class="mt-2 text-sm leading-6 text-body">Explore the best memory games designed to boost recall and mental clarity.</p>
-          </a>
-        </div>
-        <div class="mt-6">
-          <a href="/blog" class="text-link underline-offset-4 hover:underline">View all articles →</a>
-        </div>
-      </div>
-    </section>
-  </main>
+  <!-- Blog / Guides CTA -->
+  <section class="border-b border-hairline bg-canvas px-6 py-24">
+   <div class="mx-auto max-w-[1400px]">
+    <p class="mb-3 font-mono text-xs uppercase tracking-wide text-mute">Guides & strategies</p>
+    <h2 class="max-w-2xl text-3xl font-semibold tracking-[-1.28px] text-ink">Learn, practice, improve.</h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+     <a href="/blog/best-brain-games-for-adults" class="card card-hover p-6">
+      <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep w-fit">Brain Training</span>
+      <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink">Best Brain Games for Adults</h3>
+      <p class="mt-2 text-sm leading-6 text-body">Discover free browser games that improve memory, focus, and cognitive fitness.</p>
+     </a>
+     <a href="/blog/best-free-online-games" class="card card-hover p-6">
+      <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep w-fit">Online Games</span>
+      <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink">Best Free Online Games</h3>
+      <p class="mt-2 text-sm leading-6 text-body">A curated list of instant HTML5 games you can play without downloading.</p>
+     </a>
+     <a href="/blog/brain-training-games-that-improve-memory" class="card card-hover p-6">
+      <span class="rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep w-fit">Memory</span>
+      <h3 class="mt-3 text-lg font-semibold tracking-tight text-ink">Brain Training Games That Improve Memory</h3>
+      <p class="mt-2 text-sm leading-6 text-body">Explore the best memory games designed to boost recall and mental clarity.</p>
+     </a>
+    </div>
+    <div class="mt-6">
+     <a href="/blog" class="text-link underline-offset-4 hover:underline">View all articles →</a>
+    </div>
+   </div>
+  </section>
+ </main>
 </Layout>
+

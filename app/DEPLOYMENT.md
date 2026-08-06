@@ -1,4 +1,4 @@
-# YouTube Playables Android App - Deployment Guide
+# Playables Android App - Deployment Guide
 
 ## Prerequisites
 
@@ -46,9 +46,9 @@ cd app
 ./scripts/build-all.sh
 
 # Or build individually
-./scripts/build-debug.sh    # Debug APK for testing
-./scripts/build-apk.sh      # Release APK for internal testing
-./scripts/build-aab.sh      # Release AAB for Play Store
+./scripts/build-debug.sh  # Debug APK for testing
+./scripts/build-apk.sh   # Release APK for internal testing
+./scripts/build-aab.sh   # Release AAB for Play Store
 ```
 
 ### 4. Test the App
@@ -69,13 +69,13 @@ adb -d install android/app/build/outputs/apk/debug/app-debug.apk
 ### Step 1: Prepare the Release
 
 1. Build the release AAB:
-   ```bash
-   ./scripts/build-aab.sh
-   ```
+  ```bash
+  ./scripts/build-aab.sh
+  ```
 
 2. Verify the AAB:
-   - File size should be reasonable (< 150MB for most apps)
-   - Check for any warnings in the build output
+  - File size should be reasonable (< 150MB for most apps)
+  - Check for any warnings in the build output
 
 ### Step 2: Upload to Play Console
 
@@ -90,22 +90,22 @@ adb -d install android/app/build/outputs/apk/debug/app-debug.apk
 ### Step 3: Configure Store Listing
 
 1. **Store Listing** tab:
-   - App title: "YouTube Playables"
-   - Short description: "Free browser-native HTML5 games"
-   - Full description: Describe the app and its features
-   - Icons (512x512 PNG)
-   - Feature graphic (1024x500 PNG)
-   - Screenshots (at least 2, recommended 8)
-   - Category: Games
-   - Tags: puzzle, arcade, strategy, casual
+  - App title: "Playables"
+  - Short description: "Free browser-native HTML5 games"
+  - Full description: Describe the app and its features
+  - Icons (512x512 PNG)
+  - Feature graphic (1024x500 PNG)
+  - Screenshots (at least 2, recommended 8)
+  - Category: Games
+  - Tags: puzzle, arcade, strategy, casual
 
 2. **Content rating** tab:
-   - Complete the content rating questionnaire
-   - Set appropriate age rating
+  - Complete the content rating questionnaire
+  - Set appropriate age rating
 
 3. **Pricing** tab:
-   - Set price (free or paid)
-   - Configure pricing for different countries
+  - Set price (free or paid)
+  - Configure pricing for different countries
 
 ### Step 4: Compliance
 
@@ -122,48 +122,48 @@ adb -d install android/app/build/outputs/apk/debug/app-debug.apk
 name: Build Android App
 
 on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+ push:
+  branches: [main]
+ workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+ build:
+  runs-on: ubuntu-latest
+  steps:
+   - uses: actions/checkout@v4
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
+   - name: Set up JDK 17
+    uses: actions/setup-java@v4
+    with:
+     java-version: '17'
+     distribution: 'temurin'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
+   - name: Setup Android SDK
+    uses: android-actions/setup-android@v2
 
-      - name: Generate keystore
-        run: |
-          cd app
-          ./scripts/generate-keystore.sh
-        env:
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+   - name: Generate keystore
+    run: |
+     cd app
+     ./scripts/generate-keystore.sh
+    env:
+     KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+     KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
-      - name: Build AAB
-        run: |
-          cd app
-          ./scripts/build-aab.sh
-        env:
-          KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+   - name: Build AAB
+    run: |
+     cd app
+     ./scripts/build-aab.sh
+    env:
+     KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
+     KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+     KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+     KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
-      - name: Upload AAB
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-release.aab
-          path: app/android/app/build/outputs/bundle/release/app-release.aab
+   - name: Upload AAB
+    uses: actions/upload-artifact@v4
+    with:
+     name: app-release.aab
+     path: app/android/app/build/outputs/bundle/release/app-release.aab
 ```
 
 ## Post-Deployment
@@ -204,3 +204,4 @@ jobs:
 ### Deep Links Not Working
 - Verify the intent filters in AndroidManifest.xml
 - Test with `adb shell am start -W -a android.intent.action.VIEW -d "ytplayables://game/chess" com.ytplayables.app`
+

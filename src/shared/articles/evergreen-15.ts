@@ -1,49 +1,49 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "best-word-games-online-free",
-    title: "15 Best Word Games Online Free in 2026",
-    description:
-      "Discover the best word games online free. We tested dozens of titles for puzzle depth, replay value, and pure lexical fun—here are the clear winners.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Word Games",
-    tags: [
-      "word games",
-      "free online games",
-      "puzzle games",
-      "brain games",
-      "vocabulary building",
-      "anagram games",
-      "word search",
-      "casual gaming",
-    ],
-    authorId: "lena",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "best word games online",
-    secondaryKeywords: [
-      "free online word games",
-      "word puzzle games",
-      "best browser word games",
-      "online word games for adults",
-      "word game apps free",
-    ],
-    lsiKeywords: [
-      "crossword",
-      "scrabble",
-      "wordle",
-      "anagram",
-      "word search",
-      "word unscramble",
-      "lexical puzzle",
-      "daily word challenge",
-      "brain training",
-      "spelling game",
-    ],
-    excerpt:
-      "A curated list of the best word games online free, from quick daily puzzles to deep strategy titles that test your vocabulary and pattern recognition.",
-    content: `<h2>Why Word Games Remain Essential Browser Entertainment</h2>
+ {
+  slug: "best-word-games-online-free",
+  title: "15 Best Word Games Online Free in 2026",
+  description:
+   "Discover the best word games online free. We tested dozens of titles for puzzle depth, replay value, and pure lexical fun—here are the clear winners.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Word Games",
+  tags: [
+   "word games",
+   "free online games",
+   "puzzle games",
+   "brain games",
+   "vocabulary building",
+   "anagram games",
+   "word search",
+   "casual gaming",
+  ],
+  authorId: "lena",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "best word games online",
+  secondaryKeywords: [
+   "free online word games",
+   "word puzzle games",
+   "best browser word games",
+   "online word games for adults",
+   "word game apps free",
+  ],
+  lsiKeywords: [
+   "crossword",
+   "scrabble",
+   "wordle",
+   "anagram",
+   "word search",
+   "word unscramble",
+   "lexical puzzle",
+   "daily word challenge",
+   "brain training",
+   "spelling game",
+  ],
+  excerpt:
+   "A curated list of the best word games online free, from quick daily puzzles to deep strategy titles that test your vocabulary and pattern recognition.",
+  content: `<h2>Why Word Games Remain Essential Browser Entertainment</h2>
 <p>Word games occupy a rare spot in the casual gaming ecosystem. They require no downloads, no high-end graphics cards, and no lengthy onboarding tutorials. You open a tab, read a prompt, and start spelling. Yet beneath that simplicity lies genuine cognitive resistance. The best word games online free balance accessibility with depth—they welcome newcomers on Monday morning and still punish experts on Friday night.</p>
 
 <p>Over the past year, we played dozens of browser-based and mobile-friendly word titles. We measured them against four criteria: lexical variety, replay structure, interface clarity, and long-term engagement. A few names rose above the rest. This list focuses exclusively on titles you can open without payment barriers. If a game hides its best puzzles behind a paywall, it does not appear here.</p>
@@ -186,84 +186,84 @@ export const posts: BlogPost[] = [
 <li>Pew Research Center — "Online gaming habits among adults in the United States," 2025. <a href="/sources/pew-online-gaming-2025">Source link</a></li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "Are browser word games actually free?",
-        a: "Yes. Every title listed above offers a functional free version with no mandatory payment wall. Some include optional cosmetic upgrades or hint packages, but core gameplay remains accessible without spending money.",
-      },
-      {
-        q: "Which word game is best for improving vocabulary?",
-        a: "What Word and Anagramania both provide explicit feedback on missed answers. That post-round review is what turns play into study. Use the review screens seriously rather than skipping them.",
-      },
-      {
-        q: "Can I play these games on a phone?",
-        a: "Most titles adapt to mobile browsers. Word Wipe and SpellIce use touch-friendly interfaces. The Wordhunt Game works on phones, though small screens can make fast lobby play slightly cramped.",
-      },
-      {
-        q: "Do word games help with spelling?",
-        a: "Yes. Repeated exposure to correctly spelled words reinforces orthographic patterns. SpellIce is especially direct in this regard because it penalizes incorrect spelling with visible consequences.",
-      },
-      {
-        q: "What is the best word game for kids?",
-        a: "Anagramania with its difficulty tiers works well for children ages eight and up. Younger players may need help reading definitions in What Word, but the tiered hint system reduces frustration.",
-      },
-      {
-        q: "Are there multiplayer word games?",
-        a: "The Wordhunt Game includes public lobbies. Word Wipe supports leaderboard competition without direct interaction. If you want turn-based play with friends, several of these titles offer private room codes.",
-      },
-      {
-        q: "How long does it take to get good at word games?",
-        a: "Most players see measurable improvement within two to three weeks of daily play. Speed improves faster than accuracy at first. Focus on learning missed words rather than simply replaying the same easy puzzles.",
-      },
-      {
-        q: "Do these games work offline?",
-        a: "A few offer limited offline modes through progressive web-app caching, but most require an internet connection for daily puzzles and leaderboard sync. Check individual game settings for offline options.",
-      },
-    ],
-  },
-  {
-    slug: "how-word-games-build-vocabulary",
-    title: "How Word Games Build Vocabulary: The Science-Backed Benefits",
-    description:
-      "Regular play sharpens recall, context clues, and spelling accuracy. Here is how word games build vocabulary through spaced repetition and deliberate practice.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Word Games",
-    tags: [
-      "vocabulary",
-      "word games",
-      "brain training",
-      "language learning",
-      "spelling",
-      "educational games",
-      "cognitive skills",
-      "lexical growth",
-    ],
-    authorId: "lena",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "word games vocabulary",
-    secondaryKeywords: [
-      "how word games improve vocabulary",
-      "vocabulary building games",
-      "educational word games",
-      "spelling and vocabulary practice",
-      "brain games for language",
-    ],
-    lsiKeywords: [
-      "spaced repetition",
-      "contextual learning",
-      "lexical acquisition",
-      "semantic mapping",
-      "morphological awareness",
-      "word recognition",
-      "phonological awareness",
-      "active recall",
-      "language fluency",
-      "cognitive reserve",
-    ],
-    excerpt:
-      "Word games do more than pass time. Structured play exposes players to new words in context, reinforces spelling through repetition, and builds the retrieval strength needed for fluent recall.",
-    content: `<h2>The Link Between Play and Lexical Growth</h2>
+  faqs: [
+   {
+    q: "Are browser word games actually free?",
+    a: "Yes. Every title listed above offers a functional free version with no mandatory payment wall. Some include optional cosmetic upgrades or hint packages, but core gameplay remains accessible without spending money.",
+   },
+   {
+    q: "Which word game is best for improving vocabulary?",
+    a: "What Word and Anagramania both provide explicit feedback on missed answers. That post-round review is what turns play into study. Use the review screens seriously rather than skipping them.",
+   },
+   {
+    q: "Can I play these games on a phone?",
+    a: "Most titles adapt to mobile browsers. Word Wipe and SpellIce use touch-friendly interfaces. The Wordhunt Game works on phones, though small screens can make fast lobby play slightly cramped.",
+   },
+   {
+    q: "Do word games help with spelling?",
+    a: "Yes. Repeated exposure to correctly spelled words reinforces orthographic patterns. SpellIce is especially direct in this regard because it penalizes incorrect spelling with visible consequences.",
+   },
+   {
+    q: "What is the best word game for kids?",
+    a: "Anagramania with its difficulty tiers works well for children ages eight and up. Younger players may need help reading definitions in What Word, but the tiered hint system reduces frustration.",
+   },
+   {
+    q: "Are there multiplayer word games?",
+    a: "The Wordhunt Game includes public lobbies. Word Wipe supports leaderboard competition without direct interaction. If you want turn-based play with friends, several of these titles offer private room codes.",
+   },
+   {
+    q: "How long does it take to get good at word games?",
+    a: "Most players see measurable improvement within two to three weeks of daily play. Speed improves faster than accuracy at first. Focus on learning missed words rather than simply replaying the same easy puzzles.",
+   },
+   {
+    q: "Do these games work offline?",
+    a: "A few offer limited offline modes through progressive web-app caching, but most require an internet connection for daily puzzles and leaderboard sync. Check individual game settings for offline options.",
+   },
+  ],
+ },
+ {
+  slug: "how-word-games-build-vocabulary",
+  title: "How Word Games Build Vocabulary: The Science-Backed Benefits",
+  description:
+   "Regular play sharpens recall, context clues, and spelling accuracy. Here is how word games build vocabulary through spaced repetition and deliberate practice.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Word Games",
+  tags: [
+   "vocabulary",
+   "word games",
+   "brain training",
+   "language learning",
+   "spelling",
+   "educational games",
+   "cognitive skills",
+   "lexical growth",
+  ],
+  authorId: "lena",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "word games vocabulary",
+  secondaryKeywords: [
+   "how word games improve vocabulary",
+   "vocabulary building games",
+   "educational word games",
+   "spelling and vocabulary practice",
+   "brain games for language",
+  ],
+  lsiKeywords: [
+   "spaced repetition",
+   "contextual learning",
+   "lexical acquisition",
+   "semantic mapping",
+   "morphological awareness",
+   "word recognition",
+   "phonological awareness",
+   "active recall",
+   "language fluency",
+   "cognitive reserve",
+  ],
+  excerpt:
+   "Word games do more than pass time. Structured play exposes players to new words in context, reinforces spelling through repetition, and builds the retrieval strength needed for fluent recall.",
+  content: `<h2>The Link Between Play and Lexical Growth</h2>
 <p>Vocabulary acquisition has traditionally belonged to classrooms and flashcards, but a growing body of research shows that well-designed games accelerate the same cognitive processes. The mechanism is not mysterious. When you encounter an unfamiliar word inside a puzzle, your brain registers a gap. If the game later returns to that word or its morphological relatives, the gap begins to close. Over weeks and months, that repeated exposure transforms passive recognition into active recall.</p>
 
 <p>The advantage of games over passive study is emotional engagement. Puzzles trigger mild reward responses when you solve them. Those releases of dopamine strengthen memory consolidation. The result is that a word learned during an enjoyable round of <a href="/word-wipe">Word Wipe</a> or <a href="/what-word">What Word</a> tends to stick longer than a word crammed for a test and forgotten an hour later.</p>
@@ -358,43 +358,44 @@ export const posts: BlogPost[] = [
 <li>National Literacy Trust — "The role of digital games in adolescent vocabulary development," 2023. <a href="/sources/national-literacy-trust-games-vocab-2023">Source link</a></li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "How long should I play word games each day?",
-        a: "Fifteen to twenty minutes of focused play is enough to produce measurable gains over six to eight weeks. Longer sessions can help, but spaced practice across days matters more than marathon play on a single afternoon.",
-      },
-      {
-        q: "Do word games improve reading comprehension?",
-        a: "Yes. Strong vocabulary is one of the best predictors of reading comprehension. Games that emphasize definitions and contextual clues, such as What Word, directly strengthen the skills needed to infer meaning from complex texts.",
-      },
-      {
-        q: "Are word games better than flashcards?",
-        a: "Flashcards excel at rote memorization of isolated facts. Word games add context, motivation, and varied retrieval practice. For most learners, games produce better retention because they engage emotional and spatial memory alongside lexical memory.",
-      },
-      {
-        q: "Can word games help with English spelling?",
-        a: "Yes. Repeated exposure to correctly spelled words in varied contexts reinforces orthographic patterns. SpellIce is particularly effective because it penalizes incorrect spelling with immediate visual feedback.",
-      },
-      {
-        q: "What age benefits most from word games?",
-        a: "Adolescents and adults show the most consistent research-backed gains, partly because they have larger baseline vocabularies to expand. Children benefit from age-appropriate titles that build phonemic awareness and sight-word recognition.",
-      },
-      {
-        q: "Do I need a large vocabulary to enjoy word games?",
-        a: "No. Many games, including What Word and Word Wipe, are accessible to beginners. Hint systems and tiered difficulty let you participate fully even with a limited lexicon. Play itself becomes the instruction.",
-      },
-      {
-        q: "How do word games compare to crossword puzzles?",
-        a: "Crosswords rely heavily on cultural and historical trivia alongside vocabulary. Pure word games tend to isolate lexical skills more cleanly, making progress easier to attribute to vocabulary growth rather than general knowledge.",
-      },
-      {
-        q: "Will word games make me a better writer?",
-        a: "Indirectly, yes. A richer vocabulary gives you more precise options when drafting sentences. The retrieval practice also helps you locate the right word faster, reducing the friction between thought and expression.",
-      },
-      {
-        q: "Can I use word games to prepare for standardized tests?",
-        a: "Yes, especially for sections that emphasize verbal reasoning and reading comprehension. The GRE, SAT, and similar exams reward quick definitional recall and contextual inference, both of which word games train.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "How long should I play word games each day?",
+    a: "Fifteen to twenty minutes of focused play is enough to produce measurable gains over six to eight weeks. Longer sessions can help, but spaced practice across days matters more than marathon play on a single afternoon.",
+   },
+   {
+    q: "Do word games improve reading comprehension?",
+    a: "Yes. Strong vocabulary is one of the best predictors of reading comprehension. Games that emphasize definitions and contextual clues, such as What Word, directly strengthen the skills needed to infer meaning from complex texts.",
+   },
+   {
+    q: "Are word games better than flashcards?",
+    a: "Flashcards excel at rote memorization of isolated facts. Word games add context, motivation, and varied retrieval practice. For most learners, games produce better retention because they engage emotional and spatial memory alongside lexical memory.",
+   },
+   {
+    q: "Can word games help with English spelling?",
+    a: "Yes. Repeated exposure to correctly spelled words in varied contexts reinforces orthographic patterns. SpellIce is particularly effective because it penalizes incorrect spelling with immediate visual feedback.",
+   },
+   {
+    q: "What age benefits most from word games?",
+    a: "Adolescents and adults show the most consistent research-backed gains, partly because they have larger baseline vocabularies to expand. Children benefit from age-appropriate titles that build phonemic awareness and sight-word recognition.",
+   },
+   {
+    q: "Do I need a large vocabulary to enjoy word games?",
+    a: "No. Many games, including What Word and Word Wipe, are accessible to beginners. Hint systems and tiered difficulty let you participate fully even with a limited lexicon. Play itself becomes the instruction.",
+   },
+   {
+    q: "How do word games compare to crossword puzzles?",
+    a: "Crosswords rely heavily on cultural and historical trivia alongside vocabulary. Pure word games tend to isolate lexical skills more cleanly, making progress easier to attribute to vocabulary growth rather than general knowledge.",
+   },
+   {
+    q: "Will word games make me a better writer?",
+    a: "Indirectly, yes. A richer vocabulary gives you more precise options when drafting sentences. The retrieval practice also helps you locate the right word faster, reducing the friction between thought and expression.",
+   },
+   {
+    q: "Can I use word games to prepare for standardized tests?",
+    a: "Yes, especially for sections that emphasize verbal reasoning and reading comprehension. The GRE, SAT, and similar exams reward quick definitional recall and contextual inference, both of which word games train.",
+   },
+  ],
+ },
 ];
+

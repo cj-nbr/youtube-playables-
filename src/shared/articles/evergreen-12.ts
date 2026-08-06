@@ -1,45 +1,45 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "fun-games-to-play-at-work",
-    title: "Fun Games to Play at Work: Discreet Picks for a Real Break",
-    description:
-      "Discreet fun games at work that open in a browser tab, ask nothing of your system, and close in a second. Quiet, no-download picks for real breaks between tasks.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Casual Games",
-    tags: [
-      "fun games at work",
-      "discreet games at work",
-      "browser games for office",
-      "no download work games",
-      "quick work break games",
-      "quiet games for the office",
-      "stealth office games",
-    ],
-    authorId: "dev",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "fun games at work",
-    secondaryKeywords: [
-      "discreet games at work",
-      "browser games for office",
-      "no download work games",
-      "quick work break games",
-    ],
-    lsiKeywords: [
-      "stealth",
-      "tab",
-      "microbreak",
-      "focus",
-      "productivity",
-      "attention reset",
-      "instant play",
-      "low footprint",
-    ],
-    excerpt:
-      "A grounded look at fun games to play at work: discreet browser titles that load in a tab, leave no trace, and fit a genuine break between tasks without risking your reputation.",
-    content: `
+ {
+  slug: "fun-games-to-play-at-work",
+  title: "Fun Games to Play at Work: Discreet Picks for a Real Break",
+  description:
+   "Discreet fun games at work that open in a browser tab, ask nothing of your system, and close in a second. Quiet, no-download picks for real breaks between tasks.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Casual Games",
+  tags: [
+   "fun games at work",
+   "discreet games at work",
+   "browser games for office",
+   "no download work games",
+   "quick work break games",
+   "quiet games for the office",
+   "stealth office games",
+  ],
+  authorId: "dev",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "fun games at work",
+  secondaryKeywords: [
+   "discreet games at work",
+   "browser games for office",
+   "no download work games",
+   "quick work break games",
+  ],
+  lsiKeywords: [
+   "stealth",
+   "tab",
+   "microbreak",
+   "focus",
+   "productivity",
+   "attention reset",
+   "instant play",
+   "low footprint",
+  ],
+  excerpt:
+   "A grounded look at fun games to play at work: discreet browser titles that load in a tab, leave no trace, and fit a genuine break between tasks without risking your reputation.",
+  content: `
 <h2>Why the Office Needs a Different Kind of Game</h2>
 <p>The games people play at work are not the games they play at home. At home you can sink into a campaign for an hour. At a desk with a manager two chairs away, the only game worth opening is one that disappears the moment someone walks past. That single constraint changes everything about what counts as fun.</p>
 <p>Fun games to play at work have to be quiet, fast, and forgettable in the best sense. They open in a tab you already have open. They make no sound unless you allow it. They save nothing to a corporate drive and leave nothing running after you close them. Most of all, they respect the line between a break and a betrayal of your afternoon.</p>
@@ -153,92 +153,92 @@ export const posts: BlogPost[] = [
 <li>Harvard Business Review, "The power of small breaks" - commentary on microbreaks and sustained focus across the workday.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are good fun games to play at work",
-        a: "Memory Flip, Color Match, Stack Tower, and Dots and Boxes are strong picks because they run in a single browser tab, make no sound by default, and close instantly. Each fits a different kind of short work break.",
-      },
-      {
-        q: "How do I keep a work game discreet",
-        a: "Open it in a grouped or unnamed tab, keep sound off, and close it with a quick keystroke when someone approaches. Avoid installed apps and anything that pins to the taskbar or sends notifications.",
-      },
-      {
-        q: "Do these games need to be installed",
-        a: "No. All four run in the browser with no download, no account, and no plugin. You play in a tab you already have open and close it without leaving a process behind.",
-      },
-      {
-        q: "Which work game is the quietest",
-        a: "Color Match and Memory Flip are the quietest. Neither has a fail state or loud feedback, and both look like ordinary computer work from a distance, which helps if anyone glances at your screen.",
-      },
-      {
-        q: "Can I play these with a coworker",
-        a: "Yes, Dots and Boxes works as a short two-player game with no sound and no install. Save it for a lunch break with someone you trust, since any shared screen activity is more visible than a solo tab.",
-      },
-      {
-        q: "Will playing games at work hurt my focus",
-        a: "Only if it bleeds into obligation time. A bounded break with a planned exit can reset attention, while an open-ended session erodes it. The game is fine; the lack of a stop is not.",
-      },
-      {
-        q: "How long should a work game break last",
-        a: "As long as the genuine gap you have, usually one to three minutes. Stack Tower fits under two; Color Match and Memory Flip suit a slightly longer lull. Set the exit before you open the tab.",
-      },
-      {
-        q: "Are these games safe on a shared or work machine",
-        a: "They keep no account and save nothing to a corporate drive, so they leave little trace. Still, clear the browser history or use a private window if the machine is not yours.",
-      },
-      {
-        q: "Which game is best after a stressful email",
-        a: "Stack Tower. The fast tap-to-drop loop burns off nervous energy in short bursts better than the calm titles, and it ends cleanly on the next collapse.",
-      },
-      {
-        q: "Why pick browser games over phone games at work",
-        a: "A phone in hand is visible and obvious. A quiet tab on a screen that already shows work is nearly invisible, and it closes without a notification trail. For the desk, the tab wins.",
-      },
-      {
-        q: "Is it unprofessional to game at work",
-        a: "It depends entirely on timing. A ninety-second reset between tasks is ordinary human maintenance. Opening a game during a meeting or a deadline is a different choice with different consequences. Match the game to the moment.",
-      },
-    ],
-  },
-  {
-    slug: "office-games-for-brain-breaks",
-    title: "Office Games for Brain Breaks: Short Resets That Actually Work",
-    description:
-      "Office games that fit a real brain break: short, quiet browser titles that reset attention without a login or install. Picks and a simple plan for the workday.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Casual Games",
-    tags: [
-      "office games",
-      "brain break games",
-      "work break games",
-      "mindfulness break games",
-      "attention reset games",
-      "desk break activities",
-      "quick mental break games",
-    ],
-    authorId: "dev",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "office games",
-    secondaryKeywords: [
-      "brain break games",
-      "work break games",
-      "mindfulness break games",
-      "attention reset games",
-    ],
-    lsiKeywords: [
-      "microbreak",
-      "cognitive recovery",
-      "focus",
-      "fatigue",
-      "no install",
-      "instant play",
-      "desk reset",
-      "mental refresh",
-    ],
-    excerpt:
-      "Office games that fit a real brain break: short, quiet browser titles that reset attention without a login or install, plus a simple plan to spread them across the workday.",
-    content: `
+  faqs: [
+   {
+    q: "What are good fun games to play at work",
+    a: "Memory Flip, Color Match, Stack Tower, and Dots and Boxes are strong picks because they run in a single browser tab, make no sound by default, and close instantly. Each fits a different kind of short work break.",
+   },
+   {
+    q: "How do I keep a work game discreet",
+    a: "Open it in a grouped or unnamed tab, keep sound off, and close it with a quick keystroke when someone approaches. Avoid installed apps and anything that pins to the taskbar or sends notifications.",
+   },
+   {
+    q: "Do these games need to be installed",
+    a: "No. All four run in the browser with no download, no account, and no plugin. You play in a tab you already have open and close it without leaving a process behind.",
+   },
+   {
+    q: "Which work game is the quietest",
+    a: "Color Match and Memory Flip are the quietest. Neither has a fail state or loud feedback, and both look like ordinary computer work from a distance, which helps if anyone glances at your screen.",
+   },
+   {
+    q: "Can I play these with a coworker",
+    a: "Yes, Dots and Boxes works as a short two-player game with no sound and no install. Save it for a lunch break with someone you trust, since any shared screen activity is more visible than a solo tab.",
+   },
+   {
+    q: "Will playing games at work hurt my focus",
+    a: "Only if it bleeds into obligation time. A bounded break with a planned exit can reset attention, while an open-ended session erodes it. The game is fine; the lack of a stop is not.",
+   },
+   {
+    q: "How long should a work game break last",
+    a: "As long as the genuine gap you have, usually one to three minutes. Stack Tower fits under two; Color Match and Memory Flip suit a slightly longer lull. Set the exit before you open the tab.",
+   },
+   {
+    q: "Are these games safe on a shared or work machine",
+    a: "They keep no account and save nothing to a corporate drive, so they leave little trace. Still, clear the browser history or use a private window if the machine is not yours.",
+   },
+   {
+    q: "Which game is best after a stressful email",
+    a: "Stack Tower. The fast tap-to-drop loop burns off nervous energy in short bursts better than the calm titles, and it ends cleanly on the next collapse.",
+   },
+   {
+    q: "Why pick browser games over phone games at work",
+    a: "A phone in hand is visible and obvious. A quiet tab on a screen that already shows work is nearly invisible, and it closes without a notification trail. For the desk, the tab wins.",
+   },
+   {
+    q: "Is it unprofessional to game at work",
+    a: "It depends entirely on timing. A ninety-second reset between tasks is ordinary human maintenance. Opening a game during a meeting or a deadline is a different choice with different consequences. Match the game to the moment.",
+   },
+  ],
+ },
+ {
+  slug: "office-games-for-brain-breaks",
+  title: "Office Games for Brain Breaks: Short Resets That Actually Work",
+  description:
+   "Office games that fit a real brain break: short, quiet browser titles that reset attention without a login or install. Picks and a simple plan for the workday.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Casual Games",
+  tags: [
+   "office games",
+   "brain break games",
+   "work break games",
+   "mindfulness break games",
+   "attention reset games",
+   "desk break activities",
+   "quick mental break games",
+  ],
+  authorId: "dev",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "office games",
+  secondaryKeywords: [
+   "brain break games",
+   "work break games",
+   "mindfulness break games",
+   "attention reset games",
+  ],
+  lsiKeywords: [
+   "microbreak",
+   "cognitive recovery",
+   "focus",
+   "fatigue",
+   "no install",
+   "instant play",
+   "desk reset",
+   "mental refresh",
+  ],
+  excerpt:
+   "Office games that fit a real brain break: short, quiet browser titles that reset attention without a login or install, plus a simple plan to spread them across the workday.",
+  content: `
 <h2>The Brain Break Is Not a Luxury</h2>
 <p>The idea that focus is a tank you fill once in the morning and drain all day is wrong, and the people who believe it burn out by Thursday. Attention is closer to a muscle that fatigues with use and recovers with rest, and the rest does not have to be long to work. A two-minute break, used on purpose, restores more than most people expect.</p>
 <p>Office games built for brain breaks take that fact seriously. They are not distractions dressed up as wellness. They are short, deliberate activities that pull your mind off the task it has been grinding and give it something lighter to hold for a minute. Done right, you return sharper, not guilty.</p>
@@ -355,51 +355,52 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Microbreak" - overview of short breaks in the workplace and their effect on focus and fatigue.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are good office games for brain breaks",
-        a: "Memory Flip, Color Match, Stack Tower, and Dots and Boxes are strong picks because they run in a browser tab, need no install, and end the moment you close them. Each fits a different mental state during the workday.",
-      },
-      {
-        q: "How long should a brain break be",
-        a: "One to three minutes is enough when used on purpose. The refresh comes from switching tasks, not from the length. Stack Tower fits under two minutes; Color Match and Memory Flip suit a slightly longer lull.",
-      },
-      {
-        q: "Do these games need an account or download",
-        a: "No. All four run in the browser with no login, no plugin, and no install. You play in a tab and close it without leaving anything running or saved to a shared machine.",
-      },
-      {
-        q: "Which game is best for an afternoon slump",
-        a: "Stack Tower, because its fast tap-to-drop loop raises arousal just enough to shake off lethargy. Save the calm titles for when you are frazzled rather than sluggish.",
-      },
-      {
-        q: "Which game is best when I am overstimulated",
-        a: "Color Match. Played slowly with sound off, it lowers arousal through a steady, no-fail narrowing of error, which is the opposite of the jitter a frazzled brain carries.",
-      },
-      {
-        q: "Can I use these games with a coworker",
-        a: "Yes. Dots and Boxes works as a short, silent two-player game and makes a good lunch-break social reset. Keep it for real break time, since shared screen activity is more visible than a solo tab.",
-      },
-      {
-        q: "Will brain-break games hurt my productivity",
-        a: "Only without a stop. A bounded break restores attention; an open-ended one erodes it. Decide the rounds before you start, and the game becomes maintenance rather than distraction.",
-      },
-      {
-        q: "Why are browser games better than apps for breaks",
-        a: "Apps add install weight, notifications, and a visible device. A browser tab opens in what you already have, closes with no process left behind, and keeps the transition cost near zero, which protects the two-minute limit.",
-      },
-      {
-        q: "How do I stop a break from becoming a session",
-        a: "Set the exit before you open the tab, rotate titles to keep the experience fresh, and use the clean ends these games provide. The planned stop is the only real defense, and it is easier than people expect.",
-      },
-      {
-        q: "Are these games suitable on a work or shared machine",
-        a: "They keep no account and save nothing to a corporate drive, so they leave little trace. For extra safety on a machine that is not yours, use a private window and clear history afterward.",
-      },
-      {
-        q: "Is a game break better than just stepping away",
-        a: "Stepping away is better when you can do it. A game is for the moments you are pinned to the desk with a short gap and nowhere to go. Use the walk when possible; use the tab when not.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "What are good office games for brain breaks",
+    a: "Memory Flip, Color Match, Stack Tower, and Dots and Boxes are strong picks because they run in a browser tab, need no install, and end the moment you close them. Each fits a different mental state during the workday.",
+   },
+   {
+    q: "How long should a brain break be",
+    a: "One to three minutes is enough when used on purpose. The refresh comes from switching tasks, not from the length. Stack Tower fits under two minutes; Color Match and Memory Flip suit a slightly longer lull.",
+   },
+   {
+    q: "Do these games need an account or download",
+    a: "No. All four run in the browser with no login, no plugin, and no install. You play in a tab and close it without leaving anything running or saved to a shared machine.",
+   },
+   {
+    q: "Which game is best for an afternoon slump",
+    a: "Stack Tower, because its fast tap-to-drop loop raises arousal just enough to shake off lethargy. Save the calm titles for when you are frazzled rather than sluggish.",
+   },
+   {
+    q: "Which game is best when I am overstimulated",
+    a: "Color Match. Played slowly with sound off, it lowers arousal through a steady, no-fail narrowing of error, which is the opposite of the jitter a frazzled brain carries.",
+   },
+   {
+    q: "Can I use these games with a coworker",
+    a: "Yes. Dots and Boxes works as a short, silent two-player game and makes a good lunch-break social reset. Keep it for real break time, since shared screen activity is more visible than a solo tab.",
+   },
+   {
+    q: "Will brain-break games hurt my productivity",
+    a: "Only without a stop. A bounded break restores attention; an open-ended one erodes it. Decide the rounds before you start, and the game becomes maintenance rather than distraction.",
+   },
+   {
+    q: "Why are browser games better than apps for breaks",
+    a: "Apps add install weight, notifications, and a visible device. A browser tab opens in what you already have, closes with no process left behind, and keeps the transition cost near zero, which protects the two-minute limit.",
+   },
+   {
+    q: "How do I stop a break from becoming a session",
+    a: "Set the exit before you open the tab, rotate titles to keep the experience fresh, and use the clean ends these games provide. The planned stop is the only real defense, and it is easier than people expect.",
+   },
+   {
+    q: "Are these games suitable on a work or shared machine",
+    a: "They keep no account and save nothing to a corporate drive, so they leave little trace. For extra safety on a machine that is not yours, use a private window and clear history afterward.",
+   },
+   {
+    q: "Is a game break better than just stepping away",
+    a: "Stepping away is better when you can do it. A game is for the moments you are pinned to the desk with a short gap and nowhere to go. Use the walk when possible; use the tab when not.",
+   },
+  ],
+ },
 ];
+

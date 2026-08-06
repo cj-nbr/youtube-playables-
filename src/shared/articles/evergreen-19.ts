@@ -1,47 +1,47 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "benefits-of-sudoku-for-the-brain",
-    title: "Benefits of Sudoku for the Brain: What Regular Play Actually Changes",
-    description: "The real benefits of sudoku for the brain go past pastime. We look at working memory, logical reasoning, and focus, and how a daily grid changes how you think.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Logic Games",
-    tags: [
-      "benefits of sudoku for the brain",
-      "sudoku brain training",
-      "sudoku and memory",
-      "logic puzzle benefits",
-      "working memory games",
-      "daily sudoku habit",
-      "cognitive benefits of puzzles",
-      "sudoku for focus"
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "sudoku benefits",
-    secondaryKeywords: [
-      "does sudoku improve memory",
-      "sudoku cognitive benefits",
-      "sudoku for brain health",
-      "mental benefits of sudoku",
-      "sudoku and logical thinking"
-    ],
-    lsiKeywords: [
-      "working memory",
-      "deductive reasoning",
-      "pattern recognition",
-      "cognitive restraint",
-      "executive function",
-      "attention span",
-      "number puzzles",
-      "mental exercise",
-      "neuroplasticity",
-      "constraint satisfaction"
-    ],
-    excerpt: "The benefits of sudoku for the brain are specific and measurable: better working memory, steadier focus, and cleaner logical reasoning. Here is what changes and why.",
-    content: `<h2>Why a Number Grid Gets Taken Seriously</h2>
+ {
+  slug: "benefits-of-sudoku-for-the-brain",
+  title: "Benefits of Sudoku for the Brain: What Regular Play Actually Changes",
+  description: "The real benefits of sudoku for the brain go past pastime. We look at working memory, logical reasoning, and focus, and how a daily grid changes how you think.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Logic Games",
+  tags: [
+   "benefits of sudoku for the brain",
+   "sudoku brain training",
+   "sudoku and memory",
+   "logic puzzle benefits",
+   "working memory games",
+   "daily sudoku habit",
+   "cognitive benefits of puzzles",
+   "sudoku for focus"
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "sudoku benefits",
+  secondaryKeywords: [
+   "does sudoku improve memory",
+   "sudoku cognitive benefits",
+   "sudoku for brain health",
+   "mental benefits of sudoku",
+   "sudoku and logical thinking"
+  ],
+  lsiKeywords: [
+   "working memory",
+   "deductive reasoning",
+   "pattern recognition",
+   "cognitive restraint",
+   "executive function",
+   "attention span",
+   "number puzzles",
+   "mental exercise",
+   "neuroplasticity",
+   "constraint satisfaction"
+  ],
+  excerpt: "The benefits of sudoku for the brain are specific and measurable: better working memory, steadier focus, and cleaner logical reasoning. Here is what changes and why.",
+  content: `<h2>Why a Number Grid Gets Taken Seriously</h2>
 
 <p>Sudoku looks innocent. Nine rows, nine columns, nine boxes, and a set of digits from one to nine that must each appear exactly once in every line and region. A child can learn the rules in under a minute. Yet the puzzle sits at the center of a genuine debate about whether casual games can train the brain, and it survives that scrutiny better than most competitors. The reason is simple. Sudoku does not test what you already know. It forces you to reason with incomplete information, which is the exact condition the brain meets in real life.</p>
 
@@ -54,7 +54,7 @@ export const posts: BlogPost[] = [
 <p>Over weeks of play, that capacity stretches. People describe the change as fewer dropped thoughts, the moment where you walk into a room and forget why. Sudoku will not make you remember where the keys are, but it trains the underlying system that keeps a task alive in your head while you work on it. That is the mechanism behind most of the reported benefits of sudoku for the brain, and it is the reason cognitive researchers keep returning to constraint puzzles as a clean training tool.</p>
 
 <div class="callout">
-  <p>Working memory is not a fixed trait. It behaves more like a muscle that fatigues and recovers. A daily grid is a controlled load on that muscle, provided the puzzle is hard enough to strain it.</p>
+ <p>Working memory is not a fixed trait. It behaves more like a muscle that fatigues and recovers. A daily grid is a controlled load on that muscle, provided the puzzle is hard enough to strain it.</p>
 </div>
 
 <h2>Deductive Reasoning Becomes a Habit</h2>
@@ -74,8 +74,8 @@ export const posts: BlogPost[] = [
 <p>There is a quieter benefit that shows up in survey after survey of regular players. Sudoku calms people. The appeal is not escape, exactly, because the puzzle still demands effort. It is the particular quality of effort. A grid has a closed world with clear rules and a definite solution. Compared with an open inbox or an ambiguous relationship, that closure is a relief. The mind gets to trade an unsolvable problem for a solvable one.</p>
 
 <figure>
-  <img src="/images/articles/default-cover.svg" alt="A partially solved sudoku grid with candidate numbers marked in open cells" />
-  <figcaption>A mid-difficulty grid. Each empty cell carries a small set of candidates the player must track and eliminate.</figcaption>
+ <img src="/images/articles/default-cover.svg" alt="A partially solved sudoku grid with candidate numbers marked in open cells" />
+ <figcaption>A mid-difficulty grid. Each empty cell carries a small set of candidates the player must track and eliminate.</figcaption>
 </figure>
 
 <h2>What the Research Actually Supports</h2>
@@ -93,15 +93,15 @@ export const posts: BlogPost[] = [
 <p>Sudoku's advantage is purity. It has no time limit, no moving parts, and no luck, so every gain is attributable to reasoning rather than reaction speed. Players who want calm logical training pick sudoku. Players who want kinetic, fast-paced number work pick the others. The smart move is to use sudoku as the daily anchor and rotate in the faster titles when energy or mood calls for them.</p>
 
 <table>
-  <thead>
-    <tr><th>Game</th><th>Primary Demand</th><th>Time Pressure</th><th>Best Cognitive Target</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Sudoku</td><td>Deductive logic</td><td>None</td><td>Working memory, restraint</td></tr>
-    <tr><td>Number Slide</td><td>Spatial sequencing</td><td>Low</td><td>Planning, order</td></tr>
-    <tr><td>2048</td><td>Anticipation</td><td>Optional</td><td>Forward thinking</td></tr>
-    <tr><td>Number Hunt</td><td>Visual scanning</td><td>High</td><td>Pattern speed</td></tr>
-  </tbody>
+ <thead>
+  <tr><th>Game</th><th>Primary Demand</th><th>Time Pressure</th><th>Best Cognitive Target</th></tr>
+ </thead>
+ <tbody>
+  <tr><td>Sudoku</td><td>Deductive logic</td><td>None</td><td>Working memory, restraint</td></tr>
+  <tr><td>Number Slide</td><td>Spatial sequencing</td><td>Low</td><td>Planning, order</td></tr>
+  <tr><td>2048</td><td>Anticipation</td><td>Optional</td><td>Forward thinking</td></tr>
+  <tr><td>Number Hunt</td><td>Visual scanning</td><td>High</td><td>Pattern speed</td></tr>
+ </tbody>
 </table>
 
 <h2>Building a Habit That Sticks</h2>
@@ -109,11 +109,11 @@ export const posts: BlogPost[] = [
 <p>The benefit lives in consistency, not intensity. One heroic two-hour session does less than a ten-minute grid every morning for a month. The brain adapts to repeated, spaced load, and it discards gains that are not used. A daily puzzle at the same time, treated like brushing teeth, is the version that produces the changes people actually notice. Tie it to an existing routine so it does not depend on motivation.</p>
 
 <ol>
-  <li>Pick a fixed time, ideally before the day scatters your attention.</li>
-  <li>Start at a level that forces you to write or track candidates.</li>
-  <li>Increase difficulty every two weeks to keep the load honest.</li>
-  <li>Finish the grid; partial play trains quitting, not reasoning.</li>
-  <li>Notice when the calm focus carries into the next task.</li>
+ <li>Pick a fixed time, ideally before the day scatters your attention.</li>
+ <li>Start at a level that forces you to write or track candidates.</li>
+ <li>Increase difficulty every two weeks to keep the load honest.</li>
+ <li>Finish the grid; partial play trains quitting, not reasoning.</li>
+ <li>Notice when the calm focus carries into the next task.</li>
 </ol>
 
 <h2>Who Gets the Most From It</h2>
@@ -123,7 +123,7 @@ export const posts: BlogPost[] = [
 <p>The group that benefits least is the one that never raises the difficulty. A person who has solved the same easy grid for years has built a comfort ritual, not a brain exercise. The benefits of sudoku for the brain require the puzzle to stay just past comfortable, the same condition every worthwhile training imposes.</p>
 
 <div class="summary-box">
-  <p><span class="tip">Tip:</span> If you solve a grid without once needing to hold two candidates in mind, it was too easy. Step up a level next time or the training value collapses.</p>
+ <p><span class="tip">Tip:</span> If you solve a grid without once needing to hold two candidates in mind, it was too easy. Step up a level next time or the training value collapses.</p>
 </div>
 
 <h2>Common Myths Worth Dropping</h2>
@@ -133,9 +133,9 @@ export const posts: BlogPost[] = [
 <p>The third myth is that digital is worse than paper. The medium changes little. What matters is whether you engage the reasoning or let an app autofill candidates and hand you the answer. <a href="/sudoku">Sudoku</a> on any device works, provided you do the thinking yourself.</p>
 
 <div class="cta-box">
-  <h3>Open a grid and feel the load</h3>
-  <p>A single medium puzzle is a ten-minute workout for the exact memory system behind clear thinking. Start one now and track your own candidates.</p>
-  <a class="btn btn-primary h-11 px-8 text-sm" href="/sudoku">Play Free</a>
+ <h3>Open a grid and feel the load</h3>
+ <p>A single medium puzzle is a ten-minute workout for the exact memory system behind clear thinking. Start one now and track your own candidates.</p>
+ <a class="btn btn-primary h-11 px-8 text-sm" href="/sudoku">Play Free</a>
 </div>
 
 <h2>Frequently Asked Questions</h2>
@@ -179,67 +179,67 @@ export const posts: BlogPost[] = [
 <h2>Sources &amp; References</h2>
 
 <ul>
-  <li>Melby-Lervag, M., &amp; Hulme, C. (2013). <em>Is Working Memory Training Effective? A Meta-Analytic Review</em>. Developmental Psychology.</li>
-  <li>Jaeggi, S. M., Buschkuehl, M., Jonides, J., &amp; Perrig, W. J. (2008). <em>Improving Fluid Intelligence with Training on Working Memory</em>. PNAS.</li>
-  <li>Simons, D. J., et al. (2016). <em>Do Brain-Training Programs Work? A Consensus Statement</em>. Psychological Science in the Public Interest.</li>
+ <li>Melby-Lervag, M., &amp; Hulme, C. (2013). <em>Is Working Memory Training Effective? A Meta-Analytic Review</em>. Developmental Psychology.</li>
+ <li>Jaeggi, S. M., Buschkuehl, M., Jonides, J., &amp; Perrig, W. J. (2008). <em>Improving Fluid Intelligence with Training on Working Memory</em>. PNAS.</li>
+ <li>Simons, D. J., et al. (2016). <em>Do Brain-Training Programs Work? A Consensus Statement</em>. Psychological Science in the Public Interest.</li>
 </ul>
-  `,
-    faqs: [
-      { q: "What are the main benefits of sudoku for the brain?", a: "The main benefits are improved working memory, steadier focused attention, and cleaner deductive reasoning. Regular play trains you to hold possibilities in mind, rule them out, and commit only when the evidence is settled." },
-      { q: "Does sudoku actually improve memory?", a: "It improves working memory, the system that keeps information active while you use it. The gains are modest and fade without practice, but they are real and show up as fewer dropped thoughts during complex tasks." },
-      { q: "Is sudoku good for brain health as we age?", a: "Sudoku helps maintain reasoning and attention in older adults as part of an active lifestyle. It is a useful supplement, not a proven defense against dementia, and works best alongside exercise, sleep, and social engagement." },
-      { q: "How often should I play sudoku to see benefits?", a: "A daily ten-minute session beats a long weekly one. Consistency and gradually rising difficulty matter more than total hours, because the cognitive gains depend on repeated, spaced load." },
-      { q: "Is sudoku a math game?", a: "No. Sudoku uses digits as symbols; the task is pure logic, not arithmetic. People who feel weak at math often enjoy it once they see that calculation plays no part." },
-      { q: "Can sudoku help with anxiety or stress?", a: "Many players find sudoku calming because it offers a closed problem with a definite solution, which contrasts with ambiguous real-life stress. It relieves tension without numbing the mind the way passive scrolling does." },
-      { q: "Does solving sudoku fast mean you are smarter?", a: "Not necessarily. Speed often reflects pattern experience more than reasoning depth. Slow, careful solving builds more durable logic habits than fast guessing, especially for new players." },
-      { q: "Will sudoku raise my IQ?", a: "Research does not support large IQ jumps from sudoku. It shows near-transfer gains in working memory and reasoning on similar tasks, which are valuable without being a blanket intelligence boost." },
-      { q: "Should kids play sudoku for brain development?", a: "Yes, within limits. Age-appropriate grids build logical habits and patience without the notation anxiety of math class. Treat it as a supplement to learning, not a replacement for instruction." },
-      { q: "Is paper sudoku better than digital?", a: "The medium matters less than the engagement. Digital aids that autofill candidates can remove the workout if overused. Use helpers only while learning, then track candidates yourself." },
-      { q: "Can sudoku help with focus and attention span?", a: "Yes. A hard grid demands sustained narrow attention for ten to twenty minutes, training the posture of concentration that fragmented screen time erodes. Players often report easier focus afterward." },
-      { q: "What level of sudoku should I play for brain training?", a: "Choose a level that forces you to track two or more candidates per cell and occasionally pause to reason. If every grid feels automatic, raise the difficulty or use fewer starting clues." }
-    ]
-  },
-  {
-    slug: "number-puzzle-games-for-logical-thinking",
-    title: "Number Puzzle Games for Logical Thinking: The Best Picks and Why They Train Your Mind",
-    description: "The best number puzzle games for logical thinking build real reasoning, not reflex. We compare sudoku, sliding tiles, 2048, and number hunts, pick by pick.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Logic Games",
-    tags: [
-      "number puzzle games for logical thinking",
-      "best number puzzles",
-      "logic puzzle games",
-      "number brain games",
-      "puzzle games that teach logic",
-      "sudoku alternatives",
-      "math logic games",
-      "daily brain puzzles"
-    ],
-    authorId: "mira",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "number puzzle games",
-    secondaryKeywords: [
-      "best logic puzzle games",
-      "number games for brain",
-      "puzzle games for reasoning",
-      "sudoku vs 2048",
-      "free number puzzle games"
-    ],
-    lsiKeywords: [
-      "deductive reasoning",
-      "working memory",
-      "spatial planning",
-      "pattern recognition",
-      "anticipation",
-      "constraint logic",
-      "executive function",
-      "cognitive training",
-      "problem solving",
-      "attention"
-    ],
-    excerpt: "Number puzzle games for logical thinking are not all equal. Sudoku, sliding tiles, 2048, and number hunts each train a different reasoning muscle. Here is the breakdown.",
-    content: `<h2>The Case for Numbers Over Noise</h2>
+ `,
+  faqs: [
+   { q: "What are the main benefits of sudoku for the brain?", a: "The main benefits are improved working memory, steadier focused attention, and cleaner deductive reasoning. Regular play trains you to hold possibilities in mind, rule them out, and commit only when the evidence is settled." },
+   { q: "Does sudoku actually improve memory?", a: "It improves working memory, the system that keeps information active while you use it. The gains are modest and fade without practice, but they are real and show up as fewer dropped thoughts during complex tasks." },
+   { q: "Is sudoku good for brain health as we age?", a: "Sudoku helps maintain reasoning and attention in older adults as part of an active lifestyle. It is a useful supplement, not a proven defense against dementia, and works best alongside exercise, sleep, and social engagement." },
+   { q: "How often should I play sudoku to see benefits?", a: "A daily ten-minute session beats a long weekly one. Consistency and gradually rising difficulty matter more than total hours, because the cognitive gains depend on repeated, spaced load." },
+   { q: "Is sudoku a math game?", a: "No. Sudoku uses digits as symbols; the task is pure logic, not arithmetic. People who feel weak at math often enjoy it once they see that calculation plays no part." },
+   { q: "Can sudoku help with anxiety or stress?", a: "Many players find sudoku calming because it offers a closed problem with a definite solution, which contrasts with ambiguous real-life stress. It relieves tension without numbing the mind the way passive scrolling does." },
+   { q: "Does solving sudoku fast mean you are smarter?", a: "Not necessarily. Speed often reflects pattern experience more than reasoning depth. Slow, careful solving builds more durable logic habits than fast guessing, especially for new players." },
+   { q: "Will sudoku raise my IQ?", a: "Research does not support large IQ jumps from sudoku. It shows near-transfer gains in working memory and reasoning on similar tasks, which are valuable without being a blanket intelligence boost." },
+   { q: "Should kids play sudoku for brain development?", a: "Yes, within limits. Age-appropriate grids build logical habits and patience without the notation anxiety of math class. Treat it as a supplement to learning, not a replacement for instruction." },
+   { q: "Is paper sudoku better than digital?", a: "The medium matters less than the engagement. Digital aids that autofill candidates can remove the workout if overused. Use helpers only while learning, then track candidates yourself." },
+   { q: "Can sudoku help with focus and attention span?", a: "Yes. A hard grid demands sustained narrow attention for ten to twenty minutes, training the posture of concentration that fragmented screen time erodes. Players often report easier focus afterward." },
+   { q: "What level of sudoku should I play for brain training?", a: "Choose a level that forces you to track two or more candidates per cell and occasionally pause to reason. If every grid feels automatic, raise the difficulty or use fewer starting clues." }
+  ]
+ },
+ {
+  slug: "number-puzzle-games-for-logical-thinking",
+  title: "Number Puzzle Games for Logical Thinking: The Best Picks and Why They Train Your Mind",
+  description: "The best number puzzle games for logical thinking build real reasoning, not reflex. We compare sudoku, sliding tiles, 2048, and number hunts, pick by pick.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Logic Games",
+  tags: [
+   "number puzzle games for logical thinking",
+   "best number puzzles",
+   "logic puzzle games",
+   "number brain games",
+   "puzzle games that teach logic",
+   "sudoku alternatives",
+   "math logic games",
+   "daily brain puzzles"
+  ],
+  authorId: "mira",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "number puzzle games",
+  secondaryKeywords: [
+   "best logic puzzle games",
+   "number games for brain",
+   "puzzle games for reasoning",
+   "sudoku vs 2048",
+   "free number puzzle games"
+  ],
+  lsiKeywords: [
+   "deductive reasoning",
+   "working memory",
+   "spatial planning",
+   "pattern recognition",
+   "anticipation",
+   "constraint logic",
+   "executive function",
+   "cognitive training",
+   "problem solving",
+   "attention"
+  ],
+  excerpt: "Number puzzle games for logical thinking are not all equal. Sudoku, sliding tiles, 2048, and number hunts each train a different reasoning muscle. Here is the breakdown.",
+  content: `<h2>The Case for Numbers Over Noise</h2>
 
 <p>Most puzzle games ask you to match colors, shoot things, or react to whatever flashes on screen. Number puzzle games for logical thinking take a harder, quieter road. They strip the task down to symbols and rules, then force you to reason your way out. There is no art hiding the logic and no twitch skill standing in for thought. A digit either belongs or it does not, and the only way through is to figure out which. That honesty is why number puzzles have outlasted every trend in casual gaming.</p>
 
@@ -252,7 +252,7 @@ export const posts: BlogPost[] = [
 <p>The trap is treating all puzzles as interchangeable. They are not. A person who only plays fast reaction games never builds the patience that deduction requires. A person who only plays slow logic games never builds the scanning speed that real situations demand. The smart approach is to know what each game trains and to assemble a small set that covers the gaps.</p>
 
 <div class="callout">
-  <p>Pick the game that loads your weakest operation, not the one you already win. Comfort is entertainment; strain is training. The right puzzle should make you pause before it lets you proceed.</p>
+ <p>Pick the game that loads your weakest operation, not the one you already win. Comfort is entertainment; strain is training. The right puzzle should make you pause before it lets you proceed.</p>
 </div>
 
 <h2>1. Sudoku for Pure Deduction</h2>
@@ -276,15 +276,15 @@ export const posts: BlogPost[] = [
 <p><a href="/numberhunt">Number Hunt</a> flips the pace entirely. Instead of slow deduction, it demands fast visual scanning for a target under time pressure. The player must pick the right digits or sequences out of a busy field before the clock runs out. The skill trained is pattern recognition at speed, the ability to separate signal from noise when the cost of delay is real. This is the operation that sudoku never touches, because sudoku has no clock.</p>
 
 <table>
-  <thead>
-    <tr><th>Game</th><th>Reasoning Trained</th><th>Pace</th><th>Best For</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Sudoku</td><td>Deduction, restraint</td><td>Slow</td><td>Daily logical base</td></tr>
-    <tr><td>Number Slide</td><td>Spatial planning</td><td>Medium</td><td>Step-by-step thinkers</td></tr>
-    <tr><td>2048</td><td>Anticipation</td><td>Medium-fast</td><td>Foresight training</td></tr>
-    <tr><td>Number Hunt</td><td>Pattern speed</td><td>Fast</td><td>Scanning under load</td></tr>
-  </tbody>
+ <thead>
+  <tr><th>Game</th><th>Reasoning Trained</th><th>Pace</th><th>Best For</th></tr>
+ </thead>
+ <tbody>
+  <tr><td>Sudoku</td><td>Deduction, restraint</td><td>Slow</td><td>Daily logical base</td></tr>
+  <tr><td>Number Slide</td><td>Spatial planning</td><td>Medium</td><td>Step-by-step thinkers</td></tr>
+  <tr><td>2048</td><td>Anticipation</td><td>Medium-fast</td><td>Foresight training</td></tr>
+  <tr><td>Number Hunt</td><td>Pattern speed</td><td>Fast</td><td>Scanning under load</td></tr>
+ </tbody>
 </table>
 
 <h2>How to Combine Them Into a Routine</h2>
@@ -292,11 +292,11 @@ export const posts: BlogPost[] = [
 <p>Variety is the point, but variety without structure is just distraction. A workable week trains each operation without overloading any one. Start with a sudoku grid to set a calm, deductive tone. Add a short Number Slide session when you need to practice sequence. Drop into <a href="/2048">2048</a> for a few rounds when you want to train anticipation without a long commitment. End a stressful day with a brief Number Hunt to sharpen scanning and close the session on a win.</p>
 
 <ol>
-  <li>Anchor the week with daily sudoku for deduction.</li>
-  <li>Add Number Slide twice a week for spatial planning.</li>
-  <li>Use 2048 for three quick rounds on alternate days.</li>
-  <li>Finish with Number Hunt bursts to train scanning speed.</li>
-  <li>Raise difficulty on each title before it feels automatic.</li>
+ <li>Anchor the week with daily sudoku for deduction.</li>
+ <li>Add Number Slide twice a week for spatial planning.</li>
+ <li>Use 2048 for three quick rounds on alternate days.</li>
+ <li>Finish with Number Hunt bursts to train scanning speed.</li>
+ <li>Raise difficulty on each title before it feels automatic.</li>
 </ol>
 
 <blockquote>The best number puzzle games for logical thinking do not make you smarter in the abstract. They make you better at the specific operations thinking is made of: holding, spotting, planning, and anticipating. Train the operations and the thinking follows.</blockquote>
@@ -310,7 +310,7 @@ export const posts: BlogPost[] = [
 <p>Match the game to the deficit. If you freeze on blank pages, the anticipatory pressure of <a href="/2048">2048</a> teaches you to commit to a next step. If you act without thinking, the forced sequence of Number Slide punishes impulsivity within seconds. If you miss details in busy fields, Number Hunt rebuilds the scanning reflex. If you conclude on hunches, sudoku rebuilds the demand for proof. The right pick is rarely the one you enjoy most; it is the one that exposes the operation you avoid.</p>
 
 <div class="summary-box">
-  <p><span class="tip">Tip:</span> Keep a difficulty ladder for each game. The moment a puzzle feels automatic, step up. Automatic play is a comfort ritual; strained play is the training that changes how you think.</p>
+ <p><span class="tip">Tip:</span> Keep a difficulty ladder for each game. The moment a puzzle feels automatic, step up. Automatic play is a comfort ritual; strained play is the training that changes how you think.</p>
 </div>
 
 <h2>Common Mistakes When Starting</h2>
@@ -320,9 +320,9 @@ export const posts: BlogPost[] = [
 <p>The fourth mistake is expecting a number to move. None of these games will raise an IQ score by a visible margin, and believing they will sets up the disappointment that kills the habit. Expect instead to hold a complex instruction without rewriting it, to plan a week without overwhelm, and to spot a flawed argument faster. Those are the real, research-backed wins, and they compound because each makes the next bit of learning easier.</p>
 
 <div class="cta-box">
-  <h3>Start with a sudoku grid</h3>
-  <p>Five minutes of pure deduction is the cheapest reasoning workout you will find. Open a puzzle and track your own candidates before you place a thing.</p>
-  <a class="btn btn-primary h-11 px-8 text-sm" href="/sudoku">Play Free</a>
+ <h3>Start with a sudoku grid</h3>
+ <p>Five minutes of pure deduction is the cheapest reasoning workout you will find. Open a puzzle and track your own candidates before you place a thing.</p>
+ <a class="btn btn-primary h-11 px-8 text-sm" href="/sudoku">Play Free</a>
 </div>
 
 <h2>Where to Go After the Basics</h2>
@@ -330,9 +330,9 @@ export const posts: BlogPost[] = [
 <p>Once the four core titles feel steady, deepen rather than widen. Try sudoku variants with fewer clues, larger Number Slide boards, stricter 2048 corners, and faster Number Hunt targets. The mechanism stays the same; the load increases, which is the only condition under which the brain adapts. Depth beats novelty here, because the goal is a stronger operation, not a longer list of games played.</p>
 
 <div class="cta-box">
-  <h3>Slide into spatial planning</h3>
-  <p>Number Slide makes sequence visible and punishable, the fastest way to train step-by-step thinking. Rearrange the board and feel the plan form.</p>
-  <a class="btn btn-primary h-11 px-8 text-sm" href="/number-slide">Play Free</a>
+ <h3>Slide into spatial planning</h3>
+ <p>Number Slide makes sequence visible and punishable, the fastest way to train step-by-step thinking. Rearrange the board and feel the plan form.</p>
+ <a class="btn btn-primary h-11 px-8 text-sm" href="/number-slide">Play Free</a>
 </div>
 
 <h2>Frequently Asked Questions</h2>
@@ -376,24 +376,25 @@ export const posts: BlogPost[] = [
 <h2>Sources &amp; References</h2>
 
 <ul>
-  <li>Melby-Lervag, M., &amp; Hulme, C. (2013). <em>Is Working Memory Training Effective? A Meta-Analytic Review</em>. Developmental Psychology.</li>
-  <li>Simons, D. J., et al. (2016). <em>Do Brain-Training Programs Work? A Consensus Statement</em>. Psychological Science in the Public Interest.</li>
-  <li>Gathercole, S. E., &amp; Alloway, T. P. (2008). <em>Working Memory and Learning: A Practical Guide for Teachers</em>. SAGE.</li>
+ <li>Melby-Lervag, M., &amp; Hulme, C. (2013). <em>Is Working Memory Training Effective? A Meta-Analytic Review</em>. Developmental Psychology.</li>
+ <li>Simons, D. J., et al. (2016). <em>Do Brain-Training Programs Work? A Consensus Statement</em>. Psychological Science in the Public Interest.</li>
+ <li>Gathercole, S. E., &amp; Alloway, T. P. (2008). <em>Working Memory and Learning: A Practical Guide for Teachers</em>. SAGE.</li>
 </ul>
-  `,
-    faqs: [
-      { q: "What are the best number puzzle games for logical thinking?", a: "The strongest picks are sudoku for deduction, Number Slide for spatial planning, 2048 for anticipation, and Number Hunt for rapid pattern recognition. Each trains a distinct reasoning operation, so a mixed routine covers more ground than any single game." },
-      { q: "Is sudoku better than 2048 for the brain?", a: "They train different skills. Sudoku builds deduction and working memory through slow logic. 2048 builds anticipation and forward planning under pressure. Neither is better overall; the right one depends on whether you need patience or foresight." },
-      { q: "Can number puzzle games really improve logical thinking?", a: "Yes, within limits. They produce reliable near-transfer gains in the specific operations they load, such as deduction or planning. They do not produce broad IQ jumps, but the targeted improvements are real and useful." },
-      { q: "How much time should I spend on number puzzles daily?", a: "Fifteen to twenty-five minutes across two or three titles beats a long single session. Short, consistent, mixed practice strengthens each reasoning operation without becoming a chore." },
-      { q: "Are these games suitable for kids?", a: "Yes. Sudoku builds notation-free logic, Number Slide builds sequence sense, and 2048 builds low-cost commitment. Used as supplements to learning, they reinforce thinking habits without the anxiety of formal instruction." },
-      { q: "Do I need to pay for good number puzzle games?", a: "No. Sudoku, Number Slide, 2048, and Number Hunt are all freely playable and transparent in their rules. Paid brain apps rarely train more than these free titles; judge a game by its cognitive load, not its price." },
-      { q: "What is the difference between Number Slide and 2048?", a: "Number Slide is a fixed sequence puzzle where you reorder tiles into order under one empty space. 2048 is a merge game where you combine equal tiles and must anticipate board state. One trains planning, the other anticipation." },
-      { q: "How do I avoid just playing for fun without training?", a: "Raise difficulty before any game feels automatic, and avoid helpers that remove the thinking, such as autofill or unlimited undo. If you solve without pausing to reason, the load is too low to count as training." },
-      { q: "Can these puzzles help with work or study?", a: "They help with the operations behind work and study: holding instructions, planning steps, and spotting patterns. The gains show up as easier focus and cleaner reasoning on real tasks, not as facts you can recite." },
-      { q: "Which game is best for improving focus?", a: "Sudoku is best for sustained narrow focus, because a hard grid demands ten to twenty minutes of uninterrupted attention. Number Hunt helps with focused scanning under time pressure. Together they cover calm and active attention." },
-      { q: "Will number puzzles prevent memory loss?", a: "They may help maintain reasoning and attention as part of an active life, but they are not proven to prevent dementia. Treat them as a useful supplement alongside exercise, sleep, and social engagement, not as protection." },
-      { q: "How do I build a puzzle routine that lasts?", a: "Anchor with daily sudoku, add Number Slide and 2048 across the week, and finish with Number Hunt bursts. Keep sessions short, raise difficulty steadily, and pick formats that match your temperament so you return without being told." }
-    ]
-  }
+ `,
+  faqs: [
+   { q: "What are the best number puzzle games for logical thinking?", a: "The strongest picks are sudoku for deduction, Number Slide for spatial planning, 2048 for anticipation, and Number Hunt for rapid pattern recognition. Each trains a distinct reasoning operation, so a mixed routine covers more ground than any single game." },
+   { q: "Is sudoku better than 2048 for the brain?", a: "They train different skills. Sudoku builds deduction and working memory through slow logic. 2048 builds anticipation and forward planning under pressure. Neither is better overall; the right one depends on whether you need patience or foresight." },
+   { q: "Can number puzzle games really improve logical thinking?", a: "Yes, within limits. They produce reliable near-transfer gains in the specific operations they load, such as deduction or planning. They do not produce broad IQ jumps, but the targeted improvements are real and useful." },
+   { q: "How much time should I spend on number puzzles daily?", a: "Fifteen to twenty-five minutes across two or three titles beats a long single session. Short, consistent, mixed practice strengthens each reasoning operation without becoming a chore." },
+   { q: "Are these games suitable for kids?", a: "Yes. Sudoku builds notation-free logic, Number Slide builds sequence sense, and 2048 builds low-cost commitment. Used as supplements to learning, they reinforce thinking habits without the anxiety of formal instruction." },
+   { q: "Do I need to pay for good number puzzle games?", a: "No. Sudoku, Number Slide, 2048, and Number Hunt are all freely playable and transparent in their rules. Paid brain apps rarely train more than these free titles; judge a game by its cognitive load, not its price." },
+   { q: "What is the difference between Number Slide and 2048?", a: "Number Slide is a fixed sequence puzzle where you reorder tiles into order under one empty space. 2048 is a merge game where you combine equal tiles and must anticipate board state. One trains planning, the other anticipation." },
+   { q: "How do I avoid just playing for fun without training?", a: "Raise difficulty before any game feels automatic, and avoid helpers that remove the thinking, such as autofill or unlimited undo. If you solve without pausing to reason, the load is too low to count as training." },
+   { q: "Can these puzzles help with work or study?", a: "They help with the operations behind work and study: holding instructions, planning steps, and spotting patterns. The gains show up as easier focus and cleaner reasoning on real tasks, not as facts you can recite." },
+   { q: "Which game is best for improving focus?", a: "Sudoku is best for sustained narrow focus, because a hard grid demands ten to twenty minutes of uninterrupted attention. Number Hunt helps with focused scanning under time pressure. Together they cover calm and active attention." },
+   { q: "Will number puzzles prevent memory loss?", a: "They may help maintain reasoning and attention as part of an active life, but they are not proven to prevent dementia. Treat them as a useful supplement alongside exercise, sleep, and social engagement, not as protection." },
+   { q: "How do I build a puzzle routine that lasts?", a: "Anchor with daily sudoku, add Number Slide and 2048 across the week, and finish with Number Hunt bursts. Keep sessions short, raise difficulty steadily, and pick formats that match your temperament so you return without being told." }
+  ]
+ }
 ];
+

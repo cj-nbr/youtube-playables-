@@ -11,124 +11,125 @@ let message = "";
 let messageType = "";
 ---
 
-<Layout title="Security Settings — YOUTUBE PLAYABLES" description="Manage your security settings including secret code and session management">
-  <a href="#main" class="skip-link">Skip to content</a>
-  <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
-    <div id="auth-loading" style={{ display: loading ? 'block' : 'none' }}>
-      <div class="mx-auto max-w-2xl py-20 text-center">
-        <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
-        <p class="mt-4 text-body">Loading...</p>
+<Layout title="Security Settings — PLAYABLES" description="Manage your security settings including secret code and session management">
+ <a href="#main" class="skip-link">Skip to content</a>
+ <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
+  <div id="auth-loading" style={{ display: loading ? 'block' : 'none' }}>
+   <div class="mx-auto max-w-2xl py-20 text-center">
+    <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
+    <p class="mt-4 text-body">Loading...</p>
+   </div>
+  </div>
+  <div id="auth-login" style={{ display: !loading && !user ? 'block' : 'none' }}>
+   <div class="mx-auto max-w-2xl py-20 text-center">
+    <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
+    <p class="text-body mb-6">You need to be logged in to manage security settings.</p>
+    <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+   </div>
+  </div>
+  <div id="auth-content" style={{ display: !loading && user ? 'block' : 'none' }}>
+    <div class="mb-8">
+     <h1 class="text-3xl font-bold text-ink">Security Settings</h1>
+     <p class="mt-2 text-body">Manage your secret code, active sessions, and account security</p>
+    </div>
+
+    {message && (
+     <div class={`rounded-lg p-4 text-sm ${messageType === "error" ? "bg-red-500/10 text-red-500 border border-red-500/20" : "bg-green-500/10 text-green-500 border border-green-500/20"}`}>
+      {message}
+     </div>
+    )}
+
+    <div class="bg-canvas rounded-xl border border-hairline p-6 md:p-8">
+     <h2 class="text-xl font-semibold text-ink mb-4 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+      Change Secret Code
+     </h2>
+     <p class="text-body text-sm mb-6">Your secret code is a 6-character code used to sign in. Keep it secure and don't share it with anyone.</p>
+     <form id="change-code-form" class="space-y-4">
+      <div class="space-y-2">
+       <label for="currentCode" class="block text-sm font-medium text-ink">Current Secret Code</label>
+       <input type="text" id="currentCode" maxlength="6" bind:value={currentCode} class="w-full px-4 py-3 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none font-mono tracking-widest" required />
       </div>
-    </div>
-    <div id="auth-login" style={{ display: !loading && !user ? 'block' : 'none' }}>
-      <div class="mx-auto max-w-2xl py-20 text-center">
-        <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
-        <p class="text-body mb-6">You need to be logged in to manage security settings.</p>
-        <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+      <div class="space-y-2">
+       <label for="newCode" class="block text-sm font-medium text-ink">New Secret Code</label>
+       <input type="text" id="newCode" maxlength="6" bind:value={newCode} class="w-full px-4 py-3 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none font-mono tracking-widest" required />
       </div>
+      <div class="space-y-2">
+       <label for="confirmCode" class="block text-sm font-medium text-ink">Confirm New Secret Code</label>
+       <input type="text" id="confirmCode" maxlength="6" bind:value={confirmCode} class="w-full px-4 py-3 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none font-mono tracking-widest" required />
+      </div>
+      <button type="submit" disabled={changing} class="inline-flex items-center justify-center rounded-pill bg-ink px-6 py-2.5 text-sm font-medium text-white hover:opacity-90 transition-opacity disabled:opacity-50">
+       {changing ? "Updating..." : "Update Secret Code"}
+      </button>
+     </form>
     </div>
-    <div id="auth-content" style={{ display: !loading && user ? 'block' : 'none' }}>
-        <div class="mb-8">
-          <h1 class="text-3xl font-bold text-ink">Security Settings</h1>
-          <p class="mt-2 text-body">Manage your secret code, active sessions, and account security</p>
-        </div>
 
-        {message && (
-          <div class={`rounded-lg p-4 text-sm ${messageType === "error" ? "bg-red-500/10 text-red-500 border border-red-500/20" : "bg-green-500/10 text-green-500 border border-green-500/20"}`}>
-            {message}
-          </div>
-        )}
-
-        <div class="bg-canvas rounded-xl border border-hairline p-6 md:p-8">
-          <h2 class="text-xl font-semibold text-ink mb-4 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-            Change Secret Code
-          </h2>
-          <p class="text-body text-sm mb-6">Your secret code is a 6-character code used to sign in. Keep it secure and don't share it with anyone.</p>
-          <form id="change-code-form" class="space-y-4">
-            <div class="space-y-2">
-              <label for="currentCode" class="block text-sm font-medium text-ink">Current Secret Code</label>
-              <input type="text" id="currentCode" maxlength="6" bind:value={currentCode} class="w-full px-4 py-3 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none font-mono tracking-widest" required />
-            </div>
-            <div class="space-y-2">
-              <label for="newCode" class="block text-sm font-medium text-ink">New Secret Code</label>
-              <input type="text" id="newCode" maxlength="6" bind:value={newCode} class="w-full px-4 py-3 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none font-mono tracking-widest" required />
-            </div>
-            <div class="space-y-2">
-              <label for="confirmCode" class="block text-sm font-medium text-ink">Confirm New Secret Code</label>
-              <input type="text" id="confirmCode" maxlength="6" bind:value={confirmCode} class="w-full px-4 py-3 rounded-lg bg-canvas-border text-ink border border-hairline focus:border-[#007cf0] focus:outline-none font-mono tracking-widest" required />
-            </div>
-            <button type="submit" disabled={changing} class="inline-flex items-center justify-center rounded-pill bg-ink px-6 py-2.5 text-sm font-medium text-white hover:opacity-90 transition-opacity disabled:opacity-50">
-              {changing ? "Updating..." : "Update Secret Code"}
-            </button>
-          </form>
-        </div>
-
-        <div class="bg-canvas rounded-xl border border-hairline p-6 md:p-8">
-          <h2 class="text-xl font-semibold text-ink mb-4 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-            Account Actions
-          </h2>
-          <div class="flex flex-col sm:flex-row gap-3">
-            <a href="/profile/logout" class="inline-flex items-center justify-center rounded-pill border border-red-500/30 text-red-500 px-6 py-2.5 text-sm font-medium hover:bg-red-500/10 transition-colors">
-              Log Out
-            </a>
-          </div>
-        </div>
-
-        <div class="flex justify-between">
-          <a href="/profile" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">← Back to Profile</a>
-        </div>
+    <div class="bg-canvas rounded-xl border border-hairline p-6 md:p-8">
+     <h2 class="text-xl font-semibold text-ink mb-4 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+      Account Actions
+     </h2>
+     <div class="flex flex-col sm:flex-row gap-3">
+      <a href="/profile/logout" class="inline-flex items-center justify-center rounded-pill border border-red-500/30 text-red-500 px-6 py-2.5 text-sm font-medium hover:bg-red-500/10 transition-colors">
+       Log Out
+      </a>
+     </div>
     </div>
-  </main>
 
-  <script type="module">
-    import { authService } from "../../lib/auth/auth-service.js";
+    <div class="flex justify-between">
+     <a href="/profile" class="text-sm text-[#007cf0] hover:text-[#00dfd8] transition-colors">← Back to Profile</a>
+    </div>
+  </div>
+ </main>
 
-    const setAuthVisibility = (state) => {
-      const loadingEl = document.getElementById("auth-loading");
-      const loginEl = document.getElementById("auth-login");
-      const contentEl = document.getElementById("auth-content");
-      if (loadingEl) loadingEl.style.display = state.loading ? "block" : "none";
-      if (loginEl) loginEl.style.display = !state.loading && !state.user ? "block" : "none";
-      if (contentEl) contentEl.style.display = !state.loading && state.user ? "block" : "none";
-      if (!state.loading && !state.user) {
-        window.location.href = "/login";
-      }
-    };
+ <script type="module">
+  import { authService } from "../../lib/auth/auth-service.js";
 
-    setAuthVisibility(authService.getState());
-    const unsubscribe = authService.subscribe(setAuthVisibility);
-  </script>
+  const setAuthVisibility = (state) => {
+   const loadingEl = document.getElementById("auth-loading");
+   const loginEl = document.getElementById("auth-login");
+   const contentEl = document.getElementById("auth-content");
+   if (loadingEl) loadingEl.style.display = state.loading ? "block" : "none";
+   if (loginEl) loginEl.style.display = !state.loading && !state.user ? "block" : "none";
+   if (contentEl) contentEl.style.display = !state.loading && state.user ? "block" : "none";
+   if (!state.loading && !state.user) {
+    window.location.href = "/login";
+   }
+  };
 
-  <script>
-    (() => {
-      const form = document.getElementById("change-code-form");
-      if (form) {
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const current = (document.getElementById("currentCode") as HTMLInputElement).value;
-          const newCodeVal = (document.getElementById("newCode") as HTMLInputElement).value;
-          const confirm = (document.getElementById("confirmCode") as HTMLInputElement).value;
+  setAuthVisibility(authService.getState());
+  const unsubscribe = authService.subscribe(setAuthVisibility);
+ </script>
 
-          if (newCodeVal !== confirm) {
-            alert("New secret codes do not match");
-            return;
-          }
-          if (newCodeVal.length !== 6) {
-            alert("Secret code must be exactly 6 characters");
-            return;
-          }
+ <script>
+  (() => {
+   const form = document.getElementById("change-code-form");
+   if (form) {
+    form.addEventListener("submit", async (e) => {
+     e.preventDefault();
+     const current = (document.getElementById("currentCode") as HTMLInputElement).value;
+     const newCodeVal = (document.getElementById("newCode") as HTMLInputElement).value;
+     const confirm = (document.getElementById("confirmCode") as HTMLInputElement).value;
 
-          try {
-            await authService.changeSecretCode(current, newCodeVal);
-            alert("Secret code updated successfully!");
-            window.location.href = "/profile";
-          } catch (err) {
-            alert(err instanceof Error ? err.message : "Failed to update secret code");
-          }
-        });
-      }
-    })();
-  </script>
+     if (newCodeVal !== confirm) {
+      alert("New secret codes do not match");
+      return;
+     }
+     if (newCodeVal.length !== 6) {
+      alert("Secret code must be exactly 6 characters");
+      return;
+     }
+
+     try {
+      await authService.changeSecretCode(current, newCodeVal);
+      alert("Secret code updated successfully!");
+      window.location.href = "/profile";
+     } catch (err) {
+      alert(err instanceof Error ? err.message : "Failed to update secret code");
+     }
+    });
+   }
+  })();
+ </script>
 </Layout>
+

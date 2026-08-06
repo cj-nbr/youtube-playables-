@@ -1,46 +1,46 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "best-online-games-to-play-when-bored",
-    title: "Best Online Games to Play When Bored (Tested Picks That Open Instantly)",
-    description:
-      "A practical guide to the best online games to play when bored: reflex, puzzle, memory, and strategy picks that open instantly in your browser with no downloads.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Online Games",
-    tags: [
-      "best online games",
-      "online games to play when bored",
-      "free online games",
-      "browser games",
-      "quick games",
-      "no download games",
-      "casual games",
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "best online games",
-    secondaryKeywords: [
-      "online games to play when bored",
-      "best games to play when bored",
-      "free online games to play now",
-      "instant browser games",
-      "quick play games",
-    ],
-    lsiKeywords: [
-      "time killer",
-      "bored at home",
-      "casual gaming",
-      "reflex games",
-      "memory games",
-      "puzzle games",
-      "strategy games",
-      "no install",
-    ],
-    excerpt:
-      "A straight-talking look at the best online games to play when bored, grouped by mood and time, with honest picks that load instantly and ask for nothing but a click.",
-    content: `
+ {
+  slug: "best-online-games-to-play-when-bored",
+  title: "Best Online Games to Play When Bored (Tested Picks That Open Instantly)",
+  description:
+   "A practical guide to the best online games to play when bored: reflex, puzzle, memory, and strategy picks that open instantly in your browser with no downloads.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Online Games",
+  tags: [
+   "best online games",
+   "online games to play when bored",
+   "free online games",
+   "browser games",
+   "quick games",
+   "no download games",
+   "casual games",
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "best online games",
+  secondaryKeywords: [
+   "online games to play when bored",
+   "best games to play when bored",
+   "free online games to play now",
+   "instant browser games",
+   "quick play games",
+  ],
+  lsiKeywords: [
+   "time killer",
+   "bored at home",
+   "casual gaming",
+   "reflex games",
+   "memory games",
+   "puzzle games",
+   "strategy games",
+   "no install",
+  ],
+  excerpt:
+   "A straight-talking look at the best online games to play when bored, grouped by mood and time, with honest picks that load instantly and ask for nothing but a click.",
+  content: `
 <h2>Boredom Is a Scheduling Problem, Not a Content Problem</h2>
 <p>Being bored is rarely about a lack of games. It is about the gap between wanting to play and actually playing. You have fifteen free minutes, you remember a game exists, you go to find it, and by the time the store page loads, the moment is gone. The best online games to play when bored are the ones that remove every step between the impulse and the first move. They open in a tab, they teach themselves in seconds, and they let you leave just as fast.</p>
 <p>This guide skips the hype lists. It is built from games that were actually played during short, distracted windows, the kind of windows most people have. Each pick below is judged on one question: can you go from bored to playing before the feeling passes?</p>
@@ -127,89 +127,89 @@ export const posts: BlogPost[] = [
 <li>MDN Web Docs, "Web APIs" - documentation on the browser storage and input APIs that let these games run without installs.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are the best online games to play when bored",
-        a: "The most reliable picks are Stack Tower and Arrow Game for quick reflex play, Memory Flip for calm focus, Block Blast and 2048 for puzzles, and Chess for depth. All open instantly in a browser with no download.",
-      },
-      {
-        q: "Which online game is best for very short breaks",
-        a: "Stack Tower is the strongest choice for under five minutes. One round ends in seconds, the restart is instant, and there is no campaign or story to pull you away from what you were doing next.",
-      },
-      {
-        q: "Are there calm games for when I am tired but bored",
-        a: "Yes. Memory Flip has no timer pressure and a simple loop, so it relaxes rather than races. Block Blast is also untimed and lets you set your own pace, which suits a low-energy mood.",
-      },
-      {
-        q: "What is the best online game for a long bored afternoon",
-        a: "Chess gives the most depth and can absorb an hour or more. For something lighter that still lasts, 2048 scales from a one-minute distraction to a long focus session without ever demanding a download.",
-      },
-      {
-        q: "Do these games need an account or download",
-        a: "No. Every title listed runs in the browser tab and needs no install, no sign-up, and no plugin. You open the page, play, and close it when you are done.",
-      },
-      {
-        q: "Can I play these on my phone",
-        a: "Yes. They are built for both mouse and touch input, so they adapt to phone screens without awkward zooming or hidden buttons. The same link works on desktop and mobile.",
-      },
-      {
-        q: "Which game is best for training focus",
-        a: "Block Blast and 2048 both reward planning and attention, while Memory Flip trains recall. If you want the deepest mental workout, chess is the clear pick among the group.",
-      },
-      {
-        q: "How do I stop boredom from turning into endless scrolling",
-        a: "Bookmark two or three of these games and nothing else. When boredom hits, the short list removes the decision friction that usually sends people into a feed. Fewer choices means you actually play.",
-      },
-      {
-        q: "What is the easiest game to learn in this list",
-        a: "Stack Tower and Arrow Game teach themselves in a single round. Memory Flip is nearly as simple. Chess has the most to learn, but the browser version lets you start playing immediately and pick up the rules as you go.",
-      },
-      {
-        q: "Do these games save progress",
-        a: "Most use local storage, so your best score or current board survives a tab close and even a browser restart, without needing an account or cloud sync.",
-      },
-    ],
-  },
-  {
-    slug: "free-online-games-no-download",
-    title: "Free Online Games With No Download: Why Instant Browser Play Wins",
-    description:
-      "Why free online games with no download win for quick play: instant browser access, zero storage, and cross-device reach, with honest picks you can open now.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Online Games",
-    tags: [
-      "free online games no download",
-      "no download games",
-      "instant play games",
-      "browser games",
-      "play games without downloading",
-      "free online games",
-      "cross-device games",
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "free online games no download",
-    secondaryKeywords: [
-      "no download games",
-      "play games without downloading",
-      "instant browser games",
-      "free online games",
-      "games that don't need downloads",
-    ],
-    lsiKeywords: [
-      "HTML5",
-      "local storage",
-      "cross-platform",
-      "zero install",
-      "instant play",
-      "browser tab",
-      "no account",
-      "casual gaming",
-    ],
-    excerpt:
-      "A clear case for free online games with no download: why instant browser play beats installs for quick sessions, plus honest picks you can open in a tab right now.",
-    content: `
+  faqs: [
+   {
+    q: "What are the best online games to play when bored",
+    a: "The most reliable picks are Stack Tower and Arrow Game for quick reflex play, Memory Flip for calm focus, Block Blast and 2048 for puzzles, and Chess for depth. All open instantly in a browser with no download.",
+   },
+   {
+    q: "Which online game is best for very short breaks",
+    a: "Stack Tower is the strongest choice for under five minutes. One round ends in seconds, the restart is instant, and there is no campaign or story to pull you away from what you were doing next.",
+   },
+   {
+    q: "Are there calm games for when I am tired but bored",
+    a: "Yes. Memory Flip has no timer pressure and a simple loop, so it relaxes rather than races. Block Blast is also untimed and lets you set your own pace, which suits a low-energy mood.",
+   },
+   {
+    q: "What is the best online game for a long bored afternoon",
+    a: "Chess gives the most depth and can absorb an hour or more. For something lighter that still lasts, 2048 scales from a one-minute distraction to a long focus session without ever demanding a download.",
+   },
+   {
+    q: "Do these games need an account or download",
+    a: "No. Every title listed runs in the browser tab and needs no install, no sign-up, and no plugin. You open the page, play, and close it when you are done.",
+   },
+   {
+    q: "Can I play these on my phone",
+    a: "Yes. They are built for both mouse and touch input, so they adapt to phone screens without awkward zooming or hidden buttons. The same link works on desktop and mobile.",
+   },
+   {
+    q: "Which game is best for training focus",
+    a: "Block Blast and 2048 both reward planning and attention, while Memory Flip trains recall. If you want the deepest mental workout, chess is the clear pick among the group.",
+   },
+   {
+    q: "How do I stop boredom from turning into endless scrolling",
+    a: "Bookmark two or three of these games and nothing else. When boredom hits, the short list removes the decision friction that usually sends people into a feed. Fewer choices means you actually play.",
+   },
+   {
+    q: "What is the easiest game to learn in this list",
+    a: "Stack Tower and Arrow Game teach themselves in a single round. Memory Flip is nearly as simple. Chess has the most to learn, but the browser version lets you start playing immediately and pick up the rules as you go.",
+   },
+   {
+    q: "Do these games save progress",
+    a: "Most use local storage, so your best score or current board survives a tab close and even a browser restart, without needing an account or cloud sync.",
+   },
+  ],
+ },
+ {
+  slug: "free-online-games-no-download",
+  title: "Free Online Games With No Download: Why Instant Browser Play Wins",
+  description:
+   "Why free online games with no download win for quick play: instant browser access, zero storage, and cross-device reach, with honest picks you can open now.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Online Games",
+  tags: [
+   "free online games no download",
+   "no download games",
+   "instant play games",
+   "browser games",
+   "play games without downloading",
+   "free online games",
+   "cross-device games",
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "free online games no download",
+  secondaryKeywords: [
+   "no download games",
+   "play games without downloading",
+   "instant browser games",
+   "free online games",
+   "games that don't need downloads",
+  ],
+  lsiKeywords: [
+   "HTML5",
+   "local storage",
+   "cross-platform",
+   "zero install",
+   "instant play",
+   "browser tab",
+   "no account",
+   "casual gaming",
+  ],
+  excerpt:
+   "A clear case for free online games with no download: why instant browser play beats installs for quick sessions, plus honest picks you can open in a tab right now.",
+  content: `
 <h2>The Download Is the Part Nobody Misses</h2>
 <p>For years, playing a game meant committing to it before you knew if it was any good. You found a title, started a download measured in hundreds of megabytes, created an account, waited through an update, and only then found out the game was not for you. The cost of trying was so high that most people did not try at all. Free online games with no download flip that math. You click a link and you are playing before a download would have finished its progress bar.</p>
 <p>This is not a small convenience. It changes which games get played. A no-download game is a thing you do; a download is a thing you plan. When the barrier drops to zero, play fills the cracks of the day that used to stay empty.</p>
@@ -306,51 +306,52 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Chess" - context on a game whose full depth now runs in a browser tab with no install.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are free online games with no download",
-        a: "They are games that run entirely in your browser tab and need no install, no sign-up, and no plugin. Titles like Stack Tower, Memory Flip, Block Blast, 2048, and Chess open from a link and play instantly.",
-      },
-      {
-        q: "Are no-download games safe to play",
-        a: "Games on reputable sites run inside the browser's sandbox, which limits what they can access. They cannot read your files, reach other tabs, or install software without permission. Sticking to known sites keeps the experience safe.",
-      },
-      {
-        q: "Do these games work on phones",
-        a: "Yes. They are built for both mouse and touch, so the same link plays on a phone, tablet, or laptop. No separate app or version is needed.",
-      },
-      {
-        q: "Do no-download games save my progress",
-        a: "Many use local storage to keep your score or current board in the browser. It survives a tab close and restart, though it does not sync across devices unless the game adds an account layer.",
-      },
-      {
-        q: "Are browser games as good as installed ones",
-        a: "For casual play, the quality gap is now small. Modern browser games offer responsive input, smooth frame rates, and real depth. The main difference is convenience: no install, no cleanup, no commitment.",
-      },
-      {
-        q: "Why would I use a browser game instead of an app",
-        a: "Because the barrier to trying is zero. You click and play instead of downloading, installing, and account-making. For short or uncertain sessions, that speed is the whole point.",
-      },
-      {
-        q: "Can I play these games offline",
-        a: "Some can if they cache assets through a service worker, but not all do. The bigger draw is instant access online, with no install step standing between you and the first move.",
-      },
-      {
-        q: "Which no-download game is best for focus",
-        a: "Block Blast and 2048 reward planning, Memory Flip trains recall, and Chess offers the deepest strategic focus. All of them open instantly and need no download to start.",
-      },
-      {
-        q: "Do I need to make an account",
-        a: "No. The titles listed here let you play first and never ask for an account unless you want cloud saves. You can enjoy the full game as a guest in a tab.",
-      },
-      {
-        q: "Will closing the tab delete the game",
-        a: "The game itself lives at its link and is always there to reopen. Your local progress usually stays in the browser, so closing the tab ends the session without losing your saved score or board.",
-      },
-      {
-        q: "Are these games really free",
-        a: "Yes. The picks here are free to open and play, with no purchase required to reach the core experience. The trade you make is a small one: you skip the install and keep the game.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "What are free online games with no download",
+    a: "They are games that run entirely in your browser tab and need no install, no sign-up, and no plugin. Titles like Stack Tower, Memory Flip, Block Blast, 2048, and Chess open from a link and play instantly.",
+   },
+   {
+    q: "Are no-download games safe to play",
+    a: "Games on reputable sites run inside the browser's sandbox, which limits what they can access. They cannot read your files, reach other tabs, or install software without permission. Sticking to known sites keeps the experience safe.",
+   },
+   {
+    q: "Do these games work on phones",
+    a: "Yes. They are built for both mouse and touch, so the same link plays on a phone, tablet, or laptop. No separate app or version is needed.",
+   },
+   {
+    q: "Do no-download games save my progress",
+    a: "Many use local storage to keep your score or current board in the browser. It survives a tab close and restart, though it does not sync across devices unless the game adds an account layer.",
+   },
+   {
+    q: "Are browser games as good as installed ones",
+    a: "For casual play, the quality gap is now small. Modern browser games offer responsive input, smooth frame rates, and real depth. The main difference is convenience: no install, no cleanup, no commitment.",
+   },
+   {
+    q: "Why would I use a browser game instead of an app",
+    a: "Because the barrier to trying is zero. You click and play instead of downloading, installing, and account-making. For short or uncertain sessions, that speed is the whole point.",
+   },
+   {
+    q: "Can I play these games offline",
+    a: "Some can if they cache assets through a service worker, but not all do. The bigger draw is instant access online, with no install step standing between you and the first move.",
+   },
+   {
+    q: "Which no-download game is best for focus",
+    a: "Block Blast and 2048 reward planning, Memory Flip trains recall, and Chess offers the deepest strategic focus. All of them open instantly and need no download to start.",
+   },
+   {
+    q: "Do I need to make an account",
+    a: "No. The titles listed here let you play first and never ask for an account unless you want cloud saves. You can enjoy the full game as a guest in a tab.",
+   },
+   {
+    q: "Will closing the tab delete the game",
+    a: "The game itself lives at its link and is always there to reopen. Your local progress usually stays in the browser, so closing the tab ends the session without losing your saved score or board.",
+   },
+   {
+    q: "Are these games really free",
+    a: "Yes. The picks here are free to open and play, with no purchase required to reach the core experience. The trade you make is a small one: you skip the install and keep the game.",
+   },
+  ],
+ },
 ];
+

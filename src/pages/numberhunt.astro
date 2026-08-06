@@ -4,10 +4,11 @@ import { getGame } from "../shared/games";
 const game = getGame("numberhunt");
 ---
 <GameShell game={game}>
-  <div id="numberhunt" class="mx-auto w-full max-w-[min(380px,96vw)]"></div>
+ <div id="numberhunt" class="mx-auto w-full max-w-[min(380px,96vw)]"></div>
 </GameShell>
 
 <script>
-  import { initGame } from "../games/numberhunt/scripts/game";
-  initGame();
+ import { initGame } from "../games/numberhunt/scripts/game";
+ initGame();
 </script>
+

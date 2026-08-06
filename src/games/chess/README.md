@@ -1,6 +1,6 @@
 # Chess (`chess`)
 
-A lightweight two-player chess game for the YouTube Playables platform. Played on a
+A lightweight two-player chess game for the Playables platform. Played on a
 standard 8×8 board, players alternate White and Black, moving pieces to checkmate the
 opponent's king.
 
@@ -8,18 +8,18 @@ opponent's king.
 
 ```
 chess/
-├── content.ts        # SEO + guide/instructions/faqs/blog content (GameContent)
-├── README.md         # This file
+├── content.ts    # SEO + guide/instructions/faqs/blog content (GameContent)
+├── README.md     # This file
 ├── blog/
-│   └── complete-guide.md
-├── assets/           # Static assets (placeholder)
-├── images/           # Image assets (placeholder)
-├── audio/            # Audio assets (placeholder)
-├── scripts/          # Game logic scripts (placeholder)
-├── styles/           # Stylesheets (placeholder)
-├── levels/           # Level data (placeholder)
-├── seo/              # SEO assets (placeholder)
-└── components/       # UI components (placeholder)
+│  └── complete-guide.md
+├── assets/      # Static assets (placeholder)
+├── images/      # Image assets (placeholder)
+├── audio/      # Audio assets (placeholder)
+├── scripts/     # Game logic scripts (placeholder)
+├── styles/      # Stylesheets (placeholder)
+├── levels/      # Level data (placeholder)
+├── seo/       # SEO assets (placeholder)
+└── components/    # UI components (placeholder)
 ```
 
 ## How to run
@@ -58,9 +58,10 @@ This is a lightweight edition. The following standard rules are intentionally om
 ## Implementation notes
 
 - Content lives in `content.ts` and satisfies the `GameContent` interface from
-  `../../shared/types` (guide, instructions, faqs, blog).
+ `../../shared/types` (guide, instructions, faqs, blog).
 - Article copy in `blog/complete-guide.md` mirrors the first blog entry in `content.ts`.
 - Placeholder folders (assets, images, audio, scripts, styles, levels, seo,
-  components) are kept via `.gitkeep` so the structure is committed empty.
+ components) are kept via `.gitkeep` so the structure is committed empty.
 - This is a local two-player **pass-and-play** implementation; there is no AI
-  opponent and no network sync.
+ opponent and no network sync.
+

@@ -4,10 +4,11 @@ import { getGame } from "../shared/games";
 const game = getGame("memory-flip");
 ---
 <GameShell game={game}>
-  <div id="memory-flip" class="mx-auto w-full max-w-[360px]"></div>
+ <div id="memory-flip" class="mx-auto w-full max-w-[360px]"></div>
 </GameShell>
 
 <script>
-  import { initGame } from "../games/memory-flip/scripts/game";
-  initGame();
+ import { initGame } from "../games/memory-flip/scripts/game";
+ initGame();
 </script>
+

@@ -1,48 +1,48 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "best-puzzle-games-for-your-brain",
-    title: "The Best Puzzle Games for Your Brain",
-    description:
-      "Explore the best puzzle games that challenge your logic, memory, and spatial reasoning. All free and playable instantly in your browser.",
-    date: "2026-07-14",
-    updatedAt: "2026-07-14",
-    category: "Puzzle Games",
-    tags: [
-      "best puzzle games",
-      "brain games",
-      "logic puzzles",
-      "puzzle games for brain",
-      "free puzzle games",
-      "browser puzzle games",
-      "cognitive games",
-    ],
-    authorId: "editorial",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "best puzzle games for brain",
-    secondaryKeywords: [
-      "puzzle games for brain training",
-      "best logic puzzles online",
-      "free brain puzzle games",
-      "puzzle games that make you smarter",
-    ],
-    lsiKeywords: [
-      "spatial reasoning",
-      "logic",
-      "pattern recognition",
-      "problem solving",
-      "cognitive fitness",
-      "brain training",
-      "planning",
-    ],
-    gameId: "number-slide",
-    excerpt:
-      "A curated list of the best puzzle games for your brain. All are free, browser-based, and playable instantly with no downloads.",
-    content: `
+ {
+  slug: "best-puzzle-games-for-your-brain",
+  title: "The Best Puzzle Games for Your Brain",
+  description:
+   "Explore the best puzzle games that challenge your logic, memory, and spatial reasoning. All free and playable instantly in your browser.",
+  date: "2026-07-14",
+  updatedAt: "2026-07-14",
+  category: "Puzzle Games",
+  tags: [
+   "best puzzle games",
+   "brain games",
+   "logic puzzles",
+   "puzzle games for brain",
+   "free puzzle games",
+   "browser puzzle games",
+   "cognitive games",
+  ],
+  authorId: "editorial",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "best puzzle games for brain",
+  secondaryKeywords: [
+   "puzzle games for brain training",
+   "best logic puzzles online",
+   "free brain puzzle games",
+   "puzzle games that make you smarter",
+  ],
+  lsiKeywords: [
+   "spatial reasoning",
+   "logic",
+   "pattern recognition",
+   "problem solving",
+   "cognitive fitness",
+   "brain training",
+   "planning",
+  ],
+  gameId: "number-slide",
+  excerpt:
+   "A curated list of the best puzzle games for your brain. All are free, browser-based, and playable instantly with no downloads.",
+  content: `
 <h2>Why Puzzle Games Are Good for Your Brain</h2>
 <p>Puzzle games are among the most accessible forms of cognitive exercise. They challenge your logic, pattern recognition, and spatial reasoning in ways that are engaging and sustainable. Unlike passive entertainment, puzzle games require active thinking, which strengthens neural pathways over time.</p>
-<p>The best puzzle games are the ones you can play without friction. No downloads, no accounts, no setup. Just open a tab and start thinking. YouTube Playables offers a growing library of browser-native puzzle games that fit this description perfectly.</p>
+<p>The best puzzle games are the ones you can play without friction. No downloads, no accounts, no setup. Just open a tab and start thinking. Playables offers a growing library of browser-native puzzle games that fit this description perfectly.</p>
 <p>If you are looking for a specific challenge, <a href="/number-slide">Number Slide</a> trains spatial reasoning, <a href="/memory-flip">Memory Flip</a> trains recall, and <a href="/chess">Chess</a> trains long-term strategic planning.</p>
 
 <h2>What Makes a Puzzle Game Effective for Brain Training</h2>
@@ -105,12 +105,12 @@ export const posts: BlogPost[] = [
 <li>Background on cognitive training from peer-reviewed overviews.</li>
 </ul>
 `,
-    faqs: [
-      { q: "Are puzzle games good for the brain?", a: "Yes. Puzzle games exercise logical reasoning, pattern recognition, and spatial thinking." },
-      { q: "Which puzzle game is best for beginners?", a: "Number Slide is the best starting point. Simple rules and natural difficulty scaling." },
-      { q: "Can puzzle games improve problem-solving skills?", a: "Yes. The planning and deduction skills transfer to real-world problem-solving." },
-      { q: "How long should I play puzzle games each day?", a: "10 to 20 minutes daily is enough for most people." },
-      { q: "Are free browser puzzle games as good as paid ones?", a: "Yes. The free browser games offer the same core mechanics and challenge." },
-    ],
-  },
+  faqs: [
+   { q: "Are puzzle games good for the brain?", a: "Yes. Puzzle games exercise logical reasoning, pattern recognition, and spatial thinking." },
+   { q: "Which puzzle game is best for beginners?", a: "Number Slide is the best starting point. Simple rules and natural difficulty scaling." },
+   { q: "Can puzzle games improve problem-solving skills?", a: "Yes. The planning and deduction skills transfer to real-world problem-solving." },
+   { q: "How long should I play puzzle games each day?", a: "10 to 20 minutes daily is enough for most people." },
+   { q: "Are free browser puzzle games as good as paid ones?", a: "Yes. The free browser games offer the same core mechanics and challenge." },
+  ],
+ },
 ];

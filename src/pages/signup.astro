@@ -2,77 +2,77 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Sign up — YOUTUBE PLAYABLES" description="Create a YOUTUBE PLAYABLES account to save high scores and pick up where you left off.">
-  <a href="#main" class="skip-link">Skip to content</a>
-  <main id="main" class="mx-auto max-w-[1400px] px-6 py-24">
-    <div class="mx-auto max-w-md rounded-xl border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
-      <h1 class="text-3xl font-semibold tracking-tight text-ink">Create your account.</h1>
-      <p class="mt-2 text-body">Sign up free to save high scores and continue your streak.</p>
-      <form id="signup-form" class="mt-6 space-y-4">
-        <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="fullName">Full Name</label>
-          <input id="fullName" type="text" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="John Doe" required />
-        </div>
-        <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="email">Email (optional)</label>
-          <input id="email" type="email" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="you@example.com" />
-        </div>
-        <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="phone">Phone Number (optional)</label>
-          <input id="phone" type="tel" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="+1234567890" />
-        </div>
-        <div>
-          <label class="mb-1 block text-sm font-medium text-ink" for="secretCode">Secret Code</label>
-          <input id="secretCode" type="text" maxlength="6" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="••••••" required />
-          <p class="mt-1 text-xs text-body">Exactly 6 characters, letters or numbers</p>
-        </div>
-        <button type="submit" id="signup-btn" class="inline-flex h-11 w-full items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Sign up</button>
-      </form>
-      <p id="signup-error" class="mt-4 text-sm" style="color:#ee0000;display:none;"></p>
-      <p id="signup-success" class="mt-4 text-sm" style="color:#0a7d28;display:none;"></p>
-      <p class="mt-4 text-sm text-body">Already have an account? <a href="/login" class="text-link underline-offset-4 hover:underline">Log in</a>.</p>
-      <a href="/playables" class="mt-6 inline-block text-sm text-link underline-offset-4 hover:underline">← Back to playables</a>
+<Layout title="Sign up — PLAYABLES" description="Create a PLAYABLES account to save high scores and pick up where you left off.">
+ <a href="#main" class="skip-link">Skip to content</a>
+ <main id="main" class="mx-auto max-w-[1400px] px-6 py-24">
+  <div class="mx-auto max-w-md rounded-xl border border-hairline bg-canvas p-8 shadow-[0_1px_1px_#00000005,0_2px_2px_#0000000a]">
+   <h1 class="text-3xl font-semibold tracking-tight text-ink">Create your account.</h1>
+   <p class="mt-2 text-body">Sign up free to save high scores and continue your streak.</p>
+   <form id="signup-form" class="mt-6 space-y-4">
+    <div>
+     <label class="mb-1 block text-sm font-medium text-ink" for="fullName">Full Name</label>
+     <input id="fullName" type="text" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="John Doe" required />
     </div>
-  </main>
+    <div>
+     <label class="mb-1 block text-sm font-medium text-ink" for="email">Email (optional)</label>
+     <input id="email" type="email" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="you@example.com" />
+    </div>
+    <div>
+     <label class="mb-1 block text-sm font-medium text-ink" for="phone">Phone Number (optional)</label>
+     <input id="phone" type="tel" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="+1234567890" />
+    </div>
+    <div>
+     <label class="mb-1 block text-sm font-medium text-ink" for="secretCode">Secret Code</label>
+     <input id="secretCode" type="text" maxlength="6" class="h-11 w-full rounded-sm border border-hairline bg-canvas px-3 text-body" placeholder="••••••" required />
+     <p class="mt-1 text-xs text-body">Exactly 6 characters, letters or numbers</p>
+    </div>
+    <button type="submit" id="signup-btn" class="inline-flex h-11 w-full items-center justify-center rounded-pill bg-ink px-6 text-sm font-medium text-white hover:opacity-90">Sign up</button>
+   </form>
+   <p id="signup-error" class="mt-4 text-sm" style="color:#ee0000;display:none;"></p>
+   <p id="signup-success" class="mt-4 text-sm" style="color:#0a7d28;display:none;"></p>
+   <p class="mt-4 text-sm text-body">Already have an account? <a href="/login" class="text-link underline-offset-4 hover:underline">Log in</a>.</p>
+   <a href="/playables" class="mt-6 inline-block text-sm text-link underline-offset-4 hover:underline">← Back to playables</a>
+  </div>
+ </main>
 
-  <script>
-    import { register } from "../shared/auth";
+ <script>
+  import { register } from "../shared/auth";
 
-    const form = document.getElementById("signup-form") as HTMLFormElement | null;
-    const errorEl = document.getElementById("signup-error");
-    const successEl = document.getElementById("signup-success");
-    const btn = document.getElementById("signup-btn") as HTMLButtonElement | null;
-    if (form) {
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        errorEl.style.display = "none";
-        successEl.style.display = "none";
-        if (btn) { btn.disabled = true; btn.textContent = "Creating account…"; }
+  const form = document.getElementById("signup-form") as HTMLFormElement | null;
+  const errorEl = document.getElementById("signup-error");
+  const successEl = document.getElementById("signup-success");
+  const btn = document.getElementById("signup-btn") as HTMLButtonElement | null;
+  if (form) {
+   form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorEl.style.display = "none";
+    successEl.style.display = "none";
+    if (btn) { btn.disabled = true; btn.textContent = "Creating account…"; }
 
-        const fullName = (document.getElementById("fullName") as HTMLInputElement).value.trim();
-        const email = (document.getElementById("email") as HTMLInputElement).value.trim();
-        const phone = (document.getElementById("phone") as HTMLInputElement).value.trim();
-        const secretCode = (document.getElementById("secretCode") as HTMLInputElement).value;
+    const fullName = (document.getElementById("fullName") as HTMLInputElement).value.trim();
+    const email = (document.getElementById("email") as HTMLInputElement).value.trim();
+    const phone = (document.getElementById("phone") as HTMLInputElement).value.trim();
+    const secretCode = (document.getElementById("secretCode") as HTMLInputElement).value;
 
-        try {
-          const result = await register(fullName, email, phone, secretCode);
-          if (btn) { btn.disabled = false; btn.textContent = "Sign up"; }
-          
-          if (result?.needsConfirmation) {
-            successEl.textContent = "Account created! Please check your email to confirm, then log in.";
-            successEl.style.display = "block";
-          } else {
-            successEl.textContent = "Account created! Please log in now.";
-            successEl.style.display = "block";
-          }
-          form.reset();
-        } catch (err) {
-          if (btn) { btn.disabled = false; btn.textContent = "Sign up"; }
-          let message = err instanceof Error ? err.message : "Sign up failed";
-          errorEl.textContent = message;
-          errorEl.style.display = "block";
-        }
-      });
+    try {
+     const result = await register(fullName, email, phone, secretCode);
+     if (btn) { btn.disabled = false; btn.textContent = "Sign up"; }
+     
+     if (result?.needsConfirmation) {
+      successEl.textContent = "Account created! Please check your email to confirm, then log in.";
+      successEl.style.display = "block";
+     } else {
+      successEl.textContent = "Account created! Please log in now.";
+      successEl.style.display = "block";
+     }
+     form.reset();
+    } catch (err) {
+     if (btn) { btn.disabled = false; btn.textContent = "Sign up"; }
+     let message = err instanceof Error ? err.message : "Sign up failed";
+     errorEl.textContent = message;
+     errorEl.style.display = "block";
     }
-  </script>
+   });
+  }
+ </script>
 </Layout>

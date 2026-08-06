@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ANDROID_DIR="$(dirname "$SCRIPT_DIR")/android"
 
 echo "========================================="
-echo "  YouTube Playables - Deploy to Play Store"
+echo "  Playables - Deploy to Play Store"
 echo "========================================="
 echo ""
 
@@ -17,8 +17,8 @@ echo "Building Release AAB..."
 AAB_PATH="app/build/outputs/bundle/release/app-release.aab"
 
 if [ ! -f "$AAB_PATH" ]; then
-    echo "ERROR: AAB not found at $AAB_PATH"
-    exit 1
+  echo "ERROR: AAB not found at $AAB_PATH"
+  exit 1
 fi
 
 echo ""
@@ -32,3 +32,4 @@ echo "4. Upload the AAB file"
 echo "5. Fill in release notes"
 echo "6. Review and start rollout"
 echo ""
+

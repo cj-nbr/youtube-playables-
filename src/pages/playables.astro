@@ -5,51 +5,52 @@ import { gameCover, gameThumb } from "../shared/utils";
 ---
 
 <Layout
-  title="Playables — PLAYABLES"
-  description="A library of quick, free, browser-native playables. No installs, no accounts to explore."
+ title="Playables — PLAYABLES"
+ description="A library of quick, free, browser-native playables. No installs, no accounts to explore."
 >
-  <a href="#main" class="skip-link">Skip to content</a>
+ <a href="#main" class="skip-link">Skip to content</a>
 
-  <main id="main">
-    <section class="relative overflow-hidden border-b border-hairline">
-      <div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-[1400px] px-6 py-24 text-center md:py-32">
-        <span class="mb-6 inline-flex items-center gap-2 rounded-full bg-canvas/90 px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014] backdrop-blur-sm">
-          <span class="h-2 w-2 rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8] animate-pulse-soft"></span>
-          Playables
-        </span>
-        <h1 class="mx-auto max-w-3xl text-[40px] font-semibold leading-[1.05] tracking-[-2.4px] text-ink sm:text-[56px]">
-          Pick a game. Play free.
-        </h1>
-        <p class="mx-auto mt-6 max-w-xl text-lg leading-7 text-body">
-          A growing library of quick, browser-native playables. No installs, no accounts to explore.
-        </p>
-      </div>
-    </section>
+ <main id="main">
+  <section class="relative overflow-hidden border-b border-hairline">
+   <div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
+   <div class="relative mx-auto max-w-[1400px] px-6 py-24 text-center md:py-32">
+    <span class="mb-6 inline-flex items-center gap-2 rounded-full bg-canvas/90 px-3 py-1 font-mono text-xs text-mute shadow-[0_0_0_1px_#00000014] backdrop-blur-sm">
+     <span class="h-2 w-2 rounded-full bg-gradient-to-r from-[#007cf0] to-[#00dfd8] animate-pulse-soft"></span>
+     Playables
+    </span>
+    <h1 class="mx-auto max-w-3xl text-[40px] font-semibold leading-[1.05] tracking-[-2.4px] text-ink sm:text-[56px]">
+     Pick a game. Play free.
+    </h1>
+    <p class="mx-auto mt-6 max-w-xl text-lg leading-7 text-body">
+     A growing library of quick, browser-native playables. No installs, no accounts to explore.
+    </p>
+   </div>
+  </section>
 
-    <section class="border-b border-hairline bg-canvas-soft px-6 py-24">
-      <div class="mx-auto grid max-w-[1400px] gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          games.map((game) => (
-            <article class="card card-hover flex flex-col p-0 overflow-hidden group">
-              <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
-                <img src={gameCover(game.id)} alt={`${game.title} cover artwork`} title={game.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
-                <span class="absolute top-3 right-3 rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">Play</span>
-              </div>
-              <div class="p-6 flex flex-col flex-1">
-                <h2 class="text-xl font-semibold tracking-tight text-ink">{game.title}</h2>
-                <p class="mt-2 flex-1 text-base leading-6 text-body">{game.description}</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  {game.genre.map((g) => (
-                    <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{g}</span>
-                  ))}
-                </div>
-                <a href={`/${game.id}`} class="btn btn-primary mt-6 h-10 px-5 text-sm">Play now</a>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-    </section>
-  </main>
+  <section class="border-b border-hairline bg-canvas-soft px-6 py-24">
+   <div class="mx-auto grid max-w-[1400px] gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+     games.map((game) => (
+      <article class="card card-hover flex flex-col p-0 overflow-hidden group">
+       <div class="relative aspect-[4/3] overflow-hidden bg-canvas-soft-2">
+        <img src={gameCover(game.id)} alt={`${game.title} cover artwork`} title={game.title} loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" width="800" height="600" />
+        <span class="absolute top-3 right-3 rounded-full bg-link-bg-soft px-2 py-0.5 font-mono text-xs text-link-deep">Play</span>
+       </div>
+       <div class="p-6 flex flex-col flex-1">
+        <h2 class="text-xl font-semibold tracking-tight text-ink">{game.title}</h2>
+        <p class="mt-2 flex-1 text-base leading-6 text-body">{game.description}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+         {game.genre.map((g) => (
+          <span class="rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-xs text-mute">{g}</span>
+         ))}
+        </div>
+        <a href={`/${game.id}`} class="btn btn-primary mt-6 h-10 px-5 text-sm">Play now</a>
+       </div>
+      </article>
+     ))
+    }
+   </div>
+  </section>
+ </main>
 </Layout>
+

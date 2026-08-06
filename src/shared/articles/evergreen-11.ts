@@ -1,45 +1,45 @@
 import type { BlogPost } from "../blog-types";
 
 export const posts: BlogPost[] = [
-  {
-    slug: "best-casual-games-for-quick-breaks",
-    title: "Best Casual Games for Quick Breaks: Pick-Up-and-Play Picks",
-    description:
-      "The best casual games for quick breaks load fast, end cleanly, and ask nothing of you. Here are tested pick-up-and-play picks that fit any gap in the day.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Casual Games",
-    tags: [
-      "casual games quick breaks",
-      "pick up and play games",
-      "best games for short breaks",
-      "5 minute games",
-      "stress relief games",
-      "work break games",
-      "instant play browser games",
-    ],
-    authorId: "dev",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "casual games quick breaks",
-    secondaryKeywords: [
-      "pick up and play games",
-      "best games for short breaks",
-      "5 minute games",
-      "work break games",
-    ],
-    lsiKeywords: [
-      "micro sessions",
-      "no install",
-      "instant load",
-      "low commitment",
-      "arcade",
-      "puzzle",
-      "reflex",
-      "session length",
-    ],
-    excerpt:
-      "A practical guide to the best casual games for quick breaks: tested pick-up-and-play titles that load fast, end cleanly, and respect your time between tasks.",
-    content: `
+ {
+  slug: "best-casual-games-for-quick-breaks",
+  title: "Best Casual Games for Quick Breaks: Pick-Up-and-Play Picks",
+  description:
+   "The best casual games for quick breaks load fast, end cleanly, and ask nothing of you. Here are tested pick-up-and-play picks that fit any gap in the day.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Casual Games",
+  tags: [
+   "casual games quick breaks",
+   "pick up and play games",
+   "best games for short breaks",
+   "5 minute games",
+   "stress relief games",
+   "work break games",
+   "instant play browser games",
+  ],
+  authorId: "dev",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "casual games quick breaks",
+  secondaryKeywords: [
+   "pick up and play games",
+   "best games for short breaks",
+   "5 minute games",
+   "work break games",
+  ],
+  lsiKeywords: [
+   "micro sessions",
+   "no install",
+   "instant load",
+   "low commitment",
+   "arcade",
+   "puzzle",
+   "reflex",
+   "session length",
+  ],
+  excerpt:
+   "A practical guide to the best casual games for quick breaks: tested pick-up-and-play titles that load fast, end cleanly, and respect your time between tasks.",
+  content: `
 <h2>The Case for Games That Respect Your Time</h2>
 <p>A good break is not an interruption. It is a reset. The problem with most entertainment is that it does not know when to stop. A TV episode commits you to forty minutes. A console game expects an evening. A phone game nags you to return with notifications you never asked for. None of that fits the ten minutes between a meeting and a deadline.</p>
 <p>The best casual games for quick breaks solve this differently. They open in a second, teach themselves, and end the moment you decide to leave. They do not carry a campaign, a login wall, or a daily-streak mechanic engineered to make you feel guilty for closing the tab. They are there when you want them and gone when you do not.</p>
@@ -149,92 +149,92 @@ export const posts: BlogPost[] = [
 <li>American Psychological Association, "Stress management" - guidance on short breaks and attention resets during demanding work.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "What are the best casual games for quick breaks",
-        a: "Stack Tower, Color Match, Oooze, and Casual Miner are strong picks because they load instantly, teach themselves, and let you leave at any round without penalty. Each fits a different kind of short gap in the day.",
-      },
-      {
-        q: "How long should a break game session last",
-        a: "As long as the gap you actually have. A precision title like Stack Tower works in under two minutes, while a growth title like Oooze suits a ten-minute window. Match the game to the time, not the other way around.",
-      },
-      {
-        q: "Do these games need downloads or accounts",
-        a: "No. All four run in the browser and open without installs, sign-ups, or plugins. You play in a tab and close it when the break ends.",
-      },
-      {
-        q: "Which game is best for stress relief",
-        a: "Color Match and Casual Miner are the calmest. Color Match focuses the eye without time pressure, and Casual Miner accumulates progress with no fail state, which suits a drained moment.",
-      },
-      {
-        q: "Which game is best when I am restless",
-        a: "Stack Tower. The tap-to-drop loop is fast and physical, so it burns off nervous energy in short bursts better than the slower titles.",
-      },
-      {
-        q: "Can I play these on my phone",
-        a: "Yes. The four titles are built for both mouse and touch input, so they adapt to a phone screen without awkward zooming or hidden buttons.",
-      },
-      {
-        q: "How do I stop a break game from becoming a long session",
-        a: "Set a hard exit before you start, rotate titles to keep the experience fresh, and use the clean round-ends these games provide. Novelty and a planned stop are the two best defenses.",
-      },
-      {
-        q: "Is Oooze good for a short break",
-        a: "Yes, when you have a little more time. Oooze gives a sense of growth and a clear domination end, so it works in a ten-minute gap even though it is less bite-sized than Stack Tower.",
-      },
-      {
-        q: "Are these games suitable for the workplace",
-        a: "They are quiet, fast, and closeable, which makes them discreet during a real break. As with any leisure, use them between tasks rather than during them.",
-      },
-      {
-        q: "Do the games save progress",
-        a: "The arcade and puzzle titles save high scores locally, while idle titles like Casual Miner keep your accumulated state in the browser, all without an account.",
-      },
-      {
-        q: "Why pick browser games over apps for breaks",
-        a: "Apps add install weight and notification pressure. Browser titles open in a tab you already have open and close without leaving a process behind, which is exactly what a break needs.",
-      },
-    ],
-  },
-  {
-    slug: "relaxing-games-to-play-before-bed",
-    title: "Relaxing Games to Play Before Bed: Wind-Down Picks That Calm the Mind",
-    description:
-      "Relaxing games to play before bed can ease the slide into sleep. Here are calm wind-down picks, what to avoid, and how to build a screen routine that helps.",
-    date: "2026-07-13",
-    updatedAt: "2026-07-13",
-    category: "Casual Games",
-    tags: [
-      "relaxing games before bed",
-      "calm games to play at night",
-      "wind down games",
-      "sleep friendly games",
-      "games to help you sleep",
-      "low stress evening games",
-      "bedtime screen routine",
-    ],
-    authorId: "dev",
-    cover: "/images/articles/default-cover.svg",
-    primaryKeyword: "relaxing games before bed",
-    secondaryKeywords: [
-      "calm games to play at night",
-      "wind down games",
-      "sleep friendly games",
-      "games to help you sleep",
-    ],
-    lsiKeywords: [
-      "blue light",
-      "circadian rhythm",
-      "low arousal",
-      "slow loops",
-      "no timers",
-      "passive progress",
-      "evening routine",
-      "screen wind down",
-    ],
-    excerpt:
-      "A grounded look at relaxing games to play before bed: calm wind-down picks, the mechanics to avoid at night, and how to build a screen routine that helps rather than hurts sleep.",
-    content: `
+  faqs: [
+   {
+    q: "What are the best casual games for quick breaks",
+    a: "Stack Tower, Color Match, Oooze, and Casual Miner are strong picks because they load instantly, teach themselves, and let you leave at any round without penalty. Each fits a different kind of short gap in the day.",
+   },
+   {
+    q: "How long should a break game session last",
+    a: "As long as the gap you actually have. A precision title like Stack Tower works in under two minutes, while a growth title like Oooze suits a ten-minute window. Match the game to the time, not the other way around.",
+   },
+   {
+    q: "Do these games need downloads or accounts",
+    a: "No. All four run in the browser and open without installs, sign-ups, or plugins. You play in a tab and close it when the break ends.",
+   },
+   {
+    q: "Which game is best for stress relief",
+    a: "Color Match and Casual Miner are the calmest. Color Match focuses the eye without time pressure, and Casual Miner accumulates progress with no fail state, which suits a drained moment.",
+   },
+   {
+    q: "Which game is best when I am restless",
+    a: "Stack Tower. The tap-to-drop loop is fast and physical, so it burns off nervous energy in short bursts better than the slower titles.",
+   },
+   {
+    q: "Can I play these on my phone",
+    a: "Yes. The four titles are built for both mouse and touch input, so they adapt to a phone screen without awkward zooming or hidden buttons.",
+   },
+   {
+    q: "How do I stop a break game from becoming a long session",
+    a: "Set a hard exit before you start, rotate titles to keep the experience fresh, and use the clean round-ends these games provide. Novelty and a planned stop are the two best defenses.",
+   },
+   {
+    q: "Is Oooze good for a short break",
+    a: "Yes, when you have a little more time. Oooze gives a sense of growth and a clear domination end, so it works in a ten-minute gap even though it is less bite-sized than Stack Tower.",
+   },
+   {
+    q: "Are these games suitable for the workplace",
+    a: "They are quiet, fast, and closeable, which makes them discreet during a real break. As with any leisure, use them between tasks rather than during them.",
+   },
+   {
+    q: "Do the games save progress",
+    a: "The arcade and puzzle titles save high scores locally, while idle titles like Casual Miner keep your accumulated state in the browser, all without an account.",
+   },
+   {
+    q: "Why pick browser games over apps for breaks",
+    a: "Apps add install weight and notification pressure. Browser titles open in a tab you already have open and close without leaving a process behind, which is exactly what a break needs.",
+   },
+  ],
+ },
+ {
+  slug: "relaxing-games-to-play-before-bed",
+  title: "Relaxing Games to Play Before Bed: Wind-Down Picks That Calm the Mind",
+  description:
+   "Relaxing games to play before bed can ease the slide into sleep. Here are calm wind-down picks, what to avoid, and how to build a screen routine that helps.",
+  date: "2026-07-13",
+  updatedAt: "2026-07-13",
+  category: "Casual Games",
+  tags: [
+   "relaxing games before bed",
+   "calm games to play at night",
+   "wind down games",
+   "sleep friendly games",
+   "games to help you sleep",
+   "low stress evening games",
+   "bedtime screen routine",
+  ],
+  authorId: "dev",
+  cover: "/images/articles/default-cover.svg",
+  primaryKeyword: "relaxing games before bed",
+  secondaryKeywords: [
+   "calm games to play at night",
+   "wind down games",
+   "sleep friendly games",
+   "games to help you sleep",
+  ],
+  lsiKeywords: [
+   "blue light",
+   "circadian rhythm",
+   "low arousal",
+   "slow loops",
+   "no timers",
+   "passive progress",
+   "evening routine",
+   "screen wind down",
+  ],
+  excerpt:
+   "A grounded look at relaxing games to play before bed: calm wind-down picks, the mechanics to avoid at night, and how to build a screen routine that helps rather than hurts sleep.",
+  content: `
 <h2>The Screen Problem at Bedtime</h2>
 <p>The advice to avoid screens before sleep is sound but incomplete. Most people are not going to sit in the dark for an hour before bed, and telling them to is useless. The real question is not whether to use a screen, but what the screen is doing to the nervous system. A game that spikes your heart rate and dangles a reward is a poor choice at midnight. A game that slows your breathing and asks nothing is a different thing entirely.</p>
 <p>Relaxing games to play before bed exist in that second category. They are not sleep aids, and no one should promise they are. But the right title, used with the right settings, can bridge the gap between a busy day and a still room. The wrong one can keep you awake far longer than the level you are trying to beat.</p>
@@ -347,47 +347,48 @@ export const posts: BlogPost[] = [
 <li>Wikipedia, "Sleep hygiene" - overview of habits that support sleep, including screen timing and bedroom environment.</li>
 </ul>
 `,
-    faqs: [
-      {
-        q: "Are there relaxing games to play before bed",
-        a: "Yes. Casual Miner, Color Match, and Oooze are calm browser titles that lack timers and fail states, so they suit a wind-down better than competitive or reflex games.",
-      },
-      {
-        q: "Do games before bed hurt sleep",
-        a: "They can, depending on the game and the settings. Bright, fast, competitive titles raise arousal and suppress melatonin. Dim, slow, passive titles with muted sound are far less disruptive.",
-      },
-      {
-        q: "Why is blue light a problem at night",
-        a: "Blue-enriched screen light suppresses melatonin, the hormone that signals nighttime to the body. Using night mode and dimming the screen reduces this effect, though it does not remove it.",
-      },
-      {
-        q: "Which game is best right before sleep",
-        a: "Casual Miner. It is passive, has no fail state, and lets you leave at any moment, which matches the low-arousal state you want at the edge of sleep.",
-      },
-      {
-        q: "Is Stack Tower bad at bedtime",
-        a: "For the last minutes before sleep, yes. Its fast precision loop is mildly competitive and arousing. It works earlier in the evening to shake off the day, then hand off to a calmer title.",
-      },
-      {
-        q: "Should I mute the sound on bedtime games",
-        a: "Yes. Even pleasant audio trains the brain to expect more input, which delays the drop in arousal you need. Muting is one of the simplest improvements to any bedtime screen habit.",
-      },
-      {
-        q: "Can a game actually help me fall asleep",
-        a: "Not directly, but a calm, low-demand game can ease the transition from a busy day to a quiet room. It is a bridge, not a substitute for sleep hygiene like a dark, cool, screen-free bedroom.",
-      },
-      {
-        q: "How long should I play before bed",
-        a: "Keep it short and bounded. Set a stop time before you start, and aim for ten to twenty minutes of calm play well before lights-out rather than gaming until you feel drowsy.",
-      },
-      {
-        q: "Is Oooze calming enough for bedtime",
-        a: "Sometimes. Its motion is smooth and soft, but the growth goal can keep some players activated. If you notice pushing for a bigger blob, switch to Casual Miner instead.",
-      },
-      {
-        q: "What is the best bedtime screen routine",
-        a: "Dress the room dim and warm, mute sound, move from an active title like Stack Tower down to a passive one like Casual Miner, and stop with the screen off rather than fading mid-game.",
-      },
-    ],
-  },
+  faqs: [
+   {
+    q: "Are there relaxing games to play before bed",
+    a: "Yes. Casual Miner, Color Match, and Oooze are calm browser titles that lack timers and fail states, so they suit a wind-down better than competitive or reflex games.",
+   },
+   {
+    q: "Do games before bed hurt sleep",
+    a: "They can, depending on the game and the settings. Bright, fast, competitive titles raise arousal and suppress melatonin. Dim, slow, passive titles with muted sound are far less disruptive.",
+   },
+   {
+    q: "Why is blue light a problem at night",
+    a: "Blue-enriched screen light suppresses melatonin, the hormone that signals nighttime to the body. Using night mode and dimming the screen reduces this effect, though it does not remove it.",
+   },
+   {
+    q: "Which game is best right before sleep",
+    a: "Casual Miner. It is passive, has no fail state, and lets you leave at any moment, which matches the low-arousal state you want at the edge of sleep.",
+   },
+   {
+    q: "Is Stack Tower bad at bedtime",
+    a: "For the last minutes before sleep, yes. Its fast precision loop is mildly competitive and arousing. It works earlier in the evening to shake off the day, then hand off to a calmer title.",
+   },
+   {
+    q: "Should I mute the sound on bedtime games",
+    a: "Yes. Even pleasant audio trains the brain to expect more input, which delays the drop in arousal you need. Muting is one of the simplest improvements to any bedtime screen habit.",
+   },
+   {
+    q: "Can a game actually help me fall asleep",
+    a: "Not directly, but a calm, low-demand game can ease the transition from a busy day to a quiet room. It is a bridge, not a substitute for sleep hygiene like a dark, cool, screen-free bedroom.",
+   },
+   {
+    q: "How long should I play before bed",
+    a: "Keep it short and bounded. Set a stop time before you start, and aim for ten to twenty minutes of calm play well before lights-out rather than gaming until you feel drowsy.",
+   },
+   {
+    q: "Is Oooze calming enough for bedtime",
+    a: "Sometimes. Its motion is smooth and soft, but the growth goal can keep some players activated. If you notice pushing for a bigger blob, switch to Casual Miner instead.",
+   },
+   {
+    q: "What is the best bedtime screen routine",
+    a: "Dress the room dim and warm, mute sound, move from an active title like Stack Tower down to a passive one like Casual Miner, and stop with the screen off rather than fading mid-game.",
+   },
+  ],
+ },
 ];
+
