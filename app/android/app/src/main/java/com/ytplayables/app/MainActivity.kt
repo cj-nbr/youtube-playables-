@@ -31,14 +31,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         webView = findViewById(R.id.webview)
-        bottomNav = findViewById(R.id.bottom_navigation)
         splashContainer = findViewById(R.id.splash_container)
         nativeOverlay = findViewById(R.id.native_overlay)
         navHost = findViewById(R.id.nav_host)
         progressBar = findViewById(R.id.progress_bar)
 
         setupWebView()
-        setupBottomNavigation()
         setupSplash()
         handleDeepLink(intent)
     }
@@ -131,7 +129,7 @@ class MainActivity : AppCompatActivity() {
     private fun hideWebsiteChrome() {
         val js = """
             var style = document.createElement('style');
-            style.innerHTML = 'header, footer, nav, aside, .header, .footer, .navbar, .navigation, .sidebar, .ad-banner, .advertisement, .promo-banner, .site-header, .site-footer, .main-header, .main-footer, .top-nav, .profile-menu, .profile-dropdown, .user-menu, .account-menu, [data-testid="profile"], [data-testid="account"] { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; visibility: hidden !important; } body { margin: 0 !important; padding: 0 !important; }';
+            style.innerHTML = 'header, footer, nav, aside, .header, .footer, .navbar, .navigation, .sidebar, .ad-banner, .advertisement, .promo-banner, .site-header, .site-footer, .main-header, .main-footer, .top-nav, .profile-menu, .profile-dropdown, .user-menu, .account-menu, [data-testid="profile"], [data-testid="account"] { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; visibility: hidden !important; } body { margin: 0 !important; padding: 0 !important; } .ytp-app-bottom-nav { display: flex !important; }';
             document.head.appendChild(style);
         """.trimIndent()
         webView.evaluateJavascript("javascript:($js);", null)
