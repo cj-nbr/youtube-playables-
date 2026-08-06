@@ -64,18 +64,14 @@ import { authService } from "../lib/auth/auth-service";
         </div>
       </section>
 
-      <!-- Profile Tab -->
-      <section id="tab-profile" class="app-tab hidden">
-        <div id="profile-content">
-          <div class="card p-6">
-            <p class="text-sm text-body">Sign in to view your profile and stats.</p>
-            <div class="mt-4 flex gap-2">
-              <a href="/signup?isApp=true&platform=android&source=app" class="btn btn-primary h-10 px-5 text-sm">Sign Up</a>
-              <a href="/login?isApp=true&platform=android&source=app" class="btn btn-ghost h-10 px-5 text-sm">Log In</a>
-            </div>
-          </div>
-        </div>
-      </section>
+       <!-- Profile Tab -->
+       <section id="tab-profile" class="app-tab hidden">
+         <div id="profile-content">
+           <div class="card p-6">
+             <p class="text-sm text-body">Loading profile…</p>
+           </div>
+         </div>
+       </section>
     </main>
 
     <AppBottomNav />
@@ -90,11 +86,14 @@ import { authService } from "../lib/auth/auth-service";
 
         const tabs = document.querySelectorAll('.app-tab');
         const navLinks = document.querySelectorAll('[data-nav-tab]');
-        
+
         function showTab(tabId) {
           tabs.forEach(tab => tab.classList.add('hidden'));
           const target = document.getElementById('tab-' + tabId);
           if (target) target.classList.remove('hidden');
+          if (tabId === 'profile') {
+            loadProfile();
+          }
         }
 
         navLinks.forEach(link => {
@@ -106,6 +105,47 @@ import { authService } from "../lib/auth/auth-service";
             }
           });
         });
+
+        async function loadProfile() {
+          const profileContent = document.getElementById('profile-content');
+          if (!profileContent) return;
+          try {
+            const res = await fetch('/api/app/profile', { headers: { 'X-App-Mode': 'true' } });
+            if (!res.ok) throw new Error('Failed');
+            const data = await res.json();
+            profileContent.innerHTML =
+              '<div class="card p-6">' +
+              '<div class="flex items-center gap-4">' +
+              '<div class="h-16 w-16 rounded-full bg-gradient-to-br from-[#007cf0] to-[#00dfd8] flex items-center justify-center text-white text-xl font-bold">' +
+              (data.full_name || data.name || 'U').charAt(0).toUpperCase() +
+              '</div>' +
+              '<div>' +
+              '<h3 class="text-lg font-semibold text-ink">' + (data.full_name || data.name || 'Player') + '</h3>' +
+              '<p class="text-sm text-body">' + (data.email || data.phone || 'Guest') + '</p>' +
+              '</div>' +
+              '</div>' +
+              '<div class="mt-6 grid grid-cols-2 gap-4">' +
+              '<div class="text-center p-3 rounded-lg bg-canvas-soft">' +
+              '<p class="text-lg font-bold text-ink">' + (data.coins || 0) + '</p>' +
+              '<p class="text-xs text-body">Coins</p>' +
+              '</div>' +
+              '<div class="text-center p-3 rounded-lg bg-canvas-soft">' +
+              '<p class="text-lg font-bold text-ink">' + (data.current_level || 1) + '</p>' +
+              '<p class="text-xs text-body">Level</p>' +
+              '</div>' +
+              '</div>' +
+              '</div>';
+          } catch (err) {
+            profileContent.innerHTML =
+              '<div class="card p-6">' +
+              '<p class="text-sm text-body">Sign in to view your profile and stats.</p>' +
+              '<div class="mt-4 flex gap-2">' +
+              '<a href="/signup?isApp=true&platform=android&source=app" class="btn btn-primary h-10 px-5 text-sm">Sign Up</a>' +
+              '<a href="/login?isApp=true&platform=android&source=app" class="btn btn-ghost h-10 px-5 text-sm">Log In</a>' +
+              '</div>' +
+              '</div>';
+          }
+        }
       } catch {}
     })();
   </script>
