@@ -1,162 +1,170 @@
 [
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_search.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_search.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_btn_primary_pressed.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\btn_primary_pressed.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_bg_primary.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/bg_primary.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_btn_primary.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\btn_primary.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "com.ytplayables.app-main-70:/mipmap-anydpi/ic_launcher.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\layout_activity_error.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\activity_error.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_back.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_back.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_error.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_error.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\layout_activity_offline.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\activity_offline.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_btn_primary_normal.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/btn_primary_normal.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_back.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_back.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_badge_genre.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/badge_genre.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/xml_network_security_config.xml.flat",
-        "source": "com.ytplayables.app-main-70:/xml/network_security_config.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_home.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_home.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/layout_activity_game.xml.flat",
-        "source": "com.ytplayables.app-main-70:/layout/activity_game.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_bg_primary.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\bg_primary.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/color_bottom_nav_tint.xml.flat",
-        "source": "com.ytplayables.app-main-70:/color/bottom_nav_tint.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_games.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_games.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/layout_activity_splash.xml.flat",
-        "source": "com.ytplayables.app-main-70:/layout/activity_splash.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\layout_item_game_card.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\item_game_card.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_favorite.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_favorite.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\mipmap-anydpi\\ic_launcher.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/layout_activity_error.xml.flat",
-        "source": "com.ytplayables.app-main-70:/layout/activity_error.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\layout_activity_game.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\activity_game.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_home.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_home.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_btn_primary_normal.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\btn_primary_normal.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_profile.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_profile.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_bg_surface.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\bg_surface.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_favorite_border.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_favorite_border.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\anim_slide_down.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\anim\\slide_down.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_search_bg.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/search_bg.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_offline.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_offline.xml"
+    },
+    {
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\anim_fade_in.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\anim\\fade_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
         "merged": "com.ytplayables.app-debug-68:/layout_activity_main.xml.flat",
         "source": "com.ytplayables.app-main-70:/layout/activity_main.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_btn_primary.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/btn_primary.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_search.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_search.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_games.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_games.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\menu\\bottom_nav_menu.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/xml_backup_rules.xml.flat",
-        "source": "com.ytplayables.app-main-70:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\xml_network_security_config.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\xml\\network_security_config.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/layout_activity_offline.xml.flat",
-        "source": "com.ytplayables.app-main-70:/layout/activity_offline.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_favorite.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_favorite.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/anim_slide_down.xml.flat",
-        "source": "com.ytplayables.app-main-70:/anim/slide_down.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_circle_accent.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\circle_accent.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_circle_accent.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/circle_accent.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_badge_genre.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\badge_genre.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_menu.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_menu.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_card_bg.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/card_bg.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/anim_slide_up.xml.flat",
-        "source": "com.ytplayables.app-main-70:/anim/slide_up.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_profile.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_profile.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/mipmap-anydpi_ic_launcher_round.xml.flat",
-        "source": "com.ytplayables.app-main-70:/mipmap-anydpi/ic_launcher_round.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_card_bg.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\card_bg.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_offline.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_offline.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_splash_background.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\splash_background.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.ytplayables.app-main-70:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_menu.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_menu.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/anim_fade_out.xml.flat",
-        "source": "com.ytplayables.app-main-70:/anim/fade_out.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\mipmap-anydpi\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_btn_primary_pressed.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/btn_primary_pressed.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_error.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_error.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/layout_item_game_card.xml.flat",
-        "source": "com.ytplayables.app-main-70:/layout/item_game_card.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_favorite_border.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_favorite_border.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_bg_surface.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/bg_surface.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_ic_categories.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\ic_categories.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/anim_fade_in.xml.flat",
-        "source": "com.ytplayables.app-main-70:/anim/fade_in.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\color_bottom_nav_tint.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\color\\bottom_nav_tint.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.ytplayables.app-main-70:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_search_bg.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\search_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\drawable_bg_canvas_soft_2.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\drawable\\bg_canvas_soft_2.xml"
     },
     {
         "merged": "com.ytplayables.app-debug-68:/menu_bottom_nav_menu.xml.flat",
         "source": "com.ytplayables.app-main-70:/menu/bottom_nav_menu.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_ic_categories.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/ic_categories.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\anim_fade_out.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\anim\\fade_out.xml"
     },
     {
-        "merged": "com.ytplayables.app-debug-68:/drawable_bg_canvas_soft_2.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/bg_canvas_soft_2.xml"
-    },
-    {
-        "merged": "com.ytplayables.app-debug-68:/drawable_splash_background.xml.flat",
-        "source": "com.ytplayables.app-main-70:/drawable/splash_background.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-debug-68:\\anim_slide_up.xml.flat",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\anim\\slide_up.xml"
     }
 ]

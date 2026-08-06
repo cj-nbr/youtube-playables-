@@ -1,26 +1,30 @@
 [
     {
-        "merged": "com.ytplayables.app-mergeDebugResources-67:/layout/activity_error.xml",
-        "source": "com.ytplayables.app-main-70:/layout/activity_error.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-mergeDebugResources-67:\\layout\\activity_offline.xml",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\activity_offline.xml"
+    },
+    {
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-mergeDebugResources-67:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-mergeDebugResources-67:\\layout\\activity_error.xml",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\activity_error.xml"
+    },
+    {
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-mergeDebugResources-67:\\layout\\activity_splash.xml",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\activity_splash.xml"
     },
     {
         "merged": "com.ytplayables.app-mergeDebugResources-67:/layout/activity_main.xml",
         "source": "com.ytplayables.app-main-70:/layout/activity_main.xml"
     },
     {
-        "merged": "com.ytplayables.app-mergeDebugResources-67:/layout/activity_offline.xml",
-        "source": "com.ytplayables.app-main-70:/layout/activity_offline.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-mergeDebugResources-67:\\layout\\item_game_card.xml",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\item_game_card.xml"
     },
     {
-        "merged": "com.ytplayables.app-mergeDebugResources-67:/layout/activity_game.xml",
-        "source": "com.ytplayables.app-main-70:/layout/activity_game.xml"
-    },
-    {
-        "merged": "com.ytplayables.app-mergeDebugResources-67:/layout/activity_splash.xml",
-        "source": "com.ytplayables.app-main-70:/layout/activity_splash.xml"
-    },
-    {
-        "merged": "com.ytplayables.app-mergeDebugResources-67:/layout/item_game_card.xml",
-        "source": "com.ytplayables.app-main-70:/layout/item_game_card.xml"
+        "merged": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-mergeDebugResources-67:\\layout\\activity_game.xml",
+        "source": "C:\\Users\\jhunu\\.gradle\\daemon\\8.7\\com.ytplayables.app-main-70:\\layout\\activity_game.xml"
     }
 ]

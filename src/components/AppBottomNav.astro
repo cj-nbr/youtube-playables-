@@ -1,8 +1,8 @@
 ---
 const tabs = [
-  { id: "home", label: "Home", href: "/playables?isApp=true&platform=android&source=app", icon: "home" },
-  { id: "games", label: "Games", href: "/playables?isApp=true&platform=android&source=app", icon: "games" },
-  { id: "profile", label: "Profile", href: "/profile?isApp=true&platform=android&source=app", icon: "profile" },
+  { id: "home", label: "Home", href: "/app?isApp=true&platform=android&source=app", icon: "home" },
+  { id: "games", label: "Games", href: "/app?isApp=true&platform=android&source=app", icon: "games" },
+  { id: "profile", label: "Profile", href: "/app?isApp=true&platform=android&source=app", icon: "profile" },
 ];
 ---
 
@@ -20,20 +20,3 @@ const tabs = [
     ))}
   </div>
 </nav>
-
-<script is:inline>
-  (() => {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const isApp = params.get('isApp') === 'true';
-      if (isApp) {
-        const nav = document.querySelector('.ytp-app-bottom-nav');
-        if (nav) {
-          nav.classList.remove('hidden');
-          nav.style.display = 'flex';
-        }
-        document.body.style.paddingBottom = '64px';
-      }
-    } catch {}
-  })();
-</script>

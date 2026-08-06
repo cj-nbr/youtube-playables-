@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ytplayables.app.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -22,9 +21,6 @@ import java.lang.String;
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   private final ConstraintLayout rootView;
-
-  @NonNull
-  public final BottomNavigationView bottomNavigation;
 
   @NonNull
   public final FrameLayout nativeOverlay;
@@ -54,13 +50,12 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FrameLayout webviewContainer;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull BottomNavigationView bottomNavigation, @NonNull FrameLayout nativeOverlay,
-      @NonNull FrameLayout navHost, @NonNull ProgressBar progressBar,
-      @NonNull ConstraintLayout rootLayout, @NonNull FrameLayout splashContainer,
-      @NonNull ImageView splashLogo, @NonNull ProgressBar splashProgress, @NonNull WebView webview,
+      @NonNull FrameLayout nativeOverlay, @NonNull FrameLayout navHost,
+      @NonNull ProgressBar progressBar, @NonNull ConstraintLayout rootLayout,
+      @NonNull FrameLayout splashContainer, @NonNull ImageView splashLogo,
+      @NonNull ProgressBar splashProgress, @NonNull WebView webview,
       @NonNull FrameLayout webviewContainer) {
     this.rootView = rootView;
-    this.bottomNavigation = bottomNavigation;
     this.nativeOverlay = nativeOverlay;
     this.navHost = navHost;
     this.progressBar = progressBar;
@@ -99,12 +94,6 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.bottom_navigation;
-      BottomNavigationView bottomNavigation = ViewBindings.findChildViewById(rootView, id);
-      if (bottomNavigation == null) {
-        break missingId;
-      }
-
       id = R.id.native_overlay;
       FrameLayout nativeOverlay = ViewBindings.findChildViewById(rootView, id);
       if (nativeOverlay == null) {
@@ -155,8 +144,8 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNavigation, nativeOverlay,
-          navHost, progressBar, rootLayout, splashContainer, splashLogo, splashProgress, webview,
+      return new ActivityMainBinding((ConstraintLayout) rootView, nativeOverlay, navHost,
+          progressBar, rootLayout, splashContainer, splashLogo, splashProgress, webview,
           webviewContainer);
     }
     String missingId = rootView.getResources().getResourceName(id);

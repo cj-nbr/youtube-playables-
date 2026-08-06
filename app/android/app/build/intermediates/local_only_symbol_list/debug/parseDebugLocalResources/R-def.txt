@@ -61,7 +61,6 @@ drawable ic_profile
 drawable ic_search
 drawable search_bg
 drawable splash_background
-id bottom_navigation
 id btn_back
 id btn_favorite
 id btn_menu
@@ -85,8 +84,6 @@ id games_error
 id games_recycler
 id games_retry
 id native_overlay
-id nav_categories
-id nav_favorites
 id nav_games
 id nav_home
 id nav_host

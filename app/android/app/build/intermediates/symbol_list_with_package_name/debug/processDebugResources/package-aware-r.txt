@@ -3393,7 +3393,6 @@ id below
 id bestChoice
 id blocking
 id bottom
-id bottom_navigation
 id bounce
 id bounceBoth
 id bounceEnd
@@ -3641,9 +3640,7 @@ id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
 id native_overlay
-id nav_categories
 id nav_controller_view_tag
-id nav_favorites
 id nav_games
 id nav_home
 id nav_host

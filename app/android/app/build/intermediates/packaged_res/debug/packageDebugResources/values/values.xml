@@ -38,7 +38,7 @@
     <string name="achievements">Achievements</string>
     <string name="ad_free">Ad-Free</string>
     <string name="all_games">All Games</string>
-    <string name="app_name">YouTube Playables</string>
+    <string name="app_name">Playables</string>
     <string name="app_name_short">Playables</string>
     <string name="back">Back</string>
     <string name="build_number">Build Number</string>
@@ -85,7 +85,7 @@
     <string name="pause">Pause</string>
     <string name="play_store">Open in Play Store</string>
     <string name="popular_games">Popular Games</string>
-    <string name="powered_by">Powered by YouTube Playables</string>
+    <string name="powered_by">Powered by Playables</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="profile">Profile</string>
     <string name="pull_to_refresh">Pull to refresh</string>
