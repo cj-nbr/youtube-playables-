@@ -36,29 +36,42 @@ class AuthService {
   await this.sessionCheckPromise;
  }
 
- private async restoreSession() {
+private async restoreSession() {
+  // Add timeout to prevent hanging indefinitely
+  const timeoutPromise = new Promise((_, reject) => 
+    setTimeout(() => reject(new Error('Session check timeout')), 10000)
+  );
+  
   try {
-   const { data: { session } } = await supabase.auth.getSession();
-   console.log("[Auth] restoreSession got session:", session?.user ? "yes" : "no");
-   if (session?.user) {
-    this.user = {
-     id: session.user.id,
-     email: session.user.email,
-     phone: session.user.phone,
-     ...session.user.user_metadata,
-    };
-    await this.fetchProfile();
-   } else {
+    const { data: { session } } = await Promise.race([
+      supabase.auth.getSession(),
+      timeoutPromise
+    ]);
+    console.log("[Auth] restoreSession got session:", session?.user ? "yes" : "no");
+    if (session?.user) {
+      this.user = {
+        id: session.user.id,
+        email: session.user.email,
+        phone: session.user.phone,
+        ...session.user.user_metadata,
+      };
+      await this.fetchProfile();
+    } else {
+      this.user = null;
+      this.profile = null;
+    }
+  } catch (err) {
+    // Handle timeout or other errors
+    if (err.message === 'Session check timeout') {
+      console.warn("[Auth] Session check timed out");
+    } else {
+      console.error("[Auth] Failed to restore session:", err);
+    }
     this.user = null;
     this.profile = null;
-   }
-  } catch (err) {
-   console.error("[Auth] Failed to restore session:", err);
-   this.user = null;
-   this.profile = null;
   } finally {
-   this.loading = false;
-   this.notify();
+    this.loading = false;
+    this.notify();
 
    if (typeof window !== "undefined") {
     if ((this as any)._unsubscribe) {
@@ -270,8 +283,10 @@ class AuthService {
    if (!this.user.email && userDbData.phone) {
     this.user.email = this.user.email || null;
    }
-  } catch (err) {
-   console.error("Failed to fetch profile:", err);
+    } catch (err) {
+    console.error("Failed to fetch profile:", err);
+    this.loading = false;
+    this.notify();
   }
  }
 
