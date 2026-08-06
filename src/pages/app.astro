@@ -1,0 +1,112 @@
+---
+import AppBottomNav from "../components/AppBottomNav.astro";
+import { games, popularGames, newGames } from "../shared/games";
+import { gameCover } from "../shared/utils";
+import { authService } from "../lib/auth/auth-service";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Playables App" description="Playables mobile app interface">
+  <div class="ytp-app-page min-h-screen">
+    <!-- App Header -->
+    <div class="app-header sticky top-0 z-40 border-b border-hairline bg-canvas/95 backdrop-blur-md">
+      <div class="mx-auto flex max-w-[1400px] items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-2">
+          <span class="text-lg font-bold tracking-tight text-ink">Playables</span>
+        </div>
+        <div id="app-header-profile" class="flex items-center gap-2">
+        </div>
+      </div>
+    </div>
+
+    <!-- App Content -->
+    <main class="px-4 py-6 pb-24">
+      <!-- Home Tab -->
+      <section id="tab-home" class="app-tab">
+        <h2 class="text-xl font-semibold text-ink mb-4">Continue Playing</h2>
+        <div id="recent-games" class="grid gap-3 mb-8">
+          <p class="text-sm text-body">No recent games yet. Start playing!</p>
+        </div>
+
+        <h2 class="text-xl font-semibold text-ink mb-4">Popular Games</h2>
+        <div class="grid gap-3">
+          {popularGames(6).map((game) => (
+            <a href={`/${game.id}?isApp=true&platform=android&source=app`} class="card card-hover flex items-center gap-3 p-3">
+              <div class="h-14 w-20 rounded-lg overflow-hidden bg-canvas-soft-2 flex-shrink-0">
+                <img src={gameCover(game.id)} alt={game.title} class="h-full w-full object-cover" loading="lazy" />
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-sm font-semibold text-ink truncate">{game.title}</h3>
+                <p class="text-xs text-body truncate mt-0.5">{game.genre.slice(0, 2).join(", ")}</p>
+              </div>
+              <span class="text-xs font-medium text-link">Play</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Games Tab -->
+      <section id="tab-games" class="app-tab hidden">
+        <h2 class="text-xl font-semibold text-ink mb-4">All Games</h2>
+        <div class="grid gap-3">
+          {games.map((game) => (
+            <a href={`/${game.id}?isApp=true&platform=android&source=app`} class="card card-hover flex items-center gap-3 p-3">
+              <div class="h-14 w-20 rounded-lg overflow-hidden bg-canvas-soft-2 flex-shrink-0">
+                <img src={gameCover(game.id)} alt={game.title} class="h-full w-full object-cover" loading="lazy" />
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-sm font-semibold text-ink truncate">{game.title}</h3>
+                <p class="text-xs text-body truncate mt-0.5">{game.genre.slice(0, 2).join(", ")}</p>
+              </div>
+              <span class="text-xs font-medium text-link">Play</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Profile Tab -->
+      <section id="tab-profile" class="app-tab hidden">
+        <div id="profile-content">
+          <div class="card p-6">
+            <p class="text-sm text-body">Sign in to view your profile and stats.</p>
+            <div class="mt-4 flex gap-2">
+              <a href="/signup?isApp=true&platform=android&source=app" class="btn btn-primary h-10 px-5 text-sm">Sign Up</a>
+              <a href="/login?isApp=true&platform=android&source=app" class="btn btn-ghost h-10 px-5 text-sm">Log In</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <AppBottomNav />
+  </div>
+
+  <script is:inline>
+    (() => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const isApp = params.get('isApp') === 'true';
+        if (!isApp) return;
+
+        const tabs = document.querySelectorAll('.app-tab');
+        const navLinks = document.querySelectorAll('[data-nav-tab]');
+        
+        function showTab(tabId) {
+          tabs.forEach(tab => tab.classList.add('hidden'));
+          const target = document.getElementById('tab-' + tabId);
+          if (target) target.classList.remove('hidden');
+        }
+
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            const tabId = link.getAttribute('data-nav-tab');
+            if (tabId) {
+              e.preventDefault();
+              showTab(tabId);
+            }
+          });
+        });
+      } catch {}
+    })();
+  </script>
+</Layout>

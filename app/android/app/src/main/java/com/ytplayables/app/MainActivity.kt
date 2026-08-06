@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadUrlWithAppParam() {
         val baseUrl = YTPlayablesApplication.BASE_URL
-        val url = "$baseUrl/playables?isApp=true&platform=android&source=app"
+        val url = "$baseUrl/app?isApp=true&platform=android&source=app"
         webView.loadUrl(url)
     }
 
@@ -140,30 +140,6 @@ class MainActivity : AppCompatActivity() {
         webView.evaluateJavascript("javascript:($js);", null)
     }
 
-    private fun setupBottomNavigation() {
-        bottomNav.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> {
-                    loadUrlWithAppParam()
-                    currentTab = R.id.nav_home
-                    true
-                }
-                R.id.nav_games -> {
-                    val url = "${YTPlayablesApplication.BASE_URL}/playables?isApp=true&platform=android&source=app"
-                    webView.loadUrl(url)
-                    currentTab = R.id.nav_games
-                    true
-                }
-                R.id.nav_profile -> {
-                    loadUrlWithAppParam()
-                    currentTab = R.id.nav_profile
-                    true
-                }
-                else -> false
-            }
-        }
-    }
-
     private fun setupSplash() {
         splashContainer.postDelayed({
             hideSplash()
@@ -198,8 +174,7 @@ class MainActivity : AppCompatActivity() {
                 loadCategory(category)
             }
             url.contains("ytplayables://settings") -> {
-                currentTab = R.id.nav_profile
-                bottomNav.selectedItemId = R.id.nav_profile
+                loadUrlWithAppParam()
             }
         }
     }
@@ -213,7 +188,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadCategory(category: String) {
-        val url = "${YTPlayablesApplication.BASE_URL}/playables?category=$category&isApp=true&platform=android&source=app"
+        val url = "${YTPlayablesApplication.BASE_URL}/app?category=$category&isApp=true&platform=android&source=app"
         webView.loadUrl(url)
     }
 
