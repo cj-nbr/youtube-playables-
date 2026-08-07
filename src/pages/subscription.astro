@@ -1,48 +1,54 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { authService } from "../lib/auth/auth-service";
-import { subscriptionService } from "../services/subscription-service";
 
 const { user, loading, error } = authService.getState();
-const { subscription, isLoading: subLoading } = subscriptionService.getState();
-
-// Redirect logic will be handled in the script below
 ---
+
 <Layout title="Subscription — PLAYABLES" description="Choose your premium subscription plan">
   <a href="#main" class="skip-link">Skip to content</a>
   <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
-    {#if loading || subLoading}
+    <!-- Loading State -->
+    {loading && (
       <div id="sub-loading" class="mx-auto max-w-2xl py-20 text-center">
         <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
         <p class="mt-4 text-body">Loading subscription options...</p>
       </div>
-    {:else if error}
+    )}
+    
+    <!-- Error State -->
+    {error && !loading && (
       <div id="sub-error" class="mx-auto max-w-2xl py-20 text-center">
         <p class="text-body text-rose-500 mb-4">{error}</p>
         <button onclick="window.location.reload()" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Retry</button>
       </div>
-    {:else if !user}
-      <!-- This shouldn't happen due to redirect, but just in case -->
+    )}
+    
+    <!-- Not Logged In -->
+    {!loading && !user && !error && (
       <div id="sub-login" class="mx-auto max-w-2xl py-20 text-center">
         <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
         <p class="text-body mb-6">You need to be logged in to view subscription plans.</p>
         <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
       </div>
-    {:else if subscription && subscription.active}
-      <!-- User has active subscription, redirect to profile or home -->
+    )}
+    
+    <!-- Has Active Subscription -->
+    {user && user.subscription && user.subscription.active && !loading && !error && (
       <div id="sub-has-sub" class="mx-auto max-w-2xl py-20 text-center">
         <p class="text-body mb-4">You already have an active subscription!</p>
         <a href="/profile" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Go to Profile</a>
       </div>
-    {:else}
-      <!-- Show subscription plans -->
+    )}
+    
+    <!-- Subscription Plans -->
+    {!loading && user && (!user.subscription || !user.subscription.active) && !error && (
       <div id="sub-plans" class="mx-auto max-w-2xl py-20">
         <h1 class="text-3xl font-bold text-ink mb-8 text-center">Choose Your Plan</h1>
         <p class="text-body text-center mb-12">Unlock premium features with a flexible subscription</p>
         
         <div class="grid gap-6 md:grid-cols-3">
-          {/* Basic Plan */}
-          <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow">
+          <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow" data-plan="basic">
             <div class="text-2xl font-bold text-[#007cf0] mb-2">Basic</div>
             <div class="text-3xl font-bold text-ink mb-4">$0.90</div>
             <div class="text-sm text-body mb-2">/ day</div>
@@ -52,16 +58,12 @@ const { subscription, isLoading: subLoading } = subscriptionService.getState();
               <li>• 10 daily coins</li>
               <li>• Standard support</li>
             </ul>
-            <button 
-              class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors"
-              onclick="selectPlan('basic', 0.90, 1)"
-            >
+            <button class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors plan-select" data-plan="basic" data-price="0.90" data-duration="1">
               Select Plan
             </button>
           </div>
           
-          {/* Intermediate Plan - Popular */}
-          <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow ring-2 ring-[#007cf0]/20">
+          <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow ring-2 ring-[#007cf0]/20" data-plan="intermediate">
             <div class="text-2xl font-bold text-[#007cf0] mb-2">Intermediate</div>
             <div class="text-3xl font-bold text-ink mb-4">$18</div>
             <div class="text-sm text-body mb-2">/ 30 days</div>
@@ -74,16 +76,12 @@ const { subscription, isLoading: subLoading } = subscriptionService.getState();
               <li>• Priority support</li>
               <li>• Ad-free experience</li>
             </ul>
-            <button 
-              class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors"
-              onclick="selectPlan('intermediate', 18, 30)"
-            >
+            <button class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors plan-select" data-plan="intermediate" data-price="18" data-duration="30">
               Select Plan
             </button>
           </div>
           
-          {/* Premium Plan - Best Value */}
-          <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow">
+          <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow" data-plan="premium">
             <div class="text-2xl font-bold text-[#007cf0] mb-2">Premium</div>
             <div class="text-3xl font-bold text-ink mb-4">$54</div>
             <div class="text-sm text-body mb-2">/ 12 months</div>
@@ -98,192 +96,118 @@ const { subscription, isLoading: subLoading } = subscriptionService.getState();
               <li>• Early access to new features</li>
               <li>• Monthly coin bonus</li>
             </ul>
-            <button 
-              class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors"
-              onclick="selectPlan('premium', 54, 365)"
-            >
+            <button class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors plan-select" data-plan="premium" data-price="54" data-duration="365">
               Select Plan
             </button>
           </div>
         </div>
         
-        {/* Coupon Section */}
         <div class="mt-8">
           <h2 class="text-xl font-semibold text-ink mb-4">Have a coupon?</h2>
           <form id="coupon-form" class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-            <input 
-              type="text" 
-              id="coupon-input"
-              placeholder="Enter coupon code (e.g., CJNBR100)"
-              class="px-4 py-2 border border-hairline rounded-lg w-full sm:w-64"
-            />
-            <button 
-              type="submit"
-              class="inline-flex rounded-pill bg-[#007cf0] px-4 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors w-full sm:w-auto"
-            >
-              Apply Coupon
-            </button>
+            <input type="text" id="coupon-input" placeholder="Enter coupon code (e.g., CJNBR100)" class="px-4 py-2 border border-hairline rounded-lg w-full sm:w-64" />
+            <button type="submit" class="inline-flex rounded-pill bg-[#007cf0] px-4 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors w-full sm:w-auto">Apply Coupon</button>
           </form>
           <p id="coupon-message" class="mt-2 text-sm text-body hidden"></p>
         </div>
         
-        {/* Selected Plan Summary */}
         <div id="plan-summary" class="mt-10 p-6 bg-canvas-hover rounded-xl border border-hairline hidden">
           <h2 class="text-xl font-semibold text-ink mb-4">Selected Plan</h2>
-          <div id="selected-plan-details" class="space-y-3 text-sm text-body">
-          </div>
-          <button 
-            id="checkout-button"
-            class="mt-6 w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors"
-          >
+          <div id="selected-plan-details" class="space-y-3 text-sm text-body"></div>
+          <button id="checkout-button" class="mt-6 w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors">
             Proceed to Checkout
           </button>
         </div>
       </div>
-    {/if}
+    )}
   </main>
-
+  
   <script type="module">
-    import { authService } from "../lib/auth/auth-service.js";
-    import { subscriptionService } from "../services/subscription-service.js";
-
-    // Initialize state from services
-    let authState = authService.getState();
-    let subState = subscriptionService.getState();
-
-    // DOM Elements
-    const couponForm = document.getElementById("coupon-form");
-    const couponInput = document.getElementById("coupon-input");
-    const couponMessage = document.getElementById("coupon-message");
-    const planSummary = document.getElementById("plan-summary");
-    const selectedPlanDetails = document.getElementById("selected-plan-details");
-    const checkoutButton = document.getElementById("checkout-button");
-
-    let selectedPlan = null;
-    let couponDiscount = 0; // percentage
-    let couponCode = "";
-
-    // Update UI based on auth state
-    function updateAuthUI(state) {
-      authState = state;
-      // Redirects are handled in the Astro template via conditional rendering
-      // But we can also do client-side redirects if needed
-      if (!state.user && window.location.pathname === "/subscription") {
-        window.location.href = "/login";
-      }
-    }
-
-    // Update UI based on subscription state
-    function updateSubUI(state) {
-      subState = state;
-      if (state.subscription && state.subscription.active && window.location.pathname === "/subscription") {
-        window.location.href = "/profile";
-      }
-    }
-
-    // Subscribe to state changes
-    authService.subscribe(updateAuthUI);
-    subscriptionService.subscribe(updateSubUI);
-
-    // Initial check
-    updateAuthUI(authState);
-    updateSubUI(subState);
-
-    // Plan selection
-    window.selectPlan = (planName, price, durationDays) => {
-      selectedPlan = { name: planName, price: price, duration: durationDays };
-      
-      // Update UI
-      document.querySelectorAll(".plan-card").forEach(card => {
-        card.classList.remove("ring-2", "ring-[#007cf0]/20");
+    // Plan selection handler
+    document.querySelectorAll('.plan-select').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const selectedPlan = this.dataset.plan;
+        const price = parseFloat(this.dataset.price);
+        const duration = parseInt(this.dataset.duration);
+        
+        window.selectedPlan = { name: selectedPlan, price: price, duration: duration };
+        showPlanSummary(selectedPlan, price, duration);
       });
-      event.target.closest(".plan-card").classList.add("ring-2", "ring-[#007cf0]/20");
+    });
+    
+    function showPlanSummary(planName, price, duration) {
+      const summary = document.getElementById('plan-summary');
+      const details = document.getElementById('selected-plan-details');
+      const couponCode = window.couponCode || '';
+      const discount = window.couponDiscount || 0;
+      const finalPrice = (price * (1 - discount / 100)).toFixed(2);
       
-      // Show summary
-      planSummary.classList.remove("hidden");
-      selectedPlanDetails.innerHTML = `
-        <div><span class="font-medium">Plan:</span> ${selectedPlan.name.charAt(0).toUpperCase() + selectedPlan.name.slice(1)}</div>
-        <div><span class="font-medium">Price:</span> $${selectedPlan.price.toFixed(2)}</div>
-        <div><span class="font-medium">Duration:</span> ${selectedPlan.duration} ${selectedPlan.duration === 1 ? "day" : "days"}</div>
-        ${couponCode ? `<div><span class="font-medium">Coupon:</span> ${couponCode} (-${couponDiscount}%)</div>` : ""}
-        <div class="mt-2 pt-2 border-t border-hairline">
-          <span class="font-medium">Total:</span> $${(selectedPlan.price * (1 - couponDiscount/100)).toFixed(2)}
-        </div>
-      `;
-    };
-
-    // Coupon application
-    couponForm.addEventListener("submit", async (e) => {
+      details.innerHTML = '<div><span class="font-medium">Plan:</span> ' + 
+        planName.charAt(0).toUpperCase() + planName.slice(1) + '</div>' +
+        '<div><span class="font-medium">Price:</span> $' + price.toFixed(2) + '</div>' +
+        '<div><span class="font-medium">Duration:</span> ' + duration + ' ' + (duration === 1 ? 'day' : 'days') + '</div>';
+        
+      if (couponCode) {
+        details.innerHTML += '<div><span class="font-medium">Coupon:</span> ' + couponCode + ' (-' + discount + '%)</div>';
+      }
+      
+      details.innerHTML += '<div class="mt-2 pt-2 border-t border-hairline"><span class="font-medium">Total:</span> $' + finalPrice + '</div>';
+      summary.classList.remove('hidden');
+    }
+    
+    // Coupon form handler
+    const couponForm = document.getElementById('coupon-form');
+    const couponInput = document.getElementById('coupon-input');
+    const couponMessage = document.getElementById('coupon-message');
+    
+    couponForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const code = couponInput.value.trim().toUpperCase();
       
       if (!code) {
-        showCouponMessage("Please enter a coupon code", "error");
+        showCouponMessage('Please enter a coupon code', 'error');
         return;
       }
-
-      try {
-        // In a real app, this would call an API to validate the coupon
-        // For now, we'll simulate the CJNBR100 coupon for Premium plan
-        if (code === "CJNBR100") {
-          if (!selectedPlan || selectedPlan.name !== "premium") {
-            showCouponMessage("This coupon is only valid for the Premium plan", "error");
-            return;
-          }
-          couponCode = code;
-          couponDiscount = 100; // 100% off
-          showCouponMessage("Coupon applied successfully! 100% off Premium plan", "success");
-          // Update the summary to reflect discount
-          if (selectedPlan) {
-            window.selectPlan(selectedPlan.name, selectedPlan.price, selectedPlan.duration);
-          }
-        } else {
-          showCouponMessage("Invalid coupon code", "error");
+      
+      if (code === 'CJNBR100') {
+        if (!window.selectedPlan || window.selectedPlan.name !== 'premium') {
+          showCouponMessage('This coupon is only valid for the Premium plan', 'error');
+          return;
         }
-      } catch (err) {
-        showCouponMessage("Error validating coupon", "error");
-        console.error(err);
+        window.couponCode = code;
+        window.couponDiscount = 100;
+        showCouponMessage('Coupon applied successfully! 100% off Premium plan', 'success');
+        if (window.selectedPlan) {
+          showPlanSummary(window.selectedPlan.name, window.selectedPlan.price, window.selectedPlan.duration);
+        }
+      } else {
+        showCouponMessage('Invalid coupon code', 'error');
       }
     });
-
+    
     function showCouponMessage(message, type) {
       couponMessage.textContent = message;
-      couponMessage.className = `mt-2 text-sm ${type === "error" ? "text-rose-500" : "text-green-500"}`
-      couponMessage.classList.remove("hidden");
-      
-      // Hide after 3 seconds for success, 5 for error
-      setTimeout(() => {
-        couponMessage.classList.add("hidden");
-      }, type === "error" ? 5000 : 3000);
+      couponMessage.className = 'mt-2 text-sm ' + (type === 'error' ? 'text-rose-500' : 'text-green-500');
+      couponMessage.classList.remove('hidden');
+      setTimeout(function() {
+        couponMessage.classList.add('hidden');
+      }, type === 'error' ? 5000 : 3000);
     }
-
-    // Checkout process (placeholder)
-    checkoutButton.addEventListener("click", async () => {
-      if (!selectedPlan) return;
+    
+    // Checkout handler
+    const checkoutBtn = document.getElementById('checkout-button');
+    
+    checkoutBtn.addEventListener('click', async function() {
+      if (!window.selectedPlan) return;
       
-      // Disable button and show loading
-      checkoutButton.disabled = true;
-      checkoutButton.innerHTML = '<div class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div> Processing...';
+      this.disabled = true;
+      this.innerHTML = '<div class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div> Processing...';
       
-      try {
-        // In a real implementation, this would:
-        // 1. Create a Razorpay order via backend API
-        // 2. Open Razorpay checkout
-        // 3. Handle payment success/failure via webhooks
-        
-        // For now, simulate success
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Simulate payment success
-        alert("Payment successful! Your subscription is now active.");
-        window.location.href = "/profile";
-      } catch (err) {
-        alert("Payment failed. Please try again.");
-        console.error(err);
-      } finally {
-        checkoutButton.disabled = false;
-        checkoutButton.textContent = "Proceed to Checkout";
-      }
+      // Simulate payment process
+      await new Promise(function(resolve) { setTimeout(resolve, 1500); });
+      
+      alert('Payment successful! Your subscription is now active.');
+      window.location.href = '/profile';
     });
   </script>
 </Layout>
