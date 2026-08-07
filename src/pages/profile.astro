@@ -93,22 +93,26 @@ const { user, loading } = authService.getState();
       <div class="bg-canvas rounded-xl border border-hairline p-6">
         <h2 class="text-lg font-semibold text-ink mb-4">Quick Actions</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <a href="/profile/achievements" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.414 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
-            <span class="text-xs text-ink font-medium">Achievements</span>
-          </a>
-          <a href="/profile/statistics" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6M9 5v6m12 0v6m-6-6v6m6-6H9" /></svg>
-            <span class="text-xs text-ink font-medium">Statistics</span>
-          </a>
-          <a href="/profile/details" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-            <span class="text-xs text-ink font-medium">Details</span>
-          </a>
-          <a href="/profile/security" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-            <span class="text-xs text-ink font-medium">Security</span>
-          </a>
+           <a href="/profile/achievements" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.414 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+             <span class="text-xs text-ink font-medium">Achievements</span>
+           </a>
+           <a href="/profile/statistics" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6M9 5v6m12 0v6m-6-6v6m6-6H9" /></svg>
+             <span class="text-xs text-ink font-medium">Statistics</span>
+           </a>
+           <a href="/profile/details" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+             <span class="text-xs text-ink font-medium">Details</span>
+           </a>
+           <a href="/profile/security" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+             <span class="text-xs text-ink font-medium">Security</span>
+           </a>
+           <a href="/subscription" class="flex flex-col items-center gap-2 rounded-lg border border-hairline p-4 hover:bg-canvas-hover transition-colors">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#007cf0]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+             <span class="text-xs text-ink font-medium">Subscription</span>
+           </a>
          </div>
        </div>
      </div>
