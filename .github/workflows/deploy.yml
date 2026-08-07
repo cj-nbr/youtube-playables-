@@ -21,20 +21,14 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Debug print node and npm versions
-        run: |
-          node --version
-          npm --version
+      - name: Install dependencies
+        run: npm ci
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build
-      - run: mv src/styles/global.css dist/styles/global.css
+      - name: Build the project
+        run: npm run build
 
-      - uses: cloudflare/wrangler-action@v3
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
