@@ -18,8 +18,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'npm'
+         node-version: '20'
+         cache: 'npm'
 
       - name: Debug print node and npm versions
         run: |
