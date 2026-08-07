@@ -1,40 +1,81 @@
 import { supabase } from "../supabase/client.js";
 
 export interface AuthState {
- user: any | null;
- profile: any | null;
- loading: boolean;
+  user: any | null;
+  profile: any | null;
+  loading: boolean;
+  error: string | null;
 }
 
 type AuthListener = (state: AuthState) => void;
 
 class AuthService {
- private user: any | null = null;
- private profile: any | null = null;
- private loading = true;
- private listeners: Set<AuthListener> = new Set();
- private sessionCheckPromise: Promise<void> | null = null;
+  private user: any | null = null;
+  private profile: any | null = null;
+  private loading: boolean = true;
+  private listeners: Set<AuthListener> = new Set();
+  private sessionCheckPromise: Promise<void> | null = null;
+  private listenersInitialized: boolean = false;
 
- constructor() {
+ private error: string | null = null;
+
+  constructor() {
   this.init();
  }
 
- private async init() {
+private async init() {
   this.loading = true;
   this.notify();
 
   if (typeof window === "undefined") {
-   return;
+    return;
+  }
+
+  // Set up listeners only once
+  if (!this.listenersInitialized) {
+    this.listenersInitialized = true;
+    
+    if (typeof window !== "undefined") {
+      window.addEventListener("storage", (e) => {
+        if (e.key === "supabase.auth.token") {
+          console.log("[Auth] Storage event, re-initializing");
+          this.sessionCheckPromise = null;
+          this.init();
+        }
+      });
+
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+        console.log("[Auth] onAuthStateChange:", event, session?.user ? "user" : "no user");
+        if (event === "SIGNED_OUT") {
+          this.user = null;
+          this.profile = null;
+        } else if (session?.user) {
+          this.user = {
+            id: session.user.id,
+            email: session.user.email,
+            phone: session.user.phone,
+            ...session.user.user_metadata,
+          };
+          this.fetchProfile();
+        }
+        this.loading = false;
+        this.notify();
+      });
+
+      if (subscription) {
+        (this as any)._unsubscribe = subscription.unsubscribe;
+      }
+    }
   }
 
   if (this.sessionCheckPromise) {
-   await this.sessionCheckPromise;
-   return;
+    await this.sessionCheckPromise;
+    return;
   }
 
   this.sessionCheckPromise = this.restoreSession();
   await this.sessionCheckPromise;
- }
+}
 
 private async restoreSession() {
   // Add timeout to prevent hanging indefinitely
@@ -62,6 +103,7 @@ private async restoreSession() {
     }
   } catch (err) {
     // Handle timeout or other errors
+    this.error = err.message || "Session restoration failed";
     if (err.message === 'Session check timeout') {
       console.warn("[Auth] Session check timed out");
     } else {
@@ -72,66 +114,32 @@ private async restoreSession() {
   } finally {
     this.loading = false;
     this.notify();
-
-   if (typeof window !== "undefined") {
-    if ((this as any)._unsubscribe) {
-     (this as any)._unsubscribe();
-    }
-
-    window.addEventListener("storage", (e) => {
-     if (e.key === "supabase.auth.token") {
-      console.log("[Auth] Storage event, re-initializing");
-      this.sessionCheckPromise = null;
-      this.init();
-     }
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-     console.log("[Auth] onAuthStateChange:", event, session?.user ? "user" : "no user");
-     if (event === "SIGNED_OUT") {
-      this.user = null;
-      this.profile = null;
-     } else if (session?.user) {
-      this.user = {
-       id: session.user.id,
-       email: session.user.email,
-       phone: session.user.phone,
-       ...session.user.user_metadata,
-      };
-      this.fetchProfile();
-     }
-     this.loading = false;
-     this.notify();
-    });
-
-    if (subscription) {
-     (this as any)._unsubscribe = subscription.unsubscribe;
-    }
-   }
   }
- }
+  }
 
  subscribe(listener: AuthListener) {
   this.listeners.add(listener);
   return () => this.listeners.delete(listener);
  }
 
- private notify() {
-  const state: AuthState = {
-   user: this.user,
-   profile: this.profile,
-   loading: this.loading,
-  };
-  this.listeners.forEach((fn) => fn(state));
- }
+  private notify() {
+   const state: AuthState = {
+    user: this.user,
+    profile: this.profile,
+    loading: this.loading,
+    error: this.error,
+   };
+   this.listeners.forEach((fn) => fn(state));
+  }
 
- getState(): AuthState {
-  return {
-   user: this.user,
-   profile: this.profile,
-   loading: this.loading,
-  };
- }
+  getState(): AuthState {
+   return {
+    user: this.user,
+    profile: this.profile,
+    loading: this.loading,
+    error: this.error,
+   };
+  }
 
  isLoggedIn() {
   return !!this.user;
@@ -284,10 +292,11 @@ private async restoreSession() {
     this.user.email = this.user.email || null;
    }
     } catch (err) {
-    console.error("Failed to fetch profile:", err);
-    this.loading = false;
-    this.notify();
-  }
+      console.error("Failed to fetch profile:", err);
+      this.error = err.message || "Failed to load profile";
+      this.loading = false;
+      this.notify();
+    }
  }
 
  async updateProfile(fields: any) {

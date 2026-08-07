@@ -18,16 +18,21 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-         node-version: '20'
-         cache: 'npm'
+          node-version: '20'
+          cache: 'npm'
 
       - name: Debug print node and npm versions
         run: |
           node --version
           npm --version
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
       - run: npm ci
       - run: npm run build
+      - run: mv src/styles/global.css dist/styles/global.css
 
       - uses: cloudflare/wrangler-action@v3
         with:

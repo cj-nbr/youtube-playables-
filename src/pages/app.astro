@@ -63,10 +63,10 @@ import { gameCover } from "../shared/utils";
         </div>
       </section>
 
-      <!-- Profile Tab - redirect to actual profile page -->
+      <!-- Profile Tab - redirects to /profile page -->
       <section id="tab-profile" class="app-tab hidden">
         <div id="profile-content">
-          <div class="card p-6">
+          <div class="card p-6 text-center">
             <p class="text-sm text-body">Loading profile…</p>
           </div>
         </div>
@@ -76,29 +76,28 @@ import { gameCover } from "../shared/utils";
     <AppBottomNav />
   </div>
 
-<script is:inline>
-        (() => {
-          try {
-            const params = new URLSearchParams(window.location.search);
-            const isApp = params.get('isApp') === 'true';
-            if (!isApp) return;
+  <script is:inline>
+    (function() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const isApp = params.get('isApp') === 'true';
+        if (!isApp) return;
 
-            const tabs = document.querySelectorAll('.app-tab');
-            const initialTab = params.get('tab');
-            if (initialTab) {
-              tabs.forEach(tab => tab.classList.add('hidden'));
-              const target = document.getElementById('tab-' + initialTab);
-              if (target) {
-                target.classList.remove('hidden');
-                // Force navigation to the full page when profile tab is active
-                if (initialTab === 'profile') {
-                  window.location.href = '/profile?isApp=true&source=app';
-                }
-              }
+        const tabs = document.querySelectorAll('.app-tab');
+        const initialTab = params.get('tab');
+        if (initialTab) {
+          tabs.forEach(tab => tab.classList.add('hidden'));
+          const target = document.getElementById('tab-' + initialTab);
+          if (target) {
+            target.classList.remove('hidden');
+            if (initialTab === 'profile') {
+              window.location.href = '/profile?isApp=true&source=app';
             }
-          } catch (err) {
-            console.error('[App Navigation]', err);
           }
-        })();
-      </script>
+        }
+      } catch (err) {
+        console.error('[App Navigation]', err);
+      }
+    })();
+  </script>
 </AppLayout>
