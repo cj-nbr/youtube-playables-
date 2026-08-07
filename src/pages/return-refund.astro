@@ -1,0 +1,80 @@
+---
+import Seo from '../components/Seo.astro';
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Icon from '../components/Icon.astro';
+
+---
+
+<h1>Return & Refund Policy</h1>
+
+<div class='max-w-[800px] mx-auto py-8'>
+  <Card title='Subscription Plans' class='pb-6'>
+    <ul class='space-y-3 items-start'>
+      <li>Basic Plan: $0.90 for 1 day</li>
+      <li>Intermediate Plan: $18 for 30 days</li>
+      <li>Premium Plan: $54 for 12 months</li>
+    </ul>
+  </Card>
+
+  <Card title='Refund Eligibility' class='pb-6'>
+    <ul class='space-y-3 items-start'>
+      <li>Refunds available within 2 calendar days of purchase</li>
+      <li>Requests after period are non-refundable</li>
+      <li>Subscription must be deactivated immediately</li>
+    </ul>
+  </Card>
+
+  <Card title='How to Request' class='pb-6'>
+    <ul class='space-y-3 items-start'>
+      <li>Contact via <a href='/contact'>Contact Us</a></li>
+      <li>Provide email, payment ID, plan type</li>
+      <li>Include reason for refund</li>
+    </ul>
+  </Card>
+
+  <Card title='Processing' class='pb-6'>
+    <p>Refunds sent to original payment method</p>
+    <p>Processing time varies by provider</p>
+  </Card>
+
+  <Card title='Non-Refundable' class='pb-6'>
+    <ul class='space-y-3 items-start'>
+      <li>After 2-day window</li>
+      <li>Expired subscriptions</li>
+      <li>ToS violations</li>
+      <li>Fraud cases</li>
+    </ul>
+  </Card>
+
+  <Card title='Contact' class='pb-6'>
+    <p><a href='/contact'>Contact Support</a> for refund requests</p>
+  </Card>
+</div>
+
+<hr class='mt-8 mb-8 border-t border-hairline border-canvas-soft'>
+
+<Card title='FAQ' class='pb-6'>
+  <div class='space-y-4'>
+    <details open>
+      <summary>How do I request a refund?</summary>
+      <div class='text-sm'>Contact us through <a href='/contact'>Contact Us</a> with required details</div>
+    </details>
+    <details>
+      <summary>How long does a refund take?</summary>
+      <div class='text-sm'>3-5 business days after approval</div>
+    </details>
+    <details>
+      <summary>Can I cancel after 2 days?</summary>
+      <div class='text-sm'>No - after 2 days, subscriptions are final</div>
+    </details>
+    <details>
+      <summary>Where to contact support?</summary>
+      <div class='text-sm'><a href='/contact'>/contact</a> page</div>
+    </details>
+  </div>
+</Card>
+
+<div class='mt-8 text-sm text-body text-mute'>
+  <p>Last Updated: 2026-08-07</p>
+</div>
