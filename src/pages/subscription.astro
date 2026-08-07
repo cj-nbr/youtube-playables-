@@ -1,213 +1,233 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { authService } from "../lib/auth/auth-service";
-
-const { user, loading, error } = authService.getState();
 ---
 
 <Layout title="Subscription — PLAYABLES" description="Choose your premium subscription plan">
   <a href="#main" class="skip-link">Skip to content</a>
   <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
-    <!-- Loading State -->
-    {loading && (
+    <div id="subscription-container">
       <div id="sub-loading" class="mx-auto max-w-2xl py-20 text-center">
         <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
         <p class="mt-4 text-body">Loading subscription options...</p>
       </div>
-    )}
-    
-    <!-- Error State -->
-    {error && !loading && (
-      <div id="sub-error" class="mx-auto max-w-2xl py-20 text-center">
-        <p class="text-body text-rose-500 mb-4">{error}</p>
-        <button onclick="window.location.reload()" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Retry</button>
-      </div>
-    )}
-    
-    <!-- Not Logged In -->
-    {!loading && !user && !error && (
-      <div id="sub-login" class="mx-auto max-w-2xl py-20 text-center">
-        <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
-        <p class="text-body mb-6">You need to be logged in to view subscription plans.</p>
-        <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
-      </div>
-    )}
-    
-    <!-- Has Active Subscription -->
-    {user && user.subscription && user.subscription.active && !loading && !error && (
-      <div id="sub-has-sub" class="mx-auto max-w-2xl py-20 text-center">
-        <p class="text-body mb-4">You already have an active subscription!</p>
-        <a href="/profile" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Go to Profile</a>
-      </div>
-    )}
-    
-    <!-- Subscription Plans -->
-    {!loading && user && (!user.subscription || !user.subscription.active) && !error && (
-      <div id="sub-plans" class="mx-auto max-w-2xl py-20">
-        <h1 class="text-3xl font-bold text-ink mb-8 text-center">Choose Your Plan</h1>
-        <p class="text-body text-center mb-12">Unlock premium features with a flexible subscription</p>
-        
-        <div class="grid gap-6 md:grid-cols-3">
-          <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow" data-plan="basic">
-            <div class="text-2xl font-bold text-[#007cf0] mb-2">Basic</div>
-            <div class="text-3xl font-bold text-ink mb-4">$0.90</div>
-            <div class="text-sm text-body mb-2">/ day</div>
-            <ul class="text-sm text-body space-y-2 mb-6">
-              <li>• Access to all free games</li>
-              <li>• Basic avatar customization</li>
-              <li>• 10 daily coins</li>
-              <li>• Standard support</li>
-            </ul>
-            <button class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors plan-select" data-plan="basic" data-price="0.90" data-duration="1">
-              Select Plan
-            </button>
-          </div>
-          
-          <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow ring-2 ring-[#007cf0]/20" data-plan="intermediate">
-            <div class="text-2xl font-bold text-[#007cf0] mb-2">Intermediate</div>
-            <div class="text-3xl font-bold text-ink mb-4">$18</div>
-            <div class="text-sm text-body mb-2">/ 30 days</div>
-            <div class="text-xs text-ink font-medium mb-4">Most Popular</div>
-            <ul class="text-sm text-body space-y-2 mb-6">
-              <li>• All Basic features</li>
-              <li>• Unlimited games access</li>
-              <li>• Advanced avatar customization</li>
-              <li>• 100 daily coins</li>
-              <li>• Priority support</li>
-              <li>• Ad-free experience</li>
-            </ul>
-            <button class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors plan-select" data-plan="intermediate" data-price="18" data-duration="30">
-              Select Plan
-            </button>
-          </div>
-          
-          <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow" data-plan="premium">
-            <div class="text-2xl font-bold text-[#007cf0] mb-2">Premium</div>
-            <div class="text-3xl font-bold text-ink mb-4">$54</div>
-            <div class="text-sm text-body mb-2">/ 12 months</div>
-            <div class="text-xs text-ink font-medium mb-4">Best Value</div>
-            <ul class="text-sm text-body space-y-2 mb-6">
-              <li>• All Intermediate features</li>
-              <li>• Exclusive premium games</li>
-              <li>• Custom avatar animations</li>
-              <li>• 1000 daily coins</li>
-              <li>• Priority support</li>
-              <li>• Ad-free experience</li>
-              <li>• Early access to new features</li>
-              <li>• Monthly coin bonus</li>
-            </ul>
-            <button class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors plan-select" data-plan="premium" data-price="54" data-duration="365">
-              Select Plan
-            </button>
-          </div>
-        </div>
-        
-        <div class="mt-8">
-          <h2 class="text-xl font-semibold text-ink mb-4">Have a coupon?</h2>
-          <form id="coupon-form" class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-            <input type="text" id="coupon-input" placeholder="Enter coupon code (e.g., CJNBR100)" class="px-4 py-2 border border-hairline rounded-lg w-full sm:w-64" />
-            <button type="submit" class="inline-flex rounded-pill bg-[#007cf0] px-4 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors w-full sm:w-auto">Apply Coupon</button>
-          </form>
-          <p id="coupon-message" class="mt-2 text-sm text-body hidden"></p>
-        </div>
-        
-        <div id="plan-summary" class="mt-10 p-6 bg-canvas-hover rounded-xl border border-hairline hidden">
-          <h2 class="text-xl font-semibold text-ink mb-4">Selected Plan</h2>
-          <div id="selected-plan-details" class="space-y-3 text-sm text-body"></div>
-          <button id="checkout-button" class="mt-6 w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors">
-            Proceed to Checkout
-          </button>
-        </div>
-      </div>
-    )}
+    </div>
   </main>
   
   <script type="module">
-    // Plan selection handler
-    document.querySelectorAll('.plan-select').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const selectedPlan = this.dataset.plan;
-        const price = parseFloat(this.dataset.price);
-        const duration = parseInt(this.dataset.duration);
-        
-        window.selectedPlan = { name: selectedPlan, price: price, duration: duration };
-        showPlanSummary(selectedPlan, price, duration);
-      });
-    });
+    import { authService } from "../lib/auth/auth-service.js";
     
-    function showPlanSummary(planName, price, duration) {
+    const container = document.getElementById('subscription-container');
+    const loadingEl = document.getElementById('sub-loading');
+    
+    function renderUI(state) {
+      container.innerHTML = '';
+      
+      if (state.loading) {
+        container.appendChild(loadingEl);
+        return;
+      }
+      
+      if (state.error) {
+        container.innerHTML = `
+          <div class="mx-auto max-w-2xl py-20 text-center">
+            <p class="text-body text-rose-500 mb-4">${state.error}</p>
+            <button onclick="window.location.reload()" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Retry</button>
+          </div>
+        `;
+        return;
+      }
+      
+      if (!state.user) {
+        container.innerHTML = `
+          <div class="mx-auto max-w-2xl py-20 text-center">
+            <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
+            <p class="text-body mb-6">You need to be logged in to view subscription plans.</p>
+            <a href="/login" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+          </div>
+        `;
+        return;
+      }
+      
+      if (state.user.subscription && state.user.subscription.active) {
+        container.innerHTML = `
+          <div class="mx-auto max-w-2xl py-20 text-center">
+            <p class="text-body mb-4">You already have an active subscription!</p>
+            <a href="/profile" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Go to Profile</a>
+          </div>
+        `;
+        return;
+      }
+      
+      container.innerHTML = `
+        <div>
+          <h1 class="text-3xl font-bold text-ink mb-8 text-center">Choose Your Plan</h1>
+          <p class="text-body text-center mb-12">Unlock premium features with a flexible subscription</p>
+          
+          <div class="grid gap-6 md:grid-cols-3" id="plan-grid">
+            <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow plan-card" data-plan="basic">
+              <div class="text-2xl font-bold text-[#007cf0] mb-2">Basic</div>
+              <div class="text-3xl font-bold text-ink mb-4">$0.90</div>
+              <div class="text-sm text-body mb-2">/ day</div>
+              <ul class="text-sm text-body space-y-2 mb-6">
+                <li>• Access to all free games</li>
+                <li>• Basic avatar customization</li>
+                <li>• 10 daily coins</li>
+                <li>• Standard support</li>
+              </ul>
+              <button class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors select-plan-btn" data-plan="basic">
+                Select Plan
+              </button>
+            </div>
+            
+            <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow ring-2 ring-[#007cf0]/20 plan-card" data-plan="intermediate">
+              <div class="text-2xl font-bold text-[#007cf0] mb-2">Intermediate</div>
+              <div class="text-3xl font-bold text-ink mb-4">$18</div>
+              <div class="text-sm text-body mb-2">/ 30 days</div>
+              <div class="text-xs text-ink font-medium mb-4">Most Popular</div>
+              <ul class="text-sm text-body space-y-2 mb-6">
+                <li>• All Basic features</li>
+                <li>• Unlimited games access</li>
+                <li>• Advanced avatar customization</li>
+                <li>• 100 daily coins</li>
+                <li>• Priority support</li>
+                <li>• Ad-free experience</li>
+              </ul>
+              <button class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors select-plan-btn" data-plan="intermediate">
+                Select Plan
+              </button>
+            </div>
+            
+            <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow plan-card" data-plan="premium">
+              <div class="text-2xl font-bold text-[#007cf0] mb-2">Premium</div>
+              <div class="text-3xl font-bold text-ink mb-4">$54</div>
+              <div class="text-sm text-body mb-2">/ 12 months</div>
+              <div class="text-xs text-ink font-medium mb-4">Best Value</div>
+              <ul class="text-sm text-body space-y-2 mb-6">
+                <li>• All Intermediate features</li>
+                <li>• Exclusive premium games</li>
+                <li>• Custom avatar animations</li>
+                <li>• 1000 daily coins</li>
+                <li>• Priority support</li>
+                <li>• Ad-free experience</li>
+                <li>• Early access to new features</li>
+                <li>• Monthly coin bonus</li>
+              </ul>
+              <button class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors select-plan-btn" data-plan="premium">
+                Select Plan
+              </button>
+            </div>
+          </div>
+          
+          <div class="mt-8">
+            <h2 class="text-xl font-semibold text-ink mb-4">Have a coupon?</h2>
+            <form id="coupon-form" class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+              <input type="text" id="coupon-input" placeholder="Enter coupon code (e.g., CJNBR100)" class="px-4 py-2 border border-hairline rounded-lg w-full sm:w-64" />
+              <button type="submit" class="inline-flex rounded-pill bg-[#007cf0] px-4 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors w-full sm:w-auto">Apply Coupon</button>
+            </form>
+            <p id="coupon-message" class="mt-2 text-sm text-body hidden"></p>
+          </div>
+          
+          <div id="plan-summary" class="mt-10 p-6 bg-canvas-hover rounded-xl border border-hairline hidden">
+            <h2 class="text-xl font-semibold text-ink mb-4">Selected Plan</h2>
+            <div id="selected-plan-details" class="space-y-3 text-sm text-body"></div>
+            <button id="checkout-button" class="mt-6 w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors">
+              Proceed to Checkout
+            </button>
+          </div>
+        </div>
+      `;
+      
+      attachEventHandlers(state.user);
+    }
+    
+    function attachEventHandlers(user) {
+      if (!user) return;
+      
+      document.querySelectorAll('.select-plan-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const plan = this.dataset.plan;
+          const planInfo = {
+            basic: { name: 'Basic', price: 0.90, duration: 1 },
+            intermediate: { name: 'Intermediate', price: 18, duration: 30 },
+            premium: { name: 'Premium', price: 54, duration: 365 }
+          }[plan];
+          
+          if (!planInfo) return;
+          
+          window.selectedPlan = planInfo;
+          showPlanSummary(planInfo);
+        });
+      });
+      
+      const couponForm = document.getElementById('coupon-form');
+      const couponInput = document.getElementById('coupon-input');
+      const couponMessage = document.getElementById('coupon-message');
+      
+      couponForm.onsubmit = function(e) {
+        e.preventDefault();
+        const code = couponInput.value.trim().toUpperCase();
+        
+        if (!code) {
+          showCouponMessage('Please enter a coupon code', 'error');
+          return;
+        }
+        
+        if (code === 'CJNBR100') {
+          if (!window.selectedPlan || window.selectedPlan.name !== 'Premium') {
+            showCouponMessage('This coupon is only valid for the Premium plan', 'error');
+            return;
+          }
+          window.couponCode = code;
+          window.couponDiscount = 100;
+          showCouponMessage('Coupon applied! 100% off Premium plan', 'success');
+          if (window.selectedPlan) showPlanSummary(window.selectedPlan);
+        } else {
+          showCouponMessage('Invalid coupon code', 'error');
+        }
+      };
+      
+      document.getElementById('checkout-button').onclick = function() {
+        if (!window.selectedPlan) return;
+        
+        this.disabled = true;
+        this.innerHTML = '<div class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div> Processing...';
+        
+        setTimeout(() => {
+          alert('Payment successful! Your subscription is now active.');
+          window.location.href = '/profile';
+        }, 1000);
+      };
+      
+      function showCouponMessage(message, type) {
+        couponMessage.textContent = message;
+        couponMessage.className = 'mt-2 text-sm ' + (type === 'error' ? 'text-rose-500' : 'text-green-500');
+        couponMessage.classList.remove('hidden');
+        setTimeout(() => couponMessage.classList.add('hidden'), type === 'error' ? 5000 : 3000);
+      }
+    }
+    
+    function showPlanSummary(plan) {
       const summary = document.getElementById('plan-summary');
       const details = document.getElementById('selected-plan-details');
       const couponCode = window.couponCode || '';
       const discount = window.couponDiscount || 0;
-      const finalPrice = (price * (1 - discount / 100)).toFixed(2);
+      const finalPrice = (plan.price * (1 - discount / 100)).toFixed(2);
       
-      details.innerHTML = '<div><span class="font-medium">Plan:</span> ' + 
-        planName.charAt(0).toUpperCase() + planName.slice(1) + '</div>' +
-        '<div><span class="font-medium">Price:</span> $' + price.toFixed(2) + '</div>' +
-        '<div><span class="font-medium">Duration:</span> ' + duration + ' ' + (duration === 1 ? 'day' : 'days') + '</div>';
-        
-      if (couponCode) {
-        details.innerHTML += '<div><span class="font-medium">Coupon:</span> ' + couponCode + ' (-' + discount + '%)</div>';
-      }
-      
-      details.innerHTML += '<div class="mt-2 pt-2 border-t border-hairline"><span class="font-medium">Total:</span> $' + finalPrice + '</div>';
+      details.innerHTML = `
+        <div><span class="font-medium">Plan:</span> ${plan.name}</div>
+        <div><span class="font-medium">Price:</span> $${plan.price.toFixed(2)}</div>
+        <div><span class="font-medium">Duration:</span> ${plan.duration} ${plan.duration === 1 ? 'day' : 'days'}</div>
+        ${couponCode ? `<div><span class="font-medium">Coupon:</span> ${couponCode} (-${discount}%)</div>` : ''}
+        <div class="mt-2 pt-2 border-t border-hairline">
+          <span class="font-medium">Total:</span> $${finalPrice}
+        </div>
+      `;
       summary.classList.remove('hidden');
     }
     
-    // Coupon form handler
-    const couponForm = document.getElementById('coupon-form');
-    const couponInput = document.getElementById('coupon-input');
-    const couponMessage = document.getElementById('coupon-message');
+    const authState = authService.getState();
+    renderUI(authState);
     
-    couponForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const code = couponInput.value.trim().toUpperCase();
-      
-      if (!code) {
-        showCouponMessage('Please enter a coupon code', 'error');
-        return;
-      }
-      
-      if (code === 'CJNBR100') {
-        if (!window.selectedPlan || window.selectedPlan.name !== 'premium') {
-          showCouponMessage('This coupon is only valid for the Premium plan', 'error');
-          return;
-        }
-        window.couponCode = code;
-        window.couponDiscount = 100;
-        showCouponMessage('Coupon applied successfully! 100% off Premium plan', 'success');
-        if (window.selectedPlan) {
-          showPlanSummary(window.selectedPlan.name, window.selectedPlan.price, window.selectedPlan.duration);
-        }
-      } else {
-        showCouponMessage('Invalid coupon code', 'error');
-      }
-    });
-    
-    function showCouponMessage(message, type) {
-      couponMessage.textContent = message;
-      couponMessage.className = 'mt-2 text-sm ' + (type === 'error' ? 'text-rose-500' : 'text-green-500');
-      couponMessage.classList.remove('hidden');
-      setTimeout(function() {
-        couponMessage.classList.add('hidden');
-      }, type === 'error' ? 5000 : 3000);
-    }
-    
-    // Checkout handler
-    const checkoutBtn = document.getElementById('checkout-button');
-    
-    checkoutBtn.addEventListener('click', async function() {
-      if (!window.selectedPlan) return;
-      
-      this.disabled = true;
-      this.innerHTML = '<div class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div> Processing...';
-      
-      // Simulate payment process
-      await new Promise(function(resolve) { setTimeout(resolve, 1500); });
-      
-      alert('Payment successful! Your subscription is now active.');
-      window.location.href = '/profile';
-    });
+    authService.subscribe(renderUI);
   </script>
 </Layout>
