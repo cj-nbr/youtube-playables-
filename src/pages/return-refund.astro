@@ -1,80 +1,133 @@
 ---
-import Seo from '../components/Seo.astro';
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Icon from '../components/Icon.astro';
+import Layout from "../layouts/Layout.astro";
+import { SITE_NAME, SITE_URL } from "../shared/config";
 
+const title = "Return & Refund Policy";
+const description = "Details on subscription plans, refund eligibility, and how to request a refund for Playables app services.";
 ---
 
-<h1>Return & Refund Policy</h1>
+<Layout title={title} description={description}>
+  <div class="mx-auto max-w-[1400px] px-4 py-12 sm:py-16">
+    <header class="mb-12">
+      <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl mb-4">
+        Return &amp; Refund Policy
+      </h1>
+      <p class="text-sm text-mute">
+        Last updated: August 7, 2026
+      </p>
+    </header>
 
-<div class='max-w-[800px] mx-auto py-8'>
-  <Card title='Subscription Plans' class='pb-6'>
-    <ul class='space-y-3 items-start'>
-      <li>Basic Plan: $0.90 for 1 day</li>
-      <li>Intermediate Plan: $18 for 30 days</li>
-      <li>Premium Plan: $54 for 12 months</li>
-    </ul>
-  </Card>
+    <div class="prose prose-lg max-w-none">
+      <p>
+        Our platform provides digital subscription services. By purchasing a subscription, users agree to the following refund policy.
+      </p>
 
-  <Card title='Refund Eligibility' class='pb-6'>
-    <ul class='space-y-3 items-start'>
-      <li>Refunds available within 2 calendar days of purchase</li>
-      <li>Requests after period are non-refundable</li>
-      <li>Subscription must be deactivated immediately</li>
-    </ul>
-  </Card>
+      <h2>Subscription Plans</h2>
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <li class="border border-hairline rounded-xl p-6 bg-canvas hover:shadow-md transition-shadow">
+          <strong class="block font-medium text-ink mb-1">Basic Plan</strong>
+          <span class="text-sm text-body">$0.90 for 1 day</span>
+        </li>
+        <li class="border border-hairline rounded-xl p-6 bg-canvas hover:shadow-md transition-shadow">
+          <strong class="block font-medium text-ink mb-1">Intermediate Plan</strong>
+          <span class="text-sm text-body">$18 for 30 days</span>
+        </li>
+        <li class="border border-hairline rounded-xl p-6 bg-canvas hover:shadow-md transition-shadow">
+          <strong class="block font-medium text-ink mb-1">Premium Plan</strong>
+          <span class="text-sm text-body">$54 for 12 months</span>
+        </li>
+      </ul>
 
-  <Card title='How to Request' class='pb-6'>
-    <ul class='space-y-3 items-start'>
-      <li>Contact via <a href='/contact'>Contact Us</a></li>
-      <li>Provide email, payment ID, plan type</li>
-      <li>Include reason for refund</li>
-    </ul>
-  </Card>
+      <h2>Refund Eligibility</h2>
+      <ul class="space-y-3 list-disc pl-6">
+        <li>Users may request a cancellation and full refund <strong>within 2 calendar days</strong> of the original purchase date.</li>
+        <li>Refund requests submitted after the 2-day refund window will <strong>not</strong> be approved.</li>
+        <li>From the <strong>3rd day onward</strong>, all purchases are considered final and non-refundable.</li>
+        <li>Once a refund is approved, the associated subscription must be immediately deactivated and access to premium features revoked.</li>
+      </ul>
 
-  <Card title='Processing' class='pb-6'>
-    <p>Refunds sent to original payment method</p>
-    <p>Processing time varies by provider</p>
-  </Card>
+      <h2>How to Request a Refund</h2>
+      <p>
+        Users must contact us through our <a href="/contact" class="text-link font-medium">Contact Us</a> page and include:
+      </p>
+      <ul class="space-y-3 list-disc pl-6">
+        <li>Registered email address</li>
+        <li>Order/Payment ID</li>
+        <li>Subscription plan purchased</li>
+        <li>Reason for requesting the refund</li>
+      </ul>
 
-  <Card title='Non-Refundable' class='pb-6'>
-    <ul class='space-y-3 items-start'>
-      <li>After 2-day window</li>
-      <li>Expired subscriptions</li>
-      <li>ToS violations</li>
-      <li>Fraud cases</li>
-    </ul>
-  </Card>
+      <h2>Refund Processing</h2>
+      <ul class="space-y-3 list-disc pl-6">
+        <li>Approved refunds will be processed to the original payment method.</li>
+        <li>Processing time depends on the payment provider and financial institution.</li>
+      </ul>
 
-  <Card title='Contact' class='pb-6'>
-    <p><a href='/contact'>Contact Support</a> for refund requests</p>
-  </Card>
-</div>
+      <h2>Non-Refundable Situations</h2>
+      <p>Refunds will not be provided if:</p>
+      <ul class="space-y-3 list-disc pl-6">
+        <li>The request is made after the 2-day refund period.</li>
+        <li>The subscription has expired.</li>
+        <li>The user violates the Terms of Service.</li>
+        <li>Fraudulent or abusive activity is detected.</li>
+      </ul>
 
-<hr class='mt-8 mb-8 border-t border-hairline border-canvas-soft'>
+      <h2>Contact</h2>
+      <p>
+        For all refund requests or questions, users should use the
+        <a href="/contact" class="text-link font-medium">Contact Us</a> page available on the website.
+      </p>
+    </div>
 
-<Card title='FAQ' class='pb-6'>
-  <div class='space-y-4'>
-    <details open>
-      <summary>How do I request a refund?</summary>
-      <div class='text-sm'>Contact us through <a href='/contact'>Contact Us</a> with required details</div>
-    </details>
-    <details>
-      <summary>How long does a refund take?</summary>
-      <div class='text-sm'>3-5 business days after approval</div>
-    </details>
-    <details>
-      <summary>Can I cancel after 2 days?</summary>
-      <div class='text-sm'>No - after 2 days, subscriptions are final</div>
-    </details>
-    <details>
-      <summary>Where to contact support?</summary>
-      <div class='text-sm'><a href='/contact'>/contact</a> page</div>
-    </details>
+    <hr class="my-12 border-t border-hairline border-canvas-soft" />
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold tracking-tight text-ink mb-6">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-4">
+        <details class="bg-canvas border border-hairline rounded-xl p-4 open:bg-canvas-soft transition-colors">
+          <summary class="cursor-pointer font-medium text-ink flex items-center gap-2">
+            How do I request a refund?
+          </summary>
+          <p class="mt-2 text-sm text-body">
+            Contact us through the <a href="/contact" class="text-link">Contact Us</a> page with your email, payment ID, plan type, and reason for refund.
+          </p>
+        </details>
+
+        <details class="bg-canvas border border-hairline rounded-xl p-4 open:bg-canvas-soft transition-colors">
+          <summary class="cursor-pointer font-medium text-ink flex items-center gap-2">
+            How long does a refund take?
+          </summary>
+          <p class="mt-2 text-sm text-body">
+            Refunds are processed within 3-5 business days after approval. Final posting time depends on your payment provider.
+          </p>
+        </details>
+
+        <details class="bg-canvas border border-hairline rounded-xl p-4 open:bg-canvas-soft transition-colors">
+          <summary class="cursor-pointer font-medium text-ink flex items-center gap-2">
+            Can I cancel after 2 days?
+          </summary>
+          <p class="mt-2 text-sm text-body">
+            After the 2-day refund window, all purchases are final and non-refundable.
+          </p>
+        </details>
+
+        <details class="bg-canvas border border-hairline rounded-xl p-4 open:bg-canvas-soft transition-colors">
+          <summary class="cursor-pointer font-medium text-ink flex items-center gap-2">
+            Where can I contact support?
+          </summary>
+          <p class="mt-2 text-sm text-body">
+            Use the <a href="/contact" class="text-link">Contact Us</a> page on our website for all refund requests and questions.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <footer class="mt-12 pt-6 border-t border-hairline border-canvas-soft">
+      <p class="text-sm text-mute">
+        © {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
+      </p>
+    </footer>
   </div>
-</Card>
-
-<div class='mt-8 text-sm text-body text-mute'>
-  <p>Last Updated: 2026-08-07</p>
-</div>
+</Layout>
