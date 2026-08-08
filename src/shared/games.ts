@@ -298,16 +298,16 @@ export const games: GameMeta[] = [
  {
   id: "threetown",
   title: "Threetown",
-  description:
-   "Navigate branching paths and collect coins in this tri-split maze adventure.",
-  genre: ["Puzzle"],
-  releasedAt: "2025-04-05",
-  popularity: 62,
-  seo: {
-   keywords: [
-    "threetown game",
-    "branching maze",
-    "coin collect",
+description:
+    "Navigate branching paths and collect diamonds in this tri-split maze adventure.",
+   genre: ["Puzzle"],
+   releasedAt: "2025-04-05",
+   popularity: 62,
+   seo: {
+    keywords: [
+     "threetown game",
+     "branching maze",
+     "diamond collect",
     "path puzzle",
     "browser puzzle",
     "free threetown",

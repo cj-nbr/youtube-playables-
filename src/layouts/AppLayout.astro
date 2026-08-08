@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import AppBottomNav from "../components/AppBottomNav.astro";
 ---
 
 <!doctype html>
@@ -19,13 +21,15 @@ import "../styles/global.css";
      try {
       const params = new URLSearchParams(window.location.search);
       if (params.get('isApp') === 'true') {
-       document.documentElement.classList.add('ytp-app');
+        document.documentElement.classList.add('ytp-app');
       }
      } catch {}
     })();
    </script>
   </head>
- <body>
-  <slot />
- </body>
+  <body>
+   <slot />
+   <Footer />
+   <AppBottomNav />
+  </body>
 </html>

@@ -393,9 +393,10 @@ private async restoreSession() {
   }
 
   this.profile = profileData;
-  this.notify();
+   await this.fetchProfile();
+   this.notify();
 
-  return profileData;
+   return profileData;
  }
 
  async changeSecretCode(currentCode: string, newCode: string) {

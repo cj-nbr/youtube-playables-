@@ -4,11 +4,11 @@ export const content: GameContent = {
  guide: [
   {
    heading: "Objective",
-   body: "Climb from the bottom of a branching grid to the top, choosing one of three forks at every step. Scoop up coins along the way for points and reach the summit before the path runs out. The further you climb and the more coins you grab, the higher your score.",
+   body: "Climb from the bottom of a branching grid to the top, choosing one of three forks at every step. Scoop up diamonds along the way for points and reach the summit before the path runs out. The further you climb and the more diamonds you grab, the higher your score.",
   },
   {
    heading: "How to play",
-   body: "Your cart starts at the bottom. At each level the trail splits into up to three branches — left, center, and right. Tap or click the next cell you want to enter. Coins sit on some cells; obstacles (rocks and spikes) sit on others. Stepping onto a coin collects it, and stepping onto an obstacle ends the run.",
+   body: "Your cart starts at the bottom. At each level the trail splits into up to three branches — left, center, and right. Tap or click the next cell you want to enter. Diamonds sit on some cells; obstacles (rocks and spikes) sit on others. Stepping onto a diamond collects it, and stepping onto an obstacle ends the run.",
   },
   {
    heading: "Strategy",

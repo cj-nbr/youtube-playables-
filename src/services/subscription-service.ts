@@ -22,9 +22,9 @@ export interface Plan {
 }
 
 const PLANS: Plan[] = [
-  { id: 'basic', name: 'Basic', price: 0.90, durationDays: 1, features: ['Access to all free games', 'Basic avatar customization', '10 daily coins', 'Standard support'] },
-  { id: 'intermediate', name: 'Intermediate', price: 18, durationDays: 30, features: ['All Basic features', 'Unlimited games access', 'Advanced avatar customization', '100 daily coins', 'Priority support', 'Ad-free experience'], highlight: 'Most Popular' },
-  { id: 'premium', name: 'Premium', price: 54, durationDays: 365, features: ['All Intermediate features', 'Exclusive premium games', 'Custom avatar animations', '1000 daily coins', 'Priority support', 'Ad-free experience', 'Early access to new features', 'Monthly coin bonus'], highlight: 'Best Value' }
+   { id: 'basic', name: 'Basic', price: 0.90, durationDays: 1, features: ['Access to all free games', 'Basic avatar customization', '10 daily diamonds', 'Standard support'] },
+   { id: 'intermediate', name: 'Intermediate', price: 18, durationDays: 30, features: ['All Basic features', 'Unlimited games access', 'Advanced avatar customization', '100 daily diamonds', 'Priority support', 'Ad-free experience'], highlight: 'Most Popular' },
+   { id: 'premium', name: 'Premium', price: 54, durationDays: 365, features: ['All Intermediate features', 'Exclusive premium games', 'Custom avatar animations', '1000 daily diamonds', 'Priority support', 'Ad-free experience', 'Early access to new features', 'Monthly diamond bonus'], highlight: 'Best Value' }
 ];
 
 type SubscriptionListener = (state: SubscriptionState) => void;

@@ -81,8 +81,8 @@ const { user, loading } = authService.getState();
             <span class="text-sm text-ink font-medium" id="profile-playtime">0 hours</span>
           </div>
           <div class="flex justify-between py-2 border-b border-hairline">
-            <span class="text-sm text-body">Coins</span>
-            <span class="text-sm text-ink font-medium" id="profile-coins">0</span>
+            <span class="text-sm text-body">Diamonds</span>
+            <span class="text-sm text-ink font-medium" id="profile-diamonds">0</span>
           </div>
           <div class="flex justify-between py-2">
             <span class="text-sm text-body">Experience</span>
@@ -160,7 +160,7 @@ const { user, loading } = authService.getState();
         const lastLoginEl = document.getElementById("profile-last-login");
         const rankEl = document.getElementById("profile-rank");
         const playtimeEl = document.getElementById("profile-playtime");
-        const coinsEl = document.getElementById("profile-coins");
+        const diamondsEl = document.getElementById("profile-diamonds");
         const xpEl = document.getElementById("profile-xp");
 
         // Avatar handling
@@ -190,7 +190,8 @@ const { user, loading } = authService.getState();
         if (lastLoginEl) lastLoginEl.textContent = user.last_login ? new Date(user.last_login).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "N/A";
         if (rankEl) rankEl.textContent = user.player_rank || "Bronze";
         if (playtimeEl) playtimeEl.textContent = Math.floor((user.total_play_time || 0) / 60) + " hours";
-        if (coinsEl) coinsEl.textContent = (user.coins || 0).toLocaleString();
+        const diamondsEl = document.getElementById("profile-diamonds");
+        if (diamondsEl) diamondsEl.textContent = (user.diamonds || 0).toLocaleString();
         if (xpEl) xpEl.textContent = (user.experience || 0).toLocaleString() + " XP";
       }
 

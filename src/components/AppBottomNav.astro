@@ -3,6 +3,7 @@ const tabs = [
   { id: "home", label: "Home", href: "/app?isApp=true&platform=android&source=app&tab=home", icon: "home" },
   { id: "games", label: "Games", href: "/app?isApp=true&platform=android&source=app&tab=games", icon: "games" },
   { id: "profile", label: "Profile", href: "/profile?isApp=true&platform=android&source=app", icon: "profile" },
+  { id: "shop", label: "Shop", href: "/app?isApp=true&platform=android&source=app&tab=shop", icon: "shop" },
 ];
 ---
 
@@ -13,7 +14,7 @@ const tabs = [
         href={tab.href}
         class="flex flex-col items-center justify-center gap-1 py-1.5 text-[10px] text-body hover:text-ink min-w-[64px]"
       >
-        <span class="text-lg leading-none">{tab.icon === "home" ? "🏠" : tab.icon === "games" ? "🎮" : "👤"}</span>
+        <span class="text-lg leading-none">{tab.icon === "home" ? "🏠" : tab.icon === "games" ? "🎮" : tab.icon === "profile" ? "👤" : "🛍️"}</span>
         <span class="font-medium">{tab.label}</span>
       </a>
     ))}
