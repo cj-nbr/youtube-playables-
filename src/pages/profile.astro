@@ -190,7 +190,6 @@ const { user, loading } = authService.getState();
         if (lastLoginEl) lastLoginEl.textContent = user.last_login ? new Date(user.last_login).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "N/A";
         if (rankEl) rankEl.textContent = user.player_rank || "Bronze";
         if (playtimeEl) playtimeEl.textContent = Math.floor((user.total_play_time || 0) / 60) + " hours";
-        const diamondsEl = document.getElementById("profile-diamonds");
         if (diamondsEl) diamondsEl.textContent = (user.diamonds || 0).toLocaleString();
         if (xpEl) xpEl.textContent = (user.experience || 0).toLocaleString() + " XP";
       }
