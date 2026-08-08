@@ -1,0 +1,304 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { subscriptionConfigs, getSubscriptionById } from "./subscription-config";
+const plans = subscriptionConfigs;
+---
+<Layout title="Subscription — PLAYABLES" description="Choose your premium subscription plan">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <main id="main" class="mx-auto max-w-[1400px] px-6 py-12">
+    <div id="subscription-container">
+      <div id="sub-loading" class="mx-auto max-w-2xl py-20 text-center">
+        <div class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#007cf0] border-t-transparent"></div>
+        <p class="mt-4 text-body">Loading subscription options...</p>
+      </div>
+    </div>
+    
+    <script type="module">
+      import { supabase } from "../../lib/supabase/client.js";
+      
+      const container = document.getElementById('subscription-container');
+      const loadingEl = document.getElementById('sub-loading');
+      const razorpayKeyId = import.meta.env.PUBLIC_RAZORPAY_KEY_ID;
+      
+      let selectedPlan = null;
+      let couponCode = '';
+      let couponDiscount = 0;
+      
+      function renderUI(state) {
+        container.innerHTML = '';
+        
+        if (state.loading) {
+          container.appendChild(loadingEl);
+          return;
+        }
+        
+        if (state.error) {
+          container.innerHTML = `
+            <div class="mx-auto max-w-2xl py-20 text-center">
+              <p class="text-body text-rose-500 mb-4">${state.error}</p>
+              <button onclick="window.location.reload()" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Retry</button>
+            </div>
+          `;
+          return;
+        }
+        
+        if (!state.user) {
+          container.innerHTML = `
+            <div class="mx-auto max-w-2xl py-20 text-center">
+              <h1 class="text-3xl font-bold text-ink mb-4">Please log in</h1>
+              <p class="text-body mb-6">You need to be logged in to view subscription plans.</p>
+              <a href="/login?isApp=true" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:opacity-90">Log In</a>
+            </div>
+          `;
+          return;
+        }
+        
+        if (state.user.subscription && state.user.subscription.active) {
+          container.innerHTML = `
+            <div class="mx-auto max-w-2xl py-20 text-center">
+              <p class="text-body mb-4">You already have an active subscription!</p>
+              <a href="/profile?isApp=true" class="inline-flex rounded-pill bg-ink px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors">Go to Profile</a>
+            </div>
+          `;
+          return;
+        }
+        
+        container.innerHTML = `
+          <div>
+            <h1 class="text-3xl font-bold text-ink mb-8 text-center">Choose Your Plan</h1>
+            <p class="text-body text-center mb-12">Unlock premium features with a flexible subscription</p>
+            
+            <div class="grid gap-6 md:grid-cols-3" id="plan-grid">
+              ${plans.map(plan => `
+                <div class="bg-canvas rounded-xl border border-hairline p-6 hover:shadow-md transition-shadow plan-card" data-plan="${plan.id}">
+                  <div class="text-2xl font-bold text-[#007cf0] mb-2">${plan.name}</div>
+                  <div class="text-3xl font-bold text-ink mb-4">\$${plan.price}</div>
+                  <div class="text-sm text-body mb-2">/${plan.duration_days} ${plan.duration_days === 1 ? 'day' : 'days'}</div>
+                  <ul class="text-sm text-body space-y-2 mb-6">
+                    ${plan.features.map(feature => `<li>• ${feature}</li>`).join('')}
+                  </ul>
+                  <button class="w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors select-plan-btn" data-plan="${plan.id}">
+                    Select Plan
+                  </button>
+                </div>
+              `).join('')}
+            </div>
+            
+            <div class="mt-8">
+              <h2 class="text-xl font-semibold text-ink mb-4">Have a coupon?</h2>
+              <form id="coupon-form" class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+                <input type="text" id="coupon-input" placeholder="Enter coupon code (e.g., CJNBR100)" class="px-4 py-2 border border-hairline rounded-lg w-full sm:w-64" />
+                <button type="submit" class="inline-flex rounded-pill bg-[#007cf0] px-4 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors w-full sm:w-auto">Apply Coupon</button>
+              </form>
+              <p id="coupon-message" class="mt-2 text-sm text-body hidden"></p>
+            </div>
+            
+            <div id="plan-summary" class="mt-10 p-6 bg-canvas-hover rounded-xl border border-hairline hidden">
+              <h2 class="text-xl font-semibold text-ink mb-4">Selected Plan</h2>
+              <div id="selected-plan-details" class="space-y-3 text-sm text-body"></div>
+              <button id="checkout-button" class="mt-6 w-full inline-flex rounded-pill bg-[#007cf0] px-6 py-2 text-sm font-medium text-white hover:bg-[#005fa8] transition-colors">
+                Proceed to Checkout
+              </button>
+            </div>
+          </div>
+        `;
+        
+        attachEventHandlers(state.user);
+      }
+      
+      function attachEventHandlers(user) {
+        if (!user) return;
+        
+        // Plan selection
+        document.querySelectorAll('.select-plan-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const planId = this.dataset.plan;
+            const plan = plans.find(p => p.id === planId);
+            if (!plan) return;
+            
+            selectedPlan = plan;
+            showPlanSummary(plan);
+            
+            // Update UI to show selected state
+            document.querySelectorAll('.plan-card').forEach(card => {
+              if (card.dataset.plan === planId) {
+                card.classList.add('ring-2', 'ring-[#007cf0]/20');
+              } else {
+                card.classList.remove('ring-2', 'ring-[#007cf0]/20');
+              }
+            });
+          });
+        });
+        
+        // Coupon form
+        const couponForm = document.getElementById('coupon-form');
+        const couponInput = document.getElementById('coupon-input');
+        const couponMessage = document.getElementById('coupon-message');
+        
+        couponForm.onsubmit = function(e) {
+          e.preventDefault();
+          const code = couponInput.value.trim().toUpperCase();
+          
+          if (!code) {
+            showCouponMessage('Please enter a coupon code', 'error');
+            return;
+          }
+          
+          if (code === 'CJNBR100') {
+            if (!selectedPlan || selectedPlan.id !== 'premium') {
+              showCouponMessage('This coupon is only valid for the Premium plan', 'error');
+              return;
+            }
+            couponCode = code;
+            couponDiscount = 100;
+            showCouponMessage('Coupon applied! 100% off Premium plan', 'success');
+            if (selectedPlan) showPlanSummary(selectedPlan);
+          } else {
+            showCouponMessage('Invalid coupon code', 'error');
+          }
+        };
+        
+        // Checkout button
+        document.getElementById('checkout-button').onclick = async function() {
+          if (!selectedPlan) return;
+          
+          this.disabled = true;
+          this.innerHTML = '<div class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div> Creating order...';
+          
+          try {
+            // Call our API to create a subscription and Razorpay order
+            const response = await fetch('/api/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                planId: selectedPlan.id,
+                amount: selectedPlan.price * 100, // in paise (or cents)
+                currency: selectedPlan.currency
+              })
+            });
+            
+            if (!response.ok) {
+              throw new Error('Failed to create subscription');
+            }
+            
+            const { orderId, subscriptionId } = await response.json();
+            
+            // Open Razorpay checkout
+            const options = {
+              key: razorpayKeyId,
+              amount: selectedPlan.price * 100, // Amount in paise (or cents)
+              currency: selectedPlan.currency,
+              name: 'Playables',
+              description: `Subscription for ${selectedPlan.name}`,
+              order_id: orderId,
+              handler: function(response) {
+                // Send payment details to our verification endpoint
+                fetch('/api/subscribe/verify', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_order_id: response.razorpay_order_id,
+                    razorpay_signature: response.razorpay_signature,
+                    subscriptionId: subscriptionId
+                  })
+                })
+                .then(async (verifyRes) => {
+                  if (!verifyRes.ok) {
+                    throw new Error('Payment verification failed');
+                  }
+                  const result = await verifyRes.json();
+                  alert('Payment successful! Your subscription is now active.');
+                  window.location.href = '/profile?isApp=true';
+                })
+                .catch((err) => {
+                  console.error('Verification error:', err);
+                  alert('Payment verification failed. Please try again.');
+                  // Reset button
+                  document.getElementById('checkout-button').disabled = false;
+                  document.getElementById('checkout-button').innerHTML = 'Proceed to Checkout';
+                });
+              },
+              prefill: {
+                name: user.full_name || user.name || '',
+                email: user.email || '',
+                contact: user.phone || ''
+              },
+              theme: {
+                color: '#007cf0'
+              }
+            };
+            
+            const razorpay = new window.Razorpay(options);
+            razorpay.open();
+            
+          } catch (error) {
+            console.error('Subscription error:', error);
+            alert('Failed to initiate payment. Please try again.');
+            // Reset button
+            this.disabled = false;
+            this.innerHTML = 'Proceed to Checkout';
+          }
+        };
+        
+        // Coupon message helper
+        function showCouponMessage(message, type) {
+          couponMessage.textContent = message;
+          couponMessage.className = 'mt-2 text-sm ' + (type === 'error' ? 'text-rose-500' : 'text-green-500');
+          couponMessage.classList.remove('hidden');
+          setTimeout(() => couponMessage.classList.add('hidden'), type === 'error' ? 5000 : 3000);
+        }
+        
+        // Plan summary helper
+        function showPlanSummary(plan) {
+          const summary = document.getElementById('plan-summary');
+          const details = document.getElementById('selected-plan-details');
+          const finalPrice = (plan.price * (1 - couponDiscount / 100)).toFixed(2);
+          
+          details.innerHTML = `
+            <div><span class="font-medium">Plan:</span> ${plan.name}</div>
+            <div><span class="font-medium">Price:</span> \$${plan.price.toFixed(2)}</div>
+            <div><span class="font-medium">Duration:</span> ${plan.duration_days} ${plan.duration_days === 1 ? 'day' : 'days'}</div>
+            <div><span class="font-medium">Daily Diamonds:</span> ${plan.diamond_allocation}</div>
+            ${couponCode ? `<div><span class="font-medium">Coupon:</span> ${couponCode} (-${couponDiscount}%)</div>` : ''}
+            <div class="mt-2 pt-2 border-t border-hairline">
+              <span class="font-medium">Total:</span> \$${finalPrice}
+            </div>
+          `;
+          summary.classList.remove('hidden');
+        }
+      }
+      
+      // Initial render
+      const authState = {
+        user: null,
+        profile: null,
+        loading: true,
+        error: null
+      };
+      renderUI(authState);
+      
+      // Subscribe to auth updates
+      const unsubscribe = supabase.auth.onAuthStateChange((event, session) => {
+        if (event === 'SIGNED_OUT') {
+          authState.user = null;
+          authState.profile = null;
+        } else if (session?.user) {
+          authState.user = {
+            id: session.user.id,
+            email: session.user.email,
+            phone: session.user.phone,
+            ...session.user.user_metadata,
+          };
+        }
+        authState.loading = false;
+        renderUI(authState);
+      });
+      
+      // Cleanup on unmount
+      return () => {
+        unsubscribe();
+      };
+    </script>
+  </main>
+</Layout>
