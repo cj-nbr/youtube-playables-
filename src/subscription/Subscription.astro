@@ -14,7 +14,9 @@ const plans = subscriptionConfigs;
     </div>
     
     <script type="module">
-      import { supabase } from "../../lib/supabase/client.js";
+      import { getSupabaseClient } from "@lib/supabase/client.ts";
+      
+      const supabase = getSupabaseClient();
       
       const container = document.getElementById('subscription-container');
       const loadingEl = document.getElementById('sub-loading');

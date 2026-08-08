@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
-import { supabase } from "../../../lib/supabase/client.ts";
-import { subscriptionConfigs } from "../../../subscription/subscription-config.ts";
+import { getSupabaseClient } from "@lib/supabase/client.ts";
+import { subscriptionConfigs } from "@subscription/subscription-config.ts";
 
 const razorpayKeyId = process.env.RAZORPAY_KEY_ID;
 const razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET;

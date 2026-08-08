@@ -7,8 +7,10 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "dev:api": "ts server.ts",
     "build": "astro build",
     "preview": "astro preview",
+    "start": "astro preview && npm run dev:api",
     "astro": "astro",
     "deploy": "wrangler pages deploy dist --project-name playables"
   },
@@ -18,9 +20,14 @@
     "@supabase/supabase-js": "^2.112.2",
     "@tailwindcss/vite": "^4.3.2",
     "astro": "^7.0.6",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
     "razorpay": "^2.9.8",
     "tailwindcss": "^4.3.2",
     "three": "^0.185.1",
     "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
