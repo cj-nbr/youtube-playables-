@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import path from 'node:path';
+import node from '@astrojs/node';
 
 // In dev the API runs on a separate Express server (default :4000). Proxying
 // `/api` makes the frontend talk to it on the same origin, so there is no
@@ -10,6 +11,9 @@ import path from 'node:path';
 // production set PUBLIC_API_URL to the real backend origin instead.
 export default defineConfig({
   site: 'https://youtubeplayables.caloriecalculatorfree.com',
+  adapter: node({
+    mode: 'static'
+  }),
   vite: {
     plugins: [tailwindcss()],
     resolve: {
