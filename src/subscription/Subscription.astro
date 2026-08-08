@@ -292,13 +292,11 @@ const plans = subscriptionConfigs;
           };
         }
         authState.loading = false;
-        renderUI(authState);
+renderUI(authState);
       });
-      
-      // Cleanup on unmount
-      return () => {
-        unsubscribe();
-      };
+
+      // Cleanup on unmount (optional - auth state manages itself)
+      // No return needed at module level
     </script>
   </main>
 </Layout>

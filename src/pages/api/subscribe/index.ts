@@ -1,5 +1,5 @@
-import { supabase } from '../../lib/supabase/client.js';
-import { subscriptionConfigs, getSubscriptionById } from '../../../subscription/subscription-config.js';
+import { supabase } from "../../../lib/supabase/client.ts";
+import { subscriptionConfigs, getSubscriptionById } from "../../../subscription/subscription-config.ts";
 
 const razorpay = require('razorpay');
 const razorpayClient = new razorpay({
