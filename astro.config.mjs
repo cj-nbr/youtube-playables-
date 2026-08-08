@@ -24,5 +24,10 @@ export default defineConfig({
       },
     },
   },
+  public: {
+    "/app": {
+      entry: "src/pages/app.astro",
+    },
+  },
   // Removed @astrojs/sitemap; using manual public/sitemap.xml instead.
 });
